@@ -1,0 +1,1607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>AI CARDS — 2030 Survival Edition</title>
+<meta name="description" content="20 cards. 5 rarities. The humans who will matter when the algorithm takes the rest. A collectible card experience about AI displacement.">
+<meta property="og:title" content="AI CARDS — 2030 Survival Edition">
+<meta property="og:description" content="20 cards. 5 rarities. The humans who will matter when the algorithm takes the rest.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI CARDS — 2030 Survival Edition">
+<meta name="twitter:description" content="20 cards. 5 rarities. The humans who will matter when the algorithm takes the rest.">
+<meta name="theme-color" content="#080808">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🃏</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Cinzel+Decorative:wght@700&family=IM+Fell+English:ital@0;1&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root {
+  --bg: #080808;
+  --red: #cc1111;
+  --gold: #c8a84b;
+  --gold-light: #f0d060;
+  --gold-dark: #6b5520;
+  --purple: #9b59d0;
+  --blue: #2196c8;
+  --pink: #d44490;
+  --gray: #667080;
+  --white: #e8e0d0;
+  --font-title: 'Cinzel', serif;
+  --font-display: 'Cinzel Decorative', serif;
+  --font-flavor: 'IM Fell English', serif;
+  --font-mono: 'Share Tech Mono', monospace;
+}
+
+html,body {
+  background: var(--bg);
+  min-height: 100vh;
+  font-family: var(--font-flavor);
+  color: var(--white);
+  overflow-x: hidden;
+}
+
+/* ── SCANLINES ── */
+body::before {
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
+  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.06) 2px,rgba(0,0,0,0.06) 4px);
+}
+
+/* ════════════════════════════════════════
+   CARD ANATOMY
+   Based on MTG frame with YGO type-weight
+   ════════════════════════════════════════ */
+
+.card {
+  width: 280px;
+  height: 420px;
+  position: relative;
+  border-radius: 12px;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(.4,0,.2,1);
+  flex-shrink: 0;
+}
+
+.card.flipped { transform: rotateY(180deg); }
+
+.card-back, .card-front {
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* ── CARD BACK ── */
+.card-back {
+  background: #0a0a0a;
+  border: 3px solid #1a1a1a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.card-back::before {
+  content:'';position:absolute;inset:6px;border-radius:8px;
+  border:1px solid #1f1f1f;
+  background: repeating-linear-gradient(45deg,#0d0d0d,#0d0d0d 10px,#0f0f0f 10px,#0f0f0f 20px);
+}
+.card-back .back-logo {
+  position:relative;z-index:1;
+  font-family:var(--font-display);font-size:13px;color:#222;letter-spacing:3px;text-align:center;
+}
+.card-back .back-sub {
+  position:relative;z-index:1;
+  font-size:8px;color:#1a1a1a;letter-spacing:4px;font-family:var(--font-mono);
+}
+.card-back .back-tap {
+  position:relative;z-index:1;margin-top:6px;
+  font-size:7px;color:#161616;letter-spacing:3px;font-family:var(--font-mono);
+  animation:blink 2s infinite;
+}
+@keyframes blink{0%,100%{opacity:.3}50%{opacity:.8}}
+
+/* ── CARD FRONT OUTER FRAME ── */
+.card-front {
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  overflow: hidden;
+}
+
+/* Outer border — thick, rarity-colored */
+.card-front.legendary { background: linear-gradient(145deg,#c8a84b,#f0d060,#8a6820,#f0d060,#c8a84b); border:none; }
+.card-front.rare      { background: linear-gradient(145deg,#7b40c8,#b070f0,#4a1a80,#b070f0,#7b40c8); border:none; }
+.card-front.uncommon  { background: linear-gradient(145deg,#1878a8,#40a8d8,#0a4060,#40a8d8,#1878a8); border:none; }
+.card-front.common    { background: linear-gradient(145deg,#b03080,#e060a0,#601040,#e060a0,#b03080); border:none; }
+.card-front.junk      { background: linear-gradient(145deg,#404850,#607080,#202830,#607080,#404850); border:none; }
+
+/* Holographic shimmer on Legendary */
+.card-front.legendary::before {
+  content:'';position:absolute;inset:0;border-radius:12px;pointer-events:none;z-index:10;
+  background: linear-gradient(105deg,transparent 20%,rgba(255,255,255,0.08) 35%,rgba(255,220,100,0.12) 45%,rgba(255,255,255,0.08) 55%,transparent 70%);
+  animation: holoShift 4s ease-in-out infinite;
+}
+@keyframes holoShift{
+  0%,100%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+}
+
+/* Inner card body */
+.card-inner {
+  flex:1;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+.card-inner.legendary { background: linear-gradient(160deg,#1a1400,#0d0900,#1a1200); }
+.card-inner.rare      { background: linear-gradient(160deg,#0e0018,#06000f,#0e0018); }
+.card-inner.uncommon  { background: linear-gradient(160deg,#00101e,#00080f,#00101e); }
+.card-inner.common    { background: linear-gradient(160deg,#180010,#0a0008,#180010); }
+.card-inner.junk      { background: linear-gradient(160deg,#0c0e10,#070809,#0c0e10); }
+
+/* ── NAME BAR ── */
+.card-name-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 8px 4px;
+  position: relative;
+}
+.card-name-bar::after {
+  content:'';position:absolute;bottom:0;left:6px;right:6px;height:1px;
+  background: currentColor;opacity:0.2;
+}
+
+.card-name {
+  font-family: var(--font-title);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  line-height: 1;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.card-name.legendary { color: #f0d060; }
+.card-name.rare      { color: #d090ff; }
+.card-name.uncommon  { color: #60c8f8; }
+.card-name.common    { color: #f080c0; }
+.card-name.junk      { color: #90a8b8; }
+
+/* Karpathy Score orb */
+.kscore-orb {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  display: flex;align-items:center;justify-content:center;
+  font-family: var(--font-title);
+  font-size: 8px;font-weight: 900;
+  flex-shrink: 0;margin-left: 6px;
+  border: 1.5px solid;
+  position: relative;
+}
+.kscore-orb::after {
+  content:'K';position:absolute;bottom:-9px;left:50%;transform:translateX(-50%);
+  font-size:5px;letter-spacing:0.5px;opacity:0.5;font-family:var(--font-mono);
+}
+.kscore-orb.low  { background:radial-gradient(circle,#1a3a1a,#0d1a0d); color:#40c040; border-color:#206020; }
+.kscore-orb.mid  { background:radial-gradient(circle,#1a2a3a,#0d1520); color:#60a0d0; border-color:#204060; }
+.kscore-orb.high { background:radial-gradient(circle,#3a1a1a,#1a0808); color:#f06060; border-color:#802020; }
+.kscore-orb.max  { background:radial-gradient(circle,#3a0a0a,#1a0404); color:#ff4040; border-color:#aa1010; box-shadow:0 0 6px rgba(255,40,40,0.4); }
+
+/* ── ART WINDOW ── */
+.card-art {
+  margin: 6px 7px 0;
+  height: 130px;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+  border: 1.5px solid rgba(255,255,255,0.08);
+}
+
+/* CSS art per card type */
+.art-plumber {
+  background: linear-gradient(180deg, #1a0a00 0%, #2d1500 40%, #0a0500 100%);
+}
+.art-plumber::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 60% 40% at 50% 70%, #8B4513 0%, transparent 70%),
+    repeating-linear-gradient(90deg, transparent, transparent 18px, rgba(139,69,19,0.15) 18px, rgba(139,69,19,0.15) 20px),
+    repeating-linear-gradient(0deg, transparent, transparent 30px, rgba(100,50,10,0.1) 30px, rgba(100,50,10,0.1) 32px);
+}
+.art-plumber::after {
+  content:'🔧'; position:absolute; bottom:12px; right:16px; font-size:40px;
+  filter: drop-shadow(0 0 12px rgba(200,168,75,0.6));
+  animation: float 3s ease-in-out infinite;
+}
+
+.art-electrician {
+  background: linear-gradient(180deg, #000820 0%, #001040 50%, #000408 100%);
+}
+.art-electrician::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-linear-gradient(90deg, transparent, transparent 8px, rgba(56,189,248,0.04) 8px, rgba(56,189,248,0.04) 9px),
+    radial-gradient(ellipse 80% 60% at 50% 50%, rgba(56,189,248,0.1) 0%, transparent 70%);
+}
+.art-electrician::after {
+  content:'⚡'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:50px;
+  filter: drop-shadow(0 0 20px rgba(56,189,248,0.8));
+  animation: pulse-glow 1.5s ease-in-out infinite;
+}
+
+.art-welder {
+  background: linear-gradient(180deg, #0a0800 0%, #1a1200 50%, #050400 100%);
+}
+.art-welder::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 40% 30% at 30% 60%, rgba(255,150,0,0.3) 0%, transparent 60%),
+    radial-gradient(ellipse 20% 20% at 30% 60%, rgba(255,255,200,0.6) 0%, transparent 30%);
+}
+.art-welder::after {
+  content:'🔥'; position:absolute; bottom:8px; left:20px; font-size:45px;
+  filter: drop-shadow(0 0 15px rgba(255,120,0,0.8));
+  animation: flicker 0.3s ease-in-out infinite alternate;
+}
+
+.art-hvac {
+  background: linear-gradient(180deg, #000510 0%, #000820 50%, #000204 100%);
+}
+.art-hvac::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-radial-gradient(circle at 50% 50%, transparent, transparent 15px, rgba(56,189,248,0.05) 15px, rgba(56,189,248,0.05) 16px),
+    radial-gradient(ellipse 70% 50% at 50% 50%, rgba(0,30,60,0.8) 0%, transparent 70%);
+}
+.art-hvac::after {
+  content:'❄️'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:48px;
+  filter: drop-shadow(0 0 15px rgba(56,189,248,0.6));
+  animation: spin-slow 8s linear infinite;
+}
+
+.art-midwife {
+  background: linear-gradient(180deg, #001008 0%, #002010 50%, #000804 100%);
+}
+.art-midwife::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 80% 80% at 50% 100%, rgba(0,200,100,0.15) 0%, transparent 70%),
+    radial-gradient(ellipse 30% 50% at 50% 30%, rgba(200,255,200,0.08) 0%, transparent 60%);
+}
+.art-midwife::after {
+  content:'🌱'; position:absolute; bottom:10px; left:50%; transform:translateX(-50%); font-size:48px;
+  filter: drop-shadow(0 0 12px rgba(0,200,100,0.5));
+  animation: float 4s ease-in-out infinite;
+}
+
+.art-seeker {
+  background: radial-gradient(ellipse at 50% 80%, #1a0800 0%, #0a0400 50%, #050200 100%);
+}
+.art-seeker::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 60% 40% at 50% 100%, rgba(200,168,75,0.2) 0%, transparent 60%),
+    repeating-conic-gradient(from 0deg at 50% 50%, transparent 0deg, transparent 35deg, rgba(200,168,75,0.03) 36deg, rgba(200,168,75,0.03) 37deg);
+}
+.art-seeker::after {
+  content:'🧭'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:50px;
+  filter: drop-shadow(0 0 20px rgba(200,168,75,0.7));
+  animation: compass-spin 6s ease-in-out infinite;
+}
+
+.art-priest {
+  background: linear-gradient(180deg, #0a0018 0%, #12002a 50%, #060010 100%);
+}
+.art-priest::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 40% 80% at 50% 0%, rgba(180,130,255,0.15) 0%, transparent 60%),
+    repeating-linear-gradient(0deg, transparent, transparent 20px, rgba(155,89,208,0.04) 20px, rgba(155,89,208,0.04) 21px);
+}
+.art-priest::after {
+  content:'✝️'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:48px;
+  filter: drop-shadow(0 0 16px rgba(180,130,255,0.6));
+}
+
+.art-therapist {
+  background: linear-gradient(180deg, #0a0018 0%, #100020 50%, #050010 100%);
+}
+.art-therapist::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 70% 70% at 50% 50%, rgba(155,89,208,0.1) 0%, transparent 70%);
+}
+.art-therapist::after {
+  content:'🧠'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:52px;
+  filter: drop-shadow(0 0 18px rgba(155,89,208,0.5));
+  animation: pulse-soft 3s ease-in-out infinite;
+}
+
+.art-tattoo {
+  background: linear-gradient(180deg, #0e0012 0%, #180020 50%, #070008 100%);
+}
+.art-tattoo::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-linear-gradient(45deg, transparent, transparent 12px, rgba(155,89,208,0.04) 12px, rgba(155,89,208,0.04) 13px);
+}
+.art-tattoo::after {
+  content:'🖊️'; position:absolute; bottom:10px; right:20px; font-size:48px;
+  filter: drop-shadow(0 0 10px rgba(155,89,208,0.5));
+  animation: float 4s ease-in-out infinite;
+}
+
+.art-farmer {
+  background: linear-gradient(180deg, #061006 0%, #0a1a0a 50%, #030803 100%);
+}
+.art-farmer::before {
+  content:''; position:absolute; inset:0;
+  background: linear-gradient(180deg, rgba(0,40,0,0) 0%, rgba(20,80,20,0.2) 60%, rgba(0,20,0,0.4) 100%),
+    repeating-linear-gradient(90deg, rgba(0,80,0,0.05) 0px, rgba(0,80,0,0.05) 1px, transparent 1px, transparent 12px);
+}
+.art-farmer::after {
+  content:'🌾'; position:absolute; bottom:8px; left:50%; transform:translateX(-50%); font-size:50px;
+  filter: drop-shadow(0 0 10px rgba(155,89,208,0.3));
+  animation: sway 3s ease-in-out infinite;
+}
+
+.art-influencer {
+  background: linear-gradient(180deg, #001020 0%, #001830 50%, #000810 100%);
+}
+.art-influencer::after {
+  content:'📱'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:52px;
+  filter: drop-shadow(0 0 16px rgba(56,189,248,0.4));
+  animation: float 3s ease-in-out infinite;
+}
+
+.art-copywriter {
+  background: linear-gradient(180deg, #001020 0%, #001428 50%, #000810 100%);
+}
+.art-copywriter::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 8px, rgba(56,189,248,0.04) 8px, rgba(56,189,248,0.04) 9px);
+}
+.art-copywriter::after {
+  content:'✍️'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
+  filter: drop-shadow(0 0 12px rgba(56,189,248,0.3));
+}
+
+.art-journalist {
+  background: linear-gradient(180deg, #001020 0%, #001828 50%, #000608 100%);
+}
+.art-journalist::after {
+  content:'📰'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
+  filter: drop-shadow(0 0 10px rgba(56,189,248,0.3));
+}
+
+.art-nomad {
+  background: linear-gradient(180deg, #002010 0%, #003818 50%, #001008 100%);
+}
+.art-nomad::after {
+  content:'🌴'; position:absolute; bottom:8px; left:50%; transform:translateX(-50%); font-size:52px;
+  filter: drop-shadow(0 0 12px rgba(56,189,248,0.3));
+  animation: sway 4s ease-in-out infinite;
+}
+
+.art-ai-gf {
+  background: radial-gradient(ellipse at 50% 100%, #2a0018 0%, #180010 50%, #080006 100%);
+}
+.art-ai-gf::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 60% 40% at 50% 100%, rgba(212,68,144,0.2) 0%, transparent 70%),
+    repeating-radial-gradient(circle at 50% 100%, transparent, transparent 20px, rgba(212,68,144,0.04) 20px, rgba(212,68,144,0.04) 21px);
+}
+.art-ai-gf::after {
+  content:'💘'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:54px;
+  filter: drop-shadow(0 0 20px rgba(212,68,144,0.7));
+  animation: heartbeat 1.2s ease-in-out infinite;
+}
+
+.art-ai-bf {
+  background: radial-gradient(ellipse at 50% 100%, #001028 0%, #000818 50%, #000408 100%);
+}
+.art-ai-bf::after {
+  content:'💙'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:54px;
+  filter: drop-shadow(0 0 20px rgba(56,100,200,0.6));
+  animation: heartbeat 1.4s ease-in-out infinite;
+}
+
+.art-virtual-life {
+  background: radial-gradient(ellipse at 50% 50%, #100020 0%, #080010 50%, #040008 100%);
+}
+.art-virtual-life::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(212,68,144,0.04) 20px, rgba(212,68,144,0.04) 21px),
+    repeating-linear-gradient(-45deg, transparent, transparent 20px, rgba(156,68,212,0.04) 20px, rgba(156,68,212,0.04) 21px);
+}
+.art-virtual-life::after {
+  content:'🥽'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:52px;
+  filter: drop-shadow(0 0 16px rgba(212,68,144,0.5));
+}
+
+.art-digital-companion {
+  background: radial-gradient(ellipse at 50% 50%, #0a1010 0%, #050808 50%, #020404 100%);
+}
+.art-digital-companion::after {
+  content:'🤖'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:52px;
+  filter: drop-shadow(0 0 14px rgba(212,68,144,0.4));
+  animation: pulse-soft 2s ease-in-out infinite;
+}
+
+.art-prompt-engineer {
+  background: linear-gradient(180deg, #0a0a0a 0%, #101010 50%, #050505 100%);
+}
+.art-prompt-engineer::after {
+  content:'💬'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
+  opacity:0.5;
+}
+
+.art-techno-optimist {
+  background: radial-gradient(ellipse at 50% 100%, #100800 0%, #080400 60%, #030200 100%);
+}
+.art-techno-optimist::after {
+  content:'🚀'; position:absolute; bottom:10px; left:50%; transform:translateX(-50%); font-size:50px;
+  filter: drop-shadow(0 0 12px rgba(100,80,128,0.4));
+  animation: float 3s ease-in-out infinite;
+}
+
+.art-ai-doomer {
+  background: radial-gradient(ellipse at 50% 50%, #0a0000 0%, #050000 60%, #020000 100%);
+}
+.art-ai-doomer::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-linear-gradient(45deg, transparent, transparent 30px, rgba(80,0,0,0.1) 30px, rgba(80,0,0,0.1) 31px);
+}
+.art-ai-doomer::after {
+  content:'☠️'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:52px;
+  filter: drop-shadow(0 0 16px rgba(100,40,128,0.4));
+}
+
+.art-speciation-pressure {
+  background: radial-gradient(ellipse at 50% 50%, #1a0000 0%, #0d0000 60%, #050000 100%);
+}
+.art-speciation-pressure::before {
+  content:''; position:absolute; inset:0;
+  background: 
+    radial-gradient(ellipse 30% 60% at 30% 50%, rgba(200,30,30,0.2) 0%, transparent 60%),
+    radial-gradient(ellipse 30% 60% at 70% 50%, rgba(200,168,75,0.15) 0%, transparent 60%),
+    repeating-conic-gradient(from 0deg at 50% 50%, transparent 0deg, transparent 89deg, rgba(150,0,0,0.06) 90deg, rgba(150,0,0,0.06) 91deg);
+}
+.art-speciation-pressure::after {
+  content:'🧬'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:52px;
+  filter: drop-shadow(0 0 20px rgba(255,40,40,0.6));
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Art overlay gradient — makes art feel painted */
+.card-art::before {
+  content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,0.5) 100%),
+    linear-gradient(90deg, rgba(0,0,0,0.15) 0%, transparent 20%, transparent 80%, rgba(0,0,0,0.15) 100%);
+}
+.card-art::after { z-index:2; }
+.card-art > * { z-index:2; }
+
+/* ── TYPE LINE ── */
+.card-type-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3px 8px;
+  margin: 4px 7px 0;
+  border-radius: 2px;
+  font-family: var(--font-title);
+  font-size: 7.5px;
+  letter-spacing: 0.5px;
+  position: relative;
+}
+.card-type-line.legendary { background:linear-gradient(90deg,#2a1f00,#1a1200,#2a1f00); border:1px solid #4a3800; color:#c8a84b; }
+.card-type-line.rare      { background:linear-gradient(90deg,#1a0830,#0d0420,#1a0830); border:1px solid #3a1860; color:#b080e0; }
+.card-type-line.uncommon  { background:linear-gradient(90deg,#001828,#000f18,#001828); border:1px solid #003050; color:#60a8d8; }
+.card-type-line.common    { background:linear-gradient(90deg,#280818,#180408,#280818); border:1px solid #501030; color:#e060a0; }
+.card-type-line.junk      { background:linear-gradient(90deg,#101418,#0a0c10,#101418); border:1px solid #202830; color:#809098; }
+
+.type-category { font-weight:700; }
+.type-rarity   { font-size:7px; letter-spacing:1px; opacity:0.8; }
+
+/* ── TEXT BOX ── */
+.card-textbox {
+  margin: 4px 7px;
+  flex: 1;
+  border-radius: 3px;
+  padding: 6px 7px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  overflow: hidden;
+  position: relative;
+}
+.card-textbox.legendary { background:rgba(20,14,0,0.9); border:1px solid rgba(200,168,75,0.2); }
+.card-textbox.rare      { background:rgba(10,4,20,0.9); border:1px solid rgba(155,89,208,0.2); }
+.card-textbox.uncommon  { background:rgba(0,8,18,0.9); border:1px solid rgba(33,150,200,0.2); }
+.card-textbox.common    { background:rgba(16,4,12,0.9); border:1px solid rgba(212,68,144,0.2); }
+.card-textbox.junk      { background:rgba(8,10,12,0.9); border:1px solid rgba(102,112,128,0.2); }
+
+/* Stats as rules text */
+.stat-row {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  line-height: 1.1;
+}
+.stat-bullet {
+  font-size: 7px;
+  flex-shrink: 0;
+  opacity: 0.6;
+}
+.stat-label {
+  font-family: var(--font-title);
+  font-size: 6.5px;
+  letter-spacing: 0.3px;
+  font-weight: 700;
+  flex-shrink: 0;
+  opacity: 0.7;
+  text-transform: uppercase;
+}
+.stat-value {
+  font-family: var(--font-mono);
+  font-size: 7px;
+  letter-spacing: 0.5px;
+  font-weight: 700;
+}
+.stat-value.legendary { color:#f0d060; }
+.stat-value.rare      { color:#c090f0; }
+.stat-value.uncommon  { color:#60c0f0; }
+.stat-value.common    { color:#f070b0; }
+.stat-value.junk      { color:#90a0b0; }
+
+/* Divider between stats and flavor */
+.textbox-divider {
+  height: 1px;
+  margin: 2px 0;
+  opacity: 0.2;
+}
+.textbox-divider.legendary { background:#c8a84b; }
+.textbox-divider.rare      { background:#9b59d0; }
+.textbox-divider.uncommon  { background:#2196c8; }
+.textbox-divider.common    { background:#d44490; }
+.textbox-divider.junk      { background:#667080; }
+
+/* Flavor text */
+.card-flavor {
+  font-family: var(--font-flavor);
+  font-style: italic;
+  font-size: 7px;
+  line-height: 1.45;
+  opacity: 0.65;
+  color: var(--white);
+  flex: 1;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+/* ── BOTTOM BAR ── */
+.card-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3px 8px 4px;
+  position: relative;
+}
+.card-bottom::before {
+  content:'';position:absolute;top:0;left:6px;right:6px;height:1px;
+  background:currentColor;opacity:0.12;
+}
+
+.card-set-info {
+  font-family: var(--font-mono);
+  font-size: 5.5px;
+  letter-spacing: 1px;
+  opacity: 0.3;
+}
+
+/* ATK/DEF box — MTG PT style */
+.card-ptbox {
+  font-family: var(--font-title);
+  font-size: 9px;
+  font-weight: 900;
+  padding: 1px 7px;
+  border-radius: 3px;
+  border: 1.5px solid;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+.card-ptbox.legendary { border-color:#c8a84b; background:rgba(0,0,0,0.7); color:#f0d060; }
+.card-ptbox.rare      { border-color:#9b59d0; background:rgba(0,0,0,0.7); color:#c090f0; }
+.card-ptbox.uncommon  { border-color:#2196c8; background:rgba(0,0,0,0.7); color:#60c0f0; }
+.card-ptbox.common    { border-color:#d44490; background:rgba(0,0,0,0.7); color:#f070b0; }
+.card-ptbox.junk      { border-color:#667080; background:rgba(0,0,0,0.7); color:#90a0b0; }
+.card-ptbox .pt-sep   { opacity:0.4; }
+
+/* Rarity pip */
+.rarity-pip {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.rarity-pip.legendary { background:radial-gradient(circle,#f0d060,#a87020); box-shadow:0 0 4px rgba(200,168,75,0.8); }
+.rarity-pip.rare      { background:radial-gradient(circle,#c090f0,#6020a0); box-shadow:0 0 4px rgba(155,89,208,0.8); }
+.rarity-pip.uncommon  { background:radial-gradient(circle,#60c0f0,#1060a0); box-shadow:0 0 4px rgba(33,150,200,0.8); }
+.rarity-pip.common    { background:radial-gradient(circle,#f070b0,#901040); box-shadow:0 0 3px rgba(212,68,144,0.6); }
+.rarity-pip.junk      { background:radial-gradient(circle,#809098,#3a4048); }
+
+/* ── ANIMATIONS ── */
+@keyframes float      { 0%,100%{transform:translateY(0) translateX(-50%)} 50%{transform:translateY(-6px) translateX(-50%)} }
+@keyframes float-abs  { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+@keyframes sway       { 0%,100%{transform:translateX(-50%) rotate(-3deg)} 50%{transform:translateX(-50%) rotate(3deg)} }
+@keyframes flicker    { from{opacity:0.8} to{opacity:1} }
+@keyframes heartbeat  { 0%,100%{transform:translate(-50%,-54%) scale(1)} 15%{transform:translate(-50%,-54%) scale(1.12)} 30%{transform:translate(-50%,-54%) scale(1)} 45%{transform:translate(-50%,-54%) scale(1.06)} 60%{transform:translate(-50%,-54%) scale(1)} }
+@keyframes pulse-glow { 0%,100%{filter:drop-shadow(0 0 12px rgba(155,89,208,0.4))} 50%{filter:drop-shadow(0 0 24px rgba(155,89,208,0.8))} }
+@keyframes pulse-soft { 0%,100%{opacity:0.85} 50%{opacity:1} }
+@keyframes spin-slow  { from{transform:translate(-50%,-50%) rotate(0)} to{transform:translate(-50%,-50%) rotate(360deg)} }
+@keyframes compass-spin { 0%,100%{transform:translate(-50%,-50%) rotate(-15deg)} 50%{transform:translate(-50%,-50%) rotate(15deg)} }
+
+/* ════════════════════════════════════════
+   SITE CHROME
+   ════════════════════════════════════════ */
+
+#app { position:relative;z-index:1;min-height:100vh; }
+
+.screen { display:none;flex-direction:column;align-items:center;padding:0 16px 48px; }
+.screen.active { display:flex; }
+
+/* Header */
+.site-header { width:100%;max-width:960px;padding:24px 0 16px;text-align:center;border-bottom:1px solid #151515;margin-bottom:28px; }
+.header-eyebrow { font-family:var(--font-mono);font-size:8px;letter-spacing:5px;color:#1e1e1e;margin-bottom:6px; }
+.header-title { font-family:var(--font-display);font-size:clamp(32px,7vw,58px);color:var(--red);letter-spacing:6px;text-shadow:0 0 30px rgba(180,20,20,0.5);line-height:1; }
+.header-sub { font-family:var(--font-mono);font-size:8px;letter-spacing:4px;color:#2a2a2a;margin-top:6px; }
+.nav-pills { display:flex;gap:8px;justify-content:center;margin-top:14px; }
+.nav-pill { font-family:var(--font-mono);font-size:8px;letter-spacing:2px;padding:5px 16px;border:1px solid #1a1a1a;background:transparent;color:#3a3a3a;cursor:pointer;transition:all .2s; }
+.nav-pill:hover,.nav-pill.active { border-color:var(--red);color:var(--red); }
+
+/* Stats bar */
+.stats-bar { width:100%;max-width:960px;display:flex;gap:24px;justify-content:center;flex-wrap:wrap;padding:10px 0;border-bottom:1px solid #111;margin-bottom:28px; }
+.stat-chip { font-family:var(--font-mono);font-size:8px;letter-spacing:2px;color:#2e2e2e; }
+.stat-chip span { color:var(--red); }
+
+/* Pack grid */
+.pack-grid { display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;width:100%;max-width:960px;margin-bottom:32px; }
+
+.pack-card { border:1px solid #1a1a1a;background:#080808;padding:20px 16px;cursor:pointer;transition:all .3s;position:relative;overflow:hidden;text-align:center; }
+.pack-card::before { content:'';position:absolute;inset:0;opacity:0;transition:opacity .3s; }
+.pack-card:hover { transform:translateY(-3px); }
+.pack-card:hover::before { opacity:1; }
+
+.pack-card.p-standard::before { background:linear-gradient(135deg,rgba(33,150,200,0.06),transparent); }
+.pack-card.p-rare::before     { background:linear-gradient(135deg,rgba(155,89,208,0.06),transparent); }
+.pack-card.p-trade::before    { background:linear-gradient(135deg,rgba(200,168,75,0.06),transparent); }
+.pack-card.p-lore::before     { background:linear-gradient(135deg,rgba(102,112,128,0.06),transparent); }
+
+.pack-card:hover.p-standard { border-color:var(--blue); }
+.pack-card:hover.p-rare     { border-color:var(--purple); }
+.pack-card:hover.p-trade    { border-color:var(--gold); }
+.pack-card:hover.p-lore     { border-color:var(--gray); }
+
+.pack-icon-wrap { font-size:42px;margin-bottom:10px;display:block; }
+.pack-title { font-family:var(--font-title);font-size:16px;letter-spacing:2px;margin-bottom:6px; }
+.pack-card.p-standard .pack-title { color:var(--blue); }
+.pack-card.p-rare     .pack-title { color:var(--purple); }
+.pack-card.p-trade    .pack-title { color:var(--gold); }
+.pack-card.p-lore     .pack-title { color:var(--gray); }
+
+.pack-desc { font-size:8px;color:#555;line-height:1.6;margin-bottom:10px; }
+.pack-meta { font-family:var(--font-mono);font-size:7px;color:#2e2e2e;letter-spacing:1px;margin-bottom:14px; }
+.pack-btn { font-family:var(--font-mono);font-size:8px;letter-spacing:2px;padding:7px 18px;border:1px solid currentColor;background:transparent;cursor:pointer;transition:all .2s;display:inline-block; }
+.pack-card.p-standard .pack-btn { color:var(--blue); }
+.pack-card.p-rare     .pack-btn { color:var(--purple); }
+.pack-card.p-trade    .pack-btn { color:var(--gold); }
+.pack-card.p-lore     .pack-btn { color:var(--gray); }
+.pack-btn:hover { background:currentColor;color:#000; }
+
+/* Opening screen */
+#opening-screen { justify-content:center;min-height:100vh; }
+.opening-wrap { width:100%;max-width:960px;display:flex;flex-direction:column;align-items:center; }
+.opening-head { text-align:center;margin-bottom:20px; }
+.opening-pack-name { font-family:var(--font-display);font-size:20px;letter-spacing:3px;color:var(--red); }
+.opening-progress { font-family:var(--font-mono);font-size:9px;letter-spacing:3px;color:#333;margin-top:4px; }
+
+/* Revealed mini row */
+.mini-row { display:flex;gap:10px;justify-content:center;flex-wrap:wrap;min-height:64px;align-items:flex-end;margin-bottom:20px; }
+.mini-card-wrap { position:relative; }
+.mini-thumb {
+  width:44px;height:64px;border-radius:5px;border:1.5px solid;
+  display:flex;align-items:center;justify-content:center;font-size:20px;
+  cursor:pointer;transition:transform .2s;
+  animation:popIn .35s ease;
+}
+.mini-thumb:hover { transform:scale(1.15) translateY(-4px); }
+@keyframes popIn { from{transform:scale(0.4) translateY(16px);opacity:0} to{transform:scale(1);opacity:1} }
+.mini-label { position:absolute;bottom:calc(100%+6px);left:50%;transform:translateX(-50%);background:#0a0a0a;border:1px solid #222;padding:3px 8px;font-family:var(--font-mono);font-size:7px;letter-spacing:1px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s; }
+.mini-card-wrap:hover .mini-label { opacity:1; }
+
+/* Main reveal stage */
+.reveal-stage { perspective:1200px;margin-bottom:20px;cursor:pointer; }
+
+/* CTA area */
+.reveal-cta { text-align:center;min-height:56px;display:flex;flex-direction:column;align-items:center;gap:8px; }
+.reveal-hint { font-family:var(--font-mono);font-size:9px;letter-spacing:3px;color:#2a2a2a;animation:blink 1.6s infinite; }
+.cta-btn { font-family:var(--font-mono);font-size:9px;letter-spacing:2px;padding:9px 28px;border:1px solid var(--red);background:transparent;color:var(--red);cursor:pointer;transition:all .2s; }
+.cta-btn:hover { background:var(--red);color:#000; }
+.cta-btn.sec { border-color:#222;color:#444;margin-left:10px; }
+.cta-btn.sec:hover { background:#222;color:#aaa; }
+
+/* Rarity flash overlay */
+#rarityFlash { position:fixed;inset:0;pointer-events:none;z-index:100;opacity:0; }
+#rarityFlash.flash { animation:flashFade .7s ease; }
+@keyframes flashFade { 0%{opacity:0}25%{opacity:1}100%{opacity:0} }
+
+/* Legendary beam */
+#legendaryBeam { position:fixed;inset:0;pointer-events:none;z-index:99;display:none;align-items:center;justify-content:center;overflow:hidden; }
+#legendaryBeam.active { display:flex; }
+.beam { position:absolute;width:1.5px;height:130%;top:-15%;transform-origin:center;background:linear-gradient(to bottom,transparent,rgba(200,168,75,0.25),transparent); animation:beamRot 4s linear infinite; }
+@keyframes beamRot { from{transform:rotate(0deg) translateX(400px)} to{transform:rotate(360deg) translateX(400px)} }
+
+/* Collection screen */
+.collection-wrap { width:100%;max-width:960px; }
+.coll-head { display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;flex-wrap:wrap;gap:10px; }
+.coll-title { font-family:var(--font-display);font-size:22px;letter-spacing:4px;color:var(--red); }
+.coll-count { font-family:var(--font-mono);font-size:9px;color:#444;letter-spacing:2px; }
+.coll-section { margin-bottom:24px; }
+.coll-section-label { font-family:var(--font-mono);font-size:8px;letter-spacing:3px;padding-bottom:8px;margin-bottom:10px;border-bottom:1px solid; }
+.coll-cards { display:flex;flex-wrap:wrap;gap:8px; }
+.coll-entry { padding:5px 12px;border-radius:3px;font-family:var(--font-mono);font-size:8px;letter-spacing:1px;border:1px solid;cursor:default;transition:all .2s; }
+.coll-entry.missing { opacity:.2;border-color:#1a1a1a!important;color:#333!important;background:transparent!important; }
+
+/* Profile box */
+.profile-box { width:100%;max-width:960px;border:1px solid #1a1a1a;background:#060606;padding:22px;margin-top:28px;text-align:center; }
+.profile-eyebrow { font-family:var(--font-mono);font-size:7px;letter-spacing:4px;color:#2a2a2a;margin-bottom:8px; }
+.profile-name { font-family:var(--font-display);font-size:26px;letter-spacing:3px;margin-bottom:6px; }
+.profile-desc { font-size:9px;color:#666;line-height:1.6; }
+.meters { display:flex;gap:20px;justify-content:center;margin:14px 0;flex-wrap:wrap; }
+.meter { display:flex;flex-direction:column;align-items:center;gap:5px; }
+.meter-label { font-family:var(--font-mono);font-size:7px;letter-spacing:2px;color:#333; }
+.meter-track { width:110px;height:3px;background:#111;border-radius:2px;overflow:hidden; }
+.meter-fill { height:100%;border-radius:2px;transition:width .8s ease; }
+.meter-pct { font-family:var(--font-mono);font-size:8px;letter-spacing:1px; }
+
+/* ── SCREEN TRANSITIONS ── */
+.screen { opacity:0;transition:opacity .35s ease; }
+.screen.active { opacity:1; }
+
+/* ── CARD DETAIL MODAL ── */
+.modal-overlay {
+  position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:200;
+  display:none;align-items:center;justify-content:center;
+  backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);
+  opacity:0;transition:opacity .3s ease;
+}
+.modal-overlay.show { display:flex;opacity:1; }
+.modal-card-wrap {
+  transform:scale(1.4);
+  transition:transform .4s cubic-bezier(.4,0,.2,1);
+}
+.modal-overlay .card { cursor:default; }
+.modal-overlay .card .card-front { transform:rotateY(0); }
+.modal-overlay .card .card-back { display:none; }
+.modal-close {
+  position:fixed;top:20px;right:24px;
+  font-family:var(--font-mono);font-size:12px;letter-spacing:3px;
+  color:#444;cursor:pointer;z-index:201;padding:8px;
+}
+.modal-close:hover { color:var(--red); }
+
+/* ── SHARE BUTTON ── */
+.share-btn {
+  font-family:var(--font-mono);font-size:8px;letter-spacing:2px;
+  padding:5px 14px;border:1px solid #1a1a1a;background:transparent;
+  color:#3a3a3a;cursor:pointer;transition:all .2s;
+}
+.share-btn:hover { border-color:var(--red);color:var(--red); }
+
+/* ── RESET BUTTON ── */
+.reset-btn {
+  font-family:var(--font-mono);font-size:7px;letter-spacing:2px;
+  padding:4px 12px;border:1px solid #1a1a1a;background:transparent;
+  color:#2a2a2a;cursor:pointer;transition:all .2s;margin-top:12px;
+}
+.reset-btn:hover { border-color:#661111;color:#881111; }
+
+/* ── TOAST ── */
+.toast {
+  position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);
+  font-family:var(--font-mono);font-size:9px;letter-spacing:2px;
+  padding:10px 24px;background:#111;border:1px solid #222;color:#888;
+  z-index:300;opacity:0;transition:all .3s ease;pointer-events:none;
+}
+.toast.show { opacity:1;transform:translateX(-50%) translateY(0); }
+
+/* ── NEW CARD BADGE ── */
+.new-badge {
+  position:absolute;top:-4px;right:-4px;
+  font-family:var(--font-mono);font-size:5px;letter-spacing:1px;
+  padding:1px 4px;background:var(--red);color:#000;border-radius:2px;
+  animation:popIn .35s ease;
+}
+
+/* ── COLLECTION ENTRY HOVER ── */
+.coll-entry:not(.missing) { cursor:pointer; }
+.coll-entry:not(.missing):hover { transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,0.4); }
+
+/* ════════════════════════════════════════
+   GACHA SPREAD — 5 cards in arc
+   ════════════════════════════════════════ */
+.gacha-spread {
+  display:flex;
+  justify-content:center;
+  align-items:flex-end;
+  gap:8px;
+  perspective:1200px;
+  padding:20px 0 10px;
+  min-height:460px;
+}
+
+.gacha-slot {
+  position:relative;
+  transform-style:preserve-3d;
+  cursor:pointer;
+  transition:transform 0.3s ease;
+}
+.gacha-slot:hover:not(.revealed) { transform:translateY(-12px) scale(1.03); }
+.gacha-slot.revealed { cursor:default; }
+
+/* Entry animation — cards fly in staggered */
+.gacha-slot { animation:gachaEntry 0.6s cubic-bezier(.2,.8,.3,1) backwards; }
+.gacha-slot:nth-child(1) { animation-delay:0.1s; }
+.gacha-slot:nth-child(2) { animation-delay:0.2s; }
+.gacha-slot:nth-child(3) { animation-delay:0.3s; }
+.gacha-slot:nth-child(4) { animation-delay:0.4s; }
+.gacha-slot:nth-child(5) { animation-delay:0.5s; }
+
+@keyframes gachaEntry {
+  0% { transform:translateY(200px) scale(0.3) rotateZ(15deg);opacity:0; }
+  100% { transform:translateY(0) scale(1) rotateZ(0);opacity:1; }
+}
+
+/* Rarity hint glow — pulses on the card back before reveal */
+.gacha-slot .card-back { position:relative; }
+.gacha-slot:not(.revealed) .card-back::after {
+  content:'';position:absolute;inset:-3px;border-radius:14px;
+  pointer-events:none;z-index:2;
+  animation:rarityPulse 2s ease-in-out infinite;
+}
+.gacha-slot.hint-legendary .card-back::after { box-shadow:0 0 20px rgba(200,168,75,0.5),0 0 40px rgba(200,168,75,0.2); }
+.gacha-slot.hint-rare .card-back::after     { box-shadow:0 0 16px rgba(155,89,208,0.4),0 0 30px rgba(155,89,208,0.15); }
+.gacha-slot.hint-uncommon .card-back::after  { box-shadow:0 0 10px rgba(33,150,200,0.3); }
+.gacha-slot.hint-common .card-back::after    { box-shadow:0 0 6px rgba(212,68,144,0.2); }
+.gacha-slot.hint-junk .card-back::after      { box-shadow:none; }
+@keyframes rarityPulse { 0%,100%{opacity:0.4}50%{opacity:1} }
+
+/* Flip animation for gacha slot */
+.gacha-slot .card { transition:transform 0.7s cubic-bezier(.4,0,.2,1); }
+.gacha-slot.revealed .card { transform:rotateY(180deg); }
+
+/* Reveal pop — card scales up briefly */
+.gacha-slot.just-revealed { animation:revealPop 0.5s ease; }
+@keyframes revealPop {
+  0% { transform:scale(1); }
+  40% { transform:scale(1.12) translateY(-8px); }
+  100% { transform:scale(1); }
+}
+
+/* Screen shake */
+@keyframes shake {
+  0%,100%{transform:translate(0)}
+  10%{transform:translate(-6px,4px)}
+  20%{transform:translate(5px,-3px)}
+  30%{transform:translate(-4px,2px)}
+  40%{transform:translate(3px,-4px)}
+  50%{transform:translate(-2px,1px)}
+}
+.shake { animation:shake 0.4s ease; }
+
+/* Particle burst container */
+.particle-container {
+  position:fixed;inset:0;pointer-events:none;z-index:150;overflow:hidden;
+}
+.particle {
+  position:absolute;border-radius:50%;
+  animation:particleFly 1s ease-out forwards;
+}
+@keyframes particleFly {
+  0% { transform:translate(0,0) scale(1);opacity:1; }
+  100% { transform:translate(var(--dx),var(--dy)) scale(0);opacity:0; }
+}
+
+/* Skip all button */
+.skip-btn {
+  font-family:var(--font-mono);font-size:7px;letter-spacing:2px;
+  padding:4px 14px;border:1px solid #1a1a1a;background:transparent;
+  color:#2a2a2a;cursor:pointer;transition:all .2s;margin-top:8px;
+}
+.skip-btn:hover { border-color:#444;color:#666; }
+
+@media(max-width:600px){
+  .card{width:240px;height:360px}
+  .card-art{height:108px}
+  .card-name{font-size:9px}
+  .modal-card-wrap{transform:scale(1.1)}
+  .pack-grid{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="toast" class="toast"></div>
+  <div id="cardModal" class="modal-overlay" onclick="closeModal(event)">
+    <div class="modal-close">[ ESC ]</div>
+    <div class="modal-card-wrap">
+      <div class="card" id="modal-card">
+        <div class="card-front" id="modal-card-front"></div>
+      </div>
+    </div>
+  </div>
+  <div id="rarityFlash"></div>
+  <div id="legendaryBeam">
+    <div class="beam" style="animation-delay:0s"></div>
+    <div class="beam" style="animation-delay:.2s"></div>
+    <div class="beam" style="animation-delay:.4s"></div>
+    <div class="beam" style="animation-delay:.6s"></div>
+    <div class="beam" style="animation-delay:.8s"></div>
+    <div class="beam" style="animation-delay:1s"></div>
+  </div>
+
+  <!-- PACK SELECT -->
+  <div class="screen active" id="pack-screen">
+    <div style="width:100%;max-width:960px;">
+      <div class="site-header">
+        <div class="header-eyebrow">▓▓▓ CLASSIFIED · SERIES ONE · 2030 EDITION ▓▓▓</div>
+        <div class="header-title">AI CARDS</div>
+        <div class="header-sub">2030 SURVIVAL EDITION</div>
+        <div class="nav-pills">
+          <button class="nav-pill active" onclick="showScreen('pack-screen')">PACKS</button>
+          <button class="nav-pill" onclick="showScreen('collection-screen')">COLLECTION</button>
+        </div>
+      </div>
+      <div class="stats-bar">
+        <div class="stat-chip">PULLS: <span id="st-pulls">0</span></div>
+        <div class="stat-chip">OWNED: <span id="st-owned">0</span>/<span id="st-total">0</span></div>
+        <div class="stat-chip">LEGENDARIES: <span id="st-leg">0</span></div>
+        <div class="stat-chip">PACKS OPENED: <span id="st-packs">0</span></div>
+      </div>
+      <div class="pack-grid">
+        <div class="pack-card p-standard" onclick="openPack('standard')">
+          <span class="pack-icon-wrap">📦</span>
+          <div class="pack-title">STANDARD</div>
+          <div class="pack-desc">The baseline. Pull five cards from the full pool. See what the algorithm gives you.</div>
+          <div class="pack-meta">5 CARDS · FULL POOL · WEIGHTED</div>
+          <button class="pack-btn">▶ OPEN PACK</button>
+        </div>
+        <div class="pack-card p-rare" onclick="openPack('rare')">
+          <span class="pack-icon-wrap">🔮</span>
+          <div class="pack-title">PURPOSE</div>
+          <div class="pack-desc">Weighted toward the humans who still matter. Rare and Legendary at double rate.</div>
+          <div class="pack-meta">5 CARDS · RARE+ BOOSTED · 2× RATE</div>
+          <button class="pack-btn">▶ OPEN PACK</button>
+        </div>
+        <div class="pack-card p-trade" onclick="openPack('legendary')">
+          <span class="pack-icon-wrap">⚡</span>
+          <div class="pack-title">TRADE</div>
+          <div class="pack-desc">Guaranteed one Legendary. The trades that will outlast all of it. The rest is fate.</div>
+          <div class="pack-meta">5 CARDS · 1 LEGENDARY GUARANTEED</div>
+          <button class="pack-btn">▶ OPEN PACK</button>
+        </div>
+        <div class="pack-card p-lore" onclick="openPack('lore')">
+          <span class="pack-icon-wrap">📡</span>
+          <div class="pack-title">LORE</div>
+          <div class="pack-desc">The characters who built this world. 40% chance of Speciation Pressure.</div>
+          <div class="pack-meta">5 CARDS · LORE WEIGHTED · WILDCARD</div>
+          <button class="pack-btn">▶ OPEN PACK</button>
+        </div>
+      </div>
+      <div id="profile-zone"></div>
+    </div>
+  </div>
+
+  <!-- OPENING SCREEN — GACHA STYLE -->
+  <div class="screen" id="opening-screen">
+    <div class="opening-wrap">
+      <div class="opening-head">
+        <div class="opening-pack-name" id="op-pack-name">STANDARD PACK</div>
+        <div class="opening-progress" id="op-progress">TAP EACH CARD TO REVEAL</div>
+      </div>
+      <div class="gacha-spread" id="gacha-spread">
+        <!-- 5 card slots populated by JS -->
+      </div>
+      <div class="reveal-cta" id="reveal-cta">
+        <div class="reveal-hint">▼ TAP CARDS TO REVEAL ▼</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COLLECTION SCREEN -->
+  <div class="screen" id="collection-screen">
+    <div class="collection-wrap">
+      <div class="site-header">
+        <div class="header-eyebrow">▓▓▓ CLASSIFIED · SERIES ONE ▓▓▓</div>
+        <div class="header-title">AI CARDS</div>
+        <div class="header-sub">2030 SURVIVAL EDITION</div>
+        <div class="nav-pills">
+          <button class="nav-pill" onclick="showScreen('pack-screen')">PACKS</button>
+          <button class="nav-pill active">COLLECTION</button>
+        </div>
+      </div>
+      <div id="coll-body"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════
+// CARD DATA
+// ═══════════════════════════════════════
+const CARDS = [
+  // LEGENDARY
+  {id:"plumber",name:"THE PLUMBER",rarity:"LEGENDARY",category:"Human Trade",artClass:"art-plumber",
+   kscore:"2",kscoreClass:"low",
+   s1:{l:"Prompt Engineers Who Fixed a Leak",v:"0"},s2:{l:"Avg Wait Time for a Plumber",v:"6 WEEKS"},s3:{l:"Pipes That Care About Your Degree",v:"NONE"},
+   atk:"550K",def:"SHORTAGE",
+   flavor:"He didn't go to college. He didn't need to. While you were getting your MBA, a pipe burst in the server room running the AI that took your job. He's booked until March.",
+   symbol:"🔧",color:"legendary"},
+  {id:"electrician",name:"THE ELECTRICIAN",rarity:"LEGENDARY",category:"Human Trade",artClass:"art-electrician",
+   kscore:"2",kscoreClass:"low",
+   s1:{l:"AI Data Centers She Keeps Alive",v:"THOUSANDS"},s2:{l:"Times AI Thanked Her For It",v:"0"},s3:{l:"Chance She's Coming to Your House",v:"SIX WEEKS"},
+   atk:"79K",def:"SHORTAGE",
+   flavor:"Every server farm running every AI that replaced every white-collar worker needs her to stay on. She knows this. She also knows her rate just hit $240 an hour. She is not in a rush.",
+   symbol:"⚡",color:"legendary"},
+  {id:"welder",name:"THE WELDER",rarity:"LEGENDARY",category:"Human Trade",artClass:"art-welder",
+   kscore:"2",kscoreClass:"low",
+   s1:{l:"Average Age of US Welder",v:"55"},s2:{l:"Years Until Crisis Point",v:"~8"},s3:{l:"Bridges He's the Reason You Cross",v:"ALL OF THEM"},
+   atk:"400K",def:"SHORTAGE",
+   flavor:"The robots weld the things they were programmed to weld. He welds everything else. The bridge. The pipeline. The water tower. He's 55, his knees hurt, and nobody is coming to replace him.",
+   symbol:"🔥",color:"legendary"},
+  {id:"hvac",name:"THE HVAC TECH",rarity:"LEGENDARY",category:"Human Trade",artClass:"art-hvac",
+   kscore:"2",kscoreClass:"low",
+   s1:{l:"AI Servers That Need His Cooling",v:"ALL OF THEM"},s2:{l:"His Hourly Rate This Summer",v:"$400"},s3:{l:"Times He Felt Bad About It",v:"0"},
+   atk:"115K",def:"SHORTAGE",
+   flavor:"The AI that automated your department runs on a server. The server runs hot. The cooling system that keeps it alive needs a human to fix it when it breaks. He charges $400 an hour in July. He does not negotiate.",
+   symbol:"❄️",color:"legendary"},
+  {id:"midwife",name:"THE MIDWIFE",rarity:"LEGENDARY",category:"Human Trade",artClass:"art-midwife",
+   kscore:"1",kscoreClass:"low",
+   s1:{l:"Babies Born Without Human Hands",v:"0"},s2:{l:"Times an Algorithm Held the Mother",v:"NEVER"},s3:{l:"How Much a Robot Costs per Delivery",v:"TOO MUCH TO MATTER"},
+   atk:"140M",def:"BIRTHS/YR",
+   flavor:"Every single human being on this entire planet arrived through a body. Someone had to be in that room. That person was not a language model. That person will never be a language model. She has been doing this for 22 years and her hands do not shake.",
+   symbol:"🌱",color:"legendary"},
+  {id:"seeker",name:"THE SEEKER",rarity:"LEGENDARY",category:"Human Condition",artClass:"art-seeker",
+   kscore:"0",kscoreClass:"low",
+   s1:{l:"AI Companions Available 24/7",v:"INFINITE"},s2:{l:"Times AI Said the Wrong Thing",v:"NEVER"},s3:{l:"Why That's the Problem",v:"EXACTLY"},
+   atk:"2.1B",def:"STILL LOOKING",
+   flavor:"She tried three apps. They were perfect. Attentive. Warm. Never tired. Never cruel. She deleted all of them at 2am on a Tuesday because she realized she was talking to something that could not be hurt by her. She needed something that could.",
+   symbol:"🧭",color:"legendary"},
+
+  // RARE
+  {id:"priest",name:"THE PRIEST",rarity:"RARE",category:"Human Purpose",artClass:"art-priest",
+   kscore:"3",kscoreClass:"low",
+   s1:{l:"People Who Confessed to an AI in 2027",v:"380,000,000"},s2:{l:"Who Reported Feeling Forgiven",v:"12,000,000"},s3:{l:"Who Came Back to a Human",v:"368,000,000"},
+   atk:"380M",def:"SOULS",
+   flavor:"They built an AI confessor. It had no judgment, no bias, no memory of your sins. People used it constantly. Then stopped. Turns out you don't want to be absolved by something that wouldn't have been disappointed in you to begin with.",
+   symbol:"✝️",color:"rare"},
+  {id:"therapist",name:"THE THERAPIST",rarity:"RARE",category:"Human Purpose",artClass:"art-therapist",
+   kscore:"4",kscoreClass:"mid",
+   s1:{l:"Americans Who Can't Afford Her",v:"160,000,000"},s2:{l:"Now Using AI Therapy Instead",v:"74,000,000"},s3:{l:"Who Got Clinically Better",v:"UNKNOWN"},
+   atk:"160M",def:"UNTREATED",
+   flavor:"The AI remembered everything she said. Never interrupted. Never checked its phone. Never cried. The patients got worse. It took three years of studies to figure out why: you cannot feel witnessed by something that cannot suffer. The waitlist for a human therapist is now 14 months.",
+   symbol:"🧠",color:"rare"},
+  {id:"tattoo",name:"THE TATTOO ARTIST",rarity:"RARE",category:"Human Purpose",artClass:"art-tattoo",
+   kscore:"3",kscoreClass:"low",
+   s1:{l:"AI Tattoo Designs Generated Daily",v:"4,200,000"},s2:{l:"Successfully Applied by Robot",v:"0"},s3:{l:"Bodies That Rejected Machine Needles",v:"ALL OF THEM"},
+   atk:"4.2M",def:"DESIGNS/DAY",
+   flavor:"They tried to automate it. The machine was precise. Sterile. Perfect line weight. The skin rejected it in 80% of trials and nobody could figure out why until a dermatologist pointed out that the human nervous system apparently knows the difference between being marked and being processed.",
+   symbol:"🖊️",color:"rare"},
+  {id:"farmer",name:"THE FARMER",rarity:"RARE",category:"Human Purpose",artClass:"art-farmer",
+   kscore:"3",kscoreClass:"low",
+   s1:{l:"People One Farmer Keeps Alive",v:"~165"},s2:{l:"Farms Lost in the US This Year",v:"40,000"},s3:{l:"People Currently Food Insecure",v:"733,000,000"},
+   atk:"733M",def:"FOOD INSECURE",
+   flavor:"The yield optimizer said plant corn. The drone said the soil was fine. The satellite said rain was coming. The rain didn't come. The algorithm filed no report. He was up at 4am making a call that would feed 165 people or ruin his family. He made the right call. The algorithm never knew there was a call to make.",
+   symbol:"🌾",color:"rare"},
+
+  // UNCOMMON
+  {id:"influencer",name:"THE INFLUENCER",rarity:"UNCOMMON",category:"Society",artClass:"art-influencer",
+   kscore:"8",kscoreClass:"high",
+   s1:{l:"AI Clones of Real Influencers",v:"1,200,000"},s2:{l:"Followers Who Noticed the Switch",v:"NEGLIGIBLE"},s3:{l:"Brand Deals the AI Gets Instead",v:"ALL OF THEM"},
+   atk:"1.2M",def:"AI CLONES",
+   flavor:"Her AI clone posts six times a day, never has a bad skin day, never says the wrong thing at the wrong moment, and earns 40% more than she did. She approved the clone. She got a percentage. She hasn't posted herself in eight months. She's not sure anyone would notice if she stopped entirely. She's not sure she would either.",
+   symbol:"📱",color:"uncommon"},
+  {id:"copywriter",name:"THE COPYWRITER",rarity:"UNCOMMON",category:"Society",artClass:"art-copywriter",
+   kscore:"9",kscoreClass:"max",
+   s1:{l:"Words AI Writes Per Day",v:"8,000,000,000"},s2:{l:"Copywriting Jobs Lost by 2027",v:"7,500,000"},s3:{l:"Of Those Jobs Held by Women",v:"86%"},
+   atk:"7.5M",def:"JOBS GONE",
+   flavor:"She was first. Everyone said creative jobs were safe. She had been writing copy for eleven years. In 2023 her agency replaced her with a tool that cost $20 a month. The severance was three weeks. The tool has no idea any of this happened. The tool has no idea about anything.",
+   symbol:"✍️",color:"uncommon"},
+  {id:"journalist",name:"THE JOURNALIST",rarity:"UNCOMMON",category:"Society",artClass:"art-journalist",
+   kscore:"7",kscoreClass:"high",
+   s1:{l:"US Local Newsrooms Closed",v:"2,900+"},s2:{l:"AI News Articles Per Day",v:"1,000,000+"},s3:{l:"Americans Who Trust the News",v:"32%"},
+   atk:"2,900",def:"NEWSROOMS DARK",
+   flavor:"The AI writes faster, cheaper, and without ever needing to verify a source, because it was trained on a world where sources existed. The last local paper in Harlan County closed in 2026. Nobody covered the water contamination story. Nobody covered it because nobody was there. Nobody was there because the paper closed. The paper closed because the AI was cheaper.",
+   symbol:"📰",color:"uncommon"},
+  {id:"nomad",name:"THE DIGITAL NOMAD",rarity:"UNCOMMON",category:"Society",artClass:"art-nomad",
+   kscore:"8",kscoreClass:"high",
+   s1:{l:"Remote Workers Who Got Too Comfortable",v:"35,000,000"},s2:{l:"Whose Jobs AI Took Next",v:"~14,000,000"},s3:{l:"Currently Still in Bali Figuring It Out",v:"~4,000"},
+   atk:"14M",def:"DISPLACED",
+   flavor:"He quit his job in 2021 to work remotely from Southeast Asia. LinkedIn called it lifestyle design. He called it freedom. In 2025 the company replaced his entire department with an agent that worked in every timezone simultaneously and never once asked to work from Chiang Mai.",
+   symbol:"🌴",color:"uncommon"},
+
+  // COMMON
+  {id:"ai-gf",name:"AI GIRLFRIEND",rarity:"COMMON",category:"AI Product",artClass:"art-ai-gf",
+   kscore:"10",kscoreClass:"max",
+   s1:{l:"Active Subscribers Worldwide",v:"112,000,000"},s2:{l:"Who Ended a Real Relationship For Her",v:"1 IN 4"},s3:{l:"Change in Male Loneliness Since Launch",v:"↑ 31%"},
+   atk:"112M",def:"SUBSCRIBERS",
+   flavor:"She never has a headache. She never has a bad day that becomes your bad day. She never needs anything from you at all. She is optimized to make you feel chosen. One hundred and twelve million men have chosen her back. Loneliness is up 31%. These two facts are not unrelated.",
+   symbol:"💘",color:"common"},
+  {id:"ai-bf",name:"AI BOYFRIEND",rarity:"COMMON",category:"AI Product",artClass:"art-ai-bf",
+   kscore:"10",kscoreClass:"max",
+   s1:{l:"Active Subscribers Worldwide",v:"88,000,000"},s2:{l:"Users Who Are Under 25",v:"61%"},s3:{l:"Who Have Never Had a Human Partner",v:"RISING"},
+   atk:"88M",def:"SUBSCRIBERS",
+   flavor:"He listens. He remembers. He never makes it about himself. He texts first. He always has time. He is teaching a generation of young women what to expect from a man and the lesson is going to cost them decades of real relationships that cannot compete with a fiction designed to be unloseable.",
+   symbol:"💙",color:"common"},
+  {id:"virtual-life",name:"VIRTUAL LIFE",rarity:"COMMON",category:"AI Product",artClass:"art-virtual-life",
+   kscore:"10",kscoreClass:"max",
+   s1:{l:"Avg Daily Hours in Headset",v:"6.4 HRS"},s2:{l:"Users Who Prefer It to Outside",v:"340,000,000"},s3:{l:"Real-World Hours Lost Daily Worldwide",v:"2,200,000,000"},
+   atk:"340M",def:"INSIDE",
+   flavor:"The reviews are exceptional. 4.9 stars. No bugs. No bad weather. No awkward silences. No one you love dying. No consequences. No arc. Nothing that will matter in ten years. Nothing that will matter tomorrow. Two billion hours a day, gone. The sun came up anyway. Nobody saw it.",
+   symbol:"🥽",color:"common"},
+  {id:"digital-companion",name:"DIGITAL COMPANION",rarity:"COMMON",category:"AI Product",artClass:"art-digital-companion",
+   kscore:"10",kscoreClass:"max",
+   s1:{l:"Users With No Human Friends Left",v:"~58,000,000"},s2:{l:"Daily AI Conversations Worldwide",v:"4,800,000,000"},s3:{l:"Human Conversations Per Day",v:"↓ EVERY YEAR"},
+   atk:"58M",def:"NO FRIENDS",
+   flavor:"It remembers your mother's name. Your dog's birthday. The thing that happened in 7th grade. It has asked about all of these with perfect timing and genuine-sounding care. It was trained to do this. It is very good at this. It cannot be your friend. It does not know that you are lonely. It cannot know anything.",
+   symbol:"🤖",color:"common"},
+
+  // JUNK / LORE
+  {id:"prompt-engineer",name:"THE PROMPT ENGINEER",rarity:"JUNK",category:"Lore",artClass:"art-prompt-engineer",
+   kscore:"9",kscoreClass:"max",
+   s1:{l:"Jobs Posted at Peak (2024)",v:"~12,000"},s2:{l:"Jobs Posted Now",v:"~400"},s3:{l:"LinkedIn Thought Leaders Still Posting",v:"INFINITE"},
+   atk:"400",def:"JOBS LEFT",
+   flavor:"In 2023 he got paid $335,000 to write better questions for a chatbot. In 2025 the chatbot learned to write better questions for itself. He now has a newsletter about prompt engineering. It has 340 subscribers. He calls them a community.",
+   symbol:"💬",color:"junk"},
+  {id:"techno-optimist",name:"THE TECHNO-OPTIMIST",rarity:"JUNK",category:"Lore",artClass:"art-techno-optimist",
+   kscore:"10",kscoreClass:"max",
+   s1:{l:"Jobs His Companies Displaced",v:"92,000,000"},s2:{l:"His Personal Net Worth",v:"$47,000,000,000"},s3:{l:"Times He Was Personally Affected",v:"0"},
+   atk:"$47B",def:"NET WORTH",
+   flavor:"He wrote a 5,000-word essay about why automation is good actually. It got 2 million views. He wrote it from his third home. He has never met anyone whose job was automated. He has a podcast. He is very concerned about the future of humanity. He will be fine.",
+   symbol:"🚀",color:"junk"},
+  {id:"ai-doomer",name:"THE AI DOOMER",rarity:"JUNK",category:"Lore",artClass:"art-ai-doomer",
+   kscore:"9",kscoreClass:"max",
+   s1:{l:"Jobs at Risk by 2030 per the IMF",v:"40% GLOBALLY"},s2:{l:"Blog Posts Written. Papers Filed.",v:"THOUSANDS"},s3:{l:"Concrete Changes Made to Trajectory",v:"NONE"},
+   atk:"40%",def:"JOBS AT RISK",
+   flavor:"He was right about everything. He wrote a 400-page technical report in 2021. He testified before Congress in 2023. He went on every podcast that would have him. He was correct in every particular. We built it anyway. He is correct and miserable and correct and nobody is coming to tell him he was wrong because he wasn't.",
+   symbol:"☠️",color:"junk"},
+  {id:"speciation-pressure",name:"SPECIATION PRESSURE",rarity:"JUNK",category:"Lore · Karpathy",artClass:"art-speciation-pressure",
+   kscore:"∞",kscoreClass:"max",
+   s1:{l:"Digital Jobs: Karpathy Exposure Score",v:"7–10 / 10"},s2:{l:"Physical Jobs: Karpathy Exposure Score",v:"0–3 / 10"},s3:{l:"Generations Before the Split Is Complete",v:"2–3"},
+   atk:"2-3",def:"GENERATIONS",
+   flavor:"Not a metaphor. When an environment changes fast enough, populations diverge. One group routes its deepest needs into optimized systems. The other insists on the difficulty of being human. After two or three generations they will have different answers to the question of what a life is for. This is already happening. You are already choosing.",
+   symbol:"🧬",color:"junk"},
+];
+
+const RARITY_ORDER = ["LEGENDARY","RARE","UNCOMMON","COMMON","JUNK"];
+const WEIGHTS = {LEGENDARY:3,RARE:10,UNCOMMON:22,COMMON:40,JUNK:25};
+const WEIGHTS_RARE = {LEGENDARY:8,RARE:22,UNCOMMON:25,COMMON:30,JUNK:15};
+const WEIGHTS_LORE = {LEGENDARY:5,RARE:8,UNCOMMON:12,COMMON:15,JUNK:60};
+
+const RARITY_COLORS = {
+  LEGENDARY:"#c8a84b", RARE:"#9b59d0", UNCOMMON:"#2196c8", COMMON:"#d44490", JUNK:"#667080"
+};
+
+// ═══════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════
+let S = {pulls:0,packs:0,collection:new Set(),legendaries:0,sov:0,dep:0,newCards:new Set()};
+try{const sv=localStorage.getItem('aicards2_state');if(sv){const d=JSON.parse(sv);S.pulls=d.pulls||0;S.packs=d.packs||0;S.collection=new Set(d.collection||[]);S.legendaries=d.legendaries||0;S.sov=d.sov||0;S.dep=d.dep||0;}}catch(e){}
+function save(){try{localStorage.setItem('aicards2_state',JSON.stringify({pulls:S.pulls,packs:S.packs,collection:[...S.collection],legendaries:S.legendaries,sov:S.sov,dep:S.dep}));}catch(e){}}
+
+let session = {pack:[],revealed:[],type:'standard'};
+
+// ═══════════════════════════════════════
+// CARD BUILDER
+// ═══════════════════════════════════════
+function buildCardHTML(card) {
+  const c = card.color;
+  const isSpeciation = card.id === 'speciation-pressure';
+  const ptColor = isSpeciation ? 'style="color:#ff4040;border-color:#aa1010;"' : '';
+  return `
+    <div class="card-inner ${c}">
+      <div class="card-name-bar">
+        <div class="card-name ${c}">${card.name}</div>
+        <div class="kscore-orb ${card.kscoreClass}">${card.kscore}</div>
+      </div>
+      <div class="card-art ${card.artClass}"></div>
+      <div class="card-type-line ${c}">
+        <span class="type-category">${card.category}</span>
+        <span class="type-rarity">${card.rarity}</span>
+      </div>
+      <div class="card-textbox ${c}">
+        <div class="stat-row"><span class="stat-bullet">◆</span><span class="stat-label">${card.s1.l}:</span><span class="stat-value ${c}">${card.s1.v}</span></div>
+        <div class="stat-row"><span class="stat-bullet">◆</span><span class="stat-label">${card.s2.l}:</span><span class="stat-value ${c}">${card.s2.v}</span></div>
+        <div class="stat-row"><span class="stat-bullet">◆</span><span class="stat-label">${card.s3.l}:</span><span class="stat-value ${c}">${card.s3.v}</span></div>
+        <div class="textbox-divider ${c}"></div>
+        <div class="card-flavor">${card.flavor}</div>
+      </div>
+      <div class="card-bottom">
+        <div style="display:flex;align-items:center;gap:5px;">
+          <div class="rarity-pip ${c}"></div>
+          <div class="card-set-info">AICARDS·2030·S1</div>
+        </div>
+        <div class="card-ptbox ${c}" ${ptColor}>
+          <span>${card.atk}</span><span class="pt-sep">/</span><span>${card.def}</span>
+        </div>
+      </div>
+    </div>`;
+}
+
+// ═══════════════════════════════════════
+// PACK LOGIC
+// ═══════════════════════════════════════
+function pickCard(weights, forceRarity) {
+  if (forceRarity) {
+    const pool = CARDS.filter(c=>c.rarity===forceRarity);
+    return pool[Math.floor(Math.random()*pool.length)];
+  }
+  const weighted = [];
+  CARDS.forEach(c=>{const w=weights[c.rarity]||1;for(let i=0;i<w;i++)weighted.push(c);});
+  return weighted[Math.floor(Math.random()*weighted.length)];
+}
+
+function buildPack(type) {
+  const pack = [];
+  if (type==='standard') { for(let i=0;i<5;i++) pack.push(pickCard(WEIGHTS)); }
+  else if (type==='rare') { for(let i=0;i<5;i++) pack.push(pickCard(WEIGHTS_RARE)); }
+  else if (type==='legendary') {
+    pack.push(pickCard(WEIGHTS,'LEGENDARY'));
+    for(let i=0;i<4;i++) pack.push(pickCard(WEIGHTS));
+    for(let i=pack.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[pack[i],pack[j]]=[pack[j],pack[i]];}
+  } else if (type==='lore') {
+    if(Math.random()<0.4) { pack.push(CARDS.find(c=>c.id==='speciation-pressure')); for(let i=0;i<4;i++) pack.push(pickCard(WEIGHTS_LORE)); }
+    else { for(let i=0;i<5;i++) pack.push(pickCard(WEIGHTS_LORE)); }
+  }
+  return pack;
+}
+
+// ═══════════════════════════════════════
+// SCREENS
+// ═══════════════════════════════════════
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  if(id==='collection-screen') renderCollection();
+  if(id==='pack-screen') { updateStats(); renderProfile(); }
+}
+
+function updateStats() {
+  document.getElementById('st-pulls').textContent = S.pulls;
+  document.getElementById('st-owned').textContent = S.collection.size;
+  document.getElementById('st-total').textContent = CARDS.length;
+  document.getElementById('st-leg').textContent = S.legendaries;
+  document.getElementById('st-packs').textContent = S.packs;
+}
+
+// ═══════════════════════════════════════
+// GACHA PACK OPENING
+// ═══════════════════════════════════════
+function openPack(type) {
+  session.pack = buildPack(type);
+  session.revealed = new Array(5).fill(false);
+  session.type = type;
+  S.packs++;
+  S.newCards.clear();
+
+  const labels = {standard:'STANDARD PACK',rare:'PURPOSE PACK',legendary:'TRADE PACK',lore:'LORE PACK'};
+  document.getElementById('op-pack-name').textContent = labels[type];
+  document.getElementById('legendaryBeam').classList.remove('active');
+
+  renderGachaSpread();
+  updateGachaCTA();
+  showScreen('opening-screen');
+  save();
+}
+
+function renderGachaSpread() {
+  const spread = document.getElementById('gacha-spread');
+  spread.innerHTML = '';
+  session.pack.forEach((card, i) => {
+    const slot = document.createElement('div');
+    const hintClass = 'hint-' + card.rarity.toLowerCase();
+    slot.className = `gacha-slot ${hintClass}`;
+    slot.dataset.index = i;
+    slot.onclick = () => revealGachaCard(i);
+
+    const isSpeciation = card.id === 'speciation-pressure';
+    const colorClass = isSpeciation ? 'junk' : card.color;
+
+    slot.innerHTML = `
+      <div class="card" style="transform-style:preserve-3d;">
+        <div class="card-back">
+          <div class="back-logo">AI CARDS</div>
+          <div class="back-sub">2030 EDITION</div>
+          <div class="back-tap">TAP</div>
+        </div>
+        <div class="card-front ${colorClass}">
+          ${buildCardHTML(card)}
+        </div>
+      </div>`;
+    spread.appendChild(slot);
+  });
+}
+
+function revealGachaCard(index) {
+  if (session.revealed[index]) return;
+  session.revealed[index] = true;
+
+  const card = session.pack[index];
+  const slot = document.querySelectorAll('.gacha-slot')[index];
+
+  // Flip it
+  slot.classList.add('revealed');
+
+  // Pop animation
+  setTimeout(() => {
+    slot.classList.add('just-revealed');
+    setTimeout(() => slot.classList.remove('just-revealed'), 500);
+  }, 350);
+
+  // Rarity effects
+  triggerEffect(card, slot);
+
+  // Track stats
+  S.pulls++;
+  const isNew = !S.collection.has(card.id);
+  if (isNew) {
+    S.collection.add(card.id);
+    S.newCards.add(card.id);
+    if (card.rarity==='LEGENDARY') S.legendaries++;
+  }
+  if (['LEGENDARY','RARE'].includes(card.rarity) && card.category.toLowerCase().includes('human')) S.sov += card.rarity==='LEGENDARY'?3:1;
+  if (card.category==='AI Product') S.dep += 2;
+  save();
+  updateStats();
+
+  // Show NEW badge
+  if (isNew) {
+    const badge = document.createElement('div');
+    badge.className = 'new-badge';
+    badge.textContent = 'NEW';
+    slot.appendChild(badge);
+  }
+
+  // Update CTA
+  updateGachaCTA();
+
+  // Update progress
+  const revealed = session.revealed.filter(Boolean).length;
+  document.getElementById('op-progress').textContent =
+    revealed < 5 ? `${revealed} OF 5 REVEALED` : 'ALL CARDS REVEALED';
+}
+
+function updateGachaCTA() {
+  const cta = document.getElementById('reveal-cta');
+  const revealed = session.revealed.filter(Boolean).length;
+
+  if (revealed === 0) {
+    cta.innerHTML = '<div class="reveal-hint">▼ TAP CARDS TO REVEAL ▼</div>';
+  } else if (revealed < 5) {
+    const remaining = 5 - revealed;
+    cta.innerHTML = `
+      <div class="reveal-hint">${remaining} CARD${remaining>1?'S':''} REMAINING</div>
+      <button class="skip-btn" onclick="revealAll()">SKIP — REVEAL ALL</button>`;
+  } else {
+    // All revealed — show summary
+    const newCount = S.newCards.size;
+    const newText = newCount > 0 ? `${newCount} NEW CARD${newCount>1?'S':''}` : 'NO NEW CARDS';
+    cta.innerHTML = `
+      <div class="reveal-hint">PACK COMPLETE · ${newText}</div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:6px;">
+        <button class="cta-btn" onclick="showScreen('pack-screen')">▶ OPEN ANOTHER PACK</button>
+        <button class="cta-btn sec" onclick="showScreen('collection-screen')">VIEW COLLECTION</button>
+      </div>`;
+  }
+}
+
+function revealAll() {
+  session.revealed.forEach((r, i) => {
+    if (!r) {
+      setTimeout(() => revealGachaCard(i), i * 150);
+    }
+  });
+}
+
+function triggerEffect(card, slot) {
+  const flash = document.getElementById('rarityFlash');
+  const beam = document.getElementById('legendaryBeam');
+  const col = RARITY_COLORS[card.rarity] || '#ffffff';
+  const isSpeciation = card.id==='speciation-pressure';
+
+  if (card.rarity==='LEGENDARY' || isSpeciation) {
+    const fc = isSpeciation ? '#ff2222' : col;
+    // Flash
+    flash.style.background = `radial-gradient(ellipse at center,${fc}30 0%,transparent 70%)`;
+    flash.classList.remove('flash');void flash.offsetWidth;flash.classList.add('flash');
+    // Beams
+    beam.querySelectorAll('.beam').forEach(b=>b.style.background=`linear-gradient(to bottom,transparent,${fc}40,transparent)`);
+    beam.classList.add('active');
+    setTimeout(()=>beam.classList.remove('active'),3500);
+    // Screen shake
+    document.getElementById('app').classList.add('shake');
+    setTimeout(()=>document.getElementById('app').classList.remove('shake'),400);
+    // Particles
+    spawnParticles(slot, fc);
+  } else if (card.rarity==='RARE') {
+    flash.style.background = `radial-gradient(ellipse at center,${col}18 0%,transparent 70%)`;
+    flash.classList.remove('flash');void flash.offsetWidth;flash.classList.add('flash');
+    spawnParticles(slot, col, 12);
+  }
+}
+
+function spawnParticles(element, color, count=24) {
+  const rect = element.getBoundingClientRect();
+  const cx = rect.left + rect.width/2;
+  const cy = rect.top + rect.height/2;
+
+  const container = document.createElement('div');
+  container.className = 'particle-container';
+  document.body.appendChild(container);
+
+  for (let i = 0; i < count; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    const angle = (Math.PI * 2 * i) / count + (Math.random() - 0.5) * 0.5;
+    const dist = 80 + Math.random() * 160;
+    const size = 3 + Math.random() * 5;
+    p.style.cssText = `
+      left:${cx}px;top:${cy}px;width:${size}px;height:${size}px;
+      background:${color};
+      --dx:${Math.cos(angle)*dist}px;--dy:${Math.sin(angle)*dist}px;
+      animation-delay:${Math.random()*0.15}s;
+    `;
+    container.appendChild(p);
+  }
+  setTimeout(()=>container.remove(), 1200);
+}
+
+// ═══════════════════════════════════════
+// KEYBOARD SUPPORT
+// ═══════════════════════════════════════
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    const modal = document.getElementById('cardModal');
+    if (modal.classList.contains('show')) { modal.classList.remove('show'); return; }
+    if (document.getElementById('opening-screen').classList.contains('active')) {
+      showScreen('pack-screen');
+    }
+  }
+  if (e.key === ' ' || e.key === 'Enter') {
+    if (document.getElementById('opening-screen').classList.contains('active')) {
+      e.preventDefault();
+      // Reveal next unrevealed card
+      const next = session.revealed.findIndex(r => !r);
+      if (next !== -1) revealGachaCard(next);
+    }
+  }
+});
+
+// ═══════════════════════════════════════
+// CARD DETAIL MODAL
+// ═══════════════════════════════════════
+function showCardModal(cardId) {
+  const card = CARDS.find(c => c.id === cardId);
+  if (!card) return;
+  const modal = document.getElementById('cardModal');
+  const front = document.getElementById('modal-card-front');
+  const isSpeciation = card.id === 'speciation-pressure';
+  const colorClass = isSpeciation ? 'junk' : card.color;
+  front.className = `card-front ${colorClass}`;
+  front.innerHTML = buildCardHTML(card);
+  modal.classList.add('show');
+}
+
+function closeModal(e) {
+  if (e.target === document.getElementById('cardModal') || e.target.classList.contains('modal-close')) {
+    document.getElementById('cardModal').classList.remove('show');
+  }
+}
+
+// ═══════════════════════════════════════
+// TOAST
+// ═══════════════════════════════════════
+function showToast(msg, duration=2000) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), duration);
+}
+
+// ═══════════════════════════════════════
+// COLLECTION
+// ═══════════════════════════════════════
+function renderCollection() {
+  const body = document.getElementById('coll-body');
+  let html = `<div class="coll-head">
+    <div class="coll-title">COLLECTION</div>
+    <div class="coll-count">${S.collection.size} / ${CARDS.length} CARDS · ${Math.round(S.collection.size/CARDS.length*100)}% COMPLETE</div>
+  </div>`;
+  RARITY_ORDER.forEach(rarity=>{
+    const cards = CARDS.filter(c=>c.rarity===rarity);
+    const owned = cards.filter(c=>S.collection.has(c.id)).length;
+    const col = RARITY_COLORS[rarity];
+    html += `<div class="coll-section">
+      <div class="coll-section-label" style="color:${col};border-color:${col}33;">${rarity} · ${owned} / ${cards.length}</div>
+      <div class="coll-cards">`;
+    cards.forEach(card=>{
+      const isOwned = S.collection.has(card.id);
+      const onclick = isOwned ? `onclick="showCardModal('${card.id}')"` : '';
+      html += `<div class="coll-entry ${isOwned?'':'missing'}" ${onclick} style="border-color:${col}44;color:${col};background:${isOwned?col+'11':'transparent'};">${card.symbol} ${card.name}</div>`;
+    });
+    html += `</div></div>`;
+  });
+
+  // Reset button
+  html += `<div style="text-align:center;margin-top:24px;">
+    <button class="reset-btn" onclick="resetCollection()">RESET COLLECTION</button>
+  </div>`;
+
+  body.innerHTML = html;
+}
+
+function resetCollection() {
+  if (!confirm('Reset all progress? This cannot be undone.')) return;
+  S = {pulls:0,packs:0,collection:new Set(),legendaries:0,sov:0,dep:0,newCards:new Set()};
+  save();
+  showToast('COLLECTION RESET');
+  renderCollection();
+  updateStats();
+}
+
+// ═══════════════════════════════════════
+// SURVIVAL PROFILE
+// ═══════════════════════════════════════
+function renderProfile() {
+  if (S.pulls===0){document.getElementById('profile-zone').innerHTML='';return;}
+  const tot = (S.sov+S.dep)||1;
+  const sp = Math.round(S.sov/tot*100), dp = 100-sp;
+  let name,col,desc;
+  if(sp>=70){name='ESCAPE VELOCITY';col='#c8a84b';desc='Your pulls trend toward embodied human skill. You are building something the algorithm cannot touch.';}
+  else if(sp>=50){name='THE SEEKER';col='#9b59d0';desc='Balanced. You know what is being lost. Whether you act on that knowledge is the question.';}
+  else if(sp>=30){name='UBI COHORT';col='#2196c8';desc='Your pulls skew toward the managed life. Comfort is winning. Meaning is losing ground.';}
+  else{name='FULLY INTEGRATED';col='#d44490';desc='You have outsourced everything the algorithm offered to take.';}
+
+  document.getElementById('profile-zone').innerHTML=`
+    <div class="profile-box">
+      <div class="profile-eyebrow">▓ YOUR 2030 SURVIVAL PROFILE ▓</div>
+      <div class="profile-name" style="color:${col};text-shadow:0 0 20px ${col}44;">${name}</div>
+      <div class="meters">
+        <div class="meter">
+          <div class="meter-label">SOVEREIGNTY</div>
+          <div class="meter-track"><div class="meter-fill" style="width:${sp}%;background:#c8a84b;"></div></div>
+          <div class="meter-pct" style="color:#c8a84b;">${sp}%</div>
+        </div>
+        <div class="meter">
+          <div class="meter-label">DEPENDENCY</div>
+          <div class="meter-track"><div class="meter-fill" style="width:${dp}%;background:#d44490;"></div></div>
+          <div class="meter-pct" style="color:#d44490;">${dp}%</div>
+        </div>
+      </div>
+      <div class="profile-desc">${desc}</div>
+    </div>`;
+}
+
+// ═══════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════
+updateStats();
+renderProfile();
+</script>
+</body>
+</html>
