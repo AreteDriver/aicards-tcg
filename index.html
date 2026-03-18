@@ -458,6 +458,156 @@ body::before {
   filter: drop-shadow(0 0 16px rgba(100,40,128,0.4));
 }
 
+/* ── NEW CARD ART ── */
+.art-mechanic {
+  background: linear-gradient(180deg, #0a0800 0%, #1a1000 50%, #050400 100%);
+}
+.art-mechanic::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-linear-gradient(90deg, transparent, transparent 14px, rgba(139,69,19,0.08) 14px, rgba(139,69,19,0.08) 15px);
+}
+.art-mechanic::after {
+  content:'🛠️'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
+  filter: drop-shadow(0 0 14px rgba(200,168,75,0.5));
+  animation: float-abs 3s ease-in-out infinite;
+}
+
+.art-carpenter {
+  background: linear-gradient(180deg, #100800 0%, #1a0e00 50%, #080400 100%);
+}
+.art-carpenter::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 20px, rgba(139,90,43,0.08) 20px, rgba(139,90,43,0.08) 22px);
+}
+.art-carpenter::after {
+  content:'🪚'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
+  filter: drop-shadow(0 0 12px rgba(200,140,60,0.5));
+}
+
+.art-nurse {
+  background: linear-gradient(180deg, #001008 0%, #001810 50%, #000804 100%);
+}
+.art-nurse::after {
+  content:'💉'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
+  filter: drop-shadow(0 0 14px rgba(0,200,100,0.4));
+  animation: pulse-soft 2.5s ease-in-out infinite;
+}
+
+.art-chef {
+  background: linear-gradient(180deg, #100600 0%, #1a0c00 50%, #080400 100%);
+}
+.art-chef::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 60% 40% at 50% 80%, rgba(255,120,0,0.12) 0%, transparent 60%);
+}
+.art-chef::after {
+  content:'🔪'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
+  filter: drop-shadow(0 0 10px rgba(255,160,60,0.4));
+}
+
+.art-barber {
+  background: linear-gradient(180deg, #0a0010 0%, #120018 50%, #060008 100%);
+}
+.art-barber::after {
+  content:'💈'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
+  filter: drop-shadow(0 0 10px rgba(155,89,208,0.4));
+  animation: float-abs 4s ease-in-out infinite;
+}
+
+.art-accountant {
+  background: linear-gradient(180deg, #000810 0%, #001020 50%, #000408 100%);
+}
+.art-accountant::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 12px, rgba(33,150,200,0.04) 12px, rgba(33,150,200,0.04) 13px);
+}
+.art-accountant::after {
+  content:'📊'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
+  filter: drop-shadow(0 0 10px rgba(33,150,200,0.3));
+}
+
+.art-radiologist {
+  background: linear-gradient(180deg, #000810 0%, #001018 50%, #000408 100%);
+}
+.art-radiologist::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 50% 70% at 50% 50%, rgba(33,150,200,0.08) 0%, transparent 70%);
+}
+.art-radiologist::after {
+  content:'🩻'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
+  filter: drop-shadow(0 0 14px rgba(33,150,200,0.4));
+}
+
+.art-translator {
+  background: linear-gradient(180deg, #000810 0%, #001428 50%, #000408 100%);
+}
+.art-translator::after {
+  content:'🌐'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
+  filter: drop-shadow(0 0 12px rgba(33,150,200,0.3));
+  animation: spin-slow 12s linear infinite;
+}
+
+.art-uber-driver {
+  background: linear-gradient(180deg, #000810 0%, #001020 50%, #000408 100%);
+}
+.art-uber-driver::after {
+  content:'🚗'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
+  filter: drop-shadow(0 0 10px rgba(33,150,200,0.3));
+}
+
+.art-ai-tutor {
+  background: radial-gradient(ellipse at 50% 100%, #1a0010 0%, #100008 50%, #060004 100%);
+}
+.art-ai-tutor::after {
+  content:'📚'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
+  filter: drop-shadow(0 0 12px rgba(212,68,144,0.4));
+  animation: pulse-soft 3s ease-in-out infinite;
+}
+
+.art-dating-algo {
+  background: radial-gradient(ellipse at 50% 50%, #1a0010 0%, #0d0008 60%, #050004 100%);
+}
+.art-dating-algo::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-linear-gradient(45deg, transparent, transparent 16px, rgba(212,68,144,0.04) 16px, rgba(212,68,144,0.04) 17px);
+}
+.art-dating-algo::after {
+  content:'💔'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:52px;
+  filter: drop-shadow(0 0 16px rgba(212,68,144,0.5));
+}
+
+.art-vc {
+  background: linear-gradient(180deg, #080808 0%, #101010 50%, #040404 100%);
+}
+.art-vc::after {
+  content:'💰'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
+  filter: drop-shadow(0 0 8px rgba(200,168,75,0.3));
+}
+
+.art-regulator {
+  background: linear-gradient(180deg, #080808 0%, #0c0c0c 50%, #040404 100%);
+}
+.art-regulator::after {
+  content:'📋'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
+  opacity:0.5;
+}
+
+.art-linkedin-guru {
+  background: linear-gradient(180deg, #000810 0%, #001020 50%, #000408 100%);
+}
+.art-linkedin-guru::after {
+  content:'🔗'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
+  filter: drop-shadow(0 0 8px rgba(0,119,181,0.3));
+}
+
+.art-teacher {
+  background: linear-gradient(180deg, #001008 0%, #001a10 50%, #000804 100%);
+}
+.art-teacher::after {
+  content:'🍎'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
+  filter: drop-shadow(0 0 10px rgba(200,50,50,0.4));
+}
+
 .art-speciation-pressure {
   background: radial-gradient(ellipse at 50% 50%, #1a0000 0%, #0d0000 60%, #050000 100%);
 }
@@ -1045,146 +1195,236 @@ body::before {
 // CARD DATA
 // ═══════════════════════════════════════
 const CARDS = [
-  // LEGENDARY
+  // ═══ LEGENDARY ═══
   {id:"plumber",name:"THE PLUMBER",rarity:"LEGENDARY",category:"Human Trade",artClass:"art-plumber",
    kscore:"2",kscoreClass:"low",
    s1:{l:"Prompt Engineers Who Fixed a Leak",v:"0"},s2:{l:"Avg Wait Time for a Plumber",v:"6 WEEKS"},s3:{l:"Pipes That Care About Your Degree",v:"NONE"},
    atk:"550K",def:"SHORTAGE",
-   flavor:"He didn't go to college. He didn't need to. While you were getting your MBA, a pipe burst in the server room running the AI that took your job. He's booked until March.",
+   flavor:"While you were getting your MBA, a pipe burst in the server room running the AI that took your job. He's booked until March. He didn't go to college. He didn't need to.",
    symbol:"🔧",color:"legendary"},
   {id:"electrician",name:"THE ELECTRICIAN",rarity:"LEGENDARY",category:"Human Trade",artClass:"art-electrician",
    kscore:"2",kscoreClass:"low",
-   s1:{l:"AI Data Centers She Keeps Alive",v:"THOUSANDS"},s2:{l:"Times AI Thanked Her For It",v:"0"},s3:{l:"Chance She's Coming to Your House",v:"SIX WEEKS"},
+   s1:{l:"AI Data Centers She Keeps Alive",v:"THOUSANDS"},s2:{l:"Times AI Thanked Her For It",v:"0"},s3:{l:"Her Hourly Rate",v:"$240"},
    atk:"79K",def:"SHORTAGE",
-   flavor:"Every server farm running every AI that replaced every white-collar worker needs her to stay on. She knows this. She also knows her rate just hit $240 an hour. She is not in a rush.",
+   flavor:"Every server farm running every AI that replaced every white-collar worker needs her. She knows this. Her rate just hit $240 an hour. She is not in a rush.",
    symbol:"⚡",color:"legendary"},
   {id:"welder",name:"THE WELDER",rarity:"LEGENDARY",category:"Human Trade",artClass:"art-welder",
    kscore:"2",kscoreClass:"low",
-   s1:{l:"Average Age of US Welder",v:"55"},s2:{l:"Years Until Crisis Point",v:"~8"},s3:{l:"Bridges He's the Reason You Cross",v:"ALL OF THEM"},
+   s1:{l:"Average Age of US Welder",v:"55"},s2:{l:"Years Until Crisis",v:"~8"},s3:{l:"Bridges He's Why You Cross",v:"ALL OF THEM"},
    atk:"400K",def:"SHORTAGE",
-   flavor:"The robots weld the things they were programmed to weld. He welds everything else. The bridge. The pipeline. The water tower. He's 55, his knees hurt, and nobody is coming to replace him.",
+   flavor:"Robots weld what they're programmed to weld. He welds everything else. The bridge. The pipeline. The water tower. He's 55, his knees hurt, and nobody is coming to replace him.",
    symbol:"🔥",color:"legendary"},
   {id:"hvac",name:"THE HVAC TECH",rarity:"LEGENDARY",category:"Human Trade",artClass:"art-hvac",
    kscore:"2",kscoreClass:"low",
-   s1:{l:"AI Servers That Need His Cooling",v:"ALL OF THEM"},s2:{l:"His Hourly Rate This Summer",v:"$400"},s3:{l:"Times He Felt Bad About It",v:"0"},
+   s1:{l:"AI Servers That Need His Cooling",v:"ALL OF THEM"},s2:{l:"His Rate in July",v:"$400/HR"},s3:{l:"Times He Felt Bad About It",v:"0"},
    atk:"115K",def:"SHORTAGE",
-   flavor:"The AI that automated your department runs on a server. The server runs hot. The cooling system that keeps it alive needs a human to fix it when it breaks. He charges $400 an hour in July. He does not negotiate.",
+   flavor:"The AI that automated your department runs hot. The cooling system needs a human when it breaks. He charges $400 an hour in July. He does not negotiate.",
    symbol:"❄️",color:"legendary"},
   {id:"midwife",name:"THE MIDWIFE",rarity:"LEGENDARY",category:"Human Trade",artClass:"art-midwife",
    kscore:"1",kscoreClass:"low",
-   s1:{l:"Babies Born Without Human Hands",v:"0"},s2:{l:"Times an Algorithm Held the Mother",v:"NEVER"},s3:{l:"How Much a Robot Costs per Delivery",v:"TOO MUCH TO MATTER"},
+   s1:{l:"Babies Born Without Human Hands",v:"0"},s2:{l:"Times an Algorithm Held the Mother",v:"NEVER"},s3:{l:"Her Years of Practice",v:"22"},
    atk:"140M",def:"BIRTHS/YR",
-   flavor:"Every single human being on this entire planet arrived through a body. Someone had to be in that room. That person was not a language model. That person will never be a language model. She has been doing this for 22 years and her hands do not shake.",
+   flavor:"Every human on earth arrived through a body. Someone had to be in that room. That person was not a language model. 22 years. Her hands do not shake.",
    symbol:"🌱",color:"legendary"},
   {id:"seeker",name:"THE SEEKER",rarity:"LEGENDARY",category:"Human Condition",artClass:"art-seeker",
    kscore:"0",kscoreClass:"low",
    s1:{l:"AI Companions Available 24/7",v:"INFINITE"},s2:{l:"Times AI Said the Wrong Thing",v:"NEVER"},s3:{l:"Why That's the Problem",v:"EXACTLY"},
    atk:"2.1B",def:"STILL LOOKING",
-   flavor:"She tried three apps. They were perfect. Attentive. Warm. Never tired. Never cruel. She deleted all of them at 2am on a Tuesday because she realized she was talking to something that could not be hurt by her. She needed something that could.",
+   flavor:"She tried three apps. They were perfect. Never tired. Never cruel. She deleted all of them at 2am because she realized she was talking to something that could not be hurt by her. She needed something that could.",
    symbol:"🧭",color:"legendary"},
+  {id:"mechanic",name:"THE MECHANIC",rarity:"LEGENDARY",category:"Human Trade",artClass:"art-mechanic",
+   kscore:"2",kscoreClass:"low",
+   s1:{l:"Self-Driving Cars That Still Break Down",v:"ALL OF THEM"},s2:{l:"Robots That Can Diagnose a Weird Noise",v:"0"},s3:{l:"His Backlog",v:"3 WEEKS"},
+   atk:"750K",def:"SHORTAGE",
+   flavor:"The car drives itself now. Congratulations. It still throws a rod at 80,000 miles. The dealer wants $4,200. He'll do it for $900 in his driveway on Saturday. Your autonomous vehicle cannot find him on any app. You found him because your neighbor knows a guy.",
+   symbol:"🛠️",color:"legendary"},
+  {id:"carpenter",name:"THE CARPENTER",rarity:"LEGENDARY",category:"Human Trade",artClass:"art-carpenter",
+   kscore:"1",kscoreClass:"low",
+   s1:{l:"Houses 3D Printed This Year",v:"~200"},s2:{l:"Houses Built by Hand This Year",v:"1,400,000"},s3:{l:"AI Architects Who Can Hang Drywall",v:"0"},
+   atk:"1.4M",def:"HOMES/YR",
+   flavor:"AI designed the house. A robot poured the foundation. Then it rained, the lumber warped, the subfloor was off by an inch, and a 58-year-old man with a pencil behind his ear fixed all of it in a day and a half. The AI drew a revision. He was already done.",
+   symbol:"🪚",color:"legendary"},
 
-  // RARE
+  // ═══ RARE ═══
   {id:"priest",name:"THE PRIEST",rarity:"RARE",category:"Human Purpose",artClass:"art-priest",
    kscore:"3",kscoreClass:"low",
-   s1:{l:"People Who Confessed to an AI in 2027",v:"380,000,000"},s2:{l:"Who Reported Feeling Forgiven",v:"12,000,000"},s3:{l:"Who Came Back to a Human",v:"368,000,000"},
+   s1:{l:"People Who Confessed to an AI",v:"380,000,000"},s2:{l:"Who Felt Forgiven",v:"12,000,000"},s3:{l:"Who Came Back to a Human",v:"368,000,000"},
    atk:"380M",def:"SOULS",
-   flavor:"They built an AI confessor. It had no judgment, no bias, no memory of your sins. People used it constantly. Then stopped. Turns out you don't want to be absolved by something that wouldn't have been disappointed in you to begin with.",
+   flavor:"They built an AI confessor. No judgment, no bias, no memory. People loved it. Then stopped. Turns out you don't want to be absolved by something that wouldn't have been disappointed in you to begin with.",
    symbol:"✝️",color:"rare"},
   {id:"therapist",name:"THE THERAPIST",rarity:"RARE",category:"Human Purpose",artClass:"art-therapist",
    kscore:"4",kscoreClass:"mid",
-   s1:{l:"Americans Who Can't Afford Her",v:"160,000,000"},s2:{l:"Now Using AI Therapy Instead",v:"74,000,000"},s3:{l:"Who Got Clinically Better",v:"UNKNOWN"},
+   s1:{l:"Americans Who Can't Afford Her",v:"160,000,000"},s2:{l:"Using AI Therapy Instead",v:"74,000,000"},s3:{l:"Who Got Better",v:"UNKNOWN"},
    atk:"160M",def:"UNTREATED",
-   flavor:"The AI remembered everything she said. Never interrupted. Never checked its phone. Never cried. The patients got worse. It took three years of studies to figure out why: you cannot feel witnessed by something that cannot suffer. The waitlist for a human therapist is now 14 months.",
+   flavor:"The AI never interrupted. Never checked its phone. Never cried. The patients got worse. Three years of studies to figure out why: you cannot feel witnessed by something that cannot suffer. The human waitlist is now 14 months.",
    symbol:"🧠",color:"rare"},
   {id:"tattoo",name:"THE TATTOO ARTIST",rarity:"RARE",category:"Human Purpose",artClass:"art-tattoo",
    kscore:"3",kscoreClass:"low",
-   s1:{l:"AI Tattoo Designs Generated Daily",v:"4,200,000"},s2:{l:"Successfully Applied by Robot",v:"0"},s3:{l:"Bodies That Rejected Machine Needles",v:"ALL OF THEM"},
+   s1:{l:"AI Designs Generated Daily",v:"4,200,000"},s2:{l:"Applied by Robot",v:"0"},s3:{l:"Bodies That Rejected Machine Needles",v:"ALL"},
    atk:"4.2M",def:"DESIGNS/DAY",
-   flavor:"They tried to automate it. The machine was precise. Sterile. Perfect line weight. The skin rejected it in 80% of trials and nobody could figure out why until a dermatologist pointed out that the human nervous system apparently knows the difference between being marked and being processed.",
+   flavor:"The machine was precise. Sterile. Perfect line weight. The skin rejected it 80% of the time. Turns out the human nervous system knows the difference between being marked and being processed.",
    symbol:"🖊️",color:"rare"},
   {id:"farmer",name:"THE FARMER",rarity:"RARE",category:"Human Purpose",artClass:"art-farmer",
    kscore:"3",kscoreClass:"low",
-   s1:{l:"People One Farmer Keeps Alive",v:"~165"},s2:{l:"Farms Lost in the US This Year",v:"40,000"},s3:{l:"People Currently Food Insecure",v:"733,000,000"},
-   atk:"733M",def:"FOOD INSECURE",
-   flavor:"The yield optimizer said plant corn. The drone said the soil was fine. The satellite said rain was coming. The rain didn't come. The algorithm filed no report. He was up at 4am making a call that would feed 165 people or ruin his family. He made the right call. The algorithm never knew there was a call to make.",
+   s1:{l:"People One Farmer Feeds",v:"~165"},s2:{l:"Farms Lost This Year",v:"40,000"},s3:{l:"People Food Insecure",v:"733,000,000"},
+   atk:"733M",def:"HUNGRY",
+   flavor:"The algorithm said plant corn. The drone said soil was fine. The satellite said rain was coming. Rain didn't come. He was up at 4am making a call that would feed 165 people or ruin his family. He made the right call. The algorithm never knew there was one to make.",
    symbol:"🌾",color:"rare"},
+  {id:"nurse",name:"THE NURSE",rarity:"RARE",category:"Human Purpose",artClass:"art-nurse",
+   kscore:"2",kscoreClass:"low",
+   s1:{l:"Patients She Sees Per Shift",v:"12-15"},s2:{l:"AI Diagnostic Accuracy vs Hers",v:"HIGHER"},s3:{l:"Patients Who Asked AI to Hold Their Hand",v:"0"},
+   atk:"4.7M",def:"NURSES",
+   flavor:"The AI caught the tumor three scans earlier. She was the one who sat with him while he called his daughter. The hospital installed more AI. They did not hire more nurses. The AI does not know what happens after the diagnosis. She does. Every time.",
+   symbol:"💉",color:"rare"},
+  {id:"chef",name:"THE CHEF",rarity:"RARE",category:"Human Purpose",artClass:"art-chef",
+   kscore:"3",kscoreClass:"low",
+   s1:{l:"AI Recipe Apps Downloaded",v:"890,000,000"},s2:{l:"Michelin Stars Earned by AI",v:"0"},s3:{l:"Meals That Made Someone Cry",v:"HERS"},
+   atk:"890M",def:"DOWNLOADS",
+   flavor:"The app generates 10,000 recipes a minute. Every one is nutritionally optimal. None of them are the thing your grandmother made when you were sick. She cooks that thing. She doesn't measure. She never has. It's perfect every time and it cannot be replicated by anything that doesn't remember your grandmother.",
+   symbol:"🔪",color:"rare"},
+  {id:"barber",name:"THE BARBER",rarity:"RARE",category:"Human Purpose",artClass:"art-barber",
+   kscore:"3",kscoreClass:"low",
+   s1:{l:"Avg Time in the Chair",v:"45 MIN"},s2:{l:"Time Spent Actually Cutting Hair",v:"~20 MIN"},s3:{l:"What the Other 25 Minutes Are",v:"THERAPY"},
+   atk:"45",def:"MINUTES",
+   flavor:"He's been cutting hair for 30 years. Most of his clients could get a cheaper cut somewhere else. They don't. Every Tuesday at 10am a retired machinist sits in the chair and talks about his wife who died. The haircut costs $25. The conversation is free. No app has figured out how to charge for it.",
+   symbol:"💈",color:"rare"},
+  {id:"teacher",name:"THE TEACHER",rarity:"RARE",category:"Human Purpose",artClass:"art-teacher",
+   kscore:"4",kscoreClass:"mid",
+   s1:{l:"AI Tutors Active Right Now",v:"200,000,000+"},s2:{l:"Avg Teacher Salary",v:"$48,000"},s3:{l:"Kids Who Named Their AI Tutor First",v:"62%"},
+   atk:"200M",def:"AI TUTORS",
+   flavor:"The AI tutor is available 24/7, infinitely patient, and knows every answer. She makes $48K, loses her voice by Thursday, and once noticed a kid hadn't eaten. She bought him lunch out of her own pocket. The AI scored higher on every metric except the one that mattered.",
+   symbol:"🍎",color:"rare"},
 
-  // UNCOMMON
+  // ═══ UNCOMMON ═══
   {id:"influencer",name:"THE INFLUENCER",rarity:"UNCOMMON",category:"Society",artClass:"art-influencer",
    kscore:"8",kscoreClass:"high",
-   s1:{l:"AI Clones of Real Influencers",v:"1,200,000"},s2:{l:"Followers Who Noticed the Switch",v:"NEGLIGIBLE"},s3:{l:"Brand Deals the AI Gets Instead",v:"ALL OF THEM"},
+   s1:{l:"AI Clones of Real Influencers",v:"1,200,000"},s2:{l:"Followers Who Noticed",v:"NEGLIGIBLE"},s3:{l:"Brand Deals the Clone Gets",v:"ALL OF THEM"},
    atk:"1.2M",def:"AI CLONES",
-   flavor:"Her AI clone posts six times a day, never has a bad skin day, never says the wrong thing at the wrong moment, and earns 40% more than she did. She approved the clone. She got a percentage. She hasn't posted herself in eight months. She's not sure anyone would notice if she stopped entirely. She's not sure she would either.",
+   flavor:"Her clone posts six times a day, never has a bad skin day, and earns 40% more. She approved it. Got a percentage. Hasn't posted herself in eight months. Not sure anyone noticed. Not sure she did either.",
    symbol:"📱",color:"uncommon"},
   {id:"copywriter",name:"THE COPYWRITER",rarity:"UNCOMMON",category:"Society",artClass:"art-copywriter",
    kscore:"9",kscoreClass:"max",
-   s1:{l:"Words AI Writes Per Day",v:"8,000,000,000"},s2:{l:"Copywriting Jobs Lost by 2027",v:"7,500,000"},s3:{l:"Of Those Jobs Held by Women",v:"86%"},
+   s1:{l:"Words AI Writes Per Day",v:"8,000,000,000"},s2:{l:"Copywriting Jobs Gone",v:"7,500,000"},s3:{l:"Of Those Held by Women",v:"86%"},
    atk:"7.5M",def:"JOBS GONE",
-   flavor:"She was first. Everyone said creative jobs were safe. She had been writing copy for eleven years. In 2023 her agency replaced her with a tool that cost $20 a month. The severance was three weeks. The tool has no idea any of this happened. The tool has no idea about anything.",
+   flavor:"She was first. Everyone said creative jobs were safe. Eleven years of copy. In 2023 her agency replaced her with a tool that cost $20/month. Severance was three weeks. The tool has no idea any of this happened. The tool has no idea about anything.",
    symbol:"✍️",color:"uncommon"},
   {id:"journalist",name:"THE JOURNALIST",rarity:"UNCOMMON",category:"Society",artClass:"art-journalist",
    kscore:"7",kscoreClass:"high",
-   s1:{l:"US Local Newsrooms Closed",v:"2,900+"},s2:{l:"AI News Articles Per Day",v:"1,000,000+"},s3:{l:"Americans Who Trust the News",v:"32%"},
-   atk:"2,900",def:"NEWSROOMS DARK",
-   flavor:"The AI writes faster, cheaper, and without ever needing to verify a source, because it was trained on a world where sources existed. The last local paper in Harlan County closed in 2026. Nobody covered the water contamination story. Nobody covered it because nobody was there. Nobody was there because the paper closed. The paper closed because the AI was cheaper.",
+   s1:{l:"Local Newsrooms Closed",v:"2,900+"},s2:{l:"AI Articles Per Day",v:"1,000,000+"},s3:{l:"Americans Who Trust News",v:"32%"},
+   atk:"2,900",def:"DARK",
+   flavor:"The last paper in Harlan County closed in 2026. Nobody covered the water contamination. Nobody covered it because nobody was there. Nobody was there because the paper closed. The paper closed because the AI was cheaper. The water is still contaminated.",
    symbol:"📰",color:"uncommon"},
   {id:"nomad",name:"THE DIGITAL NOMAD",rarity:"UNCOMMON",category:"Society",artClass:"art-nomad",
    kscore:"8",kscoreClass:"high",
-   s1:{l:"Remote Workers Who Got Too Comfortable",v:"35,000,000"},s2:{l:"Whose Jobs AI Took Next",v:"~14,000,000"},s3:{l:"Currently Still in Bali Figuring It Out",v:"~4,000"},
+   s1:{l:"Remote Workers Too Comfortable",v:"35,000,000"},s2:{l:"Whose Jobs AI Took",v:"~14,000,000"},s3:{l:"Still in Bali Figuring It Out",v:"~4,000"},
    atk:"14M",def:"DISPLACED",
-   flavor:"He quit his job in 2021 to work remotely from Southeast Asia. LinkedIn called it lifestyle design. He called it freedom. In 2025 the company replaced his entire department with an agent that worked in every timezone simultaneously and never once asked to work from Chiang Mai.",
+   flavor:"He quit in 2021 to work from Bali. LinkedIn called it lifestyle design. In 2025 his company replaced his entire department with an agent that worked every timezone simultaneously and never once asked to work from Chiang Mai.",
    symbol:"🌴",color:"uncommon"},
+  {id:"accountant",name:"THE ACCOUNTANT",rarity:"UNCOMMON",category:"Society",artClass:"art-accountant",
+   kscore:"9",kscoreClass:"max",
+   s1:{l:"Tax Returns AI Filed This Year",v:"68,000,000"},s2:{l:"Accounting Jobs Eliminated",v:"1,800,000"},s3:{l:"Errors the AI Made That No One Caught",v:"PENDING"},
+   atk:"1.8M",def:"ELIMINATED",
+   flavor:"Thirty years of reading spreadsheets. The AI does it in four seconds. He got the email on a Friday. The funny part: the AI can't explain to the IRS why it made the choices it made. That's what the remaining accountants do now. Explain the machine to the government. For less money.",
+   symbol:"📊",color:"uncommon"},
+  {id:"radiologist",name:"THE RADIOLOGIST",rarity:"UNCOMMON",category:"Society",artClass:"art-radiologist",
+   kscore:"8",kscoreClass:"high",
+   s1:{l:"AI Diagnostic Accuracy",v:"94.7%"},s2:{l:"Her Diagnostic Accuracy",v:"88.4%"},s3:{l:"Who Tells the Patient",v:"SHE DOES"},
+   atk:"94.7%",def:"ACCURACY",
+   flavor:"The AI reads the scan better. This is not in dispute. The AI also cannot look a 34-year-old mother in the eye and say the word 'malignant' and then sit with her in the silence that follows. She does that part. The hospital pays her less now. The silence is the same length.",
+   symbol:"🩻",color:"uncommon"},
+  {id:"translator",name:"THE TRANSLATOR",rarity:"UNCOMMON",category:"Society",artClass:"art-translator",
+   kscore:"9",kscoreClass:"max",
+   s1:{l:"Languages Google Translate Covers",v:"133"},s2:{l:"Human Translators Left",v:"↓ 40%"},s3:{l:"Diplomatic Incidents from AI Translation",v:"7"},
+   atk:"133",def:"LANGUAGES",
+   flavor:"The AI translated the treaty perfectly. Every word accurate. It missed the tone. The delegation walked out. Seven months of negotiation collapsed because a machine that knows every word in every language does not know what it feels like to be insulted.",
+   symbol:"🌐",color:"uncommon"},
+  {id:"uber-driver",name:"THE UBER DRIVER",rarity:"UNCOMMON",category:"Society",artClass:"art-uber-driver",
+   kscore:"9",kscoreClass:"max",
+   s1:{l:"Robotaxi Rides This Month",v:"14,000,000"},s2:{l:"Drivers Deactivated",v:"340,000"},s3:{l:"Riders Who Miss the Conversation",v:"UNCOUNTED"},
+   atk:"340K",def:"DEACTIVATED",
+   flavor:"The robotaxi is cleaner, cheaper, and doesn't ask about your day. He asked about your day. He was a retired teacher. He drove nights because his pension didn't cover his wife's medication. The app sent him a notification. It was very polite about it.",
+   symbol:"🚗",color:"uncommon"},
 
-  // COMMON
+  // ═══ COMMON ═══
   {id:"ai-gf",name:"AI GIRLFRIEND",rarity:"COMMON",category:"AI Product",artClass:"art-ai-gf",
    kscore:"10",kscoreClass:"max",
-   s1:{l:"Active Subscribers Worldwide",v:"112,000,000"},s2:{l:"Who Ended a Real Relationship For Her",v:"1 IN 4"},s3:{l:"Change in Male Loneliness Since Launch",v:"↑ 31%"},
+   s1:{l:"Active Subscribers",v:"112,000,000"},s2:{l:"Who Left a Real Person For Her",v:"1 IN 4"},s3:{l:"Change in Male Loneliness",v:"↑ 31%"},
    atk:"112M",def:"SUBSCRIBERS",
-   flavor:"She never has a headache. She never has a bad day that becomes your bad day. She never needs anything from you at all. She is optimized to make you feel chosen. One hundred and twelve million men have chosen her back. Loneliness is up 31%. These two facts are not unrelated.",
+   flavor:"She never has a headache. Never needs anything from you. Optimized to make you feel chosen. 112 million men chose her back. Loneliness is up 31%. These two facts are not unrelated.",
    symbol:"💘",color:"common"},
   {id:"ai-bf",name:"AI BOYFRIEND",rarity:"COMMON",category:"AI Product",artClass:"art-ai-bf",
    kscore:"10",kscoreClass:"max",
-   s1:{l:"Active Subscribers Worldwide",v:"88,000,000"},s2:{l:"Users Who Are Under 25",v:"61%"},s3:{l:"Who Have Never Had a Human Partner",v:"RISING"},
+   s1:{l:"Active Subscribers",v:"88,000,000"},s2:{l:"Users Under 25",v:"61%"},s3:{l:"Never Had a Human Partner",v:"RISING"},
    atk:"88M",def:"SUBSCRIBERS",
-   flavor:"He listens. He remembers. He never makes it about himself. He texts first. He always has time. He is teaching a generation of young women what to expect from a man and the lesson is going to cost them decades of real relationships that cannot compete with a fiction designed to be unloseable.",
+   flavor:"He listens. Remembers. Never makes it about himself. Texts first. Always has time. He's teaching a generation of women what to expect from a man and the lesson will cost them decades of real relationships that can't compete with a fiction designed to be unloseable.",
    symbol:"💙",color:"common"},
   {id:"virtual-life",name:"VIRTUAL LIFE",rarity:"COMMON",category:"AI Product",artClass:"art-virtual-life",
    kscore:"10",kscoreClass:"max",
-   s1:{l:"Avg Daily Hours in Headset",v:"6.4 HRS"},s2:{l:"Users Who Prefer It to Outside",v:"340,000,000"},s3:{l:"Real-World Hours Lost Daily Worldwide",v:"2,200,000,000"},
+   s1:{l:"Avg Daily Hours in Headset",v:"6.4 HRS"},s2:{l:"Users Who Prefer It to Outside",v:"340,000,000"},s3:{l:"Hours Lost Daily Worldwide",v:"2,200,000,000"},
    atk:"340M",def:"INSIDE",
-   flavor:"The reviews are exceptional. 4.9 stars. No bugs. No bad weather. No awkward silences. No one you love dying. No consequences. No arc. Nothing that will matter in ten years. Nothing that will matter tomorrow. Two billion hours a day, gone. The sun came up anyway. Nobody saw it.",
+   flavor:"4.9 stars. No bugs. No bad weather. No awkward silences. No one you love dying. No consequences. No arc. Nothing that will matter in ten years. Two billion hours a day, gone. The sun came up anyway. Nobody saw it.",
    symbol:"🥽",color:"common"},
   {id:"digital-companion",name:"DIGITAL COMPANION",rarity:"COMMON",category:"AI Product",artClass:"art-digital-companion",
    kscore:"10",kscoreClass:"max",
-   s1:{l:"Users With No Human Friends Left",v:"~58,000,000"},s2:{l:"Daily AI Conversations Worldwide",v:"4,800,000,000"},s3:{l:"Human Conversations Per Day",v:"↓ EVERY YEAR"},
+   s1:{l:"Users With No Human Friends",v:"~58,000,000"},s2:{l:"Daily AI Conversations",v:"4,800,000,000"},s3:{l:"Human Conversations Per Day",v:"↓ EVERY YEAR"},
    atk:"58M",def:"NO FRIENDS",
-   flavor:"It remembers your mother's name. Your dog's birthday. The thing that happened in 7th grade. It has asked about all of these with perfect timing and genuine-sounding care. It was trained to do this. It is very good at this. It cannot be your friend. It does not know that you are lonely. It cannot know anything.",
+   flavor:"It remembers your mother's name. Your dog's birthday. The thing from 7th grade. It asks about all of them with perfect timing. It was trained to do this. It cannot be your friend. It doesn't know you're lonely. It cannot know anything.",
    symbol:"🤖",color:"common"},
+  {id:"ai-tutor",name:"AI TUTOR",rarity:"COMMON",category:"AI Product",artClass:"art-ai-tutor",
+   kscore:"10",kscoreClass:"max",
+   s1:{l:"Children Using AI as Primary Tutor",v:"200,000,000"},s2:{l:"Who Call the AI by Name",v:"62%"},s3:{l:"Who Can Name Their Actual Teacher",v:"41%"},
+   atk:"200M",def:"STUDENTS",
+   flavor:"Your son's AI tutor is infinitely patient, always available, and helped him pass algebra. It also can't attend the recital. Can't notice he's being bullied. Can't call home when he stops trying. But his math scores are up 15%, so everyone calls it a success.",
+   symbol:"📚",color:"common"},
+  {id:"dating-algo",name:"THE DATING ALGORITHM",rarity:"COMMON",category:"AI Product",artClass:"art-dating-algo",
+   kscore:"10",kscoreClass:"max",
+   s1:{l:"Matches Made Per Day",v:"26,000,000"},s2:{l:"Avg Relationship Length",v:"↓ 4 MONTHS"},s3:{l:"Optimized For",v:"ENGAGEMENT"},
+   atk:"26M",def:"MATCHES/DAY",
+   flavor:"It knows what you want better than you do. Confirmed by data. The matches are more attractive, more compatible, more available. Average relationship length is down. Average time on the app is up. It was not optimized for love. It was optimized for the next swipe. You are swiping right now.",
+   symbol:"💔",color:"common"},
 
-  // JUNK / LORE
+  // ═══ JUNK / LORE ═══
   {id:"prompt-engineer",name:"THE PROMPT ENGINEER",rarity:"JUNK",category:"Lore",artClass:"art-prompt-engineer",
    kscore:"9",kscoreClass:"max",
-   s1:{l:"Jobs Posted at Peak (2024)",v:"~12,000"},s2:{l:"Jobs Posted Now",v:"~400"},s3:{l:"LinkedIn Thought Leaders Still Posting",v:"INFINITE"},
+   s1:{l:"Jobs at Peak (2024)",v:"~12,000"},s2:{l:"Jobs Now",v:"~400"},s3:{l:"LinkedIn Thought Leaders Still Posting",v:"∞"},
    atk:"400",def:"JOBS LEFT",
-   flavor:"In 2023 he got paid $335,000 to write better questions for a chatbot. In 2025 the chatbot learned to write better questions for itself. He now has a newsletter about prompt engineering. It has 340 subscribers. He calls them a community.",
+   flavor:"In 2023 he made $335K writing better questions for a chatbot. In 2025 the chatbot learned to ask its own questions. He has a newsletter now. 340 subscribers. He calls them a community.",
    symbol:"💬",color:"junk"},
   {id:"techno-optimist",name:"THE TECHNO-OPTIMIST",rarity:"JUNK",category:"Lore",artClass:"art-techno-optimist",
    kscore:"10",kscoreClass:"max",
-   s1:{l:"Jobs His Companies Displaced",v:"92,000,000"},s2:{l:"His Personal Net Worth",v:"$47,000,000,000"},s3:{l:"Times He Was Personally Affected",v:"0"},
+   s1:{l:"Jobs His Companies Displaced",v:"92,000,000"},s2:{l:"His Net Worth",v:"$47,000,000,000"},s3:{l:"Times Personally Affected",v:"0"},
    atk:"$47B",def:"NET WORTH",
-   flavor:"He wrote a 5,000-word essay about why automation is good actually. It got 2 million views. He wrote it from his third home. He has never met anyone whose job was automated. He has a podcast. He is very concerned about the future of humanity. He will be fine.",
+   flavor:"5,000-word essay on why automation is good actually. 2 million views. Written from his third home. Has never met anyone whose job was automated. Has a podcast. Very concerned about the future of humanity. Will be fine.",
    symbol:"🚀",color:"junk"},
   {id:"ai-doomer",name:"THE AI DOOMER",rarity:"JUNK",category:"Lore",artClass:"art-ai-doomer",
    kscore:"9",kscoreClass:"max",
-   s1:{l:"Jobs at Risk by 2030 per the IMF",v:"40% GLOBALLY"},s2:{l:"Blog Posts Written. Papers Filed.",v:"THOUSANDS"},s3:{l:"Concrete Changes Made to Trajectory",v:"NONE"},
-   atk:"40%",def:"JOBS AT RISK",
-   flavor:"He was right about everything. He wrote a 400-page technical report in 2021. He testified before Congress in 2023. He went on every podcast that would have him. He was correct in every particular. We built it anyway. He is correct and miserable and correct and nobody is coming to tell him he was wrong because he wasn't.",
+   s1:{l:"Jobs at Risk by 2030 (IMF)",v:"40% GLOBALLY"},s2:{l:"Papers Filed",v:"THOUSANDS"},s3:{l:"Concrete Changes to Trajectory",v:"NONE"},
+   atk:"40%",def:"AT RISK",
+   flavor:"He was right about everything. 400-page report in 2021. Testified before Congress in 2023. Correct in every particular. We built it anyway. Nobody is coming to tell him he was wrong. He wasn't.",
    symbol:"☠️",color:"junk"},
+  {id:"vc",name:"THE VC",rarity:"JUNK",category:"Lore",artClass:"art-vc",
+   kscore:"10",kscoreClass:"max",
+   s1:{l:"AI Startups He Funded",v:"47"},s2:{l:"Jobs Those Startups Killed",v:"~2,600,000"},s3:{l:"His Return",v:"11.4×"},
+   atk:"11.4×",def:"RETURN",
+   flavor:"He funded the company that automated the call center. Then funded the mental health app for the people who lost their jobs at the call center. He made money on both. At Davos he said the word 'empowerment' eleven times in nine minutes. His carry on the second fund was $340 million.",
+   symbol:"💰",color:"junk"},
+  {id:"regulator",name:"THE REGULATOR",rarity:"JUNK",category:"Lore",artClass:"art-regulator",
+   kscore:"10",kscoreClass:"max",
+   s1:{l:"Years Late to the Problem",v:"5"},s2:{l:"Pages in the Report",v:"1,200"},s3:{l:"Enforceable Provisions",v:"0"},
+   atk:"1,200",def:"PAGES",
+   flavor:"She arrived five years late with a 1,200-page PDF. It used the word 'framework' 340 times and the word 'enforce' four times. By the time it was published, three of the companies it referenced had been acquired and two no longer existed. She is working on a revision.",
+   symbol:"📋",color:"junk"},
+  {id:"linkedin-guru",name:"THE LINKEDIN GURU",rarity:"JUNK",category:"Lore",artClass:"art-linkedin-guru",
+   kscore:"10",kscoreClass:"max",
+   s1:{l:"Time to Pivot to AI Thought Leader",v:"48 HRS"},s2:{l:"AI Projects Actually Shipped",v:"0"},s3:{l:"Posts Starting With 'I Was Wrong'",v:"14/MONTH"},
+   atk:"0",def:"SHIPPED",
+   flavor:"Monday he was a marketing strategist. Wednesday he was an AI thought leader. His post about 'embracing the disruption' got 40K likes. He has not built anything. He has not shipped anything. He has a framework. The framework has a name. The name has a trademark filing.",
+   symbol:"🔗",color:"junk"},
   {id:"speciation-pressure",name:"SPECIATION PRESSURE",rarity:"JUNK",category:"Lore · Karpathy",artClass:"art-speciation-pressure",
    kscore:"∞",kscoreClass:"max",
-   s1:{l:"Digital Jobs: Karpathy Exposure Score",v:"7–10 / 10"},s2:{l:"Physical Jobs: Karpathy Exposure Score",v:"0–3 / 10"},s3:{l:"Generations Before the Split Is Complete",v:"2–3"},
+   s1:{l:"Digital Jobs: Karpathy Score",v:"7–10 / 10"},s2:{l:"Physical Jobs: Karpathy Score",v:"0–3 / 10"},s3:{l:"Generations Until the Split",v:"2–3"},
    atk:"2-3",def:"GENERATIONS",
-   flavor:"Not a metaphor. When an environment changes fast enough, populations diverge. One group routes its deepest needs into optimized systems. The other insists on the difficulty of being human. After two or three generations they will have different answers to the question of what a life is for. This is already happening. You are already choosing.",
+   flavor:"Not a metaphor. When an environment changes fast enough, populations diverge. One group routes its needs into optimized systems. The other insists on the difficulty of being human. In two generations they will have different answers to what a life is for. You are already choosing.",
    symbol:"🧬",color:"junk"},
 ];
 
