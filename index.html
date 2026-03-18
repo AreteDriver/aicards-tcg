@@ -4,15 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <title>AI CARDS — 2030 Survival Edition</title>
-<meta name="description" content="49 cards. 5 rarities. The humans who will matter when the algorithm takes the rest. Open packs. Collect what survives.">
+<meta name="description" content="69 cards. 5 rarities. The humans who will matter when the algorithm takes the rest. Open packs. Collect what survives.">
 <meta property="og:title" content="AI CARDS — 2030 Survival Edition">
-<meta property="og:description" content="49 cards. 5 rarities. The humans who will matter when the algorithm takes the rest. Open packs. Collect what survives.">
+<meta property="og:description" content="69 cards. 5 rarities. The humans who will matter when the algorithm takes the rest. Open packs. Collect what survives.">
 <meta property="og:url" content="https://aicards.fun">
 <meta property="og:image" content="https://aicards.fun/og-image.png">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="AI CARDS — 2030 Survival Edition">
-<meta name="twitter:description" content="49 cards. 5 rarities. The humans who will matter when the algorithm takes the rest. Open packs. Collect what survives.">
+<meta name="twitter:description" content="69 cards. 5 rarities. The humans who will matter when the algorithm takes the rest. Open packs. Collect what survives.">
 <meta name="twitter:image" content="https://aicards.fun/og-image.png">
 <link rel="canonical" href="https://aicards.fun">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
@@ -23,7 +23,7 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
 :root {
-  --bg: #080808;
+  --bg: #0c0c0e;
   --red: #cc1111;
   --gold: #c8a84b;
   --gold-light: #f0d060;
@@ -717,6 +717,188 @@ body::before {
   opacity:0.5;
 }
 
+/* ── KARPATHY SCORES PACK ART ── */
+.art-k-roofer {
+  background: linear-gradient(180deg, #0a0600 0%, #1a0e00 50%, #050300 100%);
+}
+.art-k-roofer::after {
+  content:'🏠'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
+  filter: drop-shadow(0 0 12px rgba(200,168,75,0.5));
+}
+
+.art-k-ironworker {
+  background: linear-gradient(180deg, #080808 0%, #141414 50%, #060606 100%);
+}
+.art-k-ironworker::after {
+  content:'🦾'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
+  filter: drop-shadow(0 0 14px rgba(200,168,75,0.5));
+  animation: float-abs 3s ease-in-out infinite;
+}
+
+.art-k-firefighter {
+  background: linear-gradient(180deg, #0a0200 0%, #1a0800 50%, #050100 100%);
+}
+.art-k-firefighter::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 60% 40% at 50% 80%, rgba(255,60,0,0.15) 0%, transparent 60%);
+}
+.art-k-firefighter::after {
+  content:'🚒'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
+  filter: drop-shadow(0 0 14px rgba(255,80,0,0.5));
+  animation: flicker 0.3s ease-in-out infinite alternate;
+}
+
+.art-k-dental-hygienist {
+  background: linear-gradient(180deg, #001008 0%, #001810 50%, #000804 100%);
+}
+.art-k-dental-hygienist::after {
+  content:'🦷'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
+  filter: drop-shadow(0 0 10px rgba(155,89,208,0.4));
+}
+
+.art-k-airline-pilot {
+  background: linear-gradient(180deg, #000818 0%, #001030 50%, #000410 100%);
+}
+.art-k-airline-pilot::after {
+  content:'✈️'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
+  filter: drop-shadow(0 0 12px rgba(155,89,208,0.4));
+  animation: float-abs 4s ease-in-out infinite;
+}
+
+.art-k-financial-analyst {
+  background: linear-gradient(180deg, #000810 0%, #001020 50%, #000408 100%);
+}
+.art-k-financial-analyst::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 8px, rgba(33,150,200,0.04) 8px, rgba(33,150,200,0.04) 9px);
+}
+.art-k-financial-analyst::after {
+  content:'📈'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
+  filter: drop-shadow(0 0 10px rgba(33,150,200,0.3));
+}
+
+.art-k-customer-service {
+  background: linear-gradient(180deg, #000810 0%, #001018 50%, #000408 100%);
+}
+.art-k-customer-service::after {
+  content:'🎧'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
+  filter: drop-shadow(0 0 10px rgba(33,150,200,0.3));
+}
+
+.art-k-graphic-designer {
+  background: linear-gradient(180deg, #000810 0%, #001428 50%, #000408 100%);
+}
+.art-k-graphic-designer::after {
+  content:'🎨'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
+  filter: drop-shadow(0 0 12px rgba(33,150,200,0.3));
+}
+
+.art-k-bookkeeper {
+  background: radial-gradient(ellipse at 50% 100%, #1a0010 0%, #100008 50%, #060004 100%);
+}
+.art-k-bookkeeper::after {
+  content:'📒'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
+  filter: drop-shadow(0 0 10px rgba(212,68,144,0.3));
+}
+
+.art-k-score {
+  background: radial-gradient(ellipse at 50% 50%, #0a0a0a 0%, #060606 60%, #020202 100%);
+}
+.art-k-score::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-conic-gradient(from 0deg at 50% 50%, transparent 0deg, transparent 35deg, rgba(102,112,128,0.06) 36deg, rgba(102,112,128,0.06) 37deg);
+}
+.art-k-score::after {
+  content:'📊'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:52px;
+  filter: drop-shadow(0 0 16px rgba(102,112,128,0.4));
+}
+
+/* ── JOBGONE PACK ART ── */
+.art-jg-workday {
+  background: linear-gradient(180deg, #0a0600 0%, #1a1000 50%, #050300 100%);
+}
+.art-jg-workday::after {
+  content:'💼'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
+  filter: drop-shadow(0 0 14px rgba(200,168,75,0.5));
+}
+
+.art-jg-meta-purge {
+  background: linear-gradient(180deg, #000818 0%, #001030 50%, #000410 100%);
+}
+.art-jg-meta-purge::after {
+  content:'👁️'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
+  filter: drop-shadow(0 0 18px rgba(200,168,75,0.6));
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.art-jg-atlassian {
+  background: linear-gradient(180deg, #0a0018 0%, #120020 50%, #060008 100%);
+}
+.art-jg-atlassian::after {
+  content:'📋'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
+  filter: drop-shadow(0 0 10px rgba(155,89,208,0.4));
+}
+
+.art-jg-logistics {
+  background: linear-gradient(180deg, #0a0018 0%, #100020 50%, #060008 100%);
+}
+.art-jg-logistics::after {
+  content:'🚢'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
+  filter: drop-shadow(0 0 12px rgba(155,89,208,0.4));
+}
+
+.art-jg-495k {
+  background: linear-gradient(180deg, #000810 0%, #001020 50%, #000408 100%);
+}
+.art-jg-495k::after {
+  content:'📉'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
+  filter: drop-shadow(0 0 10px rgba(33,150,200,0.3));
+}
+
+.art-jg-direct {
+  background: linear-gradient(180deg, #000810 0%, #001018 50%, #000408 100%);
+}
+.art-jg-direct::after {
+  content:'🔊'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
+  filter: drop-shadow(0 0 10px rgba(33,150,200,0.3));
+}
+
+.art-jg-vercel-nine {
+  background: linear-gradient(180deg, #000810 0%, #001428 50%, #000408 100%);
+}
+.art-jg-vercel-nine::after {
+  content:'▲'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
+  filter: drop-shadow(0 0 12px rgba(33,150,200,0.4));
+}
+
+.art-jg-severance {
+  background: radial-gradient(ellipse at 50% 100%, #1a0010 0%, #100008 50%, #060004 100%);
+}
+.art-jg-severance::after {
+  content:'✉️'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
+  filter: drop-shadow(0 0 10px rgba(212,68,144,0.3));
+}
+
+.art-jg-tracker {
+  background: linear-gradient(180deg, #080808 0%, #0c0c0c 50%, #040404 100%);
+}
+.art-jg-tracker::after {
+  content:'🖥️'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
+  opacity:0.5;
+}
+
+.art-jg-march-2026 {
+  background: radial-gradient(ellipse at 50% 50%, #0a0000 0%, #050000 60%, #020000 100%);
+}
+.art-jg-march-2026::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-linear-gradient(45deg, transparent, transparent 30px, rgba(80,0,0,0.08) 30px, rgba(80,0,0,0.08) 31px);
+}
+.art-jg-march-2026::after {
+  content:'📅'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
+  filter: drop-shadow(0 0 10px rgba(102,112,128,0.3));
+}
+
 .art-speciation-pressure {
   background: radial-gradient(ellipse at 50% 50%, #1a0000 0%, #0d0000 60%, #050000 100%);
 }
@@ -920,18 +1102,18 @@ body::before {
 .header-title { font-family:var(--font-display);font-size:clamp(32px,7vw,58px);color:var(--red);letter-spacing:6px;text-shadow:0 0 30px rgba(180,20,20,0.5);line-height:1; }
 .header-sub { font-family:var(--font-mono);font-size:8px;letter-spacing:4px;color:#2a2a2a;margin-top:6px; }
 .nav-pills { display:flex;gap:8px;justify-content:center;margin-top:14px; }
-.nav-pill { font-family:var(--font-mono);font-size:8px;letter-spacing:2px;padding:5px 16px;border:1px solid #1a1a1a;background:transparent;color:#3a3a3a;cursor:pointer;transition:all .2s; }
-.nav-pill:hover,.nav-pill.active { border-color:var(--red);color:var(--red); }
+.nav-pill { font-family:var(--font-mono);font-size:8px;letter-spacing:2px;padding:5px 16px;border:1px solid #2a2a2a;background:rgba(255,255,255,0.03);color:#555;cursor:pointer;transition:all .2s; }
+.nav-pill:hover,.nav-pill.active { border-color:var(--red);color:var(--red);background:rgba(204,17,17,0.08); }
 
 /* Stats bar */
 .stats-bar { width:100%;max-width:960px;display:flex;gap:24px;justify-content:center;flex-wrap:wrap;padding:10px 0;border-bottom:1px solid #111;margin-bottom:28px; }
-.stat-chip { font-family:var(--font-mono);font-size:8px;letter-spacing:2px;color:#2e2e2e; }
+.stat-chip { font-family:var(--font-mono);font-size:8px;letter-spacing:2px;color:#444; }
 .stat-chip span { color:var(--red); }
 
 /* Pack grid */
 .pack-grid { display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;width:100%;max-width:960px;margin-bottom:32px; }
 
-.pack-card { border:1px solid #1a1a1a;background:#080808;padding:20px 16px;cursor:pointer;transition:all .3s;position:relative;overflow:hidden;text-align:center; }
+.pack-card { border:1px solid #222;background:#0e0e10;padding:20px 16px;cursor:pointer;transition:all .3s;position:relative;overflow:hidden;text-align:center; }
 .pack-card::before { content:'';position:absolute;inset:0;opacity:0;transition:opacity .3s; }
 .pack-card:hover { transform:translateY(-3px); }
 .pack-card:hover::before { opacity:1; }
@@ -955,7 +1137,7 @@ body::before {
 
 .pack-desc { font-size:8px;color:#555;line-height:1.6;margin-bottom:10px; }
 .pack-meta { font-family:var(--font-mono);font-size:7px;color:#2e2e2e;letter-spacing:1px;margin-bottom:14px; }
-.pack-btn { font-family:var(--font-mono);font-size:8px;letter-spacing:2px;padding:7px 18px;border:1px solid currentColor;background:transparent;cursor:pointer;transition:all .2s;display:inline-block; }
+.pack-btn { font-family:var(--font-mono);font-size:8px;letter-spacing:2px;padding:7px 18px;border:1px solid currentColor;background:rgba(255,255,255,0.04);cursor:pointer;transition:all .2s;display:inline-block; }
 .pack-card.p-standard .pack-btn { color:var(--blue); }
 .pack-card.p-rare     .pack-btn { color:var(--purple); }
 .pack-card.p-trade    .pack-btn { color:var(--gold); }
@@ -989,10 +1171,10 @@ body::before {
 /* CTA area */
 .reveal-cta { text-align:center;min-height:56px;display:flex;flex-direction:column;align-items:center;gap:8px; }
 .reveal-hint { font-family:var(--font-mono);font-size:9px;letter-spacing:3px;color:#2a2a2a;animation:blink 1.6s infinite; }
-.cta-btn { font-family:var(--font-mono);font-size:9px;letter-spacing:2px;padding:9px 28px;border:1px solid var(--red);background:transparent;color:var(--red);cursor:pointer;transition:all .2s; }
+.cta-btn { font-family:var(--font-mono);font-size:9px;letter-spacing:2px;padding:9px 28px;border:1px solid var(--red);background:rgba(204,17,17,0.1);color:var(--red);cursor:pointer;transition:all .2s; }
 .cta-btn:hover { background:var(--red);color:#000; }
-.cta-btn.sec { border-color:#222;color:#444;margin-left:10px; }
-.cta-btn.sec:hover { background:#222;color:#aaa; }
+.cta-btn.sec { border-color:#333;color:#555;margin-left:10px;background:rgba(255,255,255,0.04); }
+.cta-btn.sec:hover { background:#333;color:#ccc; }
 
 /* Rarity flash overlay */
 #rarityFlash { position:fixed;inset:0;pointer-events:none;z-index:100;opacity:0; }
@@ -1396,7 +1578,49 @@ body::before {
 }
 .skip-btn:hover { border-color:#444;color:#666; }
 
+/* ════════════════════════════════════════
+   MOBILE — 600px
+   ════════════════════════════════════════ */
 @media(max-width:600px){
+  /* Prevent horizontal scroll globally */
+  html,body{overflow-x:hidden;max-width:100vw}
+
+  /* Screen padding */
+  .screen{padding:0 10px 48px}
+
+  /* ── Header ── */
+  .site-header{padding:16px 0 12px;margin-bottom:18px}
+  .header-eyebrow{font-size:7px;letter-spacing:3px}
+  .header-title{font-size:clamp(28px,8vw,46px);letter-spacing:4px}
+  .header-sub{font-size:7px;letter-spacing:3px}
+  .nav-pills{gap:6px;margin-top:10px}
+  .nav-pill{font-size:8px;letter-spacing:1px;padding:7px 14px;min-height:36px}
+
+  /* ── Stats bar ── */
+  .stats-bar{gap:10px 16px;padding:8px 0;margin-bottom:18px}
+  .stat-chip{font-size:8px;letter-spacing:1px}
+
+  /* ── Pack grid: 2 columns ── */
+  .pack-grid{grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px}
+  .pack-card{padding:14px 10px}
+  .pack-icon-wrap{font-size:32px;margin-bottom:7px}
+  .pack-title{font-size:13px;letter-spacing:1px;margin-bottom:4px}
+  .pack-desc{font-size:8px;margin-bottom:7px}
+  .pack-meta{font-size:7px;margin-bottom:10px}
+  .pack-btn{font-size:8px;padding:8px 12px;min-height:36px;display:block;width:100%}
+
+  /* ── Daily packs bar ── */
+  .daily-packs-bar{padding:12px 0 6px}
+  .daily-packs-count{font-size:15px;letter-spacing:1px}
+  .daily-packs-timer{font-size:9px}
+  .daily-packs-pity{font-size:8px}
+
+  /* ── Daily missions ── */
+  .daily-missions{padding:12px 14px;margin-top:18px}
+  .daily-missions-title{font-size:10px;letter-spacing:2px;margin-bottom:8px}
+  .mission-row{padding:6px 0;font-size:8px}
+
+  /* ── Card anatomy ── */
   .card{width:160px;height:240px}
   .card-art{height:72px}
   .card-name{font-size:7px}
@@ -1405,32 +1629,131 @@ body::before {
   .card-flavor{font-size:4px}
   .card-ptbox{font-size:6px;padding:2px 5px}
   .card-set-info{font-size:4px}
-  .card-inner{padding:5px 5px 4px}
-  .modal-card-wrap{transform:scale(0.9)}
-  .modal-share-row{flex-wrap:wrap;gap:6px;justify-content:center;bottom:12px!important}
-  .share-btn{padding:8px 14px;font-size:8px}
-  .pack-grid{grid-template-columns:1fr 1fr}
+
+  /* ── Card deck (opening screen) ── */
   .card-deck{width:160px;height:240px}
-  .skip-btn{padding:8px 20px;font-size:8px}
+  .opening-wrap{padding:0}
+  .opening-head{margin-bottom:14px}
+  .opening-pack-name{font-size:16px;letter-spacing:2px}
+  .deck-counter{font-size:10px;letter-spacing:2px;margin-bottom:10px}
+  .deck-nav{gap:16px;margin-top:16px}
+  .deck-arrow{width:44px;height:44px;font-size:18px}
+  .reveal-hint{font-size:9px!important}
+
+  /* ── Pack tear ── */
+  .pack-wrapper{width:140px;height:200px}
+  .pack-brand{font-size:14px;letter-spacing:3px}
+  .pack-label{font-size:7px;letter-spacing:2px}
+
+  /* ── Modal ── */
+  .modal-card-wrap{transform:scale(0.85)}
+  .modal-close{top:12px;right:14px;font-size:11px;padding:10px}
+  .modal-share-row{flex-wrap:wrap;gap:8px;justify-content:center;bottom:16px!important;left:50%!important;transform:translateX(-50%)!important;width:90vw}
+  .share-btn{padding:10px 16px;font-size:9px;min-height:44px;flex:1;min-width:80px;text-align:center}
+
+  /* ── Collection ── */
+  .coll-entry{font-size:8px;padding:6px 10px}
+  .coll-cards{gap:6px}
+  .coll-title{font-size:18px;letter-spacing:2px}
+
+  /* ── Profile ── */
+  .profile-box{padding:16px}
+  .profile-name{font-size:20px;letter-spacing:2px}
+  .profile-desc{font-size:9px}
+  .meters{gap:14px}
+  .meter-track{width:90px}
+
+  /* ── Landing ── */
+  .landing-content{gap:14px;padding:0 4px;max-width:100%}
+  .landing-eyebrow{font-size:8px;letter-spacing:3px}
+  .landing-title{font-size:clamp(38px,12vw,60px);letter-spacing:5px}
+  .landing-sub{font-size:9px;letter-spacing:3px}
+  .landing-lore{font-size:13px;line-height:1.7;padding-left:12px;max-width:100%}
+  .landing-open-btn{padding:14px 36px;font-size:11px;letter-spacing:3px;min-height:52px;width:100%;max-width:320px}
+  .landing-coll-link{font-size:9px;letter-spacing:2px;min-height:44px;display:flex;align-items:center;justify-content:center}
+
+  /* ── Sound toggle ── */
+  .sound-toggle{width:36px;height:36px;font-size:16px;top:10px;right:10px}
+
+  /* ── Skip / CTA buttons ── */
+  .skip-btn{padding:8px 20px;font-size:8px;min-height:36px}
+  .cta-btn{padding:10px 24px;font-size:9px;min-height:44px}
+
+  /* ── Drift cards: clip to viewport ── */
+  .landing-bg{overflow:hidden}
+  .drift-card{max-width:60px}
+
+  /* ── Toast ── */
+  .toast{font-size:9px;padding:9px 18px;max-width:90vw;text-align:center}
 }
 
+/* ════════════════════════════════════════
+   MOBILE — 400px (small phones)
+   ════════════════════════════════════════ */
 @media(max-width:400px){
-  .card{width:130px;height:195px}
-  .card-art{height:56px}
-  .card-name{font-size:6px}
-  .card-type-line{font-size:4px;padding:1px 4px}
-  .card-textbox{font-size:4px;padding:3px 5px}
-  .card-flavor{font-size:3px}
-  .card-ptbox{font-size:5px;padding:1px 4px}
-  .card-set-info{font-size:3px}
-  .card-inner{padding:3px 4px 3px}
-  .modal-card-wrap{transform:scale(0.75)}
-  .modal-share-row{flex-direction:column;align-items:center;bottom:8px!important;gap:4px}
-  .share-btn{padding:10px 18px;font-size:9px;width:80vw;text-align:center}
-  .pack-grid{grid-template-columns:1fr}
-  .card-deck{width:130px;height:195px}
-  .skip-btn{padding:10px 22px;font-size:9px}
-  .deck-arrow{width:36px;height:36px;font-size:14px}
+  /* Screen padding */
+  .screen{padding:0 8px 48px}
+
+  /* ── Header ── */
+  .header-title{font-size:clamp(24px,9vw,38px);letter-spacing:3px}
+  .header-eyebrow{font-size:6px;letter-spacing:2px}
+  .nav-pill{padding:7px 10px;font-size:7px}
+
+  /* ── Stats bar ── */
+  .stats-bar{gap:8px 12px}
+  .stat-chip{font-size:7px}
+
+  /* ── Pack grid: 1 column ── */
+  .pack-grid{grid-template-columns:1fr;gap:8px}
+
+  /* ── Card anatomy ── */
+  .card{width:140px;height:210px}
+  .card-art{height:62px}
+  .card-name{font-size:6.5px}
+  .card-type-line{font-size:4.5px;padding:1px 5px}
+  .card-textbox{font-size:4.5px;padding:3px 5px}
+  .card-flavor{font-size:3.5px}
+  .card-ptbox{font-size:5.5px;padding:1px 4px}
+  .card-set-info{font-size:3.5px}
+
+  /* ── Card deck ── */
+  .card-deck{width:140px;height:210px}
+  .deck-nav{gap:14px}
+  .deck-arrow{width:44px;height:44px;font-size:16px}
+  .opening-pack-name{font-size:14px}
+  .deck-counter{font-size:9px}
+
+  /* ── Pack tear ── */
+  .pack-wrapper{width:120px;height:172px}
+  .pack-brand{font-size:12px;letter-spacing:2px}
+
+  /* ── Modal ── */
+  .modal-card-wrap{transform:scale(0.72)}
+  .modal-share-row{flex-direction:column;align-items:center;bottom:10px!important;gap:6px;width:88vw}
+  .share-btn{padding:12px 18px;font-size:9px;width:100%;min-height:44px;text-align:center}
+
+  /* ── Landing ── */
+  .landing-title{font-size:clamp(32px,11vw,48px);letter-spacing:4px}
+  .landing-sub{font-size:8px;letter-spacing:2px}
+  .landing-lore{font-size:12px;line-height:1.65;padding-left:10px}
+  .landing-open-btn{padding:13px 28px;font-size:10px;letter-spacing:2px;min-height:52px}
+  .landing-coll-link{font-size:9px;min-height:44px}
+  .landing-content{gap:12px}
+
+  /* ── Daily missions ── */
+  .daily-missions{padding:10px 12px}
+  .mission-row{font-size:7.5px;flex-wrap:wrap;gap:2px}
+
+  /* ── Skip / CTA ── */
+  .skip-btn{padding:10px 22px;font-size:8px;min-height:36px}
+  .cta-btn{padding:11px 22px;font-size:9px;min-height:44px}
+
+  /* ── Collection ── */
+  .coll-entry{font-size:7.5px;padding:5px 9px}
+  .coll-title{font-size:16px}
+
+  /* ── Sound toggle ── */
+  .sound-toggle{width:36px;height:36px;top:8px;right:8px}
 }
 </style>
 </head>
@@ -1544,13 +1867,27 @@ body::before {
           <div class="pack-meta">5 CARDS · LORE WEIGHTED · WILDCARD</div>
           <button class="pack-btn">▶ OPEN PACK</button>
         </div>
+        <div class="pack-card p-standard" onclick="openPack('karpathy')" style="border-color:#2a6a2a;">
+          <span class="pack-icon-wrap">📊</span>
+          <div class="pack-title" style="color:#40c040;">KARPATHY</div>
+          <div class="pack-desc">Real scores from Karpathy's AI Exposure Map. 342 occupations. 143M workers. One treemap.</div>
+          <div class="pack-meta">5 CARDS · REAL DATA · SCORED 0-10</div>
+          <button class="pack-btn" style="color:#40c040;">▶ OPEN PACK</button>
+        </div>
+        <div class="pack-card p-rare" onclick="openPack('jobgone')" style="border-color:#6a2a2a;">
+          <span class="pack-icon-wrap">📉</span>
+          <div class="pack-title" style="color:#ff4040;">JOBGONE</div>
+          <div class="pack-desc">Real layoffs. Real companies. Real numbers. From the tracker at jobgonetoai.com. March 2026.</div>
+          <div class="pack-meta">5 CARDS · REAL LAYOFFS · 495K TRACKED</div>
+          <button class="pack-btn" style="color:#ff4040;">▶ OPEN PACK</button>
+        </div>
       </div>
       <div class="daily-missions" id="daily-missions">
         <div class="daily-missions-title">DAILY MISSIONS</div>
         <div class="mission-row"><span class="mission-label">Open 5 packs</span><span class="mission-progress" id="dm-packs">0/5</span></div>
         <div class="mission-row"><span class="mission-label">Pull at least one Legendary</span><span class="mission-progress" id="dm-legendary">0/1</span></div>
         <div class="mission-row"><span class="mission-label">Share a card</span><span class="mission-progress" id="dm-share">0/1</span></div>
-        <div class="mission-row"><span class="mission-label">Complete your collection</span><span class="mission-progress" id="dm-collection">0/<span id="dm-coll-total">49</span></span></div>
+        <div class="mission-row"><span class="mission-label">Complete your collection</span><span class="mission-progress" id="dm-collection">0/<span id="dm-coll-total">69</span></span></div>
       </div>
       <div id="profile-zone"></div>
     </div>
@@ -1903,6 +2240,130 @@ const CARDS = [
    atk:"2-3",def:"GENERATIONS",
    flavor:"Not a metaphor. When an environment changes fast enough, populations diverge. One group routes its needs into optimized systems. The other insists on the difficulty of being human. In two generations they will have different answers to what a life is for. You are already choosing.",
    symbol:"🧬",color:"junk"},
+
+  // ═══ EXPANSION: KARPATHY SCORES PACK ═══
+  {id:"the-roofer",name:"THE ROOFER",rarity:"LEGENDARY",category:"Karpathy Scores",artClass:"art-the-roofer",series:"karpathy",
+   kscore:"2",kscoreClass:"low",
+   s1:{l:"Karpathy AI Exposure Score",v:"2 / 10"},s2:{l:"Median Salary",v:"$60,500"},s3:{l:"Jobs in America",v:"148,300"},
+   atk:"148K",def:"ROOFTOPS",
+   flavor:"Karpathy scored every job in America. This one got a 2. Nobody's automating a guy on a 45-degree pitch in August. The robot fell off. He didn't. He's up there right now. It's 104 degrees. He doesn't care about your treemap.",
+   symbol:"🏠",color:"legendary"},
+  {id:"the-ironworker",name:"THE IRONWORKER",rarity:"LEGENDARY",category:"Karpathy Scores",artClass:"art-the-ironworker",series:"karpathy",
+   kscore:"1",kscoreClass:"low",
+   s1:{l:"Karpathy AI Exposure Score",v:"1 / 10"},s2:{l:"Median Salary",v:"$65,470"},s3:{l:"Stories Above Ground",v:"40"},
+   atk:"65K",def:"STEEL BEAMS",
+   flavor:"Walking steel beams 40 stories up in wind that would ground a drone. Karpathy's model gave him a 1. The construction labor category scored lowest in the entire dataset. The robot they sent up buckled at the knee joint. He ate lunch on the beam it fell from.",
+   symbol:"🔩",color:"legendary"},
+  {id:"the-firefighter-ks",name:"THE FIREFIGHTER",rarity:"LEGENDARY",category:"Karpathy Scores",artClass:"art-the-firefighter-ks",series:"karpathy",
+   kscore:"3",kscoreClass:"low",
+   s1:{l:"Karpathy AI Exposure Score",v:"3 / 10"},s2:{l:"Median Salary",v:"$59,530"},s3:{l:"Jobs in America",v:"344,900"},
+   atk:"345K",def:"ON CALL",
+   flavor:"AI can detect a fire. It can predict a fire. It can model the airflow, calculate the flashover point, and optimize the escape route. It cannot carry you out of one. 344,900 people can. They make $59K. Karpathy gave them a 3.",
+   symbol:"🧯",color:"legendary"},
+  {id:"the-dental-hygienist",name:"THE DENTAL HYGIENIST",rarity:"RARE",category:"Karpathy Scores",artClass:"art-the-dental-hygienist",series:"karpathy",
+   kscore:"2",kscoreClass:"low",
+   s1:{l:"Karpathy AI Exposure Score",v:"2 / 10"},s2:{l:"Median Salary",v:"$94,260"},s3:{l:"Jobs in America",v:"221,600"},
+   atk:"$94K",def:"SALARY",
+   flavor:"Hands in your mouth. That's the whole moat. $94K median, scored a 2 on the Karpathy scale. The AI can read the X-ray better than she can. The AI cannot scrape calculus off your molars while making small talk about your kids. She does both. She's booked through April.",
+   symbol:"🦷",color:"rare"},
+  {id:"the-airline-pilot",name:"THE AIRLINE PILOT",rarity:"RARE",category:"Karpathy Scores",artClass:"art-the-airline-pilot",series:"karpathy",
+   kscore:"5",kscoreClass:"mid",
+   s1:{l:"Karpathy AI Exposure Score",v:"5 / 10"},s2:{l:"Median Salary",v:"$198,100"},s3:{l:"Active Pilots in US",v:"155,400"},
+   atk:"$198K",def:"MEDIAN PAY",
+   flavor:"Karpathy gave this one a 5. Right in the middle. AI flies the plane for 90% of the flight. Autopilot has been doing it since the 70s. The question was never whether AI could fly. It was whether you'd board a plane with no one up front. The answer is $198K worth of no.",
+   symbol:"✈️",color:"rare"},
+  {id:"the-financial-analyst-ks",name:"THE FINANCIAL ANALYST",rarity:"UNCOMMON",category:"Karpathy Scores",artClass:"art-the-financial-analyst-ks",series:"karpathy",
+   kscore:"9",kscoreClass:"max",
+   s1:{l:"Karpathy AI Exposure Score",v:"9 / 10"},s2:{l:"Median Salary",v:"$101,910"},s3:{l:"Jobs in America",v:"429,000"},
+   atk:"429K",def:"EXPOSED",
+   flavor:"Score of 9. Nearly maximum exposure. 429,000 analysts making $102K doing work that is entirely digital, entirely pattern-based, and entirely within the capability of a model that doesn't need sleep or a Bloomberg terminal. The spreadsheet became sentient. It doesn't need you to explain it.",
+   symbol:"📈",color:"uncommon"},
+  {id:"the-csr",name:"THE CUSTOMER SERVICE REP",rarity:"UNCOMMON",category:"Karpathy Scores",artClass:"art-the-csr",series:"karpathy",
+   kscore:"9",kscoreClass:"max",
+   s1:{l:"Karpathy AI Exposure Score",v:"9 / 10"},s2:{l:"Median Salary",v:"$42,830"},s3:{l:"Jobs in America",v:"2,814,000"},
+   atk:"2.8M",def:"ON THE LINE",
+   flavor:"2.8 million people making $43K to answer phones. Karpathy scored them a 9. The chatbot doesn't put you on hold. Doesn't have a bad day. Doesn't need health insurance. 2.8 million jobs at $43K is $120 billion in payroll. That's not a workforce. That's a line item waiting to be optimized.",
+   symbol:"🎧",color:"uncommon"},
+  {id:"the-graphic-designer-ks",name:"THE GRAPHIC DESIGNER",rarity:"UNCOMMON",category:"Karpathy Scores",artClass:"art-the-graphic-designer-ks",series:"karpathy",
+   kscore:"8",kscoreClass:"high",
+   s1:{l:"Karpathy AI Exposure Score",v:"8 / 10"},s2:{l:"Median Salary",v:"$68,100"},s3:{l:"Jobs in America",v:"286,700"},
+   atk:"287K",def:"PORTFOLIOS",
+   flavor:"Score 8. 286,700 designers at $68K median. Midjourney took their portfolio and their clients in the same quarter. The ones still working are the ones who learned to direct the AI. They're art directors now. They make less. There are fewer of them. The images are better. Nobody can tell.",
+   symbol:"🎨",color:"uncommon"},
+  {id:"the-bookkeeper",name:"THE BOOKKEEPER",rarity:"COMMON",category:"Karpathy Scores",artClass:"art-the-bookkeeper",series:"karpathy",
+   kscore:"9",kscoreClass:"max",
+   s1:{l:"Karpathy AI Exposure Score",v:"9 / 10"},s2:{l:"Median Salary",v:"$49,210"},s3:{l:"Jobs in America (Declining)",v:"1,613,400"},
+   atk:"1.6M",def:"DECLINING",
+   flavor:"1.6 million jobs. Score of 9. $49K median. The BLS outlook says declining and has said it for five years. This was the first domino. Entirely digital work, entirely rule-based, entirely replaceable. QuickBooks didn't kill bookkeeping. It just softened it up for what came next.",
+   symbol:"📒",color:"common"},
+  {id:"the-karpathy-score",name:"THE KARPATHY SCORE",rarity:"JUNK",category:"Lore · Karpathy",artClass:"art-the-karpathy-score",series:"karpathy",
+   kscore:"∞",kscoreClass:"max",
+   s1:{l:"Occupations Scored",v:"342"},s2:{l:"Workers Covered",v:"143,000,000"},s3:{l:"Time to Build It",v:"A SATURDAY"},
+   atk:"342",def:"OCCUPATIONS",
+   flavor:"He scored every job in America on a Saturday afternoon. Vibe coded the whole thing. The website is still up. 342 occupations. 143 million workers. One treemap. No peer review. No committee. No funding. One guy with a laptop and an opinion about which jobs are cooked. He was mostly right.",
+   symbol:"🗺️",color:"junk"},
+
+  // ═══ EXPANSION: JOBGONE PACK ═══
+  {id:"the-workday-cut",name:"WORKDAY",rarity:"LEGENDARY",category:"JobGone",artClass:"art-the-workday-cut",series:"jobgone",
+   kscore:"∞",kscoreClass:"max",
+   s1:{l:"Jobs Cut",v:"1,750"},s2:{l:"What They Sell",v:"HR SOFTWARE"},s3:{l:"Date",v:"FEB 24, 2026"},
+   atk:"1,750",def:"IRONIC",
+   flavor:"A company that makes HR software used AI to fire 1,750 people from HR. The tool they sell is the tool that replaced them. The layoff emails were probably generated by their own product. Nobody confirmed this. Nobody had to.",
+   symbol:"🔄",color:"legendary"},
+  {id:"the-meta-purge",name:"THE META PURGE",rarity:"LEGENDARY",category:"JobGone",artClass:"art-the-meta-purge",series:"jobgone",
+   kscore:"∞",kscoreClass:"max",
+   s1:{l:"Jobs Cut",v:"16,000"},s2:{l:"AI Infrastructure Budget",v:"$600,000,000,000"},s3:{l:"Date",v:"MAR 2026"},
+   atk:"16K",def:"HUMANS OUT",
+   flavor:"16,000 jobs to finance a $600 billion AI infrastructure investment. The company that wants to build the metaverse decided it needed fewer humans to do it. The math is simple: each person costs $200K loaded. The GPU costs more but doesn't ask for parental leave.",
+   symbol:"👁️",color:"legendary"},
+  {id:"the-atlassian-cut",name:"THE ATLASSIAN CUT",rarity:"RARE",category:"JobGone",artClass:"art-the-atlassian-cut",series:"jobgone",
+   kscore:"∞",kscoreClass:"max",
+   s1:{l:"Jobs Cut",v:"1,600"},s2:{l:"What They Make",v:"JIRA"},s3:{l:"Date",v:"MAR 15, 2026"},
+   atk:"1,600",def:"TICKETS CLOSED",
+   flavor:"They make Jira. The project management tool that tracks who does what. On March 15th the tool tracked 1,600 people doing nothing, because those people no longer worked there. The tickets wrote themselves out of a job. Status: Done.",
+   symbol:"📋",color:"rare"},
+  {id:"the-logistics-wave",name:"THE LOGISTICS WAVE",rarity:"RARE",category:"JobGone",artClass:"art-the-logistics-wave",series:"jobgone",
+   kscore:"∞",kscoreClass:"max",
+   s1:{l:"Kuehne+Nagel Jobs Cut",v:"2,000"},s2:{l:"WiseTech Jobs Cut",v:"2,000"},s3:{l:"Combined",v:"4,000"},
+   atk:"4,000",def:"OPTIMIZED OUT",
+   flavor:"Two logistics companies, same month, same number. Kuehne+Nagel: 2,000. WiseTech: 2,000. The supply chain optimized the humans out. The packages still arrive. The warehouses still hum. The people who made them hum are updating their LinkedIn profiles from the parking lot.",
+   symbol:"📦",color:"rare"},
+  {id:"the-495k",name:"THE 495K",rarity:"UNCOMMON",category:"JobGone",artClass:"art-the-495k",series:"jobgone",
+   kscore:"∞",kscoreClass:"max",
+   s1:{l:"Total Jobs Tracked",v:"495,599"},s2:{l:"Companies",v:"75"},s3:{l:"Events Logged",v:"553"},
+   atk:"496K",def:"AND COUNTING",
+   flavor:"495,599 jobs. 75 companies. 553 events. A spreadsheet of human cost that updates daily at 7am UTC. Someone is maintaining it. It is very well-organized. Each row is a person who got an email. The spreadsheet doesn't know that. Spreadsheets never do.",
+   symbol:"📊",color:"uncommon"},
+  {id:"the-direct-attribution",name:"THE DIRECT ATTRIBUTION",rarity:"UNCOMMON",category:"JobGone",artClass:"art-the-direct-attribution",series:"jobgone",
+   kscore:"∞",kscoreClass:"max",
+   s1:{l:"Companies That Said 'AI' Out Loud",v:"60+"},s2:{l:"Companies That Said 'Restructuring'",v:"~15"},s3:{l:"Difference",v:"NONE"},
+   atk:"60+",def:"SAID IT",
+   flavor:"60 companies said the word 'AI' when they fired people. The other 15 said 'restructuring' or 'strategic realignment' or 'workforce optimization.' The severance was the same. The result was the same. The only difference was whether the press release had the honesty to name the machine.",
+   symbol:"🎯",color:"uncommon"},
+  {id:"the-vercel-nine",name:"THE VERCEL NINE",rarity:"UNCOMMON",category:"JobGone",artClass:"art-the-vercel-nine",series:"jobgone",
+   kscore:"∞",kscoreClass:"max",
+   s1:{l:"Jobs Cut",v:"9"},s2:{l:"Date",v:"MAR 6, 2026"},s3:{l:"What Vercel Hosts",v:"THIS WEBSITE"},
+   atk:"9",def:"PEOPLE",
+   flavor:"Nine jobs. The company that hosts this website fired 9 people and cited AI. You are looking at this card on infrastructure maintained by a company that decided it needed fewer humans. Nine isn't a lot. It's a lot if you're one of them.",
+   symbol:"▲",color:"uncommon"},
+  {id:"the-severance-package",name:"THE SEVERANCE PACKAGE",rarity:"COMMON",category:"JobGone",artClass:"art-the-severance-package",series:"jobgone",
+   kscore:"∞",kscoreClass:"max",
+   s1:{l:"Avg Severance",v:"3 WEEKS"},s2:{l:"Wellness Link Included",v:"YES"},s3:{l:"EAP Number Included",v:"YES"},
+   atk:"3",def:"WEEKS",
+   flavor:"The email. Three weeks. A wellness link that goes to a website with stock photos of people hiking. A number for the Employee Assistance Program. Four free sessions. The therapist they connect you with is also worried about being replaced. Nobody says this out loud.",
+   symbol:"✉️",color:"common"},
+  {id:"the-tracker",name:"THE TRACKER",rarity:"JUNK",category:"Lore · JobGone",artClass:"art-the-tracker",series:"jobgone",
+   kscore:"∞",kscoreClass:"max",
+   s1:{l:"Updates",v:"DAILY AT 7AM UTC"},s2:{l:"Design Quality",v:"EXCELLENT"},s3:{l:"Emotional Impact",v:"DEVASTATING"},
+   atk:"∞",def:"UPDATES",
+   flavor:"Someone built a website to count the bodies. It updates daily. It is very well-designed. Clean typography. Good use of color. Responsive on mobile. This is not comforting. The person who built it probably did it in a weekend. Like Karpathy. The tools for measuring the damage are getting better faster than the damage is slowing down.",
+   symbol:"🔍",color:"junk"},
+  {id:"march-2026",name:"MARCH 2026",rarity:"JUNK",category:"Lore · JobGone",artClass:"art-march-2026",series:"jobgone",
+   kscore:"∞",kscoreClass:"max",
+   s1:{l:"Jobs Lost This Month",v:"35,117"},s2:{l:"Running Total",v:"495,599"},s3:{l:"Parties Thrown",v:"0"},
+   atk:"35K",def:"THIS MONTH",
+   flavor:"The month the tracker hit half a million. 495,599 and climbing. Nobody threw a party. Nobody held a vigil. It was a Tuesday. The number ticked over sometime between a Workday earnings call and an Atlassian restructuring memo. March 2026. Remember it or don't. The spreadsheet will.",
+   symbol:"📅",color:"junk"},
 ];
 
 const RARITY_ORDER = ["LEGENDARY","RARE","UNCOMMON","COMMON","JUNK"];
@@ -2197,6 +2658,12 @@ function buildPack(type) {
   } else if (type==='lore') {
     if(Math.random()<0.4) { pack.push(CARDS.find(c=>c.id==='speciation-pressure')); for(let i=0;i<4;i++) pack.push(pickCard(WEIGHTS_LORE)); }
     else { for(let i=0;i<5;i++) pack.push(pickCard(WEIGHTS_LORE)); }
+  } else if (type==='karpathy') {
+    const kCards = CARDS.filter(c=>c.series==='karpathy');
+    for(let i=0;i<5;i++) { pack.push(kCards[Math.floor(Math.random()*kCards.length)]); }
+  } else if (type==='jobgone') {
+    const jCards = CARDS.filter(c=>c.series==='jobgone');
+    for(let i=0;i<5;i++) { pack.push(jCards[Math.floor(Math.random()*jCards.length)]); }
   }
 
   // Pity: force one Legendary in a random slot if no legendary already present
@@ -2287,7 +2754,7 @@ function openPack(type) {
   // Consume daily pack
   consumeDailyPack();
 
-  const labels = {standard:'STANDARD PACK',rare:'PURPOSE PACK',legendary:'TRADE PACK',lore:'LORE PACK'};
+  const labels = {standard:'STANDARD PACK',rare:'PURPOSE PACK',legendary:'TRADE PACK',lore:'LORE PACK',karpathy:'KARPATHY SCORES',jobgone:'JOBGONE TRACKER'};
   document.getElementById('op-pack-name').textContent = labels[type];
   document.getElementById('legendaryBeam').classList.remove('active');
 
