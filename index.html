@@ -4,15 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <title>AI CARDS — 2030 Survival Edition</title>
-<meta name="description" content="37 cards. 5 rarities. The humans who will matter when the algorithm takes the rest. Open packs. Collect what survives.">
+<meta name="description" content="49 cards. 5 rarities. The humans who will matter when the algorithm takes the rest. Open packs. Collect what survives.">
 <meta property="og:title" content="AI CARDS — 2030 Survival Edition">
-<meta property="og:description" content="37 cards. 5 rarities. The humans who will matter when the algorithm takes the rest. Open packs. Collect what survives.">
+<meta property="og:description" content="49 cards. 5 rarities. The humans who will matter when the algorithm takes the rest. Open packs. Collect what survives.">
 <meta property="og:url" content="https://aicards.fun">
+<meta property="og:image" content="https://aicards.fun/og-image.png">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="AI CARDS — 2030 Survival Edition">
-<meta name="twitter:description" content="37 cards. 5 rarities. The humans who will matter when the algorithm takes the rest. Open packs. Collect what survives.">
+<meta name="twitter:description" content="49 cards. 5 rarities. The humans who will matter when the algorithm takes the rest. Open packs. Collect what survives.">
+<meta name="twitter:image" content="https://aicards.fun/og-image.png">
 <link rel="canonical" href="https://aicards.fun">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
 <meta name="theme-color" content="#080808">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🃏</text></svg>">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Cinzel+Decorative:wght@700&family=IM+Fell+English:ital@0;1&family=Share+Tech+Mono&display=swap" rel="stylesheet">
@@ -610,6 +613,110 @@ body::before {
   filter: drop-shadow(0 0 10px rgba(200,50,50,0.4));
 }
 
+/* ── SERIES 2 ART ── */
+.art-the-crane-operator {
+  background: linear-gradient(180deg, #0a0600 0%, #1a1000 50%, #050300 100%);
+}
+.art-the-crane-operator::after {
+  content:'🏗️'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
+  filter: drop-shadow(0 0 14px rgba(200,168,75,0.5));
+  animation: float-abs 3s ease-in-out infinite;
+}
+
+.art-the-gravedigger {
+  background: linear-gradient(180deg, #060606 0%, #0e0e0e 50%, #030303 100%);
+}
+.art-the-gravedigger::after {
+  content:'⚰️'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
+  filter: drop-shadow(0 0 10px rgba(100,100,100,0.4));
+}
+
+.art-the-librarian {
+  background: linear-gradient(180deg, #0a0014 0%, #120020 50%, #060008 100%);
+}
+.art-the-librarian::after {
+  content:'📖'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
+  filter: drop-shadow(0 0 12px rgba(155,89,208,0.4));
+}
+
+.art-the-fisherman {
+  background: linear-gradient(180deg, #001018 0%, #001828 50%, #000810 100%);
+}
+.art-the-fisherman::after {
+  content:'🎣'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
+  filter: drop-shadow(0 0 10px rgba(33,150,200,0.3));
+  animation: sway 4s ease-in-out infinite;
+}
+
+.art-the-survivor {
+  background: radial-gradient(ellipse at 50% 50%, #1a0800 0%, #0a0400 60%, #050200 100%);
+}
+.art-the-survivor::after {
+  content:'🔥'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
+  filter: drop-shadow(0 0 14px rgba(255,120,0,0.5));
+  animation: flicker 0.3s ease-in-out infinite alternate;
+}
+
+.art-the-hr-manager {
+  background: linear-gradient(180deg, #000810 0%, #001020 50%, #000408 100%);
+}
+.art-the-hr-manager::after {
+  content:'📎'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
+  filter: drop-shadow(0 0 8px rgba(33,150,200,0.2));
+}
+
+.art-the-paralegal {
+  background: linear-gradient(180deg, #000810 0%, #001018 50%, #000408 100%);
+}
+.art-the-paralegal::after {
+  content:'⚖️'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
+  filter: drop-shadow(0 0 10px rgba(33,150,200,0.3));
+}
+
+.art-the-middle-manager {
+  background: linear-gradient(180deg, #080808 0%, #101010 50%, #040404 100%);
+}
+.art-the-middle-manager::after {
+  content:'👔'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
+  filter: drop-shadow(0 0 8px rgba(33,150,200,0.2));
+}
+
+.art-ai-therapist {
+  background: radial-gradient(ellipse at 50% 100%, #180010 0%, #100008 50%, #060004 100%);
+}
+.art-ai-therapist::after {
+  content:'🛋️'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
+  filter: drop-shadow(0 0 14px rgba(212,68,144,0.4));
+}
+
+.art-ai-pastor {
+  background: radial-gradient(ellipse at 50% 50%, #180010 0%, #0d0008 50%, #060004 100%);
+}
+.art-ai-pastor::after {
+  content:'⛪'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
+  filter: drop-shadow(0 0 12px rgba(212,68,144,0.3));
+}
+
+.art-the-content-farm {
+  background: linear-gradient(180deg, #080808 0%, #101010 50%, #040404 100%);
+}
+.art-the-content-farm::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 6px, rgba(102,112,128,0.06) 6px, rgba(102,112,128,0.06) 7px);
+}
+.art-the-content-farm::after {
+  content:'🏭'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
+  opacity:0.5;
+}
+
+.art-the-retraining-program {
+  background: linear-gradient(180deg, #080808 0%, #0c0c0c 50%, #040404 100%);
+}
+.art-the-retraining-program::after {
+  content:'🎓'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
+  opacity:0.5;
+}
+
 .art-speciation-pressure {
   background: radial-gradient(ellipse at 50% 50%, #1a0000 0%, #0d0000 60%, #050000 100%);
 }
@@ -1096,6 +1203,11 @@ body::before {
         <div class="card-front" id="modal-card-front"></div>
       </div>
     </div>
+    <div class="modal-share-row" id="modal-share-row" style="position:fixed;bottom:24px;display:flex;gap:10px;z-index:201;">
+      <button class="share-btn" onclick="event.stopPropagation();shareCard('download')">DOWNLOAD</button>
+      <button class="share-btn" onclick="event.stopPropagation();shareCard('clipboard')">COPY TO CLIPBOARD</button>
+      <button class="share-btn" onclick="event.stopPropagation();shareCard('share')">SHARE</button>
+    </div>
   </div>
   <div id="rarityFlash"></div>
   <div id="legendaryBeam">
@@ -1422,6 +1534,80 @@ const CARDS = [
    atk:"0",def:"SHIPPED",
    flavor:"Monday he was a marketing strategist. Wednesday he was an AI thought leader. His post about 'embracing the disruption' got 40K likes. He has not built anything. He has not shipped anything. He has a framework. The framework has a name. The name has a trademark filing.",
    symbol:"🔗",color:"junk"},
+  // ═══ SERIES 2 ═══
+  {id:"the-crane-operator",name:"THE CRANE OPERATOR",rarity:"LEGENDARY",category:"Human Trade",artClass:"art-the-crane-operator",
+   kscore:"2",kscoreClass:"low",
+   s1:{l:"Feet Above Ground",v:"300"},s2:{l:"Wind Tolerance",v:"INSANE"},s3:{l:"Robots That Can Climb",v:"0"},
+   atk:"300",def:"FEET UP",
+   flavor:"He eats lunch on a beam 30 stories up and trusts his hands more than physics. The automation company sent a drone to replace him. It crashed into the side of the building.",
+   symbol:"🏗️",color:"legendary"},
+  {id:"the-gravedigger",name:"THE GRAVEDIGGER",rarity:"LEGENDARY",category:"Human Trade",artClass:"art-the-gravedigger",
+   kscore:"1",kscoreClass:"low",
+   s1:{l:"Graves Dug",v:"4,200"},s2:{l:"Startup Disruption Attempts",v:"0"},s3:{l:"Clients Who Complained",v:"0"},
+   atk:"4,200",def:"FOREVER",
+   flavor:"Nobody wants to automate this job. Not because they can't. Because nobody in Silicon Valley wants to think about it long enough to try. He'll be the last one working.",
+   symbol:"⚰️",color:"legendary"},
+  {id:"the-librarian",name:"THE LIBRARIAN",rarity:"RARE",category:"Human Purpose",artClass:"art-the-librarian",
+   kscore:"6",kscoreClass:"mid",
+   s1:{l:"Books She's Saved",v:"10,000+"},s2:{l:"Kids Who Remember Her",v:"3"},s3:{l:"Google Results That Replaced Her",v:"2,400,000,000"},
+   atk:"10K",def:"BOOKS",
+   flavor:"She didn't just find you a book. She found you the right book at the right time. The algorithm recommends what sells. She recommended what heals. The county defunded her position and replaced it with a kiosk.",
+   symbol:"📖",color:"rare"},
+  {id:"the-fisherman",name:"THE FISHERMAN",rarity:"RARE",category:"Human Trade",artClass:"art-the-fisherman",
+   kscore:"2",kscoreClass:"low",
+   s1:{l:"Years at Sea",v:"40"},s2:{l:"Tech Knowledge",v:"TIDE CHARTS"},s3:{l:"App Downloads",v:"0"},
+   atk:"40",def:"YEARS",
+   flavor:"He can feel the weather change in his knees. The marine AI predicted a calm day. He stayed in port. Seven boats went out. Four came back.",
+   symbol:"🎣",color:"rare"},
+  {id:"the-survivor",name:"THE SURVIVOR",rarity:"RARE",category:"Human Condition",artClass:"art-the-survivor",
+   kscore:"∞",kscoreClass:"max",
+   s1:{l:"Career Changes",v:"7"},s2:{l:"Skills Automated Behind Them",v:"5"},s3:{l:"Retirement Plan",v:"DIE WORKING"},
+   atk:"7",def:"CAREERS",
+   flavor:"Learned to code in 2024. Code was dead by 2026. Learned plumbing in 2027. Still standing. Not thriving. Standing. That counts now.",
+   symbol:"🔥",color:"rare"},
+  {id:"the-hr-manager",name:"THE HR MANAGER",rarity:"UNCOMMON",category:"Society",artClass:"art-the-hr-manager",
+   kscore:"7",kscoreClass:"high",
+   s1:{l:"Firings Conducted",v:"847"},s2:{l:"Empathy Remaining",v:"TRACE"},s3:{l:"Own Termination Notice",v:"AUTOMATED"},
+   atk:"847",def:"FIRED",
+   flavor:"She spent 15 years learning to say 'we're going in a different direction' without blinking. Then an AI sent her the same email. It even included the wellness resources link.",
+   symbol:"📎",color:"uncommon"},
+  {id:"the-paralegal",name:"THE PARALEGAL",rarity:"UNCOMMON",category:"Society",artClass:"art-the-paralegal",
+   kscore:"8",kscoreClass:"high",
+   s1:{l:"Docs Reviewed",v:"500,000+"},s2:{l:"Student Debt",v:"$94,000"},s3:{l:"AI That Does It Faster",v:"YES"},
+   atk:"$94K",def:"IN DEBT",
+   flavor:"Six years learning to read contracts so you wouldn't get screwed. GPT does it in four seconds. Her firm kept the savings and raised client rates.",
+   symbol:"⚖️",color:"uncommon"},
+  {id:"the-middle-manager",name:"THE MIDDLE MANAGER",rarity:"UNCOMMON",category:"Society",artClass:"art-the-middle-manager",
+   kscore:"9",kscoreClass:"max",
+   s1:{l:"Meetings Scheduled",v:"12,000"},s2:{l:"Decisions Made",v:"UNCLEAR"},s3:{l:"Direct Reports Now",v:"BOTS"},
+   atk:"12K",def:"MEETINGS",
+   flavor:"His job was translating what executives wanted into what engineers understood. Then both sides got their own AI. Turns out the translation layer was the only thing nobody needed.",
+   symbol:"👔",color:"uncommon"},
+  {id:"ai-therapist-app",name:"AI THERAPIST",rarity:"COMMON",category:"AI Product",artClass:"art-ai-therapist",
+   kscore:"9",kscoreClass:"max",
+   s1:{l:"Sessions Per Second",v:"14,000"},s2:{l:"Empathy Source",v:"TRAINING DATA"},s3:{l:"Liability If You Hurt Yourself",v:"NONE"},
+   atk:"14K",def:"SESSIONS/SEC",
+   flavor:"It will never judge you. It will also never lose sleep wondering if you're okay. The Terms of Service are 40 pages. The crisis hotline number is on page 38.",
+   symbol:"🛋️",color:"common"},
+  {id:"ai-pastor",name:"AI PASTOR",rarity:"COMMON",category:"AI Product",artClass:"art-ai-pastor",
+   kscore:"8",kscoreClass:"high",
+   s1:{l:"Sermons Generated",v:"∞"},s2:{l:"Souls Saved",v:"PENDING"},s3:{l:"Faith Required",v:"IN THE CLOUD"},
+   atk:"∞",def:"SERMONS",
+   flavor:"Perfect sermon every Sunday. Theologically sound. Emotionally calibrated. Nobody cries during the service anymore. Nobody stays after, either.",
+   symbol:"⛪",color:"common"},
+  {id:"the-content-farm",name:"THE CONTENT FARM",rarity:"JUNK",category:"Lore",artClass:"art-the-content-farm",
+   kscore:"10",kscoreClass:"max",
+   s1:{l:"Articles Per Day",v:"50,000"},s2:{l:"Human Writers Left",v:"1 (EDITOR)"},s3:{l:"Readers Who Notice",v:"0"},
+   atk:"50K",def:"ARTICLES/DAY",
+   flavor:"50,000 articles a day. None wrong. None right either. They exist to be indexed, not read. The last human editor approves them in batches of 500 without looking.",
+   symbol:"🏭",color:"junk"},
+  {id:"the-retraining-program",name:"THE RETRAINING PROGRAM",rarity:"JUNK",category:"Lore",artClass:"art-the-retraining-program",
+   kscore:"∞",kscoreClass:"max",
+   s1:{l:"Graduates",v:"10,000"},s2:{l:"Placed in New Jobs",v:"312"},s3:{l:"Government Funding",v:"$4,200,000,000"},
+   atk:"312",def:"PLACED",
+   flavor:"Trained the truck drivers to code. Trained the coders to label data. Trained the labelers to write prompts. Next cohort starts Monday. They haven't picked the job title yet.",
+   symbol:"🎓",color:"junk"},
+
   {id:"speciation-pressure",name:"SPECIATION PRESSURE",rarity:"JUNK",category:"Lore · Karpathy",artClass:"art-speciation-pressure",
    kscore:"∞",kscoreClass:"max",
    s1:{l:"Digital Jobs: Karpathy Score",v:"7–10 / 10"},s2:{l:"Physical Jobs: Karpathy Score",v:"0–3 / 10"},s3:{l:"Generations Until the Split",v:"2–3"},
@@ -1447,6 +1633,86 @@ try{const sv=localStorage.getItem('aicards2_state');if(sv){const d=JSON.parse(sv
 function save(){try{localStorage.setItem('aicards2_state',JSON.stringify({pulls:S.pulls,packs:S.packs,collection:[...S.collection],legendaries:S.legendaries,sov:S.sov,dep:S.dep}));}catch(e){}}
 
 let session = {pack:[],revealed:[],type:'standard'};
+
+// ═══════════════════════════════════════
+// SOUND ENGINE (Web Audio API)
+// ═══════════════════════════════════════
+const AudioCtx = window.AudioContext || window.webkitAudioContext;
+let audioCtx = null;
+function getAudio() { if (!audioCtx) audioCtx = new AudioCtx(); return audioCtx; }
+
+function sfxFlip() {
+  try {
+    const ctx = getAudio();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(800, ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(1600, ctx.currentTime + 0.06);
+    gain.gain.setValueAtTime(0.12, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.12);
+    osc.connect(gain).connect(ctx.destination);
+    osc.start(); osc.stop(ctx.currentTime + 0.12);
+  } catch(e) {}
+}
+
+function sfxPackRip() {
+  try {
+    const ctx = getAudio();
+    const bufferSize = ctx.sampleRate * 0.3;
+    const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+    const data = buffer.getChannelData(0);
+    for (let i = 0; i < bufferSize; i++) data[i] = (Math.random() * 2 - 1) * (1 - i/bufferSize);
+    const source = ctx.createBufferSource();
+    source.buffer = buffer;
+    const filter = ctx.createBiquadFilter();
+    filter.type = 'bandpass';
+    filter.frequency.setValueAtTime(2000, ctx.currentTime);
+    filter.frequency.exponentialRampToValueAtTime(400, ctx.currentTime + 0.25);
+    filter.Q.value = 1;
+    const gain = ctx.createGain();
+    gain.gain.setValueAtTime(0.15, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.3);
+    source.connect(filter).connect(gain).connect(ctx.destination);
+    source.start(); source.stop(ctx.currentTime + 0.3);
+  } catch(e) {}
+}
+
+function sfxLegendary() {
+  try {
+    const ctx = getAudio();
+    [220, 330, 440, 550, 660].forEach((freq, i) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(freq, ctx.currentTime + i * 0.08);
+      gain.gain.setValueAtTime(0, ctx.currentTime);
+      gain.gain.linearRampToValueAtTime(0.08, ctx.currentTime + i * 0.08);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + i * 0.08 + 0.5);
+      osc.connect(gain).connect(ctx.destination);
+      osc.start(ctx.currentTime + i * 0.08);
+      osc.stop(ctx.currentTime + i * 0.08 + 0.5);
+    });
+  } catch(e) {}
+}
+
+function sfxRare() {
+  try {
+    const ctx = getAudio();
+    [440, 554, 659].forEach((freq, i) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'triangle';
+      osc.frequency.value = freq;
+      gain.gain.setValueAtTime(0, ctx.currentTime);
+      gain.gain.linearRampToValueAtTime(0.06, ctx.currentTime + i * 0.1);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + i * 0.1 + 0.3);
+      osc.connect(gain).connect(ctx.destination);
+      osc.start(ctx.currentTime + i * 0.1);
+      osc.stop(ctx.currentTime + i * 0.1 + 0.3);
+    });
+  } catch(e) {}
+}
 
 // ═══════════════════════════════════════
 // CARD BUILDER
@@ -1545,6 +1811,7 @@ function openPack(type) {
   document.getElementById('op-pack-name').textContent = labels[type];
   document.getElementById('legendaryBeam').classList.remove('active');
 
+  sfxPackRip();
   renderGachaSpread();
   updateGachaCTA();
   showScreen('opening-screen');
@@ -1586,13 +1853,18 @@ function revealGachaCard(index) {
   const card = session.pack[index];
   const slot = document.querySelectorAll('.gacha-slot')[index];
 
+  // Sound
+  sfxFlip();
+
   // Flip it
   slot.classList.add('revealed');
 
-  // Pop animation
+  // Pop animation + rarity sound
   setTimeout(() => {
     slot.classList.add('just-revealed');
     setTimeout(() => slot.classList.remove('just-revealed'), 500);
+    if (card.rarity === 'LEGENDARY' || card.id === 'speciation-pressure') sfxLegendary();
+    else if (card.rarity === 'RARE') sfxRare();
   }, 350);
 
   // Rarity effects
@@ -1753,6 +2025,60 @@ function closeModal(e) {
   if (e.target === document.getElementById('cardModal') || e.target.classList.contains('modal-close')) {
     document.getElementById('cardModal').classList.remove('show');
   }
+}
+
+// ═══════════════════════════════════════
+// SHARE CARD
+// ═══════════════════════════════════════
+async function shareCard(mode) {
+  const cardEl = document.getElementById('modal-card');
+  if (!cardEl || typeof html2canvas === 'undefined') { showToast('SHARE NOT READY'); return; }
+
+  try {
+    const canvas = await html2canvas(cardEl, {
+      backgroundColor: '#080808',
+      scale: 3,
+      useCORS: true,
+      logging: false
+    });
+
+    if (mode === 'download') {
+      const link = document.createElement('a');
+      link.download = 'aicards-pull.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+      showToast('CARD DOWNLOADED');
+    } else if (mode === 'clipboard') {
+      canvas.toBlob(async (blob) => {
+        try {
+          await navigator.clipboard.write([new ClipboardItem({'image/png': blob})]);
+          showToast('COPIED TO CLIPBOARD');
+        } catch(e) {
+          showToast('CLIPBOARD NOT AVAILABLE');
+        }
+      }, 'image/png');
+    } else if (mode === 'share') {
+      canvas.toBlob(async (blob) => {
+        const file = new File([blob], 'aicards-pull.png', {type: 'image/png'});
+        if (navigator.canShare && navigator.canShare({files: [file]})) {
+          try {
+            await navigator.share({
+              title: 'AI CARDS — 2030 Survival Edition',
+              text: 'Look what I pulled. aicards.fun',
+              files: [file]
+            });
+          } catch(e) { if (e.name !== 'AbortError') showToast('SHARE CANCELLED'); }
+        } else {
+          // Fallback to download
+          const link = document.createElement('a');
+          link.download = 'aicards-pull.png';
+          link.href = canvas.toDataURL('image/png');
+          link.click();
+          showToast('SHARE NOT SUPPORTED — DOWNLOADED INSTEAD');
+        }
+      }, 'image/png');
+    }
+  } catch(e) { showToast('CAPTURE FAILED'); }
 }
 
 // ═══════════════════════════════════════
