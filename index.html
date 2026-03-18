@@ -1229,65 +1229,140 @@ body::before {
 .coll-entry:not(.missing):hover { transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,0.4); }
 
 /* ════════════════════════════════════════
-   GACHA SPREAD — 5 cards in arc
+   STACKED CARD DECK — one at a time
    ════════════════════════════════════════ */
-.gacha-spread {
-  display:flex;
-  justify-content:center;
-  align-items:flex-end;
-  gap:8px;
-  perspective:1200px;
-  padding:20px 0 10px;
-  min-height:460px;
-}
-
-.gacha-slot {
+.card-deck {
   position:relative;
+  width:280px;height:420px;
+  perspective:1200px;
+  margin:0 auto;
+}
+
+.deck-card {
+  position:absolute;
+  inset:0;
   transform-style:preserve-3d;
+  transition:transform 0.5s ease, opacity 0.4s ease;
   cursor:pointer;
-  transition:transform 0.3s ease;
 }
-.gacha-slot:hover:not(.revealed) { transform:translateY(-12px) scale(1.03); }
-.gacha-slot.revealed { cursor:default; }
-
-/* Entry animation — cards fly in staggered */
-.gacha-slot { animation:gachaEntry 0.6s cubic-bezier(.2,.8,.3,1) backwards; }
-.gacha-slot:nth-child(1) { animation-delay:0.1s; }
-.gacha-slot:nth-child(2) { animation-delay:0.2s; }
-.gacha-slot:nth-child(3) { animation-delay:0.3s; }
-.gacha-slot:nth-child(4) { animation-delay:0.4s; }
-.gacha-slot:nth-child(5) { animation-delay:0.5s; }
-
-@keyframes gachaEntry {
-  0% { transform:translateY(200px) scale(0.3) rotateZ(15deg);opacity:0; }
-  100% { transform:translateY(0) scale(1) rotateZ(0);opacity:1; }
-}
+/* Stack offset: cards behind are slightly shifted */
+.deck-card[data-depth="1"] { transform:translate(4px,-4px) scale(0.97); z-index:4; }
+.deck-card[data-depth="2"] { transform:translate(8px,-8px) scale(0.94); z-index:3; }
+.deck-card[data-depth="3"] { transform:translate(12px,-12px) scale(0.91); z-index:2; }
+.deck-card[data-depth="4"] { transform:translate(16px,-16px) scale(0.88); z-index:1; }
+.deck-card[data-depth="0"] { z-index:5; }
+.deck-card.active-card { z-index:10; }
+.deck-card.active-card:hover:not(.revealed) { transform:translateY(-6px) scale(1.02); }
 
 /* Rarity hint glow — pulses on the card back before reveal */
-.gacha-slot .card-back { position:relative; }
-.gacha-slot:not(.revealed) .card-back::after {
+.deck-card .card-back { position:relative; }
+.deck-card:not(.revealed) .card-back::after {
   content:'';position:absolute;inset:-3px;border-radius:14px;
   pointer-events:none;z-index:2;
   animation:rarityPulse 2s ease-in-out infinite;
 }
-.gacha-slot.hint-legendary .card-back::after { box-shadow:0 0 20px rgba(200,168,75,0.5),0 0 40px rgba(200,168,75,0.2); }
-.gacha-slot.hint-rare .card-back::after     { box-shadow:0 0 16px rgba(155,89,208,0.4),0 0 30px rgba(155,89,208,0.15); }
-.gacha-slot.hint-uncommon .card-back::after  { box-shadow:0 0 10px rgba(33,150,200,0.3); }
-.gacha-slot.hint-common .card-back::after    { box-shadow:0 0 6px rgba(212,68,144,0.2); }
-.gacha-slot.hint-junk .card-back::after      { box-shadow:none; }
+.deck-card.hint-legendary .card-back::after { box-shadow:0 0 20px rgba(200,168,75,0.5),0 0 40px rgba(200,168,75,0.2); }
+.deck-card.hint-rare .card-back::after     { box-shadow:0 0 16px rgba(155,89,208,0.4),0 0 30px rgba(155,89,208,0.15); }
+.deck-card.hint-uncommon .card-back::after  { box-shadow:0 0 10px rgba(33,150,200,0.3); }
+.deck-card.hint-common .card-back::after    { box-shadow:0 0 6px rgba(212,68,144,0.2); }
+.deck-card.hint-junk .card-back::after      { box-shadow:none; }
 @keyframes rarityPulse { 0%,100%{opacity:0.4}50%{opacity:1} }
 
-/* Flip animation for gacha slot */
-.gacha-slot .card { transition:transform 0.7s cubic-bezier(.4,0,.2,1); }
-.gacha-slot.revealed .card { transform:rotateY(180deg); }
+/* Flip animation for deck card */
+.deck-card .card { transition:transform 0.7s cubic-bezier(.4,0,.2,1); }
+.deck-card.revealed .card { transform:rotateY(180deg); }
 
-/* Reveal pop — card scales up briefly */
-.gacha-slot.just-revealed { animation:revealPop 0.5s ease; }
+/* Reveal pop */
+.deck-card.just-revealed { animation:revealPop 0.5s ease; }
 @keyframes revealPop {
   0% { transform:scale(1); }
   40% { transform:scale(1.12) translateY(-8px); }
   100% { transform:scale(1); }
 }
+
+/* Swipe away to left/right after browsing past */
+.deck-card.swipe-left { transform:translateX(-120%) rotate(-8deg);opacity:0;pointer-events:none; }
+.deck-card.swipe-right { transform:translateX(120%) rotate(8deg);opacity:0;pointer-events:none; }
+
+/* Card counter at top */
+.deck-counter {
+  font-family:var(--font-mono);font-size:12px;letter-spacing:3px;color:#555;
+  text-align:center;margin-bottom:16px;
+}
+
+/* Arrow navigation */
+.deck-nav {
+  display:flex;align-items:center;justify-content:center;gap:24px;margin-top:20px;
+}
+.deck-arrow {
+  width:44px;height:44px;border-radius:50%;
+  border:1px solid #222;background:transparent;color:#555;
+  font-size:18px;cursor:pointer;transition:all .2s;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-mono);
+}
+.deck-arrow:hover:not(:disabled) { border-color:var(--red);color:var(--red); }
+.deck-arrow:disabled { opacity:0.2;cursor:default; }
+
+/* Daily packs counter */
+.daily-packs-bar {
+  text-align:center;padding:16px 0 8px;
+}
+.daily-packs-count {
+  font-family:var(--font-title);font-size:18px;letter-spacing:2px;
+  color:var(--gold);text-shadow:0 0 12px rgba(200,168,75,0.3);
+}
+.daily-packs-timer {
+  font-family:var(--font-mono);font-size:9px;letter-spacing:2px;color:#444;margin-top:4px;
+}
+.daily-packs-pity {
+  font-family:var(--font-mono);font-size:8px;letter-spacing:2px;color:#333;margin-top:2px;
+}
+
+/* Daily missions box */
+.daily-missions {
+  border:1px solid #1a1a1a;background:#060606;padding:16px 20px;
+  margin-top:24px;max-width:480px;margin-left:auto;margin-right:auto;
+}
+.daily-missions-title {
+  font-family:var(--font-title);font-size:11px;letter-spacing:3px;color:var(--gold);
+  margin-bottom:10px;text-align:center;
+}
+.mission-row {
+  display:flex;justify-content:space-between;align-items:center;
+  padding:5px 0;border-bottom:1px solid #111;
+  font-family:var(--font-mono);font-size:8px;letter-spacing:1px;
+}
+.mission-row:last-child { border-bottom:none; }
+.mission-label { color:#666; }
+.mission-progress { color:var(--gold);letter-spacing:2px; }
+.mission-progress.done { color:#40c040; }
+
+/* Sound toggle */
+.sound-toggle {
+  position:fixed;top:12px;right:12px;z-index:400;
+  width:32px;height:32px;border-radius:50%;
+  border:1px solid #222;background:#0a0a0a;
+  cursor:pointer;transition:all .2s;
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;
+}
+.sound-toggle:hover { border-color:#444; }
+.sound-toggle.on { border-color:#2a6a2a;box-shadow:0 0 8px rgba(40,160,40,0.2); }
+
+/* Pack summary after all 5 revealed */
+.pack-summary {
+  text-align:center;margin-top:16px;
+}
+.pack-summary-cards {
+  display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin:12px 0;
+}
+.pack-summary-mini {
+  width:36px;height:52px;border-radius:4px;border:1.5px solid;
+  display:flex;align-items:center;justify-content:center;font-size:16px;
+  cursor:pointer;transition:transform .2s;
+}
+.pack-summary-mini:hover { transform:scale(1.15) translateY(-3px); }
 
 /* Screen shake */
 @keyframes shake {
@@ -1335,7 +1410,7 @@ body::before {
   .modal-share-row{flex-wrap:wrap;gap:6px;justify-content:center;bottom:12px!important}
   .share-btn{padding:8px 14px;font-size:8px}
   .pack-grid{grid-template-columns:1fr 1fr}
-  .gacha-spread{gap:4px;padding:12px 4px 8px;min-height:270px}
+  .card-deck{width:160px;height:240px}
   .skip-btn{padding:8px 20px;font-size:8px}
 }
 
@@ -1353,13 +1428,15 @@ body::before {
   .modal-share-row{flex-direction:column;align-items:center;bottom:8px!important;gap:4px}
   .share-btn{padding:10px 18px;font-size:9px;width:80vw;text-align:center}
   .pack-grid{grid-template-columns:1fr}
-  .gacha-spread{gap:2px;padding:8px 2px 6px;min-height:220px}
+  .card-deck{width:130px;height:195px}
   .skip-btn{padding:10px 22px;font-size:9px}
+  .deck-arrow{width:36px;height:36px;font-size:14px}
 }
 </style>
 </head>
 <body>
 <div id="app">
+  <button class="sound-toggle on" id="sound-toggle" onclick="toggleSound()" title="Toggle sound">🔊</button>
   <div id="toast" class="toast"></div>
   <div id="cardModal" class="modal-overlay" onclick="closeModal(event)">
     <div class="modal-close">[ ESC ]</div>
@@ -1426,6 +1503,11 @@ body::before {
           <button class="nav-pill" onclick="showScreen('collection-screen')">COLLECTION</button>
         </div>
       </div>
+      <div class="daily-packs-bar">
+        <div class="daily-packs-count">DAILY PACKS: <span id="dp-remaining">10</span> / 10</div>
+        <div class="daily-packs-timer" id="dp-timer">Next pack in: --:--</div>
+        <div class="daily-packs-pity"><span id="dp-pity-pulls">0</span> pulls until Gold Pack</div>
+      </div>
       <div class="stats-bar">
         <div class="stat-chip">PULLS: <span id="st-pulls">0</span></div>
         <div class="stat-chip">OWNED: <span id="st-owned">0</span>/<span id="st-total">0</span></div>
@@ -1463,22 +1545,33 @@ body::before {
           <button class="pack-btn">▶ OPEN PACK</button>
         </div>
       </div>
+      <div class="daily-missions" id="daily-missions">
+        <div class="daily-missions-title">DAILY MISSIONS</div>
+        <div class="mission-row"><span class="mission-label">Open 5 packs</span><span class="mission-progress" id="dm-packs">0/5</span></div>
+        <div class="mission-row"><span class="mission-label">Pull at least one Legendary</span><span class="mission-progress" id="dm-legendary">0/1</span></div>
+        <div class="mission-row"><span class="mission-label">Share a card</span><span class="mission-progress" id="dm-share">0/1</span></div>
+        <div class="mission-row"><span class="mission-label">Complete your collection</span><span class="mission-progress" id="dm-collection">0/<span id="dm-coll-total">49</span></span></div>
+      </div>
       <div id="profile-zone"></div>
     </div>
   </div>
 
-  <!-- OPENING SCREEN — GACHA STYLE -->
+  <!-- OPENING SCREEN — STACKED DECK -->
   <div class="screen" id="opening-screen">
     <div class="opening-wrap">
       <div class="opening-head">
         <div class="opening-pack-name" id="op-pack-name">STANDARD PACK</div>
-        <div class="opening-progress" id="op-progress">TAP EACH CARD TO REVEAL</div>
+        <div class="deck-counter" id="deck-counter">1 / 5</div>
       </div>
-      <div class="gacha-spread" id="gacha-spread">
-        <!-- 5 card slots populated by JS -->
+      <div class="card-deck" id="card-deck">
+        <!-- 5 stacked cards populated by JS -->
       </div>
-      <div class="reveal-cta" id="reveal-cta">
-        <div class="reveal-hint">▼ TAP CARDS TO REVEAL ▼</div>
+      <div class="deck-nav" id="deck-nav">
+        <button class="deck-arrow" id="deck-prev" onclick="deckNav(-1)" disabled>&lt;</button>
+        <div class="reveal-hint" id="deck-hint" style="font-family:var(--font-mono);font-size:9px;letter-spacing:3px;color:#2a2a2a;animation:blink 1.6s infinite;">TAP TO REVEAL</div>
+        <button class="deck-arrow" id="deck-next" onclick="deckNav(1)" disabled>&gt;</button>
+      </div>
+      <div class="reveal-cta" id="reveal-cta" style="margin-top:12px;">
       </div>
     </div>
   </div>
@@ -1838,16 +1931,134 @@ function collectionHas(id){return id in S.collection;}
 function collectionSize(){return Object.keys(S.collection).length;}
 function collectionAdd(id){S.collection[id]=(S.collection[id]||0)+1;}
 
-let session = {pack:[],revealed:[],type:'standard'};
+let session = {pack:[],revealed:[],type:'standard',currentIndex:0};
+
+// ═══════════════════════════════════════
+// DAILY PACK SYSTEM
+// ═══════════════════════════════════════
+const DAILY_MAX = 10;
+const GOLD_PACK_PITY = 50; // pulls until gold pack
+
+function getDailyKey() {
+  const d = new Date();
+  return `aicards_daily_${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+}
+
+function getDailyState() {
+  const key = getDailyKey();
+  try {
+    const raw = localStorage.getItem(key);
+    if (raw) return JSON.parse(raw);
+  } catch(e) {}
+  return { packsOpened: 0, legendaryPulled: false, shared: false };
+}
+
+function saveDailyState(ds) {
+  localStorage.setItem(getDailyKey(), JSON.stringify(ds));
+}
+
+function getDailyPacksRemaining() {
+  return Math.max(0, DAILY_MAX - getDailyState().packsOpened);
+}
+
+function consumeDailyPack() {
+  const ds = getDailyState();
+  ds.packsOpened++;
+  saveDailyState(ds);
+}
+
+function markDailyLegendary() {
+  const ds = getDailyState();
+  ds.legendaryPulled = true;
+  saveDailyState(ds);
+}
+
+function markDailyShare() {
+  const ds = getDailyState();
+  ds.shared = true;
+  saveDailyState(ds);
+}
+
+function updateDailyUI() {
+  const ds = getDailyState();
+  const remaining = getDailyPacksRemaining();
+  const dpEl = document.getElementById('dp-remaining');
+  if (dpEl) dpEl.textContent = remaining;
+
+  const pityEl = document.getElementById('dp-pity-pulls');
+  if (pityEl) pityEl.textContent = Math.max(0, GOLD_PACK_PITY - S.pulls);
+
+  // Missions
+  const dmPacks = document.getElementById('dm-packs');
+  const dmLeg = document.getElementById('dm-legendary');
+  const dmShare = document.getElementById('dm-share');
+  const dmColl = document.getElementById('dm-collection');
+  const dmCollTotal = document.getElementById('dm-coll-total');
+  if (dmPacks) {
+    const ct = Math.min(5, ds.packsOpened);
+    dmPacks.textContent = `${ct}/5`;
+    dmPacks.classList.toggle('done', ct >= 5);
+  }
+  if (dmLeg) {
+    dmLeg.textContent = ds.legendaryPulled ? '1/1' : '0/1';
+    dmLeg.classList.toggle('done', ds.legendaryPulled);
+  }
+  if (dmShare) {
+    dmShare.textContent = ds.shared ? '1/1' : '0/1';
+    dmShare.classList.toggle('done', ds.shared);
+  }
+  if (dmColl) {
+    const owned = collectionSize();
+    const total = CARDS.length;
+    if (dmCollTotal) dmCollTotal.textContent = total;
+    dmColl.textContent = `${owned}/${total}`;
+    dmColl.classList.toggle('done', owned >= total);
+  }
+}
+
+// Midnight countdown timer
+let dailyTimerInterval = null;
+function startDailyTimer() {
+  if (dailyTimerInterval) clearInterval(dailyTimerInterval);
+  function tick() {
+    const now = new Date();
+    const midnight = new Date(now);
+    midnight.setHours(24,0,0,0);
+    const diff = midnight - now;
+    const h = Math.floor(diff / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    const el = document.getElementById('dp-timer');
+    if (el) el.textContent = `Resets in: ${h}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+  }
+  tick();
+  dailyTimerInterval = setInterval(tick, 1000);
+}
+startDailyTimer();
 
 // ═══════════════════════════════════════
 // SOUND ENGINE (Web Audio API)
 // ═══════════════════════════════════════
 const AudioCtx = window.AudioContext || window.webkitAudioContext;
 let audioCtx = null;
+let sfxMuted = localStorage.getItem('aicards_muted') === 'true';
 function getAudio() { if (!audioCtx) audioCtx = new AudioCtx(); return audioCtx; }
+function isMuted() { return sfxMuted; }
+function toggleSound() {
+  sfxMuted = !sfxMuted;
+  localStorage.setItem('aicards_muted', sfxMuted);
+  const btn = document.getElementById('sound-toggle');
+  btn.textContent = sfxMuted ? '🔇' : '🔊';
+  btn.classList.toggle('on', !sfxMuted);
+}
+// Init sound toggle UI
+(function initSoundToggle() {
+  const btn = document.getElementById('sound-toggle');
+  if (btn) { btn.textContent = sfxMuted ? '🔇' : '🔊'; btn.classList.toggle('on', !sfxMuted); }
+})();
 
 function sfxFlip() {
+  if (isMuted()) return;
   try {
     const ctx = getAudio();
     const osc = ctx.createOscillator();
@@ -1863,6 +2074,7 @@ function sfxFlip() {
 }
 
 function sfxPackRip() {
+  if (isMuted()) return;
   try {
     const ctx = getAudio();
     const bufferSize = ctx.sampleRate * 0.3;
@@ -1885,6 +2097,7 @@ function sfxPackRip() {
 }
 
 function sfxLegendary() {
+  if (isMuted()) return;
   try {
     const ctx = getAudio();
     [220, 330, 440, 550, 660].forEach((freq, i) => {
@@ -1903,6 +2116,7 @@ function sfxLegendary() {
 }
 
 function sfxRare() {
+  if (isMuted()) return;
   try {
     const ctx = getAudio();
     [440, 554, 659].forEach((freq, i) => {
@@ -2039,7 +2253,7 @@ function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   if(id==='collection-screen') renderCollection();
-  if(id==='pack-screen') { updateStats(); renderProfile(); }
+  if(id==='pack-screen') { updateStats(); renderProfile(); updateDailyUI(); }
 }
 
 function updateStats() {
@@ -2055,13 +2269,23 @@ function updateStats() {
 // GACHA PACK OPENING
 // ═══════════════════════════════════════
 function openPack(type) {
+  // Check daily limit
+  if (getDailyPacksRemaining() <= 0) {
+    showToast('NO DAILY PACKS LEFT — RESETS AT MIDNIGHT');
+    return;
+  }
+
   // Pity: increment before build (build reads pityCounter >= 10)
   S.pityCounter++;
   session.pack = buildPack(type);
   session.revealed = new Array(5).fill(false);
   session.type = type;
+  session.currentIndex = 0;
   S.packs++;
   S.newCards.clear();
+
+  // Consume daily pack
+  consumeDailyPack();
 
   const labels = {standard:'STANDARD PACK',rare:'PURPOSE PACK',legendary:'TRADE PACK',lore:'LORE PACK'};
   document.getElementById('op-pack-name').textContent = labels[type];
@@ -2081,29 +2305,33 @@ function openPack(type) {
 
   setTimeout(() => {
     tearEl.classList.remove('tearing');
-    renderGachaSpread();
-    updateGachaCTA();
+    renderCardDeck();
+    updateDeckUI();
     showScreen('opening-screen');
     save();
   }, 900);
 
   updateStats();
+  updateDailyUI();
 }
 
-function renderGachaSpread() {
-  const spread = document.getElementById('gacha-spread');
-  spread.innerHTML = '';
+function renderCardDeck() {
+  const deck = document.getElementById('card-deck');
+  deck.innerHTML = '';
   session.pack.forEach((card, i) => {
-    const slot = document.createElement('div');
+    const el = document.createElement('div');
     const hintClass = 'hint-' + card.rarity.toLowerCase();
-    slot.className = `gacha-slot ${hintClass}`;
-    slot.dataset.index = i;
-    slot.onclick = () => revealGachaCard(i);
+    const depth = i; // 0 = top card
+    el.className = `deck-card ${hintClass}`;
+    el.dataset.index = i;
+    el.dataset.depth = depth;
+    if (i === 0) el.classList.add('active-card');
+    el.onclick = () => revealDeckCard(i);
 
     const isSpeciation = card.id === 'speciation-pressure';
     const colorClass = isSpeciation ? 'junk' : card.color;
 
-    slot.innerHTML = `
+    el.innerHTML = `
       <div class="card" style="transform-style:preserve-3d;">
         <div class="card-back">
           <div class="back-logo">AI CARDS</div>
@@ -2114,33 +2342,29 @@ function renderGachaSpread() {
           ${buildCardHTML(card)}
         </div>
       </div>`;
-    spread.appendChild(slot);
+    deck.appendChild(el);
   });
 }
 
-function revealGachaCard(index) {
+function revealDeckCard(index) {
+  if (index !== session.currentIndex) return;
   if (session.revealed[index]) return;
   session.revealed[index] = true;
 
   const card = session.pack[index];
-  const slot = document.querySelectorAll('.gacha-slot')[index];
+  const el = document.querySelectorAll('.deck-card')[index];
 
-  // Sound
   sfxFlip();
+  el.classList.add('revealed');
 
-  // Flip it
-  slot.classList.add('revealed');
-
-  // Pop animation + rarity sound
   setTimeout(() => {
-    slot.classList.add('just-revealed');
-    setTimeout(() => slot.classList.remove('just-revealed'), 500);
+    el.classList.add('just-revealed');
+    setTimeout(() => el.classList.remove('just-revealed'), 500);
     if (card.rarity === 'LEGENDARY' || card.id === 'speciation-pressure') sfxLegendary();
     else if (card.rarity === 'RARE') sfxRare();
   }, 350);
 
-  // Rarity effects
-  triggerEffect(card, slot);
+  triggerEffect(card, el);
 
   // Track stats
   S.pulls++;
@@ -2150,60 +2374,154 @@ function revealGachaCard(index) {
     S.newCards.add(card.id);
     if (card.rarity==='LEGENDARY') S.legendaries++;
   }
-  // Pity: reset counter on any Legendary pull
-  if (card.rarity==='LEGENDARY') S.pityCounter = 0;
+  if (card.rarity==='LEGENDARY') {
+    S.pityCounter = 0;
+    markDailyLegendary();
+  }
   if (['LEGENDARY','RARE'].includes(card.rarity) && card.category.toLowerCase().includes('human')) S.sov += card.rarity==='LEGENDARY'?3:1;
   if (card.category==='AI Product') S.dep += 2;
   save();
   updateStats();
+  updateDailyUI();
 
-  // Show NEW badge
   if (isNew) {
     const badge = document.createElement('div');
     badge.className = 'new-badge';
     badge.textContent = 'NEW';
-    slot.appendChild(badge);
+    el.appendChild(badge);
   }
 
-  // Update CTA
-  updateGachaCTA();
-
-  // Update progress
-  const revealed = session.revealed.filter(Boolean).length;
-  document.getElementById('op-progress').textContent =
-    revealed < 5 ? `${revealed} OF 5 REVEALED` : 'ALL CARDS REVEALED';
+  updateDeckUI();
 }
 
-function updateGachaCTA() {
-  const cta = document.getElementById('reveal-cta');
-  const revealed = session.revealed.filter(Boolean).length;
+function deckNav(dir) {
+  const newIdx = session.currentIndex + dir;
+  if (newIdx < 0 || newIdx >= 5) return;
+  // Can only go forward if current card is revealed
+  if (dir > 0 && !session.revealed[session.currentIndex]) return;
 
-  if (revealed === 0) {
-    cta.innerHTML = '<div class="reveal-hint">▼ TAP CARDS TO REVEAL ▼</div>';
+  session.currentIndex = newIdx;
+  updateDeckPositions();
+  updateDeckUI();
+}
+
+function updateDeckPositions() {
+  const cards = document.querySelectorAll('.deck-card');
+  cards.forEach((el, i) => {
+    el.classList.remove('active-card','swipe-left','swipe-right');
+    const relPos = i - session.currentIndex;
+    if (relPos < 0) {
+      // Already viewed — stack to left
+      el.classList.add('swipe-left');
+    } else if (relPos === 0) {
+      el.classList.add('active-card');
+      el.dataset.depth = '0';
+      el.style.transform = '';
+    } else {
+      // In the stack behind
+      el.dataset.depth = String(Math.min(relPos, 4));
+      el.classList.remove('swipe-left','swipe-right');
+    }
+  });
+}
+
+function updateDeckUI() {
+  const revealed = session.revealed.filter(Boolean).length;
+  const counter = document.getElementById('deck-counter');
+  const hint = document.getElementById('deck-hint');
+  const prevBtn = document.getElementById('deck-prev');
+  const nextBtn = document.getElementById('deck-next');
+  const cta = document.getElementById('reveal-cta');
+
+  // Counter
+  counter.textContent = `${session.currentIndex + 1} / 5`;
+
+  // Hint
+  if (!session.revealed[session.currentIndex]) {
+    hint.textContent = 'TAP TO REVEAL';
+    hint.style.animation = 'blink 1.6s infinite';
   } else if (revealed < 5) {
-    const remaining = 5 - revealed;
-    cta.innerHTML = `
-      <div class="reveal-hint">${remaining} CARD${remaining>1?'S':''} REMAINING</div>
-      <button class="skip-btn" onclick="revealAll()">SKIP — REVEAL ALL</button>`;
+    hint.textContent = `${5 - revealed} REMAINING`;
+    hint.style.animation = 'none';
+  } else {
+    hint.textContent = '';
+    hint.style.animation = 'none';
+  }
+
+  // Nav arrows
+  prevBtn.disabled = session.currentIndex <= 0;
+  nextBtn.disabled = session.currentIndex >= 4 || !session.revealed[session.currentIndex];
+
+  // CTA area
+  if (revealed < 5) {
+    cta.innerHTML = revealed > 0 ? `<button class="skip-btn" onclick="revealAllDeck()">SKIP — REVEAL ALL</button>` : '';
   } else {
     // All revealed — show summary
     const newCount = S.newCards.size;
     const newText = newCount > 0 ? `${newCount} NEW CARD${newCount>1?'S':''}` : 'NO NEW CARDS';
+    let miniCards = '';
+    session.pack.forEach(c => {
+      const col = RARITY_COLORS[c.rarity] || '#667080';
+      miniCards += `<div class="pack-summary-mini" style="border-color:${col};background:${col}11;" onclick="showCardModal('${c.id}')">${c.symbol}</div>`;
+    });
     cta.innerHTML = `
-      <div class="reveal-hint">PACK COMPLETE · ${newText}</div>
-      <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:6px;">
-        <button class="cta-btn" onclick="showScreen('pack-screen')">▶ OPEN ANOTHER PACK</button>
-        <button class="cta-btn sec" onclick="showScreen('collection-screen')">VIEW COLLECTION</button>
+      <div class="pack-summary">
+        <div class="reveal-hint">PACK COMPLETE · ${newText}</div>
+        <div class="pack-summary-cards">${miniCards}</div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:8px;">
+          <button class="cta-btn" onclick="showScreen('pack-screen')">BACK TO PACKS</button>
+          <button class="cta-btn sec" onclick="copyPackResult()">COPY RESULT</button>
+          <button class="cta-btn sec" onclick="sharePackResult()">SHARE RESULT</button>
+        </div>
       </div>`;
   }
 }
 
-function revealAll() {
-  session.revealed.forEach((r, i) => {
-    if (!r) {
-      setTimeout(() => revealGachaCard(i), i * 150);
+function revealAllDeck() {
+  let delay = 0;
+  for (let i = 0; i < 5; i++) {
+    if (!session.revealed[i]) {
+      setTimeout(() => {
+        session.currentIndex = i;
+        updateDeckPositions();
+        revealDeckCard(i);
+      }, delay);
+      delay += 300;
     }
+  }
+}
+
+function copyPackResult() {
+  const lines = session.pack.map(c => {
+    const star = c.rarity === 'LEGENDARY' ? '★' : c.rarity === 'RARE' ? '◆' : '·';
+    return `${star} ${c.name} (${c.rarity})`;
   });
+  const text = `AI CARDS — Pack Pull\n${lines.join('\n')}\naicards.fun`;
+  navigator.clipboard.writeText(text).then(() => {
+    showToast('RESULT COPIED');
+    markDailyShare();
+    updateDailyUI();
+  }).catch(() => showToast('COPY FAILED'));
+}
+
+function sharePackResult() {
+  const lines = session.pack.map(c => {
+    const star = c.rarity === 'LEGENDARY' ? '★' : c.rarity === 'RARE' ? '◆' : '·';
+    return `${star} ${c.name} (${c.rarity})`;
+  });
+  const text = `AI CARDS — Pack Pull\n${lines.join('\n')}\naicards.fun`;
+  if (navigator.share) {
+    navigator.share({ title: 'AI CARDS Pull', text }).then(() => {
+      markDailyShare();
+      updateDailyUI();
+    }).catch(() => {});
+  } else {
+    navigator.clipboard.writeText(text).then(() => {
+      showToast('COPIED TO CLIPBOARD');
+      markDailyShare();
+      updateDailyUI();
+    }).catch(() => showToast('SHARE NOT AVAILABLE'));
+  }
 }
 
 function triggerEffect(card, slot) {
@@ -2270,13 +2588,17 @@ document.addEventListener('keydown', (e) => {
       showScreen('pack-screen');
     }
   }
-  if (e.key === ' ' || e.key === 'Enter') {
-    if (document.getElementById('opening-screen').classList.contains('active')) {
+  if (document.getElementById('opening-screen').classList.contains('active')) {
+    if (e.key === ' ' || e.key === 'Enter') {
       e.preventDefault();
-      // Reveal next unrevealed card
-      const next = session.revealed.findIndex(r => !r);
-      if (next !== -1) revealGachaCard(next);
+      if (!session.revealed[session.currentIndex]) {
+        revealDeckCard(session.currentIndex);
+      } else if (session.currentIndex < 4) {
+        deckNav(1);
+      }
     }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); deckNav(-1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); deckNav(1); }
   }
 });
 
@@ -2322,11 +2644,13 @@ async function shareCard(mode) {
       link.href = canvas.toDataURL('image/png');
       link.click();
       showToast('CARD DOWNLOADED');
+      markDailyShare(); updateDailyUI();
     } else if (mode === 'clipboard') {
       canvas.toBlob(async (blob) => {
         try {
           await navigator.clipboard.write([new ClipboardItem({'image/png': blob})]);
           showToast('COPIED TO CLIPBOARD');
+          markDailyShare(); updateDailyUI();
         } catch(e) {
           showToast('CLIPBOARD NOT AVAILABLE');
         }
@@ -2466,6 +2790,7 @@ function renderProfile() {
 // ═══════════════════════════════════════
 updateStats();
 renderProfile();
+updateDailyUI();
 </script>
 <script defer src="/_vercel/insights/script.js"></script>
 <script defer src="/_vercel/speed-insights/script.js"></script>
