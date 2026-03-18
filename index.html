@@ -1032,6 +1032,95 @@ body::before {
 .screen { opacity:0;transition:opacity .35s ease; }
 .screen.active { opacity:1; }
 
+/* ════════════════════════════════════════
+   LANDING SCREEN
+   ════════════════════════════════════════ */
+#landing-screen {
+  position:fixed;inset:0;z-index:500;
+  display:none;align-items:center;justify-content:center;
+  background:var(--bg);
+  flex-direction:column;
+  text-align:center;
+  padding:24px;
+  opacity:1;
+  transition:opacity .5s ease;
+}
+#landing-screen.active { display:flex; }
+#landing-screen.fade-out { opacity:0;pointer-events:none; }
+
+/* Drifting card silhouettes */
+.landing-bg {
+  position:absolute;inset:0;overflow:hidden;pointer-events:none;
+}
+.drift-card {
+  position:absolute;
+  width:60px;height:90px;
+  border-radius:6px;
+  border:1px solid rgba(204,17,17,0.12);
+  background:linear-gradient(145deg,rgba(204,17,17,0.04),rgba(0,0,0,0));
+  animation:driftFloat linear infinite;
+  opacity:0;
+}
+@keyframes driftFloat {
+  0%   { transform:translateY(110vh) rotate(var(--rot-start)); opacity:0; }
+  5%   { opacity:var(--max-opacity); }
+  90%  { opacity:var(--max-opacity); }
+  100% { transform:translateY(-20vh) rotate(var(--rot-end)); opacity:0; }
+}
+
+/* Content */
+.landing-content {
+  position:relative;z-index:1;
+  display:flex;flex-direction:column;align-items:center;gap:20px;
+  max-width:600px;
+}
+.landing-eyebrow {
+  font-family:var(--font-mono);font-size:9px;letter-spacing:5px;color:#1e1e1e;
+}
+.landing-title {
+  font-family:var(--font-display);
+  font-size:clamp(42px,10vw,80px);
+  color:var(--red);
+  letter-spacing:8px;
+  line-height:1;
+  text-shadow:0 0 60px rgba(180,20,20,0.5),0 0 120px rgba(180,20,20,0.2);
+}
+.landing-sub {
+  font-family:var(--font-mono);font-size:10px;letter-spacing:5px;color:#2e2e2e;
+  margin-top:-8px;
+}
+.landing-lore {
+  font-family:var(--font-flavor);font-style:italic;
+  font-size:clamp(13px,2.2vw,15px);
+  color:#4a4a4a;
+  line-height:1.9;
+  max-width:480px;
+  border-left:2px solid #1a1a1a;
+  padding-left:16px;
+  text-align:left;
+}
+.landing-open-btn {
+  margin-top:12px;
+  font-family:var(--font-mono);font-size:11px;letter-spacing:4px;
+  padding:16px 52px;
+  border:1px solid var(--red);background:transparent;color:var(--red);
+  cursor:pointer;transition:all .25s;
+  position:relative;overflow:hidden;
+}
+.landing-open-btn::before {
+  content:'';position:absolute;inset:0;
+  background:var(--red);transform:scaleX(0);transform-origin:left;
+  transition:transform .25s ease;z-index:-1;
+}
+.landing-open-btn:hover { color:#000; }
+.landing-open-btn:hover::before { transform:scaleX(1); }
+.landing-coll-link {
+  font-family:var(--font-mono);font-size:8px;letter-spacing:3px;color:#2a2a2a;
+  background:none;border:none;cursor:pointer;transition:color .2s;padding:4px;
+  text-decoration:none;
+}
+.landing-coll-link:hover { color:#555; }
+
 /* ── CARD DETAIL MODAL ── */
 .modal-overlay {
   position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:200;
@@ -1069,6 +1158,54 @@ body::before {
   color:#2a2a2a;cursor:pointer;transition:all .2s;margin-top:12px;
 }
 .reset-btn:hover { border-color:#661111;color:#881111; }
+
+/* ── PACK TEAR ANIMATION ── */
+#packTear {
+  position:fixed;inset:0;z-index:500;pointer-events:none;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;
+  background:rgba(8,8,8,0.92);
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+}
+#packTear.tearing { pointer-events:all;opacity:1; }
+
+.pack-wrapper {
+  position:relative;width:180px;height:260px;
+  display:flex;align-items:center;justify-content:center;
+  border-radius:10px;border:2px solid currentColor;
+  overflow:hidden;
+  background:#0d0d0d;
+  box-shadow:0 0 40px rgba(0,0,0,0.8);
+}
+.pack-wrapper::before {
+  content:'';position:absolute;inset:0;
+  background:repeating-linear-gradient(135deg,transparent,transparent 10px,rgba(255,255,255,0.04) 10px,rgba(255,255,255,0.04) 11px);
+}
+.pack-wrapper-top,.pack-wrapper-bottom {
+  position:absolute;left:0;right:0;height:50%;
+  display:flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:6px;
+  transition:transform 0.8s cubic-bezier(.4,0,.1,1),opacity 0.8s ease;
+}
+.pack-wrapper-top { top:0;border-bottom:1px dashed rgba(255,255,255,0.2); }
+.pack-wrapper-bottom { bottom:0; }
+.pack-brand {
+  font-family:var(--font-display);font-size:18px;letter-spacing:4px;
+  text-shadow:0 0 12px currentColor;
+}
+.pack-label {
+  font-family:var(--font-mono);font-size:8px;letter-spacing:3px;opacity:0.6;
+}
+.pack-pip {
+  width:30px;height:4px;border-radius:2px;background:currentColor;opacity:0.4;
+  position:absolute;bottom:10px;left:50%;transform:translateX(-50%);
+}
+
+/* Tear keyframes */
+@keyframes tearTop { 0%{transform:translateY(0) rotate(0);opacity:1} 100%{transform:translateY(-120%) rotate(-8deg);opacity:0} }
+@keyframes tearBottom { 0%{transform:translateY(0) rotate(0);opacity:1} 100%{transform:translateY(120%) rotate(8deg);opacity:0} }
+#packTear.tearing .pack-wrapper-top { animation:tearTop 0.8s cubic-bezier(.4,0,.1,1) 0.1s forwards; }
+#packTear.tearing .pack-wrapper-bottom { animation:tearBottom 0.8s cubic-bezier(.4,0,.1,1) 0.1s forwards; }
 
 /* ── TOAST ── */
 .toast {
@@ -1185,11 +1322,39 @@ body::before {
 .skip-btn:hover { border-color:#444;color:#666; }
 
 @media(max-width:600px){
-  .card{width:240px;height:360px}
-  .card-art{height:108px}
-  .card-name{font-size:9px}
-  .modal-card-wrap{transform:scale(1.1)}
+  .card{width:160px;height:240px}
+  .card-art{height:72px}
+  .card-name{font-size:7px}
+  .card-type-line{font-size:5px;padding:2px 6px}
+  .card-textbox{font-size:5px;padding:4px 6px}
+  .card-flavor{font-size:4px}
+  .card-ptbox{font-size:6px;padding:2px 5px}
+  .card-set-info{font-size:4px}
+  .card-inner{padding:5px 5px 4px}
+  .modal-card-wrap{transform:scale(0.9)}
+  .modal-share-row{flex-wrap:wrap;gap:6px;justify-content:center;bottom:12px!important}
+  .share-btn{padding:8px 14px;font-size:8px}
   .pack-grid{grid-template-columns:1fr 1fr}
+  .gacha-spread{gap:4px;padding:12px 4px 8px;min-height:270px}
+  .skip-btn{padding:8px 20px;font-size:8px}
+}
+
+@media(max-width:400px){
+  .card{width:130px;height:195px}
+  .card-art{height:56px}
+  .card-name{font-size:6px}
+  .card-type-line{font-size:4px;padding:1px 4px}
+  .card-textbox{font-size:4px;padding:3px 5px}
+  .card-flavor{font-size:3px}
+  .card-ptbox{font-size:5px;padding:1px 4px}
+  .card-set-info{font-size:3px}
+  .card-inner{padding:3px 4px 3px}
+  .modal-card-wrap{transform:scale(0.75)}
+  .modal-share-row{flex-direction:column;align-items:center;bottom:8px!important;gap:4px}
+  .share-btn{padding:10px 18px;font-size:9px;width:80vw;text-align:center}
+  .pack-grid{grid-template-columns:1fr}
+  .gacha-spread{gap:2px;padding:8px 2px 6px;min-height:220px}
+  .skip-btn{padding:10px 22px;font-size:9px}
 }
 </style>
 </head>
@@ -1219,8 +1384,38 @@ body::before {
     <div class="beam" style="animation-delay:1s"></div>
   </div>
 
+  <!-- PACK TEAR OVERLAY -->
+  <div id="packTear">
+    <div class="pack-wrapper" id="packTearInner">
+      <div class="pack-wrapper-top">
+        <div class="pack-brand">AI CARDS</div>
+        <div class="pack-label" id="packTearLabel">STANDARD</div>
+      </div>
+      <div class="pack-wrapper-bottom">
+        <div class="pack-pip"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LANDING SCREEN -->
+  <div id="landing-screen" class="active">
+    <div class="landing-bg" id="landing-bg"></div>
+    <div class="landing-content">
+      <div class="landing-eyebrow">▓▓▓ CLASSIFIED · SERIES ONE · 2030 EDITION ▓▓▓</div>
+      <div class="landing-title">AI CARDS</div>
+      <div class="landing-sub">2030 SURVIVAL EDITION</div>
+      <p class="landing-lore">
+        In 2030, the algorithm took the white-collar jobs first. Then the creative ones.
+        Then the ones nobody thought it could touch. These are the humans who survived.
+        These are the ones who didn't. Open packs. See which world you build.
+      </p>
+      <button class="landing-open-btn" onclick="enterFromLanding('pack-screen')">▶ OPEN PACKS</button>
+      <button class="landing-coll-link" onclick="enterFromLanding('collection-screen')">VIEW COLLECTION</button>
+    </div>
+  </div>
+
   <!-- PACK SELECT -->
-  <div class="screen active" id="pack-screen">
+  <div class="screen" id="pack-screen">
     <div style="width:100%;max-width:960px;">
       <div class="site-header">
         <div class="header-eyebrow">▓▓▓ CLASSIFIED · SERIES ONE · 2030 EDITION ▓▓▓</div>
@@ -1236,6 +1431,7 @@ body::before {
         <div class="stat-chip">OWNED: <span id="st-owned">0</span>/<span id="st-total">0</span></div>
         <div class="stat-chip">LEGENDARIES: <span id="st-leg">0</span></div>
         <div class="stat-chip">PACKS OPENED: <span id="st-packs">0</span></div>
+        <div class="stat-chip">PITY: <span id="st-pity">0</span>/10</div>
       </div>
       <div class="pack-grid">
         <div class="pack-card p-standard" onclick="openPack('standard')">
@@ -1628,9 +1824,19 @@ const RARITY_COLORS = {
 // ═══════════════════════════════════════
 // STATE
 // ═══════════════════════════════════════
-let S = {pulls:0,packs:0,collection:new Set(),legendaries:0,sov:0,dep:0,newCards:new Set()};
-try{const sv=localStorage.getItem('aicards2_state');if(sv){const d=JSON.parse(sv);S.pulls=d.pulls||0;S.packs=d.packs||0;S.collection=new Set(d.collection||[]);S.legendaries=d.legendaries||0;S.sov=d.sov||0;S.dep=d.dep||0;}}catch(e){}
-function save(){try{localStorage.setItem('aicards2_state',JSON.stringify({pulls:S.pulls,packs:S.packs,collection:[...S.collection],legendaries:S.legendaries,sov:S.sov,dep:S.dep}));}catch(e){}}
+// collection is {cardId: count} — tracks duplicate pulls
+let S = {pulls:0,packs:0,collection:{},legendaries:0,sov:0,dep:0,newCards:new Set(),pityCounter:0};
+try{const sv=localStorage.getItem('aicards2_state');if(sv){const d=JSON.parse(sv);S.pulls=d.pulls||0;S.packs=d.packs||0;
+  // Backward compat: old format was an array of ids
+  if(Array.isArray(d.collection)){const obj={};(d.collection||[]).forEach(id=>{obj[id]=1;});S.collection=obj;}
+  else{S.collection=d.collection||{};}
+  S.legendaries=d.legendaries||0;S.sov=d.sov||0;S.dep=d.dep||0;S.pityCounter=d.pityCounter||0;}}catch(e){}
+function save(){try{localStorage.setItem('aicards2_state',JSON.stringify({pulls:S.pulls,packs:S.packs,collection:S.collection,legendaries:S.legendaries,sov:S.sov,dep:S.dep,pityCounter:S.pityCounter}));}catch(e){}}
+
+// Collection helpers
+function collectionHas(id){return id in S.collection;}
+function collectionSize(){return Object.keys(S.collection).length;}
+function collectionAdd(id){S.collection[id]=(S.collection[id]||0)+1;}
 
 let session = {pack:[],revealed:[],type:'standard'};
 
@@ -1766,6 +1972,8 @@ function pickCard(weights, forceRarity) {
 
 function buildPack(type) {
   const pack = [];
+  const pityTriggered = S.pityCounter >= 10;
+
   if (type==='standard') { for(let i=0;i<5;i++) pack.push(pickCard(WEIGHTS)); }
   else if (type==='rare') { for(let i=0;i<5;i++) pack.push(pickCard(WEIGHTS_RARE)); }
   else if (type==='legendary') {
@@ -1776,7 +1984,52 @@ function buildPack(type) {
     if(Math.random()<0.4) { pack.push(CARDS.find(c=>c.id==='speciation-pressure')); for(let i=0;i<4;i++) pack.push(pickCard(WEIGHTS_LORE)); }
     else { for(let i=0;i<5;i++) pack.push(pickCard(WEIGHTS_LORE)); }
   }
+
+  // Pity: force one Legendary in a random slot if no legendary already present
+  if (pityTriggered && !pack.some(c=>c.rarity==='LEGENDARY')) {
+    const legCard = pickCard(WEIGHTS,'LEGENDARY');
+    const slot = Math.floor(Math.random()*pack.length);
+    pack[slot] = legCard;
+  }
+
   return pack;
+}
+
+
+// ═══════════════════════════════════════
+// LANDING SCREEN
+// ═══════════════════════════════════════
+(function initLanding() {
+  const bg = document.getElementById('landing-bg');
+  const COUNT = 18;
+  for (let i = 0; i < COUNT; i++) {
+    const card = document.createElement('div');
+    card.className = 'drift-card';
+    const left = Math.random() * 100;
+    const duration = 14 + Math.random() * 18;
+    const delay = -(Math.random() * duration);
+    const rotStart = (Math.random() - 0.5) * 30;
+    const rotEnd = rotStart + (Math.random() - 0.5) * 20;
+    const opacity = 0.06 + Math.random() * 0.1;
+    card.style.cssText = [
+      `left:${left}%`,
+      `animation-duration:${duration}s`,
+      `animation-delay:${delay}s`,
+      `--rot-start:${rotStart}deg`,
+      `--rot-end:${rotEnd}deg`,
+      `--max-opacity:${opacity}`,
+    ].join(';');
+    bg.appendChild(card);
+  }
+})();
+
+function enterFromLanding(target) {
+  const landing = document.getElementById('landing-screen');
+  landing.classList.add('fade-out');
+  setTimeout(() => {
+    landing.classList.remove('active','fade-out');
+    showScreen(target);
+  }, 500);
 }
 
 // ═══════════════════════════════════════
@@ -1791,16 +2044,19 @@ function showScreen(id) {
 
 function updateStats() {
   document.getElementById('st-pulls').textContent = S.pulls;
-  document.getElementById('st-owned').textContent = S.collection.size;
+  document.getElementById('st-owned').textContent = collectionSize();
   document.getElementById('st-total').textContent = CARDS.length;
   document.getElementById('st-leg').textContent = S.legendaries;
   document.getElementById('st-packs').textContent = S.packs;
+  document.getElementById('st-pity').textContent = S.pityCounter;
 }
 
 // ═══════════════════════════════════════
 // GACHA PACK OPENING
 // ═══════════════════════════════════════
 function openPack(type) {
+  // Pity: increment before build (build reads pityCounter >= 10)
+  S.pityCounter++;
   session.pack = buildPack(type);
   session.revealed = new Array(5).fill(false);
   session.type = type;
@@ -1811,11 +2067,27 @@ function openPack(type) {
   document.getElementById('op-pack-name').textContent = labels[type];
   document.getElementById('legendaryBeam').classList.remove('active');
 
+  // Pack tear animation
+  const PACK_COLORS = {standard:'#2196c8',rare:'#9b59d0',legendary:'#c8a84b',lore:'#667080'};
+  const packColor = PACK_COLORS[type] || '#888';
+  const packTypeLabel = {standard:'STANDARD',rare:'PURPOSE',legendary:'TRADE',lore:'LORE'}[type];
+  const tearEl = document.getElementById('packTear');
+  const tearInner = document.getElementById('packTearInner');
+  tearInner.style.color = packColor;
+  tearInner.style.borderColor = packColor;
+  document.getElementById('packTearLabel').textContent = packTypeLabel;
+  tearEl.classList.add('tearing');
   sfxPackRip();
-  renderGachaSpread();
-  updateGachaCTA();
-  showScreen('opening-screen');
-  save();
+
+  setTimeout(() => {
+    tearEl.classList.remove('tearing');
+    renderGachaSpread();
+    updateGachaCTA();
+    showScreen('opening-screen');
+    save();
+  }, 900);
+
+  updateStats();
 }
 
 function renderGachaSpread() {
@@ -1872,12 +2144,14 @@ function revealGachaCard(index) {
 
   // Track stats
   S.pulls++;
-  const isNew = !S.collection.has(card.id);
+  const isNew = !collectionHas(card.id);
+  collectionAdd(card.id);
   if (isNew) {
-    S.collection.add(card.id);
     S.newCards.add(card.id);
     if (card.rarity==='LEGENDARY') S.legendaries++;
   }
+  // Pity: reset counter on any Legendary pull
+  if (card.rarity==='LEGENDARY') S.pityCounter = 0;
   if (['LEGENDARY','RARE'].includes(card.rarity) && card.category.toLowerCase().includes('human')) S.sov += card.rarity==='LEGENDARY'?3:1;
   if (card.category==='AI Product') S.dep += 2;
   save();
@@ -2091,26 +2365,43 @@ function showToast(msg, duration=2000) {
   setTimeout(()=>t.classList.remove('show'), duration);
 }
 
+// Series boundary: S2 starts at the-crane-operator
+const SERIES2_IDS = new Set(CARDS.slice(CARDS.findIndex(c=>c.id==='the-crane-operator')).map(c=>c.id));
+let collSeriesFilter = 'ALL'; // 'ALL' | 'S1' | 'S2'
+
 // ═══════════════════════════════════════
 // COLLECTION
 // ═══════════════════════════════════════
 function renderCollection() {
   const body = document.getElementById('coll-body');
+  const size = collectionSize();
+  const filterBtns = ['ALL','S1','S2'].map(f=>{
+    const active = collSeriesFilter===f ? ' active' : '';
+    return `<button class="nav-pill${active}" onclick="setCollFilter('${f}')">${f==='S1'?'SERIES 1':f==='S2'?'SERIES 2':'ALL'}</button>`;
+  }).join('');
+
   let html = `<div class="coll-head">
     <div class="coll-title">COLLECTION</div>
-    <div class="coll-count">${S.collection.size} / ${CARDS.length} CARDS · ${Math.round(S.collection.size/CARDS.length*100)}% COMPLETE</div>
-  </div>`;
+    <div class="coll-count">${size} / ${CARDS.length} CARDS · ${Math.round(size/CARDS.length*100)}% COMPLETE</div>
+  </div>
+  <div class="nav-pills" style="justify-content:flex-start;margin-bottom:20px;">${filterBtns}</div>`;
+
   RARITY_ORDER.forEach(rarity=>{
-    const cards = CARDS.filter(c=>c.rarity===rarity);
-    const owned = cards.filter(c=>S.collection.has(c.id)).length;
+    let cards = CARDS.filter(c=>c.rarity===rarity);
+    if(collSeriesFilter==='S1') cards = cards.filter(c=>!SERIES2_IDS.has(c.id));
+    else if(collSeriesFilter==='S2') cards = cards.filter(c=>SERIES2_IDS.has(c.id));
+    if(cards.length===0) return;
+    const owned = cards.filter(c=>collectionHas(c.id)).length;
     const col = RARITY_COLORS[rarity];
     html += `<div class="coll-section">
       <div class="coll-section-label" style="color:${col};border-color:${col}33;">${rarity} · ${owned} / ${cards.length}</div>
       <div class="coll-cards">`;
     cards.forEach(card=>{
-      const isOwned = S.collection.has(card.id);
+      const isOwned = collectionHas(card.id);
+      const count = S.collection[card.id] || 0;
       const onclick = isOwned ? `onclick="showCardModal('${card.id}')"` : '';
-      html += `<div class="coll-entry ${isOwned?'':'missing'}" ${onclick} style="border-color:${col}44;color:${col};background:${isOwned?col+'11':'transparent'};">${card.symbol} ${card.name}</div>`;
+      const badge = isOwned && count > 1 ? `<span style="margin-left:5px;font-size:7px;opacity:0.6;">×${count}</span>` : '';
+      html += `<div class="coll-entry ${isOwned?'':'missing'}" ${onclick} style="border-color:${col}44;color:${col};background:${isOwned?col+'11':'transparent'};">${card.symbol} ${card.name}${badge}</div>`;
     });
     html += `</div></div>`;
   });
@@ -2123,9 +2414,14 @@ function renderCollection() {
   body.innerHTML = html;
 }
 
+function setCollFilter(f) {
+  collSeriesFilter = f;
+  renderCollection();
+}
+
 function resetCollection() {
   if (!confirm('Reset all progress? This cannot be undone.')) return;
-  S = {pulls:0,packs:0,collection:new Set(),legendaries:0,sov:0,dep:0,newCards:new Set()};
+  S = {pulls:0,packs:0,collection:{},legendaries:0,sov:0,dep:0,newCards:new Set(),pityCounter:0};
   save();
   showToast('COLLECTION RESET');
   renderCollection();
@@ -2171,5 +2467,7 @@ function renderProfile() {
 updateStats();
 renderProfile();
 </script>
+<script defer src="/_vercel/insights/script.js"></script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
 </body>
 </html>
