@@ -2798,9 +2798,9 @@ body::before {
   position:fixed;inset:0;z-index:9000;pointer-events:none;
   display:flex;align-items:center;justify-content:center;
   opacity:0;
-  background:rgba(8,8,8,0.92);
+  background:rgba(8,8,8,0.95);
   backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
-  transition:opacity 0.3s ease;
+  transition:opacity 0.5s ease;
 }
 #packTear.tearing { pointer-events:all;opacity:1; }
 
@@ -2864,8 +2864,8 @@ body::before {
 /* Tear keyframes — jagged rip */
 @keyframes tearTop { 0%{transform:translateY(0) rotate(0);opacity:1} 40%{transform:translateY(-2px) rotate(-0.5deg)} 100%{transform:translateY(-140%) rotate(-12deg);opacity:0} }
 @keyframes tearBottom { 0%{transform:translateY(0) rotate(0);opacity:1} 40%{transform:translateY(2px) rotate(0.5deg)} 100%{transform:translateY(140%) rotate(12deg);opacity:0} }
-#packTear.tearing .pack-wrapper-top { animation:tearTop 0.9s cubic-bezier(.2,0,.1,1) 0.15s forwards; }
-#packTear.tearing .pack-wrapper-bottom { animation:tearBottom 0.9s cubic-bezier(.2,0,.1,1) 0.15s forwards; }
+#packTear.tearing .pack-wrapper-top { animation:tearTop 1s cubic-bezier(.2,0,.1,1) 0.3s forwards; }
+#packTear.tearing .pack-wrapper-bottom { animation:tearBottom 1s cubic-bezier(.2,0,.1,1) 0.3s forwards; }
 #packTear.tearing .pack-wrapper::after { animation:none;opacity:0; }
 
 /* ── TOAST ── */
@@ -5113,17 +5113,24 @@ function openPack(type) {
   tearInner.style.color = packColor;
   tearInner.style.borderColor = packColor;
   document.getElementById('packTearLabel').textContent = packTypeLabel;
+  // Prepare the card deck behind the tear overlay
+  renderCardDeck();
+  showScreen('opening-screen');
+
+  // Show pack tear on top of everything
   tearEl.classList.add('tearing');
   sfxPackRip();
 
+  // Hold the tear visible, then fade out and reveal first card
   setTimeout(() => {
     tearEl.classList.remove('tearing');
-    renderCardDeck();
-    showScreen('opening-screen');
-    // Auto-reveal first card after a beat
-    setTimeout(() => revealDeckCard(0), 400);
+    // After tear fades, auto-reveal first card
+    setTimeout(() => {
+      revealDeckCard(0);
+      updateDeckUI();
+    }, 400);
     save();
-  }, 900);
+  }, 1200);
 
   updateStats();
   updateDailyUI();
