@@ -1,0 +1,13 @@
+[project]
+name = "aicards-server"
+version = "0.1.0"
+description = "AI Cards minting API — mints NFT cards on Sui via AdminCap"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.34",
+    "httpx>=0.28",
+]
+
+[tool.ruff]
+line-length = 120
