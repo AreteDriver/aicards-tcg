@@ -2543,6 +2543,21 @@ body::before {
   height:100%;background:var(--red);border-radius:2px;transition:width 0.3s ease;
 }
 
+/* Buy packs section */
+.buy-packs-header {
+  font-family:var(--font-mono);font-size:8px;letter-spacing:3px;color:#60c8ff;margin-bottom:10px;
+}
+.buy-pack-btn {
+  font-family:var(--font-mono);font-size:8px;letter-spacing:2px;
+  padding:8px 18px;border:1px solid #60c8ff;background:rgba(100,200,255,0.06);color:#60c8ff;
+  cursor:pointer;transition:all .25s;display:block;width:100%;
+  box-shadow:0 0 8px rgba(100,200,255,0.1);
+}
+.buy-pack-btn:hover { background:rgba(100,200,255,0.15);box-shadow:0 0 16px rgba(100,200,255,0.25); }
+.buy-pack-price {
+  font-family:var(--font-mono);font-size:7px;color:#444;letter-spacing:1px;margin-top:4px;
+}
+
 /* Footer */
 .site-footer {
   width:100%;max-width:960px;margin-top:40px;padding:20px 0;
@@ -3091,6 +3106,9 @@ body::before {
           <button class="pack-btn">▶ OPEN PACK</button>
         </div>
       </div>
+
+      <!-- BUY EXTRA PACKS — rendered by JS when wallet connected -->
+      <div id="buy-packs-zone"></div>
 
       <!-- SET 2 & 3: rendered by JS for lock state -->
       <div id="chain-banner-zone"></div>
@@ -4598,7 +4616,7 @@ function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   if(id==='collection-screen') renderCollection();
-  if(id==='pack-screen') { updateStats(); renderProfile(); updateDailyUI(); renderWeeklyGoal(); renderChainBanner(); renderChainStatus(); renderSet2Zone(); renderSet3Zone(); renderSet4Zone(); renderSet5Zone(); renderSet6Zone(); }
+  if(id==='pack-screen') { updateStats(); renderProfile(); updateDailyUI(); renderWeeklyGoal(); renderBuyPacks(); renderChainBanner(); renderChainStatus(); renderSet2Zone(); renderSet3Zone(); renderSet4Zone(); renderSet5Zone(); renderSet6Zone(); }
 }
 
 function updateStats() {
@@ -5221,6 +5239,66 @@ function chainBannerDismissed() {
   return localStorage.getItem('aicards_chain_dismissed') === 'true';
 }
 
+function renderBuyPacks() {
+  const zone = document.getElementById('buy-packs-zone');
+  if (!zone) return;
+
+  // Only show when wallet is connected and out of daily packs
+  if (!isChainConnected()) { zone.innerHTML = ''; return; }
+
+  const remaining = getDailyPacksRemaining();
+  const addr = getChainAddress();
+
+  zone.innerHTML = `
+    <div style="width:100%;max-width:960px;margin-bottom:8px;margin-top:20px;">
+      <div class="buy-packs-header">⛓️ BUY EXTRA PACKS · MINT AS NFTs</div>
+    </div>
+    <div class="pack-grid">
+      <div class="pack-card p-standard" style="border-color:rgba(100,200,255,0.3);">
+        <span class="pack-icon-wrap">💎</span>
+        <div class="pack-title" style="color:#60c8ff;">BUY PACK</div>
+        <div class="pack-desc">Unlimited. Minted directly to your wallet as NFTs. Sell, trade, collect on-chain.</div>
+        <div class="pack-meta">5 CARDS · MINTED ON SUI · 0.5 SUI</div>
+        <button class="buy-pack-btn" onclick="buyPackWithSUI('standard')">⛓️ BUY · 0.5 SUI</button>
+        <div class="buy-pack-price">≈ $0.50 · cards minted to ${addr.slice(0,6)}…${addr.slice(-4)}</div>
+      </div>
+      <div class="pack-card p-trade" style="border-color:rgba(200,168,75,0.3);">
+        <span class="pack-icon-wrap">👑</span>
+        <div class="pack-title" style="color:var(--gold);">BUY REDUNDANCY</div>
+        <div class="pack-desc">Guaranteed Legendary. Minted to your wallet. The rarest cards, on-chain forever.</div>
+        <div class="pack-meta">5 CARDS · 1 LEGENDARY · 1.0 SUI</div>
+        <button class="buy-pack-btn" style="border-color:var(--gold);color:var(--gold);box-shadow:0 0 8px rgba(200,168,75,0.1);" onclick="buyPackWithSUI('legendary')">👑 BUY · 1.0 SUI</button>
+        <div class="buy-pack-price">≈ $1.00 · guaranteed legendary NFT</div>
+      </div>
+    </div>`;
+}
+
+async function buyPackWithSUI(packType) {
+  const addr = getChainAddress();
+  if (!addr) { openChainModal(); return; }
+
+  // For now, mint via the API (payment integration coming)
+  // This mints free cards — payment will be added via Treasury contract
+  showToast('MINTING PACK TO YOUR WALLET...');
+
+  try {
+    const res = await fetch(`${MINT_API}/mint/pack`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ sui_address: addr, pack_type: packType }),
+    });
+    const data = await res.json();
+    if (data.success) {
+      const names = data.cards.filter(c=>c.transaction).map(c=>`${c.rarity} ${c.name}`);
+      showToast(`MINTED: ${names.length} CARDS ON-CHAIN`);
+    } else {
+      showToast('MINT FAILED — TRY AGAIN');
+    }
+  } catch(err) {
+    showToast('MINT ERROR — ' + err.message);
+  }
+}
+
 function renderChainBanner() {
   const zone = document.getElementById('chain-banner-zone');
   if (!zone) return;
@@ -5625,6 +5703,7 @@ updateStats();
 renderProfile();
 updateDailyUI();
 renderWeeklyGoal();
+renderBuyPacks();
 renderChainBanner();
 renderChainStatus();
 renderSet2Zone();
