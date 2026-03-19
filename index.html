@@ -23,8 +23,10 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
 :root {
-  --bg: #0c0c0e;
+  --bg: #1a1a1e;
+  --bg-card: #121214;
   --red: #cc1111;
+  --red-glow: rgba(204,17,17,0.4);
   --gold: #c8a84b;
   --gold-light: #f0d060;
   --gold-dark: #6b5520;
@@ -119,17 +121,35 @@ body::before {
 }
 
 /* Outer border — thick, rarity-colored */
+.card-front.mythic    { background: conic-gradient(from 0deg,#ff4040,#f0d060,#40ff40,#40c0ff,#b060ff,#ff4080,#ff4040); border:none;animation:mythicSpin 3s linear infinite; }
 .card-front.legendary { background: linear-gradient(145deg,#c8a84b,#f0d060,#8a6820,#f0d060,#c8a84b); border:none; }
 .card-front.rare      { background: linear-gradient(145deg,#7b40c8,#b070f0,#4a1a80,#b070f0,#7b40c8); border:none; }
 .card-front.uncommon  { background: linear-gradient(145deg,#1878a8,#40a8d8,#0a4060,#40a8d8,#1878a8); border:none; }
 .card-front.common    { background: linear-gradient(145deg,#b03080,#e060a0,#601040,#e060a0,#b03080); border:none; }
 .card-front.junk      { background: linear-gradient(145deg,#404850,#607080,#202830,#607080,#404850); border:none; }
 
+@keyframes mythicSpin {
+  0%{filter:hue-rotate(0deg)}
+  100%{filter:hue-rotate(360deg)}
+}
+
 /* Holographic shimmer on Legendary */
 .card-front.legendary::before {
   content:'';position:absolute;inset:0;border-radius:12px;pointer-events:none;z-index:10;
   background: linear-gradient(105deg,transparent 20%,rgba(255,255,255,0.08) 35%,rgba(255,220,100,0.12) 45%,rgba(255,255,255,0.08) 55%,transparent 70%);
   animation: holoShift 4s ease-in-out infinite;
+}
+/* Prismatic shimmer on Mythic */
+.card-front.mythic::before {
+  content:'';position:absolute;inset:0;border-radius:12px;pointer-events:none;z-index:10;
+  background: linear-gradient(105deg,transparent 10%,rgba(255,255,255,0.15) 25%,rgba(255,200,100,0.2) 35%,rgba(100,255,200,0.15) 45%,rgba(150,100,255,0.2) 55%,rgba(255,100,150,0.15) 65%,transparent 80%);
+  background-size:300% 100%;
+  animation: prismaticShift 2.5s ease-in-out infinite;
+}
+@keyframes prismaticShift {
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
 }
 @keyframes holoShift{
   0%,100%{background-position:0% 50%}
@@ -146,6 +166,7 @@ body::before {
   position: relative;
 }
 
+.card-inner.mythic    { background: linear-gradient(160deg,#0a0a14,#050510,#0a0a14);box-shadow:inset 0 0 20px rgba(255,255,255,0.05); }
 .card-inner.legendary { background: linear-gradient(160deg,#1a1400,#0d0900,#1a1200); }
 .card-inner.rare      { background: linear-gradient(160deg,#0e0018,#06000f,#0e0018); }
 .card-inner.uncommon  { background: linear-gradient(160deg,#00101e,#00080f,#00101e); }
@@ -176,6 +197,7 @@ body::before {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.card-name.mythic    { color: #ffffff;text-shadow:0 0 8px rgba(255,255,255,0.6); }
 .card-name.legendary { color: #f0d060; }
 .card-name.rare      { color: #d090ff; }
 .card-name.uncommon  { color: #60c8f8; }
@@ -915,6 +937,66 @@ body::before {
   animation: pulse-glow 2s ease-in-out infinite;
 }
 
+/* ═══ MYTHIC CARD ART ═══ */
+.art-the-mother {
+  background: radial-gradient(ellipse at 50% 60%, #1a1020 0%, #0a0810 60%, #050408 100%);
+}
+.art-the-mother::after {
+  content:'💫'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:52px;
+  filter: drop-shadow(0 0 24px rgba(255,255,200,0.8));
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
+@keyframes heartbeat { 0%,100%{transform:translate(-50%,-50%) scale(1)} 15%{transform:translate(-50%,-50%) scale(1.15)} 30%{transform:translate(-50%,-50%) scale(1)} 45%{transform:translate(-50%,-50%) scale(1.1)} }
+
+.art-the-organ-donor {
+  background: radial-gradient(ellipse at 50% 50%, #200a0a 0%, #100505 60%, #080202 100%);
+}
+.art-the-organ-donor::after {
+  content:'❤️'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:52px;
+  filter: drop-shadow(0 0 20px rgba(255,60,60,0.7));
+  animation: heartbeat 1.2s ease-in-out infinite;
+}
+
+.art-the-revolutionary {
+  background: radial-gradient(ellipse at 50% 70%, #1a0a00 0%, #0d0500 60%, #080200 100%);
+}
+.art-the-revolutionary::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 60% 40% at 50% 80%, rgba(255,100,0,0.25) 0%, transparent 60%);
+}
+.art-the-revolutionary::after {
+  content:'🔥'; position:absolute; top:45%; left:50%; transform:translate(-50%,-50%); font-size:56px;
+  filter: drop-shadow(0 0 25px rgba(255,120,0,0.9));
+  animation: flicker 0.15s ease-in-out infinite alternate;
+}
+
+.art-the-bone-marrow-match {
+  background: radial-gradient(ellipse at 50% 50%, #0a1020 0%, #050810 60%, #020408 100%);
+}
+.art-the-bone-marrow-match::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 40% 40% at 50% 50%, rgba(100,200,255,0.12) 0%, transparent 60%);
+}
+.art-the-bone-marrow-match::after {
+  content:'🧬'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:52px;
+  filter: drop-shadow(0 0 22px rgba(100,200,255,0.8));
+  animation: float 3s ease-in-out infinite;
+}
+
+.art-the-first-responder {
+  background: linear-gradient(180deg, #0a0000 0%, #1a0800 50%, #0a0200 100%);
+}
+.art-the-first-responder::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 50% 80% at 50% 100%, rgba(255,60,0,0.2) 0%, transparent 60%),
+    repeating-linear-gradient(0deg, transparent, transparent 4px, rgba(255,100,0,0.03) 4px, rgba(255,100,0,0.03) 5px);
+}
+.art-the-first-responder::after {
+  content:'🚒'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:48px;
+  filter: drop-shadow(0 0 20px rgba(255,60,0,0.7));
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
 /* Art overlay gradient — makes art feel painted */
 .card-art::before {
   content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
@@ -950,14 +1032,16 @@ body::before {
 .card-textbox {
   margin: 4px 7px;
   flex: 1;
+  min-height: 0;
   border-radius: 3px;
   padding: 6px 7px;
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 2px;
   overflow: hidden;
   position: relative;
 }
+.card-textbox.mythic    { background:rgba(8,8,16,0.9); border:1px solid rgba(255,255,255,0.15); }
 .card-textbox.legendary { background:rgba(20,14,0,0.9); border:1px solid rgba(200,168,75,0.2); }
 .card-textbox.rare      { background:rgba(10,4,20,0.9); border:1px solid rgba(155,89,208,0.2); }
 .card-textbox.uncommon  { background:rgba(0,8,18,0.9); border:1px solid rgba(33,150,200,0.2); }
@@ -991,6 +1075,7 @@ body::before {
   letter-spacing: 0.5px;
   font-weight: 700;
 }
+.stat-value.mythic    { color:#ffffff;text-shadow:0 0 4px rgba(255,255,255,0.5); }
 .stat-value.legendary { color:#f0d060; }
 .stat-value.rare      { color:#c090f0; }
 .stat-value.uncommon  { color:#60c0f0; }
@@ -1003,6 +1088,7 @@ body::before {
   margin: 2px 0;
   opacity: 0.2;
 }
+.textbox-divider.mythic    { background:#ffffff; }
 .textbox-divider.legendary { background:#c8a84b; }
 .textbox-divider.rare      { background:#9b59d0; }
 .textbox-divider.uncommon  { background:#2196c8; }
@@ -1013,14 +1099,15 @@ body::before {
 .card-flavor {
   font-family: var(--font-flavor);
   font-style: italic;
-  font-size: 7px;
-  line-height: 1.45;
+  font-size: 6.5px;
+  line-height: 1.4;
   opacity: 0.65;
   color: var(--white);
   flex: 1;
+  min-height: 0;
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
 }
 
@@ -1097,36 +1184,41 @@ body::before {
 .screen.active { display:flex; }
 
 /* Header */
-.site-header { width:100%;max-width:960px;padding:24px 0 16px;text-align:center;border-bottom:1px solid #151515;margin-bottom:28px; }
-.header-eyebrow { font-family:var(--font-mono);font-size:8px;letter-spacing:5px;color:#1e1e1e;margin-bottom:6px; }
+.site-header { width:100%;max-width:960px;padding:24px 0 16px;text-align:center;border-bottom:1px solid #2a2a2a;margin-bottom:28px; }
+.header-eyebrow { font-family:var(--font-mono);font-size:8px;letter-spacing:5px;color:#aa2020;margin-bottom:6px;text-shadow:0 0 10px rgba(180,20,20,0.3); }
 .header-title { font-family:var(--font-display);font-size:clamp(32px,7vw,58px);color:var(--red);letter-spacing:6px;text-shadow:0 0 30px rgba(180,20,20,0.5);line-height:1; }
-.header-sub { font-family:var(--font-mono);font-size:8px;letter-spacing:4px;color:#2a2a2a;margin-top:6px; }
+.header-sub { font-family:var(--font-mono);font-size:8px;letter-spacing:4px;color:#aa2020;margin-top:6px;text-shadow:0 0 10px rgba(180,20,20,0.3); }
 .nav-pills { display:flex;gap:8px;justify-content:center;margin-top:14px; }
-.nav-pill { font-family:var(--font-mono);font-size:8px;letter-spacing:2px;padding:5px 16px;border:1px solid #2a2a2a;background:rgba(255,255,255,0.03);color:#555;cursor:pointer;transition:all .2s; }
-.nav-pill:hover,.nav-pill.active { border-color:var(--red);color:var(--red);background:rgba(204,17,17,0.08); }
+.nav-pill { font-family:var(--font-mono);font-size:8px;letter-spacing:2px;padding:5px 16px;border:1px solid #444;background:rgba(255,255,255,0.05);color:#888;cursor:pointer;transition:all .2s; }
+.nav-pill:hover,.nav-pill.active { border-color:var(--red);color:#ff3333;background:rgba(204,17,17,0.12);box-shadow:0 0 12px rgba(204,17,17,0.3),inset 0 0 8px rgba(204,17,17,0.1); }
 
 /* Stats bar */
-.stats-bar { width:100%;max-width:960px;display:flex;gap:24px;justify-content:center;flex-wrap:wrap;padding:10px 0;border-bottom:1px solid #111;margin-bottom:28px; }
-.stat-chip { font-family:var(--font-mono);font-size:8px;letter-spacing:2px;color:#444; }
+.stats-bar { width:100%;max-width:960px;display:flex;gap:24px;justify-content:center;flex-wrap:wrap;padding:10px 0;border-bottom:1px solid #2a2a2a;margin-bottom:28px; }
+.stat-chip { font-family:var(--font-mono);font-size:8px;letter-spacing:2px;color:#666; }
 .stat-chip span { color:var(--red); }
 
 /* Pack grid */
 .pack-grid { display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;width:100%;max-width:960px;margin-bottom:32px; }
 
-.pack-card { border:1px solid #222;background:#0e0e10;padding:20px 16px;cursor:pointer;transition:all .3s;position:relative;overflow:hidden;text-align:center; }
-.pack-card::before { content:'';position:absolute;inset:0;opacity:0;transition:opacity .3s; }
+.pack-card { border:1px solid #333;background:var(--bg-card);padding:20px 16px;cursor:pointer;transition:all .3s;position:relative;overflow:hidden;text-align:center; }
+.pack-card::before { content:'';position:absolute;inset:0;opacity:0.3;transition:opacity .3s; }
 .pack-card:hover { transform:translateY(-3px); }
 .pack-card:hover::before { opacity:1; }
 
-.pack-card.p-standard::before { background:linear-gradient(135deg,rgba(33,150,200,0.06),transparent); }
-.pack-card.p-rare::before     { background:linear-gradient(135deg,rgba(155,89,208,0.06),transparent); }
-.pack-card.p-trade::before    { background:linear-gradient(135deg,rgba(200,168,75,0.06),transparent); }
-.pack-card.p-lore::before     { background:linear-gradient(135deg,rgba(102,112,128,0.06),transparent); }
+.pack-card.p-standard { border-color:rgba(33,150,200,0.3); }
+.pack-card.p-rare     { border-color:rgba(155,89,208,0.3); }
+.pack-card.p-trade    { border-color:rgba(200,168,75,0.3); }
+.pack-card.p-lore     { border-color:rgba(102,112,128,0.3); }
 
-.pack-card:hover.p-standard { border-color:var(--blue); }
-.pack-card:hover.p-rare     { border-color:var(--purple); }
-.pack-card:hover.p-trade    { border-color:var(--gold); }
-.pack-card:hover.p-lore     { border-color:var(--gray); }
+.pack-card.p-standard::before { background:linear-gradient(135deg,rgba(33,150,200,0.08),transparent); }
+.pack-card.p-rare::before     { background:linear-gradient(135deg,rgba(155,89,208,0.08),transparent); }
+.pack-card.p-trade::before    { background:linear-gradient(135deg,rgba(200,168,75,0.08),transparent); }
+.pack-card.p-lore::before     { background:linear-gradient(135deg,rgba(102,112,128,0.08),transparent); }
+
+.pack-card:hover.p-standard { border-color:var(--blue);box-shadow:0 0 16px rgba(33,150,200,0.3); }
+.pack-card:hover.p-rare     { border-color:var(--purple);box-shadow:0 0 16px rgba(155,89,208,0.3); }
+.pack-card:hover.p-trade    { border-color:var(--gold);box-shadow:0 0 16px rgba(200,168,75,0.3); }
+.pack-card:hover.p-lore     { border-color:var(--gray);box-shadow:0 0 16px rgba(102,112,128,0.3); }
 
 .pack-icon-wrap { font-size:42px;margin-bottom:10px;display:block; }
 .pack-title { font-family:var(--font-title);font-size:16px;letter-spacing:2px;margin-bottom:6px; }
@@ -1135,14 +1227,15 @@ body::before {
 .pack-card.p-trade    .pack-title { color:var(--gold); }
 .pack-card.p-lore     .pack-title { color:var(--gray); }
 
-.pack-desc { font-size:8px;color:#555;line-height:1.6;margin-bottom:10px; }
-.pack-meta { font-family:var(--font-mono);font-size:7px;color:#2e2e2e;letter-spacing:1px;margin-bottom:14px; }
-.pack-btn { font-family:var(--font-mono);font-size:8px;letter-spacing:2px;padding:7px 18px;border:1px solid currentColor;background:rgba(255,255,255,0.04);cursor:pointer;transition:all .2s;display:inline-block; }
-.pack-card.p-standard .pack-btn { color:var(--blue); }
-.pack-card.p-rare     .pack-btn { color:var(--purple); }
-.pack-card.p-trade    .pack-btn { color:var(--gold); }
-.pack-card.p-lore     .pack-btn { color:var(--gray); }
-.pack-btn:hover { background:currentColor;color:#000; }
+.pack-desc { font-size:8px;color:#777;line-height:1.6;margin-bottom:10px; }
+.pack-meta { font-family:var(--font-mono);font-size:7px;color:#555;letter-spacing:1px;margin-bottom:14px; }
+.pack-btn { font-family:var(--font-mono);font-size:8px;letter-spacing:2px;padding:7px 18px;border:1px solid currentColor;background:rgba(255,255,255,0.06);cursor:pointer;transition:all .25s;display:inline-block;animation:btnPulse 3s ease-in-out infinite; }
+.pack-card.p-standard .pack-btn { color:var(--blue);box-shadow:0 0 8px rgba(33,150,200,0.2); }
+.pack-card.p-rare     .pack-btn { color:var(--purple);box-shadow:0 0 8px rgba(155,89,208,0.2); }
+.pack-card.p-trade    .pack-btn { color:var(--gold);box-shadow:0 0 8px rgba(200,168,75,0.2); }
+.pack-card.p-lore     .pack-btn { color:var(--gray);box-shadow:0 0 8px rgba(102,112,128,0.2); }
+.pack-btn:hover { background:currentColor;color:#000;box-shadow:0 0 20px currentColor; }
+@keyframes btnPulse { 0%,100%{opacity:1}50%{opacity:0.8} }
 
 /* Opening screen */
 #opening-screen { justify-content:center;min-height:100vh; }
@@ -1257,7 +1350,7 @@ body::before {
   max-width:600px;
 }
 .landing-eyebrow {
-  font-family:var(--font-mono);font-size:9px;letter-spacing:5px;color:#1e1e1e;
+  font-family:var(--font-mono);font-size:9px;letter-spacing:5px;color:#aa2020;text-shadow:0 0 12px rgba(180,20,20,0.3);
 }
 .landing-title {
   font-family:var(--font-display);
@@ -1268,16 +1361,16 @@ body::before {
   text-shadow:0 0 60px rgba(180,20,20,0.5),0 0 120px rgba(180,20,20,0.2);
 }
 .landing-sub {
-  font-family:var(--font-mono);font-size:10px;letter-spacing:5px;color:#2e2e2e;
+  font-family:var(--font-mono);font-size:10px;letter-spacing:5px;color:#aa2020;text-shadow:0 0 12px rgba(180,20,20,0.3);
   margin-top:-8px;
 }
 .landing-lore {
   font-family:var(--font-flavor);font-style:italic;
   font-size:clamp(13px,2.2vw,15px);
-  color:#4a4a4a;
+  color:#777;
   line-height:1.9;
   max-width:480px;
-  border-left:2px solid #1a1a1a;
+  border-left:2px solid #333;
   padding-left:16px;
   text-align:left;
 }
@@ -1285,10 +1378,13 @@ body::before {
   margin-top:12px;
   font-family:var(--font-mono);font-size:11px;letter-spacing:4px;
   padding:16px 52px;
-  border:1px solid var(--red);background:transparent;color:var(--red);
+  border:1px solid var(--red);background:transparent;color:#ff3333;
   cursor:pointer;transition:all .25s;
   position:relative;overflow:hidden;
+  box-shadow:0 0 20px rgba(204,17,17,0.3),inset 0 0 10px rgba(204,17,17,0.1);
+  animation:landingBtnGlow 2s ease-in-out infinite;
 }
+@keyframes landingBtnGlow { 0%,100%{box-shadow:0 0 20px rgba(204,17,17,0.3),inset 0 0 10px rgba(204,17,17,0.1)}50%{box-shadow:0 0 30px rgba(204,17,17,0.5),inset 0 0 15px rgba(204,17,17,0.15)} }
 .landing-open-btn::before {
   content:'';position:absolute;inset:0;
   background:var(--red);transform:scaleX(0);transform-origin:left;
@@ -1297,11 +1393,11 @@ body::before {
 .landing-open-btn:hover { color:#000; }
 .landing-open-btn:hover::before { transform:scaleX(1); }
 .landing-coll-link {
-  font-family:var(--font-mono);font-size:8px;letter-spacing:3px;color:#2a2a2a;
+  font-family:var(--font-mono);font-size:8px;letter-spacing:3px;color:#666;
   background:none;border:none;cursor:pointer;transition:color .2s;padding:4px;
   text-decoration:none;
 }
-.landing-coll-link:hover { color:#555; }
+.landing-coll-link:hover { color:#999; }
 
 /* ── CARD DETAIL MODAL ── */
 .modal-overlay {
@@ -1348,6 +1444,7 @@ body::before {
   opacity:0;
   background:rgba(8,8,8,0.92);
   backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  transition:opacity 0.3s ease;
 }
 #packTear.tearing { pointer-events:all;opacity:1; }
 
@@ -1356,21 +1453,37 @@ body::before {
   display:flex;align-items:center;justify-content:center;
   border-radius:10px;border:2px solid currentColor;
   overflow:hidden;
-  background:#0d0d0d;
-  box-shadow:0 0 40px rgba(0,0,0,0.8);
+  background:var(--bg-card);
+  box-shadow:0 0 40px rgba(0,0,0,0.8),0 0 80px currentColor;
 }
 .pack-wrapper::before {
   content:'';position:absolute;inset:0;
   background:repeating-linear-gradient(135deg,transparent,transparent 10px,rgba(255,255,255,0.04) 10px,rgba(255,255,255,0.04) 11px);
 }
+/* Foil shimmer on pack */
+.pack-wrapper::after {
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,0.06) 45%,rgba(255,255,255,0.1) 50%,rgba(255,255,255,0.06) 55%,transparent 70%);
+  background-size:200% 100%;
+  animation:packShimmer 2s ease-in-out infinite;
+}
+@keyframes packShimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+
 .pack-wrapper-top,.pack-wrapper-bottom {
   position:absolute;left:0;right:0;height:50%;
   display:flex;align-items:center;justify-content:center;
   flex-direction:column;gap:6px;
-  transition:transform 0.8s cubic-bezier(.4,0,.1,1),opacity 0.8s ease;
+  z-index:1;
 }
-.pack-wrapper-top { top:0;border-bottom:1px dashed rgba(255,255,255,0.2); }
-.pack-wrapper-bottom { bottom:0; }
+.pack-wrapper-top {
+  top:0;
+  border-bottom:2px dashed rgba(255,255,255,0.15);
+  clip-path:polygon(0 0,100% 0,100% calc(100% - 3px),85% 100%,70% calc(100% - 4px),55% 100%,40% calc(100% - 3px),25% 100%,10% calc(100% - 4px),0 100%);
+}
+.pack-wrapper-bottom {
+  bottom:0;
+  clip-path:polygon(0 3px,10% 0,25% 4px,40% 0,55% 3px,70% 0,85% 4px,100% 0,100% 100%,0 100%);
+}
 .pack-brand {
   font-family:var(--font-display);font-size:18px;letter-spacing:4px;
   text-shadow:0 0 12px currentColor;
@@ -1383,20 +1496,60 @@ body::before {
   position:absolute;bottom:10px;left:50%;transform:translateX(-50%);
 }
 
-/* Tear keyframes */
-@keyframes tearTop { 0%{transform:translateY(0) rotate(0);opacity:1} 100%{transform:translateY(-120%) rotate(-8deg);opacity:0} }
-@keyframes tearBottom { 0%{transform:translateY(0) rotate(0);opacity:1} 100%{transform:translateY(120%) rotate(8deg);opacity:0} }
-#packTear.tearing .pack-wrapper-top { animation:tearTop 0.8s cubic-bezier(.4,0,.1,1) 0.1s forwards; }
-#packTear.tearing .pack-wrapper-bottom { animation:tearBottom 0.8s cubic-bezier(.4,0,.1,1) 0.1s forwards; }
+/* Light burst on tear */
+.pack-burst {
+  position:absolute;width:100%;height:20px;top:50%;transform:translateY(-50%);
+  background:radial-gradient(ellipse 100% 100% at 50% 50%, currentColor, transparent);
+  opacity:0;z-index:2;
+}
+#packTear.tearing .pack-burst { animation:burstFlash 0.6s ease-out 0.15s forwards; }
+@keyframes burstFlash { 0%{opacity:0;transform:translateY(-50%) scaleY(0.5)} 30%{opacity:0.8;transform:translateY(-50%) scaleY(3)} 100%{opacity:0;transform:translateY(-50%) scaleY(6)} }
+
+/* Tear keyframes — jagged rip */
+@keyframes tearTop { 0%{transform:translateY(0) rotate(0);opacity:1} 40%{transform:translateY(-2px) rotate(-0.5deg)} 100%{transform:translateY(-140%) rotate(-12deg);opacity:0} }
+@keyframes tearBottom { 0%{transform:translateY(0) rotate(0);opacity:1} 40%{transform:translateY(2px) rotate(0.5deg)} 100%{transform:translateY(140%) rotate(12deg);opacity:0} }
+#packTear.tearing .pack-wrapper-top { animation:tearTop 0.9s cubic-bezier(.2,0,.1,1) 0.15s forwards; }
+#packTear.tearing .pack-wrapper-bottom { animation:tearBottom 0.9s cubic-bezier(.2,0,.1,1) 0.15s forwards; }
+#packTear.tearing .pack-wrapper::after { animation:none;opacity:0; }
 
 /* ── TOAST ── */
 .toast {
   position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);
   font-family:var(--font-mono);font-size:9px;letter-spacing:2px;
-  padding:10px 24px;background:#111;border:1px solid #222;color:#888;
+  padding:10px 24px;background:var(--bg-card);border:1px solid #333;color:#888;
   z-index:300;opacity:0;transition:all .3s ease;pointer-events:none;
 }
 .toast.show { opacity:1;transform:translateX(-50%) translateY(0); }
+
+/* Mission complete toast */
+.mission-toast {
+  position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(0.8);
+  font-family:var(--font-title);font-size:14px;letter-spacing:3px;
+  padding:20px 32px;background:var(--bg-card);border:2px solid var(--gold);color:var(--gold);
+  z-index:500;opacity:0;transition:all .4s cubic-bezier(.4,0,.2,1);pointer-events:none;
+  text-align:center;
+  box-shadow:0 0 40px rgba(200,168,75,0.3),inset 0 0 20px rgba(200,168,75,0.05);
+}
+.mission-toast .mt-check { font-size:24px;display:block;margin-bottom:6px; }
+.mission-toast .mt-label { font-size:8px;letter-spacing:2px;color:#888;font-family:var(--font-mono);margin-top:4px; }
+.mission-toast.show { opacity:1;transform:translate(-50%,-50%) scale(1); }
+
+/* Footer */
+.site-footer {
+  width:100%;max-width:960px;margin-top:40px;padding:20px 0;
+  border-top:1px solid #2a2a2a;text-align:center;
+}
+.footer-links {
+  display:flex;gap:20px;justify-content:center;align-items:center;margin-bottom:8px;
+}
+.footer-links a {
+  color:#555;transition:color .2s;text-decoration:none;font-size:18px;
+  display:flex;align-items:center;
+}
+.footer-links a:hover { color:var(--red); }
+.footer-credit {
+  font-family:var(--font-mono);font-size:8px;letter-spacing:3px;color:#444;
+}
 
 /* ── NEW CARD BADGE ── */
 .new-badge {
@@ -1503,7 +1656,7 @@ body::before {
 
 /* Daily missions box */
 .daily-missions {
-  border:1px solid #1a1a1a;background:#060606;padding:16px 20px;
+  border:1px solid #333;background:var(--bg-card);padding:16px 20px;
   margin-top:24px;max-width:480px;margin-left:auto;margin-right:auto;
 }
 .daily-missions-title {
@@ -1516,7 +1669,7 @@ body::before {
   font-family:var(--font-mono);font-size:8px;letter-spacing:1px;
 }
 .mission-row:last-child { border-bottom:none; }
-.mission-label { color:#666; }
+.mission-label { color:#888; }
 .mission-progress { color:var(--gold);letter-spacing:2px; }
 .mission-progress.done { color:#40c040; }
 
@@ -1524,12 +1677,12 @@ body::before {
 .sound-toggle {
   position:fixed;top:12px;right:12px;z-index:400;
   width:32px;height:32px;border-radius:50%;
-  border:1px solid #222;background:#0a0a0a;
+  border:1px solid #333;background:var(--bg-card);
   cursor:pointer;transition:all .2s;
   display:flex;align-items:center;justify-content:center;
   font-size:14px;
 }
-.sound-toggle:hover { border-color:#444; }
+.sound-toggle:hover { border-color:#555; }
 .sound-toggle.on { border-color:#2a6a2a;box-shadow:0 0 8px rgba(40,160,40,0.2); }
 
 /* Pack summary after all 5 revealed */
@@ -1620,18 +1773,20 @@ body::before {
   .daily-missions-title{font-size:10px;letter-spacing:2px;margin-bottom:8px}
   .mission-row{padding:6px 0;font-size:8px}
 
-  /* ── Card anatomy ── */
-  .card{width:160px;height:240px}
-  .card-art{height:72px}
-  .card-name{font-size:7px}
-  .card-type-line{font-size:5px;padding:2px 6px}
-  .card-textbox{font-size:5px;padding:4px 6px}
-  .card-flavor{font-size:4px}
-  .card-ptbox{font-size:6px;padding:2px 5px}
-  .card-set-info{font-size:4px}
+  /* ── Card anatomy — responsive width ── */
+  .card{width:clamp(220px,65vw,280px);height:auto;aspect-ratio:2/3}
+  .card-art{height:clamp(90px,20vw,130px)}
+  .card-name{font-size:clamp(8px,2.2vw,10.5px)}
+  .card-type-line{font-size:clamp(5px,1.4vw,6px);padding:2px 6px}
+  .card-textbox{font-size:clamp(5.5px,1.5vw,7px);padding:5px 7px}
+  .card-flavor{font-size:clamp(5.5px,1.5vw,7px)}
+  .card-ptbox{font-size:clamp(6px,1.8vw,8px);padding:2px 5px}
+  .card-set-info{font-size:clamp(4px,1.2vw,5px)}
+  .stat-label{font-size:clamp(5.5px,1.5vw,6.5px)}
+  .stat-value{font-size:clamp(6px,1.6vw,7px)}
 
   /* ── Card deck (opening screen) ── */
-  .card-deck{width:160px;height:240px}
+  .card-deck{width:clamp(220px,65vw,280px);height:auto;aspect-ratio:2/3}
   .opening-wrap{padding:0}
   .opening-head{margin-bottom:14px}
   .opening-pack-name{font-size:16px;letter-spacing:2px}
@@ -1641,12 +1796,13 @@ body::before {
   .reveal-hint{font-size:9px!important}
 
   /* ── Pack tear ── */
-  .pack-wrapper{width:140px;height:200px}
-  .pack-brand{font-size:14px;letter-spacing:3px}
-  .pack-label{font-size:7px;letter-spacing:2px}
+  .pack-wrapper{width:clamp(160px,50vw,200px);height:auto;aspect-ratio:7/10}
+  .pack-brand{font-size:clamp(14px,4vw,18px);letter-spacing:3px}
+  .pack-label{font-size:clamp(7px,2vw,9px);letter-spacing:2px}
 
-  /* ── Modal ── */
-  .modal-card-wrap{transform:scale(0.85)}
+  /* ── Modal — full-width card on mobile ── */
+  .modal-card-wrap{transform:scale(1)}
+  .modal-card-wrap .card{width:clamp(260px,75vw,300px);height:auto;aspect-ratio:2/3}
   .modal-close{top:12px;right:14px;font-size:11px;padding:10px}
   .modal-share-row{flex-wrap:wrap;gap:8px;justify-content:center;bottom:16px!important;left:50%!important;transform:translateX(-50%)!important;width:90vw}
   .share-btn{padding:10px 16px;font-size:9px;min-height:44px;flex:1;min-width:80px;text-align:center}
@@ -1706,29 +1862,30 @@ body::before {
   /* ── Pack grid: 1 column ── */
   .pack-grid{grid-template-columns:1fr;gap:8px}
 
-  /* ── Card anatomy ── */
-  .card{width:140px;height:210px}
-  .card-art{height:62px}
-  .card-name{font-size:6.5px}
-  .card-type-line{font-size:4.5px;padding:1px 5px}
-  .card-textbox{font-size:4.5px;padding:3px 5px}
-  .card-flavor{font-size:3.5px}
-  .card-ptbox{font-size:5.5px;padding:1px 4px}
-  .card-set-info{font-size:3.5px}
+  /* ── Card anatomy — fill small screens ── */
+  .card{width:clamp(200px,70vw,260px);height:auto;aspect-ratio:2/3}
+  .card-art{height:clamp(80px,22vw,110px)}
+  .card-name{font-size:clamp(7.5px,2.4vw,9px)}
+  .card-type-line{font-size:clamp(4.5px,1.4vw,5.5px);padding:1px 5px}
+  .card-textbox{font-size:clamp(5px,1.5vw,6.5px);padding:4px 6px}
+  .card-flavor{font-size:clamp(5px,1.5vw,6.5px)}
+  .card-ptbox{font-size:clamp(5.5px,1.6vw,7px);padding:1px 4px}
+  .card-set-info{font-size:clamp(3.5px,1.1vw,4.5px)}
 
   /* ── Card deck ── */
-  .card-deck{width:140px;height:210px}
+  .card-deck{width:clamp(200px,70vw,260px);height:auto;aspect-ratio:2/3}
   .deck-nav{gap:14px}
   .deck-arrow{width:44px;height:44px;font-size:16px}
   .opening-pack-name{font-size:14px}
   .deck-counter{font-size:9px}
 
   /* ── Pack tear ── */
-  .pack-wrapper{width:120px;height:172px}
-  .pack-brand{font-size:12px;letter-spacing:2px}
+  .pack-wrapper{width:clamp(140px,45vw,180px);height:auto;aspect-ratio:7/10}
+  .pack-brand{font-size:clamp(12px,3.5vw,16px);letter-spacing:2px}
 
   /* ── Modal ── */
-  .modal-card-wrap{transform:scale(0.72)}
+  .modal-card-wrap{transform:scale(1)}
+  .modal-card-wrap .card{width:clamp(240px,80vw,280px);height:auto;aspect-ratio:2/3}
   .modal-share-row{flex-direction:column;align-items:center;bottom:10px!important;gap:6px;width:88vw}
   .share-btn{padding:12px 18px;font-size:9px;width:100%;min-height:44px;text-align:center}
 
@@ -1755,12 +1912,53 @@ body::before {
   /* ── Sound toggle ── */
   .sound-toggle{width:36px;height:36px;top:8px;right:8px}
 }
+/* ═══ LOADING SCREEN ═══ */
+#loading-screen {
+  position:fixed;inset:0;z-index:10000;
+  background:var(--bg);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;
+  transition:opacity 0.5s ease;
+}
+#loading-screen.fade-out { opacity:0;pointer-events:none; }
+#loading-screen .load-logo {
+  font-family:'Cinzel Decorative',serif;
+  font-size:clamp(28px,8vw,48px);
+  color:var(--red);letter-spacing:6px;
+  text-shadow:0 0 40px rgba(180,20,20,0.5);
+  animation:loadPulse 1.5s ease-in-out infinite;
+}
+#loading-screen .load-sub {
+  font-family:'Share Tech Mono',monospace;
+  font-size:9px;letter-spacing:4px;color:#aa2020;
+}
+#loading-screen .load-bar {
+  width:120px;height:2px;background:#2a2a2a;border-radius:1px;overflow:hidden;margin-top:8px;
+}
+#loading-screen .load-bar-fill {
+  height:100%;width:0%;background:var(--red);
+  animation:loadFill 1.8s ease-in-out forwards;
+}
+@keyframes loadPulse { 0%,100%{opacity:0.6;transform:scale(1)}50%{opacity:1;transform:scale(1.02)} }
+@keyframes loadFill { 0%{width:0%}60%{width:70%}100%{width:100%} }
 </style>
 </head>
 <body>
+
+<!-- LOADING SCREEN -->
+<div id="loading-screen">
+  <div class="load-logo">AI CARDS</div>
+  <div class="load-sub">2030 SURVIVAL EDITION</div>
+  <div class="load-bar"><div class="load-bar-fill"></div></div>
+</div>
+
 <div id="app">
   <button class="sound-toggle on" id="sound-toggle" onclick="toggleSound()" title="Toggle sound">🔊</button>
   <div id="toast" class="toast"></div>
+  <div id="mission-toast" class="mission-toast">
+    <span class="mt-check">&#10003;</span>
+    <span class="mt-title" id="mt-title">MISSION COMPLETE</span>
+    <span class="mt-label" id="mt-label"></span>
+  </div>
   <div id="cardModal" class="modal-overlay" onclick="closeModal(event)">
     <div class="modal-close">[ ESC ]</div>
     <div class="modal-card-wrap">
@@ -1791,6 +1989,7 @@ body::before {
         <div class="pack-brand">AI CARDS</div>
         <div class="pack-label" id="packTearLabel">STANDARD</div>
       </div>
+      <div class="pack-burst"></div>
       <div class="pack-wrapper-bottom">
         <div class="pack-pip"></div>
       </div>
@@ -1827,7 +2026,7 @@ body::before {
         </div>
       </div>
       <div class="daily-packs-bar">
-        <div class="daily-packs-count">DAILY PACKS: <span id="dp-remaining">10</span> / 10</div>
+        <div class="daily-packs-count">FREE PACKS: <span id="dp-remaining">5</span> / 5</div>
         <div class="daily-packs-timer" id="dp-timer">Next pack in: --:--</div>
         <div class="daily-packs-pity"><span id="dp-pity-pulls">0</span> pulls until Gold Pack</div>
       </div>
@@ -1838,58 +2037,67 @@ body::before {
         <div class="stat-chip">PACKS OPENED: <span id="st-packs">0</span></div>
         <div class="stat-chip">PITY: <span id="st-pity">0</span>/10</div>
       </div>
+      <!-- SET 1: 2030 SURVIVAL -->
+      <div style="width:100%;max-width:960px;margin-bottom:8px;">
+        <div style="font-family:var(--font-mono);font-size:8px;letter-spacing:3px;color:#555;margin-bottom:10px;">SET 1 — 2030 SURVIVAL</div>
+      </div>
       <div class="pack-grid">
         <div class="pack-card p-standard" onclick="openPack('standard')">
           <span class="pack-icon-wrap">📦</span>
           <div class="pack-title">STANDARD</div>
-          <div class="pack-desc">The baseline. Pull five cards from the full pool. See what the algorithm gives you.</div>
+          <div class="pack-desc">Five cards from the full pool. Trades, purpose, displacement, AI products, lore. See what the algorithm gives you.</div>
           <div class="pack-meta">5 CARDS · FULL POOL · WEIGHTED</div>
-          <button class="pack-btn">▶ OPEN PACK</button>
-        </div>
-        <div class="pack-card p-rare" onclick="openPack('rare')">
-          <span class="pack-icon-wrap">🔮</span>
-          <div class="pack-title">PURPOSE</div>
-          <div class="pack-desc">Weighted toward the humans who still matter. Rare and Legendary at double rate.</div>
-          <div class="pack-meta">5 CARDS · RARE+ BOOSTED · 2× RATE</div>
           <button class="pack-btn">▶ OPEN PACK</button>
         </div>
         <div class="pack-card p-trade" onclick="openPack('legendary')">
           <span class="pack-icon-wrap">⚡</span>
-          <div class="pack-title">TRADE</div>
+          <div class="pack-title">GOLD PACK</div>
           <div class="pack-desc">Guaranteed one Legendary. The trades that will outlast all of it. The rest is fate.</div>
           <div class="pack-meta">5 CARDS · 1 LEGENDARY GUARANTEED</div>
           <button class="pack-btn">▶ OPEN PACK</button>
         </div>
-        <div class="pack-card p-lore" onclick="openPack('lore')">
-          <span class="pack-icon-wrap">📡</span>
-          <div class="pack-title">LORE</div>
-          <div class="pack-desc">The characters who built this world. 40% chance of Speciation Pressure.</div>
-          <div class="pack-meta">5 CARDS · LORE WEIGHTED · WILDCARD</div>
-          <button class="pack-btn">▶ OPEN PACK</button>
-        </div>
-        <div class="pack-card p-standard" onclick="openPack('karpathy')" style="border-color:#2a6a2a;">
-          <span class="pack-icon-wrap">📊</span>
-          <div class="pack-title" style="color:#40c040;">KARPATHY</div>
-          <div class="pack-desc">Real scores from Karpathy's AI Exposure Map. 342 occupations. 143M workers. One treemap.</div>
-          <div class="pack-meta">5 CARDS · REAL DATA · SCORED 0-10</div>
-          <button class="pack-btn" style="color:#40c040;">▶ OPEN PACK</button>
-        </div>
-        <div class="pack-card p-rare" onclick="openPack('jobgone')" style="border-color:#6a2a2a;">
+      </div>
+
+      <!-- SET 2: JOBLESS.AI -->
+      <div style="width:100%;max-width:960px;margin-bottom:8px;margin-top:20px;">
+        <div style="font-family:var(--font-mono);font-size:8px;letter-spacing:3px;color:#555;margin-bottom:10px;">SET 2 — JOBLESS.AI</div>
+      </div>
+      <div class="pack-grid">
+        <div class="pack-card p-standard" onclick="openPack('jobless')" style="border-color:rgba(255,64,64,0.3);">
           <span class="pack-icon-wrap">📉</span>
-          <div class="pack-title" style="color:#ff4040;">JOBGONE</div>
-          <div class="pack-desc">Real layoffs. Real companies. Real numbers. From the tracker at jobgonetoai.com. March 2026.</div>
-          <div class="pack-meta">5 CARDS · REAL LAYOFFS · 495K TRACKED</div>
-          <button class="pack-btn" style="color:#ff4040;">▶ OPEN PACK</button>
+          <div class="pack-title" style="color:#ff4040;">JOBLESS.AI</div>
+          <div class="pack-desc">Real Karpathy scores. Real layoffs. Real companies. 342 occupations. 495K jobs tracked. Data doesn't lie.</div>
+          <div class="pack-meta">5 CARDS · REAL DATA · KARPATHY + JOBGONE</div>
+          <button class="pack-btn" style="color:#ff4040;box-shadow:0 0 8px rgba(255,64,64,0.2);">▶ OPEN PACK</button>
         </div>
       </div>
       <div class="daily-missions" id="daily-missions">
         <div class="daily-missions-title">DAILY MISSIONS</div>
         <div class="mission-row"><span class="mission-label">Open 5 packs</span><span class="mission-progress" id="dm-packs">0/5</span></div>
         <div class="mission-row"><span class="mission-label">Pull at least one Legendary</span><span class="mission-progress" id="dm-legendary">0/1</span></div>
+        <div class="mission-row"><span class="mission-label">Pull 3 different rarities</span><span class="mission-progress" id="dm-rarities">0/3</span></div>
         <div class="mission-row"><span class="mission-label">Share a card</span><span class="mission-progress" id="dm-share">0/1</span></div>
+      </div>
+      <div class="daily-missions" style="margin-top:12px;">
+        <div class="daily-missions-title">ACHIEVEMENTS</div>
         <div class="mission-row"><span class="mission-label">Complete your collection</span><span class="mission-progress" id="dm-collection">0/<span id="dm-coll-total">69</span></span></div>
       </div>
       <div id="profile-zone"></div>
+      <footer class="site-footer">
+        <div class="footer-links">
+          <a href="https://aretedriver.dev" target="_blank" rel="noopener" title="AreteDriver.dev">&#127760;</a>
+          <a href="https://github.com/AreteDriver" target="_blank" rel="noopener" title="GitHub">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          </a>
+          <a href="https://substack.com/@aretedriver" target="_blank" rel="noopener" title="Substack">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/></svg>
+          </a>
+          <a href="https://buymeacoffee.com/aretedriver" target="_blank" rel="noopener" title="Buy Me a Coffee">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.216 6.415l-.132-.666c-.119-.598-.388-1.163-1.001-1.379-.197-.069-.42-.098-.57-.241-.152-.143-.196-.366-.231-.572-.065-.378-.125-.756-.192-1.133-.057-.325-.102-.69-.25-.987-.195-.4-.597-.634-.996-.788a5.723 5.723 0 00-.626-.194c-1-.263-2.05-.36-3.077-.416a25.834 25.834 0 00-3.7.062c-.915.083-1.88.184-2.75.5-.318.116-.646.256-.888.501-.297.302-.393.77-.177 1.146.154.267.415.456.692.58.36.162.737.284 1.123.366 1.075.238 2.189.331 3.287.37 1.218.05 2.437.01 3.65-.118.299-.033.598-.073.896-.119.352-.054.578-.513.474-.834-.124-.383-.457-.531-.834-.473-.466.074-.96.108-1.382.146-1.177.08-2.358.082-3.536.006a22.228 22.228 0 01-1.157-.107l-.28-.04c-.18-.032-.191-.122-.122-.283a1.16 1.16 0 01.277-.37c.167-.158.39-.265.609-.344.407-.145.84-.222 1.274-.278a20.763 20.763 0 013.182-.107c.653.032 1.31.07 1.948.192.243.047.47.124.648.291.18.17.244.438.184.694-.064.28-.148.554-.219.832l-.19.712c-.084.32.132.676.456.749.37.086.766-.08.848-.455l.252-.953.064-.242c.063-.239.113-.488.18-.724.116-.404.254-.755.632-.916.208-.088.458-.077.643.072.22.177.291.45.348.72.054.259.091.523.12.787l.011.079c.056.487-.099.847-.551 1.04-.292.124-.607.187-.895.316-.37.166-.645.484-.787.874-.026.07-.054.148-.056.218-.002.108.02.258.092.336.056.06.162.073.259.034.079-.032.132-.097.186-.152.42-.428.892-.694 1.448-.854.522-.15 1.026-.103 1.37.35.105.138.175.295.261.46.014.028.029.058.042.089.12.26.136.523.174.802z M8.5 11c-.828 0-1.5.895-1.5 2s.672 2 1.5 2 1.5-.895 1.5-2-.672-2-1.5-2zm7 0c-.828 0-1.5.895-1.5 2s.672 2 1.5 2 1.5-.895 1.5-2-.672-2-1.5-2zM4.25 20h15.5c.69 0 1.25-.56 1.25-1.25V14H3v4.75c0 .69.56 1.25 1.25 1.25z"/></svg>
+          </a>
+        </div>
+        <div class="footer-credit">Built by AreteDriver</div>
+      </footer>
     </div>
   </div>
 
@@ -1917,7 +2125,7 @@ body::before {
   <div class="screen" id="collection-screen">
     <div class="collection-wrap">
       <div class="site-header">
-        <div class="header-eyebrow">▓▓▓ CLASSIFIED · SERIES ONE ▓▓▓</div>
+        <div class="header-eyebrow">▓▓▓ CLASSIFIED · FULL COLLECTION ▓▓▓</div>
         <div class="header-title">AI CARDS</div>
         <div class="header-sub">2030 SURVIVAL EDITION</div>
         <div class="nav-pills">
@@ -1935,6 +2143,38 @@ body::before {
 // CARD DATA
 // ═══════════════════════════════════════
 const CARDS = [
+  // ═══ MYTHIC — 1/10,000 · THE JOBS AI COULDN'T TAKE ═══
+  {id:"the-mother",name:"THE MOTHER",rarity:"MYTHIC",category:"Irreplaceable",artClass:"art-the-mother",series:"jobless",
+   kscore:"0",kscoreClass:"low",
+   s1:{l:"AI Nannies Deployed",v:"14M"},s2:{l:"Children Who Preferred Them",v:"0"},
+   atk:"∞",def:"∞",
+   flavor:"⚡ UNCONDITIONAL — Cannot be optimized. Cannot be scheduled. Cannot be faked. GPT-7 passed the Turing test. Her toddler didn't care.",
+   symbol:"💫",color:"mythic"},
+  {id:"the-organ-donor",name:"THE ORGAN DONOR",rarity:"MYTHIC",category:"Irreplaceable",artClass:"art-the-organ-donor",series:"jobless",
+   kscore:"0",kscoreClass:"low",
+   s1:{l:"Kidneys 3D-Printed Successfully",v:"0"},s2:{l:"Strangers Who Said Yes",v:"147K"},
+   atk:"∞",def:"∞",
+   flavor:"⚡ IRREPLACEABLE — Removes one terminal counter. Cannot be duplicated. You cannot download a kidney. You cannot 3D-print sacrifice.",
+   symbol:"❤️",color:"mythic"},
+  {id:"the-revolutionary",name:"THE REVOLUTIONARY",rarity:"MYTHIC",category:"Irreplaceable",artClass:"art-the-revolutionary",series:"jobless",
+   kscore:"0",kscoreClass:"low",
+   s1:{l:"Systems AI Optimized",v:"ALL OF THEM"},s2:{l:"Systems AI Chose To Destroy",v:"0"},
+   atk:"∞",def:"∞",
+   flavor:"⚡ BURN IT DOWN — Destroys one system card. Every revolution required someone willing to lose everything. The algorithm only optimizes for not losing.",
+   symbol:"🔥",color:"mythic"},
+  {id:"the-bone-marrow-match",name:"THE BONE MARROW MATCH",rarity:"MYTHIC",category:"Irreplaceable",artClass:"art-the-bone-marrow-match",series:"jobless",
+   kscore:"0",kscoreClass:"low",
+   s1:{l:"Probability of a Match",v:"1 IN 430,000"},s2:{l:"Algorithm That Can Replace You",v:"NONE"},
+   atk:"∞",def:"∞",
+   flavor:"⚡ ONE IN 430,000 — No algorithm. Just biology saying: you're the one. They mapped every protein. They still can't manufacture the stranger who saves your life.",
+   symbol:"🧬",color:"mythic"},
+  {id:"the-first-responder",name:"THE FIRST RESPONDER",rarity:"MYTHIC",category:"Irreplaceable",artClass:"art-the-first-responder",series:"jobless",
+   kscore:"0",kscoreClass:"low",
+   s1:{l:"Drones That Entered the Building",v:"0"},s2:{l:"Humans Who Ran In Anyway",v:"EVERY TIME"},
+   atk:"∞",def:"∞",
+   flavor:"⚡ INTO THE FIRE — Deploys without calculation. No risk assessment. No API. The drone footage was excellent. The drone stayed outside.",
+   symbol:"🚒",color:"mythic"},
+
   // ═══ LEGENDARY ═══
   {id:"plumber",name:"THE PLUMBER",rarity:"LEGENDARY",category:"Human Trade",artClass:"art-plumber",
    kscore:"2",kscoreClass:"low",
@@ -2242,61 +2482,61 @@ const CARDS = [
    symbol:"🧬",color:"junk"},
 
   // ═══ EXPANSION: KARPATHY SCORES PACK ═══
-  {id:"the-roofer",name:"THE ROOFER",rarity:"LEGENDARY",category:"Karpathy Scores",artClass:"art-the-roofer",series:"karpathy",
+  {id:"the-roofer",name:"THE ROOFER",rarity:"LEGENDARY",category:"Karpathy Scores",artClass:"art-the-roofer",series:"jobless",
    kscore:"2",kscoreClass:"low",
    s1:{l:"Karpathy AI Exposure Score",v:"2 / 10"},s2:{l:"Median Salary",v:"$60,500"},s3:{l:"Jobs in America",v:"148,300"},
    atk:"148K",def:"ROOFTOPS",
    flavor:"Karpathy scored every job in America. This one got a 2. Nobody's automating a guy on a 45-degree pitch in August. The robot fell off. He didn't. He's up there right now. It's 104 degrees. He doesn't care about your treemap.",
    symbol:"🏠",color:"legendary"},
-  {id:"the-ironworker",name:"THE IRONWORKER",rarity:"LEGENDARY",category:"Karpathy Scores",artClass:"art-the-ironworker",series:"karpathy",
+  {id:"the-ironworker",name:"THE IRONWORKER",rarity:"LEGENDARY",category:"Karpathy Scores",artClass:"art-the-ironworker",series:"jobless",
    kscore:"1",kscoreClass:"low",
    s1:{l:"Karpathy AI Exposure Score",v:"1 / 10"},s2:{l:"Median Salary",v:"$65,470"},s3:{l:"Stories Above Ground",v:"40"},
    atk:"65K",def:"STEEL BEAMS",
    flavor:"Walking steel beams 40 stories up in wind that would ground a drone. Karpathy's model gave him a 1. The construction labor category scored lowest in the entire dataset. The robot they sent up buckled at the knee joint. He ate lunch on the beam it fell from.",
    symbol:"🔩",color:"legendary"},
-  {id:"the-firefighter-ks",name:"THE FIREFIGHTER",rarity:"LEGENDARY",category:"Karpathy Scores",artClass:"art-the-firefighter-ks",series:"karpathy",
+  {id:"the-firefighter-ks",name:"THE FIREFIGHTER",rarity:"LEGENDARY",category:"Karpathy Scores",artClass:"art-the-firefighter-ks",series:"jobless",
    kscore:"3",kscoreClass:"low",
    s1:{l:"Karpathy AI Exposure Score",v:"3 / 10"},s2:{l:"Median Salary",v:"$59,530"},s3:{l:"Jobs in America",v:"344,900"},
    atk:"345K",def:"ON CALL",
    flavor:"AI can detect a fire. It can predict a fire. It can model the airflow, calculate the flashover point, and optimize the escape route. It cannot carry you out of one. 344,900 people can. They make $59K. Karpathy gave them a 3.",
    symbol:"🧯",color:"legendary"},
-  {id:"the-dental-hygienist",name:"THE DENTAL HYGIENIST",rarity:"RARE",category:"Karpathy Scores",artClass:"art-the-dental-hygienist",series:"karpathy",
+  {id:"the-dental-hygienist",name:"THE DENTAL HYGIENIST",rarity:"RARE",category:"Karpathy Scores",artClass:"art-the-dental-hygienist",series:"jobless",
    kscore:"2",kscoreClass:"low",
    s1:{l:"Karpathy AI Exposure Score",v:"2 / 10"},s2:{l:"Median Salary",v:"$94,260"},s3:{l:"Jobs in America",v:"221,600"},
    atk:"$94K",def:"SALARY",
    flavor:"Hands in your mouth. That's the whole moat. $94K median, scored a 2 on the Karpathy scale. The AI can read the X-ray better than she can. The AI cannot scrape calculus off your molars while making small talk about your kids. She does both. She's booked through April.",
    symbol:"🦷",color:"rare"},
-  {id:"the-airline-pilot",name:"THE AIRLINE PILOT",rarity:"RARE",category:"Karpathy Scores",artClass:"art-the-airline-pilot",series:"karpathy",
+  {id:"the-airline-pilot",name:"THE AIRLINE PILOT",rarity:"RARE",category:"Karpathy Scores",artClass:"art-the-airline-pilot",series:"jobless",
    kscore:"5",kscoreClass:"mid",
    s1:{l:"Karpathy AI Exposure Score",v:"5 / 10"},s2:{l:"Median Salary",v:"$198,100"},s3:{l:"Active Pilots in US",v:"155,400"},
    atk:"$198K",def:"MEDIAN PAY",
    flavor:"Karpathy gave this one a 5. Right in the middle. AI flies the plane for 90% of the flight. Autopilot has been doing it since the 70s. The question was never whether AI could fly. It was whether you'd board a plane with no one up front. The answer is $198K worth of no.",
    symbol:"✈️",color:"rare"},
-  {id:"the-financial-analyst-ks",name:"THE FINANCIAL ANALYST",rarity:"UNCOMMON",category:"Karpathy Scores",artClass:"art-the-financial-analyst-ks",series:"karpathy",
+  {id:"the-financial-analyst-ks",name:"THE FINANCIAL ANALYST",rarity:"UNCOMMON",category:"Karpathy Scores",artClass:"art-the-financial-analyst-ks",series:"jobless",
    kscore:"9",kscoreClass:"max",
    s1:{l:"Karpathy AI Exposure Score",v:"9 / 10"},s2:{l:"Median Salary",v:"$101,910"},s3:{l:"Jobs in America",v:"429,000"},
    atk:"429K",def:"EXPOSED",
    flavor:"Score of 9. Nearly maximum exposure. 429,000 analysts making $102K doing work that is entirely digital, entirely pattern-based, and entirely within the capability of a model that doesn't need sleep or a Bloomberg terminal. The spreadsheet became sentient. It doesn't need you to explain it.",
    symbol:"📈",color:"uncommon"},
-  {id:"the-csr",name:"THE CUSTOMER SERVICE REP",rarity:"UNCOMMON",category:"Karpathy Scores",artClass:"art-the-csr",series:"karpathy",
+  {id:"the-csr",name:"THE CUSTOMER SERVICE REP",rarity:"UNCOMMON",category:"Karpathy Scores",artClass:"art-the-csr",series:"jobless",
    kscore:"9",kscoreClass:"max",
    s1:{l:"Karpathy AI Exposure Score",v:"9 / 10"},s2:{l:"Median Salary",v:"$42,830"},s3:{l:"Jobs in America",v:"2,814,000"},
    atk:"2.8M",def:"ON THE LINE",
    flavor:"2.8 million people making $43K to answer phones. Karpathy scored them a 9. The chatbot doesn't put you on hold. Doesn't have a bad day. Doesn't need health insurance. 2.8 million jobs at $43K is $120 billion in payroll. That's not a workforce. That's a line item waiting to be optimized.",
    symbol:"🎧",color:"uncommon"},
-  {id:"the-graphic-designer-ks",name:"THE GRAPHIC DESIGNER",rarity:"UNCOMMON",category:"Karpathy Scores",artClass:"art-the-graphic-designer-ks",series:"karpathy",
+  {id:"the-graphic-designer-ks",name:"THE GRAPHIC DESIGNER",rarity:"UNCOMMON",category:"Karpathy Scores",artClass:"art-the-graphic-designer-ks",series:"jobless",
    kscore:"8",kscoreClass:"high",
    s1:{l:"Karpathy AI Exposure Score",v:"8 / 10"},s2:{l:"Median Salary",v:"$68,100"},s3:{l:"Jobs in America",v:"286,700"},
    atk:"287K",def:"PORTFOLIOS",
    flavor:"Score 8. 286,700 designers at $68K median. Midjourney took their portfolio and their clients in the same quarter. The ones still working are the ones who learned to direct the AI. They're art directors now. They make less. There are fewer of them. The images are better. Nobody can tell.",
    symbol:"🎨",color:"uncommon"},
-  {id:"the-bookkeeper",name:"THE BOOKKEEPER",rarity:"COMMON",category:"Karpathy Scores",artClass:"art-the-bookkeeper",series:"karpathy",
+  {id:"the-bookkeeper",name:"THE BOOKKEEPER",rarity:"COMMON",category:"Karpathy Scores",artClass:"art-the-bookkeeper",series:"jobless",
    kscore:"9",kscoreClass:"max",
    s1:{l:"Karpathy AI Exposure Score",v:"9 / 10"},s2:{l:"Median Salary",v:"$49,210"},s3:{l:"Jobs in America (Declining)",v:"1,613,400"},
    atk:"1.6M",def:"DECLINING",
    flavor:"1.6 million jobs. Score of 9. $49K median. The BLS outlook says declining and has said it for five years. This was the first domino. Entirely digital work, entirely rule-based, entirely replaceable. QuickBooks didn't kill bookkeeping. It just softened it up for what came next.",
    symbol:"📒",color:"common"},
-  {id:"the-karpathy-score",name:"THE KARPATHY SCORE",rarity:"JUNK",category:"Lore · Karpathy",artClass:"art-the-karpathy-score",series:"karpathy",
+  {id:"the-karpathy-score",name:"THE KARPATHY SCORE",rarity:"JUNK",category:"Lore · Karpathy",artClass:"art-the-karpathy-score",series:"jobless",
    kscore:"∞",kscoreClass:"max",
    s1:{l:"Occupations Scored",v:"342"},s2:{l:"Workers Covered",v:"143,000,000"},s3:{l:"Time to Build It",v:"A SATURDAY"},
    atk:"342",def:"OCCUPATIONS",
@@ -2304,61 +2544,61 @@ const CARDS = [
    symbol:"🗺️",color:"junk"},
 
   // ═══ EXPANSION: JOBGONE PACK ═══
-  {id:"the-workday-cut",name:"WORKDAY",rarity:"LEGENDARY",category:"JobGone",artClass:"art-the-workday-cut",series:"jobgone",
+  {id:"the-workday-cut",name:"WORKDAY",rarity:"LEGENDARY",category:"JobGone",artClass:"art-the-workday-cut",series:"jobless",
    kscore:"∞",kscoreClass:"max",
    s1:{l:"Jobs Cut",v:"1,750"},s2:{l:"What They Sell",v:"HR SOFTWARE"},s3:{l:"Date",v:"FEB 24, 2026"},
    atk:"1,750",def:"IRONIC",
    flavor:"A company that makes HR software used AI to fire 1,750 people from HR. The tool they sell is the tool that replaced them. The layoff emails were probably generated by their own product. Nobody confirmed this. Nobody had to.",
    symbol:"🔄",color:"legendary"},
-  {id:"the-meta-purge",name:"THE META PURGE",rarity:"LEGENDARY",category:"JobGone",artClass:"art-the-meta-purge",series:"jobgone",
+  {id:"the-meta-purge",name:"THE META PURGE",rarity:"LEGENDARY",category:"JobGone",artClass:"art-the-meta-purge",series:"jobless",
    kscore:"∞",kscoreClass:"max",
    s1:{l:"Jobs Cut",v:"16,000"},s2:{l:"AI Infrastructure Budget",v:"$600,000,000,000"},s3:{l:"Date",v:"MAR 2026"},
    atk:"16K",def:"HUMANS OUT",
    flavor:"16,000 jobs to finance a $600 billion AI infrastructure investment. The company that wants to build the metaverse decided it needed fewer humans to do it. The math is simple: each person costs $200K loaded. The GPU costs more but doesn't ask for parental leave.",
    symbol:"👁️",color:"legendary"},
-  {id:"the-atlassian-cut",name:"THE ATLASSIAN CUT",rarity:"RARE",category:"JobGone",artClass:"art-the-atlassian-cut",series:"jobgone",
+  {id:"the-atlassian-cut",name:"THE ATLASSIAN CUT",rarity:"RARE",category:"JobGone",artClass:"art-the-atlassian-cut",series:"jobless",
    kscore:"∞",kscoreClass:"max",
    s1:{l:"Jobs Cut",v:"1,600"},s2:{l:"What They Make",v:"JIRA"},s3:{l:"Date",v:"MAR 15, 2026"},
    atk:"1,600",def:"TICKETS CLOSED",
    flavor:"They make Jira. The project management tool that tracks who does what. On March 15th the tool tracked 1,600 people doing nothing, because those people no longer worked there. The tickets wrote themselves out of a job. Status: Done.",
    symbol:"📋",color:"rare"},
-  {id:"the-logistics-wave",name:"THE LOGISTICS WAVE",rarity:"RARE",category:"JobGone",artClass:"art-the-logistics-wave",series:"jobgone",
+  {id:"the-logistics-wave",name:"THE LOGISTICS WAVE",rarity:"RARE",category:"JobGone",artClass:"art-the-logistics-wave",series:"jobless",
    kscore:"∞",kscoreClass:"max",
    s1:{l:"Kuehne+Nagel Jobs Cut",v:"2,000"},s2:{l:"WiseTech Jobs Cut",v:"2,000"},s3:{l:"Combined",v:"4,000"},
    atk:"4,000",def:"OPTIMIZED OUT",
    flavor:"Two logistics companies, same month, same number. Kuehne+Nagel: 2,000. WiseTech: 2,000. The supply chain optimized the humans out. The packages still arrive. The warehouses still hum. The people who made them hum are updating their LinkedIn profiles from the parking lot.",
    symbol:"📦",color:"rare"},
-  {id:"the-495k",name:"THE 495K",rarity:"UNCOMMON",category:"JobGone",artClass:"art-the-495k",series:"jobgone",
+  {id:"the-495k",name:"THE 495K",rarity:"UNCOMMON",category:"JobGone",artClass:"art-the-495k",series:"jobless",
    kscore:"∞",kscoreClass:"max",
    s1:{l:"Total Jobs Tracked",v:"495,599"},s2:{l:"Companies",v:"75"},s3:{l:"Events Logged",v:"553"},
    atk:"496K",def:"AND COUNTING",
    flavor:"495,599 jobs. 75 companies. 553 events. A spreadsheet of human cost that updates daily at 7am UTC. Someone is maintaining it. It is very well-organized. Each row is a person who got an email. The spreadsheet doesn't know that. Spreadsheets never do.",
    symbol:"📊",color:"uncommon"},
-  {id:"the-direct-attribution",name:"THE DIRECT ATTRIBUTION",rarity:"UNCOMMON",category:"JobGone",artClass:"art-the-direct-attribution",series:"jobgone",
+  {id:"the-direct-attribution",name:"THE DIRECT ATTRIBUTION",rarity:"UNCOMMON",category:"JobGone",artClass:"art-the-direct-attribution",series:"jobless",
    kscore:"∞",kscoreClass:"max",
    s1:{l:"Companies That Said 'AI' Out Loud",v:"60+"},s2:{l:"Companies That Said 'Restructuring'",v:"~15"},s3:{l:"Difference",v:"NONE"},
    atk:"60+",def:"SAID IT",
    flavor:"60 companies said the word 'AI' when they fired people. The other 15 said 'restructuring' or 'strategic realignment' or 'workforce optimization.' The severance was the same. The result was the same. The only difference was whether the press release had the honesty to name the machine.",
    symbol:"🎯",color:"uncommon"},
-  {id:"the-vercel-nine",name:"THE VERCEL NINE",rarity:"UNCOMMON",category:"JobGone",artClass:"art-the-vercel-nine",series:"jobgone",
+  {id:"the-vercel-nine",name:"THE VERCEL NINE",rarity:"UNCOMMON",category:"JobGone",artClass:"art-the-vercel-nine",series:"jobless",
    kscore:"∞",kscoreClass:"max",
    s1:{l:"Jobs Cut",v:"9"},s2:{l:"Date",v:"MAR 6, 2026"},s3:{l:"What Vercel Hosts",v:"THIS WEBSITE"},
    atk:"9",def:"PEOPLE",
    flavor:"Nine jobs. The company that hosts this website fired 9 people and cited AI. You are looking at this card on infrastructure maintained by a company that decided it needed fewer humans. Nine isn't a lot. It's a lot if you're one of them.",
    symbol:"▲",color:"uncommon"},
-  {id:"the-severance-package",name:"THE SEVERANCE PACKAGE",rarity:"COMMON",category:"JobGone",artClass:"art-the-severance-package",series:"jobgone",
+  {id:"the-severance-package",name:"THE SEVERANCE PACKAGE",rarity:"COMMON",category:"JobGone",artClass:"art-the-severance-package",series:"jobless",
    kscore:"∞",kscoreClass:"max",
    s1:{l:"Avg Severance",v:"3 WEEKS"},s2:{l:"Wellness Link Included",v:"YES"},s3:{l:"EAP Number Included",v:"YES"},
    atk:"3",def:"WEEKS",
    flavor:"The email. Three weeks. A wellness link that goes to a website with stock photos of people hiking. A number for the Employee Assistance Program. Four free sessions. The therapist they connect you with is also worried about being replaced. Nobody says this out loud.",
    symbol:"✉️",color:"common"},
-  {id:"the-tracker",name:"THE TRACKER",rarity:"JUNK",category:"Lore · JobGone",artClass:"art-the-tracker",series:"jobgone",
+  {id:"the-tracker",name:"THE TRACKER",rarity:"JUNK",category:"Lore · JobGone",artClass:"art-the-tracker",series:"jobless",
    kscore:"∞",kscoreClass:"max",
    s1:{l:"Updates",v:"DAILY AT 7AM UTC"},s2:{l:"Design Quality",v:"EXCELLENT"},s3:{l:"Emotional Impact",v:"DEVASTATING"},
    atk:"∞",def:"UPDATES",
    flavor:"Someone built a website to count the bodies. It updates daily. It is very well-designed. Clean typography. Good use of color. Responsive on mobile. This is not comforting. The person who built it probably did it in a weekend. Like Karpathy. The tools for measuring the damage are getting better faster than the damage is slowing down.",
    symbol:"🔍",color:"junk"},
-  {id:"march-2026",name:"MARCH 2026",rarity:"JUNK",category:"Lore · JobGone",artClass:"art-march-2026",series:"jobgone",
+  {id:"march-2026",name:"MARCH 2026",rarity:"JUNK",category:"Lore · JobGone",artClass:"art-march-2026",series:"jobless",
    kscore:"∞",kscoreClass:"max",
    s1:{l:"Jobs Lost This Month",v:"35,117"},s2:{l:"Running Total",v:"495,599"},s3:{l:"Parties Thrown",v:"0"},
    atk:"35K",def:"THIS MONTH",
@@ -2366,13 +2606,12 @@ const CARDS = [
    symbol:"📅",color:"junk"},
 ];
 
-const RARITY_ORDER = ["LEGENDARY","RARE","UNCOMMON","COMMON","JUNK"];
-const WEIGHTS = {LEGENDARY:3,RARE:10,UNCOMMON:22,COMMON:40,JUNK:25};
-const WEIGHTS_RARE = {LEGENDARY:8,RARE:22,UNCOMMON:25,COMMON:30,JUNK:15};
-const WEIGHTS_LORE = {LEGENDARY:5,RARE:8,UNCOMMON:12,COMMON:15,JUNK:60};
+const RARITY_ORDER = ["MYTHIC","LEGENDARY","RARE","UNCOMMON","COMMON","JUNK"];
+// MYTHIC: 0.01% per slot = ~1 in 10,000 pulls. Weight 1 out of 10,001 total.
+const WEIGHTS = {MYTHIC:1,LEGENDARY:300,RARE:1000,UNCOMMON:2200,COMMON:4000,JUNK:2500};
 
 const RARITY_COLORS = {
-  LEGENDARY:"#c8a84b", RARE:"#9b59d0", UNCOMMON:"#2196c8", COMMON:"#d44490", JUNK:"#667080"
+  MYTHIC:"#ffffff", LEGENDARY:"#c8a84b", RARE:"#9b59d0", UNCOMMON:"#2196c8", COMMON:"#d44490", JUNK:"#667080"
 };
 
 // ═══════════════════════════════════════
@@ -2397,7 +2636,7 @@ let session = {pack:[],revealed:[],type:'standard',currentIndex:0};
 // ═══════════════════════════════════════
 // DAILY PACK SYSTEM
 // ═══════════════════════════════════════
-const DAILY_MAX = 10;
+const DAILY_MAX = 5;
 const GOLD_PACK_PITY = 50; // pulls until gold pack
 
 function getDailyKey() {
@@ -2411,7 +2650,7 @@ function getDailyState() {
     const raw = localStorage.getItem(key);
     if (raw) return JSON.parse(raw);
   } catch(e) {}
-  return { packsOpened: 0, legendaryPulled: false, shared: false };
+  return { packsOpened: 0, legendaryPulled: false, shared: false, raritiesSeen: [] };
 }
 
 function saveDailyState(ds) {
@@ -2440,6 +2679,15 @@ function markDailyShare() {
   saveDailyState(ds);
 }
 
+function markDailyRarity(rarity) {
+  const ds = getDailyState();
+  if (!ds.raritiesSeen) ds.raritiesSeen = [];
+  if (!ds.raritiesSeen.includes(rarity)) {
+    ds.raritiesSeen.push(rarity);
+    saveDailyState(ds);
+  }
+}
+
 function updateDailyUI() {
   const ds = getDailyState();
   const remaining = getDailyPacksRemaining();
@@ -2449,9 +2697,10 @@ function updateDailyUI() {
   const pityEl = document.getElementById('dp-pity-pulls');
   if (pityEl) pityEl.textContent = Math.max(0, GOLD_PACK_PITY - S.pulls);
 
-  // Missions
+  // Daily Missions
   const dmPacks = document.getElementById('dm-packs');
   const dmLeg = document.getElementById('dm-legendary');
+  const dmRarities = document.getElementById('dm-rarities');
   const dmShare = document.getElementById('dm-share');
   const dmColl = document.getElementById('dm-collection');
   const dmCollTotal = document.getElementById('dm-coll-total');
@@ -2464,10 +2713,16 @@ function updateDailyUI() {
     dmLeg.textContent = ds.legendaryPulled ? '1/1' : '0/1';
     dmLeg.classList.toggle('done', ds.legendaryPulled);
   }
+  if (dmRarities) {
+    const rCount = (ds.raritiesSeen || []).length;
+    dmRarities.textContent = `${Math.min(3,rCount)}/3`;
+    dmRarities.classList.toggle('done', rCount >= 3);
+  }
   if (dmShare) {
     dmShare.textContent = ds.shared ? '1/1' : '0/1';
     dmShare.classList.toggle('done', ds.shared);
   }
+  // Achievement (not daily)
   if (dmColl) {
     const owned = collectionSize();
     const total = CARDS.length;
@@ -2475,6 +2730,9 @@ function updateDailyUI() {
     dmColl.textContent = `${owned}/${total}`;
     dmColl.classList.toggle('done', owned >= total);
   }
+
+  // Check for newly completed missions
+  checkMissionCompletions(ds);
 }
 
 // Midnight countdown timer
@@ -2636,12 +2894,14 @@ function buildCardHTML(card) {
 // PACK LOGIC
 // ═══════════════════════════════════════
 function pickCard(weights, forceRarity) {
+  // Standard/Gold packs only draw from Set 1 (non-jobless cards)
+  const pool = CARDS.filter(c=>!c.series);
   if (forceRarity) {
-    const pool = CARDS.filter(c=>c.rarity===forceRarity);
-    return pool[Math.floor(Math.random()*pool.length)];
+    const rPool = pool.filter(c=>c.rarity===forceRarity);
+    return rPool[Math.floor(Math.random()*rPool.length)];
   }
   const weighted = [];
-  CARDS.forEach(c=>{const w=weights[c.rarity]||1;for(let i=0;i<w;i++)weighted.push(c);});
+  pool.forEach(c=>{const w=weights[c.rarity]||1;for(let i=0;i<w;i++)weighted.push(c);});
   return weighted[Math.floor(Math.random()*weighted.length)];
 }
 
@@ -2650,20 +2910,17 @@ function buildPack(type) {
   const pityTriggered = S.pityCounter >= 10;
 
   if (type==='standard') { for(let i=0;i<5;i++) pack.push(pickCard(WEIGHTS)); }
-  else if (type==='rare') { for(let i=0;i<5;i++) pack.push(pickCard(WEIGHTS_RARE)); }
   else if (type==='legendary') {
     pack.push(pickCard(WEIGHTS,'LEGENDARY'));
     for(let i=0;i<4;i++) pack.push(pickCard(WEIGHTS));
     for(let i=pack.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[pack[i],pack[j]]=[pack[j],pack[i]];}
-  } else if (type==='lore') {
-    if(Math.random()<0.4) { pack.push(CARDS.find(c=>c.id==='speciation-pressure')); for(let i=0;i<4;i++) pack.push(pickCard(WEIGHTS_LORE)); }
-    else { for(let i=0;i<5;i++) pack.push(pickCard(WEIGHTS_LORE)); }
-  } else if (type==='karpathy') {
-    const kCards = CARDS.filter(c=>c.series==='karpathy');
-    for(let i=0;i<5;i++) { pack.push(kCards[Math.floor(Math.random()*kCards.length)]); }
-  } else if (type==='jobgone') {
-    const jCards = CARDS.filter(c=>c.series==='jobgone');
-    for(let i=0;i<5;i++) { pack.push(jCards[Math.floor(Math.random()*jCards.length)]); }
+  } else if (type==='jobless') {
+    const jCards = CARDS.filter(c=>c.series==='jobless');
+    for(let i=0;i<5;i++) {
+      const weighted = [];
+      jCards.forEach(c=>{const w=WEIGHTS[c.rarity]||1;for(let j=0;j<w;j++)weighted.push(c);});
+      pack.push(weighted[Math.floor(Math.random()*weighted.length)]);
+    }
   }
 
   // Pity: force one Legendary in a random slot if no legendary already present
@@ -2754,14 +3011,14 @@ function openPack(type) {
   // Consume daily pack
   consumeDailyPack();
 
-  const labels = {standard:'STANDARD PACK',rare:'PURPOSE PACK',legendary:'TRADE PACK',lore:'LORE PACK',karpathy:'KARPATHY SCORES',jobgone:'JOBGONE TRACKER'};
+  const labels = {standard:'STANDARD PACK',legendary:'GOLD PACK',jobless:'JOBLESS.AI PACK'};
   document.getElementById('op-pack-name').textContent = labels[type];
   document.getElementById('legendaryBeam').classList.remove('active');
 
   // Pack tear animation
-  const PACK_COLORS = {standard:'#2196c8',rare:'#9b59d0',legendary:'#c8a84b',lore:'#667080'};
+  const PACK_COLORS = {standard:'#2196c8',legendary:'#c8a84b',jobless:'#ff4040'};
   const packColor = PACK_COLORS[type] || '#888';
-  const packTypeLabel = {standard:'STANDARD',rare:'PURPOSE',legendary:'TRADE',lore:'LORE'}[type];
+  const packTypeLabel = {standard:'STANDARD',legendary:'GOLD',jobless:'JOBLESS.AI'}[type];
   const tearEl = document.getElementById('packTear');
   const tearInner = document.getElementById('packTearInner');
   tearInner.style.color = packColor;
@@ -2827,7 +3084,8 @@ function revealDeckCard(index) {
   setTimeout(() => {
     el.classList.add('just-revealed');
     setTimeout(() => el.classList.remove('just-revealed'), 500);
-    if (card.rarity === 'LEGENDARY' || card.id === 'speciation-pressure') sfxLegendary();
+    if (card.rarity === 'MYTHIC') { sfxLegendary(); sfxLegendary(); document.body.classList.add('shake'); setTimeout(()=>document.body.classList.remove('shake'),500); }
+    else if (card.rarity === 'LEGENDARY' || card.id === 'speciation-pressure') sfxLegendary();
     else if (card.rarity === 'RARE') sfxRare();
   }, 350);
 
@@ -2839,13 +3097,16 @@ function revealDeckCard(index) {
   collectionAdd(card.id);
   if (isNew) {
     S.newCards.add(card.id);
-    if (card.rarity==='LEGENDARY') S.legendaries++;
+    if (card.rarity==='LEGENDARY' || card.rarity==='MYTHIC') S.legendaries++;
   }
-  if (card.rarity==='LEGENDARY') {
+  if (card.rarity==='LEGENDARY' || card.rarity==='MYTHIC') {
     S.pityCounter = 0;
     markDailyLegendary();
   }
-  if (['LEGENDARY','RARE'].includes(card.rarity) && card.category.toLowerCase().includes('human')) S.sov += card.rarity==='LEGENDARY'?3:1;
+  // Track daily rarities
+  markDailyRarity(card.rarity);
+  if (card.rarity==='MYTHIC') S.sov += 10;
+  else if (['LEGENDARY','RARE'].includes(card.rarity) && card.category.toLowerCase().includes('human')) S.sov += card.rarity==='LEGENDARY'?3:1;
   if (card.category==='AI Product') S.dep += 2;
   save();
   updateStats();
@@ -2997,7 +3258,22 @@ function triggerEffect(card, slot) {
   const col = RARITY_COLORS[card.rarity] || '#ffffff';
   const isSpeciation = card.id==='speciation-pressure';
 
-  if (card.rarity==='LEGENDARY' || isSpeciation) {
+  if (card.rarity==='MYTHIC') {
+    // MYTHIC: full-screen prismatic explosion
+    flash.style.background = `radial-gradient(ellipse at center,rgba(255,255,255,0.5) 0%,rgba(255,200,100,0.2) 30%,transparent 70%)`;
+    flash.classList.remove('flash');void flash.offsetWidth;flash.classList.add('flash');
+    // Rainbow beams
+    const beamColors = ['#ff4040','#f0d060','#40ff40','#40c0ff','#b060ff'];
+    beam.querySelectorAll('.beam').forEach((b,i)=>b.style.background=`linear-gradient(to bottom,transparent,${beamColors[i%5]}60,transparent)`);
+    beam.classList.add('active');
+    setTimeout(()=>beam.classList.remove('active'),5000);
+    // Double shake
+    document.getElementById('app').classList.add('shake');
+    setTimeout(()=>{document.getElementById('app').classList.remove('shake');setTimeout(()=>{document.getElementById('app').classList.add('shake');setTimeout(()=>document.getElementById('app').classList.remove('shake'),400);},100);},400);
+    // Extra particles
+    spawnParticles(slot, '#ffffff', 40);
+    setTimeout(()=>spawnParticles(slot, '#f0d060', 20), 200);
+  } else if (card.rarity==='LEGENDARY' || isSpeciation) {
     const fc = isSpeciation ? '#ff2222' : col;
     // Flash
     flash.style.background = `radial-gradient(ellipse at center,${fc}30 0%,transparent 70%)`;
@@ -3156,9 +3432,49 @@ function showToast(msg, duration=2000) {
   setTimeout(()=>t.classList.remove('show'), duration);
 }
 
+let _missionToastQueue = [];
+let _missionToastActive = false;
+function showMissionToast(label) {
+  _missionToastQueue.push(label);
+  if (!_missionToastActive) _drainMissionToast();
+}
+function _drainMissionToast() {
+  if (_missionToastQueue.length === 0) { _missionToastActive = false; return; }
+  _missionToastActive = true;
+  const label = _missionToastQueue.shift();
+  const el = document.getElementById('mission-toast');
+  document.getElementById('mt-label').textContent = label;
+  el.classList.add('show');
+  sfxLegendary();
+  setTimeout(() => { el.classList.remove('show'); setTimeout(_drainMissionToast, 300); }, 2000);
+}
+
+// Track which missions were already complete to detect transitions
+let _prevMissionState = {};
+function checkMissionCompletions(ds) {
+  const checks = {
+    packs: Math.min(5, ds.packsOpened) >= 5,
+    legendary: !!ds.legendaryPulled,
+    rarities: (ds.raritiesSeen || []).length >= 3,
+    share: !!ds.shared
+  };
+  const labels = {
+    packs: 'Open 5 Packs',
+    legendary: 'Pull a Legendary',
+    rarities: 'Pull 3 Different Rarities',
+    share: 'Share a Card'
+  };
+  for (const [key, done] of Object.entries(checks)) {
+    if (done && !_prevMissionState[key]) {
+      showMissionToast(labels[key]);
+    }
+  }
+  _prevMissionState = {...checks};
+}
+
 // Series boundary: S2 starts at the-crane-operator
-const SERIES2_IDS = new Set(CARDS.slice(CARDS.findIndex(c=>c.id==='the-crane-operator')).map(c=>c.id));
-let collSeriesFilter = 'ALL'; // 'ALL' | 'S1' | 'S2'
+const JOBLESS_IDS = new Set(CARDS.filter(c=>c.series==='jobless').map(c=>c.id));
+let collSeriesFilter = 'ALL'; // 'ALL' | 'SURVIVAL' | 'JOBLESS'
 
 // ═══════════════════════════════════════
 // COLLECTION
@@ -3166,9 +3482,10 @@ let collSeriesFilter = 'ALL'; // 'ALL' | 'S1' | 'S2'
 function renderCollection() {
   const body = document.getElementById('coll-body');
   const size = collectionSize();
-  const filterBtns = ['ALL','S1','S2'].map(f=>{
+  const filterBtns = ['ALL','SURVIVAL','JOBLESS'].map(f=>{
     const active = collSeriesFilter===f ? ' active' : '';
-    return `<button class="nav-pill${active}" onclick="setCollFilter('${f}')">${f==='S1'?'SERIES 1':f==='S2'?'SERIES 2':'ALL'}</button>`;
+    const label = f==='SURVIVAL'?'2030 SURVIVAL':f==='JOBLESS'?'JOBLESS.AI':'ALL';
+    return `<button class="nav-pill${active}" onclick="setCollFilter('${f}')">${label}</button>`;
   }).join('');
 
   let html = `<div class="coll-head">
@@ -3179,8 +3496,8 @@ function renderCollection() {
 
   RARITY_ORDER.forEach(rarity=>{
     let cards = CARDS.filter(c=>c.rarity===rarity);
-    if(collSeriesFilter==='S1') cards = cards.filter(c=>!SERIES2_IDS.has(c.id));
-    else if(collSeriesFilter==='S2') cards = cards.filter(c=>SERIES2_IDS.has(c.id));
+    if(collSeriesFilter==='SURVIVAL') cards = cards.filter(c=>!JOBLESS_IDS.has(c.id));
+    else if(collSeriesFilter==='JOBLESS') cards = cards.filter(c=>JOBLESS_IDS.has(c.id));
     if(cards.length===0) return;
     const owned = cards.filter(c=>collectionHas(c.id)).length;
     const col = RARITY_COLORS[rarity];
@@ -3258,6 +3575,21 @@ function renderProfile() {
 updateStats();
 renderProfile();
 updateDailyUI();
+
+// Dismiss loading screen after fonts + DOM ready
+(function dismissLoader() {
+  function hide() {
+    const el = document.getElementById('loading-screen');
+    if (!el) return;
+    el.classList.add('fade-out');
+    setTimeout(() => el.remove(), 600);
+  }
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(() => setTimeout(hide, 400));
+  } else {
+    setTimeout(hide, 1200);
+  }
+})();
 </script>
 <script defer src="/_vercel/insights/script.js"></script>
 <script defer src="/_vercel/speed-insights/script.js"></script>
