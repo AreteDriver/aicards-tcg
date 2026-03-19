@@ -110,6 +110,21 @@ This is a social commentary piece disguised as a card game. The tone is dark hum
 - **Pity system**: Guaranteed Legendary after 10 packs without one
 - **Progressive unlock**: Each set gates behind previous set's 100% completion
 - **Survival profile**: Sovereignty vs Dependency based on card pulls
+- **Raid Boss battles**: Weekly rotating bosses (8 total), 5-card team selection, turn-based auto-combat
+  - Damage formula: BaseATK × RarityMult × CategoryBonus × AntiKarpathy
+  - Set bonus (3+ same set = ×1.5), Solidarity combo (Human Trade + Human Purpose = ×1.25)
+  - Milestones at 25%/50%/75% boss HP for bonus reward packs
+  - 3 daily attempts, reward packs bypass daily limit
+  - Boss rotation: weekly, deterministic seed from Date.now()
+
+## Internationalization (i18n)
+
+- **Languages**: EN, JA, KO, ES, PT, ZH
+- **Engine**: `t(key, ...args)` for UI, `cardT(cardId, field)` for cards, `rarityT()`, `catT()`
+- **Files**: `lang/{locale}.json` — loaded via fetch on demand, EN is default
+- **Persistence**: `localStorage` key `aicards_lang`, browser locale detection as fallback
+- **Scope**: Full i18n — 210+ UI strings + 162 card translations (name, category, stat labels, flavor text) per language
+- **Selector**: Top-left corner, 6 language buttons
 
 ## Sui Integration
 
