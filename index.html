@@ -4050,6 +4050,9 @@ function updateDeckUI() {
       const col = RARITY_COLORS[c.rarity] || '#667080';
       miniCards += `<div class="pack-summary-mini" style="border-color:${col};background:${col}11;" onclick="showCardModal('${c.id}')">${c.symbol}</div>`;
     });
+    const chainBtn = isChainConnected()
+      ? `<button class="cta-btn" style="color:#60c8ff;border-color:#60c8ff;" onclick="mintPackToChain()" id="mint-chain-btn">⛓️ MINT TO CHAIN</button>`
+      : (S.packs >= 2 ? `<button class="cta-btn sec" style="color:#444;" onclick="openChainModal()">NFTs you can sell, trade, collect on-chain →</button>` : '');
     cta.innerHTML = `
       <div class="pack-summary">
         <div class="reveal-hint">PACK COMPLETE · ${newText}</div>
@@ -4058,7 +4061,9 @@ function updateDeckUI() {
           <button class="cta-btn" onclick="showScreen('pack-screen')">BACK TO PACKS</button>
           <button class="cta-btn sec" onclick="copyPackResult()">COPY RESULT</button>
           <button class="cta-btn sec" onclick="sharePackResult()">SHARE RESULT</button>
+          ${chainBtn}
         </div>
+        <div id="mint-status" style="margin-top:8px;"></div>
       </div>`;
   }
 }
@@ -4551,6 +4556,56 @@ function renderChainStatus() {
     el.innerHTML = `⛓️ <span style="color:#60c8ff;">${addr.slice(0,6)}…${addr.slice(-4)}</span>`;
   } else {
     el.innerHTML = '';
+  }
+}
+
+// ═══════════════════════════════════════
+// MINT TO CHAIN
+// ═══════════════════════════════════════
+const MINT_API = 'https://aicards-mint.fly.dev'; // TODO: deploy server
+
+async function mintPackToChain() {
+  const addr = getChainAddress();
+  if (!addr) { openChainModal(); return; }
+
+  const btn = document.getElementById('mint-chain-btn');
+  const status = document.getElementById('mint-status');
+  if (btn) { btn.disabled = true; btn.textContent = '⛓️ MINTING...'; btn.style.opacity = '0.5'; }
+  if (status) status.innerHTML = '<div style="font-family:var(--font-mono);font-size:8px;color:#60c8ff;letter-spacing:1px;animation:blink 1s infinite;">MINTING 5 CARDS TO SUI...</div>';
+
+  try {
+    const res = await fetch(`${MINT_API}/mint/pack`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        sui_address: addr,
+        pack_type: session.type,
+      }),
+    });
+
+    const data = await res.json();
+
+    if (data.success) {
+      const mintedCount = data.cards.filter(c => c.transaction).length;
+      if (status) {
+        status.innerHTML = `
+          <div style="font-family:var(--font-mono);font-size:8px;color:#40c040;letter-spacing:1px;">
+            ✓ ${mintedCount}/5 CARDS MINTED ON-CHAIN
+          </div>
+          <div style="font-family:var(--font-mono);font-size:7px;color:#555;margin-top:4px;">
+            <a href="https://suiscan.xyz/testnet/tx/${data.transaction_digest}" target="_blank" style="color:#60c8ff;text-decoration:none;">
+              View on SuiScan →
+            </a>
+          </div>`;
+      }
+      if (btn) { btn.textContent = '✓ MINTED'; btn.style.color = '#40c040'; btn.style.borderColor = '#40c040'; }
+      showToast(`${mintedCount} CARDS MINTED ON SUI`);
+    } else {
+      throw new Error(data.error || 'Mint failed');
+    }
+  } catch (err) {
+    if (status) status.innerHTML = `<div style="font-family:var(--font-mono);font-size:8px;color:#ff4040;letter-spacing:1px;">MINT FAILED: ${err.message}</div>`;
+    if (btn) { btn.disabled = false; btn.textContent = '⛓️ RETRY MINT'; btn.style.opacity = '1'; }
   }
 }
 
