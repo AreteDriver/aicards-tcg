@@ -2830,15 +2830,14 @@ body::before {
   display:flex;align-items:center;justify-content:center;
   flex-direction:column;gap:6px;
   z-index:1;
+  background:var(--bg-card);
 }
 .pack-wrapper-top {
   top:0;
   border-bottom:2px dashed rgba(255,255,255,0.15);
-  clip-path:polygon(0 0,100% 0,100% calc(100% - 3px),85% 100%,70% calc(100% - 4px),55% 100%,40% calc(100% - 3px),25% 100%,10% calc(100% - 4px),0 100%);
 }
 .pack-wrapper-bottom {
   bottom:0;
-  clip-path:polygon(0 3px,10% 0,25% 4px,40% 0,55% 3px,70% 0,85% 4px,100% 0,100% 100%,0 100%);
 }
 .pack-brand {
   font-family:var(--font-display);font-size:18px;letter-spacing:4px;
@@ -5121,16 +5120,21 @@ function openPack(type) {
   tearEl.classList.add('tearing');
   sfxPackRip();
 
-  // Hold the tear visible, then fade out and reveal first card
+  // Hold the tear visible, then fade out and show first card face-up
   setTimeout(() => {
     tearEl.classList.remove('tearing');
-    // After tear fades, auto-reveal first card
     setTimeout(() => {
+      // Reveal first card
       revealDeckCard(0);
-      updateDeckUI();
-    }, 400);
+      // Advance to card 1 so tapping reveals the next
+      setTimeout(() => {
+        session.currentIndex = 1;
+        updateDeckPositions();
+        updateDeckUI();
+      }, 700);
+    }, 500);
     save();
-  }, 1200);
+  }, 1400);
 
   updateStats();
   updateDailyUI();
@@ -5148,8 +5152,9 @@ function renderCardDeck() {
     if (i === 0) el.classList.add('active-card');
     else el.style.display = 'none';
     el.onclick = () => {
-      if (!session.revealed[i] && i === session.currentIndex) {
-        // Reveal this card
+      if (!session.revealed[i]) {
+        // Force index match so revealDeckCard doesn't bail
+        session.currentIndex = i;
         revealDeckCard(i);
         // After flip animation, advance to next
         setTimeout(() => {
