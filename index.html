@@ -2273,14 +2273,14 @@ body::before {
       <div class="pack-grid">
         <div class="pack-card p-standard" onclick="openPack('standard')">
           <span class="pack-icon-wrap">📦</span>
-          <div class="pack-title">STANDARD</div>
+          <div class="pack-title">2030 SURVIVAL</div>
           <div class="pack-desc">Five cards from the full pool. Trades, purpose, displacement, AI products, lore. See what the algorithm gives you.</div>
           <div class="pack-meta">5 CARDS · FULL POOL · WEIGHTED</div>
           <button class="pack-btn">▶ OPEN PACK</button>
         </div>
         <div class="pack-card p-trade" onclick="openPack('legendary')">
           <span class="pack-icon-wrap">⚡</span>
-          <div class="pack-title">GOLD PACK</div>
+          <div class="pack-title">REDUNDANCY</div>
           <div class="pack-desc">Guaranteed one Legendary. The trades that will outlast all of it. The rest is fate.</div>
           <div class="pack-meta">5 CARDS · 1 LEGENDARY GUARANTEED</div>
           <button class="pack-btn">▶ OPEN PACK</button>
@@ -2297,6 +2297,7 @@ body::before {
         <div class="mission-row"><span class="mission-label">Pull 3 different rarities</span><span class="mission-progress" id="dm-rarities">0/3</span></div>
         <div class="mission-row"><span class="mission-label">Share a card</span><span class="mission-progress" id="dm-share">0/1</span></div>
       </div>
+      <div class="daily-missions" id="weekly-goal" style="margin-top:12px;"></div>
       <div class="daily-missions" style="margin-top:12px;">
         <div class="daily-missions-title">ACHIEVEMENTS</div>
         <div class="mission-row"><span class="mission-label">Complete your collection</span><span class="mission-progress" id="dm-collection">0/<span id="dm-coll-total">69</span></span></div>
@@ -3344,7 +3345,7 @@ function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   if(id==='collection-screen') renderCollection();
-  if(id==='pack-screen') { updateStats(); renderProfile(); updateDailyUI(); renderSet2Zone(); renderSet3Zone(); }
+  if(id==='pack-screen') { updateStats(); renderProfile(); updateDailyUI(); renderWeeklyGoal(); renderSet2Zone(); renderSet3Zone(); }
 }
 
 function updateStats() {
@@ -3381,14 +3382,14 @@ function openPack(type) {
   // Consume daily pack
   consumeDailyPack();
 
-  const labels = {standard:'STANDARD PACK',legendary:'GOLD PACK',jobless:'JOBLESS.AI PACK',doomscroll:'DOOMSCROLL PACK'};
+  const labels = {standard:'2030 SURVIVAL PACK',legendary:'REDUNDANCY PACK',jobless:'JOBLESS.AI PACK',doomscroll:'DOOMSCROLL PACK'};
   document.getElementById('op-pack-name').textContent = labels[type];
   document.getElementById('legendaryBeam').classList.remove('active');
 
   // Pack tear animation
   const PACK_COLORS = {standard:'#2196c8',legendary:'#c8a84b',jobless:'#ff4040',doomscroll:'#60c8ff'};
   const packColor = PACK_COLORS[type] || '#888';
-  const packTypeLabel = {standard:'STANDARD',legendary:'GOLD',jobless:'JOBLESS.AI',doomscroll:'DOOMSCROLL'}[type];
+  const packTypeLabel = {standard:'2030 SURVIVAL',legendary:'REDUNDANCY',jobless:'JOBLESS.AI',doomscroll:'DOOMSCROLL'}[type];
   const tearEl = document.getElementById('packTear');
   const tearInner = document.getElementById('packTearInner');
   tearInner.style.color = packColor;
@@ -3840,9 +3841,108 @@ function checkMissionCompletions(ds) {
     }
   }
   _prevMissionState = {...checks};
+  // Check if all daily missions complete → mark day for weekly streak
+  if (Object.values(checks).every(v=>v)) {
+    markDayComplete();
+    renderWeeklyGoal();
+  }
 }
 
-// Series boundary: S2 starts at the-crane-operator
+// ═══════════════════════════════════════
+// WEEKLY STREAK SYSTEM
+// ═══════════════════════════════════════
+function getWeekKey() {
+  // Week starts Monday. Key = "aicards_week_YYYY-WW"
+  const d = new Date();
+  const jan1 = new Date(d.getFullYear(), 0, 1);
+  const dayOfYear = Math.floor((d - jan1) / 86400000) + 1;
+  const weekNum = Math.ceil((dayOfYear + jan1.getDay()) / 7);
+  return `aicards_week_${d.getFullYear()}-${String(weekNum).padStart(2,'0')}`;
+}
+
+function getWeekState() {
+  try {
+    const raw = localStorage.getItem(getWeekKey());
+    if (raw) return JSON.parse(raw);
+  } catch(e) {}
+  return { completedDays: [], rewardClaimed: false };
+}
+
+function saveWeekState(ws) {
+  localStorage.setItem(getWeekKey(), JSON.stringify(ws));
+}
+
+function getTodayStr() {
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+}
+
+function isDailyComplete(ds) {
+  return Math.min(5, ds.packsOpened) >= 5 &&
+    !!ds.legendaryPulled &&
+    (ds.raritiesSeen || []).length >= 3 &&
+    !!ds.shared;
+}
+
+function markDayComplete() {
+  const ws = getWeekState();
+  const today = getTodayStr();
+  if (!ws.completedDays.includes(today)) {
+    ws.completedDays.push(today);
+    saveWeekState(ws);
+  }
+}
+
+function getWeekStreak() {
+  return getWeekState().completedDays.length;
+}
+
+function canClaimWeeklyReward() {
+  const ws = getWeekState();
+  return ws.completedDays.length >= 7 && !ws.rewardClaimed;
+}
+
+function claimWeeklyReward() {
+  const ws = getWeekState();
+  if (ws.completedDays.length < 7 || ws.rewardClaimed) return;
+  ws.rewardClaimed = true;
+  saveWeekState(ws);
+  openPack('jobless');
+}
+
+function renderWeeklyGoal() {
+  const zone = document.getElementById('weekly-goal');
+  if (!zone) return;
+  const ws = getWeekState();
+  const streak = ws.completedDays.length;
+  const claimed = ws.rewardClaimed;
+  const ds = getDailyState();
+  const todayDone = isDailyComplete(ds);
+
+  // Day pips: filled for completed days
+  let pips = '';
+  for (let i = 0; i < 7; i++) {
+    const filled = i < streak;
+    pips += `<span style="display:inline-block;width:14px;height:14px;border-radius:50%;border:1.5px solid ${filled?'var(--gold)':'#333'};background:${filled?'var(--gold)':'transparent'};margin:0 2px;"></span>`;
+  }
+
+  zone.innerHTML = `
+    <div class="daily-missions-title">WEEKLY GOAL</div>
+    <div style="text-align:center;margin-bottom:6px;">${pips}</div>
+    <div class="mission-row">
+      <span class="mission-label">Complete all daily missions 7 days</span>
+      <span class="mission-progress ${streak>=7?'done':''}">${streak}/7</span>
+    </div>
+    <div class="mission-row">
+      <span class="mission-label">Reward: 1 free Jobless.ai pack</span>
+      <span class="mission-progress ${claimed?'done':''}">${claimed?'CLAIMED':streak>=7?'READY':'LOCKED'}</span>
+    </div>
+    ${streak>=7 && !claimed ? '<div style="text-align:center;margin-top:8px;"><button class="pack-btn" style="color:var(--gold);box-shadow:0 0 12px rgba(200,168,75,0.3);animation:landingBtnGlow 2s ease-in-out infinite;" onclick="claimWeeklyReward()">🎁 CLAIM REWARD</button></div>' : ''}
+    ${!todayDone && streak < 7 ? '<div style="text-align:center;margin-top:4px;font-family:var(--font-mono);font-size:7px;color:#444;letter-spacing:1px;">COMPLETE TODAY\'S MISSIONS TO CONTINUE STREAK</div>' : ''}
+  `;
+}
+
+// Series boundary
 const JOBLESS_IDS = new Set(CARDS.filter(c=>c.series==='jobless').map(c=>c.id));
 const DOOMSCROLL_IDS = new Set(CARDS.filter(c=>c.series==='doomscroll').map(c=>c.id));
 let collSeriesFilter = 'ALL'; // 'ALL' | 'SURVIVAL' | 'JOBLESS' | 'DOOMSCROLL'
@@ -4007,6 +4107,7 @@ function renderProfile() {
 updateStats();
 renderProfile();
 updateDailyUI();
+renderWeeklyGoal();
 renderSet2Zone();
 renderSet3Zone();
 
