@@ -2,16 +2,17 @@
 
 ## Project Overview
 
-AI CARDS — 2030 Survival Edition. A collectible card experience about AI displacement and the humans who survive automation. Gacha-style pack opening with 118 cards across 6 rarities and 4 sets. Cards are NFTs on Sui blockchain — tradeable, sellable, collectible on-chain. Live at **aicards.fun**.
+AI CARDS — 2030 Survival Edition. A collectible card experience about AI displacement and the humans who survive automation. Gacha-style pack opening with 162 cards across 6 rarities and 6 sets. Cards are NFTs on Sui blockchain — tradeable, sellable, collectible on-chain. Minting API live. Live at **aicards.fun**.
 
 ## Current State
 
 - **Stack**: Single HTML file (CSS + vanilla JS) + Sui Move contracts
 - **Hosting**: Vercel (auto-deploy from GitHub main branch)
 - **Domain**: aicards.fun (Vercel DNS)
-- **Cards**: 118 total across 4 sets, 6 rarities (MYTHIC, LEGENDARY, RARE, UNCOMMON, COMMON, JUNK)
-- **Blockchain**: Sui testnet — Package `0x848b7e822fc93e05212d0002287d079d3cb5ef7fe0be1458091496aaf2aa95d2`
-- **On-chain objects**: AdminCap `0xb8fca933e7198d496f75027f6a0d3189dcd3651205a5f6f590ee2571837cada3`
+- **Cards**: 162 total across 6 sets, 6 rarities (MYTHIC, LEGENDARY, RARE, UNCOMMON, COMMON, JUNK)
+- **Blockchain**: Sui testnet — Package `0x99f91c55ad24367b9fba1000bf43a5e571c2ae096c906fdf2e78fd51243f38b2`
+- **On-chain objects**: AdminCap `0xcfeaad94ff0f5136b037f3482ff68fc00cacc5149b3db8dfe011e239644e4935`
+- **Minting API**: `https://aicards-mint.fly.dev` (FastAPI on Fly.io, 162 cards)
 
 ## Architecture
 
@@ -21,7 +22,15 @@ aicards-tcg/
 ├── contracts/aicards/          # Sui Move smart contracts
 │   ├── Move.toml               # Package manifest
 │   ├── sources/card.move       # Card NFT, AdminCap, mint, mint_pack, burn
-│   └── tests/card_tests.move   # 4 tests (init, mint, burn, transfer/trade)
+│   ├── sources/payment.move    # Treasury, buy_pack (SUI payment), withdraw, set_price
+│   ├── tests/card_tests.move   # 4 tests (init, mint, burn, transfer/trade)
+│   └── tests/payment_tests.move # 5 tests (buy, change, withdraw, price, auth)
+├── server/                     # Minting API (FastAPI on Fly.io)
+│   ├── main.py                 # POST /mint/pack, GET /health, GET /cards/pool
+│   ├── card_data.py            # All 162 cards with rarity weights
+│   ├── Dockerfile              # Python 3.12 + Sui CLI binary
+│   ├── fly.toml                # Fly.io config (aicards-mint)
+│   └── start.sh                # Sui keystore injection from secrets
 ├── og-image.html               # Source file for OG social preview image
 ├── og-image.png                # Generated 1200x630 social preview
 ├── CLAUDE.md                   # This file
@@ -36,6 +45,8 @@ aicards-tcg/
 | Jobless.ai | `jobless` | 25 | 5 | Set 1 100% complete |
 | DOOMSCROLL | `doomscroll` | 22 | 5 | Set 2 100% complete |
 | LOVE.EXE | `loveexe` | 22 | 5 | Set 3 100% complete |
+| WAR ROOM | `warroom` | 22 | 5 | Set 4 100% complete |
+| SKILLS.VOID | `skillsvoid` | 22 | 5 | Set 5 100% complete |
 
 ## Pack Types
 
@@ -46,6 +57,8 @@ aicards-tcg/
 | JOBLESS.AI | Set 2 | All jobless series cards, weighted |
 | DOOMSCROLL | Set 3 | All doomscroll series cards, weighted |
 | LOVE.EXE | Set 4 | All loveexe series cards, weighted |
+| WAR ROOM | Set 5 | All warroom series cards, weighted |
+| SKILLS.VOID | Set 6 | All skillsvoid series cards, weighted |
 
 ## Rarity Weights (per card slot)
 
@@ -104,6 +117,9 @@ This is a social commentary piece disguised as a card game. The tone is dark hum
 - **Address-based**: Users paste Sui address (no extension required, mobile-friendly)
 - **Trading**: Cards have `store` ability — native Sui transfers + Kiosk marketplace compatible
 - **Mint flow**: Server-side minting via AdminCap (rarity determined server-side)
+- **Payment**: Treasury shared object, buy_pack() accepts SUI, change returned on overpay
+- **Minting API**: `aicards-mint.fly.dev` — POST /mint/pack, 162 cards, all 6 sets
+- **Move tests**: 9 passing (4 card + 5 payment)
 
 ## Dependencies
 
