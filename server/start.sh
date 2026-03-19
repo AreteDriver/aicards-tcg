@@ -24,8 +24,15 @@ envs:
 active_env: testnet
 YAML
 
-# Write aliases (empty is fine)
-echo '{}' > "$SUI_CONFIG_DIR/sui.aliases"
+# Write aliases
+cat > "$SUI_CONFIG_DIR/sui.aliases" << 'ALIASES'
+[
+  {
+    "alias": "aicards-admin",
+    "public_key_base64": "AI2bG3s5h/+Vrl6ll4Z3iuSPYpl04iem0SHfptJQYtSU"
+  }
+]
+ALIASES
 
 # Set active address
 if [ -n "$SUI_ACTIVE_ADDRESS" ]; then
