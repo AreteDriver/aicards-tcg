@@ -3606,11 +3606,7 @@ setTimeout(function(){var el=document.getElementById('loading-screen');if(el){el
       <div class="card-deck" id="card-deck">
         <!-- 5 stacked cards populated by JS -->
       </div>
-      <div class="deck-nav" id="deck-nav">
-        <button class="deck-arrow" id="deck-prev" onclick="deckNav(-1)" disabled>&lt;</button>
-        <div class="reveal-hint" id="deck-hint" style="font-family:var(--font-mono);font-size:9px;letter-spacing:3px;color:#2a2a2a;animation:blink 1.6s infinite;">TAP TO REVEAL</div>
-        <button class="deck-arrow" id="deck-next" onclick="deckNav(1)" disabled>&gt;</button>
-      </div>
+      <div id="revealed-strip" style="display:flex;gap:6px;justify-content:center;margin-top:12px;min-height:52px;flex-wrap:wrap;"></div>
       <div class="reveal-cta" id="reveal-cta" style="margin-top:12px;">
       </div>
     </div>
@@ -5123,8 +5119,9 @@ function openPack(type) {
   setTimeout(() => {
     tearEl.classList.remove('tearing');
     renderCardDeck();
-    updateDeckUI();
     showScreen('opening-screen');
+    // Auto-reveal first card after a beat
+    setTimeout(() => revealDeckCard(0), 400);
     save();
   }, 900);
 
@@ -5144,12 +5141,15 @@ function renderCardDeck() {
     el.dataset.depth = depth;
     if (i === 0) el.classList.add('active-card');
     el.onclick = () => {
-      if (!session.revealed[i]) {
+      if (!session.revealed[i] && i === session.currentIndex) {
         revealDeckCard(i);
-        // Auto-advance to next card after reveal animation
-        if (i < 4) setTimeout(() => deckNav(1), 600);
-      } else if (i === session.currentIndex && i < 4) {
-        deckNav(1);
+        // Auto-advance to next card after reveal
+        if (i < 4) setTimeout(() => { deckNav(1); updateDeckUI(); }, 600);
+        else updateDeckUI();
+      } else if (session.revealed[i]) {
+        // Tap revealed card — advance to next unrevealed
+        const next = session.revealed.indexOf(false);
+        if (next >= 0) { session.currentIndex = next; updateDeckPositions(); updateDeckUI(); }
       }
     };
 
@@ -5257,29 +5257,22 @@ function updateDeckPositions() {
 function updateDeckUI() {
   const revealed = session.revealed.filter(Boolean).length;
   const counter = document.getElementById('deck-counter');
-  const hint = document.getElementById('deck-hint');
-  const prevBtn = document.getElementById('deck-prev');
-  const nextBtn = document.getElementById('deck-next');
   const cta = document.getElementById('reveal-cta');
+  const strip = document.getElementById('revealed-strip');
 
   // Counter
-  counter.textContent = `${session.currentIndex + 1} / 5`;
+  counter.textContent = `${revealed} / 5`;
 
-  // Hint
-  if (!session.revealed[session.currentIndex]) {
-    hint.textContent = 'TAP TO REVEAL';
-    hint.style.animation = 'blink 1.6s infinite';
-  } else if (revealed < 5) {
-    hint.textContent = `${5 - revealed} REMAINING`;
-    hint.style.animation = 'none';
-  } else {
-    hint.textContent = '';
-    hint.style.animation = 'none';
-  }
-
-  // Nav arrows
-  prevBtn.disabled = session.currentIndex <= 0;
-  nextBtn.disabled = session.currentIndex >= 4 || !session.revealed[session.currentIndex];
+  // Build mini card strip — shows revealed cards, tap to jump back
+  let stripHTML = '';
+  session.pack.forEach((c, i) => {
+    if (session.revealed[i]) {
+      const col = RARITY_COLORS[c.rarity] || '#667080';
+      const active = i === session.currentIndex ? 'transform:scale(1.2) translateY(-3px);' : '';
+      stripHTML += `<div class="pack-summary-mini" style="border-color:${col};background:${col}11;${active}" onclick="jumpToCard(${i})">${c.symbol}</div>`;
+    }
+  });
+  if (strip) strip.innerHTML = stripHTML;
 
   // CTA area
   if (revealed < 5) {
@@ -5288,27 +5281,34 @@ function updateDeckUI() {
     // All revealed — show summary
     const newCount = S.newCards.size;
     const newText = newCount > 0 ? `${newCount} NEW CARD${newCount>1?'S':''}` : 'NO NEW CARDS';
-    let miniCards = '';
-    session.pack.forEach(c => {
-      const col = RARITY_COLORS[c.rarity] || '#667080';
-      miniCards += `<div class="pack-summary-mini" style="border-color:${col};background:${col}11;" onclick="showCardModal('${c.id}')">${c.symbol}</div>`;
-    });
     const chainBtn = isChainConnected()
-      ? `<button class="cta-btn" style="color:#60c8ff;border-color:#60c8ff;" onclick="mintPackToChain()" id="mint-chain-btn">⛓️ MINT TO CHAIN</button>`
-      : (S.packs >= 2 ? `<button class="cta-btn sec" style="color:#444;" onclick="openChainModal()">NFTs you can sell, trade, collect on-chain →</button>` : '');
+      ? `<button class="cta-btn" onclick="mintPackToChain()" id="mint-chain-btn">⛓️ MINT TO CHAIN</button>`
+      : (S.packs >= 2 ? `<button class="cta-btn sec" onclick="openChainModal()">NFTs you can sell, trade, collect on-chain →</button>` : '');
     cta.innerHTML = `
       <div class="pack-summary">
-        <div class="reveal-hint">PACK COMPLETE · ${newText}</div>
-        <div class="pack-summary-cards">${miniCards}</div>
-        <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:8px;">
-          <button class="cta-btn" onclick="showScreen('pack-screen')">BACK TO PACKS</button>
-          <button class="cta-btn sec" onclick="copyPackResult()">COPY RESULT</button>
-          <button class="cta-btn sec" onclick="sharePackResult()">SHARE RESULT</button>
+        <div class="reveal-hint" style="font-family:var(--font-mono);font-size:9px;letter-spacing:2px;color:#555;">PACK COMPLETE · ${newText}</div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:12px;">
+          <button class="cta-btn" onclick="openNextPack()">NEXT PACK</button>
+          <button class="cta-btn sec" onclick="showScreen('pack-screen')">MENU</button>
           ${chainBtn}
         </div>
         <div id="mint-status" style="margin-top:8px;"></div>
       </div>`;
   }
+}
+
+function jumpToCard(index) {
+  session.currentIndex = index;
+  updateDeckPositions();
+  updateDeckUI();
+}
+
+function openNextPack() {
+  if (getDailyPacksRemaining() <= 0) {
+    showToast('NO DAILY PACKS LEFT — RESETS AT MIDNIGHT');
+    return;
+  }
+  openPack(session.type);
 }
 
 function revealAllDeck() {
