@@ -5120,20 +5120,15 @@ function openPack(type) {
   tearEl.classList.add('tearing');
   sfxPackRip();
 
-  // Hold the tear visible, then fade out and show first card face-up
+  // After tear, show first card face-up
   setTimeout(() => {
     tearEl.classList.remove('tearing');
     setTimeout(() => {
-      // Reveal first card
-      revealDeckCard(0);
-      // Advance to card 1 so tapping reveals the next
-      setTimeout(() => {
-        session.currentIndex = 1;
-        updateDeckPositions();
-        updateDeckUI();
-      }, 700);
+      // Show card 0 face-up, mark as revealed, track stats
+      showCardFaceUp(0);
+      updateDeckUI();
+      save();
     }, 500);
-    save();
   }, 1400);
 
   updateStats();
@@ -5145,44 +5140,67 @@ function renderCardDeck() {
   deck.innerHTML = '';
   session.pack.forEach((card, i) => {
     const el = document.createElement('div');
-    const hintClass = 'hint-' + card.rarity.toLowerCase();
-    el.className = `deck-card ${hintClass}`;
+    el.className = 'deck-card';
     el.dataset.index = i;
-    el.dataset.depth = '0';
-    if (i === 0) el.classList.add('active-card');
-    else el.style.display = 'none';
-    el.onclick = () => {
-      if (!session.revealed[i]) {
-        // Force index match so revealDeckCard doesn't bail
-        session.currentIndex = i;
-        revealDeckCard(i);
-        // After flip animation, advance to next
-        setTimeout(() => {
-          if (i < 4) {
-            session.currentIndex = i + 1;
-            updateDeckPositions();
-          }
-          updateDeckUI();
-        }, 700);
-      }
-    };
+    el.style.display = 'none'; // all hidden initially
+    // Tap card = advance to next
+    el.onclick = () => advanceCard();
 
     const isSpeciation = card.id === 'speciation-pressure';
     const colorClass = isSpeciation ? 'junk' : card.color;
 
+    // Show face-up directly — no flip needed
     el.innerHTML = `
-      <div class="card" style="transform-style:preserve-3d;">
-        <div class="card-back">
-          <div class="back-logo">AI CARDS</div>
-          <div class="back-sub">2030 EDITION</div>
-          <div class="back-tap">TAP</div>
-        </div>
-        <div class="card-front ${colorClass}">
+      <div class="card revealed">
+        <div class="card-front ${colorClass}" style="transform:none;backface-visibility:visible;">
           ${buildCardHTML(card)}
         </div>
       </div>`;
     deck.appendChild(el);
   });
+}
+
+function showCardFaceUp(index) {
+  if (index >= 5) return;
+  const cards = document.querySelectorAll('.deck-card');
+  // Hide all
+  cards.forEach(c => c.style.display = 'none');
+  // Show current
+  cards[index].style.display = '';
+  session.currentIndex = index;
+  // Track stats for this card
+  if (!session.revealed[index]) {
+    session.revealed[index] = true;
+    const card = session.pack[index];
+    sfxFlip();
+    if (card.rarity === 'MYTHIC') { sfxLegendary(); sfxLegendary(); document.body.classList.add('shake'); setTimeout(()=>document.body.classList.remove('shake'),500); }
+    else if (card.rarity === 'LEGENDARY' || card.id === 'speciation-pressure') sfxLegendary();
+    else if (card.rarity === 'RARE') sfxRare();
+    triggerEffect(card, cards[index]);
+    // Track stats
+    S.pulls++;
+    const isNew = !collectionHas(card.id);
+    collectionAdd(card.id);
+    if (isNew) { S.newCards.add(card.id); if (card.rarity==='LEGENDARY' || card.rarity==='MYTHIC') S.legendaries++; }
+    if (card.rarity==='LEGENDARY' || card.rarity==='MYTHIC') { S.pityCounter = 0; markDailyLegendary(); }
+    markDailyRarity(card.rarity);
+    if (card.rarity==='MYTHIC') S.sov += 10;
+    else if (['LEGENDARY','RARE'].includes(card.rarity) && card.category.toLowerCase().includes('human')) S.sov += card.rarity==='LEGENDARY'?3:1;
+    if (card.category==='AI Product') S.dep += 2;
+    save();
+    updateStats();
+    updateDailyUI();
+  }
+}
+
+function advanceCard() {
+  if (session.currentIndex < 4) {
+    showCardFaceUp(session.currentIndex + 1);
+    updateDeckUI();
+  } else {
+    // All 5 shown — updateDeckUI will show summary
+    updateDeckUI();
+  }
 }
 
 function revealDeckCard(index) {
@@ -5273,16 +5291,22 @@ function updateDeckUI() {
   // Counter
   counter.textContent = `${revealed} / 5`;
 
-  // Build mini card strip — shows revealed cards, tap to jump back
+  // Build mini card strip — shows revealed cards, tap to revisit
   let stripHTML = '';
   session.pack.forEach((c, i) => {
     if (session.revealed[i]) {
       const col = RARITY_COLORS[c.rarity] || '#667080';
-      const active = i === session.currentIndex ? 'transform:scale(1.2) translateY(-3px);' : '';
+      const active = i === session.currentIndex ? 'transform:scale(1.2) translateY(-3px);box-shadow:0 0 8px '+col+';' : '';
       stripHTML += `<div class="pack-summary-mini" style="border-color:${col};background:${col}11;${active}" onclick="jumpToCard(${i})">${c.symbol}</div>`;
     }
   });
   if (strip) strip.innerHTML = stripHTML;
+
+  // Tap hint
+  if (revealed < 5 && revealed > 0) {
+    stripHTML += `<div style="font-family:var(--font-mono);font-size:8px;color:#333;letter-spacing:2px;width:100%;text-align:center;margin-top:4px;">TAP CARD FOR NEXT</div>`;
+    if (strip) strip.innerHTML = stripHTML;
+  }
 
   // CTA area
   if (revealed < 5) {
@@ -5308,8 +5332,10 @@ function updateDeckUI() {
 }
 
 function jumpToCard(index) {
+  const cards = document.querySelectorAll('.deck-card');
+  cards.forEach(c => c.style.display = 'none');
+  cards[index].style.display = '';
   session.currentIndex = index;
-  updateDeckPositions();
   updateDeckUI();
 }
 
