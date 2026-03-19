@@ -3523,7 +3523,7 @@ setTimeout(function(){var el=document.getElementById('loading-screen');if(el){el
         </div>
       </div>
       <div class="daily-packs-bar">
-        <div class="daily-packs-count">FREE PACKS: <span id="dp-remaining">5</span> / 5</div>
+        <div class="daily-packs-count">FREE PACKS: <span id="dp-remaining">10</span> / 10</div>
         <div class="daily-packs-timer" id="dp-timer">Next pack in: --:--</div>
         <div class="daily-packs-pity"><span id="dp-pity-pulls">0</span> pulls until Gold Pack</div>
       </div>
@@ -3567,7 +3567,7 @@ setTimeout(function(){var el=document.getElementById('loading-screen');if(el){el
       <div id="set6-zone"></div>
       <div class="daily-missions" id="daily-missions">
         <div class="daily-missions-title">DAILY MISSIONS</div>
-        <div class="mission-row"><span class="mission-label">Open 5 packs</span><span class="mission-progress" id="dm-packs">0/5</span></div>
+        <div class="mission-row"><span class="mission-label">Open 10 packs</span><span class="mission-progress" id="dm-packs">0/10</span></div>
         <div class="mission-row"><span class="mission-label">Pull at least one Legendary</span><span class="mission-progress" id="dm-legendary">0/1</span></div>
         <div class="mission-row"><span class="mission-label">Pull 3 different rarities</span><span class="mission-progress" id="dm-rarities">0/3</span></div>
         <div class="mission-row"><span class="mission-label">Share a card</span><span class="mission-progress" id="dm-share">0/1</span></div>
@@ -4719,7 +4719,7 @@ let session = {pack:[],revealed:[],type:'standard',currentIndex:0};
 // ═══════════════════════════════════════
 // DAILY PACK SYSTEM
 // ═══════════════════════════════════════
-const DAILY_MAX = 5;
+const DAILY_MAX = 10;
 const GOLD_PACK_PITY = 50; // pulls until gold pack
 
 function getDailyKey() {
@@ -4788,9 +4788,9 @@ function updateDailyUI() {
   const dmColl = document.getElementById('dm-collection');
   const dmCollTotal = document.getElementById('dm-coll-total');
   if (dmPacks) {
-    const ct = Math.min(5, ds.packsOpened);
+    const ct = Math.min(10, ds.packsOpened);
     dmPacks.textContent = `${ct}/5`;
-    dmPacks.classList.toggle('done', ct >= 5);
+    dmPacks.classList.toggle('done', ct >= 10);
   }
   if (dmLeg) {
     dmLeg.textContent = ds.legendaryPulled ? '1/1' : '0/1';
@@ -5557,7 +5557,7 @@ function _drainMissionToast() {
 let _prevMissionState = {};
 function checkMissionCompletions(ds) {
   const checks = {
-    packs: Math.min(5, ds.packsOpened) >= 5,
+    packs: Math.min(10, ds.packsOpened) >= 5,
     legendary: !!ds.legendaryPulled,
     rarities: (ds.raritiesSeen || []).length >= 3,
     share: !!ds.shared
@@ -5611,7 +5611,7 @@ function getTodayStr() {
 }
 
 function isDailyComplete(ds) {
-  return Math.min(5, ds.packsOpened) >= 5 &&
+  return Math.min(10, ds.packsOpened) >= 5 &&
     !!ds.legendaryPulled &&
     (ds.raritiesSeen || []).length >= 3 &&
     !!ds.shared;
