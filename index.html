@@ -2795,7 +2795,7 @@ body::before {
 
 /* ── PACK TEAR ANIMATION ── */
 #packTear {
-  position:fixed;inset:0;z-index:500;pointer-events:none;
+  position:fixed;inset:0;z-index:9000;pointer-events:none;
   display:flex;align-items:center;justify-content:center;
   opacity:0;
   background:rgba(8,8,8,0.92);
@@ -5135,21 +5135,23 @@ function renderCardDeck() {
   session.pack.forEach((card, i) => {
     const el = document.createElement('div');
     const hintClass = 'hint-' + card.rarity.toLowerCase();
-    const depth = i; // 0 = top card
     el.className = `deck-card ${hintClass}`;
     el.dataset.index = i;
-    el.dataset.depth = depth;
+    el.dataset.depth = '0';
     if (i === 0) el.classList.add('active-card');
+    else el.style.display = 'none';
     el.onclick = () => {
       if (!session.revealed[i] && i === session.currentIndex) {
+        // Reveal this card
         revealDeckCard(i);
-        // Auto-advance to next card after reveal
-        if (i < 4) setTimeout(() => { deckNav(1); updateDeckUI(); }, 600);
-        else updateDeckUI();
-      } else if (session.revealed[i]) {
-        // Tap revealed card — advance to next unrevealed
-        const next = session.revealed.indexOf(false);
-        if (next >= 0) { session.currentIndex = next; updateDeckPositions(); updateDeckUI(); }
+        // After flip animation, advance to next
+        setTimeout(() => {
+          if (i < 4) {
+            session.currentIndex = i + 1;
+            updateDeckPositions();
+          }
+          updateDeckUI();
+        }, 700);
       }
     };
 
@@ -5237,19 +5239,15 @@ function deckNav(dir) {
 function updateDeckPositions() {
   const cards = document.querySelectorAll('.deck-card');
   cards.forEach((el, i) => {
-    el.classList.remove('active-card','swipe-left','swipe-right');
-    const relPos = i - session.currentIndex;
-    if (relPos < 0) {
-      // Already viewed — stack to left
-      el.classList.add('swipe-left');
-    } else if (relPos === 0) {
+    el.classList.remove('active-card');
+    // Show only the current card
+    if (i === session.currentIndex) {
       el.classList.add('active-card');
-      el.dataset.depth = '0';
+      el.style.display = '';
       el.style.transform = '';
+      el.dataset.depth = '0';
     } else {
-      // In the stack behind
-      el.dataset.depth = String(Math.min(relPos, 4));
-      el.classList.remove('swipe-left','swipe-right');
+      el.style.display = 'none';
     }
   });
 }
