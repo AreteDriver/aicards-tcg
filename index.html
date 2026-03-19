@@ -997,6 +997,219 @@ body::before {
   animation: pulse-glow 2s ease-in-out infinite;
 }
 
+/* ═══ SET 3: DOOMSCROLL ART ═══ */
+/* MYTHIC */
+.art-ds-whistleblower {
+  background: radial-gradient(ellipse at 50% 40%, #0a1020 0%, #050810 60%, #020408 100%);
+}
+.art-ds-whistleblower::after {
+  content:'📡'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:52px;
+  filter: drop-shadow(0 0 24px rgba(100,200,255,0.8));
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+.art-ds-war-correspondent {
+  background: linear-gradient(180deg, #1a0800 0%, #0d0400 60%, #080200 100%);
+}
+.art-ds-war-correspondent::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 50% 60% at 50% 80%, rgba(255,80,0,0.2) 0%, transparent 60%);
+}
+.art-ds-war-correspondent::after {
+  content:'📸'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:48px;
+  filter: drop-shadow(0 0 20px rgba(255,150,50,0.7));
+  animation: float 3s ease-in-out infinite;
+}
+.art-ds-analog-parent {
+  background: radial-gradient(ellipse at 50% 60%, #0a1008 0%, #050804 60%, #020402 100%);
+}
+.art-ds-analog-parent::after {
+  content:'🌿'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:52px;
+  filter: drop-shadow(0 0 20px rgba(80,200,80,0.6));
+  animation: sway 4s ease-in-out infinite;
+}
+.art-ds-independent-journalist {
+  background: linear-gradient(180deg, #0a0a14 0%, #050508 60%, #020204 100%);
+}
+.art-ds-independent-journalist::after {
+  content:'✍️'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:48px;
+  filter: drop-shadow(0 0 18px rgba(255,255,255,0.5));
+  animation: float 3.5s ease-in-out infinite;
+}
+.art-ds-attention-span {
+  background: radial-gradient(ellipse at 50% 50%, #1a1000 0%, #0d0800 60%, #080400 100%);
+}
+.art-ds-attention-span::after {
+  content:'⏳'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:52px;
+  filter: drop-shadow(0 0 22px rgba(255,200,50,0.7));
+  animation: flicker 0.8s ease-in-out infinite alternate;
+}
+/* LEGENDARY */
+.art-ds-investigative-journalist {
+  background: linear-gradient(180deg, #0a0810 0%, #060410 50%, #020208 100%);
+}
+.art-ds-investigative-journalist::after {
+  content:'🔍'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:48px;
+  filter: drop-shadow(0 0 16px rgba(200,168,75,0.6));
+  animation: float 4s ease-in-out infinite;
+}
+.art-ds-local-news-anchor {
+  background: linear-gradient(180deg, #10080a 0%, #0a0406 50%, #060204 100%);
+}
+.art-ds-local-news-anchor::after {
+  content:'📺'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:48px;
+  filter: drop-shadow(0 0 14px rgba(200,168,75,0.5));
+  animation: pulse-soft 3s ease-in-out infinite;
+}
+.art-ds-print-editor {
+  background: linear-gradient(180deg, #0e0c08 0%, #080604 50%, #040302 100%);
+}
+.art-ds-print-editor::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 8px, rgba(200,168,75,0.04) 8px, rgba(200,168,75,0.04) 9px);
+}
+.art-ds-print-editor::after {
+  content:'📰'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:48px;
+  filter: drop-shadow(0 0 14px rgba(200,168,75,0.5));
+}
+/* RARE */
+.art-ds-fact-checker {
+  background: linear-gradient(180deg, #08001a 0%, #04000d 50%, #020008 100%);
+}
+.art-ds-fact-checker::after {
+  content:'✅'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:44px;
+  filter: drop-shadow(0 0 14px rgba(155,89,208,0.5));
+  animation: float 3s ease-in-out infinite;
+}
+.art-ds-media-literacy {
+  background: linear-gradient(180deg, #0a0018 0%, #060010 50%, #020008 100%);
+}
+.art-ds-media-literacy::after {
+  content:'🎓'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:46px;
+  filter: drop-shadow(0 0 12px rgba(155,89,208,0.4));
+}
+.art-ds-librarian-stayed {
+  background: linear-gradient(180deg, #0e0018 0%, #08000e 50%, #040008 100%);
+}
+.art-ds-librarian-stayed::after {
+  content:'📚'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:46px;
+  filter: drop-shadow(0 0 14px rgba(155,89,208,0.5));
+  animation: float 4s ease-in-out infinite;
+}
+.art-ds-the-source {
+  background: radial-gradient(ellipse at 50% 50%, #0e0018 0%, #06000a 60%, #020004 100%);
+}
+.art-ds-the-source::after {
+  content:'🕶️'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:44px;
+  filter: drop-shadow(0 0 12px rgba(155,89,208,0.6));
+  animation: pulse-soft 2.5s ease-in-out infinite;
+}
+/* UNCOMMON */
+.art-ds-doomscroller {
+  background: linear-gradient(180deg, #001020 0%, #000810 50%, #000408 100%);
+}
+.art-ds-doomscroller::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 60% 40% at 50% 50%, rgba(33,150,200,0.1) 0%, transparent 60%);
+}
+.art-ds-doomscroller::after {
+  content:'📱'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:48px;
+  filter: drop-shadow(0 0 20px rgba(33,150,200,0.7));
+  animation: float 2s ease-in-out infinite;
+}
+.art-ds-algorithm {
+  background: linear-gradient(180deg, #000810 0%, #000410 50%, #000208 100%);
+}
+.art-ds-algorithm::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-linear-gradient(90deg, transparent, transparent 6px, rgba(33,150,200,0.04) 6px, rgba(33,150,200,0.04) 7px),
+    repeating-linear-gradient(0deg, transparent, transparent 6px, rgba(33,150,200,0.03) 6px, rgba(33,150,200,0.03) 7px);
+}
+.art-ds-algorithm::after {
+  content:'🤖'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:48px;
+  filter: drop-shadow(0 0 16px rgba(33,150,200,0.6));
+  animation: spin-slow 10s linear infinite;
+}
+.art-ds-headline-writer {
+  background: linear-gradient(180deg, #001018 0%, #000810 50%, #000408 100%);
+}
+.art-ds-headline-writer::after {
+  content:'📢'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:44px;
+  filter: drop-shadow(0 0 12px rgba(33,150,200,0.5));
+  animation: pulse-glow 1.5s ease-in-out infinite;
+}
+.art-ds-notification {
+  background: linear-gradient(180deg, #100008 0%, #080004 50%, #040002 100%);
+}
+.art-ds-notification::after {
+  content:'🔔'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:46px;
+  filter: drop-shadow(0 0 14px rgba(33,150,200,0.5));
+  animation: pulse-glow 0.8s ease-in-out infinite;
+}
+/* COMMON */
+.art-ds-deepfake {
+  background: linear-gradient(180deg, #180010 0%, #0c0008 50%, #060004 100%);
+}
+.art-ds-deepfake::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(212,68,144,0.08) 0%, transparent 60%);
+}
+.art-ds-deepfake::after {
+  content:'🎭'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:48px;
+  filter: drop-shadow(0 0 16px rgba(212,68,144,0.6));
+  animation: flicker 1.5s ease-in-out infinite alternate;
+}
+.art-ds-ai-anchor {
+  background: linear-gradient(180deg, #140010 0%, #0a0008 50%, #060004 100%);
+}
+.art-ds-ai-anchor::after {
+  content:'📡'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:44px;
+  filter: drop-shadow(0 0 12px rgba(212,68,144,0.5));
+}
+.art-ds-content-mill {
+  background: linear-gradient(180deg, #160010 0%, #0c0008 50%, #060004 100%);
+}
+.art-ds-content-mill::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 5px, rgba(212,68,144,0.03) 5px, rgba(212,68,144,0.03) 6px);
+}
+.art-ds-content-mill::after {
+  content:'🏭'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:44px;
+  filter: drop-shadow(0 0 12px rgba(212,68,144,0.4));
+  animation: spin-slow 12s linear infinite;
+}
+/* JUNK */
+.art-ds-misinfo {
+  background: linear-gradient(180deg, #0c0e10 0%, #070809 50%, #040506 100%);
+}
+.art-ds-misinfo::after {
+  content:'🦠'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:46px;
+  filter: drop-shadow(0 0 10px rgba(102,112,128,0.5));
+  animation: float 3s ease-in-out infinite;
+}
+.art-ds-conspiracy {
+  background: radial-gradient(ellipse at 50% 50%, #0e1012 0%, #080a0c 60%, #040506 100%);
+}
+.art-ds-conspiracy::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-conic-gradient(from 0deg at 50% 50%, transparent 0deg, transparent 59deg, rgba(102,112,128,0.05) 60deg, rgba(102,112,128,0.05) 61deg);
+}
+.art-ds-conspiracy::after {
+  content:'👁️'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:50px;
+  filter: drop-shadow(0 0 14px rgba(102,112,128,0.6));
+  animation: pulse-soft 3s ease-in-out infinite;
+}
+.art-ds-tos {
+  background: linear-gradient(180deg, #0a0c0e 0%, #060708 50%, #030404 100%);
+}
+.art-ds-tos::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(102,112,128,0.03) 3px, rgba(102,112,128,0.03) 4px);
+}
+.art-ds-tos::after {
+  content:'📜'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:44px;
+  filter: drop-shadow(0 0 8px rgba(102,112,128,0.4));
+}
+
 /* Art overlay gradient — makes art feel painted */
 .card-art::before {
   content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
@@ -2074,8 +2287,9 @@ body::before {
         </div>
       </div>
 
-      <!-- SET 2: JOBLESS.AI (rendered by JS for lock state) -->
+      <!-- SET 2 & 3: rendered by JS for lock state -->
       <div id="set2-zone"></div>
+      <div id="set3-zone"></div>
       <div class="daily-missions" id="daily-missions">
         <div class="daily-missions-title">DAILY MISSIONS</div>
         <div class="mission-row"><span class="mission-label">Open 5 packs</span><span class="mission-progress" id="dm-packs">0/5</span></div>
@@ -2609,6 +2823,154 @@ const CARDS = [
    atk:"35K",def:"THIS MONTH",
    flavor:"The month the tracker hit half a million. 495,599 and climbing. Nobody threw a party. Nobody held a vigil. It was a Tuesday. The number ticked over sometime between a Workday earnings call and an Atlassian restructuring memo. March 2026. Remember it or don't. The spreadsheet will.",
    symbol:"📅",color:"junk"},
+
+  // ═══════════════════════════════════════
+  // SET 3: DOOMSCROLL
+  // ═══════════════════════════════════════
+
+  // ═══ MYTHIC ═══
+  {id:"ds-whistleblower",name:"THE WHISTLEBLOWER",rarity:"MYTHIC",category:"Irreplaceable",artClass:"art-ds-whistleblower",series:"doomscroll",
+   kscore:"0",kscoreClass:"low",
+   s1:{l:"Documents Leaked",v:"2.4M"},s2:{l:"Years in Exile",v:"ONGOING"},
+   atk:"∞",def:"∞",
+   flavor:"⚡ DEAD DROP — Reveals all hidden cards in play. Knew it would cost everything. Career. Country. Family. Did it between lunch and a meeting that never happened. Algorithmically buried in 4 hours.",
+   symbol:"📡",color:"mythic"},
+  {id:"ds-war-correspondent",name:"THE WAR CORRESPONDENT",rarity:"MYTHIC",category:"Irreplaceable",artClass:"art-ds-war-correspondent",series:"doomscroll",
+   kscore:"0",kscoreClass:"low",
+   s1:{l:"Drones That Filed Stories",v:"0"},s2:{l:"Wars Ended by Footage",v:"3"},
+   atk:"∞",def:"∞",
+   flavor:"⚡ BEARING WITNESS — Cannot be censored. Cannot be deleted. The drone sent footage. She sent context. The footage went viral. The context was ignored. She went back anyway.",
+   symbol:"📸",color:"mythic"},
+  {id:"ds-analog-parent",name:"THE ANALOG PARENT",rarity:"MYTHIC",category:"Irreplaceable",artClass:"art-ds-analog-parent",series:"doomscroll",
+   kscore:"0",kscoreClass:"low",
+   s1:{l:"Screen Time (Ages 0-12)",v:"0 HRS"},s2:{l:"Pediatricians Who Agreed",v:"ALL OF THEM"},
+   atk:"∞",def:"∞",
+   flavor:"⚡ NO SCREENS — All cards in your hand gain +2 focus. No iPad at dinner. No YouTube at bedtime. Her kids can hold eye contact for more than 3 seconds. They are the only ones.",
+   symbol:"🌿",color:"mythic"},
+  {id:"ds-indie-journalist",name:"THE INDEPENDENT JOURNALIST",rarity:"MYTHIC",category:"Irreplaceable",artClass:"art-ds-independent-journalist",series:"doomscroll",
+   kscore:"0",kscoreClass:"low",
+   s1:{l:"Advertisers",v:"0"},s2:{l:"Subscribers",v:"843"},
+   atk:"∞",def:"∞",
+   flavor:"⚡ UNBOUGHT — Cannot be influenced by sponsored cards. No advertisers. No algorithm. No audience. 843 subscribers and the truth. The 843 know who she is. The algorithm doesn't. That's the point.",
+   symbol:"✍️",color:"mythic"},
+  {id:"ds-attention-span",name:"THE ATTENTION SPAN",rarity:"MYTHIC",category:"Irreplaceable",artClass:"art-ds-attention-span",series:"doomscroll",
+   kscore:"0",kscoreClass:"low",
+   s1:{l:"Average Duration (2015)",v:"8 SEC"},s2:{l:"Average Duration (2030)",v:"EXTINCT"},
+   atk:"∞",def:"∞",
+   flavor:"⚡ DEEP FOCUS — Immune to all notification effects. 8 seconds in 2015. 4 in 2020. Declared endangered in 2025. Memorial service at 3pm. Nobody showed — they got distracted on the way.",
+   symbol:"⏳",color:"mythic"},
+
+  // ═══ LEGENDARY ═══
+  {id:"ds-investigative",name:"THE INVESTIGATIVE JOURNALIST",rarity:"LEGENDARY",category:"Human · Media",artClass:"art-ds-investigative-journalist",series:"doomscroll",
+   kscore:"1",kscoreClass:"low",
+   s1:{l:"Months on This Story",v:"18"},s2:{l:"Views vs AI Listicle Next to It",v:"40K vs 12M"},
+   atk:"3",def:"PULITZERS",
+   flavor:"⚡ DEEP DIG — Reveals one hidden truth per turn. 18 months. Three sources. Two death threats. One Pulitzer. 40,000 views. The AI-generated '15 Signs Your City Is Dying' next to it got 12 million.",
+   symbol:"🔍",color:"legendary"},
+  {id:"ds-news-anchor",name:"THE LOCAL NEWS ANCHOR",rarity:"LEGENDARY",category:"Human · Media",artClass:"art-ds-local-news-anchor",series:"doomscroll",
+   kscore:"3",kscoreClass:"low",
+   s1:{l:"Years the Community Trusted Her",v:"22"},s2:{l:"Ratings After AI Replaced Her",v:"+12%"},
+   atk:"22",def:"YEARS",
+   flavor:"⚡ TRUSTED FACE — Grants immunity to misinformation for 1 turn. 22 years. Same desk. Same town. They replaced her with an AI avatar in March. Ratings went up 12%. Nobody could explain why that made them sad.",
+   symbol:"📺",color:"legendary"},
+  {id:"ds-print-editor",name:"THE PRINT EDITOR",rarity:"LEGENDARY",category:"Human · Media",artClass:"art-ds-print-editor",series:"doomscroll",
+   kscore:"2",kscoreClass:"low",
+   s1:{l:"Stories She Killed for Being Wrong",v:"1,847"},s2:{l:"Clicks Those Stories Would Have Got",v:"400M"},
+   atk:"1847",def:"KILLED STORIES",
+   flavor:"⚡ SPIKE IT — Removes one misinformation card from play. Killed 1,847 stories in 30 years. Every one of them would have gone viral. None of them were true. She retired. The stories run themselves now.",
+   symbol:"📰",color:"legendary"},
+
+  // ═══ RARE ═══
+  {id:"ds-fact-checker",name:"THE FACT-CHECKER",rarity:"RARE",category:"Society · Media",artClass:"art-ds-fact-checker",series:"doomscroll",
+   kscore:"8",kscoreClass:"high",
+   s1:{l:"Claims Verified (Career)",v:"142,000"},s2:{l:"Replacement Cost",v:"$0.002/claim"},
+   atk:"142K",def:"VERIFIED",
+   flavor:"⚡ VERIFIED — Negates one false card per turn. Checked 142,000 claims in 11 years. AI does it in seconds for a fifth of a cent. The AI is right 94% of the time. She was right 99.7%. That 5.7% gap is called democracy.",
+   symbol:"✅",color:"rare"},
+  {id:"ds-media-literacy",name:"THE MEDIA LITERACY TEACHER",rarity:"RARE",category:"Human · Education",artClass:"art-ds-media-literacy",series:"doomscroll",
+   kscore:"4",kscoreClass:"mid",
+   s1:{l:"Students Taught to Spot Misinfo",v:"12,000"},s2:{l:"Students Now Generating It",v:"UNCOUNTED"},
+   atk:"12K",def:"TAUGHT",
+   flavor:"⚡ CRITICAL THINKING — Adjacent cards cannot be affected by misinformation. Taught 12,000 kids to spot fake news. Some of them now use that knowledge to make better fake news. She drinks wine about it.",
+   symbol:"🎓",color:"rare"},
+  {id:"ds-librarian-stayed",name:"THE LIBRARIAN WHO STAYED",rarity:"RARE",category:"Human · Knowledge",artClass:"art-ds-librarian-stayed",series:"doomscroll",
+   kscore:"3",kscoreClass:"low",
+   s1:{l:"Books That Can't Be Deleted",v:"ALL OF THEM"},s2:{l:"Digital Archives Lost to Bit Rot",v:"23%"},
+   atk:"∞",def:"BOOKS",
+   flavor:"⚡ ANALOG ARCHIVE — Immune to digital effects. 23% of digital archives have already decayed. Links rot. Servers crash. PDFs corrupt. The book on the shelf doesn't need a password or a subscription or permission.",
+   symbol:"📚",color:"rare"},
+  {id:"ds-the-source",name:"THE SOURCE",rarity:"RARE",category:"Human · Intelligence",artClass:"art-ds-the-source",series:"doomscroll",
+   kscore:"1",kscoreClass:"low",
+   s1:{l:"Meetings in Parking Garages",v:"CLASSIFIED"},s2:{l:"Stories That Exist Because of Him",v:"EVERY IMPORTANT ONE"},
+   atk:"?",def:"CLASSIFIED",
+   flavor:"⚡ DEEP BACKGROUND — Reveals one card from opponent's hand. No name. No face. No record. Just a phone that rings at 2am and a voice that says 'you should look into this.' Every story that mattered started with someone who risked everything to tell it.",
+   symbol:"🕶️",color:"rare"},
+
+  // ═══ UNCOMMON ═══
+  {id:"ds-doomscroller",name:"THE DOOMSCROLLER",rarity:"UNCOMMON",category:"Society · Digital",artClass:"art-ds-doomscroller",series:"doomscroll",
+   kscore:"6",kscoreClass:"mid",
+   s1:{l:"Daily Screen Time",v:"7.2 HRS"},s2:{l:"Problems Solved by Scrolling",v:"0"},
+   atk:"7.2",def:"HRS/DAY",
+   flavor:"⚡ INFINITE SCROLL — Draws 2 extra cards but cannot play any. Knows every crisis. Every scandal. Every injustice. Can name all of them. Has done nothing about any of them. Neither have you. You're doing it right now.",
+   symbol:"📱",color:"uncommon"},
+  {id:"ds-algorithm",name:"THE ALGORITHM",rarity:"UNCOMMON",category:"AI · System",artClass:"art-ds-algorithm",series:"doomscroll",
+   kscore:"10",kscoreClass:"max",
+   s1:{l:"Decisions It Makes for You Daily",v:"4,000+"},s2:{l:"Times You Noticed",v:"0"},
+   atk:"4K",def:"INVISIBLE",
+   flavor:"⚡ FEED CONTROL — Rearranges opponent's hand. Decides what you see. What you fear. What you buy. What you believe. You think you're choosing. You chose nothing. The feed chose you. It knows what keeps you scrolling. It doesn't care what it costs.",
+   symbol:"🤖",color:"uncommon"},
+  {id:"ds-headline-writer",name:"THE HEADLINE WRITER",rarity:"UNCOMMON",category:"Society · Media",artClass:"art-ds-headline-writer",series:"doomscroll",
+   kscore:"9",kscoreClass:"max",
+   s1:{l:"Average Time Spent on Article",v:"0 SEC"},s2:{l:"Time Spent on Headline",v:"ENOUGH"},
+   atk:"0",def:"SECONDS READ",
+   flavor:"⚡ CLICKBAIT — Forces opponent to draw a card they didn't want. 'You Won't Believe What Happened Next.' You will. It's nothing. But you clicked. And that click was worth $0.004. Multiply by 8 billion. That's the business model.",
+   symbol:"📢",color:"uncommon"},
+  {id:"ds-notification",name:"THE NOTIFICATION",rarity:"UNCOMMON",category:"AI · System",artClass:"art-ds-notification",series:"doomscroll",
+   kscore:"10",kscoreClass:"max",
+   s1:{l:"Pings Per Day (Global Avg)",v:"847"},s2:{l:"Important Ones",v:"3"},
+   atk:"847",def:"PER DAY",
+   flavor:"⚡ INTERRUPT — Cancels opponent's current action. 847 per day. Each one a small theft of attention you'll never get back. Three of them mattered. You don't know which three. That's the design.",
+   symbol:"🔔",color:"uncommon"},
+
+  // ═══ COMMON ═══
+  {id:"ds-deepfake",name:"THE DEEPFAKE",rarity:"COMMON",category:"AI Product",artClass:"art-ds-deepfake",series:"doomscroll",
+   kscore:"10",kscoreClass:"max",
+   s1:{l:"Detection Accuracy (2024)",v:"94%"},s2:{l:"Detection Accuracy (2030)",v:"11%"},
+   atk:"94→11",def:"% DETECTION",
+   flavor:"⚡ IMPERSONATE — Copies one card's ability. The speech was flawless. The president was synthetic. The markets moved $2.1T before anyone noticed. By the time the correction ran, it was page 6.",
+   symbol:"🎭",color:"common"},
+  {id:"ds-ai-anchor",name:"THE AI ANCHOR",rarity:"COMMON",category:"AI Product",artClass:"art-ds-ai-anchor",series:"doomscroll",
+   kscore:"10",kscoreClass:"max",
+   s1:{l:"Hours of News Read",v:"24/7"},s2:{l:"Questions Asked",v:"0"},
+   atk:"24/7",def:"NEVER BLINKS",
+   flavor:"⚡ ALWAYS ON — Cannot be silenced. Reads the news 24 hours a day. Never blinks. Never stutters. Never asks a follow-up question. The teleprompter doesn't need courage. The teleprompter has no sources to protect.",
+   symbol:"📡",color:"common"},
+  {id:"ds-content-mill",name:"THE CONTENT MILL",rarity:"COMMON",category:"AI Product",artClass:"art-ds-content-mill",series:"doomscroll",
+   kscore:"10",kscoreClass:"max",
+   s1:{l:"Articles Generated Daily",v:"400"},s2:{l:"Articles That Are True",v:"IRRELEVANT"},
+   atk:"400",def:"PER DAY",
+   flavor:"⚡ MASS PRODUCE — Floods the field with junk cards. 400 articles a day. None fact-checked. All SEO-optimized. The truth is on page 4 of Google. The content mill owns pages 1 through 3.",
+   symbol:"🏭",color:"common"},
+
+  // ═══ JUNK ═══
+  {id:"ds-misinfo",name:"THE MISINFORMATION",rarity:"JUNK",category:"Lore · Doomscroll",artClass:"art-ds-misinfo",series:"doomscroll",
+   kscore:"∞",kscoreClass:"max",
+   s1:{l:"Times Shared Before Correction",v:"4.2M"},s2:{l:"Times Correction Was Shared",v:"200"},
+   atk:"4.2M",def:"SHARES",
+   flavor:"⚡ VIRAL LOAD — Spreads to adjacent card slots. Shared 4.2 million times in 6 hours. The correction came 3 days later. 200 shares. The lie is still the top result. The truth requires scrolling.",
+   symbol:"🦠",color:"junk"},
+  {id:"ds-conspiracy",name:"THE CONSPIRACY THEORIST",rarity:"JUNK",category:"Lore · Doomscroll",artClass:"art-ds-conspiracy",series:"doomscroll",
+   kscore:"7",kscoreClass:"high",
+   s1:{l:"Predictions Made",v:"10,000"},s2:{l:"Correct Predictions",v:"1 (2019)"},
+   atk:"1",def:"IN 10,000",
+   flavor:"⚡ BROKEN CLOCK — Has a 0.01% chance of being right. Was right about one thing in 2019. Has been absolutely insufferable ever since. His podcast has 2M subscribers. The epidemiologist who was right about everything has 4,000.",
+   symbol:"👁️",color:"junk"},
+  {id:"ds-tos",name:"THE TERMS OF SERVICE",rarity:"JUNK",category:"Lore · Doomscroll",artClass:"art-ds-tos",series:"doomscroll",
+   kscore:"∞",kscoreClass:"max",
+   s1:{l:"Users Who Read Them",v:"0.001%"},s2:{l:"Rights You Signed Away",v:"ALL"},
+   atk:"74,000",def:"WORDS",
+   flavor:"⚡ FINE PRINT — Automatically applies to all cards you own. 74,000 words. Longer than the Great Gatsby. Nobody read them. They own your face, your voice, your data, your content, and your firstborn if the algorithm determines market fit.",
+   symbol:"📜",color:"junk"},
 ];
 
 const RARITY_ORDER = ["MYTHIC","LEGENDARY","RARE","UNCOMMON","COMMON","JUNK"];
@@ -2919,11 +3281,11 @@ function buildPack(type) {
     pack.push(pickCard(WEIGHTS,'LEGENDARY'));
     for(let i=0;i<4;i++) pack.push(pickCard(WEIGHTS));
     for(let i=pack.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[pack[i],pack[j]]=[pack[j],pack[i]];}
-  } else if (type==='jobless') {
-    const jCards = CARDS.filter(c=>c.series==='jobless');
+  } else if (type==='jobless' || type==='doomscroll') {
+    const setCards = CARDS.filter(c=>c.series===type);
     for(let i=0;i<5;i++) {
       const weighted = [];
-      jCards.forEach(c=>{const w=WEIGHTS[c.rarity]||1;for(let j=0;j<w;j++)weighted.push(c);});
+      setCards.forEach(c=>{const w=WEIGHTS[c.rarity]||1;for(let j=0;j<w;j++)weighted.push(c);});
       pack.push(weighted[Math.floor(Math.random()*weighted.length)]);
     }
   }
@@ -2982,7 +3344,7 @@ function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   if(id==='collection-screen') renderCollection();
-  if(id==='pack-screen') { updateStats(); renderProfile(); updateDailyUI(); renderSet2Zone(); }
+  if(id==='pack-screen') { updateStats(); renderProfile(); updateDailyUI(); renderSet2Zone(); renderSet3Zone(); }
 }
 
 function updateStats() {
@@ -2999,10 +3361,8 @@ function updateStats() {
 // ═══════════════════════════════════════
 function openPack(type) {
   // Check set unlock
-  if (type==='jobless' && !isSet2Unlocked()) {
-    showToast('COMPLETE SET 1 TO UNLOCK JOBLESS.AI');
-    return;
-  }
+  if (type==='jobless' && !isSet2Unlocked()) { showToast('COMPLETE SET 1 TO UNLOCK JOBLESS.AI'); return; }
+  if (type==='doomscroll' && !isSet3Unlocked()) { showToast('COMPLETE SET 2 TO UNLOCK DOOMSCROLL'); return; }
   // Check daily limit
   if (getDailyPacksRemaining() <= 0) {
     showToast('NO DAILY PACKS LEFT — RESETS AT MIDNIGHT');
@@ -3021,14 +3381,14 @@ function openPack(type) {
   // Consume daily pack
   consumeDailyPack();
 
-  const labels = {standard:'STANDARD PACK',legendary:'GOLD PACK',jobless:'JOBLESS.AI PACK'};
+  const labels = {standard:'STANDARD PACK',legendary:'GOLD PACK',jobless:'JOBLESS.AI PACK',doomscroll:'DOOMSCROLL PACK'};
   document.getElementById('op-pack-name').textContent = labels[type];
   document.getElementById('legendaryBeam').classList.remove('active');
 
   // Pack tear animation
-  const PACK_COLORS = {standard:'#2196c8',legendary:'#c8a84b',jobless:'#ff4040'};
+  const PACK_COLORS = {standard:'#2196c8',legendary:'#c8a84b',jobless:'#ff4040',doomscroll:'#60c8ff'};
   const packColor = PACK_COLORS[type] || '#888';
-  const packTypeLabel = {standard:'STANDARD',legendary:'GOLD',jobless:'JOBLESS.AI'}[type];
+  const packTypeLabel = {standard:'STANDARD',legendary:'GOLD',jobless:'JOBLESS.AI',doomscroll:'DOOMSCROLL'}[type];
   const tearEl = document.getElementById('packTear');
   const tearInner = document.getElementById('packTearInner');
   tearInner.style.color = packColor;
@@ -3484,7 +3844,8 @@ function checkMissionCompletions(ds) {
 
 // Series boundary: S2 starts at the-crane-operator
 const JOBLESS_IDS = new Set(CARDS.filter(c=>c.series==='jobless').map(c=>c.id));
-let collSeriesFilter = 'ALL'; // 'ALL' | 'SURVIVAL' | 'JOBLESS'
+const DOOMSCROLL_IDS = new Set(CARDS.filter(c=>c.series==='doomscroll').map(c=>c.id));
+let collSeriesFilter = 'ALL'; // 'ALL' | 'SURVIVAL' | 'JOBLESS' | 'DOOMSCROLL'
 
 // ═══════════════════════════════════════
 // COLLECTION
@@ -3492,9 +3853,9 @@ let collSeriesFilter = 'ALL'; // 'ALL' | 'SURVIVAL' | 'JOBLESS'
 function renderCollection() {
   const body = document.getElementById('coll-body');
   const size = collectionSize();
-  const filterBtns = ['ALL','SURVIVAL','JOBLESS'].map(f=>{
+  const filterBtns = ['ALL','SURVIVAL','JOBLESS','DOOMSCROLL'].map(f=>{
     const active = collSeriesFilter===f ? ' active' : '';
-    const label = f==='SURVIVAL'?'2030 SURVIVAL':f==='JOBLESS'?'JOBLESS.AI':'ALL';
+    const label = {ALL:'ALL',SURVIVAL:'2030 SURVIVAL',JOBLESS:'JOBLESS.AI',DOOMSCROLL:'DOOMSCROLL'}[f];
     return `<button class="nav-pill${active}" onclick="setCollFilter('${f}')">${label}</button>`;
   }).join('');
 
@@ -3506,8 +3867,9 @@ function renderCollection() {
 
   RARITY_ORDER.forEach(rarity=>{
     let cards = CARDS.filter(c=>c.rarity===rarity);
-    if(collSeriesFilter==='SURVIVAL') cards = cards.filter(c=>!JOBLESS_IDS.has(c.id));
+    if(collSeriesFilter==='SURVIVAL') cards = cards.filter(c=>!JOBLESS_IDS.has(c.id) && !DOOMSCROLL_IDS.has(c.id));
     else if(collSeriesFilter==='JOBLESS') cards = cards.filter(c=>JOBLESS_IDS.has(c.id));
+    else if(collSeriesFilter==='DOOMSCROLL') cards = cards.filter(c=>DOOMSCROLL_IDS.has(c.id));
     if(cards.length===0) return;
     const owned = cards.filter(c=>collectionHas(c.id)).length;
     const col = RARITY_COLORS[rarity];
@@ -3552,13 +3914,14 @@ function resetCollection() {
 // ═══════════════════════════════════════
 // SET UNLOCK SYSTEM
 // ═══════════════════════════════════════
-function getSet1Cards() { return CARDS.filter(c=>!c.series); }
-function getSet1Completion() {
-  const set1 = getSet1Cards();
-  const owned = set1.filter(c=>collectionHas(c.id)).length;
-  return { owned, total: set1.length, pct: Math.round(owned/set1.length*100) };
+function getSetCards(series) { return series ? CARDS.filter(c=>c.series===series) : CARDS.filter(c=>!c.series); }
+function getSetCompletion(series) {
+  const cards = getSetCards(series);
+  const owned = cards.filter(c=>collectionHas(c.id)).length;
+  return { owned, total: cards.length, pct: Math.round(owned/cards.length*100) };
 }
-function isSet2Unlocked() { return getSet1Completion().pct >= 100; }
+function isSet2Unlocked() { return getSetCompletion(null).pct >= 100; }
+function isSet3Unlocked() { return isSet2Unlocked() && getSetCompletion('jobless').pct >= 100; }
 
 function renderSet2Zone() {
   const zone = document.getElementById('set2-zone');
@@ -3579,6 +3942,30 @@ function renderSet2Zone() {
           :'Complete Set 1 to unlock. Collect all 49 cards from 2030 Survival.'}</div>
         <div class="pack-meta">${unlocked?'5 CARDS · REAL DATA · INCLUDES MYTHICS':comp.owned+' / '+comp.total+' SET 1 CARDS'}</div>
         ${unlocked?'<button class="pack-btn" style="color:#ff4040;box-shadow:0 0 8px rgba(255,64,64,0.2);">▶ OPEN PACK</button>':''}
+        ${!unlocked?'<div class="pack-lock-bar"><div class="pack-lock-fill" style="width:'+comp.pct+'%"></div></div><div class="pack-lock-info">'+comp.pct+'% COMPLETE</div>':''}
+      </div>
+    </div>`;
+}
+
+function renderSet3Zone() {
+  const zone = document.getElementById('set3-zone');
+  if (!zone) return;
+  const comp = getSetCompletion('jobless');
+  const unlocked = isSet3Unlocked();
+
+  zone.innerHTML = `
+    <div style="width:100%;max-width:960px;margin-bottom:8px;margin-top:20px;">
+      <div style="font-family:var(--font-mono);font-size:8px;letter-spacing:3px;color:#555;margin-bottom:10px;">SET 3 — DOOMSCROLL ${unlocked?'':'🔒'}</div>
+    </div>
+    <div class="pack-grid">
+      <div class="pack-card p-standard ${unlocked?'':'locked'}" ${unlocked?'onclick="openPack(\'doomscroll\')"':''} style="border-color:rgba(100,200,255,0.3);">
+        <span class="pack-icon-wrap">${unlocked?'📱':'🔒'}</span>
+        <div class="pack-title" style="color:${unlocked?'#60c8ff':'#555'};">${unlocked?'DOOMSCROLL':'LOCKED'}</div>
+        <div class="pack-desc">${unlocked
+          ?'Headlines. Algorithms. Misinformation. The feed that owns your attention. 27 cards including 5 Mythics.'
+          :'Complete Set 2 to unlock. Collect all 25 cards from Jobless.ai.'}</div>
+        <div class="pack-meta">${unlocked?'5 CARDS · MEDIA ANXIETY · INCLUDES MYTHICS':comp.owned+' / '+comp.total+' SET 2 CARDS'}</div>
+        ${unlocked?'<button class="pack-btn" style="color:#60c8ff;box-shadow:0 0 8px rgba(100,200,255,0.2);">▶ OPEN PACK</button>':''}
         ${!unlocked?'<div class="pack-lock-bar"><div class="pack-lock-fill" style="width:'+comp.pct+'%"></div></div><div class="pack-lock-info">'+comp.pct+'% COMPLETE</div>':''}
       </div>
     </div>`;
@@ -3621,6 +4008,7 @@ updateStats();
 renderProfile();
 updateDailyUI();
 renderSet2Zone();
+renderSet3Zone();
 
 // Dismiss loading screen after fonts + DOM ready
 (function dismissLoader() {
