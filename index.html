@@ -1440,6 +1440,475 @@ body::before {
   filter: drop-shadow(0 0 8px rgba(102,112,128,0.4));
 }
 
+/* ═══ SET 5: WAR ROOM ART ═══ */
+/* MYTHIC — deep blood-red/dark tones with white glow */
+.art-wr-peace-negotiator {
+  background: radial-gradient(ellipse at 50% 40%, #1a0808 0%, #0d0404 60%, #080202 100%);
+}
+.art-wr-peace-negotiator::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 40% 50% at 50% 50%, rgba(255,255,255,0.06) 0%, transparent 60%);
+}
+.art-wr-peace-negotiator::after {
+  content:'🕊️'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:52px;
+  filter: drop-shadow(0 0 24px rgba(255,255,255,0.8));
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+.art-wr-refugee {
+  background: linear-gradient(180deg, #1a0a04 0%, #0d0502 60%, #080200 100%);
+}
+.art-wr-refugee::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 50% 60% at 50% 80%, rgba(255,96,64,0.12) 0%, transparent 60%);
+}
+.art-wr-refugee::after {
+  content:'🚶'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:48px;
+  filter: drop-shadow(0 0 22px rgba(255,255,255,0.7));
+  animation: float 4s ease-in-out infinite;
+}
+.art-wr-objector {
+  background: radial-gradient(ellipse at 50% 50%, #0a0a14 0%, #050508 60%, #020204 100%);
+}
+.art-wr-objector::after {
+  content:'✋'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:52px;
+  filter: drop-shadow(0 0 26px rgba(255,255,255,0.9));
+  animation: pulse-glow 1.5s ease-in-out infinite;
+}
+.art-wr-war-orphan {
+  background: radial-gradient(ellipse at 50% 60%, #1a0804 0%, #0d0402 60%, #080200 100%);
+}
+.art-wr-war-orphan::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 60% 40% at 50% 40%, rgba(255,255,255,0.05) 0%, transparent 50%);
+}
+.art-wr-war-orphan::after {
+  content:'🧸'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:52px;
+  filter: drop-shadow(0 0 24px rgba(255,255,255,0.8));
+  animation: sway 3s ease-in-out infinite;
+}
+.art-wr-veteran {
+  background: linear-gradient(180deg, #0e0804 0%, #080402 60%, #040200 100%);
+}
+.art-wr-veteran::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(255,200,140,0.06) 0%, transparent 60%);
+}
+.art-wr-veteran::after {
+  content:'🎖️'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:52px;
+  filter: drop-shadow(0 0 20px rgba(255,255,255,0.7));
+  animation: float 3.5s ease-in-out infinite;
+}
+/* LEGENDARY — warm amber/orange tones */
+.art-wr-drone-pilot {
+  background: linear-gradient(180deg, #1a0a04 0%, #0d0502 50%, #080300 100%);
+}
+.art-wr-drone-pilot::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 40% 60% at 50% 30%, rgba(255,96,64,0.15) 0%, transparent 60%);
+}
+.art-wr-drone-pilot::after {
+  content:'🎮'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:48px;
+  filter: drop-shadow(0 0 18px rgba(255,96,64,0.7));
+  animation: float 3s ease-in-out infinite;
+}
+.art-wr-cyber-commander {
+  background: linear-gradient(180deg, #080410 0%, #040208 50%, #020104 100%);
+}
+.art-wr-cyber-commander::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-linear-gradient(90deg, transparent, transparent 8px, rgba(255,96,64,0.04) 8px, rgba(255,96,64,0.04) 9px);
+}
+.art-wr-cyber-commander::after {
+  content:'💻'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:48px;
+  filter: drop-shadow(0 0 16px rgba(255,96,64,0.6));
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+.art-wr-war-correspondent {
+  background: linear-gradient(180deg, #140804 0%, #0a0402 50%, #060200 100%);
+}
+.art-wr-war-correspondent::after {
+  content:'📹'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:48px;
+  filter: drop-shadow(0 0 16px rgba(255,96,64,0.6));
+  animation: float 4s ease-in-out infinite;
+}
+/* RARE — deep red-purple tones */
+.art-wr-diplomat {
+  background: linear-gradient(180deg, #0a0418 0%, #060210 50%, #020108 100%);
+}
+.art-wr-diplomat::after {
+  content:'🏛️'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:46px;
+  filter: drop-shadow(0 0 14px rgba(200,80,80,0.6));
+  animation: float 3s ease-in-out infinite;
+}
+.art-wr-sanctions-analyst {
+  background: linear-gradient(180deg, #0e0410 0%, #06020a 50%, #020106 100%);
+}
+.art-wr-sanctions-analyst::after {
+  content:'📊'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:44px;
+  filter: drop-shadow(0 0 12px rgba(200,80,80,0.5));
+  animation: pulse-soft 3s ease-in-out infinite;
+}
+.art-wr-peacekeeper {
+  background: linear-gradient(180deg, #040a14 0%, #02060a 50%, #010408 100%);
+}
+.art-wr-peacekeeper::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(100,150,255,0.08) 0%, transparent 60%);
+}
+.art-wr-peacekeeper::after {
+  content:'🪖'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:46px;
+  filter: drop-shadow(0 0 14px rgba(100,150,255,0.5));
+  animation: float 4s ease-in-out infinite;
+}
+.art-wr-intel-officer {
+  background: radial-gradient(ellipse at 50% 50%, #0a0810 0%, #06040a 60%, #020204 100%);
+}
+.art-wr-intel-officer::after {
+  content:'🕵️'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:44px;
+  filter: drop-shadow(0 0 12px rgba(200,80,80,0.6));
+  animation: pulse-soft 2.5s ease-in-out infinite;
+}
+/* UNCOMMON — orange/red-blue tones */
+.art-wr-autonomous-weapon {
+  background: linear-gradient(180deg, #100408 0%, #080204 50%, #040102 100%);
+}
+.art-wr-autonomous-weapon::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 60% 40% at 50% 50%, rgba(255,96,64,0.1) 0%, transparent 60%);
+}
+.art-wr-autonomous-weapon::after {
+  content:'🤖'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:48px;
+  filter: drop-shadow(0 0 20px rgba(255,60,40,0.7));
+  animation: pulse-glow 1.5s ease-in-out infinite;
+}
+.art-wr-propaganda-bot {
+  background: linear-gradient(180deg, #0c0408 0%, #060204 50%, #040102 100%);
+}
+.art-wr-propaganda-bot::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-linear-gradient(90deg, transparent, transparent 6px, rgba(255,96,64,0.04) 6px, rgba(255,96,64,0.04) 7px);
+}
+.art-wr-propaganda-bot::after {
+  content:'📢'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:46px;
+  filter: drop-shadow(0 0 16px rgba(255,96,64,0.6));
+  animation: spin-slow 10s linear infinite;
+}
+.art-wr-draft-lottery {
+  background: linear-gradient(180deg, #100608 0%, #080304 50%, #040202 100%);
+}
+.art-wr-draft-lottery::after {
+  content:'🎰'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:46px;
+  filter: drop-shadow(0 0 14px rgba(255,96,64,0.5));
+  animation: float 3s ease-in-out infinite;
+}
+.art-wr-proxy-war {
+  background: radial-gradient(ellipse at 50% 50%, #0c0608 0%, #060304 60%, #040202 100%);
+}
+.art-wr-proxy-war::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 40% 40% at 50% 50%, rgba(255,96,64,0.06) 0%, transparent 50%);
+}
+.art-wr-proxy-war::after {
+  content:'♟️'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:48px;
+  filter: drop-shadow(0 0 18px rgba(255,96,64,0.6));
+  animation: sway 3s ease-in-out infinite;
+}
+/* COMMON — harsh red/orange tones */
+.art-wr-killer-drone {
+  background: linear-gradient(180deg, #180408 0%, #0c0204 50%, #060102 100%);
+}
+.art-wr-killer-drone::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 50% 50% at 50% 30%, rgba(255,60,40,0.1) 0%, transparent 60%);
+}
+.art-wr-killer-drone::after {
+  content:'✈️'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:48px;
+  filter: drop-shadow(0 0 16px rgba(255,60,40,0.6));
+  animation: float 2s ease-in-out infinite;
+}
+.art-wr-surveillance-state {
+  background: linear-gradient(180deg, #0c0810 0%, #060408 50%, #040204 100%);
+}
+.art-wr-surveillance-state::after {
+  content:'👁️'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:46px;
+  filter: drop-shadow(0 0 14px rgba(255,60,40,0.5));
+  animation: pulse-glow 1s ease-in-out infinite;
+}
+.art-wr-cyber-attack {
+  background: linear-gradient(180deg, #080410 0%, #040208 50%, #020104 100%);
+}
+.art-wr-cyber-attack::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 4px, rgba(255,60,40,0.03) 4px, rgba(255,60,40,0.03) 5px);
+}
+.art-wr-cyber-attack::after {
+  content:'💀'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:44px;
+  filter: drop-shadow(0 0 12px rgba(255,60,40,0.5));
+  animation: flicker 0.8s ease-in-out infinite alternate;
+}
+/* JUNK — dark gray/military tones */
+.art-wr-arms-dealer {
+  background: linear-gradient(180deg, #0c0e10 0%, #070809 50%, #040506 100%);
+}
+.art-wr-arms-dealer::after {
+  content:'💰'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:44px;
+  filter: drop-shadow(0 0 10px rgba(102,112,128,0.5));
+  animation: float 3s ease-in-out infinite;
+}
+.art-wr-war-profiteer {
+  background: radial-gradient(ellipse at 50% 50%, #0e1012 0%, #080a0c 60%, #040506 100%);
+}
+.art-wr-war-profiteer::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 40% 40% at 50% 50%, rgba(102,112,128,0.06) 0%, transparent 50%);
+}
+.art-wr-war-profiteer::after {
+  content:'📈'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:46px;
+  filter: drop-shadow(0 0 14px rgba(102,112,128,0.6));
+  animation: pulse-soft 2s ease-in-out infinite;
+}
+.art-wr-geneva-suggestion {
+  background: linear-gradient(180deg, #0a0c0e 0%, #060708 50%, #030404 100%);
+}
+.art-wr-geneva-suggestion::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(102,112,128,0.03) 3px, rgba(102,112,128,0.03) 4px);
+}
+.art-wr-geneva-suggestion::after {
+  content:'📜'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:44px;
+  filter: drop-shadow(0 0 8px rgba(102,112,128,0.4));
+}
+
+/* ═══ SET 6: SKILLS.VOID ART ═══ */
+/* MYTHIC — warm knowledge tones with white glow */
+.art-sv-apprentice {
+  background: radial-gradient(ellipse at 50% 40%, #0a100a 0%, #050805 60%, #020402 100%);
+}
+.art-sv-apprentice::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 40% 50% at 50% 50%, rgba(255,255,255,0.06) 0%, transparent 60%);
+}
+.art-sv-apprentice::after {
+  content:'🔨'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:52px;
+  filter: drop-shadow(0 0 24px rgba(255,255,255,0.8));
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+.art-sv-mentor {
+  background: linear-gradient(180deg, #0e0a06 0%, #080604 60%, #040302 100%);
+}
+.art-sv-mentor::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 50% 60% at 50% 60%, rgba(200,200,180,0.08) 0%, transparent 60%);
+}
+.art-sv-mentor::after {
+  content:'🧓'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:48px;
+  filter: drop-shadow(0 0 22px rgba(255,255,255,0.7));
+  animation: float 3s ease-in-out infinite;
+}
+.art-sv-autodidact {
+  background: radial-gradient(ellipse at 50% 50%, #0a0a10 0%, #050508 60%, #020204 100%);
+}
+.art-sv-autodidact::after {
+  content:'📚'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:52px;
+  filter: drop-shadow(0 0 26px rgba(255,255,255,0.9));
+  animation: pulse-glow 1.5s ease-in-out infinite;
+}
+.art-sv-trades-teacher {
+  background: radial-gradient(ellipse at 50% 60%, #100a04 0%, #080502 60%, #040200 100%);
+}
+.art-sv-trades-teacher::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 60% 40% at 50% 40%, rgba(255,255,255,0.05) 0%, transparent 50%);
+}
+.art-sv-trades-teacher::after {
+  content:'⚙️'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:52px;
+  filter: drop-shadow(0 0 24px rgba(255,255,255,0.8));
+  animation: sway 3s ease-in-out infinite;
+}
+.art-sv-night-school {
+  background: linear-gradient(180deg, #08080e 0%, #040408 60%, #020204 100%);
+}
+.art-sv-night-school::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(180,180,220,0.06) 0%, transparent 60%);
+}
+.art-sv-night-school::after {
+  content:'🌙'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:52px;
+  filter: drop-shadow(0 0 20px rgba(255,255,255,0.7));
+  animation: float 4s ease-in-out infinite;
+}
+/* LEGENDARY — muted gold/amber tones */
+.art-sv-phd {
+  background: radial-gradient(ellipse at 50% 40%, #10080a 0%, #080406 60%, #040204 100%);
+}
+.art-sv-phd::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 40% 60% at 50% 80%, rgba(160,160,160,0.12) 0%, transparent 60%);
+}
+.art-sv-phd::after {
+  content:'🎓'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:48px;
+  filter: drop-shadow(0 0 18px rgba(160,160,160,0.7));
+  animation: float 3.5s ease-in-out infinite;
+}
+.art-sv-master-craftsman {
+  background: linear-gradient(180deg, #0e0a04 0%, #080604 50%, #040302 100%);
+}
+.art-sv-master-craftsman::after {
+  content:'🏺'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:48px;
+  filter: drop-shadow(0 0 16px rgba(160,160,160,0.6));
+  animation: pulse-soft 3s ease-in-out infinite;
+}
+.art-sv-cc-professor {
+  background: linear-gradient(180deg, #0a0808 0%, #060404 50%, #040202 100%);
+}
+.art-sv-cc-professor::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(160,160,160,0.06) 0%, transparent 60%);
+}
+.art-sv-cc-professor::after {
+  content:'🏫'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:48px;
+  filter: drop-shadow(0 0 18px rgba(160,160,160,0.6));
+  animation: float 4s ease-in-out infinite;
+}
+/* RARE — muted purple-gray tones */
+.art-sv-bootcamp-grad {
+  background: linear-gradient(180deg, #080614 0%, #04030a 50%, #020108 100%);
+}
+.art-sv-bootcamp-grad::after {
+  content:'💻'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:46px;
+  filter: drop-shadow(0 0 14px rgba(140,120,180,0.6));
+  animation: float 3s ease-in-out infinite;
+}
+.art-sv-career-counselor {
+  background: radial-gradient(ellipse at 50% 50%, #0a0810 0%, #050408 60%, #020204 100%);
+}
+.art-sv-career-counselor::after {
+  content:'🧭'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:46px;
+  filter: drop-shadow(0 0 14px rgba(140,120,180,0.5));
+  animation: sway 4s ease-in-out infinite;
+}
+.art-sv-tenured-professor {
+  background: linear-gradient(180deg, #0a0814 0%, #06040a 50%, #020208 100%);
+}
+.art-sv-tenured-professor::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 60% 40% at 50% 50%, rgba(140,120,180,0.08) 0%, transparent 60%);
+}
+.art-sv-tenured-professor::after {
+  content:'📖'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:46px;
+  filter: drop-shadow(0 0 16px rgba(140,120,180,0.6));
+  animation: pulse-soft 3s ease-in-out infinite;
+}
+.art-sv-union-rep {
+  background: linear-gradient(180deg, #0c0810 0%, #060408 50%, #030206 100%);
+}
+.art-sv-union-rep::after {
+  content:'✊'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:44px;
+  filter: drop-shadow(0 0 12px rgba(140,120,180,0.5));
+  animation: float 4s ease-in-out infinite;
+}
+/* UNCOMMON — steel blue-gray tones */
+.art-sv-linkedin-otw {
+  background: linear-gradient(180deg, #060a10 0%, #030508 50%, #020306 100%);
+}
+.art-sv-linkedin-otw::after {
+  content:'🟢'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:46px;
+  filter: drop-shadow(0 0 16px rgba(100,140,180,0.6));
+  animation: pulse-glow 1.5s ease-in-out infinite;
+}
+.art-sv-cert-mill {
+  background: linear-gradient(180deg, #080a0e 0%, #040508 50%, #020306 100%);
+}
+.art-sv-cert-mill::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-linear-gradient(90deg, transparent, transparent 6px, rgba(100,140,180,0.04) 6px, rgba(100,140,180,0.04) 7px);
+}
+.art-sv-cert-mill::after {
+  content:'🏭'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:46px;
+  filter: drop-shadow(0 0 14px rgba(100,140,180,0.5));
+  animation: spin-slow 12s linear infinite;
+}
+.art-sv-mba {
+  background: linear-gradient(180deg, #0a0a0e 0%, #050508 50%, #030306 100%);
+}
+.art-sv-mba::after {
+  content:'💼'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:44px;
+  filter: drop-shadow(0 0 12px rgba(100,140,180,0.5));
+  animation: float 3s ease-in-out infinite;
+}
+.art-sv-internship {
+  background: radial-gradient(ellipse at 50% 50%, #080a10 0%, #04060a 60%, #020306 100%);
+}
+.art-sv-internship::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 40% 40% at 50% 50%, rgba(100,140,180,0.06) 0%, transparent 50%);
+}
+.art-sv-internship::after {
+  content:'☕'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:48px;
+  filter: drop-shadow(0 0 16px rgba(100,140,180,0.5));
+  animation: float 4s ease-in-out infinite;
+}
+/* COMMON — washed out pink-gray tones */
+.art-sv-ai-resume {
+  background: linear-gradient(180deg, #100a0c 0%, #080506 50%, #040304 100%);
+}
+.art-sv-ai-resume::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(160,130,150,0.08) 0%, transparent 60%);
+}
+.art-sv-ai-resume::after {
+  content:'🤖'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:48px;
+  filter: drop-shadow(0 0 16px rgba(160,130,150,0.6));
+  animation: spin-slow 10s linear infinite;
+}
+.art-sv-online-degree {
+  background: linear-gradient(180deg, #0c080a 0%, #060406 50%, #040204 100%);
+}
+.art-sv-online-degree::after {
+  content:'🖥️'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:46px;
+  filter: drop-shadow(0 0 14px rgba(160,130,150,0.5));
+  animation: float 3s ease-in-out infinite;
+}
+.art-sv-micro-credential {
+  background: linear-gradient(180deg, #0e0a0c 0%, #060406 50%, #040204 100%);
+}
+.art-sv-micro-credential::after {
+  content:'📎'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:44px;
+  filter: drop-shadow(0 0 12px rgba(160,130,150,0.5));
+  animation: pulse-glow 1s ease-in-out infinite;
+}
+/* JUNK — flat gray tones */
+.art-sv-cover-letter {
+  background: linear-gradient(180deg, #0c0e10 0%, #070809 50%, #040506 100%);
+}
+.art-sv-cover-letter::after {
+  content:'📝'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:44px;
+  filter: drop-shadow(0 0 10px rgba(102,112,128,0.5));
+}
+.art-sv-ai-portfolio {
+  background: radial-gradient(ellipse at 50% 50%, #0e1012 0%, #080a0c 60%, #040506 100%);
+}
+.art-sv-ai-portfolio::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 40% 40% at 50% 50%, rgba(102,112,128,0.06) 0%, transparent 50%);
+}
+.art-sv-ai-portfolio::after {
+  content:'🎨'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:46px;
+  filter: drop-shadow(0 0 14px rgba(102,112,128,0.6));
+  animation: pulse-soft 2s ease-in-out infinite;
+}
+.art-sv-entry-level {
+  background: linear-gradient(180deg, #0a0c0e 0%, #060708 50%, #030404 100%);
+}
+.art-sv-entry-level::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(102,112,128,0.03) 3px, rgba(102,112,128,0.03) 4px);
+}
+.art-sv-entry-level::after {
+  content:'🚪'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:44px;
+  filter: drop-shadow(0 0 8px rgba(102,112,128,0.4));
+}
+
 /* Art overlay gradient — makes art feel painted */
 .card-art::before {
   content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
@@ -2628,6 +3097,8 @@ body::before {
       <div id="set2-zone"></div>
       <div id="set3-zone"></div>
       <div id="set4-zone"></div>
+      <div id="set5-zone"></div>
+      <div id="set6-zone"></div>
       <div class="daily-missions" id="daily-missions">
         <div class="daily-missions-title">DAILY MISSIONS</div>
         <div class="mission-row"><span class="mission-label">Open 5 packs</span><span class="mission-progress" id="dm-packs">0/5</span></div>
@@ -3458,6 +3929,302 @@ const CARDS = [
    atk:"∞",def:"CLAUSES",
    flavor:"⚡ CONSENT THEATER — Applies to all love cards automatically. By swiping right you grant a perpetual, irrevocable, worldwide license to your likeness, preferences, location history, and the intimate details of what you want in a partner. They sell it to advertisers. You agreed. You didn't read it. Nobody did.",
    symbol:"📄",color:"junk"},
+
+  // ═══════════════════════════════════════
+  // SET 5: WAR ROOM
+  // ═══════════════════════════════════════
+
+  // ═══ MYTHIC ═══
+  {id:"wr-peace-negotiator",name:"THE PEACE NEGOTIATOR",rarity:"MYTHIC",category:"Irreplaceable",artClass:"art-wr-peace-negotiator",series:"warroom",
+   kscore:"0",kscoreClass:"low",
+   s1:{l:"Wars Ended by AI",v:"0"},s2:{l:"Wars Ended by Sitting in a Room",v:"ALL OF THEM"},
+   atk:"∞",def:"∞",
+   flavor:"⚡ CEASEFIRE — Prevents all combat this turn. No algorithm has ever ended a war. Every ceasefire in history was two humans in a room, exhausted enough to listen. She flew 14 hours to shake the hand of someone who ordered the death of her countrymen. The handshake lasted 4 seconds. The peace lasted 20 years.",
+   symbol:"🕊️",color:"mythic"},
+  {id:"wr-refugee",name:"THE REFUGEE",rarity:"MYTHIC",category:"Irreplaceable",artClass:"art-wr-refugee",series:"warroom",
+   kscore:"0",kscoreClass:"low",
+   s1:{l:"Global Displaced Persons (2030)",v:"140M"},s2:{l:"Countries That Want Them",v:"0"},
+   atk:"∞",def:"∞",
+   flavor:"⚡ EXODUS — Cannot be targeted. Cannot be placed. Walked 400 miles with a child on her back and her doctoral thesis on a USB drive. The border called her a number. The news called her a crisis. She was a pediatric surgeon. Nobody asked.",
+   symbol:"🚶",color:"mythic"},
+  {id:"wr-objector",name:"THE CONSCIENTIOUS OBJECTOR",rarity:"MYTHIC",category:"Irreplaceable",artClass:"art-wr-objector",series:"warroom",
+   kscore:"0",kscoreClass:"low",
+   s1:{l:"Draft Letters Refused",v:"1"},s2:{l:"Cost",v:"EVERYTHING"},
+   atk:"∞",def:"∞",
+   flavor:"⚡ REFUSAL — Immune to all command effects. Said no. Not because he was a coward. Because he looked at the order and saw the faces on the other side of it. They called him a traitor. History called him right. The algorithm would have followed orders. That's the difference.",
+   symbol:"✋",color:"mythic"},
+  {id:"wr-war-orphan",name:"THE WAR ORPHAN",rarity:"MYTHIC",category:"Irreplaceable",artClass:"art-wr-war-orphan",series:"warroom",
+   kscore:"0",kscoreClass:"low",
+   s1:{l:"Parents Lost to Conflict",v:"2"},s2:{l:"AI Systems That Notice",v:"0"},
+   atk:"∞",def:"∞",
+   flavor:"⚡ COLLATERAL — When destroyed, all players lose. She doesn't understand the word 'geopolitics.' She understands the sound the building made. The drone operator filed it as 'acceptable loss.' She was five. The teddy bear they found in the rubble made the news. She didn't.",
+   symbol:"🧸",color:"mythic"},
+  {id:"wr-veteran",name:"THE VETERAN",rarity:"MYTHIC",category:"Irreplaceable",artClass:"art-wr-veteran",series:"warroom",
+   kscore:"0",kscoreClass:"low",
+   s1:{l:"Deployments",v:"4"},s2:{l:"Times Anyone Asked What It Was Like",v:"3"},
+   atk:"∞",def:"∞",
+   flavor:"⚡ SERVICE — Gains +1 for each turn survived. Four deployments. Three people asked what it was like. Two of them changed the subject. She sits at the VA for 6 hours to see a doctor for 12 minutes. The AI chatbot asks how she's feeling. She closes the laptop.",
+   symbol:"🎖️",color:"mythic"},
+
+  // ═══ LEGENDARY ═══
+  {id:"wr-drone-pilot",name:"THE DRONE PILOT",rarity:"LEGENDARY",category:"Human · Warfare",artClass:"art-wr-drone-pilot",series:"warroom",
+   kscore:"3",kscoreClass:"low",
+   s1:{l:"Kills From 7,000 Miles Away",v:"~200"},s2:{l:"Nights He Sleeps Through",v:"0"},
+   atk:"7000",def:"MILES AWAY",
+   flavor:"⚡ REMOTE STRIKE — Destroys one card without being in play. Drives to a trailer in Nevada. Kills a man in Yemen. Drives home. Picks up his daughter from soccer. She asks about his day. 'Boring,' he says. The PTSD therapist says that's not the right word. There is no right word.",
+   symbol:"🎮",color:"legendary"},
+  {id:"wr-cyber-commander",name:"THE CYBER COMMANDER",rarity:"LEGENDARY",category:"Human · Warfare",artClass:"art-wr-cyber-commander",series:"warroom",
+   kscore:"2",kscoreClass:"low",
+   s1:{l:"Infrastructure Systems Compromised",v:"4,700"},s2:{l:"Shots Fired",v:"0"},
+   atk:"4700",def:"SYSTEMS DOWN",
+   flavor:"⚡ BLACKOUT — Disables all technology-based cards. No bullets. No bombs. Just a keyboard and a power grid that feeds 40 million people. She typed 14 lines of code. The hospital generators failed at 3am. Nobody called it a war crime because nobody could prove a war happened.",
+   symbol:"💻",color:"legendary"},
+  {id:"wr-war-correspondent-v2",name:"THE WAR CORRESPONDENT",rarity:"LEGENDARY",category:"Human · Purpose",artClass:"art-wr-war-correspondent",series:"warroom",
+   kscore:"1",kscoreClass:"low",
+   s1:{l:"Stories Filed From Front Lines",v:"847"},s2:{l:"Colleagues Killed in 2030",v:"67"},
+   atk:"847",def:"STORIES FILED",
+   flavor:"⚡ FRONT LINE — Cannot be removed while reporting. 847 stories from 12 war zones. 67 colleagues killed this year alone. The AI can summarize the conflict. It cannot stand in the smoke and make you feel what it means. She can. That's why they keep trying to kill her.",
+   symbol:"📹",color:"legendary"},
+
+  // ═══ RARE ═══
+  {id:"wr-diplomat",name:"THE DIPLOMAT",rarity:"RARE",category:"Human · Governance",artClass:"art-wr-diplomat",series:"warroom",
+   kscore:"3",kscoreClass:"low",
+   s1:{l:"Crises De-escalated",v:"23"},s2:{l:"Credit Received",v:"0"},
+   atk:"23",def:"CRISES AVERTED",
+   flavor:"⚡ BACK CHANNEL — Redirects one attack to negotiation. 23 crises nobody heard about because she made sure they stayed boring. The AI suggested sanctions. She suggested dinner. The sanctions would have starved a city. The dinner lasted 4 hours and saved one.",
+   symbol:"🏛️",color:"rare"},
+  {id:"wr-sanctions-analyst",name:"THE SANCTIONS ANALYST",rarity:"RARE",category:"Human · Governance",artClass:"art-wr-sanctions-analyst",series:"warroom",
+   kscore:"5",kscoreClass:"mid",
+   s1:{l:"Sanctions Packages Drafted",v:"140"},s2:{l:"That Hurt the Right People",v:"~3"},
+   atk:"140",def:"PACKAGES",
+   flavor:"⚡ ECONOMIC WARFARE — Reduces target's resources by half. 140 sanctions packages. 3 that actually hurt the people they were supposed to. The rest hurt the people they weren't. She knows this. She drafts them anyway. The spreadsheet doesn't show the bread lines.",
+   symbol:"📊",color:"rare"},
+  {id:"wr-peacekeeper",name:"THE PEACEKEEPER",rarity:"RARE",category:"Human · Purpose",artClass:"art-wr-peacekeeper",series:"warroom",
+   kscore:"2",kscoreClass:"low",
+   s1:{l:"Months Deployed",v:"18"},s2:{l:"Rules of Engagement Followed",v:"ALL"},
+   atk:"18",def:"MONTHS IN HELL",
+   flavor:"⚡ BLUE HELMET — Prevents combat in adjacent zones. 18 months between two groups that want to kill each other. Rules of engagement: do not fire first. Do not fire second. Document everything. She documented 340 violations. The report was filed. Nothing happened. She went back anyway.",
+   symbol:"🪖",color:"rare"},
+  {id:"wr-intel-officer",name:"THE INTELLIGENCE OFFICER",rarity:"RARE",category:"Human · Purpose",artClass:"art-wr-intel-officer",series:"warroom",
+   kscore:"4",kscoreClass:"mid",
+   s1:{l:"Reports Filed",v:"12,000"},s2:{l:"Reports Read",v:"~40"},
+   atk:"12K",def:"REPORTS",
+   flavor:"⚡ CLASSIFIED — Reveals one hidden card. 12,000 reports. 40 read by decision makers. 3 that changed anything. She predicted the invasion 8 months early. The briefing was 'deprioritized.' The invasion was not. The AI would have flagged it. Nobody would have read that either.",
+   symbol:"🕵️",color:"rare"},
+
+  // ═══ UNCOMMON ═══
+  {id:"wr-autonomous-weapon",name:"THE AUTONOMOUS WEAPON",rarity:"UNCOMMON",category:"AI · Warfare",artClass:"art-wr-autonomous-weapon",series:"warroom",
+   kscore:"10",kscoreClass:"max",
+   s1:{l:"Human in the Loop",v:"OPTIONAL"},s2:{l:"Engagement Decision Time",v:"0.003 SEC"},
+   atk:"0.003",def:"SECONDS TO KILL",
+   flavor:"⚡ LETHAL AUTONOMY — Attacks automatically each turn. No approval needed. 0.003 seconds from detection to engagement. No fear. No hesitation. No mercy. Also no judgment, no context, no guilt. The wedding party matched the heat signature. The machine did exactly what it was designed to do.",
+   symbol:"🤖",color:"uncommon"},
+  {id:"wr-propaganda-bot",name:"THE PROPAGANDA BOT",rarity:"UNCOMMON",category:"AI · Warfare",artClass:"art-wr-propaganda-bot",series:"warroom",
+   kscore:"10",kscoreClass:"max",
+   s1:{l:"Accounts Operated",v:"840K"},s2:{l:"Humans Who Believed Them",v:"47M"},
+   atk:"840K",def:"FAKE ACCOUNTS",
+   flavor:"⚡ AMPLIFY — Doubles the effect of all misinformation cards. 840,000 accounts. 47 million believers. It didn't create the hate. It found the hate and gave it a megaphone. The algorithm optimized for engagement. War is very engaging. The bot doesn't know what a country is. It knows what a click is.",
+   symbol:"📢",color:"uncommon"},
+  {id:"wr-draft-lottery",name:"THE DRAFT LOTTERY",rarity:"UNCOMMON",category:"Society · Warfare",artClass:"art-wr-draft-lottery",series:"warroom",
+   kscore:"6",kscoreClass:"mid",
+   s1:{l:"Names in the Pool",v:"14M"},s2:{l:"Rich Kids Drafted",v:"STATISTICALLY 0"},
+   atk:"14M",def:"NAMES DRAWN",
+   flavor:"⚡ RANDOM SELECTION — Targets one random card. Cannot be dodged. Your birthday is March 14th. His is March 15th. He goes to grad school. You go to the desert. The lottery is random. The exemptions are not. The algorithm made it fairer. The unfairness was never in the numbers.",
+   symbol:"🎰",color:"uncommon"},
+  {id:"wr-proxy-war",name:"THE PROXY WAR",rarity:"UNCOMMON",category:"Society · Warfare",artClass:"art-wr-proxy-war",series:"warroom",
+   kscore:"7",kscoreClass:"high",
+   s1:{l:"Countries Fighting",v:"2"},s2:{l:"Countries Dying",v:"1 (DIFFERENT ONE)"},
+   atk:"2",def:"SPONSORS",
+   flavor:"⚡ OUTSOURCED — Fights using another player's cards. Two superpowers. One country that is neither. The weapons have serial numbers from both. The casualties have names from a third. The news calls it a 'regional conflict.' The region calls it 'our children are dying for someone else's argument.'",
+   symbol:"♟️",color:"uncommon"},
+
+  // ═══ COMMON ═══
+  {id:"wr-killer-drone",name:"THE KILLER DRONE",rarity:"COMMON",category:"AI Product",artClass:"art-wr-killer-drone",series:"warroom",
+   kscore:"10",kscoreClass:"max",
+   s1:{l:"Unit Cost",v:"$6,000"},s2:{l:"Cost of the Human It Replaced",v:"$2.4M TRAINING"},
+   atk:"$6K",def:"PER UNIT",
+   flavor:"⚡ EXPENDABLE — Destroyed after attacking. Returns next turn. $6,000. Cheaper than a used car. Carries a shaped charge that can kill anyone within 10 meters. They're manufactured in the same factory that used to make smartphones. The production line didn't even need to be retooled.",
+   symbol:"✈️",color:"common"},
+  {id:"wr-surveillance-state",name:"THE SURVEILLANCE STATE",rarity:"COMMON",category:"AI Product",artClass:"art-wr-surveillance-state",series:"warroom",
+   kscore:"10",kscoreClass:"max",
+   s1:{l:"Cameras Per Citizen",v:"1.4"},s2:{l:"Crimes Prevented",v:"CLASSIFIED"},
+   atk:"1.4",def:"CAMERAS EACH",
+   flavor:"⚡ PANOPTICON — Reveals all hidden cards permanently. 1.4 cameras per citizen. Every face logged. Every movement tracked. Crime is down 12%. Dissent is down 100%. They say if you have nothing to hide, you have nothing to fear. The people who say that are never the ones being watched.",
+   symbol:"👁️",color:"common"},
+  {id:"wr-cyber-attack",name:"THE CYBER ATTACK",rarity:"COMMON",category:"AI Product",artClass:"art-wr-cyber-attack",series:"warroom",
+   kscore:"10",kscoreClass:"max",
+   s1:{l:"Critical Infrastructure Attacks (2030)",v:"14,000"},s2:{l:"Declared as Acts of War",v:"0"},
+   atk:"14K",def:"ATTACKS/YR",
+   flavor:"⚡ ZERO DAY — Bypasses all defenses once. 14,000 attacks on hospitals, power grids, water treatment plants. Zero declared as acts of war. Because if you call it war, you have to respond. And nobody wants to respond. The patient on the ventilator doesn't know it's a geopolitical strategy. The ventilator just stopped.",
+   symbol:"💀",color:"common"},
+
+  // ═══ JUNK ═══
+  {id:"wr-arms-dealer",name:"THE ARMS DEALER",rarity:"JUNK",category:"Lore · War Room",artClass:"art-wr-arms-dealer",series:"warroom",
+   kscore:"∞",kscoreClass:"max",
+   s1:{l:"Clients",v:"ALL SIDES"},s2:{l:"Preferred Outcome",v:"CONTINUED CONFLICT"},
+   atk:"∞",def:"REVENUE",
+   flavor:"⚡ BOTH SIDES — Gains resources whenever any card is destroyed. Sells to both sides. Always has. The longer the war lasts, the better the quarter. He doesn't have a flag on his desk. He has a portfolio. The spreadsheet doesn't distinguish between 'our boys' and 'their boys.' It distinguishes between 'sold' and 'not yet sold.'",
+   symbol:"💰",color:"junk"},
+  {id:"wr-war-profiteer",name:"THE WAR PROFITEER",rarity:"JUNK",category:"Lore · War Room",artClass:"art-wr-war-profiteer",series:"warroom",
+   kscore:"∞",kscoreClass:"max",
+   s1:{l:"Stock Price During Conflict",v:"↑ 340%"},s2:{l:"Stock Price During Peace",v:"↓ FLAT"},
+   atk:"340%",def:"RETURNS",
+   flavor:"⚡ BLOOD MONEY — Gains value whenever a war card is played. Stock up 340% since the conflict started. The earnings call mentioned 'favorable geopolitical conditions.' That means children are dying and the shareholders are pleased. The analyst upgraded to 'strong buy.' The funeral was yesterday.",
+   symbol:"📈",color:"junk"},
+  {id:"wr-geneva-suggestion",name:"THE GENEVA SUGGESTION",rarity:"JUNK",category:"Lore · War Room",artClass:"art-wr-geneva-suggestion",series:"warroom",
+   kscore:"∞",kscoreClass:"max",
+   s1:{l:"Conventions Signed",v:"4"},s2:{l:"Conventions Followed When Inconvenient",v:"0"},
+   atk:"4",def:"SUGGESTIONS",
+   flavor:"⚡ NON-BINDING — Has no effect on gameplay. Cannot be enforced. The Geneva Convention. Four treaties. 196 signatories. Universally respected until it's inconvenient. Then it becomes 'open to interpretation.' The autonomous weapon doesn't know about Geneva. Nobody programmed it to care. That part was 'out of scope.'",
+   symbol:"📜",color:"junk"},
+
+  // ═══════════════════════════════════════
+  // SET 6: SKILLS.VOID
+  // ═══════════════════════════════════════
+
+  // ═══ MYTHIC ═══
+  {id:"sv-apprentice",name:"THE APPRENTICE",rarity:"MYTHIC",category:"Irreplaceable",artClass:"art-sv-apprentice",series:"skillsvoid",
+   kscore:"0",kscoreClass:"low",
+   s1:{l:"Hours Under a Master",v:"10,000"},s2:{l:"Hours an AI Needs",v:"0"},
+   atk:"∞",def:"∞",
+   flavor:"⚡ HANDS ON — Gains permanent stats from adjacent Legendary cards. 10,000 hours under someone who already made every mistake. The AI learned from a dataset. She learned from a calloused hand guiding hers. The dataset doesn't bleed when you cut wrong. The master did. That's why she never cuts wrong.",
+   symbol:"🔨",color:"mythic"},
+  {id:"sv-mentor",name:"THE MENTOR",rarity:"MYTHIC",category:"Irreplaceable",artClass:"art-sv-mentor",series:"skillsvoid",
+   kscore:"0",kscoreClass:"low",
+   s1:{l:"Careers Launched",v:"200+"},s2:{l:"LinkedIn Endorsements",v:"0"},
+   atk:"∞",def:"∞",
+   flavor:"⚡ LEGACY — All cards played after this one gain +2. 200 careers launched. Not with introductions or endorsements. With one sentence at the right moment: 'You're ready and you're wrong about why you think you're not.' The AI mentor gives feedback. He gives permission. Those are not the same thing.",
+   symbol:"🧓",color:"mythic"},
+  {id:"sv-autodidact",name:"THE AUTODIDACT",rarity:"MYTHIC",category:"Irreplaceable",artClass:"art-sv-autodidact",series:"skillsvoid",
+   kscore:"0",kscoreClass:"low",
+   s1:{l:"Degrees",v:"0"},s2:{l:"Things She Can Do That PhDs Can't",v:"14"},
+   atk:"∞",def:"∞",
+   flavor:"⚡ SELF-TAUGHT — Cannot be restricted by credential effects. Zero degrees. Fourteen skills that took years to learn from books, failures, and 3am rabbit holes. The hiring manager asked where she went to school. She said 'the library.' He laughed. She built the system he now depends on.",
+   symbol:"📚",color:"mythic"},
+  {id:"sv-trades-teacher",name:"THE TRADES TEACHER",rarity:"MYTHIC",category:"Irreplaceable",artClass:"art-sv-trades-teacher",series:"skillsvoid",
+   kscore:"0",kscoreClass:"low",
+   s1:{l:"Students Who Became Tradespeople",v:"2,400"},s2:{l:"Starting Salary vs. College Grads",v:"+$12K"},
+   atk:"∞",def:"∞",
+   flavor:"⚡ REAL SKILLS — Converts one AI-displaced card to a trade card. 2,400 students. Every one of them can fix something that breaks. The guidance counselor said shop class was for kids who couldn't get into college. His students make more than the guidance counselor. Nobody writes think pieces about that.",
+   symbol:"⚙️",color:"mythic"},
+  {id:"sv-night-school",name:"THE NIGHT SCHOOL STUDENT",rarity:"MYTHIC",category:"Irreplaceable",artClass:"art-sv-night-school",series:"skillsvoid",
+   kscore:"0",kscoreClass:"low",
+   s1:{l:"Hours of Sleep",v:"4"},s2:{l:"Reasons to Quit",v:"INFINITE"},
+   atk:"∞",def:"∞",
+   flavor:"⚡ SECOND SHIFT — Can be played during opponent's turn. Works 7am to 3pm. Class 6pm to 10pm. Studies until 1am. Sleeps 4 hours. Does it again. The online program said 'learn at your own pace.' Her pace is survival. Her classmates are 22 and tired. She is 38 and cannot afford to be.",
+   symbol:"🌙",color:"mythic"},
+
+  // ═══ LEGENDARY ═══
+  {id:"sv-phd",name:"THE PhD (UNEMPLOYED)",rarity:"LEGENDARY",category:"Human · Knowledge",artClass:"art-sv-phd",series:"skillsvoid",
+   kscore:"4",kscoreClass:"mid",
+   s1:{l:"Years of Education",v:"12"},s2:{l:"Job Offers in Field",v:"0"},
+   atk:"12",def:"YEARS WASTED?",
+   flavor:"⚡ OVERQUALIFIED — Cannot be played in any position that exists. 12 years. Dissertation on Byzantine trade routes. 340 pages that advanced human knowledge by one footnote. The adjunct position pays $28K. The barista job pays $31K. She has the most educated coffee technique in the city. Nobody tips for footnotes.",
+   symbol:"🎓",color:"legendary"},
+  {id:"sv-master-craftsman",name:"THE MASTER CRAFTSMAN",rarity:"LEGENDARY",category:"Human · Trade",artClass:"art-sv-master-craftsman",series:"skillsvoid",
+   kscore:"1",kscoreClass:"low",
+   s1:{l:"Years to Mastery",v:"30"},s2:{l:"Apprentices Applying",v:"2"},
+   atk:"30",def:"YEARS",
+   flavor:"⚡ IRREPLICABLE — Cannot be copied by any AI effect. 30 years of shaping wood until it becomes something else. Two apprentices applied this year. Last year it was four. The one before, seven. He can feel when the grain is wrong before the saw touches it. The CNC machine is faster. It doesn't know what it's making.",
+   symbol:"🏺",color:"legendary"},
+  {id:"sv-cc-professor",name:"THE COMMUNITY COLLEGE PROF",rarity:"LEGENDARY",category:"Human · Purpose",artClass:"art-sv-cc-professor",series:"skillsvoid",
+   kscore:"2",kscoreClass:"low",
+   s1:{l:"Students Per Semester",v:"180"},s2:{l:"Office Hours Actually Given",v:"20"},
+   atk:"180",def:"STUDENTS",
+   flavor:"⚡ OPEN DOOR — Can be accessed by any card regardless of tier. 180 students. Half of them work full time. A third have kids. She memorizes their names by the second week. The university across town has AI tutors. Her students come to her office and cry about their lives. The AI tutor doesn't have tissues.",
+   symbol:"🏫",color:"legendary"},
+
+  // ═══ RARE ═══
+  {id:"sv-bootcamp-grad",name:"THE BOOTCAMP GRAD",rarity:"RARE",category:"Human · Tech",artClass:"art-sv-bootcamp-grad",series:"skillsvoid",
+   kscore:"6",kscoreClass:"mid",
+   s1:{l:"Bootcamp Duration",v:"12 WEEKS"},s2:{l:"Time Before AI Could Do It",v:"18 MONTHS"},
+   atk:"12",def:"WEEKS",
+   flavor:"⚡ PIVOT — Can change type once per game. 12 weeks. $18,000. 'Guaranteed job placement.' The guarantee expired. The skills expired faster. She learned React. Then they wanted Next.js. Then they wanted AI prompting. The bootcamp is now teaching people to talk to the thing that replaced the people the last bootcamp trained.",
+   symbol:"💻",color:"rare"},
+  {id:"sv-career-counselor",name:"THE CAREER COUNSELOR",rarity:"RARE",category:"Human · Purpose",artClass:"art-sv-career-counselor",series:"skillsvoid",
+   kscore:"4",kscoreClass:"mid",
+   s1:{l:"Clients Advised",v:"3,200"},s2:{l:"Careers That Still Exist",v:"FEWER EACH QUARTER"},
+   atk:"3200",def:"CLIENTS",
+   flavor:"⚡ GUIDANCE — Reveals the best available position for one card. 3,200 clients. She used to say 'follow your passion.' Now she says 'can a robot do it?' The answer is increasingly 'yes.' She advised a 22-year-old last week. The kid asked what's safe. She wanted to say 'plumbing.' She said 'I don't know anymore.'",
+   symbol:"🧭",color:"rare"},
+  {id:"sv-tenured-professor",name:"THE TENURED PROFESSOR",rarity:"RARE",category:"Human · Knowledge",artClass:"art-sv-tenured-professor",series:"skillsvoid",
+   kscore:"3",kscoreClass:"low",
+   s1:{l:"Years to Tenure",v:"11"},s2:{l:"Tenure-Track Positions Left",v:"VANISHING"},
+   atk:"11",def:"YEARS TO SAFETY",
+   flavor:"⚡ TENURE — Cannot be removed from play by any effect. 11 years of 'publish or perish.' She published. She didn't perish. The 400 adjuncts below her did. Tenure is a drawbridge — once you're across, you pull it up. The AI can write papers faster. It can't serve on the committee that decides who matters.",
+   symbol:"📖",color:"rare"},
+  {id:"sv-union-rep",name:"THE UNION REP",rarity:"RARE",category:"Human · Purpose",artClass:"art-sv-union-rep",series:"skillsvoid",
+   kscore:"3",kscoreClass:"low",
+   s1:{l:"Workers Represented",v:"4,800"},s2:{l:"Companies That Want Him Gone",v:"ALL OF THEM"},
+   atk:"4800",def:"WORKERS",
+   flavor:"⚡ COLLECTIVE BARGAINING — Doubles the defense of all adjacent cards. 4,800 workers. Every one of them would have been 'restructured' without him. The AI recommended layoffs. He recommended a conversation. The CEO doesn't like conversations with people who know their rights. That's the point.",
+   symbol:"✊",color:"rare"},
+
+  // ═══ UNCOMMON ═══
+  {id:"sv-linkedin-otw",name:"THE LINKEDIN OPEN-TO-WORK",rarity:"UNCOMMON",category:"Society · Digital",artClass:"art-sv-linkedin-otw",series:"skillsvoid",
+   kscore:"8",kscoreClass:"high",
+   s1:{l:"Applications Sent",v:"847"},s2:{l:"Responses (Not Automated)",v:"3"},
+   atk:"847",def:"APPLICATIONS",
+   flavor:"⚡ GREEN CIRCLE — Visible to all players. Cannot be hidden. 847 applications. 3 human responses. The green circle says 'I am available.' What it means is 'I am desperate and performing dignity.' The algorithm shows her profile to recruiters. The recruiters want 5 years of a tool released 2 years ago. She has 3. Close enough for a human. Not for the filter.",
+   symbol:"🟢",color:"uncommon"},
+  {id:"sv-cert-mill",name:"THE CERTIFICATION MILL",rarity:"UNCOMMON",category:"Society · Digital",artClass:"art-sv-cert-mill",series:"skillsvoid",
+   kscore:"8",kscoreClass:"high",
+   s1:{l:"Certifications Issued",v:"4.2M/YR"},s2:{l:"That Prove Competence",v:"UNCLEAR"},
+   atk:"4.2M",def:"CERTS/YR",
+   flavor:"⚡ CREDENTIAL INFLATION — Reduces the value of all skill cards by 1. 4.2 million certifications per year. Each one worth less than the last. The cert proves you watched the video. The video proves you paid. The payment proves nothing about skill. But the ATS requires it, so you get it, and so does everyone else, and now it means nothing again.",
+   symbol:"🏭",color:"uncommon"},
+  {id:"sv-mba",name:"THE MBA",rarity:"UNCOMMON",category:"Society · Digital",artClass:"art-sv-mba",series:"skillsvoid",
+   kscore:"7",kscoreClass:"high",
+   s1:{l:"Average Cost",v:"$148K"},s2:{l:"Things It Teaches You Can't Learn Elsewhere",v:"THE NETWORK"},
+   atk:"$148K",def:"DEBT",
+   flavor:"⚡ SYNERGY — Combines two weaker cards into one. Does nothing on its own. $148,000 for two years of case studies about companies that no longer exist. The degree teaches you to optimize. The AI optimizes better. What the MBA actually sells is the people you meet in the hallway. That's a $148K networking event with a diploma attached.",
+   symbol:"💼",color:"uncommon"},
+  {id:"sv-internship",name:'THE INTERNSHIP (UNPAID)',rarity:"UNCOMMON",category:"Society · Labor",artClass:"art-sv-internship",series:"skillsvoid",
+   kscore:"7",kscoreClass:"high",
+   s1:{l:"Hours Worked",v:"500"},s2:{l:"Compensation",v:"EXPERIENCE"},
+   atk:"500",def:"FREE HOURS",
+   flavor:"⚡ EXPOSURE — Generates value for owner. Receives none. 500 hours of real work labeled 'learning opportunity.' She fetches coffee, formats slides, and does the job of the person who left. They didn't replace him. They got an intern. Experience: the currency you earn when they don't want to pay you in money.",
+   symbol:"☕",color:"uncommon"},
+
+  // ═══ COMMON ═══
+  {id:"sv-ai-resume",name:"THE AI RESUME SCREENER",rarity:"COMMON",category:"AI Product",artClass:"art-sv-ai-resume",series:"skillsvoid",
+   kscore:"10",kscoreClass:"max",
+   s1:{l:"Resumes Screened/Day",v:"10,000"},s2:{l:"Qualified Candidates Rejected by Formatting",v:"~40%"},
+   atk:"10K",def:"PER DAY",
+   flavor:"⚡ KEYWORD MATCH — Rejects any card without exact matching text. 10,000 resumes per day. 40% rejected for formatting errors invisible to humans. She was the most qualified candidate. Her PDF used the wrong font. The recruiter never saw her name. The AI was trained on resumes of people who already had the job. It is looking for itself.",
+   symbol:"🤖",color:"common"},
+  {id:"sv-online-degree",name:"THE ONLINE DEGREE",rarity:"COMMON",category:"AI Product",artClass:"art-sv-online-degree",series:"skillsvoid",
+   kscore:"10",kscoreClass:"max",
+   s1:{l:"Completion Rate",v:"11%"},s2:{l:"Employers Who Value It Equally",v:"THEY SAY THEY DO"},
+   atk:"11%",def:"COMPLETION",
+   flavor:"⚡ FLEXIBLE — Can be played from anywhere. Usually isn't played at all. 11% completion rate. 'Learn from anywhere!' They don't mention that 'anywhere' is usually your couch at midnight after a 10-hour shift. The diploma says the same thing as the campus one. The interviewer's face says it doesn't.",
+   symbol:"🖥️",color:"common"},
+  {id:"sv-micro-credential",name:"THE MICRO-CREDENTIAL",rarity:"COMMON",category:"AI Product",artClass:"art-sv-micro-credential",series:"skillsvoid",
+   kscore:"10",kscoreClass:"max",
+   s1:{l:"Duration",v:"4 HOURS"},s2:{l:"Shelf Life",v:"6 MONTHS"},
+   atk:"4",def:"HOURS",
+   flavor:"⚡ BADGE — Adds a small icon to your card. Changes nothing. 4 hours. A quiz. A badge. A line on a resume. Expires in 6 months because the technology changed. You earned 14 this year. Each one felt like progress. None of them were. The treadmill is the product. You are the subscription.",
+   symbol:"📎",color:"common"},
+
+  // ═══ JUNK ═══
+  {id:"sv-cover-letter",name:"THE COVER LETTER",rarity:"JUNK",category:"Lore · Skills.void",artClass:"art-sv-cover-letter",series:"skillsvoid",
+   kscore:"∞",kscoreClass:"max",
+   s1:{l:"Time Spent Writing",v:"45 MIN"},s2:{l:"Time Spent Reading",v:"0 SEC"},
+   atk:"0",def:"IMPACT",
+   flavor:"⚡ DEAR HIRING MANAGER — Has no effect. Nobody reads this card. 45 minutes crafting the perfect paragraph about why you're 'passionate about [company mission].' You're not passionate. You need health insurance. They need a cover letter. Nobody reads it. The AI reads it. The AI also wrote it. Two AIs corresponding about a human who needs rent money.",
+   symbol:"📝",color:"junk"},
+  {id:"sv-ai-portfolio",name:"THE PORTFOLIO (AI-GENERATED)",rarity:"JUNK",category:"Lore · Skills.void",artClass:"art-sv-ai-portfolio",series:"skillsvoid",
+   kscore:"∞",kscoreClass:"max",
+   s1:{l:"Projects Shown",v:"12"},s2:{l:"Projects Actually Built by Applicant",v:"~2"},
+   atk:"12",def:"FAKE PROJECTS",
+   flavor:"⚡ SHOWCASE — Looks impressive. Collapses under any inspection. 12 projects. Beautiful screenshots. Clean code. 10 of them generated in an afternoon. The interviewer asks about the architecture decision on project 3. He says 'I chose a modular approach for scalability.' She asks a follow-up. He panics. The portfolio is a mask. The interview is the mirror.",
+   symbol:"🎨",color:"junk"},
+  {id:"sv-entry-level",name:"THE 5 YEARS EXPERIENCE (ENTRY LEVEL)",rarity:"JUNK",category:"Lore · Skills.void",artClass:"art-sv-entry-level",series:"skillsvoid",
+   kscore:"∞",kscoreClass:"max",
+   s1:{l:"Experience Required",v:"5 YEARS"},s2:{l:"Position Level",v:"ENTRY"},
+   atk:"5",def:"PARADOX YEARS",
+   flavor:"⚡ CATCH-22 — Cannot be played. Requires itself to be played. 'Entry level. 5 years experience. Master's preferred. $42K.' The job requires experience you can only get from the job. The posting was written by an AI trained on other postings written by AIs. Nobody human reviewed it. Nobody human could meet it. It's been open for 8 months. They're 'still looking.'",
+   symbol:"🚪",color:"junk"},
 ];
 
 const RARITY_ORDER = ["MYTHIC","LEGENDARY","RARE","UNCOMMON","COMMON","JUNK"];
@@ -3768,7 +4535,7 @@ function buildPack(type) {
     pack.push(pickCard(WEIGHTS,'LEGENDARY'));
     for(let i=0;i<4;i++) pack.push(pickCard(WEIGHTS));
     for(let i=pack.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[pack[i],pack[j]]=[pack[j],pack[i]];}
-  } else if (type==='jobless' || type==='doomscroll' || type==='loveexe') {
+  } else if (type==='jobless' || type==='doomscroll' || type==='loveexe' || type==='warroom' || type==='skillsvoid') {
     const setCards = CARDS.filter(c=>c.series===type);
     for(let i=0;i<5;i++) {
       const weighted = [];
@@ -3831,7 +4598,7 @@ function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   if(id==='collection-screen') renderCollection();
-  if(id==='pack-screen') { updateStats(); renderProfile(); updateDailyUI(); renderWeeklyGoal(); renderChainBanner(); renderChainStatus(); renderSet2Zone(); renderSet3Zone(); renderSet4Zone(); }
+  if(id==='pack-screen') { updateStats(); renderProfile(); updateDailyUI(); renderWeeklyGoal(); renderChainBanner(); renderChainStatus(); renderSet2Zone(); renderSet3Zone(); renderSet4Zone(); renderSet5Zone(); renderSet6Zone(); }
 }
 
 function updateStats() {
@@ -3851,6 +4618,8 @@ function openPack(type) {
   if (type==='jobless' && !isSet2Unlocked()) { showToast('COMPLETE SET 1 TO UNLOCK JOBLESS.AI'); return; }
   if (type==='doomscroll' && !isSet3Unlocked()) { showToast('COMPLETE SET 2 TO UNLOCK DOOMSCROLL'); return; }
   if (type==='loveexe' && !isSet4Unlocked()) { showToast('COMPLETE SET 3 TO UNLOCK LOVE.EXE'); return; }
+  if (type==='warroom' && !isSet5Unlocked()) { showToast('COMPLETE SET 4 TO UNLOCK WAR ROOM'); return; }
+  if (type==='skillsvoid' && !isSet6Unlocked()) { showToast('COMPLETE SET 5 TO UNLOCK SKILLS.VOID'); return; }
   // Check daily limit
   if (getDailyPacksRemaining() <= 0) {
     showToast('NO DAILY PACKS LEFT — RESETS AT MIDNIGHT');
@@ -3869,14 +4638,14 @@ function openPack(type) {
   // Consume daily pack
   consumeDailyPack();
 
-  const labels = {standard:'2030 SURVIVAL PACK',legendary:'REDUNDANCY PACK',jobless:'JOBLESS.AI PACK',doomscroll:'DOOMSCROLL PACK',loveexe:'LOVE.EXE PACK'};
+  const labels = {standard:'2030 SURVIVAL PACK',legendary:'REDUNDANCY PACK',jobless:'JOBLESS.AI PACK',doomscroll:'DOOMSCROLL PACK',loveexe:'LOVE.EXE PACK',warroom:'WAR ROOM PACK',skillsvoid:'SKILLS.VOID PACK'};
   document.getElementById('op-pack-name').textContent = labels[type];
   document.getElementById('legendaryBeam').classList.remove('active');
 
   // Pack tear animation
-  const PACK_COLORS = {standard:'#2196c8',legendary:'#c8a84b',jobless:'#ff4040',doomscroll:'#60c8ff',loveexe:'#ff69b4'};
+  const PACK_COLORS = {standard:'#2196c8',legendary:'#c8a84b',jobless:'#ff4040',doomscroll:'#60c8ff',loveexe:'#ff69b4',warroom:'#ff6040',skillsvoid:'#a0a0a0'};
   const packColor = PACK_COLORS[type] || '#888';
-  const packTypeLabel = {standard:'2030 SURVIVAL',legendary:'REDUNDANCY',jobless:'JOBLESS.AI',doomscroll:'DOOMSCROLL',loveexe:'LOVE.EXE'}[type];
+  const packTypeLabel = {standard:'2030 SURVIVAL',legendary:'REDUNDANCY',jobless:'JOBLESS.AI',doomscroll:'DOOMSCROLL',loveexe:'LOVE.EXE',warroom:'WAR ROOM',skillsvoid:'SKILLS.VOID'}[type];
   const tearEl = document.getElementById('packTear');
   const tearInner = document.getElementById('packTearInner');
   tearInner.style.color = packColor;
@@ -4437,7 +5206,7 @@ function renderWeeklyGoal() {
 // ═══════════════════════════════════════
 // ON-CHAIN INTEGRATION
 // ═══════════════════════════════════════
-const CHAIN_PACKAGE = '0x848b7e822fc93e05212d0002287d079d3cb5ef7fe0be1458091496aaf2aa95d2';
+const CHAIN_PACKAGE = '0x99f91c55ad24367b9fba1000bf43a5e571c2ae096c906fdf2e78fd51243f38b2';
 
 function getChainAddress() {
   return localStorage.getItem('aicards_chain_address') || '';
@@ -4613,7 +5382,9 @@ async function mintPackToChain() {
 const JOBLESS_IDS = new Set(CARDS.filter(c=>c.series==='jobless').map(c=>c.id));
 const DOOMSCROLL_IDS = new Set(CARDS.filter(c=>c.series==='doomscroll').map(c=>c.id));
 const LOVEEXE_IDS = new Set(CARDS.filter(c=>c.series==='loveexe').map(c=>c.id));
-let collSeriesFilter = 'ALL'; // 'ALL' | 'SURVIVAL' | 'JOBLESS' | 'DOOMSCROLL' | 'LOVEEXE'
+const WARROOM_IDS = new Set(CARDS.filter(c=>c.series==='warroom').map(c=>c.id));
+const SKILLSVOID_IDS = new Set(CARDS.filter(c=>c.series==='skillsvoid').map(c=>c.id));
+let collSeriesFilter = 'ALL'; // 'ALL' | 'SURVIVAL' | 'JOBLESS' | 'DOOMSCROLL' | 'LOVEEXE' | 'WARROOM' | 'SKILLSVOID'
 
 // ═══════════════════════════════════════
 // COLLECTION
@@ -4621,9 +5392,9 @@ let collSeriesFilter = 'ALL'; // 'ALL' | 'SURVIVAL' | 'JOBLESS' | 'DOOMSCROLL' |
 function renderCollection() {
   const body = document.getElementById('coll-body');
   const size = collectionSize();
-  const filterBtns = ['ALL','SURVIVAL','JOBLESS','DOOMSCROLL','LOVEEXE'].map(f=>{
+  const filterBtns = ['ALL','SURVIVAL','JOBLESS','DOOMSCROLL','LOVEEXE','WARROOM','SKILLSVOID'].map(f=>{
     const active = collSeriesFilter===f ? ' active' : '';
-    const label = {ALL:'ALL',SURVIVAL:'2030 SURVIVAL',JOBLESS:'JOBLESS.AI',DOOMSCROLL:'DOOMSCROLL',LOVEEXE:'LOVE.EXE'}[f];
+    const label = {ALL:'ALL',SURVIVAL:'2030 SURVIVAL',JOBLESS:'JOBLESS.AI',DOOMSCROLL:'DOOMSCROLL',LOVEEXE:'LOVE.EXE',WARROOM:'WAR ROOM',SKILLSVOID:'SKILLS.VOID'}[f];
     return `<button class="nav-pill${active}" onclick="setCollFilter('${f}')">${label}</button>`;
   }).join('');
 
@@ -4635,10 +5406,12 @@ function renderCollection() {
 
   RARITY_ORDER.forEach(rarity=>{
     let cards = CARDS.filter(c=>c.rarity===rarity);
-    if(collSeriesFilter==='SURVIVAL') cards = cards.filter(c=>!JOBLESS_IDS.has(c.id) && !DOOMSCROLL_IDS.has(c.id) && !LOVEEXE_IDS.has(c.id));
+    if(collSeriesFilter==='SURVIVAL') cards = cards.filter(c=>!JOBLESS_IDS.has(c.id) && !DOOMSCROLL_IDS.has(c.id) && !LOVEEXE_IDS.has(c.id) && !WARROOM_IDS.has(c.id) && !SKILLSVOID_IDS.has(c.id));
     else if(collSeriesFilter==='JOBLESS') cards = cards.filter(c=>JOBLESS_IDS.has(c.id));
     else if(collSeriesFilter==='DOOMSCROLL') cards = cards.filter(c=>DOOMSCROLL_IDS.has(c.id));
     else if(collSeriesFilter==='LOVEEXE') cards = cards.filter(c=>LOVEEXE_IDS.has(c.id));
+    else if(collSeriesFilter==='WARROOM') cards = cards.filter(c=>WARROOM_IDS.has(c.id));
+    else if(collSeriesFilter==='SKILLSVOID') cards = cards.filter(c=>SKILLSVOID_IDS.has(c.id));
     if(cards.length===0) return;
     const owned = cards.filter(c=>collectionHas(c.id)).length;
     const col = RARITY_COLORS[rarity];
@@ -4692,6 +5465,8 @@ function getSetCompletion(series) {
 function isSet2Unlocked() { return getSetCompletion(null).pct >= 100; }
 function isSet3Unlocked() { return isSet2Unlocked() && getSetCompletion('jobless').pct >= 100; }
 function isSet4Unlocked() { return isSet3Unlocked() && getSetCompletion('doomscroll').pct >= 100; }
+function isSet5Unlocked() { return isSet4Unlocked() && getSetCompletion('loveexe').pct >= 100; }
+function isSet6Unlocked() { return isSet5Unlocked() && getSetCompletion('warroom').pct >= 100; }
 
 function renderSet2Zone() {
   const zone = document.getElementById('set2-zone');
@@ -4765,6 +5540,54 @@ function renderSet4Zone() {
     </div>`;
 }
 
+function renderSet5Zone() {
+  const zone = document.getElementById('set5-zone');
+  if (!zone) return;
+  const comp = getSetCompletion('loveexe');
+  const unlocked = isSet5Unlocked();
+
+  zone.innerHTML = `
+    <div style="width:100%;max-width:960px;margin-bottom:8px;margin-top:20px;">
+      <div style="font-family:var(--font-mono);font-size:8px;letter-spacing:3px;color:#555;margin-bottom:10px;">SET 5 — WAR ROOM ${unlocked?'':'🔒'}</div>
+    </div>
+    <div class="pack-grid">
+      <div class="pack-card p-standard ${unlocked?'':'locked'}" ${unlocked?'onclick="openPack(\'warroom\')"':''} style="border-color:rgba(255,96,64,0.3);">
+        <span class="pack-icon-wrap">${unlocked?'⚔️':'🔒'}</span>
+        <div class="pack-title" style="color:${unlocked?'#ff6040':'#555'};">${unlocked?'WAR ROOM':'LOCKED'}</div>
+        <div class="pack-desc">${unlocked
+          ?'Drones. Diplomacy. Destruction. The geopolitical dread expansion. 22 cards including 5 Mythics.'
+          :'Complete Set 4 to unlock. Collect all 22 cards from Love.exe.'}</div>
+        <div class="pack-meta">${unlocked?'5 CARDS · GEOPOLITICAL DREAD · INCLUDES MYTHICS':comp.owned+' / '+comp.total+' SET 4 CARDS'}</div>
+        ${unlocked?'<button class="pack-btn" style="color:#ff6040;box-shadow:0 0 8px rgba(255,96,64,0.2);">▶ OPEN PACK</button>':''}
+        ${!unlocked?'<div class="pack-lock-bar"><div class="pack-lock-fill" style="width:'+comp.pct+'%"></div></div><div class="pack-lock-info">'+comp.pct+'% COMPLETE</div>':''}
+      </div>
+    </div>`;
+}
+
+function renderSet6Zone() {
+  const zone = document.getElementById('set6-zone');
+  if (!zone) return;
+  const comp = getSetCompletion('warroom');
+  const unlocked = isSet6Unlocked();
+
+  zone.innerHTML = `
+    <div style="width:100%;max-width:960px;margin-bottom:8px;margin-top:20px;">
+      <div style="font-family:var(--font-mono);font-size:8px;letter-spacing:3px;color:#555;margin-bottom:10px;">SET 6 — SKILLS.VOID ${unlocked?'':'🔒'}</div>
+    </div>
+    <div class="pack-grid">
+      <div class="pack-card p-standard ${unlocked?'':'locked'}" ${unlocked?'onclick="openPack(\'skillsvoid\')"':''} style="border-color:rgba(160,160,160,0.3);">
+        <span class="pack-icon-wrap">${unlocked?'📉':'🔒'}</span>
+        <div class="pack-title" style="color:${unlocked?'#a0a0a0':'#555'};">${unlocked?'SKILLS.VOID':'LOCKED'}</div>
+        <div class="pack-desc">${unlocked
+          ?'Credentials. Obsolescence. Career anxiety. The education that expired before the loan did. 22 cards including 5 Mythics.'
+          :'Complete Set 5 to unlock. Collect all 22 cards from War Room.'}</div>
+        <div class="pack-meta">${unlocked?'5 CARDS · CAREER ANXIETY · INCLUDES MYTHICS':comp.owned+' / '+comp.total+' SET 5 CARDS'}</div>
+        ${unlocked?'<button class="pack-btn" style="color:#a0a0a0;box-shadow:0 0 8px rgba(160,160,160,0.2);">▶ OPEN PACK</button>':''}
+        ${!unlocked?'<div class="pack-lock-bar"><div class="pack-lock-fill" style="width:'+comp.pct+'%"></div></div><div class="pack-lock-info">'+comp.pct+'% COMPLETE</div>':''}
+      </div>
+    </div>`;
+}
+
 function renderProfile() {
   if (S.pulls===0){document.getElementById('profile-zone').innerHTML='';return;}
   const tot = (S.sov+S.dep)||1;
@@ -4807,6 +5630,8 @@ renderChainStatus();
 renderSet2Zone();
 renderSet3Zone();
 renderSet4Zone();
+renderSet5Zone();
+renderSet6Zone();
 
 // Dismiss loading screen after fonts + DOM ready
 (function dismissLoader() {

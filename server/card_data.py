@@ -216,6 +216,80 @@ _add("lx-what-are-we", 'THE "WHAT ARE WE"', "JUNK", "Lore · Love.exe", "LOVE.EX
 _add("lx-love-tos", "THE DATING APP T&C", "JUNK", "Lore · Love.exe", "LOVE.EXE", "∞", "∞", "CLAUSES", "📄", series="loveexe")
 
 
+# ═══ SET 5: WAR ROOM (series="warroom") ═══
+
+# — Mythic —
+_add("wr-peace-negotiator", "THE PEACE NEGOTIATOR", "MYTHIC", "Irreplaceable", "WAR ROOM", "0", "∞", "∞", "🕊️", series="warroom")
+_add("wr-refugee", "THE REFUGEE", "MYTHIC", "Irreplaceable", "WAR ROOM", "0", "∞", "∞", "🚶", series="warroom")
+_add("wr-objector", "THE CONSCIENTIOUS OBJECTOR", "MYTHIC", "Irreplaceable", "WAR ROOM", "0", "∞", "∞", "✋", series="warroom")
+_add("wr-war-orphan", "THE WAR ORPHAN", "MYTHIC", "Irreplaceable", "WAR ROOM", "0", "∞", "∞", "🧸", series="warroom")
+_add("wr-veteran", "THE VETERAN", "MYTHIC", "Irreplaceable", "WAR ROOM", "0", "∞", "∞", "🎖️", series="warroom")
+
+# — Legendary —
+_add("wr-drone-pilot", "THE DRONE PILOT", "LEGENDARY", "Human · Warfare", "WAR ROOM", "3", "7000", "MILES AWAY", "🎮", series="warroom")
+_add("wr-cyber-commander", "THE CYBER COMMANDER", "LEGENDARY", "Human · Warfare", "WAR ROOM", "2", "4700", "SYSTEMS DOWN", "💻", series="warroom")
+_add("wr-war-correspondent-v2", "THE WAR CORRESPONDENT", "LEGENDARY", "Human · Purpose", "WAR ROOM", "1", "847", "STORIES FILED", "📹", series="warroom")
+
+# — Rare —
+_add("wr-diplomat", "THE DIPLOMAT", "RARE", "Human · Governance", "WAR ROOM", "3", "23", "CRISES AVERTED", "🏛️", series="warroom")
+_add("wr-sanctions-analyst", "THE SANCTIONS ANALYST", "RARE", "Human · Governance", "WAR ROOM", "5", "140", "PACKAGES", "📊", series="warroom")
+_add("wr-peacekeeper", "THE PEACEKEEPER", "RARE", "Human · Purpose", "WAR ROOM", "2", "18", "MONTHS IN HELL", "🪖", series="warroom")
+_add("wr-intel-officer", "THE INTELLIGENCE OFFICER", "RARE", "Human · Purpose", "WAR ROOM", "4", "12K", "REPORTS", "🕵️", series="warroom")
+
+# — Uncommon —
+_add("wr-autonomous-weapon", "THE AUTONOMOUS WEAPON", "UNCOMMON", "AI · Warfare", "WAR ROOM", "10", "0.003", "SECONDS TO KILL", "🤖", series="warroom")
+_add("wr-propaganda-bot", "THE PROPAGANDA BOT", "UNCOMMON", "AI · Warfare", "WAR ROOM", "10", "840K", "FAKE ACCOUNTS", "📢", series="warroom")
+_add("wr-draft-lottery", "THE DRAFT LOTTERY", "UNCOMMON", "Society · Warfare", "WAR ROOM", "6", "14M", "NAMES DRAWN", "🎰", series="warroom")
+_add("wr-proxy-war", "THE PROXY WAR", "UNCOMMON", "Society · Warfare", "WAR ROOM", "7", "2", "SPONSORS", "♟️", series="warroom")
+
+# — Common —
+_add("wr-killer-drone", "THE KILLER DRONE", "COMMON", "AI Product", "WAR ROOM", "10", "$6K", "PER UNIT", "✈️", series="warroom")
+_add("wr-surveillance-state", "THE SURVEILLANCE STATE", "COMMON", "AI Product", "WAR ROOM", "10", "1.4", "CAMERAS EACH", "👁️", series="warroom")
+_add("wr-cyber-attack", "THE CYBER ATTACK", "COMMON", "AI Product", "WAR ROOM", "10", "14K", "ATTACKS/YR", "💀", series="warroom")
+
+# — Junk —
+_add("wr-arms-dealer", "THE ARMS DEALER", "JUNK", "Lore · War Room", "WAR ROOM", "∞", "∞", "REVENUE", "💰", series="warroom")
+_add("wr-war-profiteer", "THE WAR PROFITEER", "JUNK", "Lore · War Room", "WAR ROOM", "∞", "340%", "RETURNS", "📈", series="warroom")
+_add("wr-geneva-suggestion", "THE GENEVA SUGGESTION", "JUNK", "Lore · War Room", "WAR ROOM", "∞", "4", "SUGGESTIONS", "📜", series="warroom")
+
+
+# ═══ SET 6: SKILLS.VOID (series="skillsvoid") ═══
+
+# — Mythic —
+_add("sv-apprentice", "THE APPRENTICE", "MYTHIC", "Irreplaceable", "SKILLS.VOID", "0", "∞", "∞", "🔨", series="skillsvoid")
+_add("sv-mentor", "THE MENTOR", "MYTHIC", "Irreplaceable", "SKILLS.VOID", "0", "∞", "∞", "🧓", series="skillsvoid")
+_add("sv-autodidact", "THE AUTODIDACT", "MYTHIC", "Irreplaceable", "SKILLS.VOID", "0", "∞", "∞", "📚", series="skillsvoid")
+_add("sv-trades-teacher", "THE TRADES TEACHER", "MYTHIC", "Irreplaceable", "SKILLS.VOID", "0", "∞", "∞", "⚙️", series="skillsvoid")
+_add("sv-night-school", "THE NIGHT SCHOOL STUDENT", "MYTHIC", "Irreplaceable", "SKILLS.VOID", "0", "∞", "∞", "🌙", series="skillsvoid")
+
+# — Legendary —
+_add("sv-phd", "THE PhD (UNEMPLOYED)", "LEGENDARY", "Human · Knowledge", "SKILLS.VOID", "4", "12", "YEARS WASTED?", "🎓", series="skillsvoid")
+_add("sv-master-craftsman", "THE MASTER CRAFTSMAN", "LEGENDARY", "Human · Trade", "SKILLS.VOID", "1", "30", "YEARS", "🏺", series="skillsvoid")
+_add("sv-cc-professor", "THE COMMUNITY COLLEGE PROF", "LEGENDARY", "Human · Purpose", "SKILLS.VOID", "2", "180", "STUDENTS", "🏫", series="skillsvoid")
+
+# — Rare —
+_add("sv-bootcamp-grad", "THE BOOTCAMP GRAD", "RARE", "Human · Tech", "SKILLS.VOID", "6", "12", "WEEKS", "💻", series="skillsvoid")
+_add("sv-career-counselor", "THE CAREER COUNSELOR", "RARE", "Human · Purpose", "SKILLS.VOID", "4", "3200", "CLIENTS", "🧭", series="skillsvoid")
+_add("sv-tenured-professor", "THE TENURED PROFESSOR", "RARE", "Human · Knowledge", "SKILLS.VOID", "3", "11", "YEARS TO SAFETY", "📖", series="skillsvoid")
+_add("sv-union-rep", "THE UNION REP", "RARE", "Human · Purpose", "SKILLS.VOID", "3", "4800", "WORKERS", "✊", series="skillsvoid")
+
+# — Uncommon —
+_add("sv-linkedin-otw", "THE LINKEDIN OPEN-TO-WORK", "UNCOMMON", "Society · Digital", "SKILLS.VOID", "8", "847", "APPLICATIONS", "🟢", series="skillsvoid")
+_add("sv-cert-mill", "THE CERTIFICATION MILL", "UNCOMMON", "Society · Digital", "SKILLS.VOID", "8", "4.2M", "CERTS/YR", "🏭", series="skillsvoid")
+_add("sv-mba", "THE MBA", "UNCOMMON", "Society · Digital", "SKILLS.VOID", "7", "$148K", "DEBT", "💼", series="skillsvoid")
+_add("sv-internship", "THE INTERNSHIP (UNPAID)", "UNCOMMON", "Society · Labor", "SKILLS.VOID", "7", "500", "FREE HOURS", "☕", series="skillsvoid")
+
+# — Common —
+_add("sv-ai-resume", "THE AI RESUME SCREENER", "COMMON", "AI Product", "SKILLS.VOID", "10", "10K", "PER DAY", "🤖", series="skillsvoid")
+_add("sv-online-degree", "THE ONLINE DEGREE", "COMMON", "AI Product", "SKILLS.VOID", "10", "11%", "COMPLETION", "🖥️", series="skillsvoid")
+_add("sv-micro-credential", "THE MICRO-CREDENTIAL", "COMMON", "AI Product", "SKILLS.VOID", "10", "4", "HOURS", "📎", series="skillsvoid")
+
+# — Junk —
+_add("sv-cover-letter", "THE COVER LETTER", "JUNK", "Lore · Skills.void", "SKILLS.VOID", "∞", "0", "IMPACT", "📝", series="skillsvoid")
+_add("sv-ai-portfolio", "THE PORTFOLIO (AI-GENERATED)", "JUNK", "Lore · Skills.void", "SKILLS.VOID", "∞", "12", "FAKE PROJECTS", "🎨", series="skillsvoid")
+_add("sv-entry-level", 'THE 5 YEARS EXPERIENCE (ENTRY LEVEL)', "JUNK", "Lore · Skills.void", "SKILLS.VOID", "∞", "5", "PARADOX YEARS", "🚪", series="skillsvoid")
+
+
 def get_set_cards(series: str | None) -> list[dict]:
     """Get cards for a specific set. None = Set 1 (no series tag)."""
     if series is None:
@@ -247,7 +321,7 @@ def build_pack(pack_type: str) -> list[dict]:
         pack = [random.choice(legendaries)] + [pick_card(None) for _ in range(4)]
         random.shuffle(pack)
         return pack
-    elif pack_type in ("jobless", "doomscroll", "loveexe"):
+    elif pack_type in ("jobless", "doomscroll", "loveexe", "warroom", "skillsvoid"):
         return [pick_card(pack_type) for _ in range(5)]
     else:
         raise ValueError(f"Unknown pack type: {pack_type}")
