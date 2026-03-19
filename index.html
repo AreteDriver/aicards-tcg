@@ -4,15 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <title>AI CARDS — 2030 Survival Edition</title>
-<meta name="description" content="69 cards. 5 rarities. The humans who will matter when the algorithm takes the rest. Open packs. Collect what survives.">
+<meta name="description" content="162 cards. 6 sets. NFTs on Sui. The humans who will matter when the algorithm takes the rest. Open packs. Collect what survives.">
 <meta property="og:title" content="AI CARDS — 2030 Survival Edition">
-<meta property="og:description" content="69 cards. 5 rarities. The humans who will matter when the algorithm takes the rest. Open packs. Collect what survives.">
+<meta property="og:description" content="162 cards. 6 sets. NFTs on Sui. The humans who will matter when the algorithm takes the rest. Open packs. Collect what survives.">
 <meta property="og:url" content="https://aicards.fun">
 <meta property="og:image" content="https://aicards.fun/og-image.png">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="AI CARDS — 2030 Survival Edition">
-<meta name="twitter:description" content="69 cards. 5 rarities. The humans who will matter when the algorithm takes the rest. Open packs. Collect what survives.">
+<meta name="twitter:description" content="162 cards. 6 sets. NFTs on Sui. The humans who will matter when the algorithm takes the rest. Open packs. Collect what survives.">
 <meta name="twitter:image" content="https://aicards.fun/og-image.png">
 <link rel="canonical" href="https://aicards.fun">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
@@ -376,6 +376,13 @@ body::before {
 .art-influencer {
   background: linear-gradient(180deg, #001020 0%, #001830 50%, #000810 100%);
 }
+.art-influencer::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(circle 20px at 30% 30%, rgba(56,189,248,0.08) 0%, transparent 100%),
+    radial-gradient(circle 15px at 70% 60%, rgba(212,68,144,0.06) 0%, transparent 100%),
+    radial-gradient(circle 25px at 50% 80%, rgba(56,189,248,0.06) 0%, transparent 100%),
+    repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(56,189,248,0.02) 20px, rgba(56,189,248,0.02) 21px);
+}
 .art-influencer::after {
   content:'📱'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:52px;
   filter: drop-shadow(0 0 16px rgba(56,189,248,0.4));
@@ -397,6 +404,11 @@ body::before {
 .art-journalist {
   background: linear-gradient(180deg, #001020 0%, #001828 50%, #000608 100%);
 }
+.art-journalist::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 5px, rgba(56,189,248,0.03) 5px, rgba(56,189,248,0.03) 6px),
+    repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(56,189,248,0.02) 40px, rgba(56,189,248,0.02) 41px);
+}
 .art-journalist::after {
   content:'📰'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
   filter: drop-shadow(0 0 10px rgba(56,189,248,0.3));
@@ -404,6 +416,12 @@ body::before {
 
 .art-nomad {
   background: linear-gradient(180deg, #002010 0%, #003818 50%, #001008 100%);
+}
+.art-nomad::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 80% 40% at 50% 90%, rgba(0,200,100,0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 30% at 30% 20%, rgba(56,189,248,0.06) 0%, transparent 50%),
+    radial-gradient(ellipse 30% 20% at 70% 40%, rgba(56,189,248,0.04) 0%, transparent 50%);
 }
 .art-nomad::after {
   content:'🌴'; position:absolute; bottom:8px; left:50%; transform:translateX(-50%); font-size:52px;
@@ -428,6 +446,11 @@ body::before {
 .art-ai-bf {
   background: radial-gradient(ellipse at 50% 100%, #001028 0%, #000818 50%, #000408 100%);
 }
+.art-ai-bf::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 60% 40% at 50% 100%, rgba(56,100,200,0.15) 0%, transparent 70%),
+    repeating-radial-gradient(circle at 50% 100%, transparent, transparent 20px, rgba(56,100,200,0.03) 20px, rgba(56,100,200,0.03) 21px);
+}
 .art-ai-bf::after {
   content:'💙'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:54px;
   filter: drop-shadow(0 0 20px rgba(56,100,200,0.6));
@@ -450,6 +473,12 @@ body::before {
 .art-digital-companion {
   background: radial-gradient(ellipse at 50% 50%, #0a1010 0%, #050808 50%, #020404 100%);
 }
+.art-digital-companion::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-linear-gradient(90deg, transparent, transparent 10px, rgba(212,68,144,0.03) 10px, rgba(212,68,144,0.03) 11px),
+    repeating-linear-gradient(0deg, transparent, transparent 10px, rgba(212,68,144,0.02) 10px, rgba(212,68,144,0.02) 11px),
+    radial-gradient(ellipse 50% 50% at 50% 50%, rgba(0,200,180,0.06) 0%, transparent 60%);
+}
 .art-digital-companion::after {
   content:'🤖'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:52px;
   filter: drop-shadow(0 0 14px rgba(212,68,144,0.4));
@@ -459,6 +488,13 @@ body::before {
 .art-prompt-engineer {
   background: linear-gradient(180deg, #0a0a0a 0%, #101010 50%, #050505 100%);
 }
+.art-prompt-engineer::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(100,255,100,0.02) 3px, rgba(100,255,100,0.02) 4px),
+    radial-gradient(ellipse 60% 40% at 50% 50%, rgba(100,255,100,0.06) 0%, transparent 70%),
+    radial-gradient(circle 4px at 20% 30%, rgba(100,255,100,0.08) 0%, transparent 100%),
+    radial-gradient(circle 3px at 80% 70%, rgba(100,255,100,0.06) 0%, transparent 100%);
+}
 .art-prompt-engineer::after {
   content:'💬'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
   opacity:0.5;
@@ -466,6 +502,11 @@ body::before {
 
 .art-techno-optimist {
   background: radial-gradient(ellipse at 50% 100%, #100800 0%, #080400 60%, #030200 100%);
+}
+.art-techno-optimist::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 30% 60% at 50% 100%, rgba(255,150,50,0.15) 0%, transparent 60%),
+    repeating-conic-gradient(from 0deg at 50% 80%, transparent 0deg, transparent 14deg, rgba(255,150,50,0.03) 15deg, rgba(255,150,50,0.03) 16deg);
 }
 .art-techno-optimist::after {
   content:'🚀'; position:absolute; bottom:10px; left:50%; transform:translateX(-50%); font-size:50px;
@@ -514,6 +555,12 @@ body::before {
 .art-nurse {
   background: linear-gradient(180deg, #001008 0%, #001810 50%, #000804 100%);
 }
+.art-nurse::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(0,200,100,0.08) 0%, transparent 60%),
+    linear-gradient(0deg, transparent 45%, rgba(255,255,255,0.04) 49%, rgba(255,255,255,0.04) 51%, transparent 55%),
+    linear-gradient(90deg, transparent 45%, rgba(255,255,255,0.04) 49%, rgba(255,255,255,0.04) 51%, transparent 55%);
+}
 .art-nurse::after {
   content:'💉'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
   filter: drop-shadow(0 0 14px rgba(0,200,100,0.4));
@@ -534,6 +581,11 @@ body::before {
 
 .art-barber {
   background: linear-gradient(180deg, #0a0010 0%, #120018 50%, #060008 100%);
+}
+.art-barber::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 14px, rgba(255,255,255,0.03) 14px, rgba(255,0,0,0.03) 16px, rgba(0,0,255,0.03) 18px, transparent 18px),
+    radial-gradient(ellipse 40% 60% at 50% 50%, rgba(155,89,208,0.08) 0%, transparent 60%);
 }
 .art-barber::after {
   content:'💈'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
@@ -568,6 +620,11 @@ body::before {
 .art-translator {
   background: linear-gradient(180deg, #000810 0%, #001428 50%, #000408 100%);
 }
+.art-translator::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-conic-gradient(from 0deg at 50% 50%, transparent 0deg, transparent 29deg, rgba(33,150,200,0.03) 30deg, rgba(33,150,200,0.03) 31deg),
+    radial-gradient(ellipse 70% 70% at 50% 50%, rgba(33,150,200,0.06) 0%, transparent 70%);
+}
 .art-translator::after {
   content:'🌐'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
   filter: drop-shadow(0 0 12px rgba(33,150,200,0.3));
@@ -577,6 +634,11 @@ body::before {
 .art-uber-driver {
   background: linear-gradient(180deg, #000810 0%, #001020 50%, #000408 100%);
 }
+.art-uber-driver::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-linear-gradient(180deg, transparent, transparent 20px, rgba(33,150,200,0.03) 20px, rgba(33,150,200,0.03) 22px),
+    linear-gradient(90deg, transparent 20%, rgba(33,150,200,0.04) 50%, transparent 80%);
+}
 .art-uber-driver::after {
   content:'🚗'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
   filter: drop-shadow(0 0 10px rgba(33,150,200,0.3));
@@ -584,6 +646,11 @@ body::before {
 
 .art-ai-tutor {
   background: radial-gradient(ellipse at 50% 100%, #1a0010 0%, #100008 50%, #060004 100%);
+}
+.art-ai-tutor::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 6px, rgba(212,68,144,0.03) 6px, rgba(212,68,144,0.03) 7px),
+    radial-gradient(ellipse 50% 40% at 50% 80%, rgba(212,68,144,0.1) 0%, transparent 60%);
 }
 .art-ai-tutor::after {
   content:'📚'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
@@ -606,6 +673,11 @@ body::before {
 .art-vc {
   background: linear-gradient(180deg, #080808 0%, #101010 50%, #040404 100%);
 }
+.art-vc::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 40% 40% at 50% 50%, rgba(200,168,75,0.08) 0%, transparent 60%),
+    repeating-linear-gradient(45deg, transparent, transparent 15px, rgba(200,168,75,0.02) 15px, rgba(200,168,75,0.02) 16px);
+}
 .art-vc::after {
   content:'💰'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
   filter: drop-shadow(0 0 8px rgba(200,168,75,0.3));
@@ -613,6 +685,11 @@ body::before {
 
 .art-regulator {
   background: linear-gradient(180deg, #080808 0%, #0c0c0c 50%, #040404 100%);
+}
+.art-regulator::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 4px, rgba(102,112,128,0.03) 4px, rgba(102,112,128,0.03) 5px),
+    repeating-linear-gradient(90deg, transparent, transparent 30px, rgba(102,112,128,0.02) 30px, rgba(102,112,128,0.02) 31px);
 }
 .art-regulator::after {
   content:'📋'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
@@ -622,6 +699,11 @@ body::before {
 .art-linkedin-guru {
   background: linear-gradient(180deg, #000810 0%, #001020 50%, #000408 100%);
 }
+.art-linkedin-guru::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 50% 30% at 50% 30%, rgba(0,119,181,0.1) 0%, transparent 60%),
+    repeating-linear-gradient(0deg, transparent, transparent 8px, rgba(0,119,181,0.03) 8px, rgba(0,119,181,0.03) 9px);
+}
 .art-linkedin-guru::after {
   content:'🔗'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
   filter: drop-shadow(0 0 8px rgba(0,119,181,0.3));
@@ -629,6 +711,11 @@ body::before {
 
 .art-teacher {
   background: linear-gradient(180deg, #001008 0%, #001a10 50%, #000804 100%);
+}
+.art-teacher::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 12px, rgba(200,50,50,0.03) 12px, rgba(200,50,50,0.03) 13px),
+    radial-gradient(ellipse 60% 40% at 50% 70%, rgba(200,50,50,0.08) 0%, transparent 60%);
 }
 .art-teacher::after {
   content:'🍎'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
@@ -639,6 +726,11 @@ body::before {
 .art-the-crane-operator {
   background: linear-gradient(180deg, #0a0600 0%, #1a1000 50%, #050300 100%);
 }
+.art-the-crane-operator::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-linear-gradient(90deg, transparent, transparent 20px, rgba(200,168,75,0.04) 20px, rgba(200,168,75,0.04) 22px),
+    linear-gradient(180deg, transparent 60%, rgba(200,168,75,0.1) 100%);
+}
 .art-the-crane-operator::after {
   content:'🏗️'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
   filter: drop-shadow(0 0 14px rgba(200,168,75,0.5));
@@ -648,6 +740,11 @@ body::before {
 .art-the-gravedigger {
   background: linear-gradient(180deg, #060606 0%, #0e0e0e 50%, #030303 100%);
 }
+.art-the-gravedigger::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 70% 30% at 50% 90%, rgba(80,60,40,0.15) 0%, transparent 60%),
+    repeating-linear-gradient(90deg, transparent, transparent 25px, rgba(80,60,40,0.04) 25px, rgba(80,60,40,0.04) 26px);
+}
 .art-the-gravedigger::after {
   content:'⚰️'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
   filter: drop-shadow(0 0 10px rgba(100,100,100,0.4));
@@ -656,6 +753,11 @@ body::before {
 .art-the-librarian {
   background: linear-gradient(180deg, #0a0014 0%, #120020 50%, #060008 100%);
 }
+.art-the-librarian::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-linear-gradient(90deg, transparent, transparent 8px, rgba(155,89,208,0.04) 8px, rgba(155,89,208,0.04) 10px, transparent 10px, transparent 12px),
+    radial-gradient(ellipse 50% 60% at 50% 80%, rgba(155,89,208,0.08) 0%, transparent 60%);
+}
 .art-the-librarian::after {
   content:'📖'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
   filter: drop-shadow(0 0 12px rgba(155,89,208,0.4));
@@ -663,6 +765,11 @@ body::before {
 
 .art-the-fisherman {
   background: linear-gradient(180deg, #001018 0%, #001828 50%, #000810 100%);
+}
+.art-the-fisherman::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 80% 30% at 50% 80%, rgba(33,150,200,0.12) 0%, transparent 60%),
+    repeating-linear-gradient(0deg, transparent, transparent 8px, rgba(33,150,200,0.03) 9px, transparent 10px);
 }
 .art-the-fisherman::after {
   content:'🎣'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
@@ -673,6 +780,11 @@ body::before {
 .art-the-survivor {
   background: radial-gradient(ellipse at 50% 50%, #1a0800 0%, #0a0400 60%, #050200 100%);
 }
+.art-the-survivor::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 50% 50% at 50% 60%, rgba(255,120,0,0.15) 0%, transparent 60%),
+    repeating-linear-gradient(45deg, transparent, transparent 15px, rgba(255,80,0,0.04) 15px, rgba(255,80,0,0.04) 16px);
+}
 .art-the-survivor::after {
   content:'🔥'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
   filter: drop-shadow(0 0 14px rgba(255,120,0,0.5));
@@ -682,6 +794,11 @@ body::before {
 .art-the-hr-manager {
   background: linear-gradient(180deg, #000810 0%, #001020 50%, #000408 100%);
 }
+.art-the-hr-manager::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 6px, rgba(33,150,200,0.03) 6px, rgba(33,150,200,0.03) 7px),
+    repeating-linear-gradient(90deg, transparent, transparent 25px, rgba(33,150,200,0.02) 25px, rgba(33,150,200,0.02) 26px);
+}
 .art-the-hr-manager::after {
   content:'📎'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
   filter: drop-shadow(0 0 8px rgba(33,150,200,0.2));
@@ -689,6 +806,11 @@ body::before {
 
 .art-the-paralegal {
   background: linear-gradient(180deg, #000810 0%, #001018 50%, #000408 100%);
+}
+.art-the-paralegal::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 4px, rgba(33,150,200,0.03) 4px, rgba(33,150,200,0.03) 5px),
+    radial-gradient(ellipse 40% 40% at 50% 50%, rgba(33,150,200,0.06) 0%, transparent 60%);
 }
 .art-the-paralegal::after {
   content:'⚖️'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
@@ -698,6 +820,11 @@ body::before {
 .art-the-middle-manager {
   background: linear-gradient(180deg, #080808 0%, #101010 50%, #040404 100%);
 }
+.art-the-middle-manager::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-linear-gradient(90deg, transparent, transparent 30px, rgba(33,150,200,0.03) 30px, rgba(33,150,200,0.03) 31px),
+    repeating-linear-gradient(0deg, transparent, transparent 30px, rgba(33,150,200,0.02) 30px, rgba(33,150,200,0.02) 31px);
+}
 .art-the-middle-manager::after {
   content:'👔'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
   filter: drop-shadow(0 0 8px rgba(33,150,200,0.2));
@@ -706,6 +833,11 @@ body::before {
 .art-ai-therapist {
   background: radial-gradient(ellipse at 50% 100%, #180010 0%, #100008 50%, #060004 100%);
 }
+.art-ai-therapist::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 60% 50% at 50% 70%, rgba(212,68,144,0.1) 0%, transparent 60%),
+    repeating-linear-gradient(0deg, transparent, transparent 10px, rgba(212,68,144,0.02) 10px, rgba(212,68,144,0.02) 11px);
+}
 .art-ai-therapist::after {
   content:'🛋️'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
   filter: drop-shadow(0 0 14px rgba(212,68,144,0.4));
@@ -713,6 +845,11 @@ body::before {
 
 .art-ai-pastor {
   background: radial-gradient(ellipse at 50% 50%, #180010 0%, #0d0008 50%, #060004 100%);
+}
+.art-ai-pastor::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 30% 80% at 50% 0%, rgba(212,68,144,0.1) 0%, transparent 60%),
+    repeating-linear-gradient(0deg, transparent, transparent 20px, rgba(212,68,144,0.03) 20px, rgba(212,68,144,0.03) 21px);
 }
 .art-ai-pastor::after {
   content:'⛪'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
@@ -734,6 +871,11 @@ body::before {
 .art-the-retraining-program {
   background: linear-gradient(180deg, #080808 0%, #0c0c0c 50%, #040404 100%);
 }
+.art-the-retraining-program::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 8px, rgba(102,112,128,0.03) 8px, rgba(102,112,128,0.03) 9px),
+    radial-gradient(ellipse 40% 30% at 50% 40%, rgba(102,112,128,0.06) 0%, transparent 60%);
+}
 .art-the-retraining-program::after {
   content:'🎓'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
   opacity:0.5;
@@ -743,6 +885,11 @@ body::before {
 .art-k-roofer {
   background: linear-gradient(180deg, #0a0600 0%, #1a0e00 50%, #050300 100%);
 }
+.art-k-roofer::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-linear-gradient(30deg, transparent, transparent 10px, rgba(200,168,75,0.04) 10px, rgba(200,168,75,0.04) 12px),
+    radial-gradient(ellipse 80% 30% at 50% 20%, rgba(200,168,75,0.08) 0%, transparent 60%);
+}
 .art-k-roofer::after {
   content:'🏠'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
   filter: drop-shadow(0 0 12px rgba(200,168,75,0.5));
@@ -750,6 +897,11 @@ body::before {
 
 .art-k-ironworker {
   background: linear-gradient(180deg, #080808 0%, #141414 50%, #060606 100%);
+}
+.art-k-ironworker::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-linear-gradient(90deg, transparent, transparent 12px, rgba(180,180,180,0.04) 12px, rgba(180,180,180,0.04) 13px),
+    radial-gradient(ellipse 50% 50% at 50% 50%, rgba(200,168,75,0.08) 0%, transparent 60%);
 }
 .art-k-ironworker::after {
   content:'🦾'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
@@ -773,6 +925,11 @@ body::before {
 .art-k-dental-hygienist {
   background: linear-gradient(180deg, #001008 0%, #001810 50%, #000804 100%);
 }
+.art-k-dental-hygienist::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 40% 40% at 50% 50%, rgba(255,255,255,0.06) 0%, transparent 60%),
+    radial-gradient(circle 30px at 50% 50%, rgba(155,89,208,0.08) 0%, transparent 100%);
+}
 .art-k-dental-hygienist::after {
   content:'🦷'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
   filter: drop-shadow(0 0 10px rgba(155,89,208,0.4));
@@ -780,6 +937,11 @@ body::before {
 
 .art-k-airline-pilot {
   background: linear-gradient(180deg, #000818 0%, #001030 50%, #000410 100%);
+}
+.art-k-airline-pilot::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 80% 20% at 50% 40%, rgba(155,89,208,0.08) 0%, transparent 60%),
+    linear-gradient(180deg, rgba(155,89,208,0.04) 0%, transparent 30%, transparent 70%, rgba(155,89,208,0.03) 100%);
 }
 .art-k-airline-pilot::after {
   content:'✈️'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
@@ -802,6 +964,11 @@ body::before {
 .art-k-customer-service {
   background: linear-gradient(180deg, #000810 0%, #001018 50%, #000408 100%);
 }
+.art-k-customer-service::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(33,150,200,0.08) 0%, transparent 60%),
+    repeating-radial-gradient(circle at 50% 50%, transparent, transparent 20px, rgba(33,150,200,0.03) 20px, rgba(33,150,200,0.03) 21px);
+}
 .art-k-customer-service::after {
   content:'🎧'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
   filter: drop-shadow(0 0 10px rgba(33,150,200,0.3));
@@ -810,6 +977,11 @@ body::before {
 .art-k-graphic-designer {
   background: linear-gradient(180deg, #000810 0%, #001428 50%, #000408 100%);
 }
+.art-k-graphic-designer::before {
+  content:''; position:absolute; inset:0;
+  background: conic-gradient(from 45deg at 30% 70%, rgba(255,100,100,0.06), rgba(100,255,100,0.06), rgba(100,100,255,0.06), rgba(255,255,100,0.06), rgba(255,100,100,0.06)),
+    radial-gradient(ellipse 50% 50% at 50% 50%, rgba(33,150,200,0.06) 0%, transparent 60%);
+}
 .art-k-graphic-designer::after {
   content:'🎨'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
   filter: drop-shadow(0 0 12px rgba(33,150,200,0.3));
@@ -817,6 +989,11 @@ body::before {
 
 .art-k-bookkeeper {
   background: radial-gradient(ellipse at 50% 100%, #1a0010 0%, #100008 50%, #060004 100%);
+}
+.art-k-bookkeeper::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 6px, rgba(212,68,144,0.03) 6px, rgba(212,68,144,0.03) 7px),
+    repeating-linear-gradient(90deg, transparent, transparent 20px, rgba(212,68,144,0.02) 20px, rgba(212,68,144,0.02) 21px);
 }
 .art-k-bookkeeper::after {
   content:'📒'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
@@ -839,6 +1016,11 @@ body::before {
 .art-jg-workday {
   background: linear-gradient(180deg, #0a0600 0%, #1a1000 50%, #050300 100%);
 }
+.art-jg-workday::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 10px, rgba(200,168,75,0.04) 10px, rgba(200,168,75,0.04) 11px),
+    radial-gradient(ellipse 50% 40% at 50% 60%, rgba(200,168,75,0.1) 0%, transparent 60%);
+}
 .art-jg-workday::after {
   content:'💼'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
   filter: drop-shadow(0 0 14px rgba(200,168,75,0.5));
@@ -846,6 +1028,11 @@ body::before {
 
 .art-jg-meta-purge {
   background: linear-gradient(180deg, #000818 0%, #001030 50%, #000410 100%);
+}
+.art-jg-meta-purge::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 40% 60% at 50% 50%, rgba(200,168,75,0.1) 0%, transparent 60%),
+    repeating-linear-gradient(90deg, transparent, transparent 6px, rgba(200,168,75,0.03) 6px, rgba(200,168,75,0.03) 7px);
 }
 .art-jg-meta-purge::after {
   content:'👁️'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
@@ -856,6 +1043,11 @@ body::before {
 .art-jg-atlassian {
   background: linear-gradient(180deg, #0a0018 0%, #120020 50%, #060008 100%);
 }
+.art-jg-atlassian::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 8px, rgba(155,89,208,0.03) 8px, rgba(155,89,208,0.03) 9px),
+    repeating-linear-gradient(90deg, transparent, transparent 8px, rgba(155,89,208,0.02) 8px, rgba(155,89,208,0.02) 9px);
+}
 .art-jg-atlassian::after {
   content:'📋'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
   filter: drop-shadow(0 0 10px rgba(155,89,208,0.4));
@@ -863,6 +1055,11 @@ body::before {
 
 .art-jg-logistics {
   background: linear-gradient(180deg, #0a0018 0%, #100020 50%, #060008 100%);
+}
+.art-jg-logistics::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 80% 30% at 50% 80%, rgba(155,89,208,0.1) 0%, transparent 60%),
+    repeating-linear-gradient(0deg, transparent, transparent 15px, rgba(155,89,208,0.03) 15px, rgba(155,89,208,0.03) 16px);
 }
 .art-jg-logistics::after {
   content:'🚢'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
@@ -872,6 +1069,11 @@ body::before {
 .art-jg-495k {
   background: linear-gradient(180deg, #000810 0%, #001020 50%, #000408 100%);
 }
+.art-jg-495k::before {
+  content:''; position:absolute; inset:0;
+  background: linear-gradient(180deg, rgba(33,150,200,0.06) 0%, transparent 30%, transparent 70%, rgba(200,50,50,0.06) 100%),
+    repeating-linear-gradient(90deg, transparent, transparent 15px, rgba(33,150,200,0.02) 15px, rgba(33,150,200,0.02) 16px);
+}
 .art-jg-495k::after {
   content:'📉'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
   filter: drop-shadow(0 0 10px rgba(33,150,200,0.3));
@@ -879,6 +1081,11 @@ body::before {
 
 .art-jg-direct {
   background: linear-gradient(180deg, #000810 0%, #001018 50%, #000408 100%);
+}
+.art-jg-direct::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 60% 40% at 50% 50%, rgba(33,150,200,0.08) 0%, transparent 60%),
+    repeating-conic-gradient(from 0deg at 50% 50%, transparent 0deg, transparent 44deg, rgba(33,150,200,0.03) 45deg, rgba(33,150,200,0.03) 46deg);
 }
 .art-jg-direct::after {
   content:'🔊'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
@@ -888,6 +1095,11 @@ body::before {
 .art-jg-vercel-nine {
   background: linear-gradient(180deg, #000810 0%, #001428 50%, #000408 100%);
 }
+.art-jg-vercel-nine::before {
+  content:''; position:absolute; inset:0;
+  background: linear-gradient(180deg, rgba(33,150,200,0.06) 0%, transparent 40%),
+    radial-gradient(ellipse 40% 40% at 50% 50%, rgba(33,150,200,0.08) 0%, transparent 60%);
+}
 .art-jg-vercel-nine::after {
   content:'▲'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
   filter: drop-shadow(0 0 12px rgba(33,150,200,0.4));
@@ -896,6 +1108,11 @@ body::before {
 .art-jg-severance {
   background: radial-gradient(ellipse at 50% 100%, #1a0010 0%, #100008 50%, #060004 100%);
 }
+.art-jg-severance::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 50% 40% at 50% 60%, rgba(212,68,144,0.08) 0%, transparent 60%),
+    repeating-linear-gradient(0deg, transparent, transparent 12px, rgba(212,68,144,0.03) 12px, rgba(212,68,144,0.03) 13px);
+}
 .art-jg-severance::after {
   content:'✉️'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
   filter: drop-shadow(0 0 10px rgba(212,68,144,0.3));
@@ -903,6 +1120,11 @@ body::before {
 
 .art-jg-tracker {
   background: linear-gradient(180deg, #080808 0%, #0c0c0c 50%, #040404 100%);
+}
+.art-jg-tracker::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 4px, rgba(102,112,128,0.03) 4px, rgba(102,112,128,0.03) 5px),
+    repeating-linear-gradient(90deg, transparent, transparent 4px, rgba(102,112,128,0.02) 4px, rgba(102,112,128,0.02) 5px);
 }
 .art-jg-tracker::after {
   content:'🖥️'; position:absolute; top:50%; left:50%; transform:translate(-50%,-54%); font-size:50px;
@@ -941,6 +1163,11 @@ body::before {
 .art-the-mother {
   background: radial-gradient(ellipse at 50% 60%, #1a1020 0%, #0a0810 60%, #050408 100%);
 }
+.art-the-mother::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 50% 50% at 50% 60%, rgba(255,255,200,0.1) 0%, transparent 60%),
+    radial-gradient(ellipse 80% 30% at 50% 80%, rgba(255,200,255,0.06) 0%, transparent 50%);
+}
 .art-the-mother::after {
   content:'💫'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:52px;
   filter: drop-shadow(0 0 24px rgba(255,255,200,0.8));
@@ -950,6 +1177,11 @@ body::before {
 
 .art-the-organ-donor {
   background: radial-gradient(ellipse at 50% 50%, #200a0a 0%, #100505 60%, #080202 100%);
+}
+.art-the-organ-donor::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 40% 40% at 50% 50%, rgba(255,60,60,0.12) 0%, transparent 50%),
+    repeating-radial-gradient(circle at 50% 50%, transparent, transparent 15px, rgba(255,60,60,0.03) 15px, rgba(255,60,60,0.03) 16px);
 }
 .art-the-organ-donor::after {
   content:'❤️'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:52px;
@@ -1002,6 +1234,11 @@ body::before {
 .art-ds-whistleblower {
   background: radial-gradient(ellipse at 50% 40%, #0a1020 0%, #050810 60%, #020408 100%);
 }
+.art-ds-whistleblower::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 40% 60% at 50% 30%, rgba(100,200,255,0.1) 0%, transparent 60%),
+    repeating-radial-gradient(circle at 50% 30%, transparent, transparent 15px, rgba(100,200,255,0.03) 15px, rgba(100,200,255,0.03) 16px);
+}
 .art-ds-whistleblower::after {
   content:'📡'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:52px;
   filter: drop-shadow(0 0 24px rgba(100,200,255,0.8));
@@ -1022,6 +1259,11 @@ body::before {
 .art-ds-analog-parent {
   background: radial-gradient(ellipse at 50% 60%, #0a1008 0%, #050804 60%, #020402 100%);
 }
+.art-ds-analog-parent::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 60% 40% at 50% 70%, rgba(80,200,80,0.1) 0%, transparent 60%),
+    repeating-linear-gradient(0deg, transparent, transparent 12px, rgba(80,200,80,0.03) 12px, rgba(80,200,80,0.03) 13px);
+}
 .art-ds-analog-parent::after {
   content:'🌿'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:52px;
   filter: drop-shadow(0 0 20px rgba(80,200,80,0.6));
@@ -1030,6 +1272,11 @@ body::before {
 .art-ds-independent-journalist {
   background: linear-gradient(180deg, #0a0a14 0%, #050508 60%, #020204 100%);
 }
+.art-ds-independent-journalist::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(255,255,255,0.04) 0%, transparent 60%),
+    repeating-linear-gradient(90deg, transparent, transparent 30px, rgba(255,255,255,0.02) 30px, rgba(255,255,255,0.02) 31px);
+}
 .art-ds-independent-journalist::after {
   content:'✍️'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:48px;
   filter: drop-shadow(0 0 18px rgba(255,255,255,0.5));
@@ -1037,6 +1284,11 @@ body::before {
 }
 .art-ds-attention-span {
   background: radial-gradient(ellipse at 50% 50%, #1a1000 0%, #0d0800 60%, #080400 100%);
+}
+.art-ds-attention-span::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 30% 30% at 50% 50%, rgba(255,200,50,0.12) 0%, transparent 50%),
+    repeating-conic-gradient(from 0deg at 50% 50%, transparent 0deg, transparent 5deg, rgba(255,200,50,0.02) 6deg, rgba(255,200,50,0.02) 7deg);
 }
 .art-ds-attention-span::after {
   content:'⏳'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:52px;
@@ -1047,6 +1299,11 @@ body::before {
 .art-ds-investigative-journalist {
   background: linear-gradient(180deg, #0a0810 0%, #060410 50%, #020208 100%);
 }
+.art-ds-investigative-journalist::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 40% 40% at 60% 40%, rgba(200,168,75,0.1) 0%, transparent 60%),
+    repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(200,168,75,0.03) 20px, rgba(200,168,75,0.03) 21px);
+}
 .art-ds-investigative-journalist::after {
   content:'🔍'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:48px;
   filter: drop-shadow(0 0 16px rgba(200,168,75,0.6));
@@ -1054,6 +1311,11 @@ body::before {
 }
 .art-ds-local-news-anchor {
   background: linear-gradient(180deg, #10080a 0%, #0a0406 50%, #060204 100%);
+}
+.art-ds-local-news-anchor::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 50% 30% at 50% 30%, rgba(200,168,75,0.1) 0%, transparent 60%),
+    linear-gradient(180deg, rgba(200,168,75,0.04) 0%, transparent 20%);
 }
 .art-ds-local-news-anchor::after {
   content:'📺'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:48px;
@@ -1075,6 +1337,11 @@ body::before {
 .art-ds-fact-checker {
   background: linear-gradient(180deg, #08001a 0%, #04000d 50%, #020008 100%);
 }
+.art-ds-fact-checker::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(155,89,208,0.08) 0%, transparent 60%),
+    repeating-linear-gradient(90deg, transparent, transparent 12px, rgba(155,89,208,0.03) 12px, rgba(155,89,208,0.03) 13px);
+}
 .art-ds-fact-checker::after {
   content:'✅'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:44px;
   filter: drop-shadow(0 0 14px rgba(155,89,208,0.5));
@@ -1083,12 +1350,22 @@ body::before {
 .art-ds-media-literacy {
   background: linear-gradient(180deg, #0a0018 0%, #060010 50%, #020008 100%);
 }
+.art-ds-media-literacy::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 6px, rgba(155,89,208,0.03) 6px, rgba(155,89,208,0.03) 7px),
+    radial-gradient(ellipse 40% 40% at 50% 60%, rgba(155,89,208,0.08) 0%, transparent 60%);
+}
 .art-ds-media-literacy::after {
   content:'🎓'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:46px;
   filter: drop-shadow(0 0 12px rgba(155,89,208,0.4));
 }
 .art-ds-librarian-stayed {
   background: linear-gradient(180deg, #0e0018 0%, #08000e 50%, #040008 100%);
+}
+.art-ds-librarian-stayed::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-linear-gradient(90deg, transparent, transparent 8px, rgba(155,89,208,0.04) 8px, rgba(155,89,208,0.04) 10px, transparent 10px, transparent 12px),
+    radial-gradient(ellipse 50% 50% at 50% 70%, rgba(155,89,208,0.08) 0%, transparent 60%);
 }
 .art-ds-librarian-stayed::after {
   content:'📚'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:46px;
@@ -1097,6 +1374,11 @@ body::before {
 }
 .art-ds-the-source {
   background: radial-gradient(ellipse at 50% 50%, #0e0018 0%, #06000a 60%, #020004 100%);
+}
+.art-ds-the-source::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 30% 30% at 50% 50%, rgba(155,89,208,0.1) 0%, transparent 50%),
+    repeating-conic-gradient(from 0deg at 50% 50%, transparent 0deg, transparent 29deg, rgba(155,89,208,0.04) 30deg, rgba(155,89,208,0.04) 31deg);
 }
 .art-ds-the-source::after {
   content:'🕶️'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:44px;
@@ -1132,6 +1414,11 @@ body::before {
 .art-ds-headline-writer {
   background: linear-gradient(180deg, #001018 0%, #000810 50%, #000408 100%);
 }
+.art-ds-headline-writer::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 5px, rgba(33,150,200,0.03) 5px, rgba(33,150,200,0.03) 6px),
+    radial-gradient(ellipse 60% 30% at 50% 30%, rgba(33,150,200,0.08) 0%, transparent 60%);
+}
 .art-ds-headline-writer::after {
   content:'📢'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:44px;
   filter: drop-shadow(0 0 12px rgba(33,150,200,0.5));
@@ -1139,6 +1426,11 @@ body::before {
 }
 .art-ds-notification {
   background: linear-gradient(180deg, #100008 0%, #080004 50%, #040002 100%);
+}
+.art-ds-notification::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(circle 25px at 50% 40%, rgba(255,200,50,0.1) 0%, transparent 100%),
+    radial-gradient(ellipse 50% 50% at 50% 50%, rgba(33,150,200,0.06) 0%, transparent 60%);
 }
 .art-ds-notification::after {
   content:'🔔'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:46px;
@@ -1161,6 +1453,11 @@ body::before {
 .art-ds-ai-anchor {
   background: linear-gradient(180deg, #140010 0%, #0a0008 50%, #060004 100%);
 }
+.art-ds-ai-anchor::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-linear-gradient(90deg, transparent, transparent 8px, rgba(212,68,144,0.03) 8px, rgba(212,68,144,0.03) 9px),
+    radial-gradient(ellipse 50% 30% at 50% 30%, rgba(212,68,144,0.08) 0%, transparent 60%);
+}
 .art-ds-ai-anchor::after {
   content:'📡'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:44px;
   filter: drop-shadow(0 0 12px rgba(212,68,144,0.5));
@@ -1180,6 +1477,11 @@ body::before {
 /* JUNK */
 .art-ds-misinfo {
   background: linear-gradient(180deg, #0c0e10 0%, #070809 50%, #040506 100%);
+}
+.art-ds-misinfo::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(102,112,128,0.06) 0%, transparent 60%),
+    repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(102,112,128,0.03) 10px, rgba(102,112,128,0.03) 11px);
 }
 .art-ds-misinfo::after {
   content:'🦠'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:46px;
@@ -1239,6 +1541,11 @@ body::before {
 .art-lx-eye-contact {
   background: radial-gradient(ellipse at 50% 50%, #140810 0%, #0a0408 60%, #060204 100%);
 }
+.art-lx-eye-contact::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(circle 20px at 50% 50%, rgba(255,255,255,0.08) 0%, transparent 100%),
+    radial-gradient(ellipse 60% 60% at 50% 50%, rgba(255,255,255,0.04) 0%, transparent 60%);
+}
 .art-lx-eye-contact::after {
   content:'👁️'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:52px;
   filter: drop-shadow(0 0 26px rgba(255,255,255,0.9));
@@ -1284,6 +1591,11 @@ body::before {
 .art-lx-couples-therapist {
   background: linear-gradient(180deg, #100a06 0%, #080504 50%, #040302 100%);
 }
+.art-lx-couples-therapist::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 30% 40% at 35% 50%, rgba(200,168,75,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse 30% 40% at 65% 50%, rgba(200,168,75,0.08) 0%, transparent 50%);
+}
 .art-lx-couples-therapist::after {
   content:'💬'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:48px;
   filter: drop-shadow(0 0 16px rgba(200,168,75,0.6));
@@ -1305,6 +1617,11 @@ body::before {
 .art-lx-pen-pal {
   background: linear-gradient(180deg, #0a001a 0%, #05000d 50%, #020008 100%);
 }
+.art-lx-pen-pal::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 8px, rgba(155,89,208,0.03) 8px, rgba(155,89,208,0.03) 9px),
+    radial-gradient(ellipse 50% 40% at 50% 60%, rgba(155,89,208,0.08) 0%, transparent 60%);
+}
 .art-lx-pen-pal::after {
   content:'✏️'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:46px;
   filter: drop-shadow(0 0 14px rgba(155,89,208,0.6));
@@ -1312,6 +1629,11 @@ body::before {
 }
 .art-lx-wingman {
   background: radial-gradient(ellipse at 50% 50%, #0c001a 0%, #06000d 60%, #030008 100%);
+}
+.art-lx-wingman::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 40% 40% at 40% 50%, rgba(155,89,208,0.06) 0%, transparent 50%),
+    radial-gradient(ellipse 40% 40% at 60% 50%, rgba(155,89,208,0.06) 0%, transparent 50%);
 }
 .art-lx-wingman::after {
   content:'🤝'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:46px;
@@ -1333,6 +1655,11 @@ body::before {
 .art-lx-divorce-lawyer {
   background: linear-gradient(180deg, #0a0018 0%, #060010 50%, #020008 100%);
 }
+.art-lx-divorce-lawyer::before {
+  content:''; position:absolute; inset:0;
+  background: linear-gradient(90deg, rgba(155,89,208,0.06) 0%, transparent 50%, rgba(155,89,208,0.06) 100%),
+    repeating-linear-gradient(0deg, transparent, transparent 6px, rgba(155,89,208,0.03) 6px, rgba(155,89,208,0.03) 7px);
+}
 .art-lx-divorce-lawyer::after {
   content:'⚖️'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:44px;
   filter: drop-shadow(0 0 12px rgba(155,89,208,0.5));
@@ -1341,6 +1668,12 @@ body::before {
 /* UNCOMMON — blue tones */
 .art-lx-situationship {
   background: linear-gradient(180deg, #001020 0%, #000810 50%, #000408 100%);
+}
+.art-lx-situationship::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(33,150,200,0.08) 0%, transparent 60%),
+    repeating-linear-gradient(45deg, transparent, transparent 12px, rgba(33,150,200,0.02) 12px, rgba(33,150,200,0.02) 13px),
+    repeating-linear-gradient(-45deg, transparent, transparent 12px, rgba(33,150,200,0.02) 12px, rgba(33,150,200,0.02) 13px);
 }
 .art-lx-situationship::after {
   content:'🔄'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:46px;
@@ -1361,6 +1694,11 @@ body::before {
 }
 .art-lx-40yo-profile {
   background: linear-gradient(180deg, #000e18 0%, #000810 50%, #000406 100%);
+}
+.art-lx-40yo-profile::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 40% 50% at 50% 40%, rgba(33,150,200,0.08) 0%, transparent 60%),
+    repeating-linear-gradient(0deg, transparent, transparent 8px, rgba(33,150,200,0.02) 8px, rgba(33,150,200,0.02) 9px);
 }
 .art-lx-40yo-profile::after {
   content:'📋'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:44px;
@@ -1395,6 +1733,11 @@ body::before {
 .art-lx-swipe {
   background: linear-gradient(180deg, #140010 0%, #0a0008 50%, #060004 100%);
 }
+.art-lx-swipe::before {
+  content:''; position:absolute; inset:0;
+  background: linear-gradient(90deg, rgba(255,60,60,0.06) 0%, transparent 30%, transparent 70%, rgba(60,255,60,0.06) 100%),
+    radial-gradient(ellipse 50% 50% at 50% 50%, rgba(212,68,144,0.06) 0%, transparent 60%);
+}
 .art-lx-swipe::after {
   content:'👆'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:46px;
   filter: drop-shadow(0 0 14px rgba(212,68,144,0.5));
@@ -1402,6 +1745,11 @@ body::before {
 }
 .art-lx-read-receipt {
   background: linear-gradient(180deg, #160010 0%, #0c0008 50%, #060004 100%);
+}
+.art-lx-read-receipt::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 40% 30% at 50% 50%, rgba(100,180,255,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 50% at 50% 50%, rgba(212,68,144,0.06) 0%, transparent 60%);
 }
 .art-lx-read-receipt::after {
   content:'✓✓'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:40px;
@@ -1411,6 +1759,11 @@ body::before {
 /* JUNK — gray tones */
 .art-lx-body-count {
   background: linear-gradient(180deg, #0c0e10 0%, #070809 50%, #040506 100%);
+}
+.art-lx-body-count::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-linear-gradient(90deg, transparent, transparent 15px, rgba(102,112,128,0.03) 15px, rgba(102,112,128,0.03) 16px),
+    radial-gradient(ellipse 40% 40% at 50% 50%, rgba(102,112,128,0.06) 0%, transparent 60%);
 }
 .art-lx-body-count::after {
   content:'🔢'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:44px;
@@ -1469,6 +1822,11 @@ body::before {
 .art-wr-objector {
   background: radial-gradient(ellipse at 50% 50%, #0a0a14 0%, #050508 60%, #020204 100%);
 }
+.art-wr-objector::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 40% 40% at 50% 50%, rgba(255,255,255,0.06) 0%, transparent 50%),
+    linear-gradient(180deg, rgba(255,255,255,0.03) 0%, transparent 20%);
+}
 .art-wr-objector::after {
   content:'✋'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:52px;
   filter: drop-shadow(0 0 26px rgba(255,255,255,0.9));
@@ -1526,6 +1884,11 @@ body::before {
 .art-wr-war-correspondent {
   background: linear-gradient(180deg, #140804 0%, #0a0402 50%, #060200 100%);
 }
+.art-wr-war-correspondent::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 50% 40% at 50% 60%, rgba(255,96,64,0.1) 0%, transparent 60%),
+    repeating-linear-gradient(0deg, transparent, transparent 10px, rgba(255,96,64,0.03) 10px, rgba(255,96,64,0.03) 11px);
+}
 .art-wr-war-correspondent::after {
   content:'📹'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:48px;
   filter: drop-shadow(0 0 16px rgba(255,96,64,0.6));
@@ -1535,6 +1898,11 @@ body::before {
 .art-wr-diplomat {
   background: linear-gradient(180deg, #0a0418 0%, #060210 50%, #020108 100%);
 }
+.art-wr-diplomat::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(200,80,80,0.06) 0%, transparent 60%),
+    repeating-linear-gradient(0deg, transparent, transparent 15px, rgba(200,80,80,0.03) 15px, rgba(200,80,80,0.03) 16px);
+}
 .art-wr-diplomat::after {
   content:'🏛️'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:46px;
   filter: drop-shadow(0 0 14px rgba(200,80,80,0.6));
@@ -1542,6 +1910,11 @@ body::before {
 }
 .art-wr-sanctions-analyst {
   background: linear-gradient(180deg, #0e0410 0%, #06020a 50%, #020106 100%);
+}
+.art-wr-sanctions-analyst::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 4px, rgba(200,80,80,0.03) 4px, rgba(200,80,80,0.03) 5px),
+    repeating-linear-gradient(90deg, transparent, transparent 20px, rgba(200,80,80,0.02) 20px, rgba(200,80,80,0.02) 21px);
 }
 .art-wr-sanctions-analyst::after {
   content:'📊'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:44px;
@@ -1562,6 +1935,12 @@ body::before {
 }
 .art-wr-intel-officer {
   background: radial-gradient(ellipse at 50% 50%, #0a0810 0%, #06040a 60%, #020204 100%);
+}
+.art-wr-intel-officer::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-linear-gradient(90deg, transparent, transparent 6px, rgba(200,80,80,0.03) 6px, rgba(200,80,80,0.03) 7px),
+    repeating-linear-gradient(0deg, transparent, transparent 6px, rgba(200,80,80,0.02) 6px, rgba(200,80,80,0.02) 7px),
+    radial-gradient(ellipse 30% 30% at 50% 50%, rgba(200,80,80,0.08) 0%, transparent 50%);
 }
 .art-wr-intel-officer::after {
   content:'🕵️'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:44px;
@@ -1596,6 +1975,11 @@ body::before {
 .art-wr-draft-lottery {
   background: linear-gradient(180deg, #100608 0%, #080304 50%, #040202 100%);
 }
+.art-wr-draft-lottery::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 40% 40% at 50% 50%, rgba(255,96,64,0.08) 0%, transparent 50%),
+    repeating-conic-gradient(from 0deg at 50% 50%, transparent 0deg, transparent 44deg, rgba(255,96,64,0.04) 45deg, rgba(255,96,64,0.04) 46deg);
+}
 .art-wr-draft-lottery::after {
   content:'🎰'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:46px;
   filter: drop-shadow(0 0 14px rgba(255,96,64,0.5));
@@ -1629,6 +2013,13 @@ body::before {
 .art-wr-surveillance-state {
   background: linear-gradient(180deg, #0c0810 0%, #060408 50%, #040204 100%);
 }
+.art-wr-surveillance-state::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-linear-gradient(90deg, transparent, transparent 10px, rgba(255,60,40,0.03) 10px, rgba(255,60,40,0.03) 11px),
+    repeating-linear-gradient(0deg, transparent, transparent 10px, rgba(255,60,40,0.02) 10px, rgba(255,60,40,0.02) 11px),
+    radial-gradient(circle 8px at 30% 30%, rgba(255,60,40,0.06) 0%, transparent 100%),
+    radial-gradient(circle 8px at 70% 70%, rgba(255,60,40,0.06) 0%, transparent 100%);
+}
 .art-wr-surveillance-state::after {
   content:'👁️'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:46px;
   filter: drop-shadow(0 0 14px rgba(255,60,40,0.5));
@@ -1649,6 +2040,11 @@ body::before {
 /* JUNK — dark gray/military tones */
 .art-wr-arms-dealer {
   background: linear-gradient(180deg, #0c0e10 0%, #070809 50%, #040506 100%);
+}
+.art-wr-arms-dealer::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 50% 40% at 50% 60%, rgba(200,168,75,0.08) 0%, transparent 60%),
+    repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(102,112,128,0.03) 20px, rgba(102,112,128,0.03) 21px);
 }
 .art-wr-arms-dealer::after {
   content:'💰'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:44px;
@@ -1708,6 +2104,11 @@ body::before {
 .art-sv-autodidact {
   background: radial-gradient(ellipse at 50% 50%, #0a0a10 0%, #050508 60%, #020204 100%);
 }
+.art-sv-autodidact::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 40% 40% at 50% 50%, rgba(255,255,255,0.06) 0%, transparent 50%),
+    repeating-linear-gradient(90deg, transparent, transparent 6px, rgba(255,255,255,0.02) 6px, rgba(255,255,255,0.02) 7px);
+}
 .art-sv-autodidact::after {
   content:'📚'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:52px;
   filter: drop-shadow(0 0 26px rgba(255,255,255,0.9));
@@ -1753,6 +2154,11 @@ body::before {
 .art-sv-master-craftsman {
   background: linear-gradient(180deg, #0e0a04 0%, #080604 50%, #040302 100%);
 }
+.art-sv-master-craftsman::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 50% 50% at 50% 60%, rgba(160,160,160,0.08) 0%, transparent 60%),
+    repeating-linear-gradient(45deg, transparent, transparent 15px, rgba(160,160,160,0.03) 15px, rgba(160,160,160,0.03) 16px);
+}
 .art-sv-master-craftsman::after {
   content:'🏺'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:48px;
   filter: drop-shadow(0 0 16px rgba(160,160,160,0.6));
@@ -1774,6 +2180,11 @@ body::before {
 .art-sv-bootcamp-grad {
   background: linear-gradient(180deg, #080614 0%, #04030a 50%, #020108 100%);
 }
+.art-sv-bootcamp-grad::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(140,120,180,0.03) 3px, rgba(140,120,180,0.03) 4px),
+    radial-gradient(ellipse 50% 40% at 50% 50%, rgba(140,120,180,0.08) 0%, transparent 60%);
+}
 .art-sv-bootcamp-grad::after {
   content:'💻'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:46px;
   filter: drop-shadow(0 0 14px rgba(140,120,180,0.6));
@@ -1781,6 +2192,11 @@ body::before {
 }
 .art-sv-career-counselor {
   background: radial-gradient(ellipse at 50% 50%, #0a0810 0%, #050408 60%, #020204 100%);
+}
+.art-sv-career-counselor::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(140,120,180,0.08) 0%, transparent 60%),
+    repeating-conic-gradient(from 0deg at 50% 50%, transparent 0deg, transparent 44deg, rgba(140,120,180,0.03) 45deg, rgba(140,120,180,0.03) 46deg);
 }
 .art-sv-career-counselor::after {
   content:'🧭'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:46px;
@@ -1802,6 +2218,11 @@ body::before {
 .art-sv-union-rep {
   background: linear-gradient(180deg, #0c0810 0%, #060408 50%, #030206 100%);
 }
+.art-sv-union-rep::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse 50% 40% at 50% 60%, rgba(140,120,180,0.08) 0%, transparent 60%),
+    repeating-linear-gradient(90deg, transparent, transparent 15px, rgba(140,120,180,0.03) 15px, rgba(140,120,180,0.03) 16px);
+}
 .art-sv-union-rep::after {
   content:'✊'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:44px;
   filter: drop-shadow(0 0 12px rgba(140,120,180,0.5));
@@ -1810,6 +2231,11 @@ body::before {
 /* UNCOMMON — steel blue-gray tones */
 .art-sv-linkedin-otw {
   background: linear-gradient(180deg, #060a10 0%, #030508 50%, #020306 100%);
+}
+.art-sv-linkedin-otw::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(circle 20px at 50% 50%, rgba(0,180,0,0.1) 0%, transparent 100%),
+    radial-gradient(ellipse 50% 50% at 50% 50%, rgba(100,140,180,0.06) 0%, transparent 60%);
 }
 .art-sv-linkedin-otw::after {
   content:'🟢'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:46px;
@@ -1830,6 +2256,11 @@ body::before {
 }
 .art-sv-mba {
   background: linear-gradient(180deg, #0a0a0e 0%, #050508 50%, #030306 100%);
+}
+.art-sv-mba::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 10px, rgba(100,140,180,0.03) 10px, rgba(100,140,180,0.03) 11px),
+    radial-gradient(ellipse 40% 40% at 50% 50%, rgba(100,140,180,0.06) 0%, transparent 60%);
 }
 .art-sv-mba::after {
   content:'💼'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:44px;
@@ -1864,6 +2295,11 @@ body::before {
 .art-sv-online-degree {
   background: linear-gradient(180deg, #0c080a 0%, #060406 50%, #040204 100%);
 }
+.art-sv-online-degree::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-linear-gradient(90deg, transparent, transparent 8px, rgba(160,130,150,0.03) 8px, rgba(160,130,150,0.03) 9px),
+    radial-gradient(ellipse 50% 40% at 50% 40%, rgba(160,130,150,0.08) 0%, transparent 60%);
+}
 .art-sv-online-degree::after {
   content:'🖥️'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:46px;
   filter: drop-shadow(0 0 14px rgba(160,130,150,0.5));
@@ -1871,6 +2307,12 @@ body::before {
 }
 .art-sv-micro-credential {
   background: linear-gradient(180deg, #0e0a0c 0%, #060406 50%, #040204 100%);
+}
+.art-sv-micro-credential::before {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(circle 15px at 30% 40%, rgba(160,130,150,0.06) 0%, transparent 100%),
+    radial-gradient(circle 15px at 70% 60%, rgba(160,130,150,0.06) 0%, transparent 100%),
+    radial-gradient(circle 15px at 50% 30%, rgba(160,130,150,0.04) 0%, transparent 100%);
 }
 .art-sv-micro-credential::after {
   content:'📎'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:44px;
@@ -1880,6 +2322,11 @@ body::before {
 /* JUNK — flat gray tones */
 .art-sv-cover-letter {
   background: linear-gradient(180deg, #0c0e10 0%, #070809 50%, #040506 100%);
+}
+.art-sv-cover-letter::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 5px, rgba(102,112,128,0.03) 5px, rgba(102,112,128,0.03) 6px),
+    radial-gradient(ellipse 40% 50% at 50% 40%, rgba(102,112,128,0.06) 0%, transparent 60%);
 }
 .art-sv-cover-letter::after {
   content:'📝'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:44px;

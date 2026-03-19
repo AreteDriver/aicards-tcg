@@ -194,10 +194,22 @@
       line-height: 1;
     }
 
+    /* Prismatic — Mythic */
+    .card-0 {
+      left: 20px;
+      transform: rotate(-28deg) translateY(30px);
+      box-shadow:
+        0 0 24px rgba(255, 255, 255, 0.5),
+        0 0 60px rgba(200, 100, 255, 0.3),
+        0 8px 32px rgba(0,0,0,0.7);
+    }
+    .card-0 .card-inner { background: conic-gradient(from 45deg, #1a0a18, #0a101a, #0a1a0a, #1a1a0a, #1a0a0a, #1a0a18); border-color: rgba(255,255,255,0.3); }
+    .card-0 .card-symbol { color: #ffffff; text-shadow: 0 0 12px rgba(255,255,255,0.8); }
+
     /* Gold — Legendary */
     .card-1 {
-      left: 50px;
-      transform: rotate(-22deg) translateY(20px);
+      left: 120px;
+      transform: rotate(-17deg) translateY(14px);
       box-shadow:
         0 0 18px rgba(212, 175, 55, 0.55),
         0 0 50px rgba(212, 175, 55, 0.25),
@@ -206,10 +218,10 @@
     .card-1 .card-inner { background: linear-gradient(160deg, #1a1500, #0e0c00); border-color: rgba(212,175,55,0.3); }
     .card-1 .card-symbol { color: #d4af37; }
 
-    /* Purple — Epic */
+    /* Purple — Rare */
     .card-2 {
-      left: 155px;
-      transform: rotate(-11deg) translateY(6px);
+      left: 215px;
+      transform: rotate(-7deg) translateY(4px);
       box-shadow:
         0 0 16px rgba(148, 0, 211, 0.55),
         0 0 45px rgba(148, 0, 211, 0.25),
@@ -218,10 +230,10 @@
     .card-2 .card-inner { background: linear-gradient(160deg, #110018, #0a0010); border-color: rgba(148,0,211,0.3); }
     .card-2 .card-symbol { color: #9400d3; }
 
-    /* Blue — Rare */
+    /* Blue — Uncommon */
     .card-3 {
-      left: 285px;
-      transform: rotate(0deg) translateY(0px);
+      left: 310px;
+      transform: rotate(3deg) translateY(0px);
       box-shadow:
         0 0 16px rgba(30, 100, 220, 0.55),
         0 0 45px rgba(30, 100, 220, 0.25),
@@ -230,10 +242,10 @@
     .card-3 .card-inner { background: linear-gradient(160deg, #001022, #000810); border-color: rgba(30,100,220,0.3); }
     .card-3 .card-symbol { color: #1e64dc; }
 
-    /* Pink — Uncommon */
+    /* Pink — Common */
     .card-4 {
-      left: 415px;
-      transform: rotate(11deg) translateY(6px);
+      left: 405px;
+      transform: rotate(13deg) translateY(8px);
       box-shadow:
         0 0 16px rgba(220, 80, 160, 0.55),
         0 0 45px rgba(220, 80, 160, 0.25),
@@ -242,10 +254,10 @@
     .card-4 .card-inner { background: linear-gradient(160deg, #180010, #0e0009); border-color: rgba(220,80,160,0.3); }
     .card-4 .card-symbol { color: #dc50a0; }
 
-    /* Gray — Common */
+    /* Gray — Junk */
     .card-5 {
-      left: 520px;
-      transform: rotate(22deg) translateY(20px);
+      left: 500px;
+      transform: rotate(25deg) translateY(24px);
       box-shadow:
         0 0 12px rgba(140, 140, 140, 0.4),
         0 0 35px rgba(140, 140, 140, 0.15),
@@ -308,6 +320,11 @@
 
   <!-- Card fan -->
   <div class="card-fan">
+    <div class="card card-0">
+      <div class="card-inner">
+        <div class="card-symbol">∞</div>
+      </div>
+    </div>
     <div class="card card-1">
       <div class="card-inner">
         <div class="card-symbol">✦</div>
@@ -336,7 +353,7 @@
   </div>
 
   <div class="tagline">
-    37 Cards <span>·</span> 5 Rarities <span>·</span> Open Packs <span>·</span> Collect What Survives
+    162 Cards <span>·</span> 6 Rarities <span>·</span> 6 Sets <span>·</span> NFTs on Sui <span>·</span> Collect What Survives
   </div>
 </body>
 </html>
