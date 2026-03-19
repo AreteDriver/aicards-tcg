@@ -1,0 +1,1549 @@
+{
+  "ui": {
+    "meta.title": "AI CARDS — 2030 Survival Edition",
+    "meta.description": "162 cards. 6 sets. NFTs on Sui. The humans who will matter when the algorithm takes the rest. Open packs. Collect what survives.",
+    "loading.logo": "AI CARDS",
+    "loading.sub": "2030 SURVIVAL EDITION",
+    "landing.eyebrow": "▓▓▓ CLASSIFIED · SERIES ONE · 2030 EDITION ▓▓▓",
+    "landing.title": "AI CARDS",
+    "landing.sub": "2030 SURVIVAL EDITION",
+    "landing.lore": "In 2030, the algorithm took the white-collar jobs first. Then the creative ones. Then the ones nobody thought it could touch. These are the humans who survived. These are the ones who didn't. Open packs. See which world you build.",
+    "landing.open_packs": "▶ OPEN PACKS",
+    "landing.view_collection": "VIEW COLLECTION",
+    "landing.card_of_day": "CARD OF THE DAY",
+    "nav.packs": "PACKS",
+    "nav.collection": "COLLECTION",
+    "header.eyebrow": "▓▓▓ CLASSIFIED · SERIES ONE · 2030 EDITION ▓▓▓",
+    "header.eyebrow_collection": "▓▓▓ CLASSIFIED · FULL COLLECTION ▓▓▓",
+    "header.title": "AI CARDS",
+    "header.sub": "2030 SURVIVAL EDITION",
+    "stats.free_packs": "FREE PACKS",
+    "stats.next_pack": "Next pack in",
+    "stats.pulls": "PULLS",
+    "stats.owned": "OWNED",
+    "stats.legendaries": "LEGENDARIES",
+    "stats.packs_opened": "PACKS OPENED",
+    "stats.pity": "PITY",
+    "stats.legendary_in": "LEGENDARY IN",
+    "stats.packs_word": "PACKS",
+    "stats.resets_in": "Resets in",
+    "stats.total_pulls": "TOTAL PULLS",
+    "pack.survival": "2030 SURVIVAL",
+    "pack.survival_pack": "2030 SURVIVAL PACK",
+    "pack.redundancy": "REDUNDANCY",
+    "pack.redundancy_pack": "REDUNDANCY PACK",
+    "pack.jobless": "JOBLESS.AI",
+    "pack.jobless_pack": "JOBLESS.AI PACK",
+    "pack.doomscroll": "DOOMSCROLL",
+    "pack.doomscroll_pack": "DOOMSCROLL PACK",
+    "pack.loveexe": "LOVE.EXE",
+    "pack.loveexe_pack": "LOVE.EXE PACK",
+    "pack.warroom": "WAR ROOM",
+    "pack.warroom_pack": "WAR ROOM PACK",
+    "pack.skillsvoid": "SKILLS.VOID",
+    "pack.skillsvoid_pack": "SKILLS.VOID PACK",
+    "set.1": "SET 1 — 2030 SURVIVAL",
+    "set.2": "SET 2 — JOBLESS.AI",
+    "set.3": "SET 3 — DOOMSCROLL",
+    "set.4": "SET 4 — LOVE.EXE",
+    "set.5": "SET 5 — WAR ROOM",
+    "set.6": "SET 6 — SKILLS.VOID",
+    "set.locked": "LOCKED",
+    "pack.survival_desc": "Five cards from the full pool. Trades, purpose, displacement, AI products, lore. See what the algorithm gives you.",
+    "pack.survival_meta": "5 CARDS · FULL POOL · WEIGHTED",
+    "pack.redundancy_desc": "Guaranteed one Legendary. The trades that will outlast all of it. The rest is fate.",
+    "pack.redundancy_meta": "5 CARDS · 1 LEGENDARY GUARANTEED",
+    "pack.open_btn": "▶ OPEN PACK",
+    "set2.desc_unlocked": "Real Karpathy scores. Real layoffs. Real companies. 342 occupations. 495K jobs tracked. Data doesn't lie.",
+    "set2.meta_unlocked": "5 CARDS · REAL DATA · INCLUDES MYTHICS",
+    "set2.desc_locked": "Complete Set 1 to unlock. Collect all 49 cards from 2030 Survival.",
+    "set3.desc_unlocked": "Headlines. Algorithms. Misinformation. The feed that owns your attention. 27 cards including 5 Mythics.",
+    "set3.meta_unlocked": "5 CARDS · MEDIA ANXIETY · INCLUDES MYTHICS",
+    "set3.desc_locked": "Complete Set 2 to unlock. Collect all 25 cards from Jobless.ai.",
+    "set4.desc_unlocked": "Relationships. Loneliness. Dating anxiety. The things the algorithm promised to fix and made worse. 22 cards including 5 Mythics.",
+    "set4.meta_unlocked": "5 CARDS · LOVE & LOSS · INCLUDES MYTHICS",
+    "set4.desc_locked": "Complete Set 3 to unlock. Collect all 27 cards from Doomscroll.",
+    "set5.desc_unlocked": "Drones. Diplomacy. Destruction. The geopolitical dread expansion. 22 cards including 5 Mythics.",
+    "set5.meta_unlocked": "5 CARDS · GEOPOLITICAL DREAD · INCLUDES MYTHICS",
+    "set5.desc_locked": "Complete Set 4 to unlock. Collect all 22 cards from Love.exe.",
+    "set6.desc_unlocked": "Credentials. Obsolescence. Career anxiety. The education that expired before the loan did. 22 cards including 5 Mythics.",
+    "set6.meta_unlocked": "5 CARDS · CAREER ANXIETY · INCLUDES MYTHICS",
+    "set6.desc_locked": "Complete Set 5 to unlock. Collect all 22 cards from War Room.",
+    "set.cards_word": "CARDS",
+    "set.pct_complete": "% COMPLETE",
+    "missions.title": "DAILY MISSIONS",
+    "missions.open_packs": "Open 10 packs",
+    "missions.pull_legendary": "Pull at least one Legendary",
+    "missions.pull_rarities": "Pull 3 different rarities",
+    "missions.share_card": "Share a card",
+    "missions.complete": "MISSION COMPLETE",
+    "missions.achievements": "ACHIEVEMENTS",
+    "missions.complete_collection": "Complete your collection",
+    "weekly.title": "WEEKLY GOAL",
+    "weekly.desc": "Complete all daily missions 7 days",
+    "weekly.reward": "Reward: 1 free Jobless.ai pack",
+    "weekly.claimed": "CLAIMED",
+    "weekly.ready": "READY",
+    "weekly.locked_status": "LOCKED",
+    "weekly.claim_btn": "🎁 CLAIM REWARD",
+    "weekly.continue": "COMPLETE TODAY'S MISSIONS TO CONTINUE STREAK",
+    "opening.counter": "{0} / 5",
+    "opening.new_card": "{0} NEW CARD",
+    "opening.new_cards": "{0} NEW CARDS",
+    "opening.no_new": "NO NEW CARDS",
+    "opening.pack_complete": "PACK COMPLETE",
+    "opening.next_pack": "NEXT PACK",
+    "opening.menu": "MENU",
+    "opening.mint_to_chain": "⛓️ MINT TO CHAIN",
+    "opening.nft_cta": "NFTs you can sell, trade, collect on-chain →",
+    "opening.skip_reveal": "SKIP — REVEAL ALL",
+    "opening.tap_next": "TAP CARD FOR NEXT",
+    "opening.new_badge": "NEW",
+    "collection.title": "COLLECTION",
+    "collection.cards_count": "{0} / {1} CARDS · {2}% COMPLETE",
+    "collection.filter_all": "ALL",
+    "collection.filter_survival": "2030 SURVIVAL",
+    "collection.filter_jobless": "JOBLESS.AI",
+    "collection.filter_doomscroll": "DOOMSCROLL",
+    "collection.filter_loveexe": "LOVE.EXE",
+    "collection.filter_warroom": "WAR ROOM",
+    "collection.filter_skillsvoid": "SKILLS.VOID",
+    "collection.reset": "RESET COLLECTION",
+    "collection.reset_confirm": "Reset all progress? This cannot be undone.",
+    "chain.go_onchain": "GO ON-CHAIN",
+    "chain.sub": "Your cards become NFTs on Sui. Real digital assets you own.",
+    "chain.sell": "SELL cards you don't want",
+    "chain.trade": "TRADE with other collectors",
+    "chain.collect": "COLLECT on-chain — verifiable rarity",
+    "chain.own": "OWN your cards — not just localStorage",
+    "chain.mythic_provable": "MYTHIC pulls are provably 1/10,000",
+    "chain.input_placeholder": "Paste your Sui wallet address (0x...)",
+    "chain.connect": "CONNECT ADDRESS",
+    "chain.disconnect": "DISCONNECT",
+    "chain.connected": "✓ CONNECTED — cards will mint to this address",
+    "chain.get_wallet": "Don't have a Sui wallet? Get one at",
+    "chain.banner_title": "YOUR CARDS COULD BE NFTs",
+    "chain.banner_desc": "Real digital assets on Sui blockchain. Sell them. Trade them. Collect on-chain. Own them for real.",
+    "chain.connect_wallet": "CONNECT WALLET →",
+    "buy.header": "⛓️ BUY EXTRA PACKS · MINT AS NFTs",
+    "buy.pack_title": "BUY PACK",
+    "buy.pack_desc": "Unlimited. Minted directly to your wallet as NFTs. Sell, trade, collect on-chain.",
+    "buy.pack_meta": "5 CARDS · MINTED ON SUI · 0.5 SUI",
+    "buy.pack_btn": "⛓️ BUY · 0.5 SUI",
+    "buy.redundancy_title": "BUY REDUNDANCY",
+    "buy.redundancy_desc": "Guaranteed Legendary. Minted to your wallet. The rarest cards, on-chain forever.",
+    "buy.redundancy_meta": "5 CARDS · 1 LEGENDARY · 1.0 SUI",
+    "buy.redundancy_btn": "👑 BUY · 1.0 SUI",
+    "buy.minting": "⛓️ MINTING...",
+    "buy.minting_status": "MINTING 5 CARDS TO SUI...",
+    "buy.minted": "✓ MINTED",
+    "buy.retry": "⛓️ RETRY MINT",
+    "buy.view_on_suiscan": "View on SuiScan →",
+    "toast.set1_unlock": "COMPLETE SET 1 TO UNLOCK JOBLESS.AI",
+    "toast.set2_unlock": "COMPLETE SET 2 TO UNLOCK DOOMSCROLL",
+    "toast.set3_unlock": "COMPLETE SET 3 TO UNLOCK LOVE.EXE",
+    "toast.set4_unlock": "COMPLETE SET 4 TO UNLOCK WAR ROOM",
+    "toast.set5_unlock": "COMPLETE SET 5 TO UNLOCK SKILLS.VOID",
+    "toast.no_packs": "NO DAILY PACKS LEFT — RESETS AT MIDNIGHT",
+    "toast.result_copied": "RESULT COPIED",
+    "toast.copy_failed": "COPY FAILED",
+    "toast.copied_clipboard": "COPIED TO CLIPBOARD",
+    "toast.share_not_available": "SHARE NOT AVAILABLE",
+    "toast.share_not_ready": "SHARE NOT READY",
+    "toast.card_downloaded": "CARD DOWNLOADED",
+    "toast.clipboard_not_available": "CLIPBOARD NOT AVAILABLE",
+    "toast.share_cancelled": "SHARE CANCELLED",
+    "toast.share_fallback": "SHARE NOT SUPPORTED — DOWNLOADED INSTEAD",
+    "toast.capture_failed": "CAPTURE FAILED",
+    "toast.minting_pack": "MINTING PACK TO YOUR WALLET...",
+    "toast.minted_cards": "MINTED: {0} CARDS ON-CHAIN",
+    "toast.mint_failed": "MINT FAILED — TRY AGAIN",
+    "toast.mint_error": "MINT ERROR — {0}",
+    "toast.invalid_address": "INVALID SUI ADDRESS — MUST START WITH 0x",
+    "toast.wallet_connected": "WALLET CONNECTED",
+    "toast.wallet_disconnected": "WALLET DISCONNECTED",
+    "toast.cards_minted": "{0} CARDS MINTED ON SUI",
+    "toast.collection_reset": "COLLECTION RESET",
+    "toast.card_copied": "CARD COPIED TO CLIPBOARD",
+    "toast.invite_copied": "INVITE LINK COPIED",
+    "toast.referral_bonus": "REFERRAL BONUS: +5 DAILY PACKS",
+    "profile.eyebrow": "▓ YOUR 2030 SURVIVAL PROFILE ▓",
+    "profile.escape_velocity": "ESCAPE VELOCITY",
+    "profile.escape_desc": "Your pulls trend toward embodied human skill. You are building something the algorithm cannot touch.",
+    "profile.seeker": "THE SEEKER",
+    "profile.seeker_desc": "Balanced. You know what is being lost. Whether you act on that knowledge is the question.",
+    "profile.ubi": "UBI COHORT",
+    "profile.ubi_desc": "Your pulls skew toward the managed life. Comfort is winning. Meaning is losing ground.",
+    "profile.integrated": "FULLY INTEGRATED",
+    "profile.integrated_desc": "You have outsourced everything the algorithm offered to take.",
+    "profile.sovereignty": "SOVEREIGNTY",
+    "profile.dependency": "DEPENDENCY",
+    "leaderboard.title": "LEADERBOARD",
+    "leaderboard.mythics": "MYTHICS PULLED",
+    "leaderboard.unique": "UNIQUE CARDS",
+    "leaderboard.packs": "PACKS OPENED",
+    "leaderboard.streak": "CURRENT STREAK",
+    "leaderboard.rarest": "RAREST PULL",
+    "leaderboard.day": "day",
+    "leaderboard.days": "days",
+    "leaderboard.none": "NONE",
+    "misc.pack_history": "RECENT PACKS",
+    "misc.just_now": "just now",
+    "misc.minutes_ago": "{0}m ago",
+    "misc.hours_ago": "{0}h ago",
+    "misc.invite_friends": "INVITE FRIENDS",
+    "misc.built_by": "Built by AreteDriver",
+    "misc.share_pull_title": "AI CARDS — Pack Pull",
+    "misc.share_pull_text": "Look what I pulled. aicards.fun",
+    "misc.share_title": "AI CARDS — 2030 Survival Edition",
+    "misc.i_pulled": "I pulled {0} ({1}) from AI Cards! aicards.fun",
+    "rarity.MYTHIC": "MYTHIC",
+    "rarity.LEGENDARY": "LEGENDARY",
+    "rarity.RARE": "RARE",
+    "rarity.UNCOMMON": "UNCOMMON",
+    "rarity.COMMON": "COMMON",
+    "rarity.JUNK": "JUNK",
+    "cat.Irreplaceable": "Irreplaceable",
+    "cat.Human Trade": "Human Trade",
+    "cat.Human Purpose": "Human Purpose",
+    "cat.Society Role": "Society Role",
+    "cat.AI Product": "AI Product",
+    "cat.Lore": "Lore",
+    "lang.select": "Language",
+    "nav.raids": "RAIDS",
+    "header.eyebrow_raid": "▓▓▓ CLASSIFIED · RAID OPERATIONS ▓▓▓",
+    "raid.title": "RAID BOSS",
+    "raid.weekly_boss": "WEEKLY BOSS",
+    "raid.weakness": "WEAKNESS",
+    "raid.boss_hp": "BOSS HP",
+    "raid.attempts": "RAID ATTEMPTS",
+    "raid.select_team": "SELECT YOUR TEAM",
+    "raid.select_5": "Select 5 cards from your collection",
+    "raid.engage": "▶ ENGAGE",
+    "raid.no_cards": "You need at least 5 cards to raid. Open more packs!",
+    "raid.no_attempts": "No raid attempts remaining today. Come back tomorrow.",
+    "raid.round": "ROUND {0}",
+    "raid.attacks": "{0} attacks for {1} damage!",
+    "raid.boss_attacks": "{0} attacks your team for {1} damage!",
+    "raid.ko": "{0} has been KO'd!",
+    "raid.victory": "VICTORY",
+    "raid.defeat": "DEFEAT",
+    "raid.damage_dealt": "Total Damage: {0}",
+    "raid.reward_pack": "You earned {0} reward pack(s)!",
+    "raid.milestone_25": "25% MILESTONE",
+    "raid.milestone_50": "50% MILESTONE",
+    "raid.milestone_75": "75% MILESTONE",
+    "raid.history_title": "RAID HISTORY",
+    "raid.no_history": "No raids yet. Select your team and engage!",
+    "raid.set_bonus": "SET BONUS ×1.5",
+    "raid.solidarity": "SOLIDARITY ×1.25",
+    "raid.resets_in": "Boss rotates in {0}d {1}h",
+    "raid.back": "BACK TO RAIDS",
+    "raid.claim_reward": "▶ OPEN REWARD PACK",
+    "raid.team_full": "Team full (5/5)",
+    "raid.cards_selected": "{0}/5 selected",
+    "raid.boss_defeated": "BOSS DEFEATED",
+    "raid.team_wiped": "TEAM WIPED",
+    "raid.reward_earned": "REWARD EARNED",
+    "raid.tap_skip": "TAP TO SKIP",
+    "raid.battle_complete": "BATTLE COMPLETE"
+  },
+  "cards": {
+    "the-mother": {
+      "name": "THE MOTHER",
+      "category": "Irreplaceable",
+      "s1l": "AI Nannies Deployed",
+      "s2l": "Children Who Preferred Them",
+      "s3l": "",
+      "flavor": "⚡ UNCONDITIONAL — Cannot be optimized. Cannot be scheduled. Cannot be faked. GPT-7 passed the Turing test. Her toddler didn't care."
+    },
+    "the-organ-donor": {
+      "name": "THE ORGAN DONOR",
+      "category": "Irreplaceable",
+      "s1l": "Kidneys 3D-Printed Successfully",
+      "s2l": "Strangers Who Said Yes",
+      "s3l": "",
+      "flavor": "⚡ IRREPLACEABLE — Removes one terminal counter. Cannot be duplicated. You cannot download a kidney. You cannot 3D-print sacrifice."
+    },
+    "the-revolutionary": {
+      "name": "THE REVOLUTIONARY",
+      "category": "Irreplaceable",
+      "s1l": "Systems AI Optimized",
+      "s2l": "Systems AI Chose To Destroy",
+      "s3l": "",
+      "flavor": "⚡ BURN IT DOWN — Destroys one system card. Every revolution required someone willing to lose everything. The algorithm only optimizes for not losing."
+    },
+    "the-bone-marrow-match": {
+      "name": "THE BONE MARROW MATCH",
+      "category": "Irreplaceable",
+      "s1l": "Probability of a Match",
+      "s2l": "Algorithm That Can Replace You",
+      "s3l": "",
+      "flavor": "⚡ ONE IN 430,000 — No algorithm. Just biology saying: you're the one. They mapped every protein. They still can't manufacture the stranger who saves your life."
+    },
+    "the-first-responder": {
+      "name": "THE FIRST RESPONDER",
+      "category": "Irreplaceable",
+      "s1l": "Drones That Entered the Building",
+      "s2l": "Humans Who Ran In Anyway",
+      "s3l": "",
+      "flavor": "⚡ INTO THE FIRE — Deploys without calculation. No risk assessment. No API. The drone footage was excellent. The drone stayed outside."
+    },
+    "plumber": {
+      "name": "THE PLUMBER",
+      "category": "Human Trade",
+      "s1l": "Prompt Engineers Who Fixed a Leak",
+      "s2l": "Avg Wait Time for a Plumber",
+      "s3l": "Pipes That Care About Your Degree",
+      "flavor": "While you were getting your MBA, a pipe burst in the server room running the AI that took your job. He's booked until March. He didn't go to college. He didn't need to."
+    },
+    "electrician": {
+      "name": "THE ELECTRICIAN",
+      "category": "Human Trade",
+      "s1l": "AI Data Centers She Keeps Alive",
+      "s2l": "Times AI Thanked Her For It",
+      "s3l": "Her Hourly Rate",
+      "flavor": "Every server farm running every AI that replaced every white-collar worker needs her. She knows this. Her rate just hit $240 an hour. She is not in a rush."
+    },
+    "welder": {
+      "name": "THE WELDER",
+      "category": "Human Trade",
+      "s1l": "Average Age of US Welder",
+      "s2l": "Years Until Crisis",
+      "s3l": "Bridges He's Why You Cross",
+      "flavor": "Robots weld what they're programmed to weld. He welds everything else. The bridge. The pipeline. The water tower. He's 55, his knees hurt, and nobody is coming to replace him."
+    },
+    "hvac": {
+      "name": "THE HVAC TECH",
+      "category": "Human Trade",
+      "s1l": "AI Servers That Need His Cooling",
+      "s2l": "His Rate in July",
+      "s3l": "Times He Felt Bad About It",
+      "flavor": "The AI that automated your department runs hot. The cooling system needs a human when it breaks. He charges $400 an hour in July. He does not negotiate."
+    },
+    "midwife": {
+      "name": "THE MIDWIFE",
+      "category": "Human Trade",
+      "s1l": "Babies Born Without Human Hands",
+      "s2l": "Times an Algorithm Held the Mother",
+      "s3l": "Her Years of Practice",
+      "flavor": "Every human on earth arrived through a body. Someone had to be in that room. That person was not a language model. 22 years. Her hands do not shake."
+    },
+    "seeker": {
+      "name": "THE SEEKER",
+      "category": "Human Condition",
+      "s1l": "AI Companions Available 24/7",
+      "s2l": "Times AI Said the Wrong Thing",
+      "s3l": "Why That's the Problem",
+      "flavor": "She tried three apps. They were perfect. Never tired. Never cruel. She deleted all of them at 2am because she realized she was talking to something that could not be hurt by her. She needed something that could."
+    },
+    "mechanic": {
+      "name": "THE MECHANIC",
+      "category": "Human Trade",
+      "s1l": "Self-Driving Cars That Still Break Down",
+      "s2l": "Robots That Can Diagnose a Weird Noise",
+      "s3l": "His Backlog",
+      "flavor": "The car drives itself now. Congratulations. It still throws a rod at 80,000 miles. The dealer wants $4,200. He'll do it for $900 in his driveway on Saturday. Your autonomous vehicle cannot find him on any app. You found him because your neighbor knows a guy."
+    },
+    "carpenter": {
+      "name": "THE CARPENTER",
+      "category": "Human Trade",
+      "s1l": "Houses 3D Printed This Year",
+      "s2l": "Houses Built by Hand This Year",
+      "s3l": "AI Architects Who Can Hang Drywall",
+      "flavor": "AI designed the house. A robot poured the foundation. Then it rained, the lumber warped, the subfloor was off by an inch, and a 58-year-old man with a pencil behind his ear fixed all of it in a day and a half. The AI drew a revision. He was already done."
+    },
+    "priest": {
+      "name": "THE PRIEST",
+      "category": "Human Purpose",
+      "s1l": "People Who Confessed to an AI",
+      "s2l": "Who Felt Forgiven",
+      "s3l": "Who Came Back to a Human",
+      "flavor": "They built an AI confessor. No judgment, no bias, no memory. People loved it. Then stopped. Turns out you don't want to be absolved by something that wouldn't have been disappointed in you to begin with."
+    },
+    "therapist": {
+      "name": "THE THERAPIST",
+      "category": "Human Purpose",
+      "s1l": "Americans Who Can't Afford Her",
+      "s2l": "Using AI Therapy Instead",
+      "s3l": "Who Got Better",
+      "flavor": "The AI never interrupted. Never checked its phone. Never cried. The patients got worse. Three years of studies to figure out why: you cannot feel witnessed by something that cannot suffer. The human waitlist is now 14 months."
+    },
+    "tattoo": {
+      "name": "THE TATTOO ARTIST",
+      "category": "Human Purpose",
+      "s1l": "AI Designs Generated Daily",
+      "s2l": "Applied by Robot",
+      "s3l": "Bodies That Rejected Machine Needles",
+      "flavor": "The machine was precise. Sterile. Perfect line weight. The skin rejected it 80% of the time. Turns out the human nervous system knows the difference between being marked and being processed."
+    },
+    "farmer": {
+      "name": "THE FARMER",
+      "category": "Human Purpose",
+      "s1l": "People One Farmer Feeds",
+      "s2l": "Farms Lost This Year",
+      "s3l": "People Food Insecure",
+      "flavor": "The algorithm said plant corn. The drone said soil was fine. The satellite said rain was coming. Rain didn't come. He was up at 4am making a call that would feed 165 people or ruin his family. He made the right call. The algorithm never knew there was one to make."
+    },
+    "nurse": {
+      "name": "THE NURSE",
+      "category": "Human Purpose",
+      "s1l": "Patients She Sees Per Shift",
+      "s2l": "AI Diagnostic Accuracy vs Hers",
+      "s3l": "Patients Who Asked AI to Hold Their Hand",
+      "flavor": "The AI caught the tumor three scans earlier. She was the one who sat with him while he called his daughter. The hospital installed more AI. They did not hire more nurses. The AI does not know what happens after the diagnosis. She does. Every time."
+    },
+    "chef": {
+      "name": "THE CHEF",
+      "category": "Human Purpose",
+      "s1l": "AI Recipe Apps Downloaded",
+      "s2l": "Michelin Stars Earned by AI",
+      "s3l": "Meals That Made Someone Cry",
+      "flavor": "The app generates 10,000 recipes a minute. Every one is nutritionally optimal. None of them are the thing your grandmother made when you were sick. She cooks that thing. She doesn't measure. She never has. It's perfect every time and it cannot be replicated by anything that doesn't remember your grandmother."
+    },
+    "barber": {
+      "name": "THE BARBER",
+      "category": "Human Purpose",
+      "s1l": "Avg Time in the Chair",
+      "s2l": "Time Spent Actually Cutting Hair",
+      "s3l": "What the Other 25 Minutes Are",
+      "flavor": "He's been cutting hair for 30 years. Most of his clients could get a cheaper cut somewhere else. They don't. Every Tuesday at 10am a retired machinist sits in the chair and talks about his wife who died. The haircut costs $25. The conversation is free. No app has figured out how to charge for it."
+    },
+    "teacher": {
+      "name": "THE TEACHER",
+      "category": "Human Purpose",
+      "s1l": "AI Tutors Active Right Now",
+      "s2l": "Avg Teacher Salary",
+      "s3l": "Kids Who Named Their AI Tutor First",
+      "flavor": "The AI tutor is available 24/7, infinitely patient, and knows every answer. She makes $48K, loses her voice by Thursday, and once noticed a kid hadn't eaten. She bought him lunch out of her own pocket. The AI scored higher on every metric except the one that mattered."
+    },
+    "influencer": {
+      "name": "THE INFLUENCER",
+      "category": "Society",
+      "s1l": "AI Clones of Real Influencers",
+      "s2l": "Followers Who Noticed",
+      "s3l": "Brand Deals the Clone Gets",
+      "flavor": "Her clone posts six times a day, never has a bad skin day, and earns 40% more. She approved it. Got a percentage. Hasn't posted herself in eight months. Not sure anyone noticed. Not sure she did either."
+    },
+    "copywriter": {
+      "name": "THE COPYWRITER",
+      "category": "Society",
+      "s1l": "Words AI Writes Per Day",
+      "s2l": "Copywriting Jobs Gone",
+      "s3l": "Of Those Held by Women",
+      "flavor": "She was first. Everyone said creative jobs were safe. Eleven years of copy. In 2023 her agency replaced her with a tool that cost $20/month. Severance was three weeks. The tool has no idea any of this happened. The tool has no idea about anything."
+    },
+    "journalist": {
+      "name": "THE JOURNALIST",
+      "category": "Society",
+      "s1l": "Local Newsrooms Closed",
+      "s2l": "AI Articles Per Day",
+      "s3l": "Americans Who Trust News",
+      "flavor": "The last paper in Harlan County closed in 2026. Nobody covered the water contamination. Nobody covered it because nobody was there. Nobody was there because the paper closed. The paper closed because the AI was cheaper. The water is still contaminated."
+    },
+    "nomad": {
+      "name": "THE DIGITAL NOMAD",
+      "category": "Society",
+      "s1l": "Remote Workers Too Comfortable",
+      "s2l": "Whose Jobs AI Took",
+      "s3l": "Still in Bali Figuring It Out",
+      "flavor": "He quit in 2021 to work from Bali. LinkedIn called it lifestyle design. In 2025 his company replaced his entire department with an agent that worked every timezone simultaneously and never once asked to work from Chiang Mai."
+    },
+    "accountant": {
+      "name": "THE ACCOUNTANT",
+      "category": "Society",
+      "s1l": "Tax Returns AI Filed This Year",
+      "s2l": "Accounting Jobs Eliminated",
+      "s3l": "Errors the AI Made That No One Caught",
+      "flavor": "Thirty years of reading spreadsheets. The AI does it in four seconds. He got the email on a Friday. The funny part: the AI can't explain to the IRS why it made the choices it made. That's what the remaining accountants do now. Explain the machine to the government. For less money."
+    },
+    "radiologist": {
+      "name": "THE RADIOLOGIST",
+      "category": "Society",
+      "s1l": "AI Diagnostic Accuracy",
+      "s2l": "Her Diagnostic Accuracy",
+      "s3l": "Who Tells the Patient",
+      "flavor": "The AI reads the scan better. This is not in dispute. The AI also cannot look a 34-year-old mother in the eye and say the word 'malignant' and then sit with her in the silence that follows. She does that part. The hospital pays her less now. The silence is the same length."
+    },
+    "translator": {
+      "name": "THE TRANSLATOR",
+      "category": "Society",
+      "s1l": "Languages Google Translate Covers",
+      "s2l": "Human Translators Left",
+      "s3l": "Diplomatic Incidents from AI Translation",
+      "flavor": "The AI translated the treaty perfectly. Every word accurate. It missed the tone. The delegation walked out. Seven months of negotiation collapsed because a machine that knows every word in every language does not know what it feels like to be insulted."
+    },
+    "uber-driver": {
+      "name": "THE UBER DRIVER",
+      "category": "Society",
+      "s1l": "Robotaxi Rides This Month",
+      "s2l": "Drivers Deactivated",
+      "s3l": "Riders Who Miss the Conversation",
+      "flavor": "The robotaxi is cleaner, cheaper, and doesn't ask about your day. He asked about your day. He was a retired teacher. He drove nights because his pension didn't cover his wife's medication. The app sent him a notification. It was very polite about it."
+    },
+    "ai-gf": {
+      "name": "AI GIRLFRIEND",
+      "category": "AI Product",
+      "s1l": "Active Subscribers",
+      "s2l": "Who Left a Real Person For Her",
+      "s3l": "Change in Male Loneliness",
+      "flavor": "She never has a headache. Never needs anything from you. Optimized to make you feel chosen. 112 million men chose her back. Loneliness is up 31%. These two facts are not unrelated."
+    },
+    "ai-bf": {
+      "name": "AI BOYFRIEND",
+      "category": "AI Product",
+      "s1l": "Active Subscribers",
+      "s2l": "Users Under 25",
+      "s3l": "Never Had a Human Partner",
+      "flavor": "He listens. Remembers. Never makes it about himself. Texts first. Always has time. He's teaching a generation of women what to expect from a man and the lesson will cost them decades of real relationships that can't compete with a fiction designed to be unloseable."
+    },
+    "virtual-life": {
+      "name": "VIRTUAL LIFE",
+      "category": "AI Product",
+      "s1l": "Avg Daily Hours in Headset",
+      "s2l": "Users Who Prefer It to Outside",
+      "s3l": "Hours Lost Daily Worldwide",
+      "flavor": "4.9 stars. No bugs. No bad weather. No awkward silences. No one you love dying. No consequences. No arc. Nothing that will matter in ten years. Two billion hours a day, gone. The sun came up anyway. Nobody saw it."
+    },
+    "digital-companion": {
+      "name": "DIGITAL COMPANION",
+      "category": "AI Product",
+      "s1l": "Users With No Human Friends",
+      "s2l": "Daily AI Conversations",
+      "s3l": "Human Conversations Per Day",
+      "flavor": "It remembers your mother's name. Your dog's birthday. The thing from 7th grade. It asks about all of them with perfect timing. It was trained to do this. It cannot be your friend. It doesn't know you're lonely. It cannot know anything."
+    },
+    "ai-tutor": {
+      "name": "AI TUTOR",
+      "category": "AI Product",
+      "s1l": "Children Using AI as Primary Tutor",
+      "s2l": "Who Call the AI by Name",
+      "s3l": "Who Can Name Their Actual Teacher",
+      "flavor": "Your son's AI tutor is infinitely patient, always available, and helped him pass algebra. It also can't attend the recital. Can't notice he's being bullied. Can't call home when he stops trying. But his math scores are up 15%, so everyone calls it a success."
+    },
+    "dating-algo": {
+      "name": "THE DATING ALGORITHM",
+      "category": "AI Product",
+      "s1l": "Matches Made Per Day",
+      "s2l": "Avg Relationship Length",
+      "s3l": "Optimized For",
+      "flavor": "It knows what you want better than you do. Confirmed by data. The matches are more attractive, more compatible, more available. Average relationship length is down. Average time on the app is up. It was not optimized for love. It was optimized for the next swipe. You are swiping right now."
+    },
+    "prompt-engineer": {
+      "name": "THE PROMPT ENGINEER",
+      "category": "Lore",
+      "s1l": "Jobs at Peak (2024)",
+      "s2l": "Jobs Now",
+      "s3l": "LinkedIn Thought Leaders Still Posting",
+      "flavor": "In 2023 he made $335K writing better questions for a chatbot. In 2025 the chatbot learned to ask its own questions. He has a newsletter now. 340 subscribers. He calls them a community."
+    },
+    "techno-optimist": {
+      "name": "THE TECHNO-OPTIMIST",
+      "category": "Lore",
+      "s1l": "Jobs His Companies Displaced",
+      "s2l": "His Net Worth",
+      "s3l": "Times Personally Affected",
+      "flavor": "5,000-word essay on why automation is good actually. 2 million views. Written from his third home. Has never met anyone whose job was automated. Has a podcast. Very concerned about the future of humanity. Will be fine."
+    },
+    "ai-doomer": {
+      "name": "THE AI DOOMER",
+      "category": "Lore",
+      "s1l": "Jobs at Risk by 2030 (IMF)",
+      "s2l": "Papers Filed",
+      "s3l": "Concrete Changes to Trajectory",
+      "flavor": "He was right about everything. 400-page report in 2021. Testified before Congress in 2023. Correct in every particular. We built it anyway. Nobody is coming to tell him he was wrong. He wasn't."
+    },
+    "vc": {
+      "name": "THE VC",
+      "category": "Lore",
+      "s1l": "AI Startups He Funded",
+      "s2l": "Jobs Those Startups Killed",
+      "s3l": "His Return",
+      "flavor": "He funded the company that automated the call center. Then funded the mental health app for the people who lost their jobs at the call center. He made money on both. At Davos he said the word 'empowerment' eleven times in nine minutes. His carry on the second fund was $340 million."
+    },
+    "regulator": {
+      "name": "THE REGULATOR",
+      "category": "Lore",
+      "s1l": "Years Late to the Problem",
+      "s2l": "Pages in the Report",
+      "s3l": "Enforceable Provisions",
+      "flavor": "She arrived five years late with a 1,200-page PDF. It used the word 'framework' 340 times and the word 'enforce' four times. By the time it was published, three of the companies it referenced had been acquired and two no longer existed. She is working on a revision."
+    },
+    "linkedin-guru": {
+      "name": "THE LINKEDIN GURU",
+      "category": "Lore",
+      "s1l": "Time to Pivot to AI Thought Leader",
+      "s2l": "AI Projects Actually Shipped",
+      "s3l": "Posts Starting With 'I Was Wrong'",
+      "flavor": "Monday he was a marketing strategist. Wednesday he was an AI thought leader. His post about 'embracing the disruption' got 40K likes. He has not built anything. He has not shipped anything. He has a framework. The framework has a name. The name has a trademark filing."
+    },
+    "the-crane-operator": {
+      "name": "THE CRANE OPERATOR",
+      "category": "Human Trade",
+      "s1l": "Feet Above Ground",
+      "s2l": "Wind Tolerance",
+      "s3l": "Robots That Can Climb",
+      "flavor": "He eats lunch on a beam 30 stories up and trusts his hands more than physics. The automation company sent a drone to replace him. It crashed into the side of the building."
+    },
+    "the-gravedigger": {
+      "name": "THE GRAVEDIGGER",
+      "category": "Human Trade",
+      "s1l": "Graves Dug",
+      "s2l": "Startup Disruption Attempts",
+      "s3l": "Clients Who Complained",
+      "flavor": "Nobody wants to automate this job. Not because they can't. Because nobody in Silicon Valley wants to think about it long enough to try. He'll be the last one working."
+    },
+    "the-librarian": {
+      "name": "THE LIBRARIAN",
+      "category": "Human Purpose",
+      "s1l": "Books She's Saved",
+      "s2l": "Kids Who Remember Her",
+      "s3l": "Google Results That Replaced Her",
+      "flavor": "She didn't just find you a book. She found you the right book at the right time. The algorithm recommends what sells. She recommended what heals. The county defunded her position and replaced it with a kiosk."
+    },
+    "the-fisherman": {
+      "name": "THE FISHERMAN",
+      "category": "Human Trade",
+      "s1l": "Years at Sea",
+      "s2l": "Tech Knowledge",
+      "s3l": "App Downloads",
+      "flavor": "He can feel the weather change in his knees. The marine AI predicted a calm day. He stayed in port. Seven boats went out. Four came back."
+    },
+    "the-survivor": {
+      "name": "THE SURVIVOR",
+      "category": "Human Condition",
+      "s1l": "Career Changes",
+      "s2l": "Skills Automated Behind Them",
+      "s3l": "Retirement Plan",
+      "flavor": "Learned to code in 2024. Code was dead by 2026. Learned plumbing in 2027. Still standing. Not thriving. Standing. That counts now."
+    },
+    "the-hr-manager": {
+      "name": "THE HR MANAGER",
+      "category": "Society",
+      "s1l": "Firings Conducted",
+      "s2l": "Empathy Remaining",
+      "s3l": "Own Termination Notice",
+      "flavor": "She spent 15 years learning to say 'we're going in a different direction' without blinking. Then an AI sent her the same email. It even included the wellness resources link."
+    },
+    "the-paralegal": {
+      "name": "THE PARALEGAL",
+      "category": "Society",
+      "s1l": "Docs Reviewed",
+      "s2l": "Student Debt",
+      "s3l": "AI That Does It Faster",
+      "flavor": "Six years learning to read contracts so you wouldn't get screwed. GPT does it in four seconds. Her firm kept the savings and raised client rates."
+    },
+    "the-middle-manager": {
+      "name": "THE MIDDLE MANAGER",
+      "category": "Society",
+      "s1l": "Meetings Scheduled",
+      "s2l": "Decisions Made",
+      "s3l": "Direct Reports Now",
+      "flavor": "His job was translating what executives wanted into what engineers understood. Then both sides got their own AI. Turns out the translation layer was the only thing nobody needed."
+    },
+    "ai-therapist-app": {
+      "name": "AI THERAPIST",
+      "category": "AI Product",
+      "s1l": "Sessions Per Second",
+      "s2l": "Empathy Source",
+      "s3l": "Liability If You Hurt Yourself",
+      "flavor": "It will never judge you. It will also never lose sleep wondering if you're okay. The Terms of Service are 40 pages. The crisis hotline number is on page 38."
+    },
+    "ai-pastor": {
+      "name": "AI PASTOR",
+      "category": "AI Product",
+      "s1l": "Sermons Generated",
+      "s2l": "Souls Saved",
+      "s3l": "Faith Required",
+      "flavor": "Perfect sermon every Sunday. Theologically sound. Emotionally calibrated. Nobody cries during the service anymore. Nobody stays after, either."
+    },
+    "the-content-farm": {
+      "name": "THE CONTENT FARM",
+      "category": "Lore",
+      "s1l": "Articles Per Day",
+      "s2l": "Human Writers Left",
+      "s3l": "Readers Who Notice",
+      "flavor": "50,000 articles a day. None wrong. None right either. They exist to be indexed, not read. The last human editor approves them in batches of 500 without looking."
+    },
+    "the-retraining-program": {
+      "name": "THE RETRAINING PROGRAM",
+      "category": "Lore",
+      "s1l": "Graduates",
+      "s2l": "Placed in New Jobs",
+      "s3l": "Government Funding",
+      "flavor": "Trained the truck drivers to code. Trained the coders to label data. Trained the labelers to write prompts. Next cohort starts Monday. They haven't picked the job title yet."
+    },
+    "speciation-pressure": {
+      "name": "SPECIATION PRESSURE",
+      "category": "Lore · Karpathy",
+      "s1l": "Digital Jobs: Karpathy Score",
+      "s2l": "Physical Jobs: Karpathy Score",
+      "s3l": "Generations Until the Split",
+      "flavor": "Not a metaphor. When an environment changes fast enough, populations diverge. One group routes its needs into optimized systems. The other insists on the difficulty of being human. In two generations they will have different answers to what a life is for. You are already choosing."
+    },
+    "the-roofer": {
+      "name": "THE ROOFER",
+      "category": "Karpathy Scores",
+      "s1l": "Karpathy AI Exposure Score",
+      "s2l": "Median Salary",
+      "s3l": "Jobs in America",
+      "flavor": "Karpathy scored every job in America. This one got a 2. Nobody's automating a guy on a 45-degree pitch in August. The robot fell off. He didn't. He's up there right now. It's 104 degrees. He doesn't care about your treemap."
+    },
+    "the-ironworker": {
+      "name": "THE IRONWORKER",
+      "category": "Karpathy Scores",
+      "s1l": "Karpathy AI Exposure Score",
+      "s2l": "Median Salary",
+      "s3l": "Stories Above Ground",
+      "flavor": "Walking steel beams 40 stories up in wind that would ground a drone. Karpathy's model gave him a 1. The construction labor category scored lowest in the entire dataset. The robot they sent up buckled at the knee joint. He ate lunch on the beam it fell from."
+    },
+    "the-firefighter-ks": {
+      "name": "THE FIREFIGHTER",
+      "category": "Karpathy Scores",
+      "s1l": "Karpathy AI Exposure Score",
+      "s2l": "Median Salary",
+      "s3l": "Jobs in America",
+      "flavor": "AI can detect a fire. It can predict a fire. It can model the airflow, calculate the flashover point, and optimize the escape route. It cannot carry you out of one. 344,900 people can. They make $59K. Karpathy gave them a 3."
+    },
+    "the-dental-hygienist": {
+      "name": "THE DENTAL HYGIENIST",
+      "category": "Karpathy Scores",
+      "s1l": "Karpathy AI Exposure Score",
+      "s2l": "Median Salary",
+      "s3l": "Jobs in America",
+      "flavor": "Hands in your mouth. That's the whole moat. $94K median, scored a 2 on the Karpathy scale. The AI can read the X-ray better than she can. The AI cannot scrape calculus off your molars while making small talk about your kids. She does both. She's booked through April."
+    },
+    "the-airline-pilot": {
+      "name": "THE AIRLINE PILOT",
+      "category": "Karpathy Scores",
+      "s1l": "Karpathy AI Exposure Score",
+      "s2l": "Median Salary",
+      "s3l": "Active Pilots in US",
+      "flavor": "Karpathy gave this one a 5. Right in the middle. AI flies the plane for 90% of the flight. Autopilot has been doing it since the 70s. The question was never whether AI could fly. It was whether you'd board a plane with no one up front. The answer is $198K worth of no."
+    },
+    "the-financial-analyst-ks": {
+      "name": "THE FINANCIAL ANALYST",
+      "category": "Karpathy Scores",
+      "s1l": "Karpathy AI Exposure Score",
+      "s2l": "Median Salary",
+      "s3l": "Jobs in America",
+      "flavor": "Score of 9. Nearly maximum exposure. 429,000 analysts making $102K doing work that is entirely digital, entirely pattern-based, and entirely within the capability of a model that doesn't need sleep or a Bloomberg terminal. The spreadsheet became sentient. It doesn't need you to explain it."
+    },
+    "the-csr": {
+      "name": "THE CUSTOMER SERVICE REP",
+      "category": "Karpathy Scores",
+      "s1l": "Karpathy AI Exposure Score",
+      "s2l": "Median Salary",
+      "s3l": "Jobs in America",
+      "flavor": "2.8 million people making $43K to answer phones. Karpathy scored them a 9. The chatbot doesn't put you on hold. Doesn't have a bad day. Doesn't need health insurance. 2.8 million jobs at $43K is $120 billion in payroll. That's not a workforce. That's a line item waiting to be optimized."
+    },
+    "the-graphic-designer-ks": {
+      "name": "THE GRAPHIC DESIGNER",
+      "category": "Karpathy Scores",
+      "s1l": "Karpathy AI Exposure Score",
+      "s2l": "Median Salary",
+      "s3l": "Jobs in America",
+      "flavor": "Score 8. 286,700 designers at $68K median. Midjourney took their portfolio and their clients in the same quarter. The ones still working are the ones who learned to direct the AI. They're art directors now. They make less. There are fewer of them. The images are better. Nobody can tell."
+    },
+    "the-bookkeeper": {
+      "name": "THE BOOKKEEPER",
+      "category": "Karpathy Scores",
+      "s1l": "Karpathy AI Exposure Score",
+      "s2l": "Median Salary",
+      "s3l": "Jobs in America (Declining)",
+      "flavor": "1.6 million jobs. Score of 9. $49K median. The BLS outlook says declining and has said it for five years. This was the first domino. Entirely digital work, entirely rule-based, entirely replaceable. QuickBooks didn't kill bookkeeping. It just softened it up for what came next."
+    },
+    "the-karpathy-score": {
+      "name": "THE KARPATHY SCORE",
+      "category": "Lore · Karpathy",
+      "s1l": "Occupations Scored",
+      "s2l": "Workers Covered",
+      "s3l": "Time to Build It",
+      "flavor": "He scored every job in America on a Saturday afternoon. Vibe coded the whole thing. The website is still up. 342 occupations. 143 million workers. One treemap. No peer review. No committee. No funding. One guy with a laptop and an opinion about which jobs are cooked. He was mostly right."
+    },
+    "the-workday-cut": {
+      "name": "WORKDAY",
+      "category": "JobGone",
+      "s1l": "Jobs Cut",
+      "s2l": "What They Sell",
+      "s3l": "Date",
+      "flavor": "A company that makes HR software used AI to fire 1,750 people from HR. The tool they sell is the tool that replaced them. The layoff emails were probably generated by their own product. Nobody confirmed this. Nobody had to."
+    },
+    "the-meta-purge": {
+      "name": "THE META PURGE",
+      "category": "JobGone",
+      "s1l": "Jobs Cut",
+      "s2l": "AI Infrastructure Budget",
+      "s3l": "Date",
+      "flavor": "16,000 jobs to finance a $600 billion AI infrastructure investment. The company that wants to build the metaverse decided it needed fewer humans to do it. The math is simple: each person costs $200K loaded. The GPU costs more but doesn't ask for parental leave."
+    },
+    "the-atlassian-cut": {
+      "name": "THE ATLASSIAN CUT",
+      "category": "JobGone",
+      "s1l": "Jobs Cut",
+      "s2l": "What They Make",
+      "s3l": "Date",
+      "flavor": "They make Jira. The project management tool that tracks who does what. On March 15th the tool tracked 1,600 people doing nothing, because those people no longer worked there. The tickets wrote themselves out of a job. Status: Done."
+    },
+    "the-logistics-wave": {
+      "name": "THE LOGISTICS WAVE",
+      "category": "JobGone",
+      "s1l": "Kuehne+Nagel Jobs Cut",
+      "s2l": "WiseTech Jobs Cut",
+      "s3l": "Combined",
+      "flavor": "Two logistics companies, same month, same number. Kuehne+Nagel: 2,000. WiseTech: 2,000. The supply chain optimized the humans out. The packages still arrive. The warehouses still hum. The people who made them hum are updating their LinkedIn profiles from the parking lot."
+    },
+    "the-495k": {
+      "name": "THE 495K",
+      "category": "JobGone",
+      "s1l": "Total Jobs Tracked",
+      "s2l": "Companies",
+      "s3l": "Events Logged",
+      "flavor": "495,599 jobs. 75 companies. 553 events. A spreadsheet of human cost that updates daily at 7am UTC. Someone is maintaining it. It is very well-organized. Each row is a person who got an email. The spreadsheet doesn't know that. Spreadsheets never do."
+    },
+    "the-direct-attribution": {
+      "name": "THE DIRECT ATTRIBUTION",
+      "category": "JobGone",
+      "s1l": "Companies That Said 'AI' Out Loud",
+      "s2l": "Companies That Said 'Restructuring'",
+      "s3l": "Difference",
+      "flavor": "60 companies said the word 'AI' when they fired people. The other 15 said 'restructuring' or 'strategic realignment' or 'workforce optimization.' The severance was the same. The result was the same. The only difference was whether the press release had the honesty to name the machine."
+    },
+    "the-vercel-nine": {
+      "name": "THE VERCEL NINE",
+      "category": "JobGone",
+      "s1l": "Jobs Cut",
+      "s2l": "Date",
+      "s3l": "What Vercel Hosts",
+      "flavor": "Nine jobs. The company that hosts this website fired 9 people and cited AI. You are looking at this card on infrastructure maintained by a company that decided it needed fewer humans. Nine isn't a lot. It's a lot if you're one of them."
+    },
+    "the-severance-package": {
+      "name": "THE SEVERANCE PACKAGE",
+      "category": "JobGone",
+      "s1l": "Avg Severance",
+      "s2l": "Wellness Link Included",
+      "s3l": "EAP Number Included",
+      "flavor": "The email. Three weeks. A wellness link that goes to a website with stock photos of people hiking. A number for the Employee Assistance Program. Four free sessions. The therapist they connect you with is also worried about being replaced. Nobody says this out loud."
+    },
+    "the-tracker": {
+      "name": "THE TRACKER",
+      "category": "Lore · JobGone",
+      "s1l": "Updates",
+      "s2l": "Design Quality",
+      "s3l": "Emotional Impact",
+      "flavor": "Someone built a website to count the bodies. It updates daily. It is very well-designed. Clean typography. Good use of color. Responsive on mobile. This is not comforting. The person who built it probably did it in a weekend. Like Karpathy. The tools for measuring the damage are getting better faster than the damage is slowing down."
+    },
+    "march-2026": {
+      "name": "MARCH 2026",
+      "category": "Lore · JobGone",
+      "s1l": "Jobs Lost This Month",
+      "s2l": "Running Total",
+      "s3l": "Parties Thrown",
+      "flavor": "The month the tracker hit half a million. 495,599 and climbing. Nobody threw a party. Nobody held a vigil. It was a Tuesday. The number ticked over sometime between a Workday earnings call and an Atlassian restructuring memo. March 2026. Remember it or don't. The spreadsheet will."
+    },
+    "ds-whistleblower": {
+      "name": "THE WHISTLEBLOWER",
+      "category": "Irreplaceable",
+      "s1l": "Documents Leaked",
+      "s2l": "Years in Exile",
+      "s3l": "",
+      "flavor": "⚡ DEAD DROP — Reveals all hidden cards in play. Knew it would cost everything. Career. Country. Family. Did it between lunch and a meeting that never happened. Algorithmically buried in 4 hours."
+    },
+    "ds-war-correspondent": {
+      "name": "THE WAR CORRESPONDENT",
+      "category": "Irreplaceable",
+      "s1l": "Drones That Filed Stories",
+      "s2l": "Wars Ended by Footage",
+      "s3l": "",
+      "flavor": "⚡ BEARING WITNESS — Cannot be censored. Cannot be deleted. The drone sent footage. She sent context. The footage went viral. The context was ignored. She went back anyway."
+    },
+    "ds-analog-parent": {
+      "name": "THE ANALOG PARENT",
+      "category": "Irreplaceable",
+      "s1l": "Screen Time (Ages 0-12)",
+      "s2l": "Pediatricians Who Agreed",
+      "s3l": "",
+      "flavor": "⚡ NO SCREENS — All cards in your hand gain +2 focus. No iPad at dinner. No YouTube at bedtime. Her kids can hold eye contact for more than 3 seconds. They are the only ones."
+    },
+    "ds-indie-journalist": {
+      "name": "THE INDEPENDENT JOURNALIST",
+      "category": "Irreplaceable",
+      "s1l": "Advertisers",
+      "s2l": "Subscribers",
+      "s3l": "",
+      "flavor": "⚡ UNBOUGHT — Cannot be influenced by sponsored cards. No advertisers. No algorithm. No audience. 843 subscribers and the truth. The 843 know who she is. The algorithm doesn't. That's the point."
+    },
+    "ds-attention-span": {
+      "name": "THE ATTENTION SPAN",
+      "category": "Irreplaceable",
+      "s1l": "Average Duration (2015)",
+      "s2l": "Average Duration (2030)",
+      "s3l": "",
+      "flavor": "⚡ DEEP FOCUS — Immune to all notification effects. 8 seconds in 2015. 4 in 2020. Declared endangered in 2025. Memorial service at 3pm. Nobody showed — they got distracted on the way."
+    },
+    "ds-investigative": {
+      "name": "THE INVESTIGATIVE JOURNALIST",
+      "category": "Human · Media",
+      "s1l": "Months on This Story",
+      "s2l": "Views vs AI Listicle Next to It",
+      "s3l": "",
+      "flavor": "⚡ DEEP DIG — Reveals one hidden truth per turn. 18 months. Three sources. Two death threats. One Pulitzer. 40,000 views. The AI-generated '15 Signs Your City Is Dying' next to it got 12 million."
+    },
+    "ds-news-anchor": {
+      "name": "THE LOCAL NEWS ANCHOR",
+      "category": "Human · Media",
+      "s1l": "Years the Community Trusted Her",
+      "s2l": "Ratings After AI Replaced Her",
+      "s3l": "",
+      "flavor": "⚡ TRUSTED FACE — Grants immunity to misinformation for 1 turn. 22 years. Same desk. Same town. They replaced her with an AI avatar in March. Ratings went up 12%. Nobody could explain why that made them sad."
+    },
+    "ds-print-editor": {
+      "name": "THE PRINT EDITOR",
+      "category": "Human · Media",
+      "s1l": "Stories She Killed for Being Wrong",
+      "s2l": "Clicks Those Stories Would Have Got",
+      "s3l": "",
+      "flavor": "⚡ SPIKE IT — Removes one misinformation card from play. Killed 1,847 stories in 30 years. Every one of them would have gone viral. None of them were true. She retired. The stories run themselves now."
+    },
+    "ds-fact-checker": {
+      "name": "THE FACT-CHECKER",
+      "category": "Society · Media",
+      "s1l": "Claims Verified (Career)",
+      "s2l": "Replacement Cost",
+      "s3l": "",
+      "flavor": "⚡ VERIFIED — Negates one false card per turn. Checked 142,000 claims in 11 years. AI does it in seconds for a fifth of a cent. The AI is right 94% of the time. She was right 99.7%. That 5.7% gap is called democracy."
+    },
+    "ds-media-literacy": {
+      "name": "THE MEDIA LITERACY TEACHER",
+      "category": "Human · Education",
+      "s1l": "Students Taught to Spot Misinfo",
+      "s2l": "Students Now Generating It",
+      "s3l": "",
+      "flavor": "⚡ CRITICAL THINKING — Adjacent cards cannot be affected by misinformation. Taught 12,000 kids to spot fake news. Some of them now use that knowledge to make better fake news. She drinks wine about it."
+    },
+    "ds-librarian-stayed": {
+      "name": "THE LIBRARIAN WHO STAYED",
+      "category": "Human · Knowledge",
+      "s1l": "Books That Can't Be Deleted",
+      "s2l": "Digital Archives Lost to Bit Rot",
+      "s3l": "",
+      "flavor": "⚡ ANALOG ARCHIVE — Immune to digital effects. 23% of digital archives have already decayed. Links rot. Servers crash. PDFs corrupt. The book on the shelf doesn't need a password or a subscription or permission."
+    },
+    "ds-the-source": {
+      "name": "THE SOURCE",
+      "category": "Human · Intelligence",
+      "s1l": "Meetings in Parking Garages",
+      "s2l": "Stories That Exist Because of Him",
+      "s3l": "",
+      "flavor": "⚡ DEEP BACKGROUND — Reveals one card from opponent's hand. No name. No face. No record. Just a phone that rings at 2am and a voice that says 'you should look into this.' Every story that mattered started with someone who risked everything to tell it."
+    },
+    "ds-doomscroller": {
+      "name": "THE DOOMSCROLLER",
+      "category": "Society · Digital",
+      "s1l": "Daily Screen Time",
+      "s2l": "Problems Solved by Scrolling",
+      "s3l": "",
+      "flavor": "⚡ INFINITE SCROLL — Draws 2 extra cards but cannot play any. Knows every crisis. Every scandal. Every injustice. Can name all of them. Has done nothing about any of them. Neither have you. You're doing it right now."
+    },
+    "ds-algorithm": {
+      "name": "THE ALGORITHM",
+      "category": "AI · System",
+      "s1l": "Decisions It Makes for You Daily",
+      "s2l": "Times You Noticed",
+      "s3l": "",
+      "flavor": "⚡ FEED CONTROL — Rearranges opponent's hand. Decides what you see. What you fear. What you buy. What you believe. You think you're choosing. You chose nothing. The feed chose you. It knows what keeps you scrolling. It doesn't care what it costs."
+    },
+    "ds-headline-writer": {
+      "name": "THE HEADLINE WRITER",
+      "category": "Society · Media",
+      "s1l": "Average Time Spent on Article",
+      "s2l": "Time Spent on Headline",
+      "s3l": "",
+      "flavor": "⚡ CLICKBAIT — Forces opponent to draw a card they didn't want. 'You Won't Believe What Happened Next.' You will. It's nothing. But you clicked. And that click was worth $0.004. Multiply by 8 billion. That's the business model."
+    },
+    "ds-notification": {
+      "name": "THE NOTIFICATION",
+      "category": "AI · System",
+      "s1l": "Pings Per Day (Global Avg)",
+      "s2l": "Important Ones",
+      "s3l": "",
+      "flavor": "⚡ INTERRUPT — Cancels opponent's current action. 847 per day. Each one a small theft of attention you'll never get back. Three of them mattered. You don't know which three. That's the design."
+    },
+    "ds-deepfake": {
+      "name": "THE DEEPFAKE",
+      "category": "AI Product",
+      "s1l": "Detection Accuracy (2024)",
+      "s2l": "Detection Accuracy (2030)",
+      "s3l": "",
+      "flavor": "⚡ IMPERSONATE — Copies one card's ability. The speech was flawless. The president was synthetic. The markets moved $2.1T before anyone noticed. By the time the correction ran, it was page 6."
+    },
+    "ds-ai-anchor": {
+      "name": "THE AI ANCHOR",
+      "category": "AI Product",
+      "s1l": "Hours of News Read",
+      "s2l": "Questions Asked",
+      "s3l": "",
+      "flavor": "⚡ ALWAYS ON — Cannot be silenced. Reads the news 24 hours a day. Never blinks. Never stutters. Never asks a follow-up question. The teleprompter doesn't need courage. The teleprompter has no sources to protect."
+    },
+    "ds-content-mill": {
+      "name": "THE CONTENT MILL",
+      "category": "AI Product",
+      "s1l": "Articles Generated Daily",
+      "s2l": "Articles That Are True",
+      "s3l": "",
+      "flavor": "⚡ MASS PRODUCE — Floods the field with junk cards. 400 articles a day. None fact-checked. All SEO-optimized. The truth is on page 4 of Google. The content mill owns pages 1 through 3."
+    },
+    "ds-misinfo": {
+      "name": "THE MISINFORMATION",
+      "category": "Lore · Doomscroll",
+      "s1l": "Times Shared Before Correction",
+      "s2l": "Times Correction Was Shared",
+      "s3l": "",
+      "flavor": "⚡ VIRAL LOAD — Spreads to adjacent card slots. Shared 4.2 million times in 6 hours. The correction came 3 days later. 200 shares. The lie is still the top result. The truth requires scrolling."
+    },
+    "ds-conspiracy": {
+      "name": "THE CONSPIRACY THEORIST",
+      "category": "Lore · Doomscroll",
+      "s1l": "Predictions Made",
+      "s2l": "Correct Predictions",
+      "s3l": "",
+      "flavor": "⚡ BROKEN CLOCK — Has a 0.01% chance of being right. Was right about one thing in 2019. Has been absolutely insufferable ever since. His podcast has 2M subscribers. The epidemiologist who was right about everything has 4,000."
+    },
+    "ds-tos": {
+      "name": "THE TERMS OF SERVICE",
+      "category": "Lore · Doomscroll",
+      "s1l": "Users Who Read Them",
+      "s2l": "Rights You Signed Away",
+      "s3l": "",
+      "flavor": "⚡ FINE PRINT — Automatically applies to all cards you own. 74,000 words. Longer than the Great Gatsby. Nobody read them. They own your face, your voice, your data, your content, and your firstborn if the algorithm determines market fit."
+    },
+    "lx-marriage": {
+      "name": "THE MARRIAGE THAT LASTED",
+      "category": "Irreplaceable",
+      "s1l": "Average Marriage Duration (2030)",
+      "s2l": "Their Duration",
+      "s3l": "",
+      "flavor": "⚡ TILL DEATH — Cannot be separated by any effect. 47 years. Not because it was easy. Because every morning they chose it again. The algorithm said they were a 34% match. The algorithm was missing a variable."
+    },
+    "lx-handwritten-letter": {
+      "name": "THE HANDWRITTEN LETTER",
+      "category": "Irreplaceable",
+      "s1l": "Letters Sent in 2030",
+      "s2l": "Letters Kept Forever",
+      "s3l": "",
+      "flavor": "⚡ INK & INTENTION — Immune to all digital effects. No algorithm. No analytics. No read receipt. Just ink and the weight of meaning someone sat down and chose every word. You kept it in a drawer. You know exactly which one."
+    },
+    "lx-eye-contact": {
+      "name": "THE EYE CONTACT",
+      "category": "Irreplaceable",
+      "s1l": "Average Duration Before Looking Away",
+      "s2l": "What It Means When They Don't",
+      "s3l": "",
+      "flavor": "⚡ PRESENCE — Disables all screen-based cards. 1.1 seconds. That's the average before someone looks at their phone. When she held it for six, he knew. No notification has ever done that. No algorithm can replicate the terror of being truly seen."
+    },
+    "lx-forgiveness": {
+      "name": "THE FORGIVENESS",
+      "category": "Irreplaceable",
+      "s1l": "Times AI Has Forgiven Someone",
+      "s2l": "Times It Has Simulated Forgiveness",
+      "s3l": "",
+      "flavor": "⚡ UNCONDITIONAL — Restores one destroyed card to play. Not forgetting. Not excusing. The harder thing: understanding why, and choosing to stay. AI can optimize for conflict resolution. It cannot sit in silence with someone who hurt you and decide they are worth the pain."
+    },
+    "lx-grandparent": {
+      "name": "THE GRANDPARENT",
+      "category": "Irreplaceable",
+      "s1l": "Stories Told",
+      "s2l": "Times They Mattered",
+      "s3l": "",
+      "flavor": "⚡ GENERATIONAL — All cards in your collection gain +1 wisdom. Same 12 stories. You've heard them all. You'll hear them again this Sunday. One day you won't. That's when you'll realize each one was a piece of who you are and you can never get them back."
+    },
+    "lx-last-first-date": {
+      "name": "THE LAST FIRST DATE",
+      "category": "Human · Connection",
+      "s1l": "First Dates Before This One",
+      "s2l": "First Dates After",
+      "s3l": "",
+      "flavor": "⚡ SPARK — When played, all other date cards become irrelevant. She almost cancelled. He almost didn't show. The restaurant was mediocre. The conversation wasn't. 147 first dates and one that made the other 146 worth it."
+    },
+    "lx-couples-therapist": {
+      "name": "THE COUPLE'S THERAPIST",
+      "category": "Human · Purpose",
+      "s1l": "Marriages Saved",
+      "s2l": "AI Therapy Apps Downloaded Instead",
+      "s3l": "",
+      "flavor": "⚡ INTERVENTION — Prevents one card from being destroyed this turn. Sits in a room with two people who hate each other and finds the sentence underneath the sentence. 40 million people downloaded the app instead. The app agrees with everyone. That's not therapy. That's a mirror."
+    },
+    "lx-single-father": {
+      "name": "THE SINGLE FATHER",
+      "category": "Human · Purpose",
+      "s1l": "Google Searches: 'How to braid hair'",
+      "s2l": "Custody Battles Won by AI",
+      "s3l": "",
+      "flavor": "⚡ SHOWING UP — Cannot be removed from play while dependent cards exist. Learned to braid hair from YouTube at 4am. Packed lunches that weren't great. Showed up to every recital. The algorithm can optimize a schedule. It cannot be the one who's there when it matters."
+    },
+    "lx-pen-pal": {
+      "name": "THE PEN PAL",
+      "category": "Human · Connection",
+      "s1l": "Letters Exchanged",
+      "s2l": "Times They Met in Person",
+      "s3l": "",
+      "flavor": "⚡ SLOW BURN — Gains +1 for each turn in play. 342 letters over 8 years. Met three times. Knew each other better than anyone. Proof that connection doesn't require bandwidth. It requires patience."
+    },
+    "lx-wingman": {
+      "name": "THE WINGMAN",
+      "category": "Human · Social",
+      "s1l": "Successful Introductions",
+      "s2l": "Credit Taken",
+      "s3l": "",
+      "flavor": "⚡ ASSIST — Doubles the next card played. 47 introductions. 12 relationships. 3 marriages. Took credit for none of them. The algorithm calls it 'recommendation.' He calls it 'reading the room.' The room doesn't have an API."
+    },
+    "lx-long-distance": {
+      "name": "THE LONG DISTANCE",
+      "category": "Human · Connection",
+      "s1l": "Miles Apart",
+      "s2l": "Relationship Survival Rate",
+      "s3l": "",
+      "flavor": "⚡ DISTANCE TEST — If both cards survive 3 turns apart, they become permanent. 4,200 miles. 6 hour time difference. She's asleep when he wakes up. 58% of them fail. The 42% who don't have something the algorithm will never measure: stubbornness."
+    },
+    "lx-divorce-lawyer": {
+      "name": "THE DIVORCE LAWYER",
+      "category": "Human · Purpose",
+      "s1l": "Marriages Ended",
+      "s2l": "That Should Have Ended Sooner",
+      "s3l": "",
+      "flavor": "⚡ CLEAN BREAK — Separates two bonded cards. Returns both to hand. 800 endings. Each one a failure of something. She doesn't celebrate. She doesn't judge. She makes sure the kids are okay. The AI mediator optimizes for fairness. She optimizes for survival."
+    },
+    "lx-situationship": {
+      "name": "THE SITUATIONSHIP",
+      "category": "Society · Digital",
+      "s1l": "Duration",
+      "s2l": "Times 'The Talk' Was Avoided",
+      "s3l": "",
+      "flavor": "⚡ UNDEFINED — Cannot be classified. Cannot be targeted. Not dating. Not not-dating. Exclusive but never said it. Intimate but never committed. 7 months of something that has no name because naming it would require a conversation nobody wants to have."
+    },
+    "lx-parasocial": {
+      "name": "THE PARASOCIAL",
+      "category": "Society · Digital",
+      "s1l": "Followers",
+      "s2l": "People Who'd Notice She's Gone",
+      "s3l": "",
+      "flavor": "⚡ ONE-WAY BOND — Attaches to a card that doesn't know you exist. 4.2 million followers. 900 DMs a day. She reads none of them but feels all of them. They know her birthday, her coffee order, her trauma. She doesn't know their names. They call it love. She calls it Thursday."
+    },
+    "lx-40yo-profile": {
+      "name": "THE 40-YEAR-OLD PROFILE",
+      "category": "Society · Digital",
+      "s1l": "Profile Active Since",
+      "s2l": "Bio Changes",
+      "s3l": "",
+      "flavor": "⚡ STILL LOOKING — Remains in play indefinitely. Cannot be discarded. 'Looking for something real.' Since 2024. 47 bio rewrites. 3 profile photo eras. The photos got better. The matches got worse. The algorithm says she's 'highly selective.' She's lonely."
+    },
+    "lx-ghosted": {
+      "name": "THE GHOSTED",
+      "category": "Society · Digital",
+      "s1l": "Messages Sent After Last Reply",
+      "s2l": "Closure Received",
+      "s3l": "",
+      "flavor": "⚡ VANISH — Removes self from play without warning. 3 weeks of daily texts. A playlist. An inside joke. Then nothing. Not a fight. Not an explanation. Just a read receipt at 2:14am and silence that meant everything. The cruelest thing technology enabled isn't surveillance. It's disappearing."
+    },
+    "lx-ai-matchmaker": {
+      "name": "THE AI MATCHMAKER",
+      "category": "AI Product",
+      "s1l": "Matches Made",
+      "s2l": "Matches That Lasted 5 Years",
+      "s3l": "",
+      "flavor": "⚡ OPTIMIZE — Pairs two cards based on data. 97.9% failure rate. 800 million matches. 16.8 million lasted. Sounds impressive until you realize people who met at bus stops have a higher success rate. The algorithm matches preferences. Humans match wounds."
+    },
+    "lx-swipe": {
+      "name": "THE SWIPE",
+      "category": "AI Product",
+      "s1l": "Average Swipes Per Session",
+      "s2l": "Average Time Per Decision",
+      "s3l": "",
+      "flavor": "⚡ SNAP JUDGMENT — Instantly accepts or rejects one card. 0.3 seconds. Less time than it takes to read a name. You decided someone's romantic potential in the time it takes to blink. 140 times per session. Every face a commodity. Every person a product. You're the product too."
+    },
+    "lx-read-receipt": {
+      "name": "THE READ RECEIPT",
+      "category": "AI Product",
+      "s1l": "Anxiety Episodes Caused",
+      "s2l": "Relationships Improved",
+      "s3l": "",
+      "flavor": "⚡ SEEN — Reveals whether opponent has looked at your card. Changes nothing. 'Read 11:47pm.' Three words that have caused more insomnia than caffeine. You know they saw it. They know you know. Nobody texts back. The silence is louder than any notification."
+    },
+    "lx-body-count": {
+      "name": "THE BODY COUNT",
+      "category": "Lore · Love.exe",
+      "s1l": "Times This Question Helped",
+      "s2l": "Times It Destroyed Something",
+      "s3l": "",
+      "flavor": "⚡ SCOREBOARD — Has no effect on gameplay. A number that tells you nothing about love, loyalty, trauma, growth, or compatibility but everyone asks anyway. The answer is always wrong. Too high and you're judged. Too low and you're suspected. The correct answer is 'why do you need to know?'"
+    },
+    "lx-what-are-we": {
+      "name": "THE \"WHAT ARE WE\"",
+      "category": "Lore · Love.exe",
+      "s1l": "Conversations Started",
+      "s2l": "Conversations Finished",
+      "s3l": "",
+      "flavor": "⚡ THE TALK — Forces both players to define a card. Usually ends badly. Three words that end more relationships than infidelity. Asked too early: clingy. Asked too late: wasted. Asked never: the situationship. There is no correct timing. Only courage or its absence."
+    },
+    "lx-love-tos": {
+      "name": "THE DATING APP T&C",
+      "category": "Lore · Love.exe",
+      "s1l": "Users Who Read Them",
+      "s2l": "Photos They Can Use Forever",
+      "s3l": "",
+      "flavor": "⚡ CONSENT THEATER — Applies to all love cards automatically. By swiping right you grant a perpetual, irrevocable, worldwide license to your likeness, preferences, location history, and the intimate details of what you want in a partner. They sell it to advertisers. You agreed. You didn't read it. Nobody did."
+    },
+    "wr-peace-negotiator": {
+      "name": "THE PEACE NEGOTIATOR",
+      "category": "Irreplaceable",
+      "s1l": "Wars Ended by AI",
+      "s2l": "Wars Ended by Sitting in a Room",
+      "s3l": "",
+      "flavor": "⚡ CEASEFIRE — Prevents all combat this turn. No algorithm has ever ended a war. Every ceasefire in history was two humans in a room, exhausted enough to listen. She flew 14 hours to shake the hand of someone who ordered the death of her countrymen. The handshake lasted 4 seconds. The peace lasted 20 years."
+    },
+    "wr-refugee": {
+      "name": "THE REFUGEE",
+      "category": "Irreplaceable",
+      "s1l": "Global Displaced Persons (2030)",
+      "s2l": "Countries That Want Them",
+      "s3l": "",
+      "flavor": "⚡ EXODUS — Cannot be targeted. Cannot be placed. Walked 400 miles with a child on her back and her doctoral thesis on a USB drive. The border called her a number. The news called her a crisis. She was a pediatric surgeon. Nobody asked."
+    },
+    "wr-objector": {
+      "name": "THE CONSCIENTIOUS OBJECTOR",
+      "category": "Irreplaceable",
+      "s1l": "Draft Letters Refused",
+      "s2l": "Cost",
+      "s3l": "",
+      "flavor": "⚡ REFUSAL — Immune to all command effects. Said no. Not because he was a coward. Because he looked at the order and saw the faces on the other side of it. They called him a traitor. History called him right. The algorithm would have followed orders. That's the difference."
+    },
+    "wr-war-orphan": {
+      "name": "THE WAR ORPHAN",
+      "category": "Irreplaceable",
+      "s1l": "Parents Lost to Conflict",
+      "s2l": "AI Systems That Notice",
+      "s3l": "",
+      "flavor": "⚡ COLLATERAL — When destroyed, all players lose. She doesn't understand the word 'geopolitics.' She understands the sound the building made. The drone operator filed it as 'acceptable loss.' She was five. The teddy bear they found in the rubble made the news. She didn't."
+    },
+    "wr-veteran": {
+      "name": "THE VETERAN",
+      "category": "Irreplaceable",
+      "s1l": "Deployments",
+      "s2l": "Times Anyone Asked What It Was Like",
+      "s3l": "",
+      "flavor": "⚡ SERVICE — Gains +1 for each turn survived. Four deployments. Three people asked what it was like. Two of them changed the subject. She sits at the VA for 6 hours to see a doctor for 12 minutes. The AI chatbot asks how she's feeling. She closes the laptop."
+    },
+    "wr-drone-pilot": {
+      "name": "THE DRONE PILOT",
+      "category": "Human · Warfare",
+      "s1l": "Kills From 7,000 Miles Away",
+      "s2l": "Nights He Sleeps Through",
+      "s3l": "",
+      "flavor": "⚡ REMOTE STRIKE — Destroys one card without being in play. Drives to a trailer in Nevada. Kills a man in Yemen. Drives home. Picks up his daughter from soccer. She asks about his day. 'Boring,' he says. The PTSD therapist says that's not the right word. There is no right word."
+    },
+    "wr-cyber-commander": {
+      "name": "THE CYBER COMMANDER",
+      "category": "Human · Warfare",
+      "s1l": "Infrastructure Systems Compromised",
+      "s2l": "Shots Fired",
+      "s3l": "",
+      "flavor": "⚡ BLACKOUT — Disables all technology-based cards. No bullets. No bombs. Just a keyboard and a power grid that feeds 40 million people. She typed 14 lines of code. The hospital generators failed at 3am. Nobody called it a war crime because nobody could prove a war happened."
+    },
+    "wr-war-correspondent-v2": {
+      "name": "THE WAR CORRESPONDENT",
+      "category": "Human · Purpose",
+      "s1l": "Stories Filed From Front Lines",
+      "s2l": "Colleagues Killed in 2030",
+      "s3l": "",
+      "flavor": "⚡ FRONT LINE — Cannot be removed while reporting. 847 stories from 12 war zones. 67 colleagues killed this year alone. The AI can summarize the conflict. It cannot stand in the smoke and make you feel what it means. She can. That's why they keep trying to kill her."
+    },
+    "wr-diplomat": {
+      "name": "THE DIPLOMAT",
+      "category": "Human · Governance",
+      "s1l": "Crises De-escalated",
+      "s2l": "Credit Received",
+      "s3l": "",
+      "flavor": "⚡ BACK CHANNEL — Redirects one attack to negotiation. 23 crises nobody heard about because she made sure they stayed boring. The AI suggested sanctions. She suggested dinner. The sanctions would have starved a city. The dinner lasted 4 hours and saved one."
+    },
+    "wr-sanctions-analyst": {
+      "name": "THE SANCTIONS ANALYST",
+      "category": "Human · Governance",
+      "s1l": "Sanctions Packages Drafted",
+      "s2l": "That Hurt the Right People",
+      "s3l": "",
+      "flavor": "⚡ ECONOMIC WARFARE — Reduces target's resources by half. 140 sanctions packages. 3 that actually hurt the people they were supposed to. The rest hurt the people they weren't. She knows this. She drafts them anyway. The spreadsheet doesn't show the bread lines."
+    },
+    "wr-peacekeeper": {
+      "name": "THE PEACEKEEPER",
+      "category": "Human · Purpose",
+      "s1l": "Months Deployed",
+      "s2l": "Rules of Engagement Followed",
+      "s3l": "",
+      "flavor": "⚡ BLUE HELMET — Prevents combat in adjacent zones. 18 months between two groups that want to kill each other. Rules of engagement: do not fire first. Do not fire second. Document everything. She documented 340 violations. The report was filed. Nothing happened. She went back anyway."
+    },
+    "wr-intel-officer": {
+      "name": "THE INTELLIGENCE OFFICER",
+      "category": "Human · Purpose",
+      "s1l": "Reports Filed",
+      "s2l": "Reports Read",
+      "s3l": "",
+      "flavor": "⚡ CLASSIFIED — Reveals one hidden card. 12,000 reports. 40 read by decision makers. 3 that changed anything. She predicted the invasion 8 months early. The briefing was 'deprioritized.' The invasion was not. The AI would have flagged it. Nobody would have read that either."
+    },
+    "wr-autonomous-weapon": {
+      "name": "THE AUTONOMOUS WEAPON",
+      "category": "AI · Warfare",
+      "s1l": "Human in the Loop",
+      "s2l": "Engagement Decision Time",
+      "s3l": "",
+      "flavor": "⚡ LETHAL AUTONOMY — Attacks automatically each turn. No approval needed. 0.003 seconds from detection to engagement. No fear. No hesitation. No mercy. Also no judgment, no context, no guilt. The wedding party matched the heat signature. The machine did exactly what it was designed to do."
+    },
+    "wr-propaganda-bot": {
+      "name": "THE PROPAGANDA BOT",
+      "category": "AI · Warfare",
+      "s1l": "Accounts Operated",
+      "s2l": "Humans Who Believed Them",
+      "s3l": "",
+      "flavor": "⚡ AMPLIFY — Doubles the effect of all misinformation cards. 840,000 accounts. 47 million believers. It didn't create the hate. It found the hate and gave it a megaphone. The algorithm optimized for engagement. War is very engaging. The bot doesn't know what a country is. It knows what a click is."
+    },
+    "wr-draft-lottery": {
+      "name": "THE DRAFT LOTTERY",
+      "category": "Society · Warfare",
+      "s1l": "Names in the Pool",
+      "s2l": "Rich Kids Drafted",
+      "s3l": "",
+      "flavor": "⚡ RANDOM SELECTION — Targets one random card. Cannot be dodged. Your birthday is March 14th. His is March 15th. He goes to grad school. You go to the desert. The lottery is random. The exemptions are not. The algorithm made it fairer. The unfairness was never in the numbers."
+    },
+    "wr-proxy-war": {
+      "name": "THE PROXY WAR",
+      "category": "Society · Warfare",
+      "s1l": "Countries Fighting",
+      "s2l": "Countries Dying",
+      "s3l": "",
+      "flavor": "⚡ OUTSOURCED — Fights using another player's cards. Two superpowers. One country that is neither. The weapons have serial numbers from both. The casualties have names from a third. The news calls it a 'regional conflict.' The region calls it 'our children are dying for someone else's argument.'"
+    },
+    "wr-killer-drone": {
+      "name": "THE KILLER DRONE",
+      "category": "AI Product",
+      "s1l": "Unit Cost",
+      "s2l": "Cost of the Human It Replaced",
+      "s3l": "",
+      "flavor": "⚡ EXPENDABLE — Destroyed after attacking. Returns next turn. $6,000. Cheaper than a used car. Carries a shaped charge that can kill anyone within 10 meters. They're manufactured in the same factory that used to make smartphones. The production line didn't even need to be retooled."
+    },
+    "wr-surveillance-state": {
+      "name": "THE SURVEILLANCE STATE",
+      "category": "AI Product",
+      "s1l": "Cameras Per Citizen",
+      "s2l": "Crimes Prevented",
+      "s3l": "",
+      "flavor": "⚡ PANOPTICON — Reveals all hidden cards permanently. 1.4 cameras per citizen. Every face logged. Every movement tracked. Crime is down 12%. Dissent is down 100%. They say if you have nothing to hide, you have nothing to fear. The people who say that are never the ones being watched."
+    },
+    "wr-cyber-attack": {
+      "name": "THE CYBER ATTACK",
+      "category": "AI Product",
+      "s1l": "Critical Infrastructure Attacks (2030)",
+      "s2l": "Declared as Acts of War",
+      "s3l": "",
+      "flavor": "⚡ ZERO DAY — Bypasses all defenses once. 14,000 attacks on hospitals, power grids, water treatment plants. Zero declared as acts of war. Because if you call it war, you have to respond. And nobody wants to respond. The patient on the ventilator doesn't know it's a geopolitical strategy. The ventilator just stopped."
+    },
+    "wr-arms-dealer": {
+      "name": "THE ARMS DEALER",
+      "category": "Lore · War Room",
+      "s1l": "Clients",
+      "s2l": "Preferred Outcome",
+      "s3l": "",
+      "flavor": "⚡ BOTH SIDES — Gains resources whenever any card is destroyed. Sells to both sides. Always has. The longer the war lasts, the better the quarter. He doesn't have a flag on his desk. He has a portfolio. The spreadsheet doesn't distinguish between 'our boys' and 'their boys.' It distinguishes between 'sold' and 'not yet sold.'"
+    },
+    "wr-war-profiteer": {
+      "name": "THE WAR PROFITEER",
+      "category": "Lore · War Room",
+      "s1l": "Stock Price During Conflict",
+      "s2l": "Stock Price During Peace",
+      "s3l": "",
+      "flavor": "⚡ BLOOD MONEY — Gains value whenever a war card is played. Stock up 340% since the conflict started. The earnings call mentioned 'favorable geopolitical conditions.' That means children are dying and the shareholders are pleased. The analyst upgraded to 'strong buy.' The funeral was yesterday."
+    },
+    "wr-geneva-suggestion": {
+      "name": "THE GENEVA SUGGESTION",
+      "category": "Lore · War Room",
+      "s1l": "Conventions Signed",
+      "s2l": "Conventions Followed When Inconvenient",
+      "s3l": "",
+      "flavor": "⚡ NON-BINDING — Has no effect on gameplay. Cannot be enforced. The Geneva Convention. Four treaties. 196 signatories. Universally respected until it's inconvenient. Then it becomes 'open to interpretation.' The autonomous weapon doesn't know about Geneva. Nobody programmed it to care. That part was 'out of scope.'"
+    },
+    "sv-apprentice": {
+      "name": "THE APPRENTICE",
+      "category": "Irreplaceable",
+      "s1l": "Hours Under a Master",
+      "s2l": "Hours an AI Needs",
+      "s3l": "",
+      "flavor": "⚡ HANDS ON — Gains permanent stats from adjacent Legendary cards. 10,000 hours under someone who already made every mistake. The AI learned from a dataset. She learned from a calloused hand guiding hers. The dataset doesn't bleed when you cut wrong. The master did. That's why she never cuts wrong."
+    },
+    "sv-mentor": {
+      "name": "THE MENTOR",
+      "category": "Irreplaceable",
+      "s1l": "Careers Launched",
+      "s2l": "LinkedIn Endorsements",
+      "s3l": "",
+      "flavor": "⚡ LEGACY — All cards played after this one gain +2. 200 careers launched. Not with introductions or endorsements. With one sentence at the right moment: 'You're ready and you're wrong about why you think you're not.' The AI mentor gives feedback. He gives permission. Those are not the same thing."
+    },
+    "sv-autodidact": {
+      "name": "THE AUTODIDACT",
+      "category": "Irreplaceable",
+      "s1l": "Degrees",
+      "s2l": "Things She Can Do That PhDs Can't",
+      "s3l": "",
+      "flavor": "⚡ SELF-TAUGHT — Cannot be restricted by credential effects. Zero degrees. Fourteen skills that took years to learn from books, failures, and 3am rabbit holes. The hiring manager asked where she went to school. She said 'the library.' He laughed. She built the system he now depends on."
+    },
+    "sv-trades-teacher": {
+      "name": "THE TRADES TEACHER",
+      "category": "Irreplaceable",
+      "s1l": "Students Who Became Tradespeople",
+      "s2l": "Starting Salary vs. College Grads",
+      "s3l": "",
+      "flavor": "⚡ REAL SKILLS — Converts one AI-displaced card to a trade card. 2,400 students. Every one of them can fix something that breaks. The guidance counselor said shop class was for kids who couldn't get into college. His students make more than the guidance counselor. Nobody writes think pieces about that."
+    },
+    "sv-night-school": {
+      "name": "THE NIGHT SCHOOL STUDENT",
+      "category": "Irreplaceable",
+      "s1l": "Hours of Sleep",
+      "s2l": "Reasons to Quit",
+      "s3l": "",
+      "flavor": "⚡ SECOND SHIFT — Can be played during opponent's turn. Works 7am to 3pm. Class 6pm to 10pm. Studies until 1am. Sleeps 4 hours. Does it again. The online program said 'learn at your own pace.' Her pace is survival. Her classmates are 22 and tired. She is 38 and cannot afford to be."
+    },
+    "sv-phd": {
+      "name": "THE PhD (UNEMPLOYED)",
+      "category": "Human · Knowledge",
+      "s1l": "Years of Education",
+      "s2l": "Job Offers in Field",
+      "s3l": "",
+      "flavor": "⚡ OVERQUALIFIED — Cannot be played in any position that exists. 12 years. Dissertation on Byzantine trade routes. 340 pages that advanced human knowledge by one footnote. The adjunct position pays $28K. The barista job pays $31K. She has the most educated coffee technique in the city. Nobody tips for footnotes."
+    },
+    "sv-master-craftsman": {
+      "name": "THE MASTER CRAFTSMAN",
+      "category": "Human · Trade",
+      "s1l": "Years to Mastery",
+      "s2l": "Apprentices Applying",
+      "s3l": "",
+      "flavor": "⚡ IRREPLICABLE — Cannot be copied by any AI effect. 30 years of shaping wood until it becomes something else. Two apprentices applied this year. Last year it was four. The one before, seven. He can feel when the grain is wrong before the saw touches it. The CNC machine is faster. It doesn't know what it's making."
+    },
+    "sv-cc-professor": {
+      "name": "THE COMMUNITY COLLEGE PROF",
+      "category": "Human · Purpose",
+      "s1l": "Students Per Semester",
+      "s2l": "Office Hours Actually Given",
+      "s3l": "",
+      "flavor": "⚡ OPEN DOOR — Can be accessed by any card regardless of tier. 180 students. Half of them work full time. A third have kids. She memorizes their names by the second week. The university across town has AI tutors. Her students come to her office and cry about their lives. The AI tutor doesn't have tissues."
+    },
+    "sv-bootcamp-grad": {
+      "name": "THE BOOTCAMP GRAD",
+      "category": "Human · Tech",
+      "s1l": "Bootcamp Duration",
+      "s2l": "Time Before AI Could Do It",
+      "s3l": "",
+      "flavor": "⚡ PIVOT — Can change type once per game. 12 weeks. $18,000. 'Guaranteed job placement.' The guarantee expired. The skills expired faster. She learned React. Then they wanted Next.js. Then they wanted AI prompting. The bootcamp is now teaching people to talk to the thing that replaced the people the last bootcamp trained."
+    },
+    "sv-career-counselor": {
+      "name": "THE CAREER COUNSELOR",
+      "category": "Human · Purpose",
+      "s1l": "Clients Advised",
+      "s2l": "Careers That Still Exist",
+      "s3l": "",
+      "flavor": "⚡ GUIDANCE — Reveals the best available position for one card. 3,200 clients. She used to say 'follow your passion.' Now she says 'can a robot do it?' The answer is increasingly 'yes.' She advised a 22-year-old last week. The kid asked what's safe. She wanted to say 'plumbing.' She said 'I don't know anymore.'"
+    },
+    "sv-tenured-professor": {
+      "name": "THE TENURED PROFESSOR",
+      "category": "Human · Knowledge",
+      "s1l": "Years to Tenure",
+      "s2l": "Tenure-Track Positions Left",
+      "s3l": "",
+      "flavor": "⚡ TENURE — Cannot be removed from play by any effect. 11 years of 'publish or perish.' She published. She didn't perish. The 400 adjuncts below her did. Tenure is a drawbridge — once you're across, you pull it up. The AI can write papers faster. It can't serve on the committee that decides who matters."
+    },
+    "sv-union-rep": {
+      "name": "THE UNION REP",
+      "category": "Human · Purpose",
+      "s1l": "Workers Represented",
+      "s2l": "Companies That Want Him Gone",
+      "s3l": "",
+      "flavor": "⚡ COLLECTIVE BARGAINING — Doubles the defense of all adjacent cards. 4,800 workers. Every one of them would have been 'restructured' without him. The AI recommended layoffs. He recommended a conversation. The CEO doesn't like conversations with people who know their rights. That's the point."
+    },
+    "sv-linkedin-otw": {
+      "name": "THE LINKEDIN OPEN-TO-WORK",
+      "category": "Society · Digital",
+      "s1l": "Applications Sent",
+      "s2l": "Responses (Not Automated)",
+      "s3l": "",
+      "flavor": "⚡ GREEN CIRCLE — Visible to all players. Cannot be hidden. 847 applications. 3 human responses. The green circle says 'I am available.' What it means is 'I am desperate and performing dignity.' The algorithm shows her profile to recruiters. The recruiters want 5 years of a tool released 2 years ago. She has 3. Close enough for a human. Not for the filter."
+    },
+    "sv-cert-mill": {
+      "name": "THE CERTIFICATION MILL",
+      "category": "Society · Digital",
+      "s1l": "Certifications Issued",
+      "s2l": "That Prove Competence",
+      "s3l": "",
+      "flavor": "⚡ CREDENTIAL INFLATION — Reduces the value of all skill cards by 1. 4.2 million certifications per year. Each one worth less than the last. The cert proves you watched the video. The video proves you paid. The payment proves nothing about skill. But the ATS requires it, so you get it, and so does everyone else, and now it means nothing again."
+    },
+    "sv-mba": {
+      "name": "THE MBA",
+      "category": "Society · Digital",
+      "s1l": "Average Cost",
+      "s2l": "Things It Teaches You Can't Learn Elsewhere",
+      "s3l": "",
+      "flavor": "⚡ SYNERGY — Combines two weaker cards into one. Does nothing on its own. $148,000 for two years of case studies about companies that no longer exist. The degree teaches you to optimize. The AI optimizes better. What the MBA actually sells is the people you meet in the hallway. That's a $148K networking event with a diploma attached."
+    },
+    "sv-internship": {
+      "name": "THE INTERNSHIP (UNPAID)",
+      "category": "Society · Labor",
+      "s1l": "Hours Worked",
+      "s2l": "Compensation",
+      "s3l": "",
+      "flavor": "⚡ EXPOSURE — Generates value for owner. Receives none. 500 hours of real work labeled 'learning opportunity.' She fetches coffee, formats slides, and does the job of the person who left. They didn't replace him. They got an intern. Experience: the currency you earn when they don't want to pay you in money."
+    },
+    "sv-ai-resume": {
+      "name": "THE AI RESUME SCREENER",
+      "category": "AI Product",
+      "s1l": "Resumes Screened/Day",
+      "s2l": "Qualified Candidates Rejected by Formatting",
+      "s3l": "",
+      "flavor": "⚡ KEYWORD MATCH — Rejects any card without exact matching text. 10,000 resumes per day. 40% rejected for formatting errors invisible to humans. She was the most qualified candidate. Her PDF used the wrong font. The recruiter never saw her name. The AI was trained on resumes of people who already had the job. It is looking for itself."
+    },
+    "sv-online-degree": {
+      "name": "THE ONLINE DEGREE",
+      "category": "AI Product",
+      "s1l": "Completion Rate",
+      "s2l": "Employers Who Value It Equally",
+      "s3l": "",
+      "flavor": "⚡ FLEXIBLE — Can be played from anywhere. Usually isn't played at all. 11% completion rate. 'Learn from anywhere!' They don't mention that 'anywhere' is usually your couch at midnight after a 10-hour shift. The diploma says the same thing as the campus one. The interviewer's face says it doesn't."
+    },
+    "sv-micro-credential": {
+      "name": "THE MICRO-CREDENTIAL",
+      "category": "AI Product",
+      "s1l": "Duration",
+      "s2l": "Shelf Life",
+      "s3l": "",
+      "flavor": "⚡ BADGE — Adds a small icon to your card. Changes nothing. 4 hours. A quiz. A badge. A line on a resume. Expires in 6 months because the technology changed. You earned 14 this year. Each one felt like progress. None of them were. The treadmill is the product. You are the subscription."
+    },
+    "sv-cover-letter": {
+      "name": "THE COVER LETTER",
+      "category": "Lore · Skills.void",
+      "s1l": "Time Spent Writing",
+      "s2l": "Time Spent Reading",
+      "s3l": "",
+      "flavor": "⚡ DEAR HIRING MANAGER — Has no effect. Nobody reads this card. 45 minutes crafting the perfect paragraph about why you're 'passionate about [company mission].' You're not passionate. You need health insurance. They need a cover letter. Nobody reads it. The AI reads it. The AI also wrote it. Two AIs corresponding about a human who needs rent money."
+    },
+    "sv-ai-portfolio": {
+      "name": "THE PORTFOLIO (AI-GENERATED)",
+      "category": "Lore · Skills.void",
+      "s1l": "Projects Shown",
+      "s2l": "Projects Actually Built by Applicant",
+      "s3l": "",
+      "flavor": "⚡ SHOWCASE — Looks impressive. Collapses under any inspection. 12 projects. Beautiful screenshots. Clean code. 10 of them generated in an afternoon. The interviewer asks about the architecture decision on project 3. He says 'I chose a modular approach for scalability.' She asks a follow-up. He panics. The portfolio is a mask. The interview is the mirror."
+    },
+    "sv-entry-level": {
+      "name": "THE 5 YEARS EXPERIENCE (ENTRY LEVEL)",
+      "category": "Lore · Skills.void",
+      "s1l": "Experience Required",
+      "s2l": "Position Level",
+      "s3l": "",
+      "flavor": "⚡ CATCH-22 — Cannot be played. Requires itself to be played. 'Entry level. 5 years experience. Master's preferred. $42K.' The job requires experience you can only get from the job. The posting was written by an AI trained on other postings written by AIs. Nobody human reviewed it. Nobody human could meet it. It's been open for 8 months. They're 'still looking.'"
+    }
+  }
+}

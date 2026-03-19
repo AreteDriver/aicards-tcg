@@ -2779,11 +2779,89 @@ body::before {
 
 /* ── SHARE BUTTON ── */
 .share-btn {
-  font-family:var(--font-mono);font-size:8px;letter-spacing:2px;
-  padding:5px 14px;border:1px solid #1a1a1a;background:transparent;
-  color:#3a3a3a;cursor:pointer;transition:all .2s;
+  font-size:18px;line-height:1;
+  padding:8px 12px;border:1px solid #1a1a1a;background:transparent;
+  color:#3a3a3a;cursor:pointer;transition:all .2s;border-radius:4px;
 }
-.share-btn:hover { border-color:var(--red);color:var(--red); }
+.share-btn:hover { border-color:var(--red);color:var(--red);background:rgba(136,17,17,.06); }
+
+/* ── RAID BOSS ── */
+.raid-wrap{width:100%;max-width:960px;margin:0 auto;padding:0 16px;}
+.raid-boss-card{border:1px solid #2a0000;background:linear-gradient(180deg,#0c0000 0%,#1a0808 100%);padding:20px;margin-bottom:16px;position:relative;overflow:hidden;}
+.raid-boss-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--red),transparent);}
+.raid-boss-emoji{font-size:48px;text-align:center;margin-bottom:8px;filter:drop-shadow(0 0 12px rgba(200,0,0,0.4));}
+.raid-boss-name{font-family:var(--font-display);font-size:24px;text-align:center;color:var(--red);letter-spacing:4px;text-shadow:0 0 20px rgba(200,0,0,0.3);}
+.raid-boss-desc{font-family:var(--font-body);font-size:11px;color:#666;text-align:center;margin:8px 0 12px;font-style:italic;line-height:1.4;}
+.raid-boss-stats{display:flex;justify-content:center;gap:20px;font-family:var(--font-mono);font-size:8px;letter-spacing:2px;color:#555;margin-bottom:12px;}
+.raid-boss-weakness{color:var(--gold);border:1px solid rgba(200,168,75,0.3);padding:2px 8px;background:rgba(200,168,75,0.05);}
+.raid-hp-bar{width:100%;height:16px;background:#1a0808;border:1px solid #330000;position:relative;overflow:hidden;}
+.raid-hp-fill{height:100%;background:linear-gradient(90deg,#881111,#cc2222);transition:width 0.5s ease;box-shadow:inset 0 0 8px rgba(255,50,50,0.3);}
+.raid-hp-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--font-mono);font-size:7px;color:#fff;letter-spacing:2px;text-shadow:0 0 4px #000;}
+.raid-attempts-bar{font-family:var(--font-mono);font-size:8px;letter-spacing:2px;color:#555;text-align:center;margin-bottom:16px;}
+.raid-team-section{margin-bottom:16px;}
+.raid-team-label{font-family:var(--font-mono);font-size:8px;letter-spacing:3px;color:#555;margin-bottom:10px;}
+.raid-team-slots{display:flex;gap:6px;justify-content:center;margin-bottom:12px;flex-wrap:wrap;}
+.raid-team-slot{width:60px;height:80px;border:1px dashed #333;display:flex;align-items:center;justify-content:center;font-size:24px;background:var(--bg-card);transition:all .2s;position:relative;}
+.raid-team-slot.filled{border-style:solid;border-color:#444;}
+.raid-team-slot .slot-remove{position:absolute;top:-6px;right:-6px;width:16px;height:16px;background:var(--red);color:#fff;border:none;border-radius:50%;font-size:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .2s;}
+.raid-team-slot:hover .slot-remove{opacity:1;}
+.raid-team-slot .slot-name{position:absolute;bottom:2px;font-family:var(--font-mono);font-size:5px;color:#555;letter-spacing:0.5px;text-align:center;width:100%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;padding:0 2px;}
+.raid-card-grid{display:flex;flex-wrap:wrap;gap:4px;max-height:200px;overflow-y:auto;padding:4px;border:1px solid #1a1a1a;background:var(--bg-card);}
+.raid-card-chip{font-family:var(--font-mono);font-size:7px;padding:4px 8px;border:1px solid #333;background:transparent;color:#555;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:4px;letter-spacing:0.5px;}
+.raid-card-chip:hover{border-color:#666;color:#888;}
+.raid-card-chip.selected{border-color:var(--red);color:var(--red);background:rgba(136,17,17,.08);}
+.raid-card-chip.disabled{opacity:0.3;pointer-events:none;}
+.raid-engage-btn{display:block;width:100%;max-width:300px;margin:16px auto;font-family:var(--font-mono);font-size:10px;letter-spacing:4px;padding:12px 24px;border:1px solid var(--red);background:transparent;color:var(--red);cursor:pointer;transition:all .3s;text-shadow:0 0 8px rgba(200,0,0,0.2);}
+.raid-engage-btn:hover:not(:disabled){background:rgba(136,17,17,.1);box-shadow:0 0 16px rgba(200,0,0,0.2);}
+.raid-engage-btn:disabled{opacity:0.3;cursor:not-allowed;}
+.raid-engage-btn.ready{animation:raidPulse 2s ease-in-out infinite;}
+@keyframes raidPulse{0%,100%{box-shadow:0 0 4px rgba(200,0,0,0.1);}50%{box-shadow:0 0 20px rgba(200,0,0,0.3);}}
+/* Battle screen */
+.raid-battle-wrap{width:100%;max-width:600px;margin:0 auto;padding:16px;min-height:100vh;display:flex;flex-direction:column;gap:12px;}
+.raid-battle-boss{text-align:center;padding:12px;border:1px solid #330000;background:linear-gradient(180deg,#0c0000,#1a0808);}
+.raid-battle-boss .boss-emoji{font-size:36px;}
+.raid-battle-boss .boss-name{font-family:var(--font-display);font-size:16px;color:var(--red);letter-spacing:3px;margin:4px 0;}
+.raid-battle-team{display:flex;gap:4px;justify-content:center;flex-wrap:wrap;}
+.raid-battle-card{width:56px;padding:6px 4px;border:1px solid #333;background:var(--bg-card);text-align:center;transition:all .3s;position:relative;}
+.raid-battle-card.ko{opacity:0.3;border-color:#222;}
+.raid-battle-card.attacking{transform:scale(1.1);border-color:var(--gold);box-shadow:0 0 8px rgba(200,168,75,0.3);}
+.raid-battle-card .card-emoji{font-size:20px;}
+.raid-battle-card .card-hp{font-family:var(--font-mono);font-size:6px;color:#555;letter-spacing:1px;margin-top:2px;}
+.raid-battle-card .ko-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.6);font-family:var(--font-mono);font-size:10px;color:var(--red);letter-spacing:3px;}
+.raid-battle-log-wrap{flex:1;min-height:120px;max-height:250px;overflow-y:auto;border:1px solid #1a1a1a;background:var(--bg-card);padding:8px;font-family:var(--font-mono);font-size:8px;letter-spacing:0.5px;line-height:1.8;}
+.raid-log-entry{color:#555;border-bottom:1px solid #111;padding:2px 0;}
+.raid-log-entry.player-atk{color:#60c8ff;}
+.raid-log-entry.boss-atk{color:var(--red);}
+.raid-log-entry.ko{color:#ff4040;font-weight:700;}
+.raid-log-entry.milestone{color:var(--gold);font-weight:700;}
+.raid-log-entry.round{color:#888;letter-spacing:3px;text-align:center;margin:4px 0;}
+.raid-dmg-pop{position:absolute;font-family:var(--font-mono);font-size:14px;font-weight:700;pointer-events:none;animation:dmgPop .8s ease-out forwards;}
+@keyframes dmgPop{0%{opacity:1;transform:translateY(0) scale(1);}100%{opacity:0;transform:translateY(-30px) scale(1.3);}}
+.raid-results{text-align:center;padding:20px;border:1px solid #333;background:var(--bg-card);}
+.raid-results-title{font-family:var(--font-display);font-size:28px;letter-spacing:6px;margin-bottom:8px;}
+.raid-results-title.victory{color:var(--gold);text-shadow:0 0 20px rgba(200,168,75,0.4);}
+.raid-results-title.defeat{color:var(--red);text-shadow:0 0 20px rgba(200,0,0,0.4);}
+.raid-results-damage{font-family:var(--font-mono);font-size:10px;color:#888;letter-spacing:2px;margin-bottom:12px;}
+.raid-results-breakdown{font-family:var(--font-mono);font-size:7px;color:#555;line-height:1.8;margin-bottom:12px;}
+.raid-milestones{display:flex;gap:6px;justify-content:center;margin-bottom:12px;}
+.raid-milestone{font-family:var(--font-mono);font-size:7px;letter-spacing:1px;padding:4px 8px;border:1px solid var(--gold);color:var(--gold);background:rgba(200,168,75,0.05);}
+.raid-milestone.locked{border-color:#333;color:#333;background:transparent;}
+.raid-history-entry{font-family:var(--font-mono);font-size:7px;color:#555;padding:6px 0;border-bottom:1px solid #111;display:flex;justify-content:space-between;align-items:center;}
+.raid-history-result{font-size:8px;letter-spacing:2px;}
+.raid-history-result.win{color:var(--gold);}
+.raid-history-result.loss{color:var(--red);}
+
+/* ── LANGUAGE SELECTOR ── */
+.lang-selector {
+  display:flex;gap:2px;justify-content:center;flex-wrap:wrap;
+}
+.lang-btn {
+  font-family:var(--font-mono);font-size:7px;letter-spacing:1px;
+  padding:3px 6px;border:1px solid #222;background:transparent;
+  color:#444;cursor:pointer;transition:all .2s;border-radius:2px;
+}
+.lang-btn:hover { border-color:#666;color:#888; }
+.lang-btn.active { border-color:var(--red);color:var(--red);background:rgba(136,17,17,.08); }
 
 /* ── RESET BUTTON ── */
 .reset-btn {
@@ -3377,7 +3455,7 @@ body::before {
   .modal-card-wrap .card{width:clamp(260px,75vw,300px);height:auto;aspect-ratio:2/3}
   .modal-close{top:12px;right:14px;font-size:11px;padding:10px}
   .modal-share-row{flex-wrap:wrap;gap:8px;justify-content:center;bottom:16px!important;left:50%!important;transform:translateX(-50%)!important;width:90vw}
-  .share-btn{padding:10px 16px;font-size:9px;min-height:44px;flex:1;min-width:80px;text-align:center}
+  .share-btn{padding:10px 14px;font-size:20px;min-height:44px;flex:0;min-width:44px;text-align:center}
 
   /* ── Collection ── */
   .coll-entry{font-size:8px;padding:6px 10px}
@@ -3458,8 +3536,8 @@ body::before {
   /* ── Modal ── */
   .modal-card-wrap{transform:scale(1)}
   .modal-card-wrap .card{width:clamp(240px,80vw,280px);height:auto;aspect-ratio:2/3}
-  .modal-share-row{flex-direction:column;align-items:center;bottom:10px!important;gap:6px;width:88vw}
-  .share-btn{padding:12px 18px;font-size:9px;width:100%;min-height:44px;text-align:center}
+  .modal-share-row{flex-direction:row;align-items:center;justify-content:center;bottom:10px!important;gap:10px;width:88vw}
+  .share-btn{padding:12px 14px;font-size:22px;width:auto;min-height:44px;min-width:44px;text-align:center}
 
   /* ── Landing ── */
   .landing-title{font-size:clamp(32px,11vw,48px);letter-spacing:4px}
@@ -3518,8 +3596,8 @@ body::before {
 
 <!-- LOADING SCREEN -->
 <div id="loading-screen">
-  <div class="load-logo">AI CARDS</div>
-  <div class="load-sub">2030 SURVIVAL EDITION</div>
+  <div class="load-logo" data-i18n="loading.logo">AI CARDS</div>
+  <div class="load-sub" data-i18n="loading.sub">2030 SURVIVAL EDITION</div>
   <div class="load-bar"><div class="load-bar-fill"></div></div>
 </div>
 <script>
@@ -3529,10 +3607,11 @@ setTimeout(function(){var el=document.getElementById('loading-screen');if(el){el
 
 <div id="app">
   <button class="sound-toggle on first-load" id="sound-toggle" onclick="toggleSound()" title="Toggle sound">🔊</button>
+  <div class="lang-selector" id="lang-selector" style="position:fixed;top:8px;left:8px;z-index:150;"></div>
   <div id="toast" class="toast"></div>
   <div id="mission-toast" class="mission-toast">
     <span class="mt-check">&#10003;</span>
-    <span class="mt-title" id="mt-title">MISSION COMPLETE</span>
+    <span class="mt-title" id="mt-title" data-i18n="missions.complete">MISSION COMPLETE</span>
     <span class="mt-label" id="mt-label"></span>
   </div>
 
@@ -3540,16 +3619,16 @@ setTimeout(function(){var el=document.getElementById('loading-screen');if(el){el
   <div id="chain-modal" class="chain-modal" onclick="if(event.target===this)closeChainModal()">
     <div class="chain-modal-box">
       <button class="chain-modal-close" onclick="closeChainModal()">✕</button>
-      <div class="chain-modal-title">GO ON-CHAIN</div>
-      <div class="chain-modal-sub">
+      <div class="chain-modal-title" data-i18n="chain.go_onchain">GO ON-CHAIN</div>
+      <div class="chain-modal-sub" data-i18n="chain.sub">
         Your cards become NFTs on Sui. Real digital assets you own.
       </div>
       <ul class="chain-modal-features">
-        <li>SELL cards you don't want</li>
-        <li>TRADE with other collectors</li>
-        <li>COLLECT on-chain — verifiable rarity</li>
-        <li>OWN your cards — not just localStorage</li>
-        <li>MYTHIC pulls are provably 1/10,000</li>
+        <li data-i18n="chain.sell">SELL cards you don't want</li>
+        <li data-i18n="chain.trade">TRADE with other collectors</li>
+        <li data-i18n="chain.collect">COLLECT on-chain — verifiable rarity</li>
+        <li data-i18n="chain.own">OWN your cards — not just localStorage</li>
+        <li data-i18n="chain.mythic_provable">MYTHIC pulls are provably 1/10,000</li>
       </ul>
       <div id="chain-modal-body">
         <input type="text" class="chain-modal-input" id="chain-address-input"
@@ -3568,9 +3647,9 @@ setTimeout(function(){var el=document.getElementById('loading-screen');if(el){el
       </div>
     </div>
     <div class="modal-share-row" id="modal-share-row" style="position:fixed;bottom:24px;display:flex;gap:10px;z-index:201;">
-      <button class="share-btn" onclick="event.stopPropagation();shareCard('download')">DOWNLOAD</button>
-      <button class="share-btn" onclick="event.stopPropagation();shareCard('clipboard')">COPY TO CLIPBOARD</button>
-      <button class="share-btn" onclick="event.stopPropagation();shareCard('share')">SHARE</button>
+      <button class="share-btn" onclick="event.stopPropagation();shareCard('download')" title="Download">⬇</button>
+      <button class="share-btn" onclick="event.stopPropagation();shareCard('clipboard')" title="Copy to clipboard">📋</button>
+      <button class="share-btn" onclick="event.stopPropagation();shareCard('share')" title="Share">📤</button>
     </div>
   </div>
   <div id="rarityFlash"></div>
@@ -3601,17 +3680,17 @@ setTimeout(function(){var el=document.getElementById('loading-screen');if(el){el
   <div id="landing-screen" class="active">
     <div class="landing-bg" id="landing-bg"></div>
     <div class="landing-content">
-      <div class="landing-eyebrow">▓▓▓ CLASSIFIED · SERIES ONE · 2030 EDITION ▓▓▓</div>
-      <div class="landing-title">AI CARDS</div>
-      <div class="landing-sub">2030 SURVIVAL EDITION</div>
-      <p class="landing-lore">
+      <div class="landing-eyebrow" data-i18n="landing.eyebrow">▓▓▓ CLASSIFIED · SERIES ONE · 2030 EDITION ▓▓▓</div>
+      <div class="landing-title" data-i18n="landing.title">AI CARDS</div>
+      <div class="landing-sub" data-i18n="landing.sub">2030 SURVIVAL EDITION</div>
+      <p class="landing-lore" data-i18n="landing.lore">
         In 2030, the algorithm took the white-collar jobs first. Then the creative ones.
         Then the ones nobody thought it could touch. These are the humans who survived.
         These are the ones who didn't. Open packs. See which world you build.
       </p>
       <div id="card-of-day" class="card-of-day" style="display:none;"></div>
-      <button class="landing-open-btn" onclick="enterFromLanding('pack-screen')">▶ OPEN PACKS</button>
-      <button class="landing-coll-link" onclick="enterFromLanding('collection-screen')">VIEW COLLECTION</button>
+      <button class="landing-open-btn" onclick="enterFromLanding('pack-screen')" data-i18n="landing.open_packs">▶ OPEN PACKS</button>
+      <button class="landing-coll-link" onclick="enterFromLanding('collection-screen')" data-i18n="landing.view_collection">VIEW COLLECTION</button>
     </div>
   </div>
 
@@ -3619,45 +3698,46 @@ setTimeout(function(){var el=document.getElementById('loading-screen');if(el){el
   <div class="screen" id="pack-screen">
     <div style="width:100%;max-width:960px;">
       <div class="site-header">
-        <div class="header-eyebrow">▓▓▓ CLASSIFIED · SERIES ONE · 2030 EDITION ▓▓▓</div>
-        <div class="header-title">AI CARDS</div>
-        <div class="header-sub">2030 SURVIVAL EDITION</div>
+        <div class="header-eyebrow" data-i18n="header.eyebrow">▓▓▓ CLASSIFIED · SERIES ONE · 2030 EDITION ▓▓▓</div>
+        <div class="header-title" data-i18n="header.title">AI CARDS</div>
+        <div class="header-sub" data-i18n="header.sub">2030 SURVIVAL EDITION</div>
         <div class="nav-pills">
-          <button class="nav-pill active" onclick="showScreen('pack-screen')">PACKS</button>
-          <button class="nav-pill" onclick="showScreen('collection-screen')">COLLECTION</button>
+          <button class="nav-pill active" onclick="showScreen('pack-screen')" data-i18n="nav.packs">PACKS</button>
+          <button class="nav-pill" onclick="showScreen('collection-screen')" data-i18n="nav.collection">COLLECTION</button>
+          <button class="nav-pill" onclick="showScreen('raid-screen')" data-i18n="nav.raids">RAIDS</button>
         </div>
       </div>
       <div class="daily-packs-bar">
-        <div class="daily-packs-count">FREE PACKS: <span id="dp-remaining">10</span> / 10</div>
-        <div class="daily-packs-timer" id="dp-timer">Next pack in: --:--</div>
+        <div class="daily-packs-count"><span data-i18n="stats.free_packs">FREE PACKS</span>: <span id="dp-remaining">10</span> / 10</div>
+        <div class="daily-packs-timer" id="dp-timer"><span data-i18n="stats.next_pack">Next pack in</span>: --:--</div>
         <div class="daily-packs-pity" id="dp-pity-wrap" style="font-size:9px;letter-spacing:2px;margin-top:4px;"></div>
       </div>
       <div class="set-progress-bar" id="set-progress-bar"></div>
       <div class="stats-bar">
-        <div class="stat-chip">PULLS: <span id="st-pulls">0</span></div>
-        <div class="stat-chip">OWNED: <span id="st-owned">0</span>/<span id="st-total">0</span></div>
-        <div class="stat-chip">LEGENDARIES: <span id="st-leg">0</span></div>
-        <div class="stat-chip">PACKS OPENED: <span id="st-packs">0</span></div>
-        <div class="stat-chip">PITY: <span id="st-pity">0</span>/10</div>
+        <div class="stat-chip"><span data-i18n="stats.pulls">PULLS</span>: <span id="st-pulls">0</span></div>
+        <div class="stat-chip"><span data-i18n="stats.owned">OWNED</span>: <span id="st-owned">0</span>/<span id="st-total">0</span></div>
+        <div class="stat-chip"><span data-i18n="stats.legendaries">LEGENDARIES</span>: <span id="st-leg">0</span></div>
+        <div class="stat-chip"><span data-i18n="stats.packs_opened">PACKS OPENED</span>: <span id="st-packs">0</span></div>
+        <div class="stat-chip"><span data-i18n="stats.pity">PITY</span>: <span id="st-pity">0</span>/10</div>
       </div>
       <!-- SET 1: 2030 SURVIVAL -->
       <div style="width:100%;max-width:960px;margin-bottom:8px;">
-        <div style="font-family:var(--font-mono);font-size:8px;letter-spacing:3px;color:#555;margin-bottom:10px;">SET 1 — 2030 SURVIVAL</div>
+        <div style="font-family:var(--font-mono);font-size:8px;letter-spacing:3px;color:#555;margin-bottom:10px;" data-i18n="set.1">SET 1 — 2030 SURVIVAL</div>
       </div>
       <div class="pack-grid">
         <div class="pack-card p-standard" onclick="openPack('standard')">
           <span class="pack-icon-wrap">📦</span>
-          <div class="pack-title">2030 SURVIVAL</div>
-          <div class="pack-desc">Five cards from the full pool. Trades, purpose, displacement, AI products, lore. See what the algorithm gives you.</div>
-          <div class="pack-meta">5 CARDS · FULL POOL · WEIGHTED</div>
-          <button class="pack-btn">▶ OPEN PACK</button>
+          <div class="pack-title" data-i18n="pack.survival">2030 SURVIVAL</div>
+          <div class="pack-desc" data-i18n="pack.survival_desc">Five cards from the full pool. Trades, purpose, displacement, AI products, lore. See what the algorithm gives you.</div>
+          <div class="pack-meta" data-i18n="pack.survival_meta">5 CARDS · FULL POOL · WEIGHTED</div>
+          <button class="pack-btn" data-i18n="pack.open_btn">▶ OPEN PACK</button>
         </div>
         <div class="pack-card p-trade" onclick="openPack('legendary')">
           <span class="pack-icon-wrap">⚡</span>
-          <div class="pack-title">REDUNDANCY</div>
-          <div class="pack-desc">Guaranteed one Legendary. The trades that will outlast all of it. The rest is fate.</div>
-          <div class="pack-meta">5 CARDS · 1 LEGENDARY GUARANTEED</div>
-          <button class="pack-btn">▶ OPEN PACK</button>
+          <div class="pack-title" data-i18n="pack.redundancy">REDUNDANCY</div>
+          <div class="pack-desc" data-i18n="pack.redundancy_desc">Guaranteed one Legendary. The trades that will outlast all of it. The rest is fate.</div>
+          <div class="pack-meta" data-i18n="pack.redundancy_meta">5 CARDS · 1 LEGENDARY GUARANTEED</div>
+          <button class="pack-btn" data-i18n="pack.open_btn">▶ OPEN PACK</button>
         </div>
       </div>
 
@@ -3672,17 +3752,17 @@ setTimeout(function(){var el=document.getElementById('loading-screen');if(el){el
       <div id="set5-zone"></div>
       <div id="set6-zone"></div>
       <div class="daily-missions" id="daily-missions">
-        <div class="daily-missions-title">DAILY MISSIONS</div>
-        <div class="mission-row"><span class="mission-label">Open 10 packs</span><span class="mission-progress" id="dm-packs">0/10</span></div>
-        <div class="mission-row"><span class="mission-label">Pull at least one Legendary</span><span class="mission-progress" id="dm-legendary">0/1</span></div>
-        <div class="mission-row"><span class="mission-label">Pull 3 different rarities</span><span class="mission-progress" id="dm-rarities">0/3</span></div>
-        <div class="mission-row"><span class="mission-label">Share a card</span><span class="mission-progress" id="dm-share">0/1</span></div>
+        <div class="daily-missions-title" data-i18n="missions.title">DAILY MISSIONS</div>
+        <div class="mission-row"><span class="mission-label" data-i18n="missions.open_packs">Open 10 packs</span><span class="mission-progress" id="dm-packs">0/10</span></div>
+        <div class="mission-row"><span class="mission-label" data-i18n="missions.pull_legendary">Pull at least one Legendary</span><span class="mission-progress" id="dm-legendary">0/1</span></div>
+        <div class="mission-row"><span class="mission-label" data-i18n="missions.pull_rarities">Pull 3 different rarities</span><span class="mission-progress" id="dm-rarities">0/3</span></div>
+        <div class="mission-row"><span class="mission-label" data-i18n="missions.share_card">Share a card</span><span class="mission-progress" id="dm-share">0/1</span></div>
       </div>
       <div class="daily-missions" id="weekly-goal" style="margin-top:12px;"></div>
       <div class="daily-missions" id="pack-history-zone" style="margin-top:12px;display:none;"></div>
       <div class="daily-missions" style="margin-top:12px;">
-        <div class="daily-missions-title">ACHIEVEMENTS</div>
-        <div class="mission-row"><span class="mission-label">Complete your collection</span><span class="mission-progress" id="dm-collection">0/<span id="dm-coll-total">69</span></span></div>
+        <div class="daily-missions-title" data-i18n="missions.achievements">ACHIEVEMENTS</div>
+        <div class="mission-row"><span class="mission-label" data-i18n="missions.complete_collection">Complete your collection</span><span class="mission-progress" id="dm-collection">0/<span id="dm-coll-total">69</span></span></div>
       </div>
       <div class="daily-missions" id="leaderboard-zone" style="margin-top:12px;"></div>
       <div id="profile-zone"></div>
@@ -3699,8 +3779,8 @@ setTimeout(function(){var el=document.getElementById('loading-screen');if(el){el
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.216 6.415l-.132-.666c-.119-.598-.388-1.163-1.001-1.379-.197-.069-.42-.098-.57-.241-.152-.143-.196-.366-.231-.572-.065-.378-.125-.756-.192-1.133-.057-.325-.102-.69-.25-.987-.195-.4-.597-.634-.996-.788a5.723 5.723 0 00-.626-.194c-1-.263-2.05-.36-3.077-.416a25.834 25.834 0 00-3.7.062c-.915.083-1.88.184-2.75.5-.318.116-.646.256-.888.501-.297.302-.393.77-.177 1.146.154.267.415.456.692.58.36.162.737.284 1.123.366 1.075.238 2.189.331 3.287.37 1.218.05 2.437.01 3.65-.118.299-.033.598-.073.896-.119.352-.054.578-.513.474-.834-.124-.383-.457-.531-.834-.473-.466.074-.96.108-1.382.146-1.177.08-2.358.082-3.536.006a22.228 22.228 0 01-1.157-.107l-.28-.04c-.18-.032-.191-.122-.122-.283a1.16 1.16 0 01.277-.37c.167-.158.39-.265.609-.344.407-.145.84-.222 1.274-.278a20.763 20.763 0 013.182-.107c.653.032 1.31.07 1.948.192.243.047.47.124.648.291.18.17.244.438.184.694-.064.28-.148.554-.219.832l-.19.712c-.084.32.132.676.456.749.37.086.766-.08.848-.455l.252-.953.064-.242c.063-.239.113-.488.18-.724.116-.404.254-.755.632-.916.208-.088.458-.077.643.072.22.177.291.45.348.72.054.259.091.523.12.787l.011.079c.056.487-.099.847-.551 1.04-.292.124-.607.187-.895.316-.37.166-.645.484-.787.874-.026.07-.054.148-.056.218-.002.108.02.258.092.336.056.06.162.073.259.034.079-.032.132-.097.186-.152.42-.428.892-.694 1.448-.854.522-.15 1.026-.103 1.37.35.105.138.175.295.261.46.014.028.029.058.042.089.12.26.136.523.174.802z M8.5 11c-.828 0-1.5.895-1.5 2s.672 2 1.5 2 1.5-.895 1.5-2-.672-2-1.5-2zm7 0c-.828 0-1.5.895-1.5 2s.672 2 1.5 2 1.5-.895 1.5-2-.672-2-1.5-2zM4.25 20h15.5c.69 0 1.25-.56 1.25-1.25V14H3v4.75c0 .69.56 1.25 1.25 1.25z"/></svg>
           </a>
         </div>
-        <div class="footer-credit">Built by AreteDriver</div>
-        <button class="reveal-action-btn" style="margin-top:8px;font-size:7px;letter-spacing:2px;" onclick="copyReferralLink()">INVITE FRIENDS</button>
+        <div class="footer-credit" data-i18n="misc.built_by">Built by AreteDriver</div>
+        <button class="reveal-action-btn" style="margin-top:8px;font-size:7px;letter-spacing:2px;" onclick="copyReferralLink()" data-i18n="misc.invite_friends">INVITE FRIENDS</button>
       </footer>
     </div>
   </div>
@@ -3727,20 +3807,150 @@ setTimeout(function(){var el=document.getElementById('loading-screen');if(el){el
   <div class="screen" id="collection-screen">
     <div class="collection-wrap">
       <div class="site-header">
-        <div class="header-eyebrow">▓▓▓ CLASSIFIED · FULL COLLECTION ▓▓▓</div>
-        <div class="header-title">AI CARDS</div>
-        <div class="header-sub">2030 SURVIVAL EDITION</div>
+        <div class="header-eyebrow" data-i18n="header.eyebrow_collection">▓▓▓ CLASSIFIED · FULL COLLECTION ▓▓▓</div>
+        <div class="header-title" data-i18n="header.title">AI CARDS</div>
+        <div class="header-sub" data-i18n="header.sub">2030 SURVIVAL EDITION</div>
         <div class="nav-pills">
-          <button class="nav-pill" onclick="showScreen('pack-screen')">PACKS</button>
-          <button class="nav-pill active">COLLECTION</button>
+          <button class="nav-pill" onclick="showScreen('pack-screen')" data-i18n="nav.packs">PACKS</button>
+          <button class="nav-pill active" onclick="showScreen('collection-screen')" data-i18n="nav.collection">COLLECTION</button>
+          <button class="nav-pill" onclick="showScreen('raid-screen')" data-i18n="nav.raids">RAIDS</button>
         </div>
       </div>
       <div id="coll-body"></div>
     </div>
   </div>
+
+  <!-- RAID BOSS SCREEN -->
+  <div class="screen" id="raid-screen">
+    <div class="raid-wrap">
+      <div class="site-header">
+        <div class="header-eyebrow" data-i18n="header.eyebrow_raid">▓▓▓ CLASSIFIED · RAID OPERATIONS ▓▓▓</div>
+        <div class="header-title" data-i18n="header.title">AI CARDS</div>
+        <div class="header-sub" data-i18n="header.sub">2030 SURVIVAL EDITION</div>
+        <div class="nav-pills">
+          <button class="nav-pill" onclick="showScreen('pack-screen')" data-i18n="nav.packs">PACKS</button>
+          <button class="nav-pill" onclick="showScreen('collection-screen')" data-i18n="nav.collection">COLLECTION</button>
+          <button class="nav-pill active" onclick="showScreen('raid-screen')" data-i18n="nav.raids">RAIDS</button>
+        </div>
+      </div>
+      <div id="raid-body"></div>
+    </div>
+  </div>
+
+  <!-- RAID BATTLE SCREEN -->
+  <div class="screen" id="raid-battle-screen">
+    <div class="raid-battle-wrap">
+      <div id="raid-battle-header"></div>
+      <div id="raid-boss-display"></div>
+      <div id="raid-team-status"></div>
+      <div id="raid-battle-log"></div>
+      <div id="raid-battle-actions"></div>
+    </div>
+  </div>
 </div>
 
 <script>
+// ═══════════════════════════════════════
+// I18N ENGINE
+// ═══════════════════════════════════════
+const I18N = { en: null };
+let currentLang = localStorage.getItem('aicards_lang') || navigator.language.split('-')[0] || 'en';
+if (!['en','ja','ko','es','pt','zh'].includes(currentLang)) currentLang = 'en';
+
+function t(key, ...args) {
+  const lang = I18N[currentLang];
+  let val = (lang && lang.ui && lang.ui[key]) || (I18N.en && I18N.en.ui && I18N.en.ui[key]) || key;
+  args.forEach((a, i) => { val = val.replace('{' + i + '}', a); });
+  return val;
+}
+
+function cardT(cardId, field) {
+  const lang = I18N[currentLang];
+  if (lang && lang.cards && lang.cards[cardId] && lang.cards[cardId][field]) return lang.cards[cardId][field];
+  if (I18N.en && I18N.en.cards && I18N.en.cards[cardId] && I18N.en.cards[cardId][field]) return I18N.en.cards[cardId][field];
+  return null;
+}
+
+function rarityT(rarity) { return t('rarity.' + rarity) || rarity; }
+function catT(cat) { return t('cat.' + cat) || cat; }
+
+// Load a language file and re-render
+async function loadLang(lang) {
+  if (lang === currentLang && I18N[lang]) return;
+  if (!I18N[lang]) {
+    try {
+      const res = await fetch('lang/' + lang + '.json');
+      I18N[lang] = await res.json();
+    } catch(e) {
+      console.warn('Failed to load lang/' + lang + '.json');
+      return;
+    }
+  }
+  currentLang = lang;
+  localStorage.setItem('aicards_lang', lang);
+  document.documentElement.lang = lang;
+  applyTranslations();
+}
+
+function applyTranslations() {
+  // Update static HTML elements with data-i18n
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    el.textContent = t(key);
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    el.placeholder = t(el.getAttribute('data-i18n-placeholder'));
+  });
+  // Re-render dynamic sections
+  if (typeof updateStats === 'function') updateStats();
+  if (typeof updateDailyUI === 'function') updateDailyUI();
+  if (typeof renderWeeklyGoal === 'function') renderWeeklyGoal();
+  if (typeof renderBuyPacks === 'function') renderBuyPacks();
+  if (typeof renderChainBanner === 'function') renderChainBanner();
+  if (typeof renderChainStatus === 'function') renderChainStatus();
+  if (typeof renderSet2Zone === 'function') renderSet2Zone();
+  if (typeof renderSet3Zone === 'function') renderSet3Zone();
+  if (typeof renderSet4Zone === 'function') renderSet4Zone();
+  if (typeof renderSet5Zone === 'function') renderSet5Zone();
+  if (typeof renderSet6Zone === 'function') renderSet6Zone();
+  if (typeof renderSetProgress === 'function') renderSetProgress();
+  if (typeof renderPackHistory === 'function') renderPackHistory();
+  if (typeof renderLeaderboard === 'function') renderLeaderboard();
+  if (typeof renderProfile === 'function') renderProfile();
+  if (typeof renderCardOfDay === 'function') renderCardOfDay();
+  if (document.getElementById('collection-screen').classList.contains('active') && typeof renderCollection === 'function') renderCollection();
+  if (document.getElementById('raid-screen').classList.contains('active') && typeof renderRaidScreen === 'function') renderRaidScreen();
+  // Update language selector active state
+  document.querySelectorAll('.lang-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.lang === currentLang);
+  });
+}
+
+function initLangSelector() {
+  const langs = [
+    {code:'en',label:'EN'},
+    {code:'ja',label:'JA'},
+    {code:'ko',label:'KO'},
+    {code:'es',label:'ES'},
+    {code:'pt',label:'PT'},
+    {code:'zh',label:'ZH'}
+  ];
+  const sel = document.getElementById('lang-selector');
+  if (!sel) return;
+  sel.innerHTML = langs.map(l =>
+    '<button class="lang-btn' + (l.code === currentLang ? ' active' : '') + '" data-lang="' + l.code + '" onclick="loadLang(\'' + l.code + '\')">' + l.label + '</button>'
+  ).join('');
+}
+
+// Load EN synchronously from embedded data, load other langs on demand
+fetch('lang/en.json').then(r=>r.json()).then(d=>{I18N.en=d;}).catch(()=>{});
+if (currentLang !== 'en') {
+  fetch('lang/' + currentLang + '.json').then(r=>r.json()).then(d=>{
+    I18N[currentLang]=d;
+    applyTranslations();
+  }).catch(()=>{currentLang='en';localStorage.setItem('aicards_lang','en');});
+}
+
 // ═══════════════════════════════════════
 // CARD DATA
 // ═══════════════════════════════════════
@@ -4892,7 +5102,7 @@ function updateDailyUI() {
   if (pityWrap) {
     const pityLeft = Math.max(0, GOLD_PACK_PITY - S.pulls);
     const isClose = pityLeft <= 3;
-    pityWrap.innerHTML = '<span style="color:' + (isClose ? 'var(--gold);text-shadow:0 0 8px rgba(200,168,75,0.4)' : '#555') + ';">&#9889; LEGENDARY IN ' + pityLeft + ' PACKS</span>';
+    pityWrap.innerHTML = '<span style="color:' + (isClose ? 'var(--gold);text-shadow:0 0 8px rgba(200,168,75,0.4)' : '#555') + ';">&#9889; ' + t('stats.legendary_in') + ' ' + pityLeft + ' ' + t('stats.packs_word') + '</span>';
   }
 
   // Daily Missions
@@ -4946,7 +5156,7 @@ function startDailyTimer() {
     const m = Math.floor((diff % 3600000) / 60000);
     const s = Math.floor((diff % 60000) / 1000);
     const el = document.getElementById('dp-timer');
-    if (el) el.textContent = `Resets in: ${h}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+    if (el) el.textContent = t('stats.resets_in') + `: ${h}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
   }
   tick();
   dailyTimerInterval = setInterval(tick, 1000);
@@ -5061,23 +5271,30 @@ function buildCardHTML(card) {
   const c = card.color;
   const isSpeciation = card.id === 'speciation-pressure';
   const ptColor = isSpeciation ? 'style="color:#ff4040;border-color:#aa1010;"' : '';
+  const cName = cardT(card.id, 'name') || card.name;
+  const cCat = cardT(card.id, 'category') || catT(card.category);
+  const cS1l = cardT(card.id, 's1l') || card.s1.l;
+  const cS2l = cardT(card.id, 's2l') || card.s2.l;
+  const cS3l = (card.s3 ? (cardT(card.id, 's3l') || card.s3.l) : '');
+  const cFlavor = cardT(card.id, 'flavor') || card.flavor;
+  const cRarity = rarityT(card.rarity);
   return `
     <div class="card-inner ${c}">
       <div class="card-name-bar">
-        <div class="card-name ${c}">${card.name}</div>
+        <div class="card-name ${c}">${cName}</div>
         <div class="kscore-orb ${card.kscoreClass}">${card.kscore}</div>
       </div>
       <div class="card-art ${card.artClass}"></div>
       <div class="card-type-line ${c}">
-        <span class="type-category">${card.category}</span>
-        <span class="type-rarity">${card.rarity}</span>
+        <span class="type-category">${cCat}</span>
+        <span class="type-rarity">${cRarity}</span>
       </div>
       <div class="card-textbox ${c}">
-        <div class="stat-row"><span class="stat-bullet">◆</span><span class="stat-label">${card.s1.l}:</span><span class="stat-value ${c}">${card.s1.v}</span></div>
-        <div class="stat-row"><span class="stat-bullet">◆</span><span class="stat-label">${card.s2.l}:</span><span class="stat-value ${c}">${card.s2.v}</span></div>
-        <div class="stat-row"><span class="stat-bullet">◆</span><span class="stat-label">${card.s3.l}:</span><span class="stat-value ${c}">${card.s3.v}</span></div>
+        <div class="stat-row"><span class="stat-bullet">◆</span><span class="stat-label">${cS1l}:</span><span class="stat-value ${c}">${card.s1.v}</span></div>
+        <div class="stat-row"><span class="stat-bullet">◆</span><span class="stat-label">${cS2l}:</span><span class="stat-value ${c}">${card.s2.v}</span></div>
+        ${card.s3 ? '<div class="stat-row"><span class="stat-bullet">◆</span><span class="stat-label">' + cS3l + ':</span><span class="stat-value ' + c + '">' + card.s3.v + '</span></div>' : ''}
         <div class="textbox-divider ${c}"></div>
-        <div class="card-flavor">${card.flavor}</div>
+        <div class="card-flavor">${cFlavor}</div>
       </div>
       <div class="card-bottom">
         <div style="display:flex;align-items:center;gap:5px;">
@@ -5177,8 +5394,15 @@ function enterFromLanding(target) {
 function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
+  // Sync nav pill active states
+  document.querySelectorAll('.nav-pill').forEach(p => {
+    const m = (p.getAttribute('onclick')||'').match(/showScreen\('([^']+)'\)/);
+    if (m) p.classList.toggle('active', m[1] === id);
+    else if (!p.getAttribute('onclick')) p.classList.remove('active');
+  });
   if(id==='collection-screen') renderCollection();
   if(id==='pack-screen') { updateStats(); renderProfile(); updateDailyUI(); renderWeeklyGoal(); renderBuyPacks(); renderChainBanner(); renderChainStatus(); renderSet2Zone(); renderSet3Zone(); renderSet4Zone(); renderSet5Zone(); renderSet6Zone(); renderSetProgress(); renderPackHistory(); renderLeaderboard(); }
+  if(id==='raid-screen') renderRaidScreen();
 }
 
 function updateStats() {
@@ -5195,14 +5419,14 @@ function updateStats() {
 // ═══════════════════════════════════════
 function openPack(type) {
   // Check set unlock
-  if (type==='jobless' && !isSet2Unlocked()) { showToast('COMPLETE SET 1 TO UNLOCK JOBLESS.AI'); return; }
-  if (type==='doomscroll' && !isSet3Unlocked()) { showToast('COMPLETE SET 2 TO UNLOCK DOOMSCROLL'); return; }
-  if (type==='loveexe' && !isSet4Unlocked()) { showToast('COMPLETE SET 3 TO UNLOCK LOVE.EXE'); return; }
-  if (type==='warroom' && !isSet5Unlocked()) { showToast('COMPLETE SET 4 TO UNLOCK WAR ROOM'); return; }
-  if (type==='skillsvoid' && !isSet6Unlocked()) { showToast('COMPLETE SET 5 TO UNLOCK SKILLS.VOID'); return; }
+  if (type==='jobless' && !isSet2Unlocked()) { showToast(t('toast.set1_unlock')); return; }
+  if (type==='doomscroll' && !isSet3Unlocked()) { showToast(t('toast.set2_unlock')); return; }
+  if (type==='loveexe' && !isSet4Unlocked()) { showToast(t('toast.set3_unlock')); return; }
+  if (type==='warroom' && !isSet5Unlocked()) { showToast(t('toast.set4_unlock')); return; }
+  if (type==='skillsvoid' && !isSet6Unlocked()) { showToast(t('toast.set5_unlock')); return; }
   // Check daily limit
   if (getDailyPacksRemaining() <= 0) {
-    showToast('NO DAILY PACKS LEFT — RESETS AT MIDNIGHT');
+    showToast(t('toast.no_packs'));
     return;
   }
 
@@ -5218,14 +5442,15 @@ function openPack(type) {
   // Consume daily pack
   consumeDailyPack();
 
-  const labels = {standard:'2030 SURVIVAL PACK',legendary:'REDUNDANCY PACK',jobless:'JOBLESS.AI PACK',doomscroll:'DOOMSCROLL PACK',loveexe:'LOVE.EXE PACK',warroom:'WAR ROOM PACK',skillsvoid:'SKILLS.VOID PACK'};
-  document.getElementById('op-pack-name').textContent = labels[type];
+  const labelKeys = {standard:'pack.survival_pack',legendary:'pack.redundancy_pack',jobless:'pack.jobless_pack',doomscroll:'pack.doomscroll_pack',loveexe:'pack.loveexe_pack',warroom:'pack.warroom_pack',skillsvoid:'pack.skillsvoid_pack'};
+  document.getElementById('op-pack-name').textContent = t(labelKeys[type]);
   document.getElementById('legendaryBeam').classList.remove('active');
 
   // Pack tear animation
   const PACK_COLORS = {standard:'#2196c8',legendary:'#c8a84b',jobless:'#ff4040',doomscroll:'#60c8ff',loveexe:'#ff69b4',warroom:'#ff6040',skillsvoid:'#a0a0a0'};
   const packColor = PACK_COLORS[type] || '#888';
-  const packTypeLabel = {standard:'2030 SURVIVAL',legendary:'REDUNDANCY',jobless:'JOBLESS.AI',doomscroll:'DOOMSCROLL',loveexe:'LOVE.EXE',warroom:'WAR ROOM',skillsvoid:'SKILLS.VOID'}[type];
+  const packTypeKeys = {standard:'pack.survival',legendary:'pack.redundancy',jobless:'pack.jobless',doomscroll:'pack.doomscroll',loveexe:'pack.loveexe',warroom:'pack.warroom',skillsvoid:'pack.skillsvoid'};
+  const packTypeLabel = t(packTypeKeys[type]);
   const tearEl = document.getElementById('packTear');
   const tearInner = document.getElementById('packTearInner');
   tearInner.style.color = packColor;
@@ -5396,7 +5621,7 @@ function revealDeckCard(index) {
   if (isNew) {
     const badge = document.createElement('div');
     badge.className = 'new-badge';
-    badge.textContent = 'NEW';
+    badge.textContent = t('opening.new_badge');
     el.appendChild(badge);
   }
 
@@ -5452,26 +5677,26 @@ function updateDeckUI() {
 
   // Tap hint
   if (revealed < 5 && revealed > 0) {
-    stripHTML += `<div style="font-family:var(--font-mono);font-size:8px;color:#333;letter-spacing:2px;width:100%;text-align:center;margin-top:4px;">TAP CARD FOR NEXT</div>`;
+    stripHTML += `<div style="font-family:var(--font-mono);font-size:8px;color:#333;letter-spacing:2px;width:100%;text-align:center;margin-top:4px;">${t('opening.tap_next')}</div>`;
     if (strip) strip.innerHTML = stripHTML;
   }
 
   // CTA area
   if (revealed < 5) {
-    cta.innerHTML = revealed > 0 ? `<button class="skip-btn" onclick="revealAllDeck()">SKIP — REVEAL ALL</button>` : '';
+    cta.innerHTML = revealed > 0 ? `<button class="skip-btn" onclick="revealAllDeck()">${t('opening.skip_reveal')}</button>` : '';
   } else {
     // All revealed — show summary
     const newCount = S.newCards.size;
-    const newText = newCount > 0 ? `${newCount} NEW CARD${newCount>1?'S':''}` : 'NO NEW CARDS';
+    const newText = newCount > 0 ? (newCount>1 ? t('opening.new_cards', newCount) : t('opening.new_card', newCount)) : t('opening.no_new');
     const chainBtn = isChainConnected()
-      ? `<button class="cta-btn" onclick="mintPackToChain()" id="mint-chain-btn">⛓️ MINT TO CHAIN</button>`
-      : (S.packs >= 2 ? `<button class="cta-btn sec" onclick="openChainModal()">NFTs you can sell, trade, collect on-chain →</button>` : '');
+      ? `<button class="cta-btn" onclick="mintPackToChain()" id="mint-chain-btn">${t('opening.mint_to_chain')}</button>`
+      : (S.packs >= 2 ? `<button class="cta-btn sec" onclick="openChainModal()">${t('opening.nft_cta')}</button>` : '');
     cta.innerHTML = `
       <div class="pack-summary">
-        <div class="reveal-hint" style="font-family:var(--font-mono);font-size:9px;letter-spacing:2px;color:#555;">PACK COMPLETE · ${newText}</div>
+        <div class="reveal-hint" style="font-family:var(--font-mono);font-size:9px;letter-spacing:2px;color:#555;">${t('opening.pack_complete')} · ${newText}</div>
         <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:12px;">
-          <button class="cta-btn" onclick="openNextPack()">NEXT PACK</button>
-          <button class="cta-btn sec" onclick="showScreen('pack-screen')">MENU</button>
+          <button class="cta-btn" onclick="openNextPack()">${t('opening.next_pack')}</button>
+          <button class="cta-btn sec" onclick="showScreen('pack-screen')">${t('opening.menu')}</button>
           ${chainBtn}
         </div>
         <div id="mint-status" style="margin-top:8px;"></div>
@@ -5489,7 +5714,7 @@ function jumpToCard(index) {
 
 function openNextPack() {
   if (getDailyPacksRemaining() <= 0) {
-    showToast('NO DAILY PACKS LEFT — RESETS AT MIDNIGHT');
+    showToast(t('toast.no_packs'));
     return;
   }
   openPack(session.type);
@@ -5514,12 +5739,12 @@ function copyPackResult() {
     const star = c.rarity === 'LEGENDARY' ? '★' : c.rarity === 'RARE' ? '◆' : '·';
     return `${star} ${c.name} (${c.rarity})`;
   });
-  const text = `AI CARDS — Pack Pull\n${lines.join('\n')}\naicards.fun`;
+  const text = `${t('misc.share_pull_title')}\n${lines.join('\n')}\naicards.fun`;
   navigator.clipboard.writeText(text).then(() => {
-    showToast('RESULT COPIED');
+    showToast(t('toast.result_copied'));
     markDailyShare();
     updateDailyUI();
-  }).catch(() => showToast('COPY FAILED'));
+  }).catch(() => showToast(t('toast.copy_failed')));
 }
 
 function sharePackResult() {
@@ -5527,7 +5752,7 @@ function sharePackResult() {
     const star = c.rarity === 'LEGENDARY' ? '★' : c.rarity === 'RARE' ? '◆' : '·';
     return `${star} ${c.name} (${c.rarity})`;
   });
-  const text = `AI CARDS — Pack Pull\n${lines.join('\n')}\naicards.fun`;
+  const text = `${t('misc.share_pull_title')}\n${lines.join('\n')}\naicards.fun`;
   if (navigator.share) {
     navigator.share({ title: 'AI CARDS Pull', text }).then(() => {
       markDailyShare();
@@ -5535,10 +5760,10 @@ function sharePackResult() {
     }).catch(() => {});
   } else {
     navigator.clipboard.writeText(text).then(() => {
-      showToast('COPIED TO CLIPBOARD');
+      showToast(t('toast.copied_clipboard'));
       markDailyShare();
       updateDailyUI();
-    }).catch(() => showToast('SHARE NOT AVAILABLE'));
+    }).catch(() => showToast(t('toast.share_not_available')));
   }
 }
 
@@ -5661,7 +5886,7 @@ function closeModal(e) {
 // ═══════════════════════════════════════
 async function shareCard(mode) {
   const cardEl = document.getElementById('modal-card');
-  if (!cardEl || typeof html2canvas === 'undefined') { showToast('SHARE NOT READY'); return; }
+  if (!cardEl || typeof html2canvas === 'undefined') { showToast(t('toast.share_not_ready')); return; }
 
   try {
     const canvas = await html2canvas(cardEl, {
@@ -5676,16 +5901,16 @@ async function shareCard(mode) {
       link.download = 'aicards-pull.png';
       link.href = canvas.toDataURL('image/png');
       link.click();
-      showToast('CARD DOWNLOADED');
+      showToast(t('toast.card_downloaded'));
       markDailyShare(); updateDailyUI();
     } else if (mode === 'clipboard') {
       canvas.toBlob(async (blob) => {
         try {
           await navigator.clipboard.write([new ClipboardItem({'image/png': blob})]);
-          showToast('COPIED TO CLIPBOARD');
+          showToast(t('toast.copied_clipboard'));
           markDailyShare(); updateDailyUI();
         } catch(e) {
-          showToast('CLIPBOARD NOT AVAILABLE');
+          showToast(t('toast.clipboard_not_available'));
         }
       }, 'image/png');
     } else if (mode === 'share') {
@@ -5694,22 +5919,22 @@ async function shareCard(mode) {
         if (navigator.canShare && navigator.canShare({files: [file]})) {
           try {
             await navigator.share({
-              title: 'AI CARDS — 2030 Survival Edition',
-              text: 'Look what I pulled. aicards.fun',
+              title: t('misc.share_title'),
+              text: t('misc.share_pull_text'),
               files: [file]
             });
-          } catch(e) { if (e.name !== 'AbortError') showToast('SHARE CANCELLED'); }
+          } catch(e) { if (e.name !== 'AbortError') showToast(t('toast.share_cancelled')); }
         } else {
           // Fallback to download
           const link = document.createElement('a');
           link.download = 'aicards-pull.png';
           link.href = canvas.toDataURL('image/png');
           link.click();
-          showToast('SHARE NOT SUPPORTED — DOWNLOADED INSTEAD');
+          showToast(t('toast.share_fallback'));
         }
       }, 'image/png');
     }
-  } catch(e) { showToast('CAPTURE FAILED'); }
+  } catch(e) { showToast(t('toast.capture_failed')); }
 }
 
 // ═══════════════════════════════════════
@@ -5749,10 +5974,10 @@ function checkMissionCompletions(ds) {
     share: !!ds.shared
   };
   const labels = {
-    packs: 'Open 5 Packs',
-    legendary: 'Pull a Legendary',
-    rarities: 'Pull 3 Different Rarities',
-    share: 'Share a Card'
+    packs: t('missions.open_packs'),
+    legendary: t('missions.pull_legendary'),
+    rarities: t('missions.pull_rarities'),
+    share: t('missions.share_card')
   };
   for (const [key, done] of Object.entries(checks)) {
     if (done && !_prevMissionState[key]) {
@@ -5846,18 +6071,18 @@ function renderWeeklyGoal() {
   }
 
   zone.innerHTML = `
-    <div class="daily-missions-title">WEEKLY GOAL</div>
+    <div class="daily-missions-title">${t('weekly.title')}</div>
     <div style="text-align:center;margin-bottom:6px;">${pips}</div>
     <div class="mission-row">
-      <span class="mission-label">Complete all daily missions 7 days</span>
+      <span class="mission-label">${t('weekly.desc')}</span>
       <span class="mission-progress ${streak>=7?'done':''}">${streak}/7</span>
     </div>
     <div class="mission-row">
-      <span class="mission-label">Reward: 1 free Jobless.ai pack</span>
-      <span class="mission-progress ${claimed?'done':''}">${claimed?'CLAIMED':streak>=7?'READY':'LOCKED'}</span>
+      <span class="mission-label">${t('weekly.reward')}</span>
+      <span class="mission-progress ${claimed?'done':''}">${claimed?t('weekly.claimed'):streak>=7?t('weekly.ready'):t('weekly.locked_status')}</span>
     </div>
-    ${streak>=7 && !claimed ? '<div style="text-align:center;margin-top:8px;"><button class="pack-btn" style="color:var(--gold);box-shadow:0 0 12px rgba(200,168,75,0.3);animation:landingBtnGlow 2s ease-in-out infinite;" onclick="claimWeeklyReward()">🎁 CLAIM REWARD</button></div>' : ''}
-    ${!todayDone && streak < 7 ? '<div style="text-align:center;margin-top:4px;font-family:var(--font-mono);font-size:7px;color:#444;letter-spacing:1px;">COMPLETE TODAY\'S MISSIONS TO CONTINUE STREAK</div>' : ''}
+    ${streak>=7 && !claimed ? '<div style="text-align:center;margin-top:8px;"><button class="pack-btn" style="color:var(--gold);box-shadow:0 0 12px rgba(200,168,75,0.3);animation:landingBtnGlow 2s ease-in-out infinite;" onclick="claimWeeklyReward()">' + t('weekly.claim_btn') + '</button></div>' : ''}
+    ${!todayDone && streak < 7 ? '<div style="text-align:center;margin-top:4px;font-family:var(--font-mono);font-size:7px;color:#444;letter-spacing:1px;">' + t('weekly.continue') + '</div>' : ''}
   `;
 }
 
@@ -5891,23 +6116,23 @@ function renderBuyPacks() {
 
   zone.innerHTML = `
     <div style="width:100%;max-width:960px;margin-bottom:8px;margin-top:20px;">
-      <div class="buy-packs-header">⛓️ BUY EXTRA PACKS · MINT AS NFTs</div>
+      <div class="buy-packs-header">${t('buy.header')}</div>
     </div>
     <div class="pack-grid">
       <div class="pack-card p-standard" style="border-color:rgba(100,200,255,0.3);">
         <span class="pack-icon-wrap">💎</span>
-        <div class="pack-title" style="color:#60c8ff;">BUY PACK</div>
-        <div class="pack-desc">Unlimited. Minted directly to your wallet as NFTs. Sell, trade, collect on-chain.</div>
-        <div class="pack-meta">5 CARDS · MINTED ON SUI · 0.5 SUI</div>
-        <button class="buy-pack-btn" onclick="buyPackWithSUI('standard')">⛓️ BUY · 0.5 SUI</button>
+        <div class="pack-title" style="color:#60c8ff;">${t('buy.pack_title')}</div>
+        <div class="pack-desc">${t('buy.pack_desc')}</div>
+        <div class="pack-meta">${t('buy.pack_meta')}</div>
+        <button class="buy-pack-btn" onclick="buyPackWithSUI('standard')">${t('buy.pack_btn')}</button>
         <div class="buy-pack-price">≈ $0.50 · cards minted to ${addr.slice(0,6)}…${addr.slice(-4)}</div>
       </div>
       <div class="pack-card p-trade" style="border-color:rgba(200,168,75,0.3);">
         <span class="pack-icon-wrap">👑</span>
-        <div class="pack-title" style="color:var(--gold);">BUY REDUNDANCY</div>
-        <div class="pack-desc">Guaranteed Legendary. Minted to your wallet. The rarest cards, on-chain forever.</div>
-        <div class="pack-meta">5 CARDS · 1 LEGENDARY · 1.0 SUI</div>
-        <button class="buy-pack-btn" style="border-color:var(--gold);color:var(--gold);box-shadow:0 0 8px rgba(200,168,75,0.1);" onclick="buyPackWithSUI('legendary')">👑 BUY · 1.0 SUI</button>
+        <div class="pack-title" style="color:var(--gold);">${t('buy.redundancy_title')}</div>
+        <div class="pack-desc">${t('buy.redundancy_desc')}</div>
+        <div class="pack-meta">${t('buy.redundancy_meta')}</div>
+        <button class="buy-pack-btn" style="border-color:var(--gold);color:var(--gold);box-shadow:0 0 8px rgba(200,168,75,0.1);" onclick="buyPackWithSUI('legendary')">${t('buy.redundancy_btn')}</button>
         <div class="buy-pack-price">≈ $1.00 · guaranteed legendary NFT</div>
       </div>
     </div>`;
@@ -5919,7 +6144,7 @@ async function buyPackWithSUI(packType) {
 
   // For now, mint via the API (payment integration coming)
   // This mints free cards — payment will be added via Treasury contract
-  showToast('MINTING PACK TO YOUR WALLET...');
+  showToast(t('toast.minting_pack'));
 
   try {
     const res = await fetch(`${MINT_API}/mint/pack`, {
@@ -5929,13 +6154,26 @@ async function buyPackWithSUI(packType) {
     });
     const data = await res.json();
     if (data.success) {
-      const names = data.cards.filter(c=>c.transaction).map(c=>`${c.rarity} ${c.name}`);
-      showToast(`MINTED: ${names.length} CARDS ON-CHAIN`);
+      const minted = data.cards.filter(c=>c.transaction);
+      // Add minted cards to local collection
+      minted.forEach(c => {
+        const localCard = CARDS.find(lc => lc.id === c.card_id);
+        if (localCard) {
+          collectionAdd(localCard.id);
+          S.pulls++;
+          if (localCard.rarity === 'LEGENDARY' || localCard.rarity === 'MYTHIC') S.legendaries++;
+        }
+      });
+      S.packs++;
+      save();
+      updateStats();
+      updateDailyUI();
+      showToast(t('toast.minted_cards', minted.length));
     } else {
-      showToast('MINT FAILED — TRY AGAIN');
+      showToast(t('toast.mint_failed'));
     }
   } catch(err) {
-    showToast('MINT ERROR — ' + err.message);
+    showToast(t('toast.mint_error', err.message));
   }
 }
 
@@ -5953,12 +6191,9 @@ function renderChainBanner() {
     <div class="chain-banner">
       <button class="chain-banner-dismiss" onclick="dismissChainBanner()">✕</button>
       <div class="chain-banner-icon">⛓️</div>
-      <div class="chain-banner-title">YOUR CARDS COULD BE NFTs</div>
-      <div class="chain-banner-desc">
-        Real digital assets on Sui blockchain.<br>
-        Sell them. Trade them. Collect on-chain. Own them for real.
-      </div>
-      <button class="chain-banner-btn" onclick="openChainModal()">CONNECT WALLET →</button>
+      <div class="chain-banner-title">${t('chain.banner_title')}</div>
+      <div class="chain-banner-desc">${t('chain.banner_desc')}</div>
+      <button class="chain-banner-btn" onclick="openChainModal()">${t('chain.connect_wallet')}</button>
     </div>
   `;
 }
@@ -5978,17 +6213,17 @@ function openChainModal() {
   if (addr) {
     body.innerHTML = `
       <div style="font-family:var(--font-mono);font-size:8px;color:#60c8ff;letter-spacing:0.5px;word-break:break-all;margin-bottom:8px;padding:8px;border:1px solid #333;background:var(--bg-card);">${addr}</div>
-      <button class="chain-modal-save" onclick="disconnectChain()">DISCONNECT</button>
+      <button class="chain-modal-save" onclick="disconnectChain()">${t('chain.disconnect')}</button>
     `;
-    status.innerHTML = '<div class="chain-modal-connected">✓ CONNECTED — cards will mint to this address</div>';
+    status.innerHTML = '<div class="chain-modal-connected">' + t('chain.connected') + '</div>';
   } else {
     body.innerHTML = `
       <input type="text" class="chain-modal-input" id="chain-address-input"
-        placeholder="Paste your Sui wallet address (0x...)"
+        placeholder="${t('chain.input_placeholder')}"
         spellcheck="false" autocomplete="off">
-      <button class="chain-modal-save" onclick="saveChainAddress()">CONNECT ADDRESS</button>
+      <button class="chain-modal-save" onclick="saveChainAddress()">${t('chain.connect')}</button>
       <div style="font-family:var(--font-mono);font-size:7px;color:#444;margin-top:8px;letter-spacing:0.5px;">
-        Don't have a Sui wallet? Get one at <span style="color:#60c8ff;">suiwallet.com</span>
+        ${t('chain.get_wallet')} <span style="color:#60c8ff;">suiwallet.com</span>
       </div>
     `;
     status.innerHTML = '';
@@ -6006,12 +6241,12 @@ function saveChainAddress() {
 
   // Validate: must start with 0x and be 66 chars
   if (!addr.match(/^0x[a-fA-F0-9]{64}$/)) {
-    showToast('INVALID SUI ADDRESS — MUST START WITH 0x');
+    showToast(t('toast.invalid_address'));
     return;
   }
 
   setChainAddress(addr);
-  showToast('WALLET CONNECTED');
+  showToast(t('toast.wallet_connected'));
   renderChainBanner();
   openChainModal(); // refresh modal to show connected state
 }
@@ -6019,7 +6254,7 @@ function saveChainAddress() {
 function disconnectChain() {
   localStorage.removeItem('aicards_chain_address');
   localStorage.removeItem('aicards_chain_dismissed');
-  showToast('WALLET DISCONNECTED');
+  showToast(t('toast.wallet_disconnected'));
   closeChainModal();
   renderChainBanner();
 }
@@ -6057,8 +6292,8 @@ async function mintPackToChain() {
 
   const btn = document.getElementById('mint-chain-btn');
   const status = document.getElementById('mint-status');
-  if (btn) { btn.disabled = true; btn.textContent = '⛓️ MINTING...'; btn.style.opacity = '0.5'; }
-  if (status) status.innerHTML = '<div style="font-family:var(--font-mono);font-size:8px;color:#60c8ff;letter-spacing:1px;animation:blink 1s infinite;">MINTING 5 CARDS TO SUI...</div>';
+  if (btn) { btn.disabled = true; btn.textContent = t('buy.minting'); btn.style.opacity = '0.5'; }
+  if (status) status.innerHTML = '<div style="font-family:var(--font-mono);font-size:8px;color:#60c8ff;letter-spacing:1px;animation:blink 1s infinite;">' + t('buy.minting_status') + '</div>';
 
   try {
     const res = await fetch(`${MINT_API}/mint/pack`, {
@@ -6085,14 +6320,14 @@ async function mintPackToChain() {
             </a>
           </div>`;
       }
-      if (btn) { btn.textContent = '✓ MINTED'; btn.style.color = '#40c040'; btn.style.borderColor = '#40c040'; }
-      showToast(`${mintedCount} CARDS MINTED ON SUI`);
+      if (btn) { btn.textContent = t('buy.minted'); btn.style.color = '#40c040'; btn.style.borderColor = '#40c040'; }
+      showToast(t('toast.cards_minted', mintedCount));
     } else {
       throw new Error(data.error || 'Mint failed');
     }
   } catch (err) {
     if (status) status.innerHTML = `<div style="font-family:var(--font-mono);font-size:8px;color:#ff4040;letter-spacing:1px;">MINT FAILED: ${err.message}</div>`;
-    if (btn) { btn.disabled = false; btn.textContent = '⛓️ RETRY MINT'; btn.style.opacity = '1'; }
+    if (btn) { btn.disabled = false; btn.textContent = t('buy.retry'); btn.style.opacity = '1'; }
   }
 }
 
@@ -6110,15 +6345,15 @@ let collSeriesFilter = 'ALL'; // 'ALL' | 'SURVIVAL' | 'JOBLESS' | 'DOOMSCROLL' |
 function renderCollection() {
   const body = document.getElementById('coll-body');
   const size = collectionSize();
+  const filterKeys = {ALL:'collection.filter_all',SURVIVAL:'collection.filter_survival',JOBLESS:'collection.filter_jobless',DOOMSCROLL:'collection.filter_doomscroll',LOVEEXE:'collection.filter_loveexe',WARROOM:'collection.filter_warroom',SKILLSVOID:'collection.filter_skillsvoid'};
   const filterBtns = ['ALL','SURVIVAL','JOBLESS','DOOMSCROLL','LOVEEXE','WARROOM','SKILLSVOID'].map(f=>{
     const active = collSeriesFilter===f ? ' active' : '';
-    const label = {ALL:'ALL',SURVIVAL:'2030 SURVIVAL',JOBLESS:'JOBLESS.AI',DOOMSCROLL:'DOOMSCROLL',LOVEEXE:'LOVE.EXE',WARROOM:'WAR ROOM',SKILLSVOID:'SKILLS.VOID'}[f];
-    return `<button class="nav-pill${active}" onclick="setCollFilter('${f}')">${label}</button>`;
+    return `<button class="nav-pill${active}" onclick="setCollFilter('${f}')">${t(filterKeys[f])}</button>`;
   }).join('');
 
   let html = `<div class="coll-head">
-    <div class="coll-title">COLLECTION</div>
-    <div class="coll-count">${size} / ${CARDS.length} CARDS · ${Math.round(size/CARDS.length*100)}% COMPLETE</div>
+    <div class="coll-title">${t('collection.title')}</div>
+    <div class="coll-count">${t('collection.cards_count', size, CARDS.length, Math.round(size/CARDS.length*100))}</div>
   </div>
   <div class="nav-pills" style="justify-content:flex-start;margin-bottom:20px;">${filterBtns}</div>`;
 
@@ -6134,7 +6369,7 @@ function renderCollection() {
     const owned = cards.filter(c=>collectionHas(c.id)).length;
     const col = RARITY_COLORS[rarity];
     html += `<div class="coll-section">
-      <div class="coll-section-label" style="color:${col};border-color:${col}33;">${rarity} · ${owned} / ${cards.length}</div>
+      <div class="coll-section-label" style="color:${col};border-color:${col}33;">${rarityT(rarity)} · ${owned} / ${cards.length}</div>
       <div class="coll-cards" style="flex-direction:column;gap:2px;">`;
     cards.forEach(card=>{
       const isOwned = collectionHas(card.id);
@@ -6143,7 +6378,7 @@ function renderCollection() {
       const countBadge = isOwned && count > 1 ? `<span class="coll-entry-count">\u00d7${count}</span>` : '';
       html += `<div class="coll-entry-card ${isOwned?'':'missing'}" ${onclick} style="border-left-color:${col};color:${col};">
         <span class="coll-entry-symbol">${card.symbol}</span>
-        <span class="coll-entry-name">${card.name}</span>
+        <span class="coll-entry-name">${cardT(card.id,'name') || card.name}</span>
         ${countBadge}
       </div>`;
     });
@@ -6152,7 +6387,7 @@ function renderCollection() {
 
   // Reset button
   html += `<div style="text-align:center;margin-top:24px;">
-    <button class="reset-btn" onclick="resetCollection()">RESET COLLECTION</button>
+    <button class="reset-btn" onclick="resetCollection()">${t('collection.reset')}</button>
   </div>`;
 
   body.innerHTML = html;
@@ -6164,10 +6399,10 @@ function setCollFilter(f) {
 }
 
 function resetCollection() {
-  if (!confirm('Reset all progress? This cannot be undone.')) return;
+  if (!confirm(t('collection.reset_confirm'))) return;
   S = {pulls:0,packs:0,collection:{},legendaries:0,sov:0,dep:0,newCards:new Set(),pityCounter:0};
   save();
-  showToast('COLLECTION RESET');
+  showToast(t('toast.collection_reset'));
   renderCollection();
   updateStats();
 }
@@ -6198,18 +6433,16 @@ function renderSet2Zone() {
 
   zone.innerHTML = `
     <div style="width:100%;max-width:960px;margin-bottom:8px;margin-top:20px;">
-      <div style="font-family:var(--font-mono);font-size:8px;letter-spacing:3px;color:#555;margin-bottom:10px;">SET 2 — JOBLESS.AI ${unlocked?'':'🔒'}</div>
+      <div style="font-family:var(--font-mono);font-size:8px;letter-spacing:3px;color:#555;margin-bottom:10px;">${t('set.2')} ${unlocked?'':'🔒'}</div>
     </div>
     <div class="pack-grid">
       <div class="pack-card p-standard ${unlocked?'':'locked'}" ${unlocked?'onclick="openPack(\'jobless\')"':''} style="border-color:rgba(255,64,64,0.3);">
         <span class="pack-icon-wrap">${unlocked?'📉':'🔒'}</span>
-        <div class="pack-title" style="color:${unlocked?'#ff4040':'#555'};">${unlocked?'JOBLESS.AI':'LOCKED'}</div>
-        <div class="pack-desc">${unlocked
-          ?'Real Karpathy scores. Real layoffs. Real companies. 342 occupations. 495K jobs tracked. Data doesn\'t lie.'
-          :'Complete Set 1 to unlock. Collect all 49 cards from 2030 Survival.'}</div>
-        <div class="pack-meta">${unlocked?'5 CARDS · REAL DATA · INCLUDES MYTHICS':comp.owned+' / '+comp.total+' SET 1 CARDS'}</div>
-        ${unlocked?'<button class="pack-btn" style="color:#ff4040;box-shadow:0 0 8px rgba(255,64,64,0.2);">▶ OPEN PACK</button>':''}
-        ${!unlocked?'<div class="pack-lock-bar"><div class="pack-lock-fill" style="width:'+comp.pct+'%"></div></div><div class="pack-lock-info">'+comp.pct+'% COMPLETE</div>':''}
+        <div class="pack-title" style="color:${unlocked?'#ff4040':'#555'};">${unlocked?t('pack.jobless'):t('set.locked')}</div>
+        <div class="pack-desc">${unlocked?t('set2.desc_unlocked'):t('set2.desc_locked')}</div>
+        <div class="pack-meta">${unlocked?t('set2.meta_unlocked'):comp.owned+' / '+comp.total+' '+t('set.cards_word')}</div>
+        ${unlocked?'<button class="pack-btn" style="color:#ff4040;box-shadow:0 0 8px rgba(255,64,64,0.2);">'+t('pack.open_btn')+'</button>':''}
+        ${!unlocked?'<div class="pack-lock-bar"><div class="pack-lock-fill" style="width:'+comp.pct+'%"></div></div><div class="pack-lock-info">'+comp.pct+t('set.pct_complete')+'</div>':''}
       </div>
     </div>`;
 }
@@ -6222,18 +6455,16 @@ function renderSet3Zone() {
 
   zone.innerHTML = `
     <div style="width:100%;max-width:960px;margin-bottom:8px;margin-top:20px;">
-      <div style="font-family:var(--font-mono);font-size:8px;letter-spacing:3px;color:#555;margin-bottom:10px;">SET 3 — DOOMSCROLL ${unlocked?'':'🔒'}</div>
+      <div style="font-family:var(--font-mono);font-size:8px;letter-spacing:3px;color:#555;margin-bottom:10px;">${t('set.3')} ${unlocked?'':'🔒'}</div>
     </div>
     <div class="pack-grid">
       <div class="pack-card p-standard ${unlocked?'':'locked'}" ${unlocked?'onclick="openPack(\'doomscroll\')"':''} style="border-color:rgba(100,200,255,0.3);">
         <span class="pack-icon-wrap">${unlocked?'📱':'🔒'}</span>
-        <div class="pack-title" style="color:${unlocked?'#60c8ff':'#555'};">${unlocked?'DOOMSCROLL':'LOCKED'}</div>
-        <div class="pack-desc">${unlocked
-          ?'Headlines. Algorithms. Misinformation. The feed that owns your attention. 27 cards including 5 Mythics.'
-          :'Complete Set 2 to unlock. Collect all 25 cards from Jobless.ai.'}</div>
-        <div class="pack-meta">${unlocked?'5 CARDS · MEDIA ANXIETY · INCLUDES MYTHICS':comp.owned+' / '+comp.total+' SET 2 CARDS'}</div>
-        ${unlocked?'<button class="pack-btn" style="color:#60c8ff;box-shadow:0 0 8px rgba(100,200,255,0.2);">▶ OPEN PACK</button>':''}
-        ${!unlocked?'<div class="pack-lock-bar"><div class="pack-lock-fill" style="width:'+comp.pct+'%"></div></div><div class="pack-lock-info">'+comp.pct+'% COMPLETE</div>':''}
+        <div class="pack-title" style="color:${unlocked?'#60c8ff':'#555'};">${unlocked?t('pack.doomscroll'):t('set.locked')}</div>
+        <div class="pack-desc">${unlocked?t('set3.desc_unlocked'):t('set3.desc_locked')}</div>
+        <div class="pack-meta">${unlocked?t('set3.meta_unlocked'):comp.owned+' / '+comp.total+' '+t('set.cards_word')}</div>
+        ${unlocked?'<button class="pack-btn" style="color:#60c8ff;box-shadow:0 0 8px rgba(100,200,255,0.2);">'+t('pack.open_btn')+'</button>':''}
+        ${!unlocked?'<div class="pack-lock-bar"><div class="pack-lock-fill" style="width:'+comp.pct+'%"></div></div><div class="pack-lock-info">'+comp.pct+t('set.pct_complete')+'</div>':''}
       </div>
     </div>`;
 }
@@ -6246,18 +6477,16 @@ function renderSet4Zone() {
 
   zone.innerHTML = `
     <div style="width:100%;max-width:960px;margin-bottom:8px;margin-top:20px;">
-      <div style="font-family:var(--font-mono);font-size:8px;letter-spacing:3px;color:#555;margin-bottom:10px;">SET 4 — LOVE.EXE ${unlocked?'':'🔒'}</div>
+      <div style="font-family:var(--font-mono);font-size:8px;letter-spacing:3px;color:#555;margin-bottom:10px;">${t('set.4')} ${unlocked?'':'🔒'}</div>
     </div>
     <div class="pack-grid">
       <div class="pack-card p-standard ${unlocked?'':'locked'}" ${unlocked?'onclick="openPack(\'loveexe\')"':''} style="border-color:rgba(255,105,180,0.3);">
         <span class="pack-icon-wrap">${unlocked?'💕':'💔'}</span>
-        <div class="pack-title" style="color:${unlocked?'#ff69b4':'#555'};">${unlocked?'LOVE.EXE':'LOCKED'}</div>
-        <div class="pack-desc">${unlocked
-          ?'Relationships. Loneliness. Dating anxiety. The things the algorithm promised to fix and made worse. 22 cards including 5 Mythics.'
-          :'Complete Set 3 to unlock. Collect all 27 cards from Doomscroll.'}</div>
-        <div class="pack-meta">${unlocked?'5 CARDS · LOVE & LOSS · INCLUDES MYTHICS':comp.owned+' / '+comp.total+' SET 3 CARDS'}</div>
-        ${unlocked?'<button class="pack-btn" style="color:#ff69b4;box-shadow:0 0 8px rgba(255,105,180,0.2);">▶ OPEN PACK</button>':''}
-        ${!unlocked?'<div class="pack-lock-bar"><div class="pack-lock-fill" style="width:'+comp.pct+'%"></div></div><div class="pack-lock-info">'+comp.pct+'% COMPLETE</div>':''}
+        <div class="pack-title" style="color:${unlocked?'#ff69b4':'#555'};">${unlocked?t('pack.loveexe'):t('set.locked')}</div>
+        <div class="pack-desc">${unlocked?t('set4.desc_unlocked'):t('set4.desc_locked')}</div>
+        <div class="pack-meta">${unlocked?t('set4.meta_unlocked'):comp.owned+' / '+comp.total+' '+t('set.cards_word')}</div>
+        ${unlocked?'<button class="pack-btn" style="color:#ff69b4;box-shadow:0 0 8px rgba(255,105,180,0.2);">'+t('pack.open_btn')+'</button>':''}
+        ${!unlocked?'<div class="pack-lock-bar"><div class="pack-lock-fill" style="width:'+comp.pct+'%"></div></div><div class="pack-lock-info">'+comp.pct+t('set.pct_complete')+'</div>':''}
       </div>
     </div>`;
 }
@@ -6270,18 +6499,16 @@ function renderSet5Zone() {
 
   zone.innerHTML = `
     <div style="width:100%;max-width:960px;margin-bottom:8px;margin-top:20px;">
-      <div style="font-family:var(--font-mono);font-size:8px;letter-spacing:3px;color:#555;margin-bottom:10px;">SET 5 — WAR ROOM ${unlocked?'':'🔒'}</div>
+      <div style="font-family:var(--font-mono);font-size:8px;letter-spacing:3px;color:#555;margin-bottom:10px;">${t('set.5')} ${unlocked?'':'🔒'}</div>
     </div>
     <div class="pack-grid">
       <div class="pack-card p-standard ${unlocked?'':'locked'}" ${unlocked?'onclick="openPack(\'warroom\')"':''} style="border-color:rgba(255,96,64,0.3);">
         <span class="pack-icon-wrap">${unlocked?'⚔️':'🔒'}</span>
-        <div class="pack-title" style="color:${unlocked?'#ff6040':'#555'};">${unlocked?'WAR ROOM':'LOCKED'}</div>
-        <div class="pack-desc">${unlocked
-          ?'Drones. Diplomacy. Destruction. The geopolitical dread expansion. 22 cards including 5 Mythics.'
-          :'Complete Set 4 to unlock. Collect all 22 cards from Love.exe.'}</div>
-        <div class="pack-meta">${unlocked?'5 CARDS · GEOPOLITICAL DREAD · INCLUDES MYTHICS':comp.owned+' / '+comp.total+' SET 4 CARDS'}</div>
-        ${unlocked?'<button class="pack-btn" style="color:#ff6040;box-shadow:0 0 8px rgba(255,96,64,0.2);">▶ OPEN PACK</button>':''}
-        ${!unlocked?'<div class="pack-lock-bar"><div class="pack-lock-fill" style="width:'+comp.pct+'%"></div></div><div class="pack-lock-info">'+comp.pct+'% COMPLETE</div>':''}
+        <div class="pack-title" style="color:${unlocked?'#ff6040':'#555'};">${unlocked?t('pack.warroom'):t('set.locked')}</div>
+        <div class="pack-desc">${unlocked?t('set5.desc_unlocked'):t('set5.desc_locked')}</div>
+        <div class="pack-meta">${unlocked?t('set5.meta_unlocked'):comp.owned+' / '+comp.total+' '+t('set.cards_word')}</div>
+        ${unlocked?'<button class="pack-btn" style="color:#ff6040;box-shadow:0 0 8px rgba(255,96,64,0.2);">'+t('pack.open_btn')+'</button>':''}
+        ${!unlocked?'<div class="pack-lock-bar"><div class="pack-lock-fill" style="width:'+comp.pct+'%"></div></div><div class="pack-lock-info">'+comp.pct+t('set.pct_complete')+'</div>':''}
       </div>
     </div>`;
 }
@@ -6294,18 +6521,16 @@ function renderSet6Zone() {
 
   zone.innerHTML = `
     <div style="width:100%;max-width:960px;margin-bottom:8px;margin-top:20px;">
-      <div style="font-family:var(--font-mono);font-size:8px;letter-spacing:3px;color:#555;margin-bottom:10px;">SET 6 — SKILLS.VOID ${unlocked?'':'🔒'}</div>
+      <div style="font-family:var(--font-mono);font-size:8px;letter-spacing:3px;color:#555;margin-bottom:10px;">${t('set.6')} ${unlocked?'':'🔒'}</div>
     </div>
     <div class="pack-grid">
       <div class="pack-card p-standard ${unlocked?'':'locked'}" ${unlocked?'onclick="openPack(\'skillsvoid\')"':''} style="border-color:rgba(160,160,160,0.3);">
         <span class="pack-icon-wrap">${unlocked?'📉':'🔒'}</span>
-        <div class="pack-title" style="color:${unlocked?'#a0a0a0':'#555'};">${unlocked?'SKILLS.VOID':'LOCKED'}</div>
-        <div class="pack-desc">${unlocked
-          ?'Credentials. Obsolescence. Career anxiety. The education that expired before the loan did. 22 cards including 5 Mythics.'
-          :'Complete Set 5 to unlock. Collect all 22 cards from War Room.'}</div>
-        <div class="pack-meta">${unlocked?'5 CARDS · CAREER ANXIETY · INCLUDES MYTHICS':comp.owned+' / '+comp.total+' SET 5 CARDS'}</div>
-        ${unlocked?'<button class="pack-btn" style="color:#a0a0a0;box-shadow:0 0 8px rgba(160,160,160,0.2);">▶ OPEN PACK</button>':''}
-        ${!unlocked?'<div class="pack-lock-bar"><div class="pack-lock-fill" style="width:'+comp.pct+'%"></div></div><div class="pack-lock-info">'+comp.pct+'% COMPLETE</div>':''}
+        <div class="pack-title" style="color:${unlocked?'#a0a0a0':'#555'};">${unlocked?t('pack.skillsvoid'):t('set.locked')}</div>
+        <div class="pack-desc">${unlocked?t('set6.desc_unlocked'):t('set6.desc_locked')}</div>
+        <div class="pack-meta">${unlocked?t('set6.meta_unlocked'):comp.owned+' / '+comp.total+' '+t('set.cards_word')}</div>
+        ${unlocked?'<button class="pack-btn" style="color:#a0a0a0;box-shadow:0 0 8px rgba(160,160,160,0.2);">'+t('pack.open_btn')+'</button>':''}
+        ${!unlocked?'<div class="pack-lock-bar"><div class="pack-lock-fill" style="width:'+comp.pct+'%"></div></div><div class="pack-lock-info">'+comp.pct+t('set.pct_complete')+'</div>':''}
       </div>
     </div>`;
 }
@@ -6315,23 +6540,23 @@ function renderProfile() {
   const tot = (S.sov+S.dep)||1;
   const sp = Math.round(S.sov/tot*100), dp = 100-sp;
   let name,col,desc;
-  if(sp>=70){name='ESCAPE VELOCITY';col='#c8a84b';desc='Your pulls trend toward embodied human skill. You are building something the algorithm cannot touch.';}
-  else if(sp>=50){name='THE SEEKER';col='#9b59d0';desc='Balanced. You know what is being lost. Whether you act on that knowledge is the question.';}
-  else if(sp>=30){name='UBI COHORT';col='#2196c8';desc='Your pulls skew toward the managed life. Comfort is winning. Meaning is losing ground.';}
-  else{name='FULLY INTEGRATED';col='#d44490';desc='You have outsourced everything the algorithm offered to take.';}
+  if(sp>=70){name=t('profile.escape_velocity');col='#c8a84b';desc=t('profile.escape_desc');}
+  else if(sp>=50){name=t('profile.seeker');col='#9b59d0';desc=t('profile.seeker_desc');}
+  else if(sp>=30){name=t('profile.ubi');col='#2196c8';desc=t('profile.ubi_desc');}
+  else{name=t('profile.integrated');col='#d44490';desc=t('profile.integrated_desc');}
 
   document.getElementById('profile-zone').innerHTML=`
     <div class="profile-box">
-      <div class="profile-eyebrow">▓ YOUR 2030 SURVIVAL PROFILE ▓</div>
+      <div class="profile-eyebrow">${t('profile.eyebrow')}</div>
       <div class="profile-name" style="color:${col};text-shadow:0 0 20px ${col}44;">${name}</div>
       <div class="meters">
         <div class="meter">
-          <div class="meter-label">SOVEREIGNTY</div>
+          <div class="meter-label">${t('profile.sovereignty')}</div>
           <div class="meter-track"><div class="meter-fill" style="width:${sp}%;background:#c8a84b;"></div></div>
           <div class="meter-pct" style="color:#c8a84b;">${sp}%</div>
         </div>
         <div class="meter">
-          <div class="meter-label">DEPENDENCY</div>
+          <div class="meter-label">${t('profile.dependency')}</div>
           <div class="meter-track"><div class="meter-fill" style="width:${dp}%;background:#d44490;"></div></div>
           <div class="meter-pct" style="color:#d44490;">${dp}%</div>
         </div>
@@ -6345,7 +6570,7 @@ function renderProfile() {
 // ═══════════════════════════════════════
 function updatePullCounterBar() {
   const el = document.getElementById('pull-counter-bar');
-  if (el) el.innerHTML = 'TOTAL PULLS: ' + S.pulls + ' &middot; LEGENDARIES: ' + S.legendaries + ' &middot; PACKS: ' + S.packs;
+  if (el) el.innerHTML = t('stats.total_pulls') + ': ' + S.pulls + ' &middot; ' + t('stats.legendaries') + ': ' + S.legendaries + ' &middot; ' + t('nav.packs') + ': ' + S.packs;
 }
 
 // ═══════════════════════════════════════
@@ -6357,19 +6582,20 @@ function updateRevealActionRow(index) {
   const card = session.pack[index];
   if (!card) { row.style.display = 'none'; return; }
   row.style.display = 'flex';
-  row.innerHTML = '<button class="reveal-action-btn" onclick="event.stopPropagation();shareCurrentCard();">\ud83d\udce4 SHARE</button>' +
-    '<button class="reveal-action-btn" onclick="event.stopPropagation();showCardModal(\'' + card.id + '\');">\ud83d\udd0d INSPECT</button>';
+  row.innerHTML = '<button class="reveal-action-btn" onclick="event.stopPropagation();shareCurrentCard();" title="Share">\ud83d\udce4</button>' +
+    '<button class="reveal-action-btn" onclick="event.stopPropagation();showCardModal(\'' + card.id + '\');" title="Inspect">\ud83d\udd0d</button>';
 }
 
 function shareCurrentCard() {
   const card = session.pack[session.currentIndex];
   if (!card) return;
-  const text = 'I pulled ' + card.name + ' (' + card.rarity + ') from AI Cards! aicards.fun';
+  const cName = cardT(card.id, 'name') || card.name;
+  const text = t('misc.i_pulled', cName, rarityT(card.rarity));
   navigator.clipboard.writeText(text).then(function() {
-    showToast('CARD COPIED TO CLIPBOARD');
+    showToast(t('toast.card_copied'));
     markDailyShare();
     updateDailyUI();
-  }).catch(function() { showToast('COPY FAILED'); });
+  }).catch(function() { showToast(t('toast.copy_failed')); });
 }
 
 // ═══════════════════════════════════════
@@ -6387,12 +6613,12 @@ function renderSetProgress() {
   const bar = document.getElementById('set-progress-bar');
   if (!bar) return;
   var sets = [
-    {label:'SET 1', series:null, color:'var(--red)'},
-    {label:'SET 2', series:'jobless', color:'#ff4040'},
-    {label:'SET 3', series:'doomscroll', color:'#60c8ff'},
-    {label:'SET 4', series:'loveexe', color:'#ff69b4'},
-    {label:'SET 5', series:'warroom', color:'#ff6040'},
-    {label:'SET 6', series:'skillsvoid', color:'#a0a0a0'}
+    {label:t('set.1').split(' — ')[0], series:null, color:'var(--red)'},
+    {label:t('set.2').split(' — ')[0], series:'jobless', color:'#ff4040'},
+    {label:t('set.3').split(' — ')[0], series:'doomscroll', color:'#60c8ff'},
+    {label:t('set.4').split(' — ')[0], series:'loveexe', color:'#ff69b4'},
+    {label:t('set.5').split(' — ')[0], series:'warroom', color:'#ff6040'},
+    {label:t('set.6').split(' — ')[0], series:'skillsvoid', color:'#a0a0a0'}
   ];
   var html = '';
   sets.forEach(function(s) {
@@ -6435,11 +6661,11 @@ function renderPackHistory() {
   var history = getPackHistory();
   if (history.length === 0) { zone.style.display = 'none'; return; }
   zone.style.display = '';
-  var html = '<button class="pack-history-toggle" onclick="this.nextElementSibling.classList.toggle(\'open\')">RECENT PACKS \u25bc</button>';
+  var html = '<button class="pack-history-toggle" onclick="this.nextElementSibling.classList.toggle(\'open\')">' + t('misc.pack_history') + ' \u25bc</button>';
   html += '<div class="pack-history-body">';
   history.forEach(function(entry) {
     var ago = Math.round((Date.now() - entry.timestamp) / 60000);
-    var timeLabel = ago < 1 ? 'just now' : ago < 60 ? ago + 'm ago' : Math.round(ago / 60) + 'h ago';
+    var timeLabel = ago < 1 ? t('misc.just_now') : ago < 60 ? t('misc.minutes_ago', ago) : t('misc.hours_ago', Math.round(ago / 60));
     html += '<div class="pack-history-entry">';
     html += '<span style="font-family:var(--font-mono);font-size:7px;color:#444;width:50px;">' + timeLabel + '</span>';
     entry.cards.forEach(function(c) {
@@ -6470,11 +6696,15 @@ function renderCardOfDay() {
   if (firstSentence.length > 80) firstSentence = firstSentence.substring(0, 77) + '...';
   el.style.display = '';
   el.style.borderColor = col + '44';
-  el.innerHTML = '<div class="card-of-day-label">CARD OF THE DAY</div>' +
+  var cName = cardT(card.id, 'name') || card.name;
+  var cFlavor = cardT(card.id, 'flavor') || card.flavor || '';
+  var cFirstSentence = cFlavor.split('.')[0] + '.';
+  if (cFirstSentence.length > 80) cFirstSentence = cFirstSentence.substring(0, 77) + '...';
+  el.innerHTML = '<div class="card-of-day-label">' + t('landing.card_of_day') + '</div>' +
     '<div class="card-of-day-symbol">' + card.symbol + '</div>' +
-    '<div class="card-of-day-name" style="color:' + col + ';">' + card.name + '</div>' +
-    '<div style="font-family:var(--font-mono);font-size:7px;letter-spacing:2px;color:' + col + ';margin-bottom:6px;">' + card.rarity + '</div>' +
-    '<div class="card-of-day-flavor">"' + firstSentence + '"</div>';
+    '<div class="card-of-day-name" style="color:' + col + ';">' + cName + '</div>' +
+    '<div style="font-family:var(--font-mono);font-size:7px;letter-spacing:2px;color:' + col + ';margin-bottom:6px;">' + rarityT(card.rarity) + '</div>' +
+    '<div class="card-of-day-flavor">"' + cFirstSentence + '"</div>';
 }
 
 // ═══════════════════════════════════════
@@ -6494,8 +6724,8 @@ function copyReferralLink() {
   var code = getReferralCode();
   var link = 'https://aicards.fun?ref=' + code;
   navigator.clipboard.writeText(link).then(function() {
-    showToast('INVITE LINK COPIED');
-  }).catch(function() { showToast('COPY FAILED'); });
+    showToast(t('toast.invite_copied'));
+  }).catch(function() { showToast(t('toast.copy_failed')); });
 }
 function checkReferralBonus() {
   var params = new URLSearchParams(window.location.search);
@@ -6509,7 +6739,7 @@ function checkReferralBonus() {
   ds.packsOpened = Math.max(0, (ds.packsOpened || 0) - 5);
   saveDailyState(ds);
   localStorage.setItem(refKey, ref);
-  showToast('REFERRAL BONUS: +5 DAILY PACKS');
+  showToast(t('toast.referral_bonus'));
 }
 
 // ═══════════════════════════════════════
@@ -6537,17 +6767,461 @@ function renderLeaderboard() {
     try { raw = localStorage.getItem(key); } catch(e) {}
     if (raw) { streak++; d.setDate(d.getDate() - 1); } else { break; }
   }
-  zone.innerHTML = '<div class="daily-missions-title">LEADERBOARD</div>' +
-    '<div class="leaderboard-row"><span class="leaderboard-label">MYTHICS PULLED</span><span class="leaderboard-value">' + mythicCount + '</span></div>' +
-    '<div class="leaderboard-row"><span class="leaderboard-label">UNIQUE CARDS</span><span class="leaderboard-value">' + collectionSize() + ' / ' + CARDS.length + '</span></div>' +
-    '<div class="leaderboard-row"><span class="leaderboard-label">PACKS OPENED</span><span class="leaderboard-value">' + S.packs + '</span></div>' +
-    '<div class="leaderboard-row"><span class="leaderboard-label">CURRENT STREAK</span><span class="leaderboard-value">' + streak + ' day' + (streak !== 1 ? 's' : '') + '</span></div>' +
-    '<div class="leaderboard-row"><span class="leaderboard-label">RAREST PULL</span><span class="leaderboard-value" style="color:' + (rarestCard ? RARITY_COLORS[rarestCard.rarity] : '#555') + ';">' + (rarestCard ? rarestCard.name : 'NONE') + '</span></div>';
+  zone.innerHTML = '<div class="daily-missions-title">' + t('leaderboard.title') + '</div>' +
+    '<div class="leaderboard-row"><span class="leaderboard-label">' + t('leaderboard.mythics') + '</span><span class="leaderboard-value">' + mythicCount + '</span></div>' +
+    '<div class="leaderboard-row"><span class="leaderboard-label">' + t('leaderboard.unique') + '</span><span class="leaderboard-value">' + collectionSize() + ' / ' + CARDS.length + '</span></div>' +
+    '<div class="leaderboard-row"><span class="leaderboard-label">' + t('leaderboard.packs') + '</span><span class="leaderboard-value">' + S.packs + '</span></div>' +
+    '<div class="leaderboard-row"><span class="leaderboard-label">' + t('leaderboard.streak') + '</span><span class="leaderboard-value">' + streak + ' ' + (streak !== 1 ? t('leaderboard.days') : t('leaderboard.day')) + '</span></div>' +
+    '<div class="leaderboard-row"><span class="leaderboard-label">' + t('leaderboard.rarest') + '</span><span class="leaderboard-value" style="color:' + (rarestCard ? RARITY_COLORS[rarestCard.rarity] : '#555') + ';">' + (rarestCard ? (cardT(rarestCard.id,'name') || rarestCard.name) : t('leaderboard.none')) + '</span></div>';
+}
+
+// ═══════════════════════════════════════
+// RAID BOSS SYSTEM
+// ═══════════════════════════════════════
+const RAID_RARITY_HP = {MYTHIC:1000,LEGENDARY:500,RARE:300,UNCOMMON:200,COMMON:100,JUNK:50};
+const RAID_RARITY_MULT = {MYTHIC:10,LEGENDARY:5,RARE:3,UNCOMMON:2,COMMON:1,JUNK:0.5};
+const RAID_ATK_DEFAULTS = {MYTHIC:9999,LEGENDARY:500,RARE:300,UNCOMMON:150,COMMON:80,JUNK:30};
+const RAID_MAX_ATTEMPTS = 3;
+
+const RAID_BOSSES = [
+  {id:"algo-overlord",name:"THE ALGORITHM",hp:8000,atk:120,weakness:"Human Trade",emoji:"🤖",
+   desc:"The algorithm that took the white-collar jobs. It optimizes everything except mercy."},
+  {id:"data-kraken",name:"DATA KRAKEN",hp:10000,atk:150,weakness:"Human Purpose",emoji:"🐙",
+   desc:"Feeds on personal data. Every click makes it stronger. Every scroll funds its growth."},
+  {id:"layoff-engine",name:"LAYOFF ENGINE",hp:6000,atk:200,weakness:"Irreplaceable",emoji:"⚙️",
+   desc:"Quarterly earnings require quarterly sacrifices. It doesn't fire people. It optimizes headcount."},
+  {id:"doom-feed",name:"THE DOOM FEED",hp:12000,atk:100,weakness:"Society Role",emoji:"📱",
+   desc:"Infinite scroll. Zero signal. It knows what makes you angry. Anger is engagement."},
+  {id:"ai-replacement",name:"YOUR REPLACEMENT",hp:7000,atk:180,weakness:"AI Product",emoji:"👤",
+   desc:"It has your resume. Your writing style. Your clients. It works 24/7 and never asks for a raise."},
+  {id:"burnout-titan",name:"BURNOUT TITAN",hp:9000,atk:140,weakness:"Lore",emoji:"🔥",
+   desc:"Born from a million hustle culture posts. Fueled by 80-hour weeks. It doesn't stop because it can't."},
+  {id:"credential-void",name:"CREDENTIAL VOID",hp:11000,atk:130,weakness:"Human Trade",emoji:"🕳️",
+   desc:"Four years. Six figures of debt. The degree expired before the loan did. The void remembers."},
+  {id:"loneliness-protocol",name:"LONELINESS PROTOCOL",hp:7500,atk:160,weakness:"Human Purpose",emoji:"💔",
+   desc:"Connection optimized. Intimacy automated. It matched everyone perfectly. Nobody felt anything."}
+];
+
+let raidTeam = [];
+let raidBattle = null;
+let raidSkipRequested = false;
+
+function parseATK(str) {
+  if (!str || str === '∞') return 9999;
+  const s = String(str).replace(/,/g,'').trim().toUpperCase();
+  const m = s.match(/^([\d.]+)\s*([KMB])?$/);
+  if (!m) return null;
+  let v = parseFloat(m[1]);
+  if (m[2]==='K') v *= 1000;
+  else if (m[2]==='M') v *= 1000000;
+  else if (m[2]==='B') v *= 1000000000;
+  return Math.round(v);
+}
+
+function getCardRaidATK(card) { return parseATK(card.atk) || RAID_ATK_DEFAULTS[card.rarity] || 100; }
+function getCardRaidHP(card) { return RAID_RARITY_HP[card.rarity] || 100; }
+
+function getCurrentBoss() {
+  const weekNum = Math.floor(Date.now() / (7 * 86400000));
+  return RAID_BOSSES[weekNum % RAID_BOSSES.length];
+}
+
+function getBossTimeRemaining() {
+  const weekMs = 7 * 86400000;
+  const now = Date.now();
+  const weekStart = Math.floor(now / weekMs) * weekMs;
+  const remaining = weekStart + weekMs - now;
+  const days = Math.floor(remaining / 86400000);
+  const hours = Math.floor((remaining % 86400000) / 3600000);
+  return {days, hours};
+}
+
+function calcCardDamage(card, boss) {
+  let base = getCardRaidATK(card);
+  // Normalize: cap base at 1000 for balance, scale down big numbers
+  base = Math.min(base, 1000);
+  const rarityMult = RAID_RARITY_MULT[card.rarity] || 1;
+  const ks = parseInt(card.kscore) || 5;
+  const antiKarpathy = (11 - Math.min(10, ks)) / 10;
+  const catBonus = (card.category === boss.weakness || (card.category && card.category.includes(boss.weakness))) ? 2 : 1;
+  return Math.round(base * rarityMult * catBonus * antiKarpathy);
+}
+
+function calcTeamBonuses(teamCards) {
+  let mult = 1;
+  // Set bonus: 3+ cards from same series
+  const seriesCounts = {};
+  teamCards.forEach(c => { const s = c.series || 'set1'; seriesCounts[s] = (seriesCounts[s]||0)+1; });
+  if (Object.values(seriesCounts).some(v => v >= 3)) mult *= 1.5;
+  // Solidarity: Human Trade + Human Purpose on team
+  const cats = new Set(teamCards.map(c => c.category));
+  if (cats.has('Human Trade') && cats.has('Human Purpose')) mult *= 1.25;
+  return mult;
+}
+
+function getRaidState() {
+  try {
+    const raw = localStorage.getItem('aicards_raid');
+    if (raw) return JSON.parse(raw);
+  } catch(e) {}
+  return {history:[], dailyAttempts:0, dailyDate:'', rewardPacks:0};
+}
+
+function saveRaidState(rs) {
+  localStorage.setItem('aicards_raid', JSON.stringify(rs));
+}
+
+function getRaidAttemptsRemaining() {
+  const rs = getRaidState();
+  const today = getTodayStr();
+  if (rs.dailyDate !== today) return RAID_MAX_ATTEMPTS;
+  return Math.max(0, RAID_MAX_ATTEMPTS - rs.dailyAttempts);
+}
+
+function consumeRaidAttempt() {
+  const rs = getRaidState();
+  const today = getTodayStr();
+  if (rs.dailyDate !== today) { rs.dailyAttempts = 0; rs.dailyDate = today; }
+  rs.dailyAttempts++;
+  saveRaidState(rs);
+}
+
+// ── RAID SCREEN RENDERER ──
+function renderRaidScreen() {
+  const body = document.getElementById('raid-body');
+  if (!body) return;
+  const boss = getCurrentBoss();
+  const remaining = getBossTimeRemaining();
+  const attempts = getRaidAttemptsRemaining();
+  const owned = Object.keys(S.collection);
+  const hasEnough = owned.length >= 5;
+  const rs = getRaidState();
+
+  // Team slots
+  let slotsHTML = '';
+  for (let i = 0; i < 5; i++) {
+    const cardId = raidTeam[i];
+    const card = cardId ? CARDS.find(c=>c.id===cardId) : null;
+    if (card) {
+      slotsHTML += '<div class="raid-team-slot filled"><span>' + card.symbol + '</span><button class="slot-remove" onclick="removeRaidCard(' + i + ')">✕</button><div class="slot-name">' + (cardT(card.id,'name')||card.name) + '</div></div>';
+    } else {
+      slotsHTML += '<div class="raid-team-slot">+</div>';
+    }
+  }
+
+  // Card selection grid
+  let gridHTML = '';
+  const ownedCards = CARDS.filter(c => collectionHas(c.id));
+  ownedCards.forEach(card => {
+    const selected = raidTeam.includes(card.id);
+    const disabled = !selected && raidTeam.length >= 5;
+    const col = RARITY_COLORS[card.rarity] || '#667080';
+    gridHTML += '<button class="raid-card-chip ' + (selected?'selected':'') + ' ' + (disabled?'disabled':'') + '" style="border-color:' + (selected?'var(--red)':col+'44') + ';" onclick="toggleRaidCard(\'' + card.id + '\')">' + card.symbol + ' ' + (cardT(card.id,'name')||card.name) + '</button>';
+  });
+
+  // Team bonuses preview
+  let bonusHTML = '';
+  if (raidTeam.length > 0) {
+    const teamCards = raidTeam.map(id=>CARDS.find(c=>c.id===id)).filter(Boolean);
+    const seriesCounts = {};
+    teamCards.forEach(c => { const s = c.series || 'set1'; seriesCounts[s] = (seriesCounts[s]||0)+1; });
+    if (Object.values(seriesCounts).some(v => v >= 3)) bonusHTML += '<span style="color:var(--gold);font-family:var(--font-mono);font-size:7px;letter-spacing:1px;border:1px solid rgba(200,168,75,0.3);padding:2px 6px;margin:0 3px;">' + t('raid.set_bonus') + '</span>';
+    const cats = new Set(teamCards.map(c => c.category));
+    if (cats.has('Human Trade') && cats.has('Human Purpose')) bonusHTML += '<span style="color:var(--gold);font-family:var(--font-mono);font-size:7px;letter-spacing:1px;border:1px solid rgba(200,168,75,0.3);padding:2px 6px;margin:0 3px;">' + t('raid.solidarity') + '</span>';
+  }
+
+  // History
+  let histHTML = '';
+  if (rs.history && rs.history.length > 0) {
+    rs.history.slice(0, 5).forEach(h => {
+      const ago = Math.round((Date.now() - h.timestamp) / 3600000);
+      const timeLabel = ago < 1 ? t('misc.just_now') : t('misc.hours_ago', ago);
+      histHTML += '<div class="raid-history-entry"><span>' + h.bossEmoji + ' ' + h.bossName + '</span><span>' + timeLabel + '</span><span class="raid-history-result ' + (h.victory?'win':'loss') + '">' + (h.victory?t('raid.victory'):t('raid.defeat')) + '</span><span>' + h.damage + ' DMG</span></div>';
+    });
+  } else {
+    histHTML = '<div style="font-family:var(--font-mono);font-size:7px;color:#333;text-align:center;padding:12px;">' + t('raid.no_history') + '</div>';
+  }
+
+  // Reward packs
+  let rewardHTML = '';
+  if (rs.rewardPacks > 0) {
+    rewardHTML = '<div style="text-align:center;margin-bottom:12px;"><button class="raid-engage-btn ready" onclick="openRaidRewardPack()">' + t('raid.claim_reward') + ' (' + rs.rewardPacks + ')</button></div>';
+  }
+
+  body.innerHTML = `
+    <div class="raid-boss-card">
+      <div style="font-family:var(--font-mono);font-size:7px;letter-spacing:3px;color:#555;text-align:center;margin-bottom:8px;">${t('raid.weekly_boss')}</div>
+      <div class="raid-boss-emoji">${boss.emoji}</div>
+      <div class="raid-boss-name">${boss.name}</div>
+      <div class="raid-boss-desc">${boss.desc}</div>
+      <div class="raid-boss-stats">
+        <span>ATK: ${boss.atk}</span>
+        <span>HP: ${boss.hp.toLocaleString()}</span>
+        <span class="raid-boss-weakness">${t('raid.weakness')}: ${catT(boss.weakness)}</span>
+      </div>
+      <div class="raid-hp-bar">
+        <div class="raid-hp-fill" style="width:100%;"></div>
+        <div class="raid-hp-text">${boss.hp.toLocaleString()} / ${boss.hp.toLocaleString()}</div>
+      </div>
+      <div style="text-align:center;margin-top:6px;font-family:var(--font-mono);font-size:7px;color:#333;letter-spacing:1px;">${t('raid.resets_in', remaining.days, remaining.hours)}</div>
+    </div>
+    <div class="raid-attempts-bar">${t('raid.attempts')}: ${attempts} / ${RAID_MAX_ATTEMPTS}</div>
+    ${rewardHTML}
+    <div class="raid-team-section">
+      <div class="raid-team-label">${t('raid.select_team')} — ${t('raid.cards_selected', raidTeam.length)}</div>
+      <div class="raid-team-slots">${slotsHTML}</div>
+      ${bonusHTML ? '<div style="text-align:center;margin-bottom:8px;">' + bonusHTML + '</div>' : ''}
+      ${hasEnough ? '<div class="raid-card-grid">' + gridHTML + '</div>' : '<div style="font-family:var(--font-mono);font-size:8px;color:#444;text-align:center;padding:20px;">' + t('raid.no_cards') + '</div>'}
+    </div>
+    <button class="raid-engage-btn ${raidTeam.length===5?'ready':''}" ${raidTeam.length<5||attempts<=0?'disabled':''} onclick="startRaid()">${attempts <= 0 ? t('raid.no_attempts') : t('raid.engage')}</button>
+    <div class="daily-missions" style="margin-top:16px;">
+      <div class="daily-missions-title">${t('raid.history_title')}</div>
+      ${histHTML}
+    </div>
+  `;
+}
+
+function toggleRaidCard(cardId) {
+  const idx = raidTeam.indexOf(cardId);
+  if (idx >= 0) { raidTeam.splice(idx, 1); }
+  else if (raidTeam.length < 5) { raidTeam.push(cardId); }
+  renderRaidScreen();
+}
+
+function removeRaidCard(slotIndex) {
+  raidTeam.splice(slotIndex, 1);
+  renderRaidScreen();
+}
+
+function openRaidRewardPack() {
+  const rs = getRaidState();
+  if (rs.rewardPacks <= 0) return;
+  rs.rewardPacks--;
+  saveRaidState(rs);
+  // Bypass daily limit — directly build and open a pack
+  session.pack = buildPack('standard');
+  session.revealed = new Array(5).fill(false);
+  session.type = 'standard';
+  session.currentIndex = 0;
+  S.packs++;
+  S.newCards.clear();
+  const labelKeys = {standard:'pack.survival_pack'};
+  document.getElementById('op-pack-name').textContent = t(labelKeys['standard']);
+  document.getElementById('legendaryBeam').classList.remove('active');
+  renderCardDeck();
+  showScreen('opening-screen');
+  const tearEl = document.getElementById('packTear');
+  const tearInner = document.getElementById('packTearInner');
+  tearInner.style.color = '#2196c8';
+  tearInner.style.borderColor = '#2196c8';
+  document.getElementById('packTearLabel').textContent = t('pack.survival');
+  tearEl.classList.add('tearing');
+  sfxPackRip();
+  setTimeout(() => { tearEl.classList.remove('tearing'); setTimeout(() => { showCardFaceUp(0); updateDeckUI(); save(); }, 500); }, 1400);
+  updateStats(); updateDailyUI();
+}
+
+// ── RAID BATTLE ENGINE ──
+function startRaid() {
+  if (raidTeam.length < 5) return;
+  if (getRaidAttemptsRemaining() <= 0) return;
+  consumeRaidAttempt();
+
+  const boss = getCurrentBoss();
+  const teamCards = raidTeam.map(id => CARDS.find(c => c.id === id)).filter(Boolean);
+  const teamBonus = calcTeamBonuses(teamCards);
+
+  raidBattle = {
+    boss: {...boss},
+    bossHP: boss.hp,
+    bossMaxHP: boss.hp,
+    team: teamCards.map(c => ({card:c, hp:getCardRaidHP(c), maxHP:getCardRaidHP(c), alive:true, totalDmg:0})),
+    round: 0,
+    log: [],
+    totalDamage: 0,
+    milestonesHit: [],
+    teamBonus: teamBonus,
+    finished: false
+  };
+  raidSkipRequested = false;
+
+  showScreen('raid-battle-screen');
+  renderBattleState();
+
+  // Start battle after brief pause
+  setTimeout(() => runRaidRound(), 1000);
+}
+
+function renderBattleState() {
+  const b = raidBattle;
+  if (!b) return;
+  const hpPct = Math.max(0, Math.round(b.bossHP / b.bossMaxHP * 100));
+
+  // Boss display
+  document.getElementById('raid-boss-display').innerHTML = `
+    <div class="raid-battle-boss">
+      <div class="boss-emoji">${b.boss.emoji}</div>
+      <div class="boss-name">${b.boss.name}</div>
+      <div class="raid-hp-bar">
+        <div class="raid-hp-fill" style="width:${hpPct}%;"></div>
+        <div class="raid-hp-text">${Math.max(0,b.bossHP).toLocaleString()} / ${b.bossMaxHP.toLocaleString()}</div>
+      </div>
+    </div>`;
+
+  // Team status
+  let teamHTML = '<div class="raid-battle-team">';
+  b.team.forEach((t, i) => {
+    const hpPct = Math.max(0, Math.round(t.hp / t.maxHP * 100));
+    teamHTML += '<div class="raid-battle-card ' + (t.alive?'':'ko') + '" id="raid-card-' + i + '">' +
+      '<div class="card-emoji">' + t.card.symbol + '</div>' +
+      '<div class="card-hp">' + (t.alive ? Math.max(0,t.hp) + '/' + t.maxHP : 'KO') + '</div>' +
+      (!t.alive ? '<div class="ko-overlay">KO</div>' : '') +
+      '</div>';
+  });
+  teamHTML += '</div>';
+  document.getElementById('raid-team-status').innerHTML = teamHTML;
+
+  // Log
+  const logWrap = document.getElementById('raid-battle-log');
+  logWrap.innerHTML = '<div class="raid-battle-log-wrap" id="raid-log-inner">' +
+    b.log.map(l => '<div class="raid-log-entry ' + l.type + '">' + l.text + '</div>').join('') +
+    '</div>';
+  const inner = document.getElementById('raid-log-inner');
+  if (inner) inner.scrollTop = inner.scrollHeight;
+
+  // Actions
+  if (!b.finished) {
+    document.getElementById('raid-battle-actions').innerHTML = '<div style="text-align:center;"><button class="raid-engage-btn" onclick="raidSkipRequested=true;" style="font-size:8px;padding:8px 16px;">' + t('raid.tap_skip') + '</button></div>';
+  }
+}
+
+function runRaidRound() {
+  const b = raidBattle;
+  if (!b || b.finished) return;
+  b.round++;
+  b.log.push({type:'round', text:t('raid.round', b.round)});
+
+  const aliveTeam = b.team.filter(t => t.alive);
+  if (aliveTeam.length === 0) { finishRaid(false); return; }
+
+  let attackIndex = 0;
+  const delay = raidSkipRequested ? 50 : 600;
+
+  function nextAttack() {
+    if (attackIndex < aliveTeam.length) {
+      const member = aliveTeam[attackIndex];
+      let dmg = calcCardDamage(member.card, b.boss);
+      dmg = Math.round(dmg * b.teamBonus);
+      b.bossHP -= dmg;
+      b.totalDamage += dmg;
+      member.totalDmg += dmg;
+      const cName = cardT(member.card.id, 'name') || member.card.name;
+      b.log.push({type:'player-atk', text:t('raid.attacks', cName, dmg.toLocaleString())});
+
+      // Milestone check
+      const pctDone = (b.bossMaxHP - Math.max(0,b.bossHP)) / b.bossMaxHP * 100;
+      [25,50,75].forEach(m => {
+        if (pctDone >= m && !b.milestonesHit.includes(m)) {
+          b.milestonesHit.push(m);
+          b.log.push({type:'milestone', text:'★ ' + t('raid.milestone_' + m)});
+          if (!raidSkipRequested) sfxRare();
+        }
+      });
+
+      if (!raidSkipRequested) sfxFlip();
+      renderBattleState();
+
+      // Highlight attacking card
+      const idx = b.team.indexOf(member);
+      const el = document.getElementById('raid-card-' + idx);
+      if (el && !raidSkipRequested) { el.classList.add('attacking'); setTimeout(()=>el.classList.remove('attacking'), 400); }
+
+      if (b.bossHP <= 0) { finishRaid(true); return; }
+      attackIndex++;
+      setTimeout(nextAttack, delay);
+    } else {
+      // Boss attacks
+      setTimeout(() => {
+        const alive = b.team.filter(t => t.alive);
+        if (alive.length === 0) { finishRaid(false); return; }
+        const dmgPerCard = Math.round(b.boss.atk / alive.length);
+        alive.forEach(member => {
+          member.hp -= dmgPerCard;
+          if (member.hp <= 0) {
+            member.hp = 0;
+            member.alive = false;
+            const cName = cardT(member.card.id, 'name') || member.card.name;
+            b.log.push({type:'ko', text:t('raid.ko', cName)});
+          }
+        });
+        b.log.push({type:'boss-atk', text:t('raid.boss_attacks', b.boss.name, b.boss.atk)});
+        if (!raidSkipRequested) sfxRare();
+        renderBattleState();
+
+        const stillAlive = b.team.filter(t => t.alive);
+        if (stillAlive.length === 0) { finishRaid(false); return; }
+
+        // Next round
+        setTimeout(() => runRaidRound(), raidSkipRequested ? 50 : 1200);
+      }, delay);
+    }
+  }
+  nextAttack();
+}
+
+function finishRaid(victory) {
+  const b = raidBattle;
+  b.finished = true;
+
+  // Calculate rewards
+  let rewardPacks = 0;
+  if (victory) rewardPacks++;
+  rewardPacks += b.milestonesHit.length; // 1 per milestone
+
+  // Save to history
+  const rs = getRaidState();
+  rs.history = rs.history || [];
+  rs.history.unshift({
+    bossId: b.boss.id,
+    bossName: b.boss.name,
+    bossEmoji: b.boss.emoji,
+    victory: victory,
+    damage: b.totalDamage,
+    timestamp: Date.now()
+  });
+  if (rs.history.length > 10) rs.history = rs.history.slice(0, 10);
+  rs.rewardPacks = (rs.rewardPacks || 0) + rewardPacks;
+  saveRaidState(rs);
+
+  if (victory) { sfxLegendary(); sfxLegendary(); }
+
+  // Render results
+  const milestoneHTML = [25,50,75].map(m =>
+    '<div class="raid-milestone ' + (b.milestonesHit.includes(m)?'':'locked') + '">' + t('raid.milestone_' + m) + '</div>'
+  ).join('');
+
+  const breakdownHTML = b.team.map(member => {
+    const cName = cardT(member.card.id, 'name') || member.card.name;
+    return cName + ': ' + member.totalDmg.toLocaleString() + ' DMG' + (member.alive ? '' : ' (KO)');
+  }).join('<br>');
+
+  const actions = document.getElementById('raid-battle-actions');
+  actions.innerHTML = `
+    <div class="raid-results">
+      <div class="raid-results-title ${victory?'victory':'defeat'}">${victory ? t('raid.victory') : t('raid.defeat')}</div>
+      <div class="raid-results-damage">${t('raid.damage_dealt', b.totalDamage.toLocaleString())}</div>
+      <div class="raid-milestones">${milestoneHTML}</div>
+      <div class="raid-results-breakdown">${breakdownHTML}</div>
+      ${rewardPacks > 0 ? '<div style="font-family:var(--font-mono);font-size:9px;color:var(--gold);letter-spacing:2px;margin-bottom:12px;">' + t('raid.reward_pack', rewardPacks) + '</div>' : ''}
+      <button class="raid-engage-btn ready" onclick="raidTeam=[];showScreen('raid-screen');">${t('raid.back')}</button>
+    </div>`;
+  renderBattleState();
 }
 
 // ═══════════════════════════════════════
 // INIT
 // ═══════════════════════════════════════
+initLangSelector();
 checkReferralBonus();
 updateStats();
 renderProfile();

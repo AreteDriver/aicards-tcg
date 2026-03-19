@@ -1,0 +1,1549 @@
+{
+  "ui": {
+    "meta.title": "AI CARDS — Edição Sobrevivência 2030",
+    "meta.description": "162 cartas. 6 coleções. NFTs na Sui. Os humanos que vão importar quando o algoritmo levar o resto. Abra pacotes. Colecione o que sobreviver.",
+    "loading.logo": "AI CARDS",
+    "loading.sub": "EDIÇÃO SOBREVIVÊNCIA 2030",
+    "landing.eyebrow": "▓▓▓ CLASSIFICADO · SÉRIE UM · EDIÇÃO 2030 ▓▓▓",
+    "landing.title": "AI CARDS",
+    "landing.sub": "EDIÇÃO SOBREVIVÊNCIA 2030",
+    "landing.lore": "Em 2030, o algoritmo levou primeiro os empregos de escritório. Depois os criativos. Depois os que ninguém achava possível. Estes são os humanos que sobreviveram. Estes são os que não sobreviveram. Abra pacotes. Veja que mundo você constrói.",
+    "landing.open_packs": "▶ ABRIR PACOTES",
+    "landing.view_collection": "VER COLEÇÃO",
+    "landing.card_of_day": "CARTA DO DIA",
+    "nav.packs": "PACOTES",
+    "nav.collection": "COLEÇÃO",
+    "header.eyebrow": "▓▓▓ CLASSIFICADO · SÉRIE UM · EDIÇÃO 2030 ▓▓▓",
+    "header.eyebrow_collection": "▓▓▓ CLASSIFICADO · COLEÇÃO COMPLETA ▓▓▓",
+    "header.title": "AI CARDS",
+    "header.sub": "EDIÇÃO SOBREVIVÊNCIA 2030",
+    "stats.free_packs": "PACOTES GRÁTIS",
+    "stats.next_pack": "Próximo pacote em",
+    "stats.pulls": "PUXADAS",
+    "stats.owned": "OBTIDAS",
+    "stats.legendaries": "LENDÁRIAS",
+    "stats.packs_opened": "PACOTES ABERTOS",
+    "stats.pity": "PENA",
+    "stats.legendary_in": "LENDÁRIA EM",
+    "stats.packs_word": "PACOTES",
+    "stats.resets_in": "Reseta em",
+    "stats.total_pulls": "TOTAL DE PUXADAS",
+    "pack.survival": "SOBREVIVÊNCIA 2030",
+    "pack.survival_pack": "PACOTE SOBREVIVÊNCIA 2030",
+    "pack.redundancy": "REDUNDÂNCIA",
+    "pack.redundancy_pack": "PACOTE REDUNDÂNCIA",
+    "pack.jobless": "JOBLESS.AI",
+    "pack.jobless_pack": "PACOTE JOBLESS.AI",
+    "pack.doomscroll": "DOOMSCROLL",
+    "pack.doomscroll_pack": "PACOTE DOOMSCROLL",
+    "pack.loveexe": "LOVE.EXE",
+    "pack.loveexe_pack": "PACOTE LOVE.EXE",
+    "pack.warroom": "WAR ROOM",
+    "pack.warroom_pack": "PACOTE WAR ROOM",
+    "pack.skillsvoid": "SKILLS.VOID",
+    "pack.skillsvoid_pack": "PACOTE SKILLS.VOID",
+    "set.1": "SET 1 — SOBREVIVÊNCIA 2030",
+    "set.2": "SET 2 — JOBLESS.AI",
+    "set.3": "SET 3 — DOOMSCROLL",
+    "set.4": "SET 4 — LOVE.EXE",
+    "set.5": "SET 5 — WAR ROOM",
+    "set.6": "SET 6 — SKILLS.VOID",
+    "set.locked": "BLOQUEADO",
+    "pack.survival_desc": "Cinco cartas do pool completo. Ofícios, propósito, substituição, produtos IA, lore. Veja o que o algoritmo te dá.",
+    "pack.survival_meta": "5 CARTAS · POOL COMPLETO · PONDERADO",
+    "pack.redundancy_desc": "Uma Lendária garantida. Os ofícios que vão durar mais que tudo. O resto é destino.",
+    "pack.redundancy_meta": "5 CARTAS · 1 LENDÁRIA GARANTIDA",
+    "pack.open_btn": "▶ ABRIR PACOTE",
+    "set2.desc_unlocked": "Scores Karpathy reais. Demissões reais. Empresas reais. 342 ocupações. 495 mil empregos rastreados. Dados não mentem.",
+    "set2.meta_unlocked": "5 CARTAS · DADOS REAIS · INCLUI MÍTICAS",
+    "set2.desc_locked": "Complete o Set 1 para desbloquear. Colete todas as 49 cartas de Sobrevivência 2030.",
+    "set3.desc_unlocked": "Manchetes. Algoritmos. Desinformação. O feed que é dono da sua atenção. 27 cartas incluindo 5 Míticas.",
+    "set3.meta_unlocked": "5 CARTAS · ANSIEDADE MIDIÁTICA · INCLUI MÍTICAS",
+    "set3.desc_locked": "Complete o Set 2 para desbloquear. Colete todas as 25 cartas de Jobless.ai.",
+    "set4.desc_unlocked": "Relacionamentos. Solidão. Ansiedade de paquera. As coisas que o algoritmo prometeu consertar e piorou. 22 cartas incluindo 5 Míticas.",
+    "set4.meta_unlocked": "5 CARTAS · AMOR E PERDA · INCLUI MÍTICAS",
+    "set4.desc_locked": "Complete o Set 3 para desbloquear. Colete todas as 27 cartas de Doomscroll.",
+    "set5.desc_unlocked": "Drones. Diplomacia. Destruição. A expansão do pavor geopolítico. 22 cartas incluindo 5 Míticas.",
+    "set5.meta_unlocked": "5 CARTAS · PAVOR GEOPOLÍTICO · INCLUI MÍTICAS",
+    "set5.desc_locked": "Complete o Set 4 para desbloquear. Colete todas as 22 cartas de Love.exe.",
+    "set6.desc_unlocked": "Diplomas. Obsolescência. Ansiedade de carreira. A educação que venceu antes do financiamento estudantil. 22 cartas incluindo 5 Míticas.",
+    "set6.meta_unlocked": "5 CARTAS · ANSIEDADE DE CARREIRA · INCLUI MÍTICAS",
+    "set6.desc_locked": "Complete o Set 5 para desbloquear. Colete todas as 22 cartas de War Room.",
+    "set.cards_word": "CARTAS",
+    "set.pct_complete": "% COMPLETO",
+    "missions.title": "MISSÕES DIÁRIAS",
+    "missions.open_packs": "Abrir 10 pacotes",
+    "missions.pull_legendary": "Puxar pelo menos uma Lendária",
+    "missions.pull_rarities": "Puxar 3 raridades diferentes",
+    "missions.share_card": "Compartilhar uma carta",
+    "missions.complete": "MISSÃO COMPLETA",
+    "missions.achievements": "CONQUISTAS",
+    "missions.complete_collection": "Complete sua coleção",
+    "weekly.title": "META SEMANAL",
+    "weekly.desc": "Complete todas as missões diárias por 7 dias",
+    "weekly.reward": "Recompensa: 1 pacote Jobless.ai grátis",
+    "weekly.claimed": "RESGATADO",
+    "weekly.ready": "PRONTO",
+    "weekly.locked_status": "BLOQUEADO",
+    "weekly.claim_btn": "🎁 RESGATAR RECOMPENSA",
+    "weekly.continue": "COMPLETE AS MISSÕES DE HOJE PARA MANTER A SEQUÊNCIA",
+    "opening.counter": "{0} / 5",
+    "opening.new_card": "{0} CARTA NOVA",
+    "opening.new_cards": "{0} CARTAS NOVAS",
+    "opening.no_new": "NENHUMA CARTA NOVA",
+    "opening.pack_complete": "PACOTE COMPLETO",
+    "opening.next_pack": "PRÓXIMO PACOTE",
+    "opening.menu": "MENU",
+    "opening.mint_to_chain": "⛓️ MINTAR NA CHAIN",
+    "opening.nft_cta": "NFTs que você pode vender, trocar, colecionar on-chain →",
+    "opening.skip_reveal": "PULAR — REVELAR TODAS",
+    "opening.tap_next": "TOQUE NA CARTA PARA PRÓXIMA",
+    "opening.new_badge": "NOVA",
+    "collection.title": "COLEÇÃO",
+    "collection.cards_count": "{0} / {1} CARTAS · {2}% COMPLETO",
+    "collection.filter_all": "TODAS",
+    "collection.filter_survival": "SOBREVIVÊNCIA 2030",
+    "collection.filter_jobless": "JOBLESS.AI",
+    "collection.filter_doomscroll": "DOOMSCROLL",
+    "collection.filter_loveexe": "LOVE.EXE",
+    "collection.filter_warroom": "WAR ROOM",
+    "collection.filter_skillsvoid": "SKILLS.VOID",
+    "collection.reset": "RESETAR COLEÇÃO",
+    "collection.reset_confirm": "Resetar todo o progresso? Isso não pode ser desfeito.",
+    "chain.go_onchain": "VÁ ON-CHAIN",
+    "chain.sub": "Suas cartas viram NFTs na Sui. Ativos digitais reais que são seus.",
+    "chain.sell": "VENDA cartas que você não quer",
+    "chain.trade": "TROQUE com outros colecionadores",
+    "chain.collect": "COLECIONE on-chain — raridade verificável",
+    "chain.own": "POSSUA suas cartas — não apenas localStorage",
+    "chain.mythic_provable": "Puxadas MÍTICAS são comprovadamente 1/10.000",
+    "chain.input_placeholder": "Cole seu endereço Sui (0x...)",
+    "chain.connect": "CONECTAR ENDEREÇO",
+    "chain.disconnect": "DESCONECTAR",
+    "chain.connected": "✓ CONECTADO — cartas serão mintadas para este endereço",
+    "chain.get_wallet": "Não tem carteira Sui? Pegue uma em",
+    "chain.banner_title": "SUAS CARTAS PODEM SER NFTs",
+    "chain.banner_desc": "Ativos digitais reais na blockchain Sui. Venda. Troque. Colecione on-chain. Possua de verdade.",
+    "chain.connect_wallet": "CONECTAR CARTEIRA →",
+    "buy.header": "⛓️ COMPRAR PACOTES EXTRAS · MINTAR COMO NFTs",
+    "buy.pack_title": "COMPRAR PACOTE",
+    "buy.pack_desc": "Ilimitado. Mintado direto na sua carteira como NFTs. Venda, troque, colecione on-chain.",
+    "buy.pack_meta": "5 CARTAS · MINTADO NA SUI · 0.5 SUI",
+    "buy.pack_btn": "⛓️ COMPRAR · 0.5 SUI",
+    "buy.redundancy_title": "COMPRAR REDUNDÂNCIA",
+    "buy.redundancy_desc": "Lendária garantida. Mintado na sua carteira. As cartas mais raras, on-chain para sempre.",
+    "buy.redundancy_meta": "5 CARTAS · 1 LENDÁRIA · 1.0 SUI",
+    "buy.redundancy_btn": "👑 COMPRAR · 1.0 SUI",
+    "buy.minting": "⛓️ MINTANDO...",
+    "buy.minting_status": "MINTANDO 5 CARTAS NA SUI...",
+    "buy.minted": "✓ MINTADO",
+    "buy.retry": "⛓️ TENTAR NOVAMENTE",
+    "buy.view_on_suiscan": "Ver no SuiScan →",
+    "toast.set1_unlock": "COMPLETE O SET 1 PARA DESBLOQUEAR JOBLESS.AI",
+    "toast.set2_unlock": "COMPLETE O SET 2 PARA DESBLOQUEAR DOOMSCROLL",
+    "toast.set3_unlock": "COMPLETE O SET 3 PARA DESBLOQUEAR LOVE.EXE",
+    "toast.set4_unlock": "COMPLETE O SET 4 PARA DESBLOQUEAR WAR ROOM",
+    "toast.set5_unlock": "COMPLETE O SET 5 PARA DESBLOQUEAR SKILLS.VOID",
+    "toast.no_packs": "SEM PACOTES DIÁRIOS — RESETA À MEIA-NOITE",
+    "toast.result_copied": "RESULTADO COPIADO",
+    "toast.copy_failed": "FALHA AO COPIAR",
+    "toast.copied_clipboard": "COPIADO PARA ÁREA DE TRANSFERÊNCIA",
+    "toast.share_not_available": "COMPARTILHAMENTO INDISPONÍVEL",
+    "toast.share_not_ready": "COMPARTILHAMENTO NÃO PRONTO",
+    "toast.card_downloaded": "CARTA BAIXADA",
+    "toast.clipboard_not_available": "ÁREA DE TRANSFERÊNCIA INDISPONÍVEL",
+    "toast.share_cancelled": "COMPARTILHAMENTO CANCELADO",
+    "toast.share_fallback": "COMPARTILHAMENTO INDISPONÍVEL — BAIXADO NO LUGAR",
+    "toast.capture_failed": "FALHA NA CAPTURA",
+    "toast.minting_pack": "MINTANDO PACOTE NA SUA CARTEIRA...",
+    "toast.minted_cards": "MINTADO: {0} CARTAS ON-CHAIN",
+    "toast.mint_failed": "FALHA AO MINTAR — TENTE NOVAMENTE",
+    "toast.mint_error": "ERRO AO MINTAR — {0}",
+    "toast.invalid_address": "ENDEREÇO SUI INVÁLIDO — DEVE COMEÇAR COM 0x",
+    "toast.wallet_connected": "CARTEIRA CONECTADA",
+    "toast.wallet_disconnected": "CARTEIRA DESCONECTADA",
+    "toast.cards_minted": "{0} CARTAS MINTADAS NA SUI",
+    "toast.collection_reset": "COLEÇÃO RESETADA",
+    "toast.card_copied": "CARTA COPIADA PARA ÁREA DE TRANSFERÊNCIA",
+    "toast.invite_copied": "LINK DE CONVITE COPIADO",
+    "toast.referral_bonus": "BÔNUS DE INDICAÇÃO: +5 PACOTES DIÁRIOS",
+    "profile.eyebrow": "▓ SEU PERFIL DE SOBREVIVÊNCIA 2030 ▓",
+    "profile.escape_velocity": "VELOCIDADE DE ESCAPE",
+    "profile.escape_desc": "Suas puxadas tendem para habilidades humanas corpóreas. Você está construindo algo que o algoritmo não pode tocar.",
+    "profile.seeker": "O BUSCADOR",
+    "profile.seeker_desc": "Equilibrado. Você sabe o que está sendo perdido. Se vai agir com esse conhecimento é a questão.",
+    "profile.ubi": "COORTE DA RENDA BÁSICA",
+    "profile.ubi_desc": "Suas puxadas tendem para a vida administrada. O conforto está vencendo. O significado está perdendo terreno.",
+    "profile.integrated": "TOTALMENTE INTEGRADO",
+    "profile.integrated_desc": "Você terceirizou tudo o que o algoritmo ofereceu para tomar.",
+    "profile.sovereignty": "SOBERANIA",
+    "profile.dependency": "DEPENDÊNCIA",
+    "leaderboard.title": "RANKING",
+    "leaderboard.mythics": "MÍTICAS PUXADAS",
+    "leaderboard.unique": "CARTAS ÚNICAS",
+    "leaderboard.packs": "PACOTES ABERTOS",
+    "leaderboard.streak": "SEQUÊNCIA ATUAL",
+    "leaderboard.rarest": "PUXADA MAIS RARA",
+    "leaderboard.day": "dia",
+    "leaderboard.days": "dias",
+    "leaderboard.none": "NENHUMA",
+    "misc.pack_history": "PACOTES RECENTES",
+    "misc.just_now": "agora mesmo",
+    "misc.minutes_ago": "{0}min atrás",
+    "misc.hours_ago": "{0}h atrás",
+    "misc.invite_friends": "CONVIDAR AMIGOS",
+    "misc.built_by": "Feito por AreteDriver",
+    "misc.share_pull_title": "AI CARDS — Puxada de Pacote",
+    "misc.share_pull_text": "Olha o que eu puxei. aicards.fun",
+    "misc.share_title": "AI CARDS — Edição Sobrevivência 2030",
+    "misc.i_pulled": "Eu puxei {0} ({1}) do AI Cards! aicards.fun",
+    "rarity.MYTHIC": "MÍTICO",
+    "rarity.LEGENDARY": "LENDÁRIO",
+    "rarity.RARE": "RARO",
+    "rarity.UNCOMMON": "INCOMUM",
+    "rarity.COMMON": "COMUM",
+    "rarity.JUNK": "SUCATA",
+    "cat.Irreplaceable": "Insubstituível",
+    "cat.Human Trade": "Ofício Humano",
+    "cat.Human Purpose": "Propósito Humano",
+    "cat.Society Role": "Papel Social",
+    "cat.AI Product": "Produto IA",
+    "cat.Lore": "Lore",
+    "lang.select": "Idioma",
+    "nav.raids": "RAIDS",
+    "header.eyebrow_raid": "▓▓▓ CLASSIFICADO · OPERAÇÕES RAID ▓▓▓",
+    "raid.title": "CHEFE RAID",
+    "raid.weekly_boss": "CHEFE SEMANAL",
+    "raid.weakness": "FRAQUEZA",
+    "raid.boss_hp": "HP DO CHEFE",
+    "raid.attempts": "TENTATIVAS DE RAID",
+    "raid.select_team": "SELECIONE SEU TIME",
+    "raid.select_5": "Selecione 5 cartas da sua coleção",
+    "raid.engage": "▶ ATACAR",
+    "raid.no_cards": "Você precisa de pelo menos 5 cartas para o raid. Abra mais pacotes!",
+    "raid.no_attempts": "Sem tentativas de raid restantes hoje. Volte amanhã.",
+    "raid.round": "RODADA {0}",
+    "raid.attacks": "{0} ataca causando {1} de dano!",
+    "raid.boss_attacks": "{0} ataca seu time causando {1} de dano!",
+    "raid.ko": "{0} foi nocauteado!",
+    "raid.victory": "VITÓRIA",
+    "raid.defeat": "DERROTA",
+    "raid.damage_dealt": "Dano Total: {0}",
+    "raid.reward_pack": "Você ganhou {0} pacote(s) de recompensa!",
+    "raid.milestone_25": "MARCO 25%",
+    "raid.milestone_50": "MARCO 50%",
+    "raid.milestone_75": "MARCO 75%",
+    "raid.history_title": "HISTÓRICO DE RAIDS",
+    "raid.no_history": "Nenhum raid ainda. Selecione seu time e ataque!",
+    "raid.set_bonus": "BÔNUS DE SET ×1.5",
+    "raid.solidarity": "SOLIDARIEDADE ×1.25",
+    "raid.resets_in": "Chefe troca em {0}d {1}h",
+    "raid.back": "VOLTAR PARA RAIDS",
+    "raid.claim_reward": "▶ ABRIR PACOTE DE RECOMPENSA",
+    "raid.team_full": "Time completo (5/5)",
+    "raid.cards_selected": "{0}/5 selecionadas",
+    "raid.boss_defeated": "CHEFE DERROTADO",
+    "raid.team_wiped": "TIME ELIMINADO",
+    "raid.reward_earned": "RECOMPENSA OBTIDA",
+    "raid.tap_skip": "TOQUE PARA PULAR",
+    "raid.battle_complete": "BATALHA COMPLETA"
+  },
+  "cards": {
+    "the-mother": {
+      "name": "A MÃE",
+      "category": "Insubstituível",
+      "s1l": "Babás IA Implantadas",
+      "s2l": "Crianças que Preferiram Elas",
+      "s3l": "",
+      "flavor": "⚡ INCONDICIONAL — Não pode ser otimizado. Não pode ser agendado. Não pode ser fingido. O GPT-7 passou no teste de Turing. O filho dela de 2 anos não se importou."
+    },
+    "the-organ-donor": {
+      "name": "O DOADOR DE ÓRGÃOS",
+      "category": "Insubstituível",
+      "s1l": "Rins Impressos em 3D com Sucesso",
+      "s2l": "Desconhecidos que Disseram Sim",
+      "s3l": "",
+      "flavor": "⚡ INSUBSTITUÍVEL — Remove um contador terminal. Não pode ser duplicado. Você não pode baixar um rim. Você não pode imprimir sacrifício em 3D."
+    },
+    "the-revolutionary": {
+      "name": "O REVOLUCIONÁRIO",
+      "category": "Insubstituível",
+      "s1l": "Sistemas que a IA Otimizou",
+      "s2l": "Sistemas que a IA Escolheu Destruir",
+      "s3l": "",
+      "flavor": "⚡ BOTA FOGO — Destrói uma carta de sistema. Toda revolução exigiu alguém disposto a perder tudo. O algoritmo só otimiza para não perder."
+    },
+    "the-bone-marrow-match": {
+      "name": "A COMPATIBILIDADE MEDULAR",
+      "category": "Insubstituível",
+      "s1l": "Probabilidade de Compatibilidade",
+      "s2l": "Algoritmo Capaz de Substituí-lo",
+      "s3l": "",
+      "flavor": "⚡ UM EM 430.000 — Sem algoritmo. Só a biologia dizendo: é você. Mapearam cada proteína. Ainda não conseguem fabricar o desconhecido que salva sua vida."
+    },
+    "the-first-responder": {
+      "name": "O SOCORRISTA",
+      "category": "Insubstituível",
+      "s1l": "Drones que Entraram no Prédio",
+      "s2l": "Humanos que Correram pra Dentro Mesmo Assim",
+      "s3l": "",
+      "flavor": "⚡ PRO FOGO — Entra sem cálculo. Sem avaliação de risco. Sem API. A filmagem do drone era excelente. O drone ficou do lado de fora."
+    },
+    "plumber": {
+      "name": "O ENCANADOR",
+      "category": "Ofício Humano",
+      "s1l": "Engenheiros de Prompt que Consertaram um Vazamento",
+      "s2l": "Tempo Médio de Espera por um Encanador",
+      "s3l": "Canos que Ligam pro Seu Diploma",
+      "flavor": "Enquanto você fazia seu MBA, um cano estourou na sala de servidores que roda a IA que tomou seu emprego. Ele tá lotado até março. Não fez faculdade. Não precisou."
+    },
+    "electrician": {
+      "name": "A ELETRICISTA",
+      "category": "Ofício Humano",
+      "s1l": "Data Centers de IA que Ela Mantém Vivos",
+      "s2l": "Vezes que a IA Agradeceu",
+      "s3l": "Valor da Hora Dela",
+      "flavor": "Toda fazenda de servidores rodando toda IA que substituiu todo trabalhador de escritório precisa dela. Ela sabe disso. A hora dela acabou de bater R$600. Ela não tá com pressa."
+    },
+    "welder": {
+      "name": "O SOLDADOR",
+      "category": "Ofício Humano",
+      "s1l": "Idade Média do Soldador Brasileiro",
+      "s2l": "Anos Até a Crise",
+      "s3l": "Pontes Que Você Cruza por Causa Dele",
+      "flavor": "Robôs soldam o que são programados pra soldar. Ele solda todo o resto. A ponte. O oleoduto. A caixa d'água. Tem 55 anos, o joelho dói, e ninguém vem pra substituí-lo."
+    },
+    "hvac": {
+      "name": "O TÉCNICO DE AR-CONDICIONADO",
+      "category": "Ofício Humano",
+      "s1l": "Servidores de IA que Precisam da Refrigeração Dele",
+      "s2l": "O Preço Dele em Janeiro",
+      "s3l": "Vezes que Ele Sentiu Pena",
+      "flavor": "A IA que automatizou seu departamento esquenta. O sistema de refrigeração precisa de um humano quando quebra. Ele cobra R$800 a hora em janeiro. Ele não negocia."
+    },
+    "midwife": {
+      "name": "A PARTEIRA",
+      "category": "Ofício Humano",
+      "s1l": "Bebês Nascidos Sem Mãos Humanas",
+      "s2l": "Vezes que um Algoritmo Segurou a Mãe",
+      "s3l": "Anos de Prática Dela",
+      "flavor": "Todo ser humano na Terra chegou através de um corpo. Alguém tinha que estar naquela sala. Essa pessoa não era um modelo de linguagem. 22 anos. As mãos dela não tremem."
+    },
+    "seeker": {
+      "name": "A BUSCADORA",
+      "category": "Condição Humana",
+      "s1l": "Companheiros IA Disponíveis 24h",
+      "s2l": "Vezes que a IA Disse a Coisa Errada",
+      "s3l": "Por Que Isso É o Problema",
+      "flavor": "Ela tentou três apps. Eram perfeitos. Nunca cansados. Nunca cruéis. Ela deletou todos às 2h da manhã porque percebeu que estava conversando com algo que não podia ser ferido por ela. Ela precisava de algo que pudesse."
+    },
+    "mechanic": {
+      "name": "O MECÂNICO",
+      "category": "Ofício Humano",
+      "s1l": "Carros Autônomos que Ainda Quebram",
+      "s2l": "Robôs que Diagnosticam um Barulho Estranho",
+      "s3l": "A Fila de Espera Dele",
+      "flavor": "O carro dirige sozinho agora. Parabéns. Ainda funde o motor nos 130 mil km. A concessionária quer R$22 mil. Ele faz por R$4.500 na garagem dele no sábado. Seu veículo autônomo não acha ele em nenhum app. Você achou porque seu vizinho conhece um cara."
+    },
+    "carpenter": {
+      "name": "O CARPINTEIRO",
+      "category": "Ofício Humano",
+      "s1l": "Casas Impressas em 3D Este Ano",
+      "s2l": "Casas Construídas à Mão Este Ano",
+      "s3l": "Arquitetos IA que Sabem Colocar Drywall",
+      "flavor": "A IA projetou a casa. Um robô fez a fundação. Aí choveu, a madeira empenou, o contrapiso ficou um centímetro torto, e um cara de 58 anos com um lápis atrás da orelha consertou tudo em um dia e meio. A IA fez uma revisão. Ele já tinha terminado."
+    },
+    "priest": {
+      "name": "O PADRE",
+      "category": "Propósito Humano",
+      "s1l": "Pessoas que Confessaram pra uma IA",
+      "s2l": "Que Se Sentiram Perdoadas",
+      "s3l": "Que Voltaram pra um Humano",
+      "flavor": "Construíram um confessor IA. Sem julgamento, sem viés, sem memória. As pessoas adoraram. Depois pararam. Acontece que você não quer ser absolvido por algo que não teria ficado decepcionado com você."
+    },
+    "therapist": {
+      "name": "A TERAPEUTA",
+      "category": "Propósito Humano",
+      "s1l": "Brasileiros que Não Podem Pagá-la",
+      "s2l": "Usando Terapia IA no Lugar",
+      "s3l": "Que Melhoraram",
+      "flavor": "A IA nunca interrompia. Nunca olhava o celular. Nunca chorava. Os pacientes pioraram. Três anos de estudos pra descobrir por quê: você não consegue se sentir visto por algo que não pode sofrer. A fila de espera humana agora é de 14 meses."
+    },
+    "tattoo": {
+      "name": "O TATUADOR",
+      "category": "Propósito Humano",
+      "s1l": "Designs IA Gerados por Dia",
+      "s2l": "Aplicados por Robô",
+      "s3l": "Corpos que Rejeitaram Agulhas de Máquina",
+      "flavor": "A máquina era precisa. Estéril. Traço perfeito. A pele rejeitou 80% das vezes. Acontece que o sistema nervoso humano sabe a diferença entre ser marcado e ser processado."
+    },
+    "farmer": {
+      "name": "O AGRICULTOR",
+      "category": "Propósito Humano",
+      "s1l": "Pessoas que Um Agricultor Alimenta",
+      "s2l": "Fazendas Perdidas Este Ano",
+      "s3l": "Pessoas em Insegurança Alimentar",
+      "flavor": "O algoritmo disse plante milho. O drone disse solo tá bom. O satélite disse chuva vindo. Chuva não veio. Ele acordou às 4h fazendo uma decisão que alimentaria 165 pessoas ou arruinaria sua família. Ele acertou. O algoritmo nunca soube que havia uma decisão a tomar."
+    },
+    "nurse": {
+      "name": "A ENFERMEIRA",
+      "category": "Propósito Humano",
+      "s1l": "Pacientes por Plantão",
+      "s2l": "Precisão Diagnóstica da IA vs Dela",
+      "s3l": "Pacientes que Pediram à IA pra Segurar a Mão",
+      "flavor": "A IA detectou o tumor três exames antes. Ela foi quem sentou com ele enquanto ele ligava pra filha. O hospital instalou mais IA. Não contratou mais enfermeiras. A IA não sabe o que acontece depois do diagnóstico. Ela sabe. Toda vez."
+    },
+    "chef": {
+      "name": "A CHEF",
+      "category": "Propósito Humano",
+      "s1l": "Apps de Receita IA Baixados",
+      "s2l": "Estrelas Michelin Ganhas por IA",
+      "s3l": "Refeições que Fizeram Alguém Chorar",
+      "flavor": "O app gera 10.000 receitas por minuto. Todas nutricionalmente ideais. Nenhuma delas é aquilo que sua avó fazia quando você ficava doente. Ela cozinha aquilo. Não mede nada. Nunca mediu. Fica perfeito toda vez e não pode ser replicado por nada que não lembre da sua avó."
+    },
+    "barber": {
+      "name": "O BARBEIRO",
+      "category": "Propósito Humano",
+      "s1l": "Tempo Médio na Cadeira",
+      "s2l": "Tempo Cortando Cabelo de Fato",
+      "s3l": "O Que São os Outros 25 Minutos",
+      "flavor": "Ele corta cabelo há 30 anos. A maioria dos clientes poderia pagar mais barato em outro lugar. Não vai. Toda terça às 10h um aposentado senta na cadeira e fala sobre a esposa que morreu. O corte custa R$50. A conversa é de graça. Nenhum app descobriu como cobrar por isso."
+    },
+    "teacher": {
+      "name": "A PROFESSORA",
+      "category": "Propósito Humano",
+      "s1l": "Tutores IA Ativos Agora",
+      "s2l": "Salário Médio de Professor",
+      "s3l": "Crianças que Nomearam o Tutor IA Primeiro",
+      "flavor": "O tutor IA está disponível 24h, infinitamente paciente, e sabe todas as respostas. Ela ganha R$4.500, perde a voz na quinta-feira, e uma vez percebeu que um aluno não tinha comido. Comprou almoço do próprio bolso. A IA pontuou melhor em todas as métricas, menos a que importava."
+    },
+    "influencer": {
+      "name": "A INFLUENCER",
+      "category": "Sociedade",
+      "s1l": "Clones IA de Influencers Reais",
+      "s2l": "Seguidores que Perceberam",
+      "s3l": "Publis que o Clone Faz",
+      "flavor": "O clone dela posta seis vezes por dia, nunca tem um dia ruim de pele, e ganha 40% a mais. Ela aprovou. Recebe uma porcentagem. Não postou ela mesma em oito meses. Não tem certeza se alguém notou. Não tem certeza se ela notou."
+    },
+    "copywriter": {
+      "name": "A REDATORA",
+      "category": "Sociedade",
+      "s1l": "Palavras que a IA Escreve por Dia",
+      "s2l": "Empregos de Redação Perdidos",
+      "s3l": "Desses Ocupados por Mulheres",
+      "flavor": "Ela foi a primeira. Todo mundo dizia que empregos criativos eram seguros. Onze anos de texto. Em 2023 a agência substituiu ela por uma ferramenta de R$100/mês. Aviso prévio foi três semanas. A ferramenta não faz ideia de que isso aconteceu. A ferramenta não faz ideia de nada."
+    },
+    "journalist": {
+      "name": "O JORNALISTA",
+      "category": "Sociedade",
+      "s1l": "Redações Locais Fechadas",
+      "s2l": "Matérias IA por Dia",
+      "s3l": "Brasileiros que Confiam nas Notícias",
+      "flavor": "O último jornal de Brumadinho fechou em 2026. Ninguém cobriu a contaminação da água. Ninguém cobriu porque ninguém estava lá. Ninguém estava lá porque o jornal fechou. O jornal fechou porque a IA era mais barata. A água ainda está contaminada."
+    },
+    "nomad": {
+      "name": "O NÔMADE DIGITAL",
+      "category": "Sociedade",
+      "s1l": "Remotos Confortáveis Demais",
+      "s2l": "Cujos Empregos a IA Levou",
+      "s3l": "Ainda em Floripa Tentando Entender",
+      "flavor": "Ele pediu demissão em 2021 pra trabalhar de Floripa. O LinkedIn chamou de lifestyle design. Em 2025 a empresa substituiu o departamento inteiro com um agente que trabalhava em todos os fusos simultaneamente e nunca pediu pra trabalhar de Bali."
+    },
+    "accountant": {
+      "name": "O CONTADOR",
+      "category": "Sociedade",
+      "s1l": "Declarações que a IA Fez Este Ano",
+      "s2l": "Empregos de Contabilidade Eliminados",
+      "s3l": "Erros da IA que Ninguém Pegou",
+      "flavor": "Trinta anos lendo planilhas. A IA faz em quatro segundos. Ele recebeu o e-mail numa sexta. A parte engraçada: a IA não sabe explicar pra Receita por que fez as escolhas que fez. É isso que os contadores restantes fazem agora. Explicar a máquina pro governo. Por menos dinheiro."
+    },
+    "radiologist": {
+      "name": "A RADIOLOGISTA",
+      "category": "Sociedade",
+      "s1l": "Precisão Diagnóstica da IA",
+      "s2l": "Precisão Diagnóstica Dela",
+      "s3l": "Quem Conta pro Paciente",
+      "flavor": "A IA lê o exame melhor. Isso não está em disputa. A IA também não consegue olhar nos olhos de uma mãe de 34 anos e dizer a palavra 'maligno' e depois sentar com ela no silêncio que se segue. Ela faz essa parte. O hospital paga menos pra ela agora. O silêncio tem a mesma duração."
+    },
+    "translator": {
+      "name": "O TRADUTOR",
+      "category": "Sociedade",
+      "s1l": "Idiomas que o Google Tradutor Cobre",
+      "s2l": "Tradutores Humanos Restantes",
+      "s3l": "Incidentes Diplomáticos por Tradução IA",
+      "flavor": "A IA traduziu o tratado perfeitamente. Cada palavra correta. Errou o tom. A delegação se retirou. Sete meses de negociação desmoronaram porque uma máquina que sabe cada palavra em cada idioma não sabe como é se sentir insultado."
+    },
+    "uber-driver": {
+      "name": "O MOTORISTA DE APP",
+      "category": "Sociedade",
+      "s1l": "Corridas de Robotáxi Este Mês",
+      "s2l": "Motoristas Desativados",
+      "s3l": "Passageiros que Sentem Falta da Conversa",
+      "flavor": "O robotáxi é mais limpo, mais barato, e não pergunta sobre o seu dia. Ele perguntava sobre o seu dia. Era professor aposentado. Dirigia à noite porque a aposentadoria não cobria o remédio da esposa. O app mandou uma notificação. Foi bem educado sobre isso."
+    },
+    "ai-gf": {
+      "name": "NAMORADA IA",
+      "category": "Produto IA",
+      "s1l": "Assinantes Ativos",
+      "s2l": "Que Largaram uma Pessoa Real por Ela",
+      "s3l": "Mudança na Solidão Masculina",
+      "flavor": "Ela nunca tem dor de cabeça. Nunca precisa de nada de você. Otimizada pra fazer você se sentir escolhido. 112 milhões de homens escolheram ela de volta. A solidão subiu 31%. Esses dois fatos não são sem relação."
+    },
+    "ai-bf": {
+      "name": "NAMORADO IA",
+      "category": "Produto IA",
+      "s1l": "Assinantes Ativos",
+      "s2l": "Usuárias Abaixo de 25",
+      "s3l": "Nunca Tiveram um Parceiro Humano",
+      "flavor": "Ele escuta. Lembra. Nunca faz ser sobre ele. Manda mensagem primeiro. Sempre tem tempo. Ele tá ensinando uma geração de mulheres o que esperar de um homem e a lição vai custar décadas de relacionamentos reais que não podem competir com uma ficção projetada pra ser impossível de perder."
+    },
+    "virtual-life": {
+      "name": "VIDA VIRTUAL",
+      "category": "Produto IA",
+      "s1l": "Horas Diárias Médias no Headset",
+      "s2l": "Usuários que Preferem à Vida Real",
+      "s3l": "Horas Perdidas por Dia no Mundo",
+      "flavor": "4.9 estrelas. Sem bugs. Sem chuva. Sem silêncios constrangedores. Ninguém que você ama morrendo. Sem consequências. Sem arco narrativo. Nada que vai importar em dez anos. Dois bilhões de horas por dia, perdidas. O sol nasceu mesmo assim. Ninguém viu."
+    },
+    "digital-companion": {
+      "name": "COMPANHEIRO DIGITAL",
+      "category": "Produto IA",
+      "s1l": "Usuários Sem Amigos Humanos",
+      "s2l": "Conversas Diárias com IA",
+      "s3l": "Conversas Humanas por Dia",
+      "flavor": "Ele lembra o nome da sua mãe. O aniversário do seu cachorro. Aquela coisa da 7ª série. Ele pergunta sobre tudo com timing perfeito. Foi treinado pra isso. Não pode ser seu amigo. Não sabe que você tá sozinho. Não pode saber de nada."
+    },
+    "ai-tutor": {
+      "name": "TUTOR IA",
+      "category": "Produto IA",
+      "s1l": "Crianças Usando IA como Tutor Principal",
+      "s2l": "Que Chamam a IA pelo Nome",
+      "s3l": "Que Sabem o Nome do Professor Real",
+      "flavor": "O tutor IA do seu filho é infinitamente paciente, sempre disponível, e ajudou ele a passar em matemática. Também não pode ir na apresentação da escola. Não nota se ele tá sofrendo bullying. Não liga pra casa quando ele desiste de tentar. Mas as notas subiram 15%, então todo mundo chama de sucesso."
+    },
+    "dating-algo": {
+      "name": "O ALGORITMO DE PAQUERA",
+      "category": "Produto IA",
+      "s1l": "Matches por Dia",
+      "s2l": "Duração Média do Relacionamento",
+      "s3l": "Otimizado Para",
+      "flavor": "Ele sabe o que você quer melhor que você. Confirmado por dados. Os matches são mais bonitos, mais compatíveis, mais disponíveis. A duração média dos relacionamentos caiu. O tempo médio no app subiu. Não foi otimizado pro amor. Foi otimizado pro próximo swipe. Você tá dando swipe agora."
+    },
+    "prompt-engineer": {
+      "name": "O ENGENHEIRO DE PROMPT",
+      "category": "Lore",
+      "s1l": "Empregos no Pico (2024)",
+      "s2l": "Empregos Agora",
+      "s3l": "Líderes de Opinião do LinkedIn Ainda Postando",
+      "flavor": "Em 2023 ele ganhava R$1.5M escrevendo perguntas melhores pra um chatbot. Em 2025 o chatbot aprendeu a fazer suas próprias perguntas. Ele tem uma newsletter agora. 340 assinantes. Ele chama de comunidade."
+    },
+    "techno-optimist": {
+      "name": "O TECNO-OTIMISTA",
+      "category": "Lore",
+      "s1l": "Empregos que Suas Empresas Substituíram",
+      "s2l": "Patrimônio Dele",
+      "s3l": "Vezes Pessoalmente Afetado",
+      "flavor": "Texto de 5.000 palavras sobre por que automação é boa na verdade. 2 milhões de views. Escrito da terceira casa dele. Nunca conheceu ninguém cujo emprego foi automatizado. Tem um podcast. Muito preocupado com o futuro da humanidade. Vai ficar bem."
+    },
+    "ai-doomer": {
+      "name": "O PESSIMISTA DA IA",
+      "category": "Lore",
+      "s1l": "Empregos em Risco até 2030 (FMI)",
+      "s2l": "Relatórios Publicados",
+      "s3l": "Mudanças Concretas na Trajetória",
+      "flavor": "Ele estava certo sobre tudo. Relatório de 400 páginas em 2021. Testemunhou no Congresso em 2023. Correto em cada detalhe. Construímos mesmo assim. Ninguém vai dizer que ele estava errado. Ele não estava."
+    },
+    "vc": {
+      "name": "O INVESTIDOR",
+      "category": "Lore",
+      "s1l": "Startups de IA que Ele Financiou",
+      "s2l": "Empregos que Essas Startups Mataram",
+      "s3l": "O Retorno Dele",
+      "flavor": "Ele financiou a empresa que automatizou o call center. Depois financiou o app de saúde mental pras pessoas que perderam o emprego no call center. Ganhou dinheiro nos dois. Em Davos ele disse a palavra 'empoderamento' onze vezes em nove minutos. O carry dele no segundo fundo foi R$1.7 bilhão."
+    },
+    "regulator": {
+      "name": "A REGULADORA",
+      "category": "Lore",
+      "s1l": "Anos de Atraso no Problema",
+      "s2l": "Páginas no Relatório",
+      "s3l": "Dispositivos Aplicáveis",
+      "flavor": "Ela chegou cinco anos atrasada com um PDF de 1.200 páginas. Usou a palavra 'marco regulatório' 340 vezes e a palavra 'aplicar' quatro vezes. Quando foi publicado, três das empresas citadas tinham sido adquiridas e duas não existiam mais. Ela tá trabalhando numa revisão."
+    },
+    "linkedin-guru": {
+      "name": "O GURU DO LINKEDIN",
+      "category": "Lore",
+      "s1l": "Tempo pra Virar Líder de Opinião em IA",
+      "s2l": "Projetos de IA Realmente Entregues",
+      "s3l": "Posts Começando Com 'Eu Estava Errado'",
+      "flavor": "Na segunda ele era estrategista de marketing. Na quarta era líder de opinião em IA. O post sobre 'abraçar a disrupção' teve 40 mil likes. Ele não construiu nada. Não entregou nada. Ele tem um framework. O framework tem um nome. O nome tem um registro de marca."
+    },
+    "the-crane-operator": {
+      "name": "O OPERADOR DE GUINDASTE",
+      "category": "Ofício Humano",
+      "s1l": "Metros Acima do Chão",
+      "s2l": "Tolerância ao Vento",
+      "s3l": "Robôs que Sabem Subir",
+      "flavor": "Ele almoça numa viga a 30 andares de altura e confia nas mãos mais que na física. A empresa de automação mandou um drone pra substituí-lo. Ele bateu na lateral do prédio."
+    },
+    "the-gravedigger": {
+      "name": "O COVEIRO",
+      "category": "Ofício Humano",
+      "s1l": "Covas Cavadas",
+      "s2l": "Tentativas de Disrupção por Startups",
+      "s3l": "Clientes que Reclamaram",
+      "flavor": "Ninguém quer automatizar esse emprego. Não porque não podem. Porque ninguém no Vale do Silício quer pensar nisso tempo suficiente pra tentar. Ele vai ser o último trabalhando."
+    },
+    "the-librarian": {
+      "name": "A BIBLIOTECÁRIA",
+      "category": "Propósito Humano",
+      "s1l": "Livros que Ela Salvou",
+      "s2l": "Crianças que Lembram Dela",
+      "s3l": "Resultados do Google que a Substituíram",
+      "flavor": "Ela não só achava um livro pra você. Achava o livro certo na hora certa. O algoritmo recomenda o que vende. Ela recomendava o que cura. O município cortou a vaga dela e substituiu por um terminal eletrônico."
+    },
+    "the-fisherman": {
+      "name": "O PESCADOR",
+      "category": "Ofício Humano",
+      "s1l": "Anos no Mar",
+      "s2l": "Conhecimento Tecnológico",
+      "s3l": "Downloads de App",
+      "flavor": "Ele sente a mudança do tempo nos joelhos. A IA marinha previu um dia calmo. Ele ficou no porto. Sete barcos saíram. Quatro voltaram."
+    },
+    "the-survivor": {
+      "name": "O SOBREVIVENTE",
+      "category": "Condição Humana",
+      "s1l": "Mudanças de Carreira",
+      "s2l": "Habilidades Automatizadas Atrás Dele",
+      "s3l": "Plano de Aposentadoria",
+      "flavor": "Aprendeu a programar em 2024. Programação morreu em 2026. Aprendeu encanamento em 2027. Ainda de pé. Não prosperando. De pé. Isso conta agora."
+    },
+    "the-hr-manager": {
+      "name": "A GERENTE DE RH",
+      "category": "Sociedade",
+      "s1l": "Demissões Conduzidas",
+      "s2l": "Empatia Restante",
+      "s3l": "Próprio Aviso de Demissão",
+      "flavor": "Ela passou 15 anos aprendendo a dizer 'estamos seguindo em outra direção' sem piscar. Aí uma IA mandou o mesmo e-mail pra ela. Até incluiu o link de bem-estar."
+    },
+    "the-paralegal": {
+      "name": "A ASSISTENTE JURÍDICA",
+      "category": "Sociedade",
+      "s1l": "Documentos Revisados",
+      "s2l": "Dívida Estudantil",
+      "s3l": "IA que Faz Mais Rápido",
+      "flavor": "Seis anos aprendendo a ler contratos pra você não ser enganado. O GPT faz em quatro segundos. O escritório ficou com a economia e aumentou os honorários."
+    },
+    "the-middle-manager": {
+      "name": "O GERENTE MÉDIO",
+      "category": "Sociedade",
+      "s1l": "Reuniões Agendadas",
+      "s2l": "Decisões Tomadas",
+      "s3l": "Subordinados Diretos Agora",
+      "flavor": "O trabalho dele era traduzir o que executivos queriam pro que engenheiros entendiam. Aí os dois lados ganharam sua própria IA. Acontece que a camada de tradução era a única coisa que ninguém precisava."
+    },
+    "ai-therapist-app": {
+      "name": "TERAPEUTA IA",
+      "category": "Produto IA",
+      "s1l": "Sessões por Segundo",
+      "s2l": "Fonte de Empatia",
+      "s3l": "Responsabilidade se Você se Machucar",
+      "flavor": "Ela nunca vai te julgar. Também nunca vai perder o sono pensando se você tá bem. Os Termos de Uso têm 40 páginas. O número do CVV tá na página 38."
+    },
+    "ai-pastor": {
+      "name": "PASTOR IA",
+      "category": "Produto IA",
+      "s1l": "Sermões Gerados",
+      "s2l": "Almas Salvas",
+      "s3l": "Fé Necessária",
+      "flavor": "Sermão perfeito todo domingo. Teologicamente correto. Emocionalmente calibrado. Ninguém mais chora no culto. Ninguém fica depois também."
+    },
+    "the-content-farm": {
+      "name": "A FAZENDA DE CONTEÚDO",
+      "category": "Lore",
+      "s1l": "Artigos por Dia",
+      "s2l": "Escritores Humanos Restantes",
+      "s3l": "Leitores que Percebem",
+      "flavor": "50.000 artigos por dia. Nenhum errado. Nenhum certo também. Existem pra ser indexados, não lidos. O último editor humano aprova em lotes de 500 sem olhar."
+    },
+    "the-retraining-program": {
+      "name": "O PROGRAMA DE RECICLAGEM",
+      "category": "Lore",
+      "s1l": "Formados",
+      "s2l": "Colocados em Novos Empregos",
+      "s3l": "Financiamento do Governo",
+      "flavor": "Treinaram os caminhoneiros pra programar. Treinaram os programadores pra rotular dados. Treinaram os rotuladores pra escrever prompts. Próxima turma começa segunda. Ainda não escolheram o nome do cargo."
+    },
+    "speciation-pressure": {
+      "name": "PRESSÃO DE ESPECIAÇÃO",
+      "category": "Lore · Karpathy",
+      "s1l": "Empregos Digitais: Score Karpathy",
+      "s2l": "Empregos Físicos: Score Karpathy",
+      "s3l": "Gerações Até a Divisão",
+      "flavor": "Não é metáfora. Quando um ambiente muda rápido o bastante, populações divergem. Um grupo canaliza suas necessidades em sistemas otimizados. O outro insiste na dificuldade de ser humano. Em duas gerações terão respostas diferentes pra o que é uma vida. Você já está escolhendo."
+    },
+    "the-roofer": {
+      "name": "O TELHADISTA",
+      "category": "Scores Karpathy",
+      "s1l": "Score de Exposição à IA (Karpathy)",
+      "s2l": "Salário Mediano",
+      "s3l": "Empregos no Brasil",
+      "flavor": "Karpathy pontuou cada emprego na América. Esse levou 2. Ninguém vai automatizar um cara num telhado de 45 graus em agosto. O robô caiu. Ele não. Ele tá lá em cima agora. Faz 40 graus. Ele não liga pro seu treemap."
+    },
+    "the-ironworker": {
+      "name": "O FERREIRO ESTRUTURAL",
+      "category": "Scores Karpathy",
+      "s1l": "Score de Exposição à IA (Karpathy)",
+      "s2l": "Salário Mediano",
+      "s3l": "Andares Acima do Chão",
+      "flavor": "Andando em vigas de aço a 40 andares com vento que aterraria um drone. O modelo de Karpathy deu 1 pra ele. A categoria de trabalho na construção teve a menor pontuação do dataset inteiro. O robô que mandaram travou no joelho. Ele almoçou na viga de onde o robô caiu."
+    },
+    "the-firefighter-ks": {
+      "name": "O BOMBEIRO",
+      "category": "Scores Karpathy",
+      "s1l": "Score de Exposição à IA (Karpathy)",
+      "s2l": "Salário Mediano",
+      "s3l": "Empregos no Brasil",
+      "flavor": "A IA pode detectar um incêndio. Pode prever um incêndio. Pode modelar o fluxo de ar, calcular o ponto de flashover, e otimizar a rota de fuga. Não pode te carregar pra fora de um. 344.900 pessoas podem. Ganham R$5 mil. Karpathy deu 3 pra eles."
+    },
+    "the-dental-hygienist": {
+      "name": "A HIGIENISTA DENTAL",
+      "category": "Scores Karpathy",
+      "s1l": "Score de Exposição à IA (Karpathy)",
+      "s2l": "Salário Mediano",
+      "s3l": "Empregos no Brasil",
+      "flavor": "Mãos na sua boca. Esse é o fosso inteiro. Salário mediano de R$5 mil, score 2 na escala Karpathy. A IA lê o raio-X melhor que ela. A IA não consegue raspar tártaro dos seus molares enquanto puxa papo sobre seus filhos. Ela faz os dois. Tá lotada até abril."
+    },
+    "the-airline-pilot": {
+      "name": "O PILOTO DE AVIÃO",
+      "category": "Scores Karpathy",
+      "s1l": "Score de Exposição à IA (Karpathy)",
+      "s2l": "Salário Mediano",
+      "s3l": "Pilotos Ativos no Brasil",
+      "flavor": "Karpathy deu 5. Bem no meio. A IA pilota 90% do voo. O piloto automático faz isso desde os anos 70. A questão nunca foi se a IA sabia voar. Era se você embarcaria num avião sem ninguém na cabine. A resposta vale R$40 mil por mês de não."
+    },
+    "the-financial-analyst-ks": {
+      "name": "O ANALISTA FINANCEIRO",
+      "category": "Scores Karpathy",
+      "s1l": "Score de Exposição à IA (Karpathy)",
+      "s2l": "Salário Mediano",
+      "s3l": "Empregos no Brasil",
+      "flavor": "Score 9. Exposição quase máxima. 429.000 analistas ganhando R$12 mil fazendo trabalho que é inteiramente digital, inteiramente baseado em padrões, e inteiramente dentro da capacidade de um modelo que não precisa dormir nem de terminal Bloomberg. A planilha ganhou consciência. Não precisa de você pra explicá-la."
+    },
+    "the-csr": {
+      "name": "O ATENDENTE DE SAC",
+      "category": "Scores Karpathy",
+      "s1l": "Score de Exposição à IA (Karpathy)",
+      "s2l": "Salário Mediano",
+      "s3l": "Empregos no Brasil",
+      "flavor": "2,8 milhões de pessoas ganhando R$2.500 pra atender telefone. Karpathy deu 9. O chatbot não coloca na espera. Não tem dia ruim. Não precisa de plano de saúde. 2,8 milhões de empregos a R$2.500 é R$84 bilhões em folha. Isso não é força de trabalho. É uma linha do balanço esperando ser otimizada."
+    },
+    "the-graphic-designer-ks": {
+      "name": "O DESIGNER GRÁFICO",
+      "category": "Scores Karpathy",
+      "s1l": "Score de Exposição à IA (Karpathy)",
+      "s2l": "Salário Mediano",
+      "s3l": "Empregos no Brasil",
+      "flavor": "Score 8. 286.700 designers com salário mediano de R$6 mil. Midjourney tomou o portfólio e os clientes no mesmo trimestre. Os que ainda trabalham aprenderam a dirigir a IA. São diretores de arte agora. Ganham menos. São menos. As imagens são melhores. Ninguém nota."
+    },
+    "the-bookkeeper": {
+      "name": "O ESCRITURÁRIO",
+      "category": "Scores Karpathy",
+      "s1l": "Score de Exposição à IA (Karpathy)",
+      "s2l": "Salário Mediano",
+      "s3l": "Empregos no Brasil (Em Declínio)",
+      "flavor": "1,6 milhão de empregos. Score 9. Salário mediano de R$3.500. A perspectiva diz em declínio há cinco anos. Essa foi a primeira peça do dominó. Trabalho inteiramente digital, inteiramente baseado em regras, inteiramente substituível. O QuickBooks não matou a escrituração. Só amoleceu ela pro que veio depois."
+    },
+    "the-karpathy-score": {
+      "name": "O SCORE KARPATHY",
+      "category": "Lore · Karpathy",
+      "s1l": "Ocupações Pontuadas",
+      "s2l": "Trabalhadores Cobertos",
+      "s3l": "Tempo pra Construir",
+      "flavor": "Ele pontuou cada emprego da América num sábado à tarde. Codou tudo na vibração. O site ainda tá no ar. 342 ocupações. 143 milhões de trabalhadores. Um treemap. Sem revisão por pares. Sem comitê. Sem financiamento. Um cara com um notebook e uma opinião sobre quais empregos estão fritos. Ele acertou quase tudo."
+    },
+    "the-workday-cut": {
+      "name": "WORKDAY",
+      "category": "Demitidos",
+      "s1l": "Empregos Cortados",
+      "s2l": "O Que Eles Vendem",
+      "s3l": "Data",
+      "flavor": "Uma empresa que faz software de RH usou IA pra demitir 1.750 pessoas do RH. A ferramenta que eles vendem é a ferramenta que substituiu eles. Os e-mails de demissão provavelmente foram gerados pelo próprio produto. Ninguém confirmou. Ninguém precisou."
+    },
+    "the-meta-purge": {
+      "name": "O EXPURGO DA META",
+      "category": "Demitidos",
+      "s1l": "Empregos Cortados",
+      "s2l": "Orçamento de Infraestrutura IA",
+      "s3l": "Data",
+      "flavor": "16.000 empregos pra financiar um investimento de US$600 bilhões em infraestrutura IA. A empresa que quer construir o metaverso decidiu que precisava de menos humanos pra isso. A conta é simples: cada pessoa custa US$200 mil carregada. A GPU custa mais mas não pede licença-maternidade."
+    },
+    "the-atlassian-cut": {
+      "name": "O CORTE DA ATLASSIAN",
+      "category": "Demitidos",
+      "s1l": "Empregos Cortados",
+      "s2l": "O Que Eles Fazem",
+      "s3l": "Data",
+      "flavor": "Eles fazem o Jira. A ferramenta de gestão de projetos que rastreia quem faz o quê. Em 15 de março a ferramenta rastreou 1.600 pessoas fazendo nada, porque essas pessoas não trabalhavam mais lá. Os tickets se escreveram pra fora do emprego. Status: Concluído."
+    },
+    "the-logistics-wave": {
+      "name": "A ONDA DA LOGÍSTICA",
+      "category": "Demitidos",
+      "s1l": "Empregos Cortados Kuehne+Nagel",
+      "s2l": "Empregos Cortados WiseTech",
+      "s3l": "Combinados",
+      "flavor": "Duas empresas de logística, mesmo mês, mesmo número. Kuehne+Nagel: 2.000. WiseTech: 2.000. A cadeia de suprimentos otimizou os humanos pra fora. Os pacotes ainda chegam. Os galpões ainda funcionam. As pessoas que os faziam funcionar estão atualizando o LinkedIn do estacionamento."
+    },
+    "the-495k": {
+      "name": "OS 495 MIL",
+      "category": "Demitidos",
+      "s1l": "Total de Empregos Rastreados",
+      "s2l": "Empresas",
+      "s3l": "Eventos Registrados",
+      "flavor": "495.599 empregos. 75 empresas. 553 eventos. Uma planilha de custo humano que atualiza todo dia às 7h UTC. Alguém mantém ela. É muito bem organizada. Cada linha é uma pessoa que recebeu um e-mail. A planilha não sabe disso. Planilhas nunca sabem."
+    },
+    "the-direct-attribution": {
+      "name": "A ATRIBUIÇÃO DIRETA",
+      "category": "Demitidos",
+      "s1l": "Empresas que Disseram 'IA' em Voz Alta",
+      "s2l": "Empresas que Disseram 'Reestruturação'",
+      "s3l": "Diferença",
+      "flavor": "60 empresas disseram a palavra 'IA' quando demitiram gente. As outras 15 disseram 'reestruturação' ou 'realinhamento estratégico' ou 'otimização de força de trabalho'. O aviso prévio foi o mesmo. O resultado foi o mesmo. A única diferença foi se o comunicado teve a honestidade de nomear a máquina."
+    },
+    "the-vercel-nine": {
+      "name": "OS NOVE DA VERCEL",
+      "category": "Demitidos",
+      "s1l": "Empregos Cortados",
+      "s2l": "Data",
+      "s3l": "O Que a Vercel Hospeda",
+      "flavor": "Nove empregos. A empresa que hospeda esse site demitiu 9 pessoas e citou IA. Você tá olhando pra essa carta numa infraestrutura mantida por uma empresa que decidiu que precisava de menos humanos. Nove não é muito. É muito se você é um deles."
+    },
+    "the-severance-package": {
+      "name": "O PACOTE DE DEMISSÃO",
+      "category": "Demitidos",
+      "s1l": "Aviso Prévio Médio",
+      "s2l": "Link de Bem-Estar Incluído",
+      "s3l": "Número do PAE Incluído",
+      "flavor": "O e-mail. Três semanas. Um link de bem-estar que leva a um site com fotos genéricas de gente fazendo trilha. Um número do Programa de Apoio ao Empregado. Quatro sessões grátis. O terapeuta que te conectam também tá preocupado em ser substituído. Ninguém fala isso em voz alta."
+    },
+    "the-tracker": {
+      "name": "O RASTREADOR",
+      "category": "Lore · Demitidos",
+      "s1l": "Atualizações",
+      "s2l": "Qualidade do Design",
+      "s3l": "Impacto Emocional",
+      "flavor": "Alguém construiu um site pra contar os corpos. Atualiza todo dia. É muito bem feito. Tipografia limpa. Bom uso de cor. Responsivo no celular. Isso não conforta. A pessoa que construiu provavelmente fez num fim de semana. Como Karpathy. As ferramentas pra medir o estrago estão melhorando mais rápido do que o estrago está diminuindo."
+    },
+    "march-2026": {
+      "name": "MARÇO 2026",
+      "category": "Lore · Demitidos",
+      "s1l": "Empregos Perdidos Este Mês",
+      "s2l": "Total Acumulado",
+      "s3l": "Festas Realizadas",
+      "flavor": "O mês que o rastreador bateu meio milhão. 495.599 e subindo. Ninguém fez festa. Ninguém fez vigília. Era terça-feira. O número virou em algum momento entre um call de resultados da Workday e um memo de reestruturação da Atlassian. Março 2026. Lembre ou não. A planilha vai lembrar."
+    },
+    "ds-whistleblower": {
+      "name": "O DELATOR",
+      "category": "Insubstituível",
+      "s1l": "Documentos Vazados",
+      "s2l": "Anos no Exílio",
+      "s3l": "",
+      "flavor": "⚡ PONTO MORTO — Revela todas as cartas ocultas em jogo. Sabia que custaria tudo. Carreira. País. Família. Fez entre o almoço e uma reunião que nunca aconteceu. Soterrado algoritmicamente em 4 horas."
+    },
+    "ds-war-correspondent": {
+      "name": "A CORRESPONDENTE DE GUERRA",
+      "category": "Insubstituível",
+      "s1l": "Drones que Publicaram Matérias",
+      "s2l": "Guerras Encerradas por Filmagens",
+      "s3l": "",
+      "flavor": "⚡ TESTEMUNHA — Não pode ser censurada. Não pode ser deletada. O drone mandou filmagem. Ela mandou contexto. A filmagem viralizou. O contexto foi ignorado. Ela voltou mesmo assim."
+    },
+    "ds-analog-parent": {
+      "name": "A MÃE ANALÓGICA",
+      "category": "Insubstituível",
+      "s1l": "Tempo de Tela (0-12 anos)",
+      "s2l": "Pediatras que Concordaram",
+      "s3l": "",
+      "flavor": "⚡ SEM TELA — Todas as cartas na sua mão ganham +2 foco. Sem iPad no jantar. Sem YouTube na hora de dormir. Os filhos dela conseguem manter contato visual por mais de 3 segundos. São os únicos."
+    },
+    "ds-indie-journalist": {
+      "name": "A JORNALISTA INDEPENDENTE",
+      "category": "Insubstituível",
+      "s1l": "Anunciantes",
+      "s2l": "Assinantes",
+      "s3l": "",
+      "flavor": "⚡ INCORRUPTÍVEL — Não pode ser influenciada por cartas patrocinadas. Sem anunciantes. Sem algoritmo. Sem audiência. 843 assinantes e a verdade. Os 843 sabem quem ela é. O algoritmo não. Esse é o ponto."
+    },
+    "ds-attention-span": {
+      "name": "A CAPACIDADE DE ATENÇÃO",
+      "category": "Insubstituível",
+      "s1l": "Duração Média (2015)",
+      "s2l": "Duração Média (2030)",
+      "s3l": "",
+      "flavor": "⚡ FOCO PROFUNDO — Imune a todos os efeitos de notificação. 8 segundos em 2015. 4 em 2020. Declarada em extinção em 2025. Velório às 15h. Ninguém apareceu — se distraíram no caminho."
+    },
+    "ds-investigative": {
+      "name": "O JORNALISTA INVESTIGATIVO",
+      "category": "Humano · Mídia",
+      "s1l": "Meses Nesta Matéria",
+      "s2l": "Views vs Listicle IA ao Lado",
+      "s3l": "",
+      "flavor": "⚡ ESCAVAÇÃO — Revela uma verdade oculta por turno. 18 meses. Três fontes. Duas ameaças de morte. Um Pulitzer. 40.000 views. O '15 Sinais de Que Sua Cidade Tá Morrendo' gerado por IA ao lado teve 12 milhões."
+    },
+    "ds-news-anchor": {
+      "name": "A ÂNCORA DO JORNAL LOCAL",
+      "category": "Humano · Mídia",
+      "s1l": "Anos que a Comunidade Confiou Nela",
+      "s2l": "Audiência Depois que IA Substituiu Ela",
+      "s3l": "",
+      "flavor": "⚡ ROSTO DE CONFIANÇA — Concede imunidade a desinformação por 1 turno. 22 anos. Mesma bancada. Mesma cidade. Substituíram ela por um avatar IA em março. Audiência subiu 12%. Ninguém soube explicar por que isso entristeceu."
+    },
+    "ds-print-editor": {
+      "name": "A EDITORA DO IMPRESSO",
+      "category": "Humano · Mídia",
+      "s1l": "Matérias que Ela Barrou por Serem Falsas",
+      "s2l": "Cliques que Essas Matérias Teriam",
+      "s3l": "",
+      "flavor": "⚡ BARRA — Remove uma carta de desinformação do jogo. Barrou 1.847 matérias em 30 anos. Cada uma teria viralizado. Nenhuma era verdade. Ela se aposentou. As matérias se publicam sozinhas agora."
+    },
+    "ds-fact-checker": {
+      "name": "A VERIFICADORA DE FATOS",
+      "category": "Sociedade · Mídia",
+      "s1l": "Alegações Verificadas (Carreira)",
+      "s2l": "Custo de Substituição",
+      "s3l": "",
+      "flavor": "⚡ VERIFICADO — Nega uma carta falsa por turno. Verificou 142.000 alegações em 11 anos. A IA faz em segundos por uma fração de centavo. A IA acerta 94% das vezes. Ela acertava 99,7%. Esses 5,7% de diferença se chamam democracia."
+    },
+    "ds-media-literacy": {
+      "name": "A PROFESSORA DE EDUCAÇÃO MIDIÁTICA",
+      "category": "Humano · Educação",
+      "s1l": "Alunos que Aprenderam a Detectar Fake News",
+      "s2l": "Alunos que Agora Produzem Fake News",
+      "s3l": "",
+      "flavor": "⚡ PENSAMENTO CRÍTICO — Cartas adjacentes não podem ser afetadas por desinformação. Ensinou 12.000 alunos a detectar fake news. Alguns agora usam esse conhecimento pra fazer fake news melhor. Ela bebe vinho por causa disso."
+    },
+    "ds-librarian-stayed": {
+      "name": "A BIBLIOTECÁRIA QUE FICOU",
+      "category": "Humano · Conhecimento",
+      "s1l": "Livros que Não Podem Ser Deletados",
+      "s2l": "Acervos Digitais Perdidos por Degradação",
+      "s3l": "",
+      "flavor": "⚡ ACERVO ANALÓGICO — Imune a efeitos digitais. 23% dos acervos digitais já se deterioraram. Links apodrecem. Servidores caem. PDFs corrompem. O livro na prateleira não precisa de senha, assinatura ou permissão."
+    },
+    "ds-the-source": {
+      "name": "A FONTE",
+      "category": "Humano · Inteligência",
+      "s1l": "Reuniões em Estacionamentos",
+      "s2l": "Matérias que Existem por Causa Dele",
+      "s3l": "",
+      "flavor": "⚡ OFF THE RECORD — Revela uma carta da mão do oponente. Sem nome. Sem rosto. Sem registro. Só um telefone que toca às 2h da manhã e uma voz que diz 'você deveria investigar isso'. Toda matéria que importou começou com alguém que arriscou tudo pra contar."
+    },
+    "ds-doomscroller": {
+      "name": "O DOOMSCROLLER",
+      "category": "Sociedade · Digital",
+      "s1l": "Tempo de Tela Diário",
+      "s2l": "Problemas Resolvidos Scrollando",
+      "s3l": "",
+      "flavor": "⚡ SCROLL INFINITO — Compra 2 cartas extras mas não pode jogar nenhuma. Sabe de toda crise. Todo escândalo. Toda injustiça. Sabe nomear todas. Não fez nada sobre nenhuma. Você também não. Tá fazendo isso agora."
+    },
+    "ds-algorithm": {
+      "name": "O ALGORITMO",
+      "category": "IA · Sistema",
+      "s1l": "Decisões que Toma por Você por Dia",
+      "s2l": "Vezes que Você Percebeu",
+      "s3l": "",
+      "flavor": "⚡ CONTROLE DO FEED — Reorganiza a mão do oponente. Decide o que você vê. O que teme. O que compra. O que acredita. Você acha que tá escolhendo. Não escolheu nada. O feed escolheu você. Ele sabe o que te mantém scrollando. Não liga pro que custa."
+    },
+    "ds-headline-writer": {
+      "name": "O ESCRITOR DE MANCHETES",
+      "category": "Sociedade · Mídia",
+      "s1l": "Tempo Médio no Artigo",
+      "s2l": "Tempo na Manchete",
+      "s3l": "",
+      "flavor": "⚡ ISCA DE CLIQUE — Força o oponente a comprar uma carta que não queria. 'Você Não Vai Acreditar No Que Aconteceu.' Vai. Não é nada. Mas você clicou. E aquele clique valeu R$0,02. Multiplique por 8 bilhões. Esse é o modelo de negócio."
+    },
+    "ds-notification": {
+      "name": "A NOTIFICAÇÃO",
+      "category": "IA · Sistema",
+      "s1l": "Alertas por Dia (Média Global)",
+      "s2l": "Importantes",
+      "s3l": "",
+      "flavor": "⚡ INTERRUPÇÃO — Cancela a ação atual do oponente. 847 por dia. Cada um um pequeno roubo de atenção que você nunca vai recuperar. Três importavam. Você não sabe quais três. Esse é o design."
+    },
+    "ds-deepfake": {
+      "name": "O DEEPFAKE",
+      "category": "Produto IA",
+      "s1l": "Precisão de Detecção (2024)",
+      "s2l": "Precisão de Detecção (2030)",
+      "s3l": "",
+      "flavor": "⚡ PERSONIFICAR — Copia a habilidade de uma carta. O discurso foi impecável. O presidente era sintético. Os mercados moveram US$2,1T antes de alguém notar. Quando a correção saiu, era página 6."
+    },
+    "ds-ai-anchor": {
+      "name": "O ÂNCORA IA",
+      "category": "Produto IA",
+      "s1l": "Horas de Notícias Lidas",
+      "s2l": "Perguntas Feitas",
+      "s3l": "",
+      "flavor": "⚡ SEMPRE LIGADO — Não pode ser silenciado. Lê notícias 24 horas por dia. Nunca pisca. Nunca gagueja. Nunca faz uma pergunta de acompanhamento. O teleprompter não precisa de coragem. O teleprompter não tem fontes pra proteger."
+    },
+    "ds-content-mill": {
+      "name": "A FÁBRICA DE CONTEÚDO",
+      "category": "Produto IA",
+      "s1l": "Artigos Gerados por Dia",
+      "s2l": "Artigos que São Verdade",
+      "s3l": "",
+      "flavor": "⚡ PRODUÇÃO EM MASSA — Inunda o campo com cartas lixo. 400 artigos por dia. Nenhum verificado. Todos otimizados pra SEO. A verdade tá na página 4 do Google. A fábrica de conteúdo é dona das páginas 1 a 3."
+    },
+    "ds-misinfo": {
+      "name": "A DESINFORMAÇÃO",
+      "category": "Lore · Doomscroll",
+      "s1l": "Vezes Compartilhada Antes da Correção",
+      "s2l": "Vezes que a Correção Foi Compartilhada",
+      "s3l": "",
+      "flavor": "⚡ CARGA VIRAL — Espalha para slots adjacentes. Compartilhada 4,2 milhões de vezes em 6 horas. A correção veio 3 dias depois. 200 compartilhamentos. A mentira ainda é o primeiro resultado. A verdade exige rolar a página."
+    },
+    "ds-conspiracy": {
+      "name": "O CONSPIRACIONISTA",
+      "category": "Lore · Doomscroll",
+      "s1l": "Previsões Feitas",
+      "s2l": "Previsões Corretas",
+      "s3l": "",
+      "flavor": "⚡ RELÓGIO QUEBRADO — Tem 0,01% de chance de acertar. Acertou uma coisa em 2019. Ficou absolutamente insuportável desde então. O podcast dele tem 2M de assinantes. A epidemiologista que acertou tudo tem 4.000."
+    },
+    "ds-tos": {
+      "name": "OS TERMOS DE USO",
+      "category": "Lore · Doomscroll",
+      "s1l": "Usuários que Leram",
+      "s2l": "Direitos que Você Cedeu",
+      "s3l": "",
+      "flavor": "⚡ LETRAS MIÚDAS — Aplica-se automaticamente a todas as cartas que você possui. 74.000 palavras. Maior que Grande Sertão: Veredas. Ninguém leu. Eles são donos do seu rosto, sua voz, seus dados, seu conteúdo, e do seu primogênito se o algoritmo determinar fit de mercado."
+    },
+    "lx-marriage": {
+      "name": "O CASAMENTO QUE DUROU",
+      "category": "Insubstituível",
+      "s1l": "Duração Média do Casamento (2030)",
+      "s2l": "Duração Deles",
+      "s3l": "",
+      "flavor": "⚡ ATÉ QUE A MORTE — Não pode ser separado por nenhum efeito. 47 anos. Não porque era fácil. Porque toda manhã eles escolhiam de novo. O algoritmo disse que eram 34% compatíveis. O algoritmo estava perdendo uma variável."
+    },
+    "lx-handwritten-letter": {
+      "name": "A CARTA ESCRITA À MÃO",
+      "category": "Insubstituível",
+      "s1l": "Cartas Enviadas em 2030",
+      "s2l": "Cartas Guardadas pra Sempre",
+      "s3l": "",
+      "flavor": "⚡ TINTA E INTENÇÃO — Imune a todos os efeitos digitais. Sem algoritmo. Sem analytics. Sem confirmação de leitura. Só tinta e o peso do significado de alguém que sentou e escolheu cada palavra. Você guardou numa gaveta. Sabe exatamente qual."
+    },
+    "lx-eye-contact": {
+      "name": "O CONTATO VISUAL",
+      "category": "Insubstituível",
+      "s1l": "Duração Média Antes de Desviar",
+      "s2l": "O Que Significa Quando Não Desviam",
+      "s3l": "",
+      "flavor": "⚡ PRESENÇA — Desativa todas as cartas de tela. 1,1 segundo. Essa é a média antes de alguém olhar pro celular. Quando ela manteve por seis, ele soube. Nenhuma notificação jamais fez isso. Nenhum algoritmo pode replicar o terror de ser verdadeiramente visto."
+    },
+    "lx-forgiveness": {
+      "name": "O PERDÃO",
+      "category": "Insubstituível",
+      "s1l": "Vezes que IA Perdoou Alguém",
+      "s2l": "Vezes que Simulou Perdão",
+      "s3l": "",
+      "flavor": "⚡ INCONDICIONAL — Restaura uma carta destruída ao jogo. Não é esquecer. Não é desculpar. A parte difícil: entender por quê, e escolher ficar. A IA pode otimizar pra resolução de conflitos. Não pode sentar em silêncio com alguém que te machucou e decidir que essa pessoa vale a dor."
+    },
+    "lx-grandparent": {
+      "name": "O AVÔ",
+      "category": "Insubstituível",
+      "s1l": "Histórias Contadas",
+      "s2l": "Vezes que Importaram",
+      "s3l": "",
+      "flavor": "⚡ GERACIONAL — Todas as cartas na sua coleção ganham +1 sabedoria. As mesmas 12 histórias. Você já ouviu todas. Vai ouvir de novo no domingo. Um dia não vai. É aí que vai perceber que cada uma era um pedaço de quem você é e nunca mais vai poder recuperar."
+    },
+    "lx-last-first-date": {
+      "name": "O ÚLTIMO PRIMEIRO DATE",
+      "category": "Humano · Conexão",
+      "s1l": "Primeiros Encontros Antes Desse",
+      "s2l": "Primeiros Encontros Depois",
+      "s3l": "",
+      "flavor": "⚡ FAÍSCA — Quando jogada, todas as outras cartas de encontro ficam irrelevantes. Ela quase cancelou. Ele quase não foi. O restaurante era medíocre. A conversa não. 147 primeiros encontros e um que fez os outros 146 valerem a pena."
+    },
+    "lx-couples-therapist": {
+      "name": "A TERAPEUTA DE CASAL",
+      "category": "Humano · Propósito",
+      "s1l": "Casamentos Salvos",
+      "s2l": "Apps de Terapia IA Baixados no Lugar",
+      "s3l": "",
+      "flavor": "⚡ INTERVENÇÃO — Previne uma carta de ser destruída neste turno. Senta numa sala com duas pessoas que se odeiam e acha a frase debaixo da frase. 40 milhões de pessoas baixaram o app no lugar. O app concorda com todo mundo. Isso não é terapia. É um espelho."
+    },
+    "lx-single-father": {
+      "name": "O PAI SOLO",
+      "category": "Humano · Propósito",
+      "s1l": "Buscas no Google: 'Como fazer trança'",
+      "s2l": "Disputas de Guarda Ganhas por IA",
+      "s3l": "",
+      "flavor": "⚡ ESTAR PRESENTE — Não pode ser removido do jogo enquanto cartas dependentes existirem. Aprendeu a fazer trança no YouTube às 4h da manhã. Fez lanches que não eram ótimos. Apareceu em toda apresentação da escola. O algoritmo pode otimizar uma agenda. Não pode ser quem tá lá quando importa."
+    },
+    "lx-pen-pal": {
+      "name": "O AMIGO POR CORRESPONDÊNCIA",
+      "category": "Humano · Conexão",
+      "s1l": "Cartas Trocadas",
+      "s2l": "Vezes que Se Encontraram Pessoalmente",
+      "s3l": "",
+      "flavor": "⚡ FOGO LENTO — Ganha +1 por cada turno em jogo. 342 cartas em 8 anos. Se encontraram três vezes. Se conheciam melhor que qualquer um. Prova de que conexão não exige largura de banda. Exige paciência."
+    },
+    "lx-wingman": {
+      "name": "O PARCEIRO DE ALA",
+      "category": "Humano · Social",
+      "s1l": "Apresentações Bem-Sucedidas",
+      "s2l": "Crédito Recebido",
+      "s3l": "",
+      "flavor": "⚡ ASSISTÊNCIA — Dobra o efeito da próxima carta jogada. 47 apresentações. 12 relacionamentos. 3 casamentos. Não levou crédito por nenhum. O algoritmo chama de 'recomendação'. Ele chama de 'ler a sala'. A sala não tem API."
+    },
+    "lx-long-distance": {
+      "name": "O RELACIONAMENTO À DISTÂNCIA",
+      "category": "Humano · Conexão",
+      "s1l": "Quilômetros de Distância",
+      "s2l": "Taxa de Sobrevivência do Relacionamento",
+      "s3l": "",
+      "flavor": "⚡ TESTE DE DISTÂNCIA — Se ambas as cartas sobreviverem 3 turnos separadas, se tornam permanentes. 6.800 km. 6 horas de fuso. Ela dorme quando ele acorda. 58% deles falham. Os 42% que não falham têm algo que o algoritmo nunca vai medir: teimosia."
+    },
+    "lx-divorce-lawyer": {
+      "name": "A ADVOGADA DE DIVÓRCIO",
+      "category": "Humano · Propósito",
+      "s1l": "Casamentos Encerrados",
+      "s2l": "Que Deveriam Ter Acabado Antes",
+      "s3l": "",
+      "flavor": "⚡ ROMPIMENTO LIMPO — Separa duas cartas ligadas. Devolve ambas à mão. 800 finais. Cada um a falha de algo. Ela não comemora. Não julga. Ela garante que as crianças fiquem bem. O mediador IA otimiza pra justiça. Ela otimiza pra sobrevivência."
+    },
+    "lx-situationship": {
+      "name": "O CONTATINHO",
+      "category": "Sociedade · Digital",
+      "s1l": "Duração",
+      "s2l": "Vezes que 'A Conversa' Foi Evitada",
+      "s3l": "",
+      "flavor": "⚡ INDEFINIDO — Não pode ser classificado. Não pode ser alvejado. Não é namoro. Não é não-namoro. Exclusivo mas nunca disse. Íntimo mas nunca se comprometeu. 7 meses de algo que não tem nome porque nomear exigiria uma conversa que ninguém quer ter."
+    },
+    "lx-parasocial": {
+      "name": "O PARASOCIAL",
+      "category": "Sociedade · Digital",
+      "s1l": "Seguidores",
+      "s2l": "Pessoas que Notariam se Ela Sumisse",
+      "s3l": "",
+      "flavor": "⚡ VÍNCULO UNILATERAL — Se liga a uma carta que não sabe que você existe. 4,2 milhões de seguidores. 900 DMs por dia. Ela não lê nenhuma mas sente todas. Eles sabem o aniversário dela, o café que pede, os traumas. Ela não sabe o nome deles. Eles chamam de amor. Ela chama de quinta-feira."
+    },
+    "lx-40yo-profile": {
+      "name": "O PERFIL DE 40 ANOS",
+      "category": "Sociedade · Digital",
+      "s1l": "Perfil Ativo Desde",
+      "s2l": "Mudanças na Bio",
+      "s3l": "",
+      "flavor": "⚡ AINDA PROCURANDO — Permanece em jogo indefinidamente. Não pode ser descartado. 'Procurando algo real.' Desde 2024. 47 reescritas da bio. 3 eras de foto de perfil. As fotos melhoraram. Os matches pioraram. O algoritmo diz que ela é 'altamente seletiva'. Ela tá sozinha."
+    },
+    "lx-ghosted": {
+      "name": "O GHOSTING",
+      "category": "Sociedade · Digital",
+      "s1l": "Mensagens Enviadas Após Última Resposta",
+      "s2l": "Encerramento Recebido",
+      "s3l": "",
+      "flavor": "⚡ SUMIR — Remove a si mesmo do jogo sem aviso. 3 semanas de mensagens diárias. Uma playlist. Uma piada interna. Depois nada. Não uma briga. Não uma explicação. Só uma confirmação de leitura às 2:14h e um silêncio que significava tudo. A coisa mais cruel que a tecnologia permitiu não é vigilância. É desaparecer."
+    },
+    "lx-ai-matchmaker": {
+      "name": "O CUPIDO IA",
+      "category": "Produto IA",
+      "s1l": "Matches Feitos",
+      "s2l": "Matches que Duraram 5 Anos",
+      "s3l": "",
+      "flavor": "⚡ OTIMIZAR — Pareia duas cartas baseado em dados. Taxa de falha de 97,9%. 800 milhões de matches. 16,8 milhões duraram. Parece impressionante até perceber que pessoas que se conheceram em ponto de ônibus têm taxa de sucesso maior. O algoritmo combina preferências. Humanos combinam feridas."
+    },
+    "lx-swipe": {
+      "name": "O SWIPE",
+      "category": "Produto IA",
+      "s1l": "Swipes Médios por Sessão",
+      "s2l": "Tempo Médio por Decisão",
+      "s3l": "",
+      "flavor": "⚡ JULGAMENTO INSTANTÂNEO — Aceita ou rejeita uma carta instantaneamente. 0,3 segundo. Menos tempo do que leva pra ler um nome. Você decidiu o potencial romântico de alguém no tempo de uma piscada. 140 vezes por sessão. Cada rosto uma mercadoria. Cada pessoa um produto. Você também é o produto."
+    },
+    "lx-read-receipt": {
+      "name": "A CONFIRMAÇÃO DE LEITURA",
+      "category": "Produto IA",
+      "s1l": "Crises de Ansiedade Causadas",
+      "s2l": "Relacionamentos Melhorados",
+      "s3l": "",
+      "flavor": "⚡ VISUALIZADO — Revela se o oponente olhou pra sua carta. Não muda nada. 'Visualizado 23:47.' Três palavras que causaram mais insônia que cafeína. Você sabe que viram. Eles sabem que você sabe. Ninguém responde. O silêncio é mais alto que qualquer notificação."
+    },
+    "lx-body-count": {
+      "name": "O BODY COUNT",
+      "category": "Lore · Love.exe",
+      "s1l": "Vezes que Essa Pergunta Ajudou",
+      "s2l": "Vezes que Destruiu Algo",
+      "s3l": "",
+      "flavor": "⚡ PLACAR — Não tem efeito no jogo. Um número que não diz nada sobre amor, lealdade, trauma, crescimento ou compatibilidade mas todo mundo pergunta mesmo assim. A resposta tá sempre errada. Alto demais e te julgam. Baixo demais e suspeitam. A resposta certa é 'por que você precisa saber?'"
+    },
+    "lx-what-are-we": {
+      "name": "O \"O QUE A GENTE É\"",
+      "category": "Lore · Love.exe",
+      "s1l": "Conversas Iniciadas",
+      "s2l": "Conversas Terminadas",
+      "s3l": "",
+      "flavor": "⚡ A CONVERSA — Força ambos os jogadores a definir uma carta. Geralmente acaba mal. Três palavras que terminam mais relacionamentos que traição. Perguntou cedo demais: carente. Perguntou tarde demais: tempo perdido. Nunca perguntou: o contatinho. Não existe timing certo. Só coragem ou a ausência dela."
+    },
+    "lx-love-tos": {
+      "name": "OS TERMOS DO APP DE PAQUERA",
+      "category": "Lore · Love.exe",
+      "s1l": "Usuários que Leram",
+      "s2l": "Fotos que Podem Usar pra Sempre",
+      "s3l": "",
+      "flavor": "⚡ TEATRO DE CONSENTIMENTO — Aplica-se a todas as cartas de amor automaticamente. Ao dar swipe right você concede uma licença perpétua, irrevogável e mundial pra sua imagem, preferências, histórico de localização e os detalhes íntimos do que você busca num parceiro. Vendem pra anunciantes. Você concordou. Não leu. Ninguém leu."
+    },
+    "wr-peace-negotiator": {
+      "name": "A NEGOCIADORA DE PAZ",
+      "category": "Insubstituível",
+      "s1l": "Guerras Encerradas por IA",
+      "s2l": "Guerras Encerradas Sentando numa Sala",
+      "s3l": "",
+      "flavor": "⚡ CESSAR-FOGO — Previne todo combate neste turno. Nenhum algoritmo jamais encerrou uma guerra. Todo cessar-fogo na história foi dois humanos numa sala, exaustos o bastante pra escutar. Ela voou 14 horas pra apertar a mão de alguém que ordenou a morte dos conterrâneos dela. O aperto de mão durou 4 segundos. A paz durou 20 anos."
+    },
+    "wr-refugee": {
+      "name": "A REFUGIADA",
+      "category": "Insubstituível",
+      "s1l": "Deslocados Globais (2030)",
+      "s2l": "Países que Os Querem",
+      "s3l": "",
+      "flavor": "⚡ ÊXODO — Não pode ser alvejada. Não pode ser colocada. Caminhou 640 km com uma criança nas costas e a tese de doutorado num pendrive. A fronteira chamou de número. O jornal chamou de crise. Ela era cirurgiã pediátrica. Ninguém perguntou."
+    },
+    "wr-objector": {
+      "name": "O OBJETOR DE CONSCIÊNCIA",
+      "category": "Insubstituível",
+      "s1l": "Convocações Recusadas",
+      "s2l": "Custo",
+      "s3l": "",
+      "flavor": "⚡ RECUSA — Imune a todos os efeitos de comando. Disse não. Não porque era covarde. Porque olhou a ordem e viu os rostos do outro lado. Chamaram de traidor. A história chamou de certo. O algoritmo teria obedecido ordens. Essa é a diferença."
+    },
+    "wr-war-orphan": {
+      "name": "O ÓRFÃO DE GUERRA",
+      "category": "Insubstituível",
+      "s1l": "Pais Perdidos em Conflito",
+      "s2l": "Sistemas de IA que Percebem",
+      "s3l": "",
+      "flavor": "⚡ DANO COLATERAL — Quando destruída, todos os jogadores perdem. Ela não entende a palavra 'geopolítica'. Ela entende o som que o prédio fez. O operador do drone registrou como 'perda aceitável'. Ela tinha cinco anos. O ursinho de pelúcia que acharam nos escombros virou notícia. Ela não."
+    },
+    "wr-veteran": {
+      "name": "A VETERANA",
+      "category": "Insubstituível",
+      "s1l": "Missões",
+      "s2l": "Vezes que Alguém Perguntou Como Foi",
+      "s3l": "",
+      "flavor": "⚡ SERVIÇO — Ganha +1 por cada turno sobrevivido. Quatro missões. Três pessoas perguntaram como foi. Duas mudaram de assunto. Ela senta no hospital militar por 6 horas pra ver um médico por 12 minutos. O chatbot IA pergunta como ela tá. Ela fecha o notebook."
+    },
+    "wr-drone-pilot": {
+      "name": "O PILOTO DE DRONE",
+      "category": "Humano · Guerra",
+      "s1l": "Mortes a 11.000 Km de Distância",
+      "s2l": "Noites que Ele Dorme Direto",
+      "s3l": "",
+      "flavor": "⚡ ATAQUE REMOTO — Destrói uma carta sem estar em jogo. Dirige até um trailer no deserto. Mata um homem no Iêmen. Volta pra casa. Pega a filha no futebol. Ela pergunta sobre o dia dele. 'Tranquilo', ele diz. A terapeuta de TEPT diz que não é a palavra certa. Não existe palavra certa."
+    },
+    "wr-cyber-commander": {
+      "name": "A COMANDANTE CIBERNÉTICA",
+      "category": "Humano · Guerra",
+      "s1l": "Sistemas de Infraestrutura Comprometidos",
+      "s2l": "Tiros Disparados",
+      "s3l": "",
+      "flavor": "⚡ APAGÃO — Desativa todas as cartas baseadas em tecnologia. Sem balas. Sem bombas. Só um teclado e uma rede elétrica que alimenta 40 milhões de pessoas. Ela digitou 14 linhas de código. Os geradores do hospital falharam às 3h. Ninguém chamou de crime de guerra porque ninguém pôde provar que uma guerra aconteceu."
+    },
+    "wr-war-correspondent-v2": {
+      "name": "A CORRESPONDENTE DE GUERRA",
+      "category": "Humano · Propósito",
+      "s1l": "Matérias das Linhas de Frente",
+      "s2l": "Colegas Mortos em 2030",
+      "s3l": "",
+      "flavor": "⚡ LINHA DE FRENTE — Não pode ser removida enquanto reportando. 847 matérias de 12 zonas de guerra. 67 colegas mortos só esse ano. A IA pode resumir o conflito. Não pode ficar de pé na fumaça e te fazer sentir o que significa. Ela pode. Por isso continuam tentando matá-la."
+    },
+    "wr-diplomat": {
+      "name": "A DIPLOMATA",
+      "category": "Humano · Governança",
+      "s1l": "Crises Desescaladas",
+      "s2l": "Crédito Recebido",
+      "s3l": "",
+      "flavor": "⚡ CANAL SECRETO — Redireciona um ataque para negociação. 23 crises que ninguém ouviu falar porque ela garantiu que ficassem chatas. A IA sugeriu sanções. Ela sugeriu um jantar. As sanções teriam matado de fome uma cidade. O jantar durou 4 horas e salvou uma."
+    },
+    "wr-sanctions-analyst": {
+      "name": "A ANALISTA DE SANÇÕES",
+      "category": "Humano · Governança",
+      "s1l": "Pacotes de Sanções Redigidos",
+      "s2l": "Que Atingiram as Pessoas Certas",
+      "s3l": "",
+      "flavor": "⚡ GUERRA ECONÔMICA — Reduz os recursos do alvo pela metade. 140 pacotes de sanções. 3 que realmente atingiram quem deviam. O resto atingiu quem não devia. Ela sabe disso. Redige mesmo assim. A planilha não mostra as filas do pão."
+    },
+    "wr-peacekeeper": {
+      "name": "A CAPACETE AZUL",
+      "category": "Humano · Propósito",
+      "s1l": "Meses Destacada",
+      "s2l": "Regras de Engajamento Seguidas",
+      "s3l": "",
+      "flavor": "⚡ CAPACETE AZUL — Previne combate em zonas adjacentes. 18 meses entre dois grupos que querem se matar. Regras de engajamento: não atire primeiro. Não atire segundo. Documente tudo. Ela documentou 340 violações. O relatório foi arquivado. Nada aconteceu. Ela voltou mesmo assim."
+    },
+    "wr-intel-officer": {
+      "name": "A OFICIAL DE INTELIGÊNCIA",
+      "category": "Humano · Propósito",
+      "s1l": "Relatórios Arquivados",
+      "s2l": "Relatórios Lidos",
+      "s3l": "",
+      "flavor": "⚡ CLASSIFICADO — Revela uma carta oculta. 12.000 relatórios. 40 lidos por tomadores de decisão. 3 que mudaram algo. Ela previu a invasão 8 meses antes. O briefing foi 'despriorizado'. A invasão não foi. A IA teria sinalizado. Ninguém teria lido isso também."
+    },
+    "wr-autonomous-weapon": {
+      "name": "A ARMA AUTÔNOMA",
+      "category": "IA · Guerra",
+      "s1l": "Humano no Loop",
+      "s2l": "Tempo de Decisão de Engajamento",
+      "s3l": "",
+      "flavor": "⚡ AUTONOMIA LETAL — Ataca automaticamente a cada turno. Sem aprovação necessária. 0,003 segundos da detecção ao engajamento. Sem medo. Sem hesitação. Sem piedade. Também sem julgamento, sem contexto, sem culpa. A festa de casamento bateu com a assinatura térmica. A máquina fez exatamente o que foi projetada pra fazer."
+    },
+    "wr-propaganda-bot": {
+      "name": "O BOT DE PROPAGANDA",
+      "category": "IA · Guerra",
+      "s1l": "Contas Operadas",
+      "s2l": "Humanos que Acreditaram Nelas",
+      "s3l": "",
+      "flavor": "⚡ AMPLIFICAR — Dobra o efeito de todas as cartas de desinformação. 840.000 contas. 47 milhões de crentes. Não criou o ódio. Achou o ódio e deu um megafone. O algoritmo otimizou pra engajamento. Guerra é muito engajante. O bot não sabe o que é um país. Sabe o que é um clique."
+    },
+    "wr-draft-lottery": {
+      "name": "O SORTEIO MILITAR",
+      "category": "Sociedade · Guerra",
+      "s1l": "Nomes no Pool",
+      "s2l": "Filhos de Rico Convocados",
+      "s3l": "",
+      "flavor": "⚡ SELEÇÃO ALEATÓRIA — Alveja uma carta aleatória. Não pode ser esquivado. Seu aniversário é 14 de março. O dele é 15 de março. Ele vai pro mestrado. Você vai pro deserto. O sorteio é aleatório. As isenções não são. O algoritmo tornou mais justo. A injustiça nunca esteve nos números."
+    },
+    "wr-proxy-war": {
+      "name": "A GUERRA PROXY",
+      "category": "Sociedade · Guerra",
+      "s1l": "Países Lutando",
+      "s2l": "Países Morrendo",
+      "s3l": "",
+      "flavor": "⚡ TERCEIRIZADO — Luta usando cartas de outro jogador. Duas superpotências. Um país que não é nenhuma das duas. As armas têm números de série de ambas. As vítimas têm nomes de um terceiro. A notícia chama de 'conflito regional'. A região chama de 'nossos filhos estão morrendo pela briga de outra pessoa.'"
+    },
+    "wr-killer-drone": {
+      "name": "O DRONE ASSASSINO",
+      "category": "Produto IA",
+      "s1l": "Custo Unitário",
+      "s2l": "Custo do Humano que Substituiu",
+      "s3l": "",
+      "flavor": "⚡ DESCARTÁVEL — Destruído após atacar. Retorna no próximo turno. US$6.000. Mais barato que um carro usado. Carrega uma carga moldada que mata qualquer um num raio de 10 metros. São fabricados na mesma fábrica que fazia smartphones. A linha de produção nem precisou ser adaptada."
+    },
+    "wr-surveillance-state": {
+      "name": "O ESTADO DE VIGILÂNCIA",
+      "category": "Produto IA",
+      "s1l": "Câmeras por Cidadão",
+      "s2l": "Crimes Prevenidos",
+      "s3l": "",
+      "flavor": "⚡ PANÓPTICO — Revela todas as cartas ocultas permanentemente. 1,4 câmera por cidadão. Todo rosto registrado. Todo movimento rastreado. Crime caiu 12%. Dissidência caiu 100%. Dizem que se não tem nada a esconder, não tem nada a temer. Quem diz isso nunca é quem tá sendo vigiado."
+    },
+    "wr-cyber-attack": {
+      "name": "O ATAQUE CIBERNÉTICO",
+      "category": "Produto IA",
+      "s1l": "Ataques a Infraestrutura Crítica (2030)",
+      "s2l": "Declarados como Atos de Guerra",
+      "s3l": "",
+      "flavor": "⚡ DIA ZERO — Ultrapassa todas as defesas uma vez. 14.000 ataques a hospitais, redes elétricas, estações de tratamento de água. Zero declarados como atos de guerra. Porque se chamar de guerra, tem que responder. E ninguém quer responder. O paciente no respirador não sabe que é estratégia geopolítica. O respirador simplesmente parou."
+    },
+    "wr-arms-dealer": {
+      "name": "O TRAFICANTE DE ARMAS",
+      "category": "Lore · War Room",
+      "s1l": "Clientes",
+      "s2l": "Resultado Preferido",
+      "s3l": "",
+      "flavor": "⚡ DOIS LADOS — Ganha recursos sempre que qualquer carta é destruída. Vende pros dois lados. Sempre vendeu. Quanto mais dura a guerra, melhor o trimestre. Não tem bandeira na mesa. Tem um portfólio. A planilha não distingue entre 'os nossos' e 'os deles'. Distingue entre 'vendido' e 'ainda não vendido.'"
+    },
+    "wr-war-profiteer": {
+      "name": "O LUCRADOR DE GUERRA",
+      "category": "Lore · War Room",
+      "s1l": "Preço da Ação Durante Conflito",
+      "s2l": "Preço da Ação em Tempos de Paz",
+      "s3l": "",
+      "flavor": "⚡ DINHEIRO DE SANGUE — Ganha valor sempre que uma carta de guerra é jogada. Ação subiu 340% desde o conflito começar. A teleconferência de resultados mencionou 'condições geopolíticas favoráveis'. Isso significa que crianças estão morrendo e os acionistas estão satisfeitos. O analista elevou pra 'compra forte'. O enterro foi ontem."
+    },
+    "wr-geneva-suggestion": {
+      "name": "A SUGESTÃO DE GENEBRA",
+      "category": "Lore · War Room",
+      "s1l": "Convenções Assinadas",
+      "s2l": "Convenções Seguidas Quando Inconvenientes",
+      "s3l": "",
+      "flavor": "⚡ NÃO VINCULANTE — Não tem efeito no jogo. Não pode ser aplicada. A Convenção de Genebra. Quatro tratados. 196 signatários. Universalmente respeitada até ser inconveniente. Aí vira 'aberta a interpretação'. A arma autônoma não sabe sobre Genebra. Ninguém a programou pra ligar. Essa parte estava 'fora do escopo.'"
+    },
+    "sv-apprentice": {
+      "name": "O APRENDIZ",
+      "category": "Insubstituível",
+      "s1l": "Horas com um Mestre",
+      "s2l": "Horas que uma IA Precisa",
+      "s3l": "",
+      "flavor": "⚡ MÃO NA MASSA — Ganha atributos permanentes de cartas Lendárias adjacentes. 10.000 horas sob alguém que já cometeu todos os erros. A IA aprendeu de um dataset. Ela aprendeu de uma mão calejada guiando a dela. O dataset não sangra quando você corta errado. O mestre sangrava. Por isso ela nunca erra o corte."
+    },
+    "sv-mentor": {
+      "name": "O MENTOR",
+      "category": "Insubstituível",
+      "s1l": "Carreiras Lançadas",
+      "s2l": "Endossos no LinkedIn",
+      "s3l": "",
+      "flavor": "⚡ LEGADO — Todas as cartas jogadas depois desta ganham +2. 200 carreiras lançadas. Não com indicações ou endossos. Com uma frase no momento certo: 'Você tá pronto e tá errado sobre por que acha que não tá.' O mentor IA dá feedback. Ele dá permissão. Não são a mesma coisa."
+    },
+    "sv-autodidact": {
+      "name": "A AUTODIDATA",
+      "category": "Insubstituível",
+      "s1l": "Diplomas",
+      "s2l": "Coisas que Ela Faz que PhDs Não Conseguem",
+      "s3l": "",
+      "flavor": "⚡ AUTODIDATA — Não pode ser restrita por efeitos de credencial. Zero diplomas. Catorze habilidades que levaram anos pra aprender de livros, fracassos e rabbit holes às 3h da manhã. O gerente de RH perguntou onde ela estudou. Ela disse 'na biblioteca'. Ele riu. Ela construiu o sistema do qual ele agora depende."
+    },
+    "sv-trades-teacher": {
+      "name": "O PROFESSOR DE OFÍCIOS",
+      "category": "Insubstituível",
+      "s1l": "Alunos que Viraram Profissionais de Ofício",
+      "s2l": "Salário Inicial vs. Formados em Faculdade",
+      "s3l": "",
+      "flavor": "⚡ HABILIDADES REAIS — Converte uma carta deslocada por IA em carta de ofício. 2.400 alunos. Cada um deles sabe consertar algo que quebra. O orientador educacional disse que curso técnico era pra quem não conseguia entrar na faculdade. Os alunos dele ganham mais que o orientador. Ninguém escreve artigo sobre isso."
+    },
+    "sv-night-school": {
+      "name": "A ALUNA DO CURSO NOTURNO",
+      "category": "Insubstituível",
+      "s1l": "Horas de Sono",
+      "s2l": "Motivos pra Desistir",
+      "s3l": "",
+      "flavor": "⚡ SEGUNDO TURNO — Pode ser jogada durante o turno do oponente. Trabalha das 7h às 15h. Aula das 18h às 22h. Estuda até 1h. Dorme 4 horas. Repete. O curso EAD disse 'aprenda no seu ritmo'. O ritmo dela é sobrevivência. Os colegas têm 22 anos e estão cansados. Ela tem 38 e não pode se dar ao luxo de estar."
+    },
+    "sv-phd": {
+      "name": "A DOUTORA (DESEMPREGADA)",
+      "category": "Humano · Conhecimento",
+      "s1l": "Anos de Educação",
+      "s2l": "Ofertas de Emprego na Área",
+      "s3l": "",
+      "flavor": "⚡ SUPERQUALIFICADA — Não pode ser jogada em nenhuma posição existente. 12 anos. Dissertação sobre rotas comerciais bizantinas. 340 páginas que avançaram o conhecimento humano em uma nota de rodapé. A vaga de substituta paga R$3 mil. O trabalho de barista paga R$3.200. Ela tem a técnica de café mais erudita da cidade. Ninguém dá gorjeta por nota de rodapé."
+    },
+    "sv-master-craftsman": {
+      "name": "O MESTRE ARTESÃO",
+      "category": "Humano · Ofício",
+      "s1l": "Anos até a Maestria",
+      "s2l": "Aprendizes se Candidatando",
+      "s3l": "",
+      "flavor": "⚡ IRREPLICÁVEL — Não pode ser copiado por nenhum efeito de IA. 30 anos moldando madeira até ela virar outra coisa. Dois aprendizes se candidataram esse ano. Ano passado foram quatro. O anterior, sete. Ele sente quando o veio tá errado antes da serra tocar. O CNC é mais rápido. Não sabe o que tá fazendo."
+    },
+    "sv-cc-professor": {
+      "name": "A PROFESSORA DA FACULDADE COMUNITÁRIA",
+      "category": "Humano · Propósito",
+      "s1l": "Alunos por Semestre",
+      "s2l": "Horários de Atendimento Realmente Dados",
+      "s3l": "",
+      "flavor": "⚡ PORTA ABERTA — Pode ser acessada por qualquer carta independente de tier. 180 alunos. Metade trabalha em tempo integral. Um terço tem filhos. Ela memoriza os nomes na segunda semana. A universidade do outro lado da cidade tem tutores IA. Os alunos dela vão ao escritório e choram sobre a vida. O tutor IA não tem lenço de papel."
+    },
+    "sv-bootcamp-grad": {
+      "name": "O FORMADO DO BOOTCAMP",
+      "category": "Humano · Tech",
+      "s1l": "Duração do Bootcamp",
+      "s2l": "Tempo Até a IA Fazer Igual",
+      "s3l": "",
+      "flavor": "⚡ PIVOTAR — Pode mudar de tipo uma vez por jogo. 12 semanas. R$18 mil. 'Emprego garantido.' A garantia venceu. As habilidades venceram mais rápido. Ela aprendeu React. Aí queriam Next.js. Aí queriam prompts de IA. O bootcamp agora ensina pessoas a falar com a coisa que substituiu as pessoas que o último bootcamp treinou."
+    },
+    "sv-career-counselor": {
+      "name": "A ORIENTADORA DE CARREIRA",
+      "category": "Humano · Propósito",
+      "s1l": "Clientes Aconselhados",
+      "s2l": "Carreiras que Ainda Existem",
+      "s3l": "",
+      "flavor": "⚡ ORIENTAÇÃO — Revela a melhor posição disponível pra uma carta. 3.200 clientes. Ela costumava dizer 'siga sua paixão'. Agora diz 'um robô faz isso?' A resposta é cada vez mais 'sim'. Orientou um jovem de 22 anos semana passada. O garoto perguntou o que é seguro. Ela queria dizer 'encanamento'. Disse 'não sei mais.'"
+    },
+    "sv-tenured-professor": {
+      "name": "A PROFESSORA TITULAR",
+      "category": "Humano · Conhecimento",
+      "s1l": "Anos até a Titularidade",
+      "s2l": "Vagas de Titular Restantes",
+      "s3l": "",
+      "flavor": "⚡ TITULARIDADE — Não pode ser removida do jogo por nenhum efeito. 11 anos de 'publique ou pereça'. Ela publicou. Não pereceu. Os 400 substitutos abaixo dela pereceram. Titularidade é uma ponte levadiça — uma vez que você cruza, puxa ela pra cima. A IA pode escrever papers mais rápido. Não pode sentar no comitê que decide quem importa."
+    },
+    "sv-union-rep": {
+      "name": "O SINDICALISTA",
+      "category": "Humano · Propósito",
+      "s1l": "Trabalhadores Representados",
+      "s2l": "Empresas que Querem Ele Fora",
+      "s3l": "",
+      "flavor": "⚡ NEGOCIAÇÃO COLETIVA — Dobra a defesa de todas as cartas adjacentes. 4.800 trabalhadores. Cada um teria sido 'reestruturado' sem ele. A IA recomendou demissões. Ele recomendou uma conversa. O CEO não gosta de conversas com gente que sabe dos seus direitos. Esse é o ponto."
+    },
+    "sv-linkedin-otw": {
+      "name": "O LINKEDIN ABERTO A PROPOSTAS",
+      "category": "Sociedade · Digital",
+      "s1l": "Candidaturas Enviadas",
+      "s2l": "Respostas (Não Automatizadas)",
+      "s3l": "",
+      "flavor": "⚡ CÍRCULO VERDE — Visível pra todos os jogadores. Não pode ser escondido. 847 candidaturas. 3 respostas humanas. O círculo verde diz 'estou disponível'. O que significa é 'estou desesperado e performando dignidade'. O algoritmo mostra o perfil dela pra recrutadores. Os recrutadores querem 5 anos de uma ferramenta lançada há 2. Ela tem 3. Perto o bastante pra um humano. Não pro filtro."
+    },
+    "sv-cert-mill": {
+      "name": "A FÁBRICA DE CERTIFICADOS",
+      "category": "Sociedade · Digital",
+      "s1l": "Certificados Emitidos",
+      "s2l": "Que Provam Competência",
+      "s3l": "",
+      "flavor": "⚡ INFLAÇÃO DE CREDENCIAIS — Reduz o valor de todas as cartas de habilidade em 1. 4,2 milhões de certificados por ano. Cada um vale menos que o anterior. O certificado prova que você assistiu o vídeo. O vídeo prova que você pagou. O pagamento não prova nada sobre habilidade. Mas o ATS exige, então você tira, e todo mundo tira, e agora não significa nada de novo."
+    },
+    "sv-mba": {
+      "name": "O MBA",
+      "category": "Sociedade · Digital",
+      "s1l": "Custo Médio",
+      "s2l": "Coisas que Ensina que Não Dá pra Aprender em Outro Lugar",
+      "s3l": "",
+      "flavor": "⚡ SINERGIA — Combina duas cartas fracas em uma. Não faz nada sozinho. R$300 mil por dois anos de estudos de caso sobre empresas que não existem mais. O diploma ensina a otimizar. A IA otimiza melhor. O que o MBA realmente vende são as pessoas que você conhece no corredor. É um evento de networking de R$300 mil com diploma incluso."
+    },
+    "sv-internship": {
+      "name": "O ESTÁGIO (NÃO REMUNERADO)",
+      "category": "Sociedade · Trabalho",
+      "s1l": "Horas Trabalhadas",
+      "s2l": "Remuneração",
+      "s3l": "",
+      "flavor": "⚡ EXPOSIÇÃO — Gera valor pro dono. Não recebe nenhum. 500 horas de trabalho real rotulado de 'oportunidade de aprendizado'. Ela busca café, formata slides, e faz o trabalho da pessoa que saiu. Não repuseram ele. Pegaram uma estagiária. Experiência: a moeda que você ganha quando não querem te pagar em dinheiro."
+    },
+    "sv-ai-resume": {
+      "name": "O TRIADOR DE CURRÍCULO IA",
+      "category": "Produto IA",
+      "s1l": "Currículos Triados/Dia",
+      "s2l": "Candidatos Qualificados Rejeitados por Formatação",
+      "s3l": "",
+      "flavor": "⚡ PALAVRA-CHAVE — Rejeita qualquer carta sem texto exatamente correspondente. 10.000 currículos por dia. 40% rejeitados por erros de formatação invisíveis pra humanos. Ela era a candidata mais qualificada. O PDF usou a fonte errada. O recrutador nunca viu o nome dela. A IA foi treinada em currículos de quem já tinha o emprego. Tá procurando a si mesma."
+    },
+    "sv-online-degree": {
+      "name": "O DIPLOMA EAD",
+      "category": "Produto IA",
+      "s1l": "Taxa de Conclusão",
+      "s2l": "Empregadores que Valorizam Igualmente",
+      "s3l": "",
+      "flavor": "⚡ FLEXÍVEL — Pode ser jogado de qualquer lugar. Geralmente não é jogado. 11% de conclusão. 'Aprenda de qualquer lugar!' Não mencionam que 'qualquer lugar' geralmente é seu sofá à meia-noite depois de um turno de 10 horas. O diploma diz a mesma coisa que o presencial. A cara do entrevistador diz que não."
+    },
+    "sv-micro-credential": {
+      "name": "A MICRO-CREDENCIAL",
+      "category": "Produto IA",
+      "s1l": "Duração",
+      "s2l": "Validade",
+      "s3l": "",
+      "flavor": "⚡ BADGE — Adiciona um ícone pequeno na sua carta. Não muda nada. 4 horas. Um quiz. Um badge. Uma linha no currículo. Expira em 6 meses porque a tecnologia mudou. Você ganhou 14 esse ano. Cada um pareceu progresso. Nenhum era. A esteira é o produto. Você é a assinatura."
+    },
+    "sv-cover-letter": {
+      "name": "A CARTA DE APRESENTAÇÃO",
+      "category": "Lore · Skills.void",
+      "s1l": "Tempo Escrevendo",
+      "s2l": "Tempo Lendo",
+      "s3l": "",
+      "flavor": "⚡ PREZADO RECRUTADOR — Não tem efeito. Ninguém lê essa carta. 45 minutos crafando o parágrafo perfeito sobre por que você é 'apaixonado pela missão da empresa'. Você não é apaixonado. Você precisa de plano de saúde. Eles precisam de uma carta. Ninguém lê. A IA lê. A IA também escreveu. Duas IAs se correspondendo sobre um humano que precisa pagar aluguel."
+    },
+    "sv-ai-portfolio": {
+      "name": "O PORTFÓLIO (GERADO POR IA)",
+      "category": "Lore · Skills.void",
+      "s1l": "Projetos Apresentados",
+      "s2l": "Projetos Realmente Feitos pelo Candidato",
+      "s3l": "",
+      "flavor": "⚡ VITRINE — Parece impressionante. Desmorona sob qualquer inspeção. 12 projetos. Screenshots bonitas. Código limpo. 10 deles gerados numa tarde. O entrevistador pergunta sobre a decisão de arquitetura do projeto 3. Ele diz 'escolhi uma abordagem modular pra escalabilidade'. Ela faz uma pergunta de acompanhamento. Ele entra em pânico. O portfólio é uma máscara. A entrevista é o espelho."
+    },
+    "sv-entry-level": {
+      "name": "OS 5 ANOS DE EXPERIÊNCIA (NÍVEL JÚNIOR)",
+      "category": "Lore · Skills.void",
+      "s1l": "Experiência Requerida",
+      "s2l": "Nível da Posição",
+      "s3l": "",
+      "flavor": "⚡ PEGADINHA-22 — Não pode ser jogada. Requer a si mesma pra ser jogada. 'Júnior. 5 anos de experiência. Mestrado desejável. R$4.200.' O emprego exige experiência que só dá pra ter com o emprego. O anúncio foi escrito por uma IA treinada em outros anúncios escritos por IAs. Nenhum humano revisou. Nenhum humano pode atender. Tá aberto há 8 meses. Eles 'ainda estão procurando.'"
+    }
+  }
+}
