@@ -3421,6 +3421,10 @@ body::before {
   <div class="load-sub">2030 SURVIVAL EDITION</div>
   <div class="load-bar"><div class="load-bar-fill"></div></div>
 </div>
+<script>
+// Failsafe: always dismiss loader after 2s, independent of main script
+setTimeout(function(){var el=document.getElementById('loading-screen');if(el){el.style.opacity='0';setTimeout(function(){el.remove()},600)}},2000);
+</script>
 
 <div id="app">
   <button class="sound-toggle on" id="sound-toggle" onclick="toggleSound()" title="Toggle sound">🔊</button>
