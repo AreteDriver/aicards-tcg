@@ -3151,6 +3151,111 @@ body::before {
 }
 .sound-toggle:hover { border-color:#555; }
 .sound-toggle.on { border-color:#2a6a2a;box-shadow:0 0 8px rgba(40,160,40,0.2); }
+.sound-toggle.first-load { animation:soundPulse 2s ease-in-out 3; }
+@keyframes soundPulse { 0%,100%{border-color:#555;box-shadow:none} 50%{border-color:var(--gold);box-shadow:0 0 12px rgba(200,168,75,0.4)} }
+
+/* Reveal rarity flash animations */
+.reveal-mythic { animation: revealFlashWhite 0.8s ease-out; }
+.reveal-legendary { animation: revealFlashGold 0.6s ease-out; }
+.reveal-rare { animation: revealFlashPurple 0.5s ease-out; }
+@keyframes revealFlashWhite { 0%{box-shadow:0 0 60px rgba(255,255,255,0.8)} 100%{box-shadow:none} }
+@keyframes revealFlashGold { 0%{box-shadow:0 0 40px rgba(200,168,75,0.7)} 100%{box-shadow:none} }
+@keyframes revealFlashPurple { 0%{box-shadow:0 0 30px rgba(155,89,208,0.5)} 100%{box-shadow:none} }
+
+/* Card slide transitions */
+.card-enter { animation: cardSlideIn 0.3s ease-out; }
+.card-exit { animation: cardSlideOut 0.2s ease-in forwards; }
+@keyframes cardSlideIn { from{opacity:0;transform:translateX(30px)} to{opacity:1;transform:translateX(0)} }
+@keyframes cardSlideOut { from{opacity:1;transform:translateX(0)} to{opacity:0;transform:translateX(-30px)} }
+
+/* Pull counter in opening screen */
+.pull-counter-bar {
+  font-family:var(--font-mono);font-size:8px;letter-spacing:1px;color:#444;
+  margin-top:4px;text-align:center;
+}
+
+/* Share/inspect buttons below card during reveal */
+.reveal-action-row {
+  display:flex;gap:8px;justify-content:center;margin-top:10px;
+}
+.reveal-action-btn {
+  font-family:var(--font-mono);font-size:8px;letter-spacing:1px;
+  padding:6px 14px;border:1px solid #333;background:var(--bg-card);
+  color:#888;cursor:pointer;transition:all .2s;
+}
+.reveal-action-btn:hover { border-color:#555;color:var(--white); }
+
+/* Set progress bar on pack screen */
+.set-progress-bar {
+  display:flex;flex-wrap:wrap;gap:8px 16px;justify-content:center;
+  padding:8px 0 4px;margin-bottom:8px;
+}
+.set-progress-item {
+  font-family:var(--font-mono);font-size:8px;letter-spacing:1px;color:#555;
+  display:flex;align-items:center;gap:4px;
+}
+.set-progress-fill {
+  display:inline-block;width:60px;height:6px;background:#1a1a1a;border-radius:3px;overflow:hidden;position:relative;
+}
+.set-progress-fill-inner {
+  height:100%;border-radius:3px;transition:width 0.3s;
+}
+
+/* Pack history section */
+.pack-history-toggle {
+  font-family:var(--font-mono);font-size:8px;letter-spacing:2px;color:#444;
+  cursor:pointer;text-align:center;padding:6px 0;border:none;background:none;
+  width:100%;transition:color .2s;
+}
+.pack-history-toggle:hover { color:#888; }
+.pack-history-body { overflow:hidden;max-height:0;transition:max-height 0.3s ease; }
+.pack-history-body.open { max-height:400px; }
+.pack-history-entry {
+  display:flex;gap:4px;align-items:center;padding:4px 0;border-bottom:1px solid #111;
+}
+.pack-history-entry:last-child { border-bottom:none; }
+.pack-history-mini {
+  width:20px;height:28px;border-radius:2px;border:1px solid;
+  display:flex;align-items:center;justify-content:center;font-size:10px;
+}
+
+/* Collection mini card preview */
+.coll-entry-card {
+  display:flex;align-items:center;gap:8px;padding:6px 10px;
+  border-left:3px solid;cursor:pointer;transition:background .2s;
+  background:transparent;margin-bottom:2px;
+}
+.coll-entry-card:hover { background:rgba(255,255,255,0.03); }
+.coll-entry-card.missing { opacity:0.3;cursor:default;border-left-style:dashed; }
+.coll-entry-symbol { font-size:18px;flex-shrink:0; }
+.coll-entry-name { font-family:var(--font-title);font-size:10px;letter-spacing:0.5px;flex:1; }
+.coll-entry-count { font-family:var(--font-mono);font-size:7px;opacity:0.6; }
+
+/* Card of the day on landing */
+.card-of-day {
+  margin-top:16px;padding:12px 16px;border:1px solid #222;background:var(--bg-card);
+  max-width:320px;text-align:center;
+}
+.card-of-day-label {
+  font-family:var(--font-mono);font-size:7px;letter-spacing:3px;color:#444;margin-bottom:8px;
+}
+.card-of-day-symbol { font-size:32px;margin-bottom:6px; }
+.card-of-day-name {
+  font-family:var(--font-title);font-size:13px;letter-spacing:1px;margin-bottom:4px;
+}
+.card-of-day-flavor {
+  font-family:var(--font-flavor);font-size:10px;color:#666;font-style:italic;line-height:1.5;
+}
+
+/* Leaderboard section */
+.leaderboard-row {
+  display:flex;justify-content:space-between;align-items:center;
+  padding:5px 0;border-bottom:1px solid #111;
+  font-family:var(--font-mono);font-size:8px;letter-spacing:1px;
+}
+.leaderboard-row:last-child { border-bottom:none; }
+.leaderboard-label { color:#888; }
+.leaderboard-value { color:var(--gold);letter-spacing:2px; }
 
 /* Pack summary after all 5 revealed */
 .pack-summary {
@@ -3296,7 +3401,7 @@ body::before {
   .landing-coll-link{font-size:9px;letter-spacing:2px;min-height:44px;display:flex;align-items:center;justify-content:center}
 
   /* ── Sound toggle ── */
-  .sound-toggle{width:36px;height:36px;font-size:16px;top:10px;right:10px}
+  .sound-toggle{width:48px;height:48px;font-size:18px;top:10px;right:10px}
 
   /* ── Skip / CTA buttons ── */
   .skip-btn{padding:8px 20px;font-size:8px;min-height:36px}
@@ -3377,7 +3482,7 @@ body::before {
   .coll-title{font-size:16px}
 
   /* ── Sound toggle ── */
-  .sound-toggle{width:36px;height:36px;top:8px;right:8px}
+  .sound-toggle{width:48px;height:48px;font-size:18px;top:8px;right:8px}
 }
 /* ═══ LOADING SCREEN ═══ */
 #loading-screen {
@@ -3423,7 +3528,7 @@ setTimeout(function(){var el=document.getElementById('loading-screen');if(el){el
 </script>
 
 <div id="app">
-  <button class="sound-toggle on" id="sound-toggle" onclick="toggleSound()" title="Toggle sound">🔊</button>
+  <button class="sound-toggle on first-load" id="sound-toggle" onclick="toggleSound()" title="Toggle sound">🔊</button>
   <div id="toast" class="toast"></div>
   <div id="mission-toast" class="mission-toast">
     <span class="mt-check">&#10003;</span>
@@ -3504,6 +3609,7 @@ setTimeout(function(){var el=document.getElementById('loading-screen');if(el){el
         Then the ones nobody thought it could touch. These are the humans who survived.
         These are the ones who didn't. Open packs. See which world you build.
       </p>
+      <div id="card-of-day" class="card-of-day" style="display:none;"></div>
       <button class="landing-open-btn" onclick="enterFromLanding('pack-screen')">▶ OPEN PACKS</button>
       <button class="landing-coll-link" onclick="enterFromLanding('collection-screen')">VIEW COLLECTION</button>
     </div>
@@ -3524,8 +3630,9 @@ setTimeout(function(){var el=document.getElementById('loading-screen');if(el){el
       <div class="daily-packs-bar">
         <div class="daily-packs-count">FREE PACKS: <span id="dp-remaining">10</span> / 10</div>
         <div class="daily-packs-timer" id="dp-timer">Next pack in: --:--</div>
-        <div class="daily-packs-pity"><span id="dp-pity-pulls">0</span> pulls until Gold Pack</div>
+        <div class="daily-packs-pity" id="dp-pity-wrap" style="font-size:9px;letter-spacing:2px;margin-top:4px;"></div>
       </div>
+      <div class="set-progress-bar" id="set-progress-bar"></div>
       <div class="stats-bar">
         <div class="stat-chip">PULLS: <span id="st-pulls">0</span></div>
         <div class="stat-chip">OWNED: <span id="st-owned">0</span>/<span id="st-total">0</span></div>
@@ -3572,10 +3679,12 @@ setTimeout(function(){var el=document.getElementById('loading-screen');if(el){el
         <div class="mission-row"><span class="mission-label">Share a card</span><span class="mission-progress" id="dm-share">0/1</span></div>
       </div>
       <div class="daily-missions" id="weekly-goal" style="margin-top:12px;"></div>
+      <div class="daily-missions" id="pack-history-zone" style="margin-top:12px;display:none;"></div>
       <div class="daily-missions" style="margin-top:12px;">
         <div class="daily-missions-title">ACHIEVEMENTS</div>
         <div class="mission-row"><span class="mission-label">Complete your collection</span><span class="mission-progress" id="dm-collection">0/<span id="dm-coll-total">69</span></span></div>
       </div>
+      <div class="daily-missions" id="leaderboard-zone" style="margin-top:12px;"></div>
       <div id="profile-zone"></div>
       <footer class="site-footer">
         <div class="footer-links">
@@ -3591,20 +3700,23 @@ setTimeout(function(){var el=document.getElementById('loading-screen');if(el){el
           </a>
         </div>
         <div class="footer-credit">Built by AreteDriver</div>
+        <button class="reveal-action-btn" style="margin-top:8px;font-size:7px;letter-spacing:2px;" onclick="copyReferralLink()">INVITE FRIENDS</button>
       </footer>
     </div>
   </div>
 
   <!-- OPENING SCREEN — STACKED DECK -->
   <div class="screen" id="opening-screen">
-    <div class="opening-wrap">
+    <div class="opening-wrap" onclick="onOpeningWrapClick(event)">
       <div class="opening-head">
         <div class="opening-pack-name" id="op-pack-name">STANDARD PACK</div>
         <div class="deck-counter" id="deck-counter">1 / 5</div>
+        <div class="pull-counter-bar" id="pull-counter-bar"></div>
       </div>
       <div class="card-deck" id="card-deck">
         <!-- 5 stacked cards populated by JS -->
       </div>
+      <div id="reveal-action-row" class="reveal-action-row" style="display:none;"></div>
       <div id="revealed-strip" style="display:flex;gap:6px;justify-content:center;margin-top:12px;min-height:52px;flex-wrap:wrap;"></div>
       <div class="reveal-cta" id="reveal-cta" style="margin-top:12px;">
       </div>
@@ -4776,8 +4888,12 @@ function updateDailyUI() {
   const dpEl = document.getElementById('dp-remaining');
   if (dpEl) dpEl.textContent = remaining;
 
-  const pityEl = document.getElementById('dp-pity-pulls');
-  if (pityEl) pityEl.textContent = Math.max(0, GOLD_PACK_PITY - S.pulls);
+  const pityWrap = document.getElementById('dp-pity-wrap');
+  if (pityWrap) {
+    const pityLeft = Math.max(0, GOLD_PACK_PITY - S.pulls);
+    const isClose = pityLeft <= 3;
+    pityWrap.innerHTML = '<span style="color:' + (isClose ? 'var(--gold);text-shadow:0 0 8px rgba(200,168,75,0.4)' : '#555') + ';">&#9889; LEGENDARY IN ' + pityLeft + ' PACKS</span>';
+  }
 
   // Daily Missions
   const dmPacks = document.getElementById('dm-packs');
@@ -4851,11 +4967,14 @@ function toggleSound() {
   const btn = document.getElementById('sound-toggle');
   btn.textContent = sfxMuted ? '🔇' : '🔊';
   btn.classList.toggle('on', !sfxMuted);
+  btn.classList.remove('first-load');
 }
 // Init sound toggle UI
 (function initSoundToggle() {
   const btn = document.getElementById('sound-toggle');
   if (btn) { btn.textContent = sfxMuted ? '🔇' : '🔊'; btn.classList.toggle('on', !sfxMuted); }
+  // Remove pulse after animation completes (3 iterations x 2s)
+  if (btn) setTimeout(function() { btn.classList.remove('first-load'); }, 6500);
 })();
 
 function sfxFlip() {
@@ -5059,7 +5178,7 @@ function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   if(id==='collection-screen') renderCollection();
-  if(id==='pack-screen') { updateStats(); renderProfile(); updateDailyUI(); renderWeeklyGoal(); renderBuyPacks(); renderChainBanner(); renderChainStatus(); renderSet2Zone(); renderSet3Zone(); renderSet4Zone(); renderSet5Zone(); renderSet6Zone(); }
+  if(id==='pack-screen') { updateStats(); renderProfile(); updateDailyUI(); renderWeeklyGoal(); renderBuyPacks(); renderChainBanner(); renderChainStatus(); renderSet2Zone(); renderSet3Zone(); renderSet4Zone(); renderSet5Zone(); renderSet6Zone(); renderSetProgress(); renderPackHistory(); renderLeaderboard(); }
 }
 
 function updateStats() {
@@ -5163,34 +5282,63 @@ function renderCardDeck() {
 function showCardFaceUp(index) {
   if (index >= 5) return;
   const cards = document.querySelectorAll('.deck-card');
-  // Hide all
-  cards.forEach(c => c.style.display = 'none');
-  // Show current
-  cards[index].style.display = '';
+  // Slide out previous card
+  cards.forEach(c => {
+    if (c.style.display !== 'none' && parseInt(c.dataset.index) !== index) {
+      c.classList.add('card-exit');
+      setTimeout(() => { c.style.display = 'none'; c.classList.remove('card-exit'); }, 200);
+    } else if (parseInt(c.dataset.index) !== index) {
+      c.style.display = 'none';
+    }
+  });
+  // Show current with slide in
+  setTimeout(() => {
+    cards[index].style.display = '';
+    cards[index].classList.add('card-enter');
+    setTimeout(() => cards[index].classList.remove('card-enter'), 300);
+  }, cards.length > 0 && session.currentIndex !== index ? 150 : 0);
   session.currentIndex = index;
   // Track stats for this card
   if (!session.revealed[index]) {
     session.revealed[index] = true;
     const card = session.pack[index];
+    const wasDupe = collectionHas(card.id);
     sfxFlip();
     if (card.rarity === 'MYTHIC') { sfxLegendary(); sfxLegendary(); document.body.classList.add('shake'); setTimeout(()=>document.body.classList.remove('shake'),500); }
     else if (card.rarity === 'LEGENDARY' || card.id === 'speciation-pressure') sfxLegendary();
     else if (card.rarity === 'RARE') sfxRare();
     triggerEffect(card, cards[index]);
+    // Rarity animation on card
+    if (card.rarity === 'MYTHIC') { cards[index].classList.add('reveal-mythic'); setTimeout(()=>cards[index].classList.remove('reveal-mythic'),800); }
+    else if (card.rarity === 'LEGENDARY') { cards[index].classList.add('reveal-legendary'); setTimeout(()=>cards[index].classList.remove('reveal-legendary'),600); }
+    else if (card.rarity === 'RARE') { cards[index].classList.add('reveal-rare'); setTimeout(()=>cards[index].classList.remove('reveal-rare'),500); }
     // Track stats
     S.pulls++;
-    const isNew = !collectionHas(card.id);
     collectionAdd(card.id);
+    const isNew = !wasDupe;
     if (isNew) { S.newCards.add(card.id); if (card.rarity==='LEGENDARY' || card.rarity==='MYTHIC') S.legendaries++; }
     if (card.rarity==='LEGENDARY' || card.rarity==='MYTHIC') { S.pityCounter = 0; markDailyLegendary(); }
     markDailyRarity(card.rarity);
     if (card.rarity==='MYTHIC') S.sov += 10;
     else if (['LEGENDARY','RARE'].includes(card.rarity) && card.category.toLowerCase().includes('human')) S.sov += card.rarity==='LEGENDARY'?3:1;
     if (card.category==='AI Product') S.dep += 2;
+    // Duplicate badge
+    if (wasDupe) {
+      const dupeCount = S.collection[card.id];
+      const badge = document.createElement('div');
+      badge.style.cssText = 'position:absolute;top:8px;left:8px;font-family:var(--font-mono);font-size:10px;color:#888;background:var(--bg-card);padding:2px 6px;border:1px solid #333;border-radius:3px;z-index:20;';
+      badge.textContent = '\u00d7' + dupeCount;
+      cards[index].appendChild(badge);
+    }
     save();
     updateStats();
     updateDailyUI();
+    savePackHistory();
   }
+  // Update pull counter bar
+  updatePullCounterBar();
+  // Show action row (share + inspect)
+  updateRevealActionRow(index);
 }
 
 function advanceCard() {
@@ -5987,13 +6135,17 @@ function renderCollection() {
     const col = RARITY_COLORS[rarity];
     html += `<div class="coll-section">
       <div class="coll-section-label" style="color:${col};border-color:${col}33;">${rarity} · ${owned} / ${cards.length}</div>
-      <div class="coll-cards">`;
+      <div class="coll-cards" style="flex-direction:column;gap:2px;">`;
     cards.forEach(card=>{
       const isOwned = collectionHas(card.id);
       const count = S.collection[card.id] || 0;
       const onclick = isOwned ? `onclick="showCardModal('${card.id}')"` : '';
-      const badge = isOwned && count > 1 ? `<span style="margin-left:5px;font-size:7px;opacity:0.6;">×${count}</span>` : '';
-      html += `<div class="coll-entry ${isOwned?'':'missing'}" ${onclick} style="border-color:${col}44;color:${col};background:${isOwned?col+'11':'transparent'};">${card.symbol} ${card.name}${badge}</div>`;
+      const countBadge = isOwned && count > 1 ? `<span class="coll-entry-count">\u00d7${count}</span>` : '';
+      html += `<div class="coll-entry-card ${isOwned?'':'missing'}" ${onclick} style="border-left-color:${col};color:${col};">
+        <span class="coll-entry-symbol">${card.symbol}</span>
+        <span class="coll-entry-name">${card.name}</span>
+        ${countBadge}
+      </div>`;
     });
     html += `</div></div>`;
   });
@@ -6189,8 +6341,214 @@ function renderProfile() {
 }
 
 // ═══════════════════════════════════════
+// PULL COUNTER BAR (opening screen)
+// ═══════════════════════════════════════
+function updatePullCounterBar() {
+  const el = document.getElementById('pull-counter-bar');
+  if (el) el.innerHTML = 'TOTAL PULLS: ' + S.pulls + ' &middot; LEGENDARIES: ' + S.legendaries + ' &middot; PACKS: ' + S.packs;
+}
+
+// ═══════════════════════════════════════
+// REVEAL ACTION ROW (share + inspect)
+// ═══════════════════════════════════════
+function updateRevealActionRow(index) {
+  const row = document.getElementById('reveal-action-row');
+  if (!row) return;
+  const card = session.pack[index];
+  if (!card) { row.style.display = 'none'; return; }
+  row.style.display = 'flex';
+  row.innerHTML = '<button class="reveal-action-btn" onclick="event.stopPropagation();shareCurrentCard();">\ud83d\udce4 SHARE</button>' +
+    '<button class="reveal-action-btn" onclick="event.stopPropagation();showCardModal(\'' + card.id + '\');">\ud83d\udd0d INSPECT</button>';
+}
+
+function shareCurrentCard() {
+  const card = session.pack[session.currentIndex];
+  if (!card) return;
+  const text = 'I pulled ' + card.name + ' (' + card.rarity + ') from AI Cards! aicards.fun';
+  navigator.clipboard.writeText(text).then(function() {
+    showToast('CARD COPIED TO CLIPBOARD');
+    markDailyShare();
+    updateDailyUI();
+  }).catch(function() { showToast('COPY FAILED'); });
+}
+
+// ═══════════════════════════════════════
+// OPENING WRAP TAPPABLE (item 11)
+// ═══════════════════════════════════════
+function onOpeningWrapClick(event) {
+  if (event.target.tagName === 'BUTTON' || event.target.closest('button')) return;
+  advanceCard();
+}
+
+// ═══════════════════════════════════════
+// SET PROGRESS BARS (pack screen)
+// ═══════════════════════════════════════
+function renderSetProgress() {
+  const bar = document.getElementById('set-progress-bar');
+  if (!bar) return;
+  var sets = [
+    {label:'SET 1', series:null, color:'var(--red)'},
+    {label:'SET 2', series:'jobless', color:'#ff4040'},
+    {label:'SET 3', series:'doomscroll', color:'#60c8ff'},
+    {label:'SET 4', series:'loveexe', color:'#ff69b4'},
+    {label:'SET 5', series:'warroom', color:'#ff6040'},
+    {label:'SET 6', series:'skillsvoid', color:'#a0a0a0'}
+  ];
+  var html = '';
+  sets.forEach(function(s) {
+    var comp = getSetCompletion(s.series);
+    var locked = comp.owned === 0 && s.series !== null;
+    html += '<div class="set-progress-item">' + s.label + ': ';
+    if (locked) {
+      html += '<span style="color:#333;">\ud83d\udd12 0%</span>';
+    } else {
+      html += '<span class="set-progress-fill"><span class="set-progress-fill-inner" style="width:' + comp.pct + '%;background:' + s.color + ';"></span></span> ' + comp.pct + '%';
+    }
+    html += '</div>';
+  });
+  bar.innerHTML = html;
+}
+
+// ═══════════════════════════════════════
+// PACK HISTORY (item 8)
+// ═══════════════════════════════════════
+function getPackHistory() {
+  try { return JSON.parse(localStorage.getItem('aicards_history') || '[]'); } catch(e) { return []; }
+}
+function savePackHistory() {
+  if (!session.pack || session.pack.length === 0) return;
+  var allRevealed = session.revealed.every(Boolean);
+  if (!allRevealed) return;
+  var history = getPackHistory();
+  var entry = {
+    type: session.type,
+    cards: session.pack.map(function(c) { return {id:c.id, name:c.name, rarity:c.rarity, symbol:c.symbol}; }),
+    timestamp: Date.now()
+  };
+  history.unshift(entry);
+  if (history.length > 5) history = history.slice(0, 5);
+  localStorage.setItem('aicards_history', JSON.stringify(history));
+}
+function renderPackHistory() {
+  var zone = document.getElementById('pack-history-zone');
+  if (!zone) return;
+  var history = getPackHistory();
+  if (history.length === 0) { zone.style.display = 'none'; return; }
+  zone.style.display = '';
+  var html = '<button class="pack-history-toggle" onclick="this.nextElementSibling.classList.toggle(\'open\')">RECENT PACKS \u25bc</button>';
+  html += '<div class="pack-history-body">';
+  history.forEach(function(entry) {
+    var ago = Math.round((Date.now() - entry.timestamp) / 60000);
+    var timeLabel = ago < 1 ? 'just now' : ago < 60 ? ago + 'm ago' : Math.round(ago / 60) + 'h ago';
+    html += '<div class="pack-history-entry">';
+    html += '<span style="font-family:var(--font-mono);font-size:7px;color:#444;width:50px;">' + timeLabel + '</span>';
+    entry.cards.forEach(function(c) {
+      var col = RARITY_COLORS[c.rarity] || '#667080';
+      html += '<div class="pack-history-mini" style="border-color:' + col + ';background:' + col + '11;">' + c.symbol + '</div>';
+    });
+    html += '</div>';
+  });
+  html += '</div>';
+  zone.innerHTML = html;
+}
+
+// ═══════════════════════════════════════
+// CARD OF THE DAY (item 14)
+// ═══════════════════════════════════════
+function renderCardOfDay() {
+  var el = document.getElementById('card-of-day');
+  if (!el) return;
+  var dateStr = getDailyKey();
+  var seed = 0;
+  for (var i = 0; i < dateStr.length; i++) seed = ((seed << 5) - seed) + dateStr.charCodeAt(i);
+  seed = Math.abs(seed);
+  var card = CARDS[seed % CARDS.length];
+  var col = RARITY_COLORS[card.rarity] || '#667080';
+  var flavorLine = card.flavor || '';
+  // Take first sentence of flavor
+  var firstSentence = flavorLine.split('.')[0] + '.';
+  if (firstSentence.length > 80) firstSentence = firstSentence.substring(0, 77) + '...';
+  el.style.display = '';
+  el.style.borderColor = col + '44';
+  el.innerHTML = '<div class="card-of-day-label">CARD OF THE DAY</div>' +
+    '<div class="card-of-day-symbol">' + card.symbol + '</div>' +
+    '<div class="card-of-day-name" style="color:' + col + ';">' + card.name + '</div>' +
+    '<div style="font-family:var(--font-mono);font-size:7px;letter-spacing:2px;color:' + col + ';margin-bottom:6px;">' + card.rarity + '</div>' +
+    '<div class="card-of-day-flavor">"' + firstSentence + '"</div>';
+}
+
+// ═══════════════════════════════════════
+// REFERRAL MECHANIC (item 13)
+// ═══════════════════════════════════════
+function getReferralCode() {
+  var code = localStorage.getItem('aicards_referral');
+  if (!code) {
+    var addr = getChainAddress();
+    if (addr) { code = addr.slice(2, 10); }
+    else { code = Math.random().toString(36).substring(2, 10); }
+    localStorage.setItem('aicards_referral', code);
+  }
+  return code;
+}
+function copyReferralLink() {
+  var code = getReferralCode();
+  var link = 'https://aicards.fun?ref=' + code;
+  navigator.clipboard.writeText(link).then(function() {
+    showToast('INVITE LINK COPIED');
+  }).catch(function() { showToast('COPY FAILED'); });
+}
+function checkReferralBonus() {
+  var params = new URLSearchParams(window.location.search);
+  var ref = params.get('ref');
+  if (!ref) return;
+  var refKey = 'aicards_ref_applied';
+  if (localStorage.getItem(refKey)) return;
+  // New user with referral — grant 5 extra daily packs
+  var ds = getDailyState();
+  // Reduce packsOpened by 5 (effectively granting 5 extra)
+  ds.packsOpened = Math.max(0, (ds.packsOpened || 0) - 5);
+  saveDailyState(ds);
+  localStorage.setItem(refKey, ref);
+  showToast('REFERRAL BONUS: +5 DAILY PACKS');
+}
+
+// ═══════════════════════════════════════
+// LEADERBOARD (item 15)
+// ═══════════════════════════════════════
+function renderLeaderboard() {
+  var zone = document.getElementById('leaderboard-zone');
+  if (!zone) return;
+  var mythicCount = 0;
+  var rarestCard = null;
+  var rarestIdx = RARITY_ORDER.length;
+  for (var id in S.collection) {
+    var c = CARDS.find(function(x) { return x.id === id; });
+    if (!c) continue;
+    if (c.rarity === 'MYTHIC') mythicCount += S.collection[id];
+    var ri = RARITY_ORDER.indexOf(c.rarity);
+    if (ri < rarestIdx) { rarestIdx = ri; rarestCard = c; }
+  }
+  // Streak: count consecutive days with daily state
+  var streak = 0;
+  var d = new Date();
+  for (var i = 0; i < 365; i++) {
+    var key = 'aicards_daily_' + d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+    var raw = null;
+    try { raw = localStorage.getItem(key); } catch(e) {}
+    if (raw) { streak++; d.setDate(d.getDate() - 1); } else { break; }
+  }
+  zone.innerHTML = '<div class="daily-missions-title">LEADERBOARD</div>' +
+    '<div class="leaderboard-row"><span class="leaderboard-label">MYTHICS PULLED</span><span class="leaderboard-value">' + mythicCount + '</span></div>' +
+    '<div class="leaderboard-row"><span class="leaderboard-label">UNIQUE CARDS</span><span class="leaderboard-value">' + collectionSize() + ' / ' + CARDS.length + '</span></div>' +
+    '<div class="leaderboard-row"><span class="leaderboard-label">PACKS OPENED</span><span class="leaderboard-value">' + S.packs + '</span></div>' +
+    '<div class="leaderboard-row"><span class="leaderboard-label">CURRENT STREAK</span><span class="leaderboard-value">' + streak + ' day' + (streak !== 1 ? 's' : '') + '</span></div>' +
+    '<div class="leaderboard-row"><span class="leaderboard-label">RAREST PULL</span><span class="leaderboard-value" style="color:' + (rarestCard ? RARITY_COLORS[rarestCard.rarity] : '#555') + ';">' + (rarestCard ? rarestCard.name : 'NONE') + '</span></div>';
+}
+
+// ═══════════════════════════════════════
 // INIT
 // ═══════════════════════════════════════
+checkReferralBonus();
 updateStats();
 renderProfile();
 updateDailyUI();
@@ -6203,6 +6561,10 @@ renderSet3Zone();
 renderSet4Zone();
 renderSet5Zone();
 renderSet6Zone();
+renderSetProgress();
+renderPackHistory();
+renderLeaderboard();
+renderCardOfDay();
 
 // Dismiss loading screen — fonts + hard timeout fallback
 (function dismissLoader() {
