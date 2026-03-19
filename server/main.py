@@ -21,11 +21,11 @@ log = logging.getLogger("aicards")
 # ═══════════════════════════════════════
 PACKAGE_ID = os.getenv(
     "AICARDS_PACKAGE_ID",
-    "0x848b7e822fc93e05212d0002287d079d3cb5ef7fe0be1458091496aaf2aa95d2",
+    "0x99f91c55ad24367b9fba1000bf43a5e571c2ae096c906fdf2e78fd51243f38b2",
 )
 ADMIN_CAP_ID = os.getenv(
     "AICARDS_ADMIN_CAP_ID",
-    "0xb8fca933e7198d496f75027f6a0d3189dcd3651205a5f6f590ee2571837cada3",
+    "0xcfeaad94ff0f5136b037f3482ff68fc00cacc5149b3db8dfe011e239644e4935",
 )
 SUI_BIN = os.getenv("SUI_BIN", "sui")
 GAS_BUDGET = "50000000"  # 0.05 SUI per mint
