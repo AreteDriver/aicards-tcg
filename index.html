@@ -1534,6 +1534,22 @@ body::before {
 .mission-toast .mt-label { font-size:8px;letter-spacing:2px;color:#888;font-family:var(--font-mono);margin-top:4px; }
 .mission-toast.show { opacity:1;transform:translate(-50%,-50%) scale(1); }
 
+/* Locked set */
+.pack-card.locked {
+  opacity:0.5;cursor:default;pointer-events:none;
+  filter:grayscale(0.6);
+}
+.pack-card.locked .pack-btn { display:none; }
+.pack-lock-info {
+  font-family:var(--font-mono);font-size:7px;letter-spacing:1px;color:#555;margin-top:8px;
+}
+.pack-lock-bar {
+  width:80%;max-width:120px;height:3px;background:#222;border-radius:2px;margin:6px auto 0;overflow:hidden;
+}
+.pack-lock-fill {
+  height:100%;background:var(--red);border-radius:2px;transition:width 0.3s ease;
+}
+
 /* Footer */
 .site-footer {
   width:100%;max-width:960px;margin-top:40px;padding:20px 0;
@@ -2058,19 +2074,8 @@ body::before {
         </div>
       </div>
 
-      <!-- SET 2: JOBLESS.AI -->
-      <div style="width:100%;max-width:960px;margin-bottom:8px;margin-top:20px;">
-        <div style="font-family:var(--font-mono);font-size:8px;letter-spacing:3px;color:#555;margin-bottom:10px;">SET 2 — JOBLESS.AI</div>
-      </div>
-      <div class="pack-grid">
-        <div class="pack-card p-standard" onclick="openPack('jobless')" style="border-color:rgba(255,64,64,0.3);">
-          <span class="pack-icon-wrap">📉</span>
-          <div class="pack-title" style="color:#ff4040;">JOBLESS.AI</div>
-          <div class="pack-desc">Real Karpathy scores. Real layoffs. Real companies. 342 occupations. 495K jobs tracked. Data doesn't lie.</div>
-          <div class="pack-meta">5 CARDS · REAL DATA · KARPATHY + JOBGONE</div>
-          <button class="pack-btn" style="color:#ff4040;box-shadow:0 0 8px rgba(255,64,64,0.2);">▶ OPEN PACK</button>
-        </div>
-      </div>
+      <!-- SET 2: JOBLESS.AI (rendered by JS for lock state) -->
+      <div id="set2-zone"></div>
       <div class="daily-missions" id="daily-missions">
         <div class="daily-missions-title">DAILY MISSIONS</div>
         <div class="mission-row"><span class="mission-label">Open 5 packs</span><span class="mission-progress" id="dm-packs">0/5</span></div>
@@ -2977,7 +2982,7 @@ function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   if(id==='collection-screen') renderCollection();
-  if(id==='pack-screen') { updateStats(); renderProfile(); updateDailyUI(); }
+  if(id==='pack-screen') { updateStats(); renderProfile(); updateDailyUI(); renderSet2Zone(); }
 }
 
 function updateStats() {
@@ -2993,6 +2998,11 @@ function updateStats() {
 // GACHA PACK OPENING
 // ═══════════════════════════════════════
 function openPack(type) {
+  // Check set unlock
+  if (type==='jobless' && !isSet2Unlocked()) {
+    showToast('COMPLETE SET 1 TO UNLOCK JOBLESS.AI');
+    return;
+  }
   // Check daily limit
   if (getDailyPacksRemaining() <= 0) {
     showToast('NO DAILY PACKS LEFT — RESETS AT MIDNIGHT');
@@ -3539,6 +3549,41 @@ function resetCollection() {
 // ═══════════════════════════════════════
 // SURVIVAL PROFILE
 // ═══════════════════════════════════════
+// ═══════════════════════════════════════
+// SET UNLOCK SYSTEM
+// ═══════════════════════════════════════
+function getSet1Cards() { return CARDS.filter(c=>!c.series); }
+function getSet1Completion() {
+  const set1 = getSet1Cards();
+  const owned = set1.filter(c=>collectionHas(c.id)).length;
+  return { owned, total: set1.length, pct: Math.round(owned/set1.length*100) };
+}
+function isSet2Unlocked() { return getSet1Completion().pct >= 100; }
+
+function renderSet2Zone() {
+  const zone = document.getElementById('set2-zone');
+  if (!zone) return;
+  const comp = getSet1Completion();
+  const unlocked = comp.pct >= 100;
+
+  zone.innerHTML = `
+    <div style="width:100%;max-width:960px;margin-bottom:8px;margin-top:20px;">
+      <div style="font-family:var(--font-mono);font-size:8px;letter-spacing:3px;color:#555;margin-bottom:10px;">SET 2 — JOBLESS.AI ${unlocked?'':'🔒'}</div>
+    </div>
+    <div class="pack-grid">
+      <div class="pack-card p-standard ${unlocked?'':'locked'}" ${unlocked?'onclick="openPack(\'jobless\')"':''} style="border-color:rgba(255,64,64,0.3);">
+        <span class="pack-icon-wrap">${unlocked?'📉':'🔒'}</span>
+        <div class="pack-title" style="color:${unlocked?'#ff4040':'#555'};">${unlocked?'JOBLESS.AI':'LOCKED'}</div>
+        <div class="pack-desc">${unlocked
+          ?'Real Karpathy scores. Real layoffs. Real companies. 342 occupations. 495K jobs tracked. Data doesn\'t lie.'
+          :'Complete Set 1 to unlock. Collect all 49 cards from 2030 Survival.'}</div>
+        <div class="pack-meta">${unlocked?'5 CARDS · REAL DATA · INCLUDES MYTHICS':comp.owned+' / '+comp.total+' SET 1 CARDS'}</div>
+        ${unlocked?'<button class="pack-btn" style="color:#ff4040;box-shadow:0 0 8px rgba(255,64,64,0.2);">▶ OPEN PACK</button>':''}
+        ${!unlocked?'<div class="pack-lock-bar"><div class="pack-lock-fill" style="width:'+comp.pct+'%"></div></div><div class="pack-lock-info">'+comp.pct+'% COMPLETE</div>':''}
+      </div>
+    </div>`;
+}
+
 function renderProfile() {
   if (S.pulls===0){document.getElementById('profile-zone').innerHTML='';return;}
   const tot = (S.sov+S.dep)||1;
@@ -3575,6 +3620,7 @@ function renderProfile() {
 updateStats();
 renderProfile();
 updateDailyUI();
+renderSet2Zone();
 
 // Dismiss loading screen after fonts + DOM ready
 (function dismissLoader() {
