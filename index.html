@@ -6159,19 +6159,23 @@ renderSet4Zone();
 renderSet5Zone();
 renderSet6Zone();
 
-// Dismiss loading screen after fonts + DOM ready
+// Dismiss loading screen — fonts + hard timeout fallback
 (function dismissLoader() {
+  let dismissed = false;
   function hide() {
+    if (dismissed) return;
+    dismissed = true;
     const el = document.getElementById('loading-screen');
     if (!el) return;
     el.classList.add('fade-out');
     setTimeout(() => el.remove(), 600);
   }
+  // Try fonts first
   if (document.fonts && document.fonts.ready) {
-    document.fonts.ready.then(() => setTimeout(hide, 400));
-  } else {
-    setTimeout(hide, 1200);
+    document.fonts.ready.then(() => setTimeout(hide, 300));
   }
+  // Hard fallback — never hang more than 2s
+  setTimeout(hide, 2000);
 })();
 </script>
 <script defer src="/_vercel/insights/script.js"></script>
