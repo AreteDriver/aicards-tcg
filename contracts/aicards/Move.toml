@@ -1,0 +1,10 @@
+[package]
+name = "aicards"
+edition = "2024"
+authors = ["AreteDriver"]
+
+[dependencies]
+Sui = { git = "https://github.com/MystenLabs/sui.git", subdir = "crates/sui-framework/packages/sui-framework", rev = "framework/testnet" }
+
+[addresses]
+aicards = "0x0"
