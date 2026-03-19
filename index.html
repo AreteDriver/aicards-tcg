@@ -1977,6 +1977,87 @@ body::before {
 .mission-toast .mt-label { font-size:8px;letter-spacing:2px;color:#888;font-family:var(--font-mono);margin-top:4px; }
 .mission-toast.show { opacity:1;transform:translate(-50%,-50%) scale(1); }
 
+/* ═══ ON-CHAIN CTA ═══ */
+.chain-banner {
+  border:1px solid rgba(100,200,255,0.2);background:var(--bg-card);padding:16px 20px;
+  margin-top:24px;max-width:480px;margin-left:auto;margin-right:auto;
+  text-align:center;position:relative;overflow:hidden;
+  animation:chainFadeIn 0.5s ease;
+}
+.chain-banner::before {
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(100,200,255,0.04),rgba(155,89,208,0.04));
+}
+@keyframes chainFadeIn { from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)} }
+.chain-banner-icon { font-size:24px;margin-bottom:6px; }
+.chain-banner-title {
+  font-family:var(--font-title);font-size:12px;letter-spacing:2px;
+  color:#60c8ff;margin-bottom:6px;position:relative;
+}
+.chain-banner-desc {
+  font-family:var(--font-mono);font-size:7px;letter-spacing:1px;color:#777;
+  line-height:1.6;margin-bottom:10px;position:relative;
+}
+.chain-banner-btn {
+  font-family:var(--font-mono);font-size:8px;letter-spacing:2px;
+  padding:8px 20px;border:1px solid #60c8ff;background:transparent;color:#60c8ff;
+  cursor:pointer;transition:all .25s;position:relative;
+  box-shadow:0 0 12px rgba(100,200,255,0.15);
+}
+.chain-banner-btn:hover { background:rgba(100,200,255,0.1);box-shadow:0 0 20px rgba(100,200,255,0.3); }
+.chain-banner-dismiss {
+  position:absolute;top:6px;right:10px;background:none;border:none;color:#444;
+  cursor:pointer;font-size:12px;font-family:var(--font-mono);z-index:1;
+}
+.chain-banner-dismiss:hover { color:#888; }
+
+/* Chain modal */
+.chain-modal {
+  position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:600;
+  display:none;align-items:center;justify-content:center;
+  backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);
+}
+.chain-modal.show { display:flex; }
+.chain-modal-box {
+  background:var(--bg);border:1px solid #333;padding:28px 24px;
+  max-width:400px;width:90%;text-align:center;position:relative;
+}
+.chain-modal-close {
+  position:absolute;top:8px;right:12px;background:none;border:none;color:#555;
+  cursor:pointer;font-size:14px;font-family:var(--font-mono);
+}
+.chain-modal-close:hover { color:#999; }
+.chain-modal-title {
+  font-family:var(--font-title);font-size:16px;letter-spacing:2px;color:#60c8ff;margin-bottom:8px;
+}
+.chain-modal-sub {
+  font-family:var(--font-mono);font-size:8px;letter-spacing:1px;color:#777;margin-bottom:16px;line-height:1.6;
+}
+.chain-modal-input {
+  width:100%;padding:10px 12px;background:var(--bg-card);border:1px solid #333;
+  color:var(--white);font-family:var(--font-mono);font-size:10px;letter-spacing:0.5px;
+  margin-bottom:12px;outline:none;transition:border-color .2s;
+}
+.chain-modal-input:focus { border-color:#60c8ff; }
+.chain-modal-input::placeholder { color:#444; }
+.chain-modal-save {
+  font-family:var(--font-mono);font-size:9px;letter-spacing:2px;
+  padding:10px 28px;border:1px solid #60c8ff;background:transparent;color:#60c8ff;
+  cursor:pointer;transition:all .25s;
+}
+.chain-modal-save:hover { background:rgba(100,200,255,0.1);box-shadow:0 0 16px rgba(100,200,255,0.2); }
+.chain-modal-connected {
+  font-family:var(--font-mono);font-size:8px;color:#40c040;letter-spacing:1px;margin-top:8px;
+}
+.chain-modal-features {
+  text-align:left;margin:12px 0;padding:0;list-style:none;
+}
+.chain-modal-features li {
+  font-family:var(--font-mono);font-size:8px;color:#888;letter-spacing:0.5px;
+  padding:4px 0;border-bottom:1px solid #1a1a1a;
+}
+.chain-modal-features li::before { content:'→ ';color:#60c8ff; }
+
 /* Locked set */
 .pack-card.locked {
   opacity:0.5;cursor:default;pointer-events:none;
@@ -2418,6 +2499,31 @@ body::before {
     <span class="mt-title" id="mt-title">MISSION COMPLETE</span>
     <span class="mt-label" id="mt-label"></span>
   </div>
+
+  <!-- CHAIN MODAL -->
+  <div id="chain-modal" class="chain-modal" onclick="if(event.target===this)closeChainModal()">
+    <div class="chain-modal-box">
+      <button class="chain-modal-close" onclick="closeChainModal()">✕</button>
+      <div class="chain-modal-title">GO ON-CHAIN</div>
+      <div class="chain-modal-sub">
+        Your cards become NFTs on Sui. Real digital assets you own.
+      </div>
+      <ul class="chain-modal-features">
+        <li>SELL cards you don't want</li>
+        <li>TRADE with other collectors</li>
+        <li>COLLECT on-chain — verifiable rarity</li>
+        <li>OWN your cards — not just localStorage</li>
+        <li>MYTHIC pulls are provably 1/10,000</li>
+      </ul>
+      <div id="chain-modal-body">
+        <input type="text" class="chain-modal-input" id="chain-address-input"
+          placeholder="Paste your Sui wallet address (0x...)"
+          spellcheck="false" autocomplete="off">
+        <button class="chain-modal-save" onclick="saveChainAddress()">CONNECT ADDRESS</button>
+      </div>
+      <div id="chain-modal-status"></div>
+    </div>
+  </div>
   <div id="cardModal" class="modal-overlay" onclick="closeModal(event)">
     <div class="modal-close">[ ESC ]</div>
     <div class="modal-card-wrap">
@@ -2518,6 +2624,7 @@ body::before {
       </div>
 
       <!-- SET 2 & 3: rendered by JS for lock state -->
+      <div id="chain-banner-zone"></div>
       <div id="set2-zone"></div>
       <div id="set3-zone"></div>
       <div id="set4-zone"></div>
@@ -3724,7 +3831,7 @@ function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   if(id==='collection-screen') renderCollection();
-  if(id==='pack-screen') { updateStats(); renderProfile(); updateDailyUI(); renderWeeklyGoal(); renderSet2Zone(); renderSet3Zone(); renderSet4Zone(); }
+  if(id==='pack-screen') { updateStats(); renderProfile(); updateDailyUI(); renderWeeklyGoal(); renderChainBanner(); renderChainStatus(); renderSet2Zone(); renderSet3Zone(); renderSet4Zone(); }
 }
 
 function updateStats() {
@@ -4322,6 +4429,131 @@ function renderWeeklyGoal() {
   `;
 }
 
+// ═══════════════════════════════════════
+// ON-CHAIN INTEGRATION
+// ═══════════════════════════════════════
+const CHAIN_PACKAGE = '0x848b7e822fc93e05212d0002287d079d3cb5ef7fe0be1458091496aaf2aa95d2';
+
+function getChainAddress() {
+  return localStorage.getItem('aicards_chain_address') || '';
+}
+function setChainAddress(addr) {
+  localStorage.setItem('aicards_chain_address', addr);
+}
+function isChainConnected() {
+  return getChainAddress().length > 0;
+}
+function chainBannerDismissed() {
+  return localStorage.getItem('aicards_chain_dismissed') === 'true';
+}
+
+function renderChainBanner() {
+  const zone = document.getElementById('chain-banner-zone');
+  if (!zone) return;
+
+  // Don't show if: less than 2 packs opened, already connected, or dismissed
+  if (S.packs < 2 || isChainConnected() || chainBannerDismissed()) {
+    zone.innerHTML = '';
+    return;
+  }
+
+  zone.innerHTML = `
+    <div class="chain-banner">
+      <button class="chain-banner-dismiss" onclick="dismissChainBanner()">✕</button>
+      <div class="chain-banner-icon">⛓️</div>
+      <div class="chain-banner-title">YOUR CARDS COULD BE NFTs</div>
+      <div class="chain-banner-desc">
+        Real digital assets on Sui blockchain.<br>
+        Sell them. Trade them. Collect on-chain. Own them for real.
+      </div>
+      <button class="chain-banner-btn" onclick="openChainModal()">CONNECT WALLET →</button>
+    </div>
+  `;
+}
+
+function dismissChainBanner() {
+  localStorage.setItem('aicards_chain_dismissed', 'true');
+  renderChainBanner();
+}
+
+function openChainModal() {
+  const modal = document.getElementById('chain-modal');
+  modal.classList.add('show');
+  const addr = getChainAddress();
+  const body = document.getElementById('chain-modal-body');
+  const status = document.getElementById('chain-modal-status');
+
+  if (addr) {
+    body.innerHTML = `
+      <div style="font-family:var(--font-mono);font-size:8px;color:#60c8ff;letter-spacing:0.5px;word-break:break-all;margin-bottom:8px;padding:8px;border:1px solid #333;background:var(--bg-card);">${addr}</div>
+      <button class="chain-modal-save" onclick="disconnectChain()">DISCONNECT</button>
+    `;
+    status.innerHTML = '<div class="chain-modal-connected">✓ CONNECTED — cards will mint to this address</div>';
+  } else {
+    body.innerHTML = `
+      <input type="text" class="chain-modal-input" id="chain-address-input"
+        placeholder="Paste your Sui wallet address (0x...)"
+        spellcheck="false" autocomplete="off">
+      <button class="chain-modal-save" onclick="saveChainAddress()">CONNECT ADDRESS</button>
+      <div style="font-family:var(--font-mono);font-size:7px;color:#444;margin-top:8px;letter-spacing:0.5px;">
+        Don't have a Sui wallet? Get one at <span style="color:#60c8ff;">suiwallet.com</span>
+      </div>
+    `;
+    status.innerHTML = '';
+  }
+}
+
+function closeChainModal() {
+  document.getElementById('chain-modal').classList.remove('show');
+}
+
+function saveChainAddress() {
+  const input = document.getElementById('chain-address-input');
+  if (!input) return;
+  const addr = input.value.trim();
+
+  // Validate: must start with 0x and be 66 chars
+  if (!addr.match(/^0x[a-fA-F0-9]{64}$/)) {
+    showToast('INVALID SUI ADDRESS — MUST START WITH 0x');
+    return;
+  }
+
+  setChainAddress(addr);
+  showToast('WALLET CONNECTED');
+  renderChainBanner();
+  openChainModal(); // refresh modal to show connected state
+}
+
+function disconnectChain() {
+  localStorage.removeItem('aicards_chain_address');
+  localStorage.removeItem('aicards_chain_dismissed');
+  showToast('WALLET DISCONNECTED');
+  closeChainModal();
+  renderChainBanner();
+}
+
+// Show chain status in header if connected
+function renderChainStatus() {
+  let el = document.getElementById('chain-status');
+  if (!el) {
+    // Create it in the stats bar
+    const bar = document.querySelector('.stats-bar');
+    if (!bar) return;
+    el = document.createElement('div');
+    el.id = 'chain-status';
+    el.className = 'stat-chip';
+    el.style.cursor = 'pointer';
+    el.onclick = openChainModal;
+    bar.appendChild(el);
+  }
+  if (isChainConnected()) {
+    const addr = getChainAddress();
+    el.innerHTML = `⛓️ <span style="color:#60c8ff;">${addr.slice(0,6)}…${addr.slice(-4)}</span>`;
+  } else {
+    el.innerHTML = '';
+  }
+}
+
 // Series boundary
 const JOBLESS_IDS = new Set(CARDS.filter(c=>c.series==='jobless').map(c=>c.id));
 const DOOMSCROLL_IDS = new Set(CARDS.filter(c=>c.series==='doomscroll').map(c=>c.id));
@@ -4515,6 +4747,8 @@ updateStats();
 renderProfile();
 updateDailyUI();
 renderWeeklyGoal();
+renderChainBanner();
+renderChainStatus();
 renderSet2Zone();
 renderSet3Zone();
 renderSet4Zone();
