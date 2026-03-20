@@ -7401,8 +7401,7 @@ function finishRaid(victory) {
   // Calculate rewards — random pack from any set
   let rewardPacks = 0;
   const rewardSets = [];
-  if (victory) { rewardPacks++; rewardSets.push(getRandomPackReward()); }
-  b.milestonesHit.forEach(() => { rewardPacks++; rewardSets.push(getRandomPackReward()); });
+  if (victory) { rewardPacks = 1; rewardSets.push(getRandomPackReward()); }
 
   // Save to history
   const rs = getRaidState();
