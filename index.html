@@ -6664,7 +6664,8 @@ function updateDeckUI() {
     // All revealed — show summary
     const newCount = S.newCards.size;
     const newText = newCount > 0 ? (newCount>1 ? t('opening.new_cards', newCount) : t('opening.new_card', newCount)) : t('opening.no_new');
-    const chainBtn = isChainConnected()
+    const chainConnected = isChainConnected();
+    const chainBtn = chainConnected
       ? `<button class="cta-btn" onclick="mintPackToChain()" id="mint-chain-btn">${t('opening.mint_to_chain')}</button>`
       : (S.packs >= 2 ? `<button class="cta-btn sec" onclick="openChainModal()">${t('opening.nft_cta')}</button>` : '');
     cta.innerHTML = `
@@ -6677,6 +6678,11 @@ function updateDeckUI() {
         </div>
         <div id="mint-status" style="margin-top:8px;"></div>
       </div>`;
+    // Auto-mint when wallet is connected
+    if (chainConnected && !session._autoMinted) {
+      session._autoMinted = true;
+      setTimeout(() => mintPackToChain(), 500);
+    }
   }
 }
 
