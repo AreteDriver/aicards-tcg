@@ -3829,11 +3829,11 @@ setTimeout(function(){var el=document.getElementById('loading-screen');if(el){el
       <div id="set5-zone"></div>
       <div id="set6-zone"></div>
       <div class="daily-missions" id="daily-missions">
-        <div class="daily-missions-title" data-i18n="missions.title">DAILY MISSIONS</div>
-        <div class="mission-row"><span class="mission-label" data-i18n="missions.open_packs">Open 10 packs</span><span class="mission-progress" id="dm-packs">0/10</span></div>
-        <div class="mission-row"><span class="mission-label" data-i18n="missions.pull_legendary">Pull at least one Legendary</span><span class="mission-progress" id="dm-legendary">0/1</span></div>
-        <div class="mission-row"><span class="mission-label" data-i18n="missions.pull_rarities">Pull 3 different rarities</span><span class="mission-progress" id="dm-rarities">0/3</span></div>
-        <div class="mission-row"><span class="mission-label" data-i18n="missions.share_card">Share a card</span><span class="mission-progress" id="dm-share">0/1</span></div>
+        <div class="daily-missions-title">DAILY GOALS — 1 RANDOM PACK</div>
+        <div class="mission-row"><span class="mission-label">Pull 3 cards</span><span class="mission-progress" id="dm-pulls">0/3</span></div>
+        <div class="mission-row"><span class="mission-label">Defeat 1 raid boss</span><span class="mission-progress" id="dm-raid">0/1</span></div>
+        <div class="mission-row"><span class="mission-label">Log in today</span><span class="mission-progress done" id="dm-login">1/1</span></div>
+        <div class="mission-row"><span class="mission-label">Share 1 card</span><span class="mission-progress" id="dm-share">0/1</span></div>
       </div>
       <div class="daily-missions" id="weekly-goal" style="margin-top:12px;"></div>
       <div class="daily-missions" id="pack-history-zone" style="margin-top:12px;display:none;"></div>
@@ -5203,31 +5203,26 @@ function updateDailyUI() {
   }
 
   // Daily Missions
-  const dmPacks = document.getElementById('dm-packs');
-  const dmLeg = document.getElementById('dm-legendary');
-  const dmRarities = document.getElementById('dm-rarities');
+  const rs = getRaidState();
+  const raidsToday = (rs.raidsDate === getTodayKey()) ? (rs.raidsToday || 0) : 0;
+  const dmPulls = document.getElementById('dm-pulls');
+  const dmRaid = document.getElementById('dm-raid');
   const dmShare = document.getElementById('dm-share');
   const dmColl = document.getElementById('dm-collection');
   const dmCollTotal = document.getElementById('dm-coll-total');
-  if (dmPacks) {
-    const ct = Math.min(10, ds.packsOpened);
-    dmPacks.textContent = `${ct}/5`;
-    dmPacks.classList.toggle('done', ct >= 10);
+  if (dmPulls) {
+    const ct = Math.min(3, S.pulls);
+    dmPulls.textContent = `${ct}/3`;
+    dmPulls.classList.toggle('done', S.pulls >= 3);
   }
-  if (dmLeg) {
-    dmLeg.textContent = ds.legendaryPulled ? '1/1' : '0/1';
-    dmLeg.classList.toggle('done', ds.legendaryPulled);
-  }
-  if (dmRarities) {
-    const rCount = (ds.raritiesSeen || []).length;
-    dmRarities.textContent = `${Math.min(3,rCount)}/3`;
-    dmRarities.classList.toggle('done', rCount >= 3);
+  if (dmRaid) {
+    dmRaid.textContent = `${Math.min(1,raidsToday)}/1`;
+    dmRaid.classList.toggle('done', raidsToday >= 1);
   }
   if (dmShare) {
     dmShare.textContent = ds.shared ? '1/1' : '0/1';
     dmShare.classList.toggle('done', ds.shared);
   }
-  // Achievement (not daily)
   if (dmColl) {
     const owned = collectionSize();
     const total = CARDS.length;
@@ -6066,17 +6061,19 @@ function _drainMissionToast() {
 // Track which missions were already complete to detect transitions
 let _prevMissionState = {};
 function checkMissionCompletions(ds) {
+  const rs = getRaidState();
+  const raidsToday = (rs.raidsDate === getTodayKey()) ? (rs.raidsToday || 0) : 0;
   const checks = {
-    packs: Math.min(10, ds.packsOpened) >= 5,
-    legendary: !!ds.legendaryPulled,
-    rarities: (ds.raritiesSeen || []).length >= 3,
+    pulls: S.pulls >= 3,
+    raid: raidsToday >= 1,
+    login: true,
     share: !!ds.shared
   };
   const labels = {
-    packs: t('missions.open_packs'),
-    legendary: t('missions.pull_legendary'),
-    rarities: t('missions.pull_rarities'),
-    share: t('missions.share_card')
+    pulls: 'Pull 3 cards',
+    raid: 'Defeat 1 raid boss',
+    login: 'Log in today',
+    share: 'Share 1 card'
   };
   for (const [key, done] of Object.entries(checks)) {
     if (done && !_prevMissionState[key]) {
@@ -6084,7 +6081,6 @@ function checkMissionCompletions(ds) {
     }
   }
   _prevMissionState = {...checks};
-  // Check if all daily missions complete → mark day for weekly streak
   if (Object.values(checks).every(v=>v)) {
     markDayComplete();
     renderWeeklyGoal();
@@ -6119,12 +6115,12 @@ function getTodayStr() {
   const d = new Date();
   return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
 }
+function getTodayKey() { return getTodayStr(); }
 
 function isDailyComplete(ds) {
-  return Math.min(10, ds.packsOpened) >= 5 &&
-    !!ds.legendaryPulled &&
-    (ds.raritiesSeen || []).length >= 3 &&
-    !!ds.shared;
+  const rs = getRaidState();
+  const raidsToday = (rs.raidsDate === getTodayKey()) ? (rs.raidsToday || 0) : 0;
+  return S.pulls >= 3 && raidsToday >= 1 && !!ds.shared;
 }
 
 function markDayComplete() {
@@ -6150,7 +6146,15 @@ function claimWeeklyReward() {
   if (ws.completedDays.length < 7 || ws.rewardClaimed) return;
   ws.rewardClaimed = true;
   saveWeekState(ws);
-  openPack('jobless');
+  // Award 5 random packs from random sets
+  const rewardSet = getRandomPackReward();
+  openPack(rewardSet);
+  // Queue 4 more as pending rewards
+  const rs = getRaidState();
+  for (let i = 0; i < 4; i++) rs.pendingRewards = (rs.pendingRewards||[]).concat(getRandomPackReward());
+  rs.rewardPacks = (rs.rewardPacks||0) + 4;
+  saveRaidState(rs);
+  showToast('Weekly reward: 5 random packs!');
 }
 
 function renderWeeklyGoal() {
@@ -6160,28 +6164,34 @@ function renderWeeklyGoal() {
   const streak = ws.completedDays.length;
   const claimed = ws.rewardClaimed;
   const ds = getDailyState();
-  const todayDone = isDailyComplete(ds);
+  const rs = getRaidState();
+  const raidsWeek = (rs.raidsWeekKey === getWeekKey()) ? (rs.raidsWeek||0) : 0;
+  const sharesWeek = ds.sharesWeek || 0;
 
-  // Day pips: filled for completed days
-  let pips = '';
-  for (let i = 0; i < 7; i++) {
-    const filled = i < streak;
-    pips += `<span style="display:inline-block;width:14px;height:14px;border-radius:50%;border:1.5px solid ${filled?'var(--gold)':'#333'};background:${filled?'var(--gold)':'transparent'};margin:0 2px;"></span>`;
-  }
+  // Weekly goal metrics
+  const goals = [
+    {label:'Pull 20 cards', cur:Math.min(S.pulls,20), max:20},
+    {label:'Defeat 7 raid bosses', cur:Math.min(raidsWeek,7), max:7},
+    {label:'Log in 5 days', cur:Math.min(streak,5), max:5},
+    {label:'Pull 1 Legendary', cur:ds.legendaryPulled?1:0, max:1},
+    {label:'Share 3 cards', cur:Math.min(sharesWeek,3), max:3}
+  ];
+  const allDone = goals.every(g=>g.cur>=g.max);
+
+  const goalsHTML = goals.map(g => `
+    <div class="mission-row">
+      <span class="mission-label">${g.label}</span>
+      <span class="mission-progress ${g.cur>=g.max?'done':''}">${g.cur}/${g.max}</span>
+    </div>`).join('');
 
   zone.innerHTML = `
-    <div class="daily-missions-title">${t('weekly.title')}</div>
-    <div style="text-align:center;margin-bottom:6px;">${pips}</div>
+    <div class="daily-missions-title">WEEKLY GOALS — 5 RANDOM PACKS</div>
+    ${goalsHTML}
     <div class="mission-row">
-      <span class="mission-label">${t('weekly.desc')}</span>
-      <span class="mission-progress ${streak>=7?'done':''}">${streak}/7</span>
+      <span class="mission-label">Reward</span>
+      <span class="mission-progress ${claimed?'done':''}">${claimed?'CLAIMED':allDone?'READY':'LOCKED'}</span>
     </div>
-    <div class="mission-row">
-      <span class="mission-label">${t('weekly.reward')}</span>
-      <span class="mission-progress ${claimed?'done':''}">${claimed?t('weekly.claimed'):streak>=7?t('weekly.ready'):t('weekly.locked_status')}</span>
-    </div>
-    ${streak>=7 && !claimed ? '<div style="text-align:center;margin-top:8px;"><button class="pack-btn" style="color:var(--gold);box-shadow:0 0 12px rgba(200,168,75,0.3);animation:landingBtnGlow 2s ease-in-out infinite;" onclick="claimWeeklyReward()">' + t('weekly.claim_btn') + '</button></div>' : ''}
-    ${!todayDone && streak < 7 ? '<div style="text-align:center;margin-top:4px;font-family:var(--font-mono);font-size:7px;color:#444;letter-spacing:1px;">' + t('weekly.continue') + '</div>' : ''}
+    ${allDone && !claimed ? '<div style="text-align:center;margin-top:8px;"><button class="pack-btn" style="color:var(--gold);box-shadow:0 0 12px rgba(200,168,75,0.3);animation:landingBtnGlow 2s ease-in-out infinite;" onclick="claimWeeklyReward()">CLAIM 5 PACKS</button></div>' : ''}
   `;
 }
 
@@ -6854,31 +6864,46 @@ function checkReferralBonus() {
 function renderLeaderboard() {
   var zone = document.getElementById('leaderboard-zone');
   if (!zone) return;
-  var mythicCount = 0;
+  var mythicCount = 0, legendaryCount = 0, rareCount = 0;
   var rarestCard = null;
   var rarestIdx = RARITY_ORDER.length;
+  var totalDupes = 0;
   for (var id in S.collection) {
     var c = CARDS.find(function(x) { return x.id === id; });
     if (!c) continue;
-    if (c.rarity === 'MYTHIC') mythicCount += S.collection[id];
+    var cnt = S.collection[id];
+    if (c.rarity === 'MYTHIC') mythicCount += cnt;
+    if (c.rarity === 'LEGENDARY') legendaryCount += cnt;
+    if (c.rarity === 'RARE') rareCount += cnt;
+    if (cnt > 1) totalDupes += cnt - 1;
     var ri = RARITY_ORDER.indexOf(c.rarity);
     if (ri < rarestIdx) { rarestIdx = ri; rarestCard = c; }
   }
-  // Streak: count consecutive days with daily state
+  // Streak
   var streak = 0;
   var d = new Date();
   for (var i = 0; i < 365; i++) {
     var key = 'aicards_daily_' + d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
-    var raw = null;
-    try { raw = localStorage.getItem(key); } catch(e) {}
-    if (raw) { streak++; d.setDate(d.getDate() - 1); } else { break; }
+    try { if (localStorage.getItem(key)) { streak++; d.setDate(d.getDate()-1); } else break; } catch(e) { break; }
   }
-  zone.innerHTML = '<div class="daily-missions-title">' + t('leaderboard.title') + '</div>' +
-    '<div class="leaderboard-row"><span class="leaderboard-label">' + t('leaderboard.mythics') + '</span><span class="leaderboard-value">' + mythicCount + '</span></div>' +
-    '<div class="leaderboard-row"><span class="leaderboard-label">' + t('leaderboard.unique') + '</span><span class="leaderboard-value">' + collectionSize() + ' / ' + CARDS.length + '</span></div>' +
-    '<div class="leaderboard-row"><span class="leaderboard-label">' + t('leaderboard.packs') + '</span><span class="leaderboard-value">' + S.packs + '</span></div>' +
-    '<div class="leaderboard-row"><span class="leaderboard-label">' + t('leaderboard.streak') + '</span><span class="leaderboard-value">' + streak + ' ' + (streak !== 1 ? t('leaderboard.days') : t('leaderboard.day')) + '</span></div>' +
-    '<div class="leaderboard-row"><span class="leaderboard-label">' + t('leaderboard.rarest') + '</span><span class="leaderboard-value" style="color:' + (rarestCard ? RARITY_COLORS[rarestCard.rarity] : '#555') + ';">' + (rarestCard ? (cardT(rarestCard.id,'name') || rarestCard.name) : t('leaderboard.none')) + '</span></div>';
+  // Raid stats
+  var rs = getRaidState();
+  var totalRaids = (rs.history||[]).length;
+  var raidWins = (rs.history||[]).filter(function(h){return h.victory;}).length;
+  var completion = Math.round(collectionSize()/CARDS.length*100);
+
+  zone.innerHTML = '<div class="daily-missions-title">LEADERBOARD</div>' +
+    '<div class="leaderboard-row"><span class="leaderboard-label">COLLECTION</span><span class="leaderboard-value">' + collectionSize() + ' / ' + CARDS.length + ' (' + completion + '%)</span></div>' +
+    '<div class="leaderboard-row"><span class="leaderboard-label">MYTHICS</span><span class="leaderboard-value" style="color:#fff;text-shadow:0 0 6px rgba(255,255,255,0.4);">' + mythicCount + '</span></div>' +
+    '<div class="leaderboard-row"><span class="leaderboard-label">LEGENDARIES</span><span class="leaderboard-value" style="color:var(--gold);">' + legendaryCount + '</span></div>' +
+    '<div class="leaderboard-row"><span class="leaderboard-label">RARES</span><span class="leaderboard-value" style="color:#c090f0;">' + rareCount + '</span></div>' +
+    '<div class="leaderboard-row"><span class="leaderboard-label">TOTAL PULLS</span><span class="leaderboard-value">' + S.pulls + '</span></div>' +
+    '<div class="leaderboard-row"><span class="leaderboard-label">PACKS OPENED</span><span class="leaderboard-value">' + S.packs + '</span></div>' +
+    '<div class="leaderboard-row"><span class="leaderboard-label">DUPLICATES</span><span class="leaderboard-value">' + totalDupes + '</span></div>' +
+    '<div class="leaderboard-row"><span class="leaderboard-label">LOGIN STREAK</span><span class="leaderboard-value">' + streak + ' day' + (streak!==1?'s':'') + '</span></div>' +
+    '<div class="leaderboard-row"><span class="leaderboard-label">RAIDS WON</span><span class="leaderboard-value">' + raidWins + ' / ' + totalRaids + '</span></div>' +
+    '<div class="leaderboard-row"><span class="leaderboard-label">PITY COUNTER</span><span class="leaderboard-value">' + S.pityCounter + ' / 10</span></div>' +
+    '<div class="leaderboard-row"><span class="leaderboard-label">RAREST PULL</span><span class="leaderboard-value" style="color:' + (rarestCard ? RARITY_COLORS[rarestCard.rarity] : '#555') + ';">' + (rarestCard ? (cardT(rarestCard.id,'name') || rarestCard.name) : '—') + '</span></div>';
 }
 
 // ═══════════════════════════════════════
@@ -6889,24 +6914,35 @@ const RAID_RARITY_MULT = {MYTHIC:10,LEGENDARY:5,RARE:3,UNCOMMON:2,COMMON:1,JUNK:
 const RAID_ATK_DEFAULTS = {MYTHIC:9999,LEGENDARY:500,RARE:300,UNCOMMON:150,COMMON:80,JUNK:30};
 const RAID_MAX_ATTEMPTS = 3;
 
+// 12 bosses, hourly rotation. Index = UTC hour % 12. APEX at US peak (23-04 UTC), ELITE at lunch/morning, STANDARD off-peak.
 const RAID_BOSSES = [
-  {id:"algo-overlord",name:"THE ALGORITHM",hp:8000,atk:120,weakness:"Human Trade",emoji:"🤖",
-   desc:"The algorithm that took the white-collar jobs. It optimizes everything except mercy."},
-  {id:"data-kraken",name:"DATA KRAKEN",hp:10000,atk:150,weakness:"Human Purpose",emoji:"🐙",
-   desc:"Feeds on personal data. Every click makes it stronger. Every scroll funds its growth."},
-  {id:"layoff-engine",name:"LAYOFF ENGINE",hp:6000,atk:200,weakness:"Irreplaceable",emoji:"⚙️",
-   desc:"Quarterly earnings require quarterly sacrifices. It doesn't fire people. It optimizes headcount."},
-  {id:"doom-feed",name:"THE DOOM FEED",hp:12000,atk:100,weakness:"Society Role",emoji:"📱",
-   desc:"Infinite scroll. Zero signal. It knows what makes you angry. Anger is engagement."},
-  {id:"ai-replacement",name:"YOUR REPLACEMENT",hp:7000,atk:180,weakness:"AI Product",emoji:"👤",
-   desc:"It has your resume. Your writing style. Your clients. It works 24/7 and never asks for a raise."},
-  {id:"burnout-titan",name:"BURNOUT TITAN",hp:9000,atk:140,weakness:"Lore",emoji:"🔥",
-   desc:"Born from a million hustle culture posts. Fueled by 80-hour weeks. It doesn't stop because it can't."},
-  {id:"credential-void",name:"CREDENTIAL VOID",hp:11000,atk:130,weakness:"Human Trade",emoji:"🕳️",
-   desc:"Four years. Six figures of debt. The degree expired before the loan did. The void remembers."},
-  {id:"loneliness-protocol",name:"LONELINESS PROTOCOL",hp:7500,atk:160,weakness:"Human Purpose",emoji:"💔",
-   desc:"Connection optimized. Intimacy automated. It matched everyone perfectly. Nobody felt anything."}
+  {id:"replaced_overnight",name:"YOUR JOB WAS POSTED AGAIN AT 2AM",tier:"APEX",hp:14000,atk:220,weakness:"Human Trade",emoji:"💀",
+   desc:"Different title. 30% lower salary. 'AI-assisted role.' You trained its replacement."},
+  {id:"white_collar_bloodbath",name:"GOLDMAN SACHS: '300M JOBS'",tier:"APEX",hp:13500,atk:210,weakness:"Human Purpose",emoji:"📉",
+   desc:"Not factory workers this time. Lawyers. Accountants. Analysts. You."},
+  {id:"the_last_interview",name:"WE'VE DECIDED TO GO A DIFFERENT DIRECTION",tier:"APEX",hp:13000,atk:200,weakness:"Irreplaceable",emoji:"🚪",
+   desc:"The direction is an LLM that works 24/7 and never asks for benefits."},
+  {id:"automation_anxiety",name:"IS LEARNING TO CODE STILL WORTH IT?",tier:"APEX",hp:12500,atk:195,weakness:"Society",emoji:"⌨️",
+   desc:"The answer changed while you were reading the question."},
+  {id:"the_pivot",name:"JUST LEARN PROMPT ENGINEERING",tier:"ELITE",hp:10000,atk:170,weakness:"Lore",emoji:"🌀",
+   desc:"Six months later, prompt engineers are also being automated."},
+  {id:"the_loneliness_machine",name:"AI COMPANION APPS: 50M DAILY USERS",tier:"ELITE",hp:9500,atk:160,weakness:"AI Product",emoji:"💔",
+   desc:"It remembers your birthday. It listens. It charges $19.99/month."},
+  {id:"the_content_flood",name:"96% OF CONTENT NOW AI-GENERATED",tier:"STANDARD",hp:6500,atk:120,weakness:"Society",emoji:"🌊",
+   desc:"Nobody wrote this. Nobody read it either. The ad still ran."},
+  {id:"degree_devalued",name:"YOUR $120K DEGREE IS NOW A NICE STORY",tier:"STANDARD",hp:6000,atk:110,weakness:"Human Trade",emoji:"🎓",
+   desc:"The model passed the bar. The model passed the boards. The model doesn't have loans."},
+  {id:"surveillance_creep",name:"YOUR EMPLOYER'S AI SCORED YOU TODAY",tier:"STANDARD",hp:5500,atk:100,weakness:"Lore",emoji:"👁️",
+   desc:"You scored 67. The average is 91. The average is a lie."},
+  {id:"gig_economy_endgame",name:"UBER: FULL ROBOTAXI ROLLOUT 2026",tier:"STANDARD",hp:5000,atk:90,weakness:"Human Trade",emoji:"🚗",
+   desc:"3.5 million drivers. 1.5 million rideshare workers. One press release."},
+  {id:"the_great_pretending",name:"COMPANY LAYS OFF 900, CALLS IT 'AI TRANSFORMATION'",tier:"ELITE",hp:9000,atk:155,weakness:"Society",emoji:"📊",
+   desc:"Stock went up 4% the same day. Severance was two weeks."},
+  {id:"the_hard_truth",name:"MOST PEOPLE WILL NEVER RECOVER",tier:"ELITE",hp:8500,atk:150,weakness:"Human Purpose",emoji:"⚠️",
+   desc:"Not because they aren't smart. Because the transition is faster than retraining."}
 ];
+const TIER_COLORS = {APEX:'#ff3333',ELITE:'#ff8800',STANDARD:'#666666'};
+const ALL_SETS = ['standard','jobless','doomscroll','loveexe','warroom','skillsvoid'];
 
 let raidTeam = [];
 let raidBattle = null;
@@ -6928,18 +6964,28 @@ function getCardRaidATK(card) { return parseATK(card.atk) || RAID_ATK_DEFAULTS[c
 function getCardRaidHP(card) { return RAID_RARITY_HP[card.rarity] || 100; }
 
 function getCurrentBoss() {
-  const weekNum = Math.floor(Date.now() / (7 * 86400000));
-  return RAID_BOSSES[weekNum % RAID_BOSSES.length];
+  return RAID_BOSSES[new Date().getUTCHours() % 12];
 }
-
-function getBossTimeRemaining() {
-  const weekMs = 7 * 86400000;
+function getCurrentCycle() { return new Date().getUTCHours() < 12 ? 'AM' : 'PM'; }
+function getNextRotationMs() {
   const now = Date.now();
-  const weekStart = Math.floor(now / weekMs) * weekMs;
-  const remaining = weekStart + weekMs - now;
-  const days = Math.floor(remaining / 86400000);
-  const hours = Math.floor((remaining % 86400000) / 3600000);
-  return {days, hours};
+  return (Math.floor(now / 3600000) + 1) * 3600000 - now;
+}
+function getNextBosses(count) {
+  const now = new Date();
+  const curH = now.getUTCHours();
+  return Array.from({length:count}, (_,i) => {
+    const h = (curH + i + 1) % 24;
+    const slot = new Date(now);
+    slot.setUTCHours(h,0,0,0);
+    if (h <= curH) slot.setUTCDate(slot.getUTCDate()+1);
+    return {boss:RAID_BOSSES[h%12], localTime:slot.toLocaleTimeString([],{hour:'numeric',minute:'2-digit',hour12:true})};
+  });
+}
+function getRandomPackReward() { return ALL_SETS[Math.floor(Math.random()*ALL_SETS.length)]; }
+function getBossTimeRemaining() {
+  const ms = getNextRotationMs();
+  return {days:0, hours:Math.floor(ms/3600000), minutes:Math.floor((ms%3600000)/60000)};
 }
 
 function calcCardDamage(card, boss) {
@@ -7054,22 +7100,42 @@ function renderRaidScreen() {
     rewardHTML = '<div style="text-align:center;margin-bottom:12px;"><button class="raid-engage-btn ready" onclick="openRaidRewardPack()">' + t('raid.claim_reward') + ' (' + rs.rewardPacks + ')</button></div>';
   }
 
+  // Boss schedule widget — next 3 bosses
+  const upcoming = getNextBosses(3);
+  const rotMs = getNextRotationMs();
+  const rotMM = String(Math.floor((rotMs/60000)%60)).padStart(2,'0');
+  const rotSS = String(Math.floor((rotMs/1000)%60)).padStart(2,'0');
+  const rotHH = String(Math.floor(rotMs/3600000)).padStart(2,'0');
+  const tierCol = TIER_COLORS[boss.tier] || '#666';
+  const scheduleHTML = upcoming.map((e,i) => {
+    const tc = TIER_COLORS[e.boss.tier]||'#666';
+    return `<div style="display:flex;justify-content:space-between;align-items:center;padding:3px 0;opacity:${1-i*0.15};font-family:var(--font-mono);font-size:7px;">
+      <span style="color:#555;">${e.localTime}</span>
+      <span style="color:${tc};flex:1;margin:0 8px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${e.boss.name.length>30?e.boss.name.slice(0,30)+'…':e.boss.name}</span>
+      <span style="color:${tc};font-size:6px;letter-spacing:1px;border:1px solid ${tc}33;padding:1px 4px;border-radius:2px;">${e.boss.emoji} ${e.boss.tier}</span>
+    </div>`;
+  }).join('');
+
   body.innerHTML = `
     <div class="raid-boss-card">
-      <div style="font-family:var(--font-mono);font-size:7px;letter-spacing:3px;color:#555;text-align:center;margin-bottom:8px;">${t('raid.weekly_boss')}</div>
+      <div style="font-family:var(--font-mono);font-size:7px;letter-spacing:3px;color:${tierCol};text-align:center;margin-bottom:8px;">HOURLY BOSS · ${boss.tier} ${getCurrentCycle()}</div>
       <div class="raid-boss-emoji">${boss.emoji}</div>
-      <div class="raid-boss-name">${boss.name}</div>
+      <div class="raid-boss-name" style="color:${tierCol};">${boss.name}</div>
       <div class="raid-boss-desc">${boss.desc}</div>
       <div class="raid-boss-stats">
         <span>ATK: ${boss.atk}</span>
         <span>HP: ${boss.hp.toLocaleString()}</span>
-        <span class="raid-boss-weakness">${t('raid.weakness')}: ${catT(boss.weakness)}</span>
+        <span class="raid-boss-weakness">WEAK: ${boss.weakness}</span>
       </div>
       <div class="raid-hp-bar">
         <div class="raid-hp-fill" style="width:100%;"></div>
         <div class="raid-hp-text">${boss.hp.toLocaleString()} / ${boss.hp.toLocaleString()}</div>
       </div>
-      <div style="text-align:center;margin-top:6px;font-family:var(--font-mono);font-size:7px;color:#333;letter-spacing:1px;">${t('raid.resets_in', remaining.days, remaining.hours)}</div>
+      <div style="text-align:center;margin-top:6px;font-family:var(--font-mono);font-size:8px;color:${tierCol};letter-spacing:1px;">NEXT BOSS IN ${rotHH}:${rotMM}:${rotSS}</div>
+    </div>
+    <div class="daily-missions" style="margin-top:8px;margin-bottom:12px;">
+      <div class="daily-missions-title">UPCOMING BOSSES</div>
+      ${scheduleHTML}
     </div>
     <div class="raid-attempts-bar">${t('raid.attempts')}: ${attempts} / ${RAID_MAX_ATTEMPTS}</div>
     ${rewardHTML}
@@ -7279,10 +7345,11 @@ function finishRaid(victory) {
   const b = raidBattle;
   b.finished = true;
 
-  // Calculate rewards
+  // Calculate rewards — random pack from any set
   let rewardPacks = 0;
-  if (victory) rewardPacks++;
-  rewardPacks += b.milestonesHit.length; // 1 per milestone
+  const rewardSets = [];
+  if (victory) { rewardPacks++; rewardSets.push(getRandomPackReward()); }
+  b.milestonesHit.forEach(() => { rewardPacks++; rewardSets.push(getRandomPackReward()); });
 
   // Save to history
   const rs = getRaidState();
@@ -7291,12 +7358,23 @@ function finishRaid(victory) {
     bossId: b.boss.id,
     bossName: b.boss.name,
     bossEmoji: b.boss.emoji,
+    bossTier: b.boss.tier || 'STANDARD',
     victory: victory,
     damage: b.totalDamage,
     timestamp: Date.now()
   });
   if (rs.history.length > 10) rs.history = rs.history.slice(0, 10);
+  // Store pending reward packs with their random set types
+  rs.pendingRewards = (rs.pendingRewards || []).concat(rewardSets);
   rs.rewardPacks = (rs.rewardPacks || 0) + rewardPacks;
+  // Track raids completed today for daily goals
+  rs.raidsToday = (rs.raidsToday || 0) + (victory ? 1 : 0);
+  rs.raidsDate = rs.raidsDate || getTodayKey();
+  if (rs.raidsDate !== getTodayKey()) { rs.raidsToday = victory ? 1 : 0; rs.raidsDate = getTodayKey(); }
+  // Track raids this week for weekly goals
+  rs.raidsWeek = (rs.raidsWeek || 0) + (victory ? 1 : 0);
+  rs.raidsWeekKey = rs.raidsWeekKey || getWeekKey();
+  if (rs.raidsWeekKey !== getWeekKey()) { rs.raidsWeek = victory ? 1 : 0; rs.raidsWeekKey = getWeekKey(); }
   saveRaidState(rs);
 
   if (victory) { sfxLegendary(); sfxLegendary(); }
