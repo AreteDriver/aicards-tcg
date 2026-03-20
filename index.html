@@ -233,6 +233,8 @@ body::before {
   position: relative;
   border: 1.5px solid rgba(255,255,255,0.08);
 }
+.card-art::before { animation:art-breathe 5s ease-in-out infinite; }
+.card-art::after { z-index:2; }
 
 /* CSS art per card type */
 .art-plumber {
@@ -2527,6 +2529,8 @@ body::before {
 /* ── ANIMATIONS ── */
 @keyframes float      { 0%,100%{transform:translateY(0) translateX(-50%)} 50%{transform:translateY(-6px) translateX(-50%)} }
 @keyframes float-abs  { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+@keyframes art-breathe { 0%,100%{opacity:0.85;filter:brightness(1)} 50%{opacity:1;filter:brightness(1.15)} }
+@keyframes art-scan { 0%{background-position:0 0} 100%{background-position:0 200%} }
 @keyframes sway       { 0%,100%{transform:translateX(-50%) rotate(-3deg)} 50%{transform:translateX(-50%) rotate(3deg)} }
 @keyframes flicker    { from{opacity:0.8} to{opacity:1} }
 @keyframes heartbeat  { 0%,100%{transform:translate(-50%,-54%) scale(1)} 15%{transform:translate(-50%,-54%) scale(1.12)} 30%{transform:translate(-50%,-54%) scale(1)} 45%{transform:translate(-50%,-54%) scale(1.06)} 60%{transform:translate(-50%,-54%) scale(1)} }
@@ -2863,6 +2867,8 @@ body::before {
 }
 .lang-btn:hover { border-color:#666;color:#888; }
 .lang-btn.active { border-color:var(--red);color:var(--red);background:rgba(136,17,17,.08); }
+.landing-lang { margin-bottom:8px; }
+.landing-lang .lang-btn { font-size:9px; padding:5px 10px; }
 
 /* ── RESET BUTTON ── */
 .reset-btn {
@@ -3608,7 +3614,7 @@ setTimeout(function(){var el=document.getElementById('loading-screen');if(el){el
 
 <div id="app">
   <button class="sound-toggle on first-load" id="sound-toggle" onclick="toggleSound()" title="Toggle sound">🔊</button>
-  <div class="lang-selector" id="lang-selector" style="position:fixed;top:8px;left:8px;z-index:150;"></div>
+  <div class="lang-selector" id="lang-selector" style="position:fixed;top:8px;left:8px;z-index:150;display:none;"></div>
   <div id="toast" class="toast"></div>
   <div id="mission-toast" class="mission-toast">
     <span class="mt-check">&#10003;</span>
@@ -3681,6 +3687,7 @@ setTimeout(function(){var el=document.getElementById('loading-screen');if(el){el
   <div id="landing-screen" class="active">
     <div class="landing-bg" id="landing-bg"></div>
     <div class="landing-content">
+      <div class="lang-selector landing-lang" id="landing-lang-selector"></div>
       <div class="landing-eyebrow" data-i18n="landing.eyebrow">▓▓▓ CLASSIFIED · SERIES ONE · 2030 EDITION ▓▓▓</div>
       <div class="landing-title" data-i18n="landing.title">AI CARDS</div>
       <div class="landing-sub" data-i18n="landing.sub">2030 SURVIVAL EDITION</div>
@@ -3936,11 +3943,13 @@ function initLangSelector() {
     {code:'pt',label:'PT'},
     {code:'zh',label:'ZH'}
   ];
-  const sel = document.getElementById('lang-selector');
-  if (!sel) return;
-  sel.innerHTML = langs.map(l =>
+  const html = langs.map(l =>
     '<button class="lang-btn' + (l.code === currentLang ? ' active' : '') + '" data-lang="' + l.code + '" onclick="loadLang(\'' + l.code + '\')">' + l.label + '</button>'
   ).join('');
+  const sel = document.getElementById('lang-selector');
+  if (sel) sel.innerHTML = html;
+  const landingSel = document.getElementById('landing-lang-selector');
+  if (landingSel) landingSel.innerHTML = html;
 }
 
 // Load EN synchronously from embedded data, load other langs on demand
@@ -5386,6 +5395,8 @@ function enterFromLanding(target) {
   setTimeout(() => {
     landing.classList.remove('active','fade-out');
     showScreen(target);
+    const fixedLang = document.getElementById('lang-selector');
+    if (fixedLang) fixedLang.style.display = '';
   }, 500);
 }
 
