@@ -2864,7 +2864,7 @@ body::before {
 .raid-team-slot .slot-remove{position:absolute;top:-6px;right:-6px;width:16px;height:16px;background:var(--red);color:#fff;border:none;border-radius:50%;font-size:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .2s;}
 .raid-team-slot:hover .slot-remove{opacity:1;}
 .raid-team-slot .slot-name{position:absolute;bottom:2px;font-family:var(--font-mono);font-size:5px;color:#555;letter-spacing:0.5px;text-align:center;width:100%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;padding:0 2px;}
-.raid-card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(80px,1fr));gap:8px;max-height:320px;overflow-y:auto;padding:6px;}
+.raid-card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(80px,1fr));gap:8px;padding:6px;}
 .raid-card-thumb{border-radius:4px;overflow:hidden;cursor:pointer;transition:all .2s;border:2px solid;background:#0a0a0a;position:relative;}
 .raid-card-thumb:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,0.5);}
 .raid-card-thumb.selected{border-color:var(--red)!important;box-shadow:0 0 12px rgba(180,20,20,0.4);}
@@ -6960,6 +6960,7 @@ const ALL_SETS = ['standard','jobless','doomscroll','loveexe','warroom','skillsv
 let raidTeam = [];
 let raidBattle = null;
 let raidSkipRequested = false;
+let raidSetFilter = 'ALL';
 
 function parseATK(str) {
   if (!str || str === '∞') return 9999;
@@ -7079,9 +7080,27 @@ function renderRaidScreen() {
     }
   }
 
+  // Set filter tabs
+  const setTabs = [
+    {key:'ALL',label:'ALL'},
+    {key:'SURVIVAL',label:'SET 1'},
+    {key:'JOBLESS',label:'JOBLESS'},
+    {key:'DOOMSCROLL',label:'DOOM'},
+    {key:'LOVEEXE',label:'LOVE'},
+    {key:'WARROOM',label:'WAR'},
+    {key:'SKILLSVOID',label:'SKILLS'}
+  ];
+  const tabsHTML = setTabs.map(t => `<button class="nav-pill${raidSetFilter===t.key?' active':''}" style="font-size:7px;padding:4px 8px;min-height:0;" onclick="raidSetFilter='${t.key}';renderRaidScreen();">${t.label}</button>`).join('');
+
   // Card selection grid — art blocks matching collection style
   let gridHTML = '';
-  const ownedCards = CARDS.filter(c => collectionHas(c.id));
+  let ownedCards = CARDS.filter(c => collectionHas(c.id));
+  if (raidSetFilter==='SURVIVAL') ownedCards = ownedCards.filter(c=>!c.series);
+  else if (raidSetFilter==='JOBLESS') ownedCards = ownedCards.filter(c=>c.series==='jobless');
+  else if (raidSetFilter==='DOOMSCROLL') ownedCards = ownedCards.filter(c=>c.series==='doomscroll');
+  else if (raidSetFilter==='LOVEEXE') ownedCards = ownedCards.filter(c=>c.series==='loveexe');
+  else if (raidSetFilter==='WARROOM') ownedCards = ownedCards.filter(c=>c.series==='warroom');
+  else if (raidSetFilter==='SKILLSVOID') ownedCards = ownedCards.filter(c=>c.series==='skillsvoid');
   ownedCards.forEach(card => {
     const selected = raidTeam.includes(card.id);
     const disabled = !selected && raidTeam.length >= 5;
@@ -7174,6 +7193,7 @@ function renderRaidScreen() {
       <div class="raid-team-label">${t('raid.select_team')} — ${t('raid.cards_selected', raidTeam.length)}</div>
       <div class="raid-team-slots">${slotsHTML}</div>
       ${bonusHTML ? '<div style="text-align:center;margin-bottom:8px;">' + bonusHTML + '</div>' : ''}
+      <div class="nav-pills" style="justify-content:flex-start;margin-bottom:8px;flex-wrap:wrap;gap:4px;">${tabsHTML}</div>
       ${hasEnough ? '<div class="raid-card-grid">' + gridHTML + '</div>' : '<div style="font-family:var(--font-mono);font-size:8px;color:#444;text-align:center;padding:20px;">' + t('raid.no_cards') + '</div>'}
     </div>
     <button class="raid-engage-btn ${raidTeam.length===5?'ready':''}" ${raidTeam.length<5||attempts<=0?'disabled':''} onclick="startRaid()">${attempts <= 0 ? t('raid.no_attempts') : t('raid.engage')}</button>
