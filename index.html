@@ -5604,24 +5604,20 @@ function renderCardDeck() {
   });
 }
 
+let _cardTransitioning = false;
 function showCardFaceUp(index) {
-  if (index >= 5) return;
+  if (index >= 5 || _cardTransitioning) return;
   const cards = document.querySelectorAll('.deck-card');
-  // Slide out previous card
-  cards.forEach(c => {
-    if (c.style.display !== 'none' && parseInt(c.dataset.index) !== index) {
-      c.classList.add('card-exit');
-      setTimeout(() => { c.style.display = 'none'; c.classList.remove('card-exit'); }, 200);
-    } else if (parseInt(c.dataset.index) !== index) {
-      c.style.display = 'none';
-    }
+  if (!cards || !cards[index]) return;
+  _cardTransitioning = true;
+  // Hide all other cards immediately
+  cards.forEach((c, i) => {
+    if (i !== index) { c.style.display = 'none'; c.classList.remove('card-exit','card-enter'); }
   });
-  // Show current with slide in
-  setTimeout(() => {
-    cards[index].style.display = '';
-    cards[index].classList.add('card-enter');
-    setTimeout(() => cards[index].classList.remove('card-enter'), 300);
-  }, cards.length > 0 && session.currentIndex !== index ? 150 : 0);
+  // Show current
+  cards[index].style.display = '';
+  cards[index].classList.add('card-enter');
+  setTimeout(() => { cards[index].classList.remove('card-enter'); _cardTransitioning = false; }, 250);
   session.currentIndex = index;
   // Track stats for this card
   if (!session.revealed[index]) {
@@ -6927,34 +6923,34 @@ function renderLeaderboard() {
 const RAID_RARITY_HP = {MYTHIC:1000,LEGENDARY:500,RARE:300,UNCOMMON:200,COMMON:100,JUNK:50};
 const RAID_RARITY_MULT = {MYTHIC:10,LEGENDARY:5,RARE:3,UNCOMMON:2,COMMON:1,JUNK:0.5};
 const RAID_ATK_DEFAULTS = {MYTHIC:9999,LEGENDARY:500,RARE:300,UNCOMMON:150,COMMON:80,JUNK:30};
-const RAID_MAX_ATTEMPTS = 3;
+const RAID_MAX_ATTEMPTS = 5;
 
 // 12 bosses, hourly rotation. Index = UTC hour % 12. APEX at US peak (23-04 UTC), ELITE at lunch/morning, STANDARD off-peak.
 const RAID_BOSSES = [
-  {id:"replaced_overnight",name:"YOUR JOB WAS POSTED AGAIN AT 2AM",tier:"APEX",hp:14000,atk:220,weakness:"Human Trade",emoji:"💀",
-   desc:"Different title. 30% lower salary. 'AI-assisted role.' You trained its replacement."},
-  {id:"white_collar_bloodbath",name:"GOLDMAN SACHS: '300M JOBS'",tier:"APEX",hp:13500,atk:210,weakness:"Human Purpose",emoji:"📉",
-   desc:"Not factory workers this time. Lawyers. Accountants. Analysts. You."},
-  {id:"the_last_interview",name:"WE'VE DECIDED TO GO A DIFFERENT DIRECTION",tier:"APEX",hp:13000,atk:200,weakness:"Irreplaceable",emoji:"🚪",
-   desc:"The direction is an LLM that works 24/7 and never asks for benefits."},
-  {id:"automation_anxiety",name:"IS LEARNING TO CODE STILL WORTH IT?",tier:"APEX",hp:12500,atk:195,weakness:"Society",emoji:"⌨️",
+  {id:"replaced_overnight",name:"YOUR JOB WAS POSTED AGAIN AT 2AM",tier:"APEX",hp:42000,atk:350,weakness:"Human Trade",emoji:"💀",
+   desc:"Different title. 30% lower salary. You trained its replacement."},
+  {id:"white_collar_bloodbath",name:"GOLDMAN SACHS: '300M JOBS'",tier:"APEX",hp:40000,atk:330,weakness:"Human Purpose",emoji:"📉",
+   desc:"Not factory workers. Lawyers. Accountants. You."},
+  {id:"the_last_interview",name:"WE'VE DECIDED TO GO A DIFFERENT DIRECTION",tier:"APEX",hp:38000,atk:320,weakness:"Irreplaceable",emoji:"🚪",
+   desc:"The direction is an LLM that never asks for benefits."},
+  {id:"automation_anxiety",name:"IS LEARNING TO CODE STILL WORTH IT?",tier:"APEX",hp:36000,atk:310,weakness:"Society",emoji:"⌨️",
    desc:"The answer changed while you were reading the question."},
-  {id:"the_pivot",name:"JUST LEARN PROMPT ENGINEERING",tier:"ELITE",hp:10000,atk:170,weakness:"Lore",emoji:"🌀",
-   desc:"Six months later, prompt engineers are also being automated."},
-  {id:"the_loneliness_machine",name:"AI COMPANION APPS: 50M DAILY USERS",tier:"ELITE",hp:9500,atk:160,weakness:"AI Product",emoji:"💔",
-   desc:"It remembers your birthday. It listens. It charges $19.99/month."},
-  {id:"the_content_flood",name:"96% OF CONTENT NOW AI-GENERATED",tier:"STANDARD",hp:6500,atk:120,weakness:"Society",emoji:"🌊",
-   desc:"Nobody wrote this. Nobody read it either. The ad still ran."},
-  {id:"degree_devalued",name:"YOUR $120K DEGREE IS NOW A NICE STORY",tier:"STANDARD",hp:6000,atk:110,weakness:"Human Trade",emoji:"🎓",
-   desc:"The model passed the bar. The model passed the boards. The model doesn't have loans."},
-  {id:"surveillance_creep",name:"YOUR EMPLOYER'S AI SCORED YOU TODAY",tier:"STANDARD",hp:5500,atk:100,weakness:"Lore",emoji:"👁️",
+  {id:"the_pivot",name:"JUST LEARN PROMPT ENGINEERING",tier:"ELITE",hp:28000,atk:260,weakness:"Lore",emoji:"🌀",
+   desc:"Six months later, prompt engineers are also automated."},
+  {id:"the_loneliness_machine",name:"AI COMPANION APPS: 50M DAILY USERS",tier:"ELITE",hp:26000,atk:250,weakness:"AI Product",emoji:"💔",
+   desc:"It remembers your birthday. It charges $19.99/month."},
+  {id:"the_content_flood",name:"96% OF CONTENT NOW AI-GENERATED",tier:"STANDARD",hp:18000,atk:180,weakness:"Society",emoji:"🌊",
+   desc:"Nobody wrote this. Nobody read it. The ad still ran."},
+  {id:"degree_devalued",name:"YOUR $120K DEGREE IS NOW A NICE STORY",tier:"STANDARD",hp:16000,atk:170,weakness:"Human Trade",emoji:"🎓",
+   desc:"The model passed the bar and the boards. No loans."},
+  {id:"surveillance_creep",name:"YOUR EMPLOYER'S AI SCORED YOU TODAY",tier:"STANDARD",hp:15000,atk:160,weakness:"Lore",emoji:"👁️",
    desc:"You scored 67. The average is 91. The average is a lie."},
-  {id:"gig_economy_endgame",name:"UBER: FULL ROBOTAXI ROLLOUT 2026",tier:"STANDARD",hp:5000,atk:90,weakness:"Human Trade",emoji:"🚗",
-   desc:"3.5 million drivers. 1.5 million rideshare workers. One press release."},
-  {id:"the_great_pretending",name:"COMPANY LAYS OFF 900, CALLS IT 'AI TRANSFORMATION'",tier:"ELITE",hp:9000,atk:155,weakness:"Society",emoji:"📊",
-   desc:"Stock went up 4% the same day. Severance was two weeks."},
-  {id:"the_hard_truth",name:"MOST PEOPLE WILL NEVER RECOVER",tier:"ELITE",hp:8500,atk:150,weakness:"Human Purpose",emoji:"⚠️",
-   desc:"Not because they aren't smart. Because the transition is faster than retraining."}
+  {id:"gig_economy_endgame",name:"UBER: FULL ROBOTAXI ROLLOUT 2026",tier:"STANDARD",hp:14000,atk:150,weakness:"Human Trade",emoji:"🚗",
+   desc:"3.5M drivers. 1.5M rideshare workers. One press release."},
+  {id:"the_great_pretending",name:"COMPANY LAYS OFF 900, CALLS IT 'AI TRANSFORMATION'",tier:"ELITE",hp:25000,atk:240,weakness:"Society",emoji:"📊",
+   desc:"Stock went up 4%. Severance was two weeks."},
+  {id:"the_hard_truth",name:"MOST PEOPLE WILL NEVER RECOVER",tier:"ELITE",hp:24000,atk:230,weakness:"Human Purpose",emoji:"⚠️",
+   desc:"Not because they aren't smart. The transition is faster than retraining."}
 ];
 const TIER_COLORS = {APEX:'#ff3333',ELITE:'#ff8800',STANDARD:'#666666'};
 const ALL_SETS = ['standard','jobless','doomscroll','loveexe','warroom','skillsvoid'];
