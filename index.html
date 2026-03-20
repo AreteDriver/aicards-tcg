@@ -5171,7 +5171,9 @@ function markDailyLegendary() {
 function markDailyShare() {
   const ds = getDailyState();
   ds.shared = true;
+  ds.sharesWeek = (ds.sharesWeek || 0) + 1;
   saveDailyState(ds);
+  checkMissionCompletions(ds);
 }
 
 function markDailyRarity(rarity) {
