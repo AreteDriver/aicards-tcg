@@ -227,7 +227,7 @@ body::before {
 /* ── ART WINDOW ── */
 .card-art {
   margin: 6px 7px 0;
-  height: 130px;
+  aspect-ratio: 4/3;
   border-radius: 4px;
   overflow: hidden;
   position: relative;
@@ -3505,7 +3505,6 @@ body::before {
 
   /* ── Card anatomy — responsive width ── */
   .card{width:clamp(220px,65vw,280px);height:auto;aspect-ratio:2/3}
-  .card-art{height:clamp(80px,18vw,120px)}
   .card-name{font-size:clamp(10px,2.8vw,12px)}
   .card-type-line{font-size:clamp(7px,1.8vw,8.5px);padding:2px 6px}
   .card-textbox{font-size:clamp(9px,3vw,12px);padding:5px 7px}
@@ -3532,7 +3531,7 @@ body::before {
 
   /* ── Modal — full-width card on mobile ── */
   .modal-card-wrap{transform:scale(1)}
-  .modal-card-wrap .card{width:clamp(260px,75vw,300px);height:auto;aspect-ratio:2/3}
+  .modal-card-wrap .card{width:clamp(280px,85vw,340px);height:auto;aspect-ratio:2/3}
   .modal-close{top:12px;right:14px;font-size:11px;padding:10px}
   .modal-share-row{flex-wrap:wrap;gap:8px;justify-content:center;bottom:16px!important;left:50%!important;transform:translateX(-50%)!important;width:90vw}
   .share-btn{padding:10px 14px;font-size:20px;min-height:44px;flex:0;min-width:44px;text-align:center}
@@ -3596,7 +3595,6 @@ body::before {
 
   /* ── Card anatomy — fill small screens ── */
   .card{width:clamp(200px,70vw,260px);height:auto;aspect-ratio:2/3}
-  .card-art{height:clamp(70px,18vw,100px)}
   .card-name{font-size:clamp(9px,2.6vw,11px)}
   .card-type-line{font-size:clamp(6.5px,1.6vw,7.5px);padding:1px 5px}
   .card-textbox{font-size:clamp(8px,2.8vw,11px);padding:4px 6px}
@@ -3617,7 +3615,7 @@ body::before {
 
   /* ── Modal ── */
   .modal-card-wrap{transform:scale(1)}
-  .modal-card-wrap .card{width:clamp(240px,80vw,280px);height:auto;aspect-ratio:2/3}
+  .modal-card-wrap .card{width:clamp(260px,90vw,320px);height:auto;aspect-ratio:2/3}
   .modal-share-row{flex-direction:row;align-items:center;justify-content:center;bottom:10px!important;gap:10px;width:88vw}
   .share-btn{padding:12px 14px;font-size:22px;width:auto;min-height:44px;min-width:44px;text-align:center}
 
