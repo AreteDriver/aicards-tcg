@@ -6175,10 +6175,10 @@ function renderWeeklyGoal() {
 
   // Weekly goal metrics
   const goals = [
-    {label:'Pull 20 cards', cur:Math.min(S.pulls,20), max:20},
+    {label:'Pull 70 cards', cur:Math.min(S.pulls,70), max:70},
     {label:'Defeat 7 raid bosses', cur:Math.min(raidsWeek,7), max:7},
     {label:'Log in 5 days', cur:Math.min(streak,5), max:5},
-    {label:'Pull 1 Legendary', cur:ds.legendaryPulled?1:0, max:1},
+    {label:'Pull 3 Legendaries', cur:Math.min(S.legendaries,3), max:3},
     {label:'Share 3 cards', cur:Math.min(sharesWeek,3), max:3}
   ];
   const allDone = goals.every(g=>g.cur>=g.max);
