@@ -2860,7 +2860,8 @@ body::before {
 .raid-team-label{font-family:var(--font-mono);font-size:8px;letter-spacing:3px;color:#555;margin-bottom:10px;}
 .raid-team-slots{display:flex;gap:6px;justify-content:center;margin-bottom:12px;flex-wrap:wrap;}
 .raid-team-slot{width:60px;height:80px;border:1px dashed #333;display:flex;align-items:center;justify-content:center;font-size:24px;background:var(--bg-card);transition:all .2s;position:relative;}
-.raid-team-slot.filled{border-style:solid;border-color:#444;}
+.raid-team-slot.filled{border-style:solid;border-color:#444;overflow:hidden;}
+.slot-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:contrast(1.1);}
 .raid-team-slot .slot-remove{position:absolute;top:-6px;right:-6px;width:16px;height:16px;background:var(--red);color:#fff;border:none;border-radius:50%;font-size:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .2s;}
 .raid-team-slot:hover .slot-remove{opacity:1;}
 .raid-team-slot .slot-name{position:absolute;bottom:2px;font-family:var(--font-mono);font-size:5px;color:#555;letter-spacing:0.5px;text-align:center;width:100%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;padding:0 2px;}
@@ -7074,7 +7075,7 @@ function renderRaidScreen() {
     const cardId = raidTeam[i];
     const card = cardId ? CARDS.find(c=>c.id===cardId) : null;
     if (card) {
-      slotsHTML += '<div class="raid-team-slot filled"><span>' + card.symbol + '</span><button class="slot-remove" onclick="removeRaidCard(' + i + ')">✕</button><div class="slot-name">' + (cardT(card.id,'name')||card.name) + '</div></div>';
+      slotsHTML += '<div class="raid-team-slot filled"><img src="images/cards/' + card.id + '.png" alt="" class="slot-img" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'\'"><span style="display:none">' + card.symbol + '</span><button class="slot-remove" onclick="removeRaidCard(' + i + ')">✕</button><div class="slot-name">' + (cardT(card.id,'name')||card.name) + '</div></div>';
     } else {
       slotsHTML += '<div class="raid-team-slot">+</div>';
     }
