@@ -29,7 +29,7 @@ ADMIN_CAP_ID = os.getenv(
 )
 SUI_BIN = os.getenv("SUI_BIN", "sui")
 GAS_BUDGET = "50000000"  # 0.05 SUI per mint
-IMAGE_BASE_URL = os.getenv("AICARDS_IMAGE_URL", "https://aicards.fun/cards")
+IMAGE_BASE_URL = os.getenv("AICARDS_IMAGE_URL", "https://aicards.fun/images/cards")
 
 VALID_PACK_TYPES = {"standard", "legendary", "jobless", "doomscroll", "loveexe", "warroom", "skillsvoid"}
 

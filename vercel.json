@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/cards/:path*", "destination": "/images/cards/:path*" }
+  ]
+}

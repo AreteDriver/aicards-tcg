@@ -5813,6 +5813,15 @@ function jumpToCard(index) {
 }
 
 function openNextPack() {
+  // If we were opening raid reward packs, continue with remaining rewards
+  if (session.isRewardPack) {
+    const rs = getRaidState();
+    if (rs.rewardPacks > 0) {
+      openRaidRewardPack();
+      return;
+    }
+    session.isRewardPack = false;
+  }
   if (getDailyPacksRemaining() <= 0) {
     showToast(t('toast.no_packs'));
     return;
@@ -7175,24 +7184,27 @@ function openRaidRewardPack() {
   const rs = getRaidState();
   if (rs.rewardPacks <= 0) return;
   rs.rewardPacks--;
+  // Use the pending reward set type, or random fallback
+  const rewardSet = (rs.pendingRewards && rs.pendingRewards.length > 0) ? rs.pendingRewards.shift() : getRandomPackReward();
   saveRaidState(rs);
   // Bypass daily limit — directly build and open a pack
-  session.pack = buildPack('standard');
+  session.pack = buildPack(rewardSet);
   session.revealed = new Array(5).fill(false);
-  session.type = 'standard';
+  session.type = rewardSet;
+  session.isRewardPack = true; // Flag so "Next Pack" continues opening rewards
   session.currentIndex = 0;
   S.packs++;
   S.newCards.clear();
-  const labelKeys = {standard:'pack.survival_pack'};
-  document.getElementById('op-pack-name').textContent = t(labelKeys['standard']);
+  const setLabels = {standard:'SURVIVAL',legendary:'REDUNDANCY',jobless:'JOBLESS.AI',doomscroll:'DOOMSCROLL',loveexe:'LOVE.EXE',warroom:'WAR ROOM',skillsvoid:'SKILLS.VOID'};
+  document.getElementById('op-pack-name').textContent = 'RAID REWARD: ' + (setLabels[rewardSet] || rewardSet.toUpperCase());
   document.getElementById('legendaryBeam').classList.remove('active');
   renderCardDeck();
   showScreen('opening-screen');
   const tearEl = document.getElementById('packTear');
   const tearInner = document.getElementById('packTearInner');
-  tearInner.style.color = '#2196c8';
-  tearInner.style.borderColor = '#2196c8';
-  document.getElementById('packTearLabel').textContent = t('pack.survival');
+  tearInner.style.color = 'var(--gold)';
+  tearInner.style.borderColor = 'var(--gold)';
+  document.getElementById('packTearLabel').textContent = 'RAID REWARD';
   tearEl.classList.add('tearing');
   sfxPackRip();
   setTimeout(() => { tearEl.classList.remove('tearing'); setTimeout(() => { showCardFaceUp(0); updateDeckUI(); save(); }, 500); }, 1400);
