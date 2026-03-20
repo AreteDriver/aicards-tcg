@@ -3163,11 +3163,7 @@ body::before {
   font-family:var(--font-mono);font-size:7px;color:#444;letter-spacing:1px;margin-top:4px;
 }
 
-/* Footer */
-.site-footer {
-  width:100%;max-width:960px;margin-top:40px;padding:20px 0;
-  border-top:1px solid #2a2a2a;text-align:center;
-}
+/* Footer (pack-screen specific — overridden by main .site-footer) */
 .footer-links {
   display:flex;gap:20px;justify-content:center;align-items:center;margin-bottom:8px;
 }
@@ -7042,16 +7038,20 @@ function saveRaidState(rs) {
 
 function getRaidAttemptsRemaining() {
   const rs = getRaidState();
-  const today = getTodayStr();
-  if (rs.dailyDate !== today) return RAID_MAX_ATTEMPTS;
-  return Math.max(0, RAID_MAX_ATTEMPTS - rs.dailyAttempts);
+  const boss = getCurrentBoss();
+  const key = boss.id + '_' + new Date().getUTCHours();
+  if (!rs.bossAttempts || rs.bossAttempts._key !== key) return RAID_MAX_ATTEMPTS;
+  return Math.max(0, RAID_MAX_ATTEMPTS - (rs.bossAttempts.count || 0));
 }
 
 function consumeRaidAttempt() {
   const rs = getRaidState();
-  const today = getTodayStr();
-  if (rs.dailyDate !== today) { rs.dailyAttempts = 0; rs.dailyDate = today; }
-  rs.dailyAttempts++;
+  const boss = getCurrentBoss();
+  const key = boss.id + '_' + new Date().getUTCHours();
+  if (!rs.bossAttempts || rs.bossAttempts._key !== key) {
+    rs.bossAttempts = { _key: key, count: 0 };
+  }
+  rs.bossAttempts.count++;
   saveRaidState(rs);
 }
 
@@ -7167,7 +7167,7 @@ function renderRaidScreen() {
       <div class="daily-missions-title">UPCOMING BOSSES</div>
       ${scheduleHTML}
     </div>
-    <div class="raid-attempts-bar">${t('raid.attempts')}: ${attempts} / ${RAID_MAX_ATTEMPTS}</div>
+    <div class="raid-attempts-bar">ATTEMPTS THIS BOSS: ${attempts} / ${RAID_MAX_ATTEMPTS}</div>
     ${rewardHTML}
     <div class="raid-team-section">
       <div class="raid-team-label">${t('raid.select_team')} — ${t('raid.cards_selected', raidTeam.length)}</div>
