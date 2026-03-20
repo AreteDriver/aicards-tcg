@@ -2648,9 +2648,46 @@ body::before {
 .coll-count { font-family:var(--font-mono);font-size:9px;color:#444;letter-spacing:2px; }
 .coll-section { margin-bottom:24px; }
 .coll-section-label { font-family:var(--font-mono);font-size:8px;letter-spacing:3px;padding-bottom:8px;margin-bottom:10px;border-bottom:1px solid; }
-.coll-cards { display:flex;flex-wrap:wrap;gap:8px; }
+.coll-cards { display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:10px; }
 .coll-entry { padding:5px 12px;border-radius:3px;font-family:var(--font-mono);font-size:8px;letter-spacing:1px;border:1px solid;cursor:default;transition:all .2s; }
 .coll-entry.missing { opacity:.2;border-color:#1a1a1a!important;color:#333!important;background:transparent!important; }
+
+/* ── Collection grid thumbs ── */
+.coll-thumb {
+  border-radius:4px;overflow:hidden;cursor:pointer;transition:all .2s;
+  border:1.5px solid;background:#0a0a0a;
+}
+.coll-thumb:hover { transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,0.6); }
+.coll-thumb.missing { opacity:0.15;cursor:default;border-style:dashed;border-color:#1a1a1a!important; }
+.coll-thumb.missing:hover { transform:none;box-shadow:none; }
+.coll-thumb-stats {
+  padding:3px 5px;font-family:var(--font-mono);font-size:6.5px;letter-spacing:0.5px;
+  display:flex;justify-content:space-between;align-items:center;
+  background:rgba(0,0,0,0.85);border-bottom:1px solid rgba(255,255,255,0.06);
+  white-space:nowrap;overflow:hidden;
+}
+.coll-thumb-name {
+  font-family:var(--font-title);font-size:7px;font-weight:700;letter-spacing:0.3px;
+  overflow:hidden;text-overflow:ellipsis;flex:1;
+}
+.coll-thumb-atk { opacity:0.6;font-size:6px;flex-shrink:0;margin-left:3px; }
+.coll-thumb-art {
+  aspect-ratio:1;position:relative;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+}
+.coll-thumb-art::after {
+  position:absolute;bottom:0;left:0;right:0;height:40%;
+  background:linear-gradient(transparent,rgba(0,0,0,0.5));content:'';pointer-events:none;
+}
+.coll-thumb-emoji {
+  font-size:28px;position:relative;z-index:1;
+  filter:drop-shadow(0 0 8px rgba(0,0,0,0.6));
+}
+.coll-thumb-count {
+  position:absolute;top:3px;right:4px;z-index:2;
+  font-family:var(--font-mono);font-size:7px;letter-spacing:0.5px;
+  background:rgba(0,0,0,0.7);padding:1px 4px;border-radius:2px;opacity:0.7;
+}
 
 /* Profile box */
 .profile-box { width:100%;max-width:960px;border:1px solid #1a1a1a;background:#060606;padding:22px;margin-top:28px;text-align:center; }
@@ -3465,9 +3502,11 @@ body::before {
   .share-btn{padding:10px 14px;font-size:20px;min-height:44px;flex:0;min-width:44px;text-align:center}
 
   /* ── Collection ── */
-  .coll-entry{font-size:8px;padding:6px 10px}
-  .coll-cards{gap:6px}
+  .coll-cards{grid-template-columns:repeat(auto-fill,minmax(75px,1fr));gap:6px}
   .coll-title{font-size:18px;letter-spacing:2px}
+  .coll-thumb-name{font-size:6px}
+  .coll-thumb-atk{font-size:5.5px}
+  .coll-thumb-emoji{font-size:24px}
 
   /* ── Profile ── */
   .profile-box{padding:16px}
@@ -3563,8 +3602,9 @@ body::before {
   .cta-btn{padding:11px 22px;font-size:9px;min-height:44px}
 
   /* ── Collection ── */
-  .coll-entry{font-size:7.5px;padding:5px 9px}
+  .coll-cards{grid-template-columns:repeat(auto-fill,minmax(70px,1fr));gap:5px}
   .coll-title{font-size:16px}
+  .coll-thumb-emoji{font-size:20px}
 
   /* ── Sound toggle ── */
   .sound-toggle{width:48px;height:48px;font-size:18px;top:8px;right:8px}
@@ -6382,16 +6422,22 @@ function renderCollection() {
     const col = RARITY_COLORS[rarity];
     html += `<div class="coll-section">
       <div class="coll-section-label" style="color:${col};border-color:${col}33;">${rarityT(rarity)} · ${owned} / ${cards.length}</div>
-      <div class="coll-cards" style="flex-direction:column;gap:2px;">`;
+      <div class="coll-cards">`;
     cards.forEach(card=>{
       const isOwned = collectionHas(card.id);
       const count = S.collection[card.id] || 0;
       const onclick = isOwned ? `onclick="showCardModal('${card.id}')"` : '';
-      const countBadge = isOwned && count > 1 ? `<span class="coll-entry-count">\u00d7${count}</span>` : '';
-      html += `<div class="coll-entry-card ${isOwned?'':'missing'}" ${onclick} style="border-left-color:${col};color:${col};">
-        <span class="coll-entry-symbol">${card.symbol}</span>
-        <span class="coll-entry-name">${cardT(card.id,'name') || card.name}</span>
-        ${countBadge}
+      const countBadge = isOwned && count > 1 ? `<span class="coll-thumb-count">\u00d7${count}</span>` : '';
+      const cName = cardT(card.id,'name') || card.name;
+      html += `<div class="coll-thumb ${isOwned?'':'missing'}" ${onclick} style="border-color:${col};color:${col};">
+        <div class="coll-thumb-stats">
+          <span class="coll-thumb-name">${cName}</span>
+          <span class="coll-thumb-atk">${card.atk}/${card.kscore}</span>
+        </div>
+        <div class="coll-thumb-art ${card.artClass}">
+          ${countBadge}
+          <span class="coll-thumb-emoji">${card.symbol}</span>
+        </div>
       </div>`;
     });
     html += `</div></div>`;
