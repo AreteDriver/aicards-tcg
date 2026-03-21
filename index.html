@@ -6262,7 +6262,7 @@ function buildCardHTML(card) {
         <div class="card-name ${c}">${cName}</div>
         <div class="kscore-orb ${card.kscoreClass}">${card.kscore}</div>
       </div>
-      <div class="card-art ${card.artClass}"><img class="card-art-img" src="images/cards/${card.id}.png" alt="" loading="lazy" onerror="this.style.display='none'" onload="this.parentElement.classList.add('has-img')"></div>
+      <div class="card-art ${card.artClass} has-img"><img class="card-art-img" src="images/cards/${card.id}.png" alt="" onerror="this.style.display='none';this.parentElement.classList.remove('has-img')"></div>
       <div class="card-type-line ${c}">
         <span class="type-category">${cCat}</span>
         <span class="type-rarity">${cRarity}</span>
@@ -7402,8 +7402,8 @@ function renderCollection() {
         </div>
         <div class="coll-thumb-art ${card.artClass}">
           ${countBadge}
-          <img class="coll-thumb-img" src="images/cards/${card.id}.png" alt="" loading="lazy" onerror="this.style.display='none'" onload="this.nextElementSibling.style.display='none'">
-          <span class="coll-thumb-emoji">${card.symbol}</span>
+          <img class="coll-thumb-img" src="images/cards/${card.id}.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display=''">
+          <span class="coll-thumb-emoji" style="display:none">${card.symbol}</span>
         </div>
       </div>`;
     });
