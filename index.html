@@ -6039,6 +6039,27 @@ const RARITY_ORDER = ["MYTHIC","LEGENDARY","RARE","UNCOMMON","COMMON","JUNK"];
 // MYTHIC: 0.01% per slot = ~1 in 10,000 pulls. Weight 1 out of 10,001 total.
 const WEIGHTS = {MYTHIC:1,LEGENDARY:300,RARE:1000,UNCOMMON:2200,COMMON:4000,JUNK:2500};
 
+// Admin event logging — set to admin dashboard URL when deployed
+const ADMIN_API = ''; // e.g. 'https://aicards-admin.vercel.app'
+
+function logEvent(endpoint, data) {
+  if (!ADMIN_API) return;
+  try {
+    fetch(ADMIN_API + '/api/events/' + endpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    }).catch(function() {});
+  } catch(e) {}
+}
+
+function getUserAddress() {
+  if (window._suiAddress) return window._suiAddress;
+  var addr = localStorage.getItem('aicards_anon_id');
+  if (!addr) { addr = 'anon_' + Math.random().toString(36).slice(2, 10); localStorage.setItem('aicards_anon_id', addr); }
+  return addr;
+}
+
 const RARITY_COLORS = {
   MYTHIC:"#ffffff", LEGENDARY:"#c8a84b", RARE:"#9b59d0", UNCOMMON:"#2196c8", COMMON:"#e060a0", JUNK:"#8090a0"
 };
@@ -6550,6 +6571,7 @@ function openPack(type) {
   // Pity: increment before build (build reads pityCounter >= 10)
   S.pityCounter++;
   session.pack = buildPack(type);
+  logEvent('pack', { user_address: getUserAddress(), set_name: type });
   session.revealed = new Array(5).fill(false);
   session.type = type;
   session.currentIndex = 0;
@@ -6653,6 +6675,7 @@ function showCardFaceUp(index) {
     // Track stats
     S.pulls++;
     collectionAdd(card.id);
+    logEvent('pull', { user_address: getUserAddress(), card_id: card.id, card_name: card.name, rarity: card.rarity, set_name: session.type });
     const isNew = !wasDupe;
     if (isNew) { S.newCards.add(card.id); if (card.rarity==='LEGENDARY' || card.rarity==='MYTHIC') S.legendaries++; }
     if (card.rarity==='LEGENDARY' || card.rarity==='MYTHIC') { S.pityCounter = 0; markDailyLegendary(); }
@@ -6824,6 +6847,7 @@ function copyPackResult() {
 }
 
 function sharePackResult() {
+  logEvent('share', { user_address: getUserAddress(), card_ids: session.pack.map(function(c) { return c.id; }), set_name: session.type || '', platform: navigator.share ? 'native' : 'clipboard', share_type: 'pack' });
   const lines = session.pack.map(c => {
     const star = c.rarity === 'LEGENDARY' ? '★' : c.rarity === 'RARE' ? '◆' : '·';
     return `${star} ${c.name} (${c.rarity})`;
@@ -7947,6 +7971,7 @@ function updateRevealActionRow(index) {
 async function downloadCurrentCard() {
   const card = session.pack[session.currentIndex];
   if (!card) return;
+  logEvent('share', { user_address: getUserAddress(), card_id: card.id, card_name: card.name, rarity: card.rarity, set_name: session.type || '', platform: 'download' });
   const el = document.querySelectorAll('.deck-card')[session.currentIndex];
   if (!el) return;
   try {
@@ -7964,6 +7989,7 @@ async function downloadCurrentCard() {
 async function shareCurrentCard() {
   const card = session.pack[session.currentIndex];
   if (!card) return;
+  logEvent('share', { user_address: getUserAddress(), card_id: card.id, card_name: card.name, rarity: card.rarity, set_name: session.type || '', platform: navigator.share ? 'native' : 'clipboard' });
   const cName = cardT(card.id, 'name') || card.name;
   const text = t('misc.i_pulled', cName, rarityT(card.rarity));
 
@@ -8785,6 +8811,7 @@ function finishRaid(victory) {
   let rewardPacks = 0;
   const rewardSets = [];
   if (victory) { rewardPacks = 1; rewardSets.push(getRandomPackReward()); }
+  if (victory) logEvent('raid', { user_address: getUserAddress(), boss_id: raidBattle.boss.id, boss_tier: raidBattle.boss.tier, pack_reward_set: rewardSets[0] || '' });
 
   // Save to history
   const rs = getRaidState();

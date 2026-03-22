@@ -1,0 +1,10 @@
+{
+  "framework": "nextjs",
+  "installCommand": "npm install",
+  "buildCommand": "npm run build",
+  "env": {
+    "DATABASE_URL": "@database-url",
+    "ADMIN_WALLET_ADDRESS": "@admin-wallet-address",
+    "JWT_SECRET": "@jwt-secret"
+  }
+}
