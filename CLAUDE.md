@@ -2,23 +2,31 @@
 
 ## Project Overview
 
-AI CARDS — 2030 Survival Edition. A collectible card experience about AI displacement and the humans who survive automation. Gacha-style pack opening with 162 cards across 6 rarities and 6 sets. Cards are NFTs on Sui blockchain — tradeable, sellable, collectible on-chain. Minting API live. Live at **aicards.fun**.
+AI CARDS — 2030 Survival Edition. A collectible card experience about AI displacement and the humans who survive automation. Gacha-style pack opening with 292 cards across 6 rarities and 12 sets. Cards are NFTs on Sui blockchain — tradeable, sellable, collectible on-chain. Minting API live. Live at **aicards.fun**.
 
 ## Current State
 
 - **Stack**: Single HTML file (CSS + vanilla JS) + Sui Move contracts
 - **Hosting**: Vercel (auto-deploy from GitHub main branch)
 - **Domain**: aicards.fun (Vercel DNS)
-- **Cards**: 162 total across 6 sets, 6 rarities (MYTHIC, LEGENDARY, RARE, UNCOMMON, COMMON, JUNK)
+- **Cards**: 292 total across 12 sets, 6 rarities (MYTHIC, LEGENDARY, RARE, UNCOMMON, COMMON, JUNK)
+- **Card art**: 290/292 cards have DALL-E 3 generated PNG art (black & white underground comix style)
 - **Blockchain**: Sui testnet — Package `0x99f91c55ad24367b9fba1000bf43a5e571c2ae096c906fdf2e78fd51243f38b2`
 - **On-chain objects**: AdminCap `0xcfeaad94ff0f5136b037f3482ff68fc00cacc5149b3db8dfe011e239644e4935`
-- **Minting API**: `https://aicards-mint.fly.dev` (FastAPI on Fly.io, 162 cards)
+- **Minting API**: `https://aicards-mint.fly.dev` (FastAPI on Fly.io, 292 cards)
 
 ## Architecture
 
 ```
 aicards-tcg/
 ├── index.html                  # The entire frontend — CSS, JS, card data, all inline
+├── lang/                       # i18n translations (6 languages)
+│   ├── en.json                 # English (default, 250+ keys)
+│   ├── ja.json / ko.json       # Japanese, Korean
+│   ├── es.json / pt.json       # Spanish, Portuguese
+│   └── zh.json                 # Chinese (Simplified)
+├── images/cards/               # 290 DALL-E 3 card art PNGs (b&w comix style)
+├── images/generate_cards.py    # DALL-E 3 batch art generator
 ├── contracts/aicards/          # Sui Move smart contracts
 │   ├── Move.toml               # Package manifest
 │   ├── sources/card.move       # Card NFT, AdminCap, mint, mint_pack, burn
@@ -27,7 +35,7 @@ aicards-tcg/
 │   └── tests/payment_tests.move # 5 tests (buy, change, withdraw, price, auth)
 ├── server/                     # Minting API (FastAPI on Fly.io)
 │   ├── main.py                 # POST /mint/pack, GET /health, GET /cards/pool
-│   ├── card_data.py            # All 162 cards with rarity weights
+│   ├── card_data.py            # All 292 cards with rarity weights
 │   ├── Dockerfile              # Python 3.12 + Sui CLI binary
 │   ├── fly.toml                # Fly.io config (aicards-mint)
 │   └── start.sh                # Sui keystore injection from secrets
@@ -41,12 +49,18 @@ aicards-tcg/
 
 | Set | Series Key | Cards | Mythics | Unlock Condition |
 |-----|-----------|-------|---------|-----------------|
-| 2030 Survival | (none) | 49 | 0 | Always open |
+| 2030 Survival | (none) | 49 | 5 | Always open |
 | Jobless.ai | `jobless` | 25 | 5 | Set 1 100% complete |
 | DOOMSCROLL | `doomscroll` | 22 | 5 | Set 2 100% complete |
-| LOVE.EXE | `loveexe` | 22 | 5 | Set 3 100% complete |
+| LOVE.EXE | `loveexe` | 21 | 5 | Set 3 100% complete |
 | WAR ROOM | `warroom` | 22 | 5 | Set 4 100% complete |
-| SKILLS.VOID | `skillsvoid` | 22 | 5 | Set 5 100% complete |
+| SKILLS.VOID | `skillsvoid` | 21 | 5 | Set 5 100% complete |
+| FOUNDER.EXE | `founderexe` | 22 | 3 | Set 6 100% complete |
+| DEEP STATE AI | `deepstateai` | 22 | 3 | Set 7 100% complete |
+| HEALTHCARE.SYS | `healthcaresys` | 22 | 3 | Set 8 100% complete |
+| PARENT TRAP | `parenttrap` | 22 | 3 | Set 9 100% complete |
+| CLIMATE.ERR | `climateerr` | 22 | 3 | Set 10 100% complete |
+| CREATOR.NULL | `creatornull` | 22 | 3 | Set 11 100% complete |
 
 ## Pack Types
 
@@ -59,6 +73,12 @@ aicards-tcg/
 | LOVE.EXE | Set 4 | All loveexe series cards, weighted |
 | WAR ROOM | Set 5 | All warroom series cards, weighted |
 | SKILLS.VOID | Set 6 | All skillsvoid series cards, weighted |
+| FOUNDER.EXE | Set 7 | Startup carnage series cards, weighted |
+| DEEP STATE AI | Set 8 | Surveillance state series cards, weighted |
+| HEALTHCARE.SYS | Set 9 | Medical dystopia series cards, weighted |
+| PARENT TRAP | Set 10 | Digital childhood series cards, weighted |
+| CLIMATE.ERR | Set 11 | Planetary debt series cards, weighted |
+| CREATOR.NULL | Set 12 | Creative extinction series cards, weighted |
 
 ## Rarity Weights (per card slot)
 
@@ -110,12 +130,12 @@ This is a social commentary piece disguised as a card game. The tone is dark hum
 - **Pity system**: Guaranteed Legendary after 10 packs without one
 - **Progressive unlock**: Each set gates behind previous set's 100% completion
 - **Survival profile**: Sovereignty vs Dependency based on card pulls
-- **Raid Boss battles**: Weekly rotating bosses (8 total), 5-card team selection, turn-based auto-combat
+- **Raid Boss battles**: Hourly rotating bosses (12 total, 3 tiers), 5-card team selection, turn-based auto-combat
   - Damage formula: BaseATK × RarityMult × CategoryBonus × AntiKarpathy
   - Set bonus (3+ same set = ×1.5), Solidarity combo (Human Trade + Human Purpose = ×1.25)
   - Milestones at 25%/50%/75% boss HP for bonus reward packs
-  - 3 daily attempts, reward packs bypass daily limit
-  - Boss rotation: weekly, deterministic seed from Date.now()
+  - 5 attempts per boss, reward packs bypass daily limit
+  - Boss rotation: hourly, UTC hour % 12, APEX at US peak hours
 
 ## Internationalization (i18n)
 
@@ -123,7 +143,7 @@ This is a social commentary piece disguised as a card game. The tone is dark hum
 - **Engine**: `t(key, ...args)` for UI, `cardT(cardId, field)` for cards, `rarityT()`, `catT()`
 - **Files**: `lang/{locale}.json` — loaded via fetch on demand, EN is default
 - **Persistence**: `localStorage` key `aicards_lang`, browser locale detection as fallback
-- **Scope**: Full i18n — 210+ UI strings + 162 card translations (name, category, stat labels, flavor text) per language
+- **Scope**: Full i18n — 250+ UI strings + 292 card translations (name, category, stat labels, flavor text) per language
 - **Selector**: Top-left corner, 6 language buttons
 
 ## Sui Integration
@@ -133,7 +153,7 @@ This is a social commentary piece disguised as a card game. The tone is dark hum
 - **Trading**: Cards have `store` ability — native Sui transfers + Kiosk marketplace compatible
 - **Mint flow**: Server-side minting via AdminCap (rarity determined server-side)
 - **Payment**: Treasury shared object, buy_pack() accepts SUI, change returned on overpay
-- **Minting API**: `aicards-mint.fly.dev` — POST /mint/pack, 162 cards, all 6 sets
+- **Minting API**: `aicards-mint.fly.dev` — POST /mint/pack, 292 cards, all 12 sets
 - **Move tests**: 9 passing (4 card + 5 payment)
 
 ## Dependencies
@@ -158,7 +178,7 @@ This is a social commentary piece disguised as a card game. The tone is dark hum
 
 - Do NOT split frontend into multiple files — the single-file architecture is intentional
 - Do NOT add a build step, bundler, or framework to the frontend
-- Do NOT use external image assets — all art is CSS-only with emoji overlays
+- Do NOT use external image CDNs — card art PNGs live in images/cards/, CSS art is emoji fallback
 - Do NOT make the tone preachy or moralistic — it should make you laugh, then make you sad
 - Do NOT hardcode card counts in HTML — derive from CARDS.length in JS
 - Do NOT force wallet connection — let users play first, offer chain integration naturally
