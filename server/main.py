@@ -7,6 +7,7 @@ import os
 import re
 import subprocess
 
+import httpx
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, field_validator
@@ -31,7 +32,11 @@ SUI_BIN = os.getenv("SUI_BIN", "sui")
 GAS_BUDGET = "50000000"  # 0.05 SUI per mint
 IMAGE_BASE_URL = os.getenv("AICARDS_IMAGE_URL", "https://aicards.fun/images/cards")
 
-VALID_PACK_TYPES = {"standard", "legendary", "jobless", "doomscroll", "loveexe", "warroom", "skillsvoid"}
+VALID_PACK_TYPES = {
+    "standard", "legendary", "jobless", "doomscroll", "loveexe", "warroom",
+    "skillsvoid", "founderexe", "deepstateai", "healthcaresys", "parenttrap",
+    "climateerr", "creatornull",
+}
 
 # ═══════════════════════════════════════
 # APP
@@ -49,6 +54,7 @@ app.add_middleware(
 class MintRequest(BaseModel):
     sui_address: str
     pack_type: str
+    payment_digest: str | None = None  # On-chain payment tx digest (if wallet paid)
 
     @field_validator("sui_address")
     @classmethod
@@ -123,6 +129,48 @@ async def mint_card_on_chain(card: dict, recipient: str) -> str | None:
 
 
 # ═══════════════════════════════════════
+# PAYMENT VERIFICATION
+# ═══════════════════════════════════════
+TREASURY_ID = "0x586cbc4af1eca3cef00e258ad242ddc0d7e4e99ce7a53f18fd60f28a45e3d999"
+
+async def verify_payment(digest: str, buyer: str, pack_type: str) -> bool:
+    """Verify a PackPurchased event exists on-chain for this transaction."""
+    try:
+        async with httpx.AsyncClient(timeout=10.0) as client:
+            res = await client.post(SUI_RPC, json={
+                "jsonrpc": "2.0", "id": 1,
+                "method": "sui_getTransactionBlock",
+                "params": [digest, {"showEvents": True, "showEffects": True}],
+            })
+        data = res.json()
+        tx = data.get("result", {})
+
+        # Check transaction was successful
+        status = tx.get("effects", {}).get("status", {}).get("status")
+        if status != "success":
+            log.warning("Payment tx %s status: %s", digest, status)
+            return False
+
+        # Find PackPurchased event from our package
+        events = tx.get("events", [])
+        for evt in events:
+            evt_type = evt.get("type", "")
+            if f"{PACKAGE_ID}::payment::PackPurchased" in evt_type:
+                parsed = evt.get("parsedJson", {})
+                if parsed.get("buyer") == buyer:
+                    log.info("Payment verified: %s paid for %s (tx: %s)", buyer[:10], pack_type, digest)
+                    return True
+
+        log.warning("No PackPurchased event for %s in tx %s", buyer[:10], digest)
+        return False
+    except Exception as e:
+        log.error("Payment verification error: %s", e)
+        return False
+
+
+SUI_RPC = os.getenv("SUI_RPC", "https://fullnode.testnet.sui.io:443")
+
+# ═══════════════════════════════════════
 # ENDPOINTS
 # ═══════════════════════════════════════
 @app.get("/health")
@@ -133,7 +181,14 @@ async def health():
 @app.post("/mint/pack", response_model=MintResponse)
 async def mint_pack(req: MintRequest):
     """Open a pack and mint 5 cards to the user's Sui address."""
-    log.info("Pack request: %s → %s", req.pack_type, req.sui_address[:10])
+    paid = req.payment_digest is not None
+    log.info("Pack request: %s → %s (paid: %s)", req.pack_type, req.sui_address[:10], paid)
+
+    # Verify on-chain payment if digest provided
+    if req.payment_digest:
+        verified = await verify_payment(req.payment_digest, req.sui_address, req.pack_type)
+        if not verified:
+            raise HTTPException(status_code=402, detail="Payment not verified on-chain")
 
     # Roll the pack (same weights as frontend)
     try:

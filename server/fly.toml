@@ -8,7 +8,7 @@ primary_region = "iad"
   SUI_BIN = "sui"
   AICARDS_PACKAGE_ID = "0x99f91c55ad24367b9fba1000bf43a5e571c2ae096c906fdf2e78fd51243f38b2"
   AICARDS_ADMIN_CAP_ID = "0xcfeaad94ff0f5136b037f3482ff68fc00cacc5149b3db8dfe011e239644e4935"
-  AICARDS_IMAGE_URL = "https://aicards.fun/cards"
+  AICARDS_IMAGE_URL = "https://aicards.fun/images/cards"
 
 [http_service]
   internal_port = 8080

@@ -7117,6 +7117,127 @@ function renderWeeklyGoal() {
 // ON-CHAIN INTEGRATION
 // ═══════════════════════════════════════
 const CHAIN_PACKAGE = '0x99f91c55ad24367b9fba1000bf43a5e571c2ae096c906fdf2e78fd51243f38b2';
+const TREASURY_ID = '0x586cbc4af1eca3cef00e258ad242ddc0d7e4e99ce7a53f18fd60f28a45e3d999';
+const SUI_RPC = 'https://fullnode.testnet.sui.io:443';
+const PACK_PRICE_MIST = 500_000_000; // 0.5 SUI
+
+// Wallet Standard integration
+let _suiWallet = null;
+let _walletAccount = null;
+
+function getSuiWallets() {
+  // Sui wallets register via the Wallet Standard
+  const wallets = [];
+  if (window.navigator?.wallets) {
+    // Wallet Standard API
+    for (const w of window.navigator.wallets) {
+      if (w.features?.['sui:signAndExecuteTransactionBlock'] || w.features?.['sui:signAndExecuteTransaction']) {
+        wallets.push(w);
+      }
+    }
+  }
+  // Legacy: some wallets inject directly
+  if (window.suiWallet && !wallets.length) wallets.push(window.suiWallet);
+  return wallets;
+}
+
+async function connectSuiWallet() {
+  const wallets = getSuiWallets();
+  if (!wallets.length) {
+    showToast('No Sui wallet detected. Install Sui Wallet or paste your address below.');
+    return false;
+  }
+  try {
+    const wallet = wallets[0]; // Use first available
+    const connectFeature = wallet.features?.['standard:connect'];
+    if (connectFeature) {
+      const result = await connectFeature.connect();
+      const accounts = result?.accounts || wallet.accounts || [];
+      if (accounts.length > 0) {
+        _suiWallet = wallet;
+        _walletAccount = accounts[0];
+        setChainAddress(_walletAccount.address);
+        localStorage.setItem('aicards_wallet_mode', 'extension');
+        showToast('Wallet connected: ' + _walletAccount.address.slice(0,6) + '...');
+        renderChainBanner();
+        openChainModal();
+        return true;
+      }
+    }
+  } catch(e) {
+    showToast('Wallet connection failed: ' + e.message);
+  }
+  return false;
+}
+
+function isWalletMode() {
+  return localStorage.getItem('aicards_wallet_mode') === 'extension' && _suiWallet !== null;
+}
+
+async function signAndExecuteBuyPack(packType) {
+  if (!_suiWallet || !_walletAccount) {
+    showToast('Wallet not connected');
+    return null;
+  }
+
+  // Build the transaction using Sui JSON-RPC
+  // 1. Get a coin with enough balance
+  const addr = _walletAccount.address;
+  const coinsRes = await fetch(SUI_RPC, {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({
+      jsonrpc: '2.0', id: 1,
+      method: 'suix_getCoins',
+      params: [addr, '0x2::sui::SUI', null, 5]
+    })
+  });
+  const coinsData = await coinsRes.json();
+  const coins = coinsData.result?.data || [];
+  if (!coins.length) throw new Error('No SUI coins found in wallet');
+
+  // Find a coin with enough balance or use the largest
+  const suitableCoin = coins.find(c => parseInt(c.balance) >= PACK_PRICE_MIST) || coins[0];
+  if (parseInt(suitableCoin.balance) < PACK_PRICE_MIST) {
+    throw new Error(`Insufficient SUI. Need ${PACK_PRICE_MIST / 1e9} SUI, have ${parseInt(suitableCoin.balance) / 1e9}`);
+  }
+
+  // Build moveCall transaction via unsafe_moveCall (constructs the TransactionBlock)
+  const txRes = await fetch(SUI_RPC, {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({
+      jsonrpc: '2.0', id: 2,
+      method: 'unsafe_moveCall',
+      params: [
+        addr,
+        CHAIN_PACKAGE,
+        'payment',
+        'buy_pack',
+        [], // type args
+        [TREASURY_ID, suitableCoin.coinObjectId, packType], // args: Treasury, Coin<SUI>, pack_type
+        null, // gas object
+        '10000000', // gas budget
+      ]
+    })
+  });
+  const txData = await txRes.json();
+  if (txData.error) throw new Error(txData.error.message || 'Failed to build transaction');
+
+  // Sign and execute via wallet
+  const signFeature = _suiWallet.features?.['sui:signAndExecuteTransactionBlock']
+    || _suiWallet.features?.['sui:signAndExecuteTransaction'];
+  if (!signFeature) throw new Error('Wallet does not support signing');
+
+  const result = await signFeature.signAndExecuteTransactionBlock({
+    transactionBlock: txData.result.txBytes,
+    account: _walletAccount,
+    chain: 'sui:testnet',
+    options: { showEffects: true, showEvents: true },
+  });
+
+  return result;
+}
 
 function getChainAddress() {
   return localStorage.getItem('aicards_chain_address') || '';
@@ -7169,20 +7290,33 @@ async function buyPackWithSUI(packType) {
   const addr = getChainAddress();
   if (!addr) { openChainModal(); return; }
 
-  // For now, mint via the API (payment integration coming)
-  // This mints free cards — payment will be added via Treasury contract
   showToast(t('toast.minting_pack'));
 
   try {
+    let paymentDigest = null;
+
+    // If wallet extension connected, do on-chain payment first
+    if (isWalletMode()) {
+      showToast('Approve transaction in your wallet...');
+      const txResult = await signAndExecuteBuyPack(packType);
+      if (!txResult?.digest) throw new Error('Transaction not confirmed');
+      paymentDigest = txResult.digest;
+      showToast('Payment confirmed! Minting cards...');
+    }
+
+    // Call mint API — include payment digest if paid on-chain
     const res = await fetch(`${MINT_API}/mint/pack`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ sui_address: addr, pack_type: packType }),
+      body: JSON.stringify({
+        sui_address: addr,
+        pack_type: packType,
+        payment_digest: paymentDigest,
+      }),
     });
     const data = await res.json();
     if (data.success) {
       const minted = data.cards.filter(c=>c.transaction);
-      // Add minted cards to local collection
       minted.forEach(c => {
         const localCard = CARDS.find(lc => lc.id === c.card_id);
         if (localCard) {
@@ -7244,7 +7378,10 @@ function openChainModal() {
     `;
     status.innerHTML = '<div class="chain-modal-connected">' + t('chain.connected') + '</div>';
   } else {
+    const hasWallets = getSuiWallets().length > 0;
     body.innerHTML = `
+      ${hasWallets ? `<button class="chain-modal-save" style="margin-bottom:10px;border-color:#60c8ff;color:#60c8ff;" onclick="connectSuiWallet()">CONNECT WALLET EXTENSION</button>
+      <div style="font-family:var(--font-mono);font-size:7px;color:#444;margin:8px 0;letter-spacing:1px;">— OR PASTE ADDRESS —</div>` : ''}
       <input type="text" class="chain-modal-input" id="chain-address-input"
         placeholder="${t('chain.input_placeholder')}"
         spellcheck="false" autocomplete="off">
