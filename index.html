@@ -2598,7 +2598,8 @@ body::before {
 .pack-card:hover.p-trade    { border-color:var(--gold);box-shadow:0 0 16px rgba(200,168,75,0.3); }
 .pack-card:hover.p-lore     { border-color:var(--gray);box-shadow:0 0 16px rgba(102,112,128,0.3); }
 
-.pack-icon-wrap { font-size:42px;margin-bottom:10px;display:block; }
+.pack-icon-wrap { font-size:36px;margin-bottom:10px;display:block;font-family:var(--font-display);filter:grayscale(1) contrast(2);text-shadow:0 0 8px rgba(255,255,255,0.1); }
+.icon-mono { font-style:normal;font-family:var(--font-display);filter:grayscale(1) contrast(2); }
 .pack-title { font-family:var(--font-title);font-size:16px;letter-spacing:2px;margin-bottom:6px; }
 .pack-card.p-standard .pack-title { color:var(--blue); }
 .pack-card.p-rare     .pack-title { color:var(--purple); }
@@ -2837,7 +2838,7 @@ body::before {
 
 /* ── SHARE BUTTON ── */
 .share-btn {
-  font-size:18px;line-height:1;
+  font-size:18px;line-height:1;font-family:var(--font-display);
   padding:8px 12px;border:1px solid #1a1a1a;background:transparent;
   color:#3a3a3a;cursor:pointer;transition:all .2s;border-radius:4px;
 }
@@ -2888,9 +2889,11 @@ body::before {
 .raid-battle-boss .boss-emoji{font-size:36px;}
 .raid-battle-boss .boss-name{font-family:var(--font-display);font-size:16px;color:var(--red);letter-spacing:3px;margin:4px 0;}
 .raid-battle-team{display:flex;gap:4px;justify-content:center;flex-wrap:wrap;}
-.raid-battle-card{width:56px;padding:6px 4px;border:1px solid #333;background:var(--bg-card);text-align:center;transition:all .3s;position:relative;}
+.raid-battle-card{width:56px;padding:4px 4px;border:1px solid #333;background:var(--bg-card);text-align:center;transition:all .3s;position:relative;overflow:hidden;}
 .raid-battle-card.ko{opacity:0.3;border-color:#222;}
 .raid-battle-card.attacking{transform:scale(1.1);border-color:var(--gold);box-shadow:0 0 8px rgba(200,168,75,0.3);}
+.raid-battle-card .card-art-mini{width:48px;height:48px;position:relative;overflow:hidden;margin:0 auto;}
+.raid-battle-card .card-art-mini img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
 .raid-battle-card .card-emoji{font-size:20px;}
 .raid-battle-card .card-hp{font-family:var(--font-mono);font-size:6px;color:#555;letter-spacing:1px;margin-top:2px;}
 .raid-battle-card .ko-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.6);font-family:var(--font-mono);font-size:10px;color:var(--red);letter-spacing:3px;}
@@ -3306,7 +3309,7 @@ body::before {
   border:1px solid #333;background:var(--bg-card);
   cursor:pointer;transition:all .2s;
   display:flex;align-items:center;justify-content:center;
-  font-size:14px;
+  font-size:14px;font-family:var(--font-display);color:var(--white);
 }
 .sound-toggle:hover { border-color:#555; }
 .sound-toggle.on { border-color:#2a6a2a;box-shadow:0 0 8px rgba(40,160,40,0.2); }
@@ -3688,7 +3691,7 @@ setTimeout(function(){var el=document.getElementById('loading-screen');if(el){el
 </script>
 
 <div id="app">
-  <button class="sound-toggle on first-load" id="sound-toggle" onclick="toggleSound()" title="Toggle sound">🔊</button>
+  <button class="sound-toggle on first-load" id="sound-toggle" onclick="toggleSound()" title="Toggle sound">&#9835;</button>
   <div class="lang-selector" id="lang-selector" style="position:fixed;top:8px;left:8px;z-index:150;display:none;"></div>
   <div id="toast" class="toast"></div>
   <div id="mission-toast" class="mission-toast">
@@ -3729,9 +3732,9 @@ setTimeout(function(){var el=document.getElementById('loading-screen');if(el){el
       </div>
     </div>
     <div class="modal-share-row" id="modal-share-row" style="position:fixed;bottom:24px;display:flex;gap:10px;z-index:201;">
-      <button class="share-btn" onclick="event.stopPropagation();shareCard('download')" title="Download">⬇</button>
-      <button class="share-btn" onclick="event.stopPropagation();shareCard('clipboard')" title="Copy to clipboard">📋</button>
-      <button class="share-btn" onclick="event.stopPropagation();shareCard('share')" title="Share">📤</button>
+      <button class="share-btn" onclick="event.stopPropagation();shareCard('download')" title="Download">&#8595;</button>
+      <button class="share-btn" onclick="event.stopPropagation();shareCard('clipboard')" title="Copy to clipboard">&#9633;</button>
+      <button class="share-btn" onclick="event.stopPropagation();shareCard('share')" title="Share">&#8599;</button>
     </div>
   </div>
   <div id="rarityFlash"></div>
@@ -3809,14 +3812,14 @@ setTimeout(function(){var el=document.getElementById('loading-screen');if(el){el
       </div>
       <div class="pack-grid">
         <div class="pack-card p-standard" onclick="openPack('standard')">
-          <span class="pack-icon-wrap">📦</span>
+          <span class="pack-icon-wrap">&#9670;</span>
           <div class="pack-title" data-i18n="pack.survival">2030 SURVIVAL</div>
           <div class="pack-desc" data-i18n="pack.survival_desc">Five cards from the full pool. Trades, purpose, displacement, AI products, lore. See what the algorithm gives you.</div>
           <div class="pack-meta" data-i18n="pack.survival_meta">5 CARDS · FULL POOL · WEIGHTED</div>
           <button class="pack-btn" data-i18n="pack.open_btn">▶ OPEN PACK</button>
         </div>
         <div class="pack-card p-trade" onclick="openPack('legendary')">
-          <span class="pack-icon-wrap">⚡</span>
+          <span class="pack-icon-wrap">&#9733;</span>
           <div class="pack-title" data-i18n="pack.redundancy">REDUNDANCY</div>
           <div class="pack-desc" data-i18n="pack.redundancy_desc">Guaranteed one Legendary. The trades that will outlast all of it. The rest is fate.</div>
           <div class="pack-meta" data-i18n="pack.redundancy_meta">5 CARDS · 1 LEGENDARY GUARANTEED</div>
@@ -6153,14 +6156,14 @@ function toggleSound() {
   sfxMuted = !sfxMuted;
   localStorage.setItem('aicards_muted', sfxMuted);
   const btn = document.getElementById('sound-toggle');
-  btn.textContent = sfxMuted ? '🔇' : '🔊';
+  btn.textContent = sfxMuted ? '\u2716' : '\u266B';
   btn.classList.toggle('on', !sfxMuted);
   btn.classList.remove('first-load');
 }
 // Init sound toggle UI
 (function initSoundToggle() {
   const btn = document.getElementById('sound-toggle');
-  if (btn) { btn.textContent = sfxMuted ? '🔇' : '🔊'; btn.classList.toggle('on', !sfxMuted); }
+  if (btn) { btn.textContent = sfxMuted ? '\u2716' : '\u266B'; btn.classList.toggle('on', !sfxMuted); }
   // Remove pulse after animation completes (3 iterations x 2s)
   if (btn) setTimeout(function() { btn.classList.remove('first-load'); }, 6500);
 })();
@@ -7402,7 +7405,7 @@ function renderCollection() {
         </div>
         <div class="coll-thumb-art ${card.artClass}">
           ${countBadge}
-          <img class="coll-thumb-img" src="images/cards/${card.id}.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display=''">
+          <img class="coll-thumb-img" src="images/cards/${card.id}.png" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display=''">
           <span class="coll-thumb-emoji" style="display:none">${card.symbol}</span>
         </div>
       </div>`;
@@ -7458,11 +7461,11 @@ function renderSet2Zone() {
 
   zone.innerHTML = `
     <div style="width:100%;max-width:960px;margin-bottom:8px;margin-top:20px;">
-      <div style="font-family:var(--font-mono);font-size:8px;letter-spacing:3px;color:#555;margin-bottom:10px;">${t('set.2')} ${unlocked?'':'🔒'}</div>
+      <div style="font-family:var(--font-mono);font-size:8px;letter-spacing:3px;color:#555;margin-bottom:10px;">${t('set.2')} ${unlocked?'':'&#9632;'}</div>
     </div>
     <div class="pack-grid">
       <div class="pack-card p-standard ${unlocked?'':'locked'}" ${unlocked?'onclick="openPack(\'jobless\')"':''} style="border-color:rgba(255,64,64,0.3);">
-        <span class="pack-icon-wrap">${unlocked?'📉':'🔒'}</span>
+        <span class="pack-icon-wrap">${unlocked?'&#9660;':'&#9632;'}</span>
         <div class="pack-title" style="color:${unlocked?'#ff4040':'#555'};">${unlocked?t('pack.jobless'):t('set.locked')}</div>
         <div class="pack-desc">${unlocked?t('set2.desc_unlocked'):t('set2.desc_locked')}</div>
         <div class="pack-meta">${unlocked?t('set2.meta_unlocked'):comp.owned+' / '+comp.total+' '+t('set.cards_word')}</div>
@@ -7480,11 +7483,11 @@ function renderSet3Zone() {
 
   zone.innerHTML = `
     <div style="width:100%;max-width:960px;margin-bottom:8px;margin-top:20px;">
-      <div style="font-family:var(--font-mono);font-size:8px;letter-spacing:3px;color:#555;margin-bottom:10px;">${t('set.3')} ${unlocked?'':'🔒'}</div>
+      <div style="font-family:var(--font-mono);font-size:8px;letter-spacing:3px;color:#555;margin-bottom:10px;">${t('set.3')} ${unlocked?'':'&#9632;'}</div>
     </div>
     <div class="pack-grid">
       <div class="pack-card p-standard ${unlocked?'':'locked'}" ${unlocked?'onclick="openPack(\'doomscroll\')"':''} style="border-color:rgba(100,200,255,0.3);">
-        <span class="pack-icon-wrap">${unlocked?'📱':'🔒'}</span>
+        <span class="pack-icon-wrap">${unlocked?'&#9641;':'&#9632;'}</span>
         <div class="pack-title" style="color:${unlocked?'#60c8ff':'#555'};">${unlocked?t('pack.doomscroll'):t('set.locked')}</div>
         <div class="pack-desc">${unlocked?t('set3.desc_unlocked'):t('set3.desc_locked')}</div>
         <div class="pack-meta">${unlocked?t('set3.meta_unlocked'):comp.owned+' / '+comp.total+' '+t('set.cards_word')}</div>
@@ -7502,11 +7505,11 @@ function renderSet4Zone() {
 
   zone.innerHTML = `
     <div style="width:100%;max-width:960px;margin-bottom:8px;margin-top:20px;">
-      <div style="font-family:var(--font-mono);font-size:8px;letter-spacing:3px;color:#555;margin-bottom:10px;">${t('set.4')} ${unlocked?'':'🔒'}</div>
+      <div style="font-family:var(--font-mono);font-size:8px;letter-spacing:3px;color:#555;margin-bottom:10px;">${t('set.4')} ${unlocked?'':'&#9632;'}</div>
     </div>
     <div class="pack-grid">
       <div class="pack-card p-standard ${unlocked?'':'locked'}" ${unlocked?'onclick="openPack(\'loveexe\')"':''} style="border-color:rgba(255,105,180,0.3);">
-        <span class="pack-icon-wrap">${unlocked?'💕':'💔'}</span>
+        <span class="pack-icon-wrap">${unlocked?'&#9829;':'&#9632;'}</span>
         <div class="pack-title" style="color:${unlocked?'#ff69b4':'#555'};">${unlocked?t('pack.loveexe'):t('set.locked')}</div>
         <div class="pack-desc">${unlocked?t('set4.desc_unlocked'):t('set4.desc_locked')}</div>
         <div class="pack-meta">${unlocked?t('set4.meta_unlocked'):comp.owned+' / '+comp.total+' '+t('set.cards_word')}</div>
@@ -7524,11 +7527,11 @@ function renderSet5Zone() {
 
   zone.innerHTML = `
     <div style="width:100%;max-width:960px;margin-bottom:8px;margin-top:20px;">
-      <div style="font-family:var(--font-mono);font-size:8px;letter-spacing:3px;color:#555;margin-bottom:10px;">${t('set.5')} ${unlocked?'':'🔒'}</div>
+      <div style="font-family:var(--font-mono);font-size:8px;letter-spacing:3px;color:#555;margin-bottom:10px;">${t('set.5')} ${unlocked?'':'&#9632;'}</div>
     </div>
     <div class="pack-grid">
       <div class="pack-card p-standard ${unlocked?'':'locked'}" ${unlocked?'onclick="openPack(\'warroom\')"':''} style="border-color:rgba(255,96,64,0.3);">
-        <span class="pack-icon-wrap">${unlocked?'⚔️':'🔒'}</span>
+        <span class="pack-icon-wrap">${unlocked?'&#10013;':'&#9632;'}</span>
         <div class="pack-title" style="color:${unlocked?'#ff6040':'#555'};">${unlocked?t('pack.warroom'):t('set.locked')}</div>
         <div class="pack-desc">${unlocked?t('set5.desc_unlocked'):t('set5.desc_locked')}</div>
         <div class="pack-meta">${unlocked?t('set5.meta_unlocked'):comp.owned+' / '+comp.total+' '+t('set.cards_word')}</div>
@@ -7546,11 +7549,11 @@ function renderSet6Zone() {
 
   zone.innerHTML = `
     <div style="width:100%;max-width:960px;margin-bottom:8px;margin-top:20px;">
-      <div style="font-family:var(--font-mono);font-size:8px;letter-spacing:3px;color:#555;margin-bottom:10px;">${t('set.6')} ${unlocked?'':'🔒'}</div>
+      <div style="font-family:var(--font-mono);font-size:8px;letter-spacing:3px;color:#555;margin-bottom:10px;">${t('set.6')} ${unlocked?'':'&#9632;'}</div>
     </div>
     <div class="pack-grid">
       <div class="pack-card p-standard ${unlocked?'':'locked'}" ${unlocked?'onclick="openPack(\'skillsvoid\')"':''} style="border-color:rgba(160,160,160,0.3);">
-        <span class="pack-icon-wrap">${unlocked?'📉':'🔒'}</span>
+        <span class="pack-icon-wrap">${unlocked?'&#9651;':'&#9632;'}</span>
         <div class="pack-title" style="color:${unlocked?'#a0a0a0':'#555'};">${unlocked?t('pack.skillsvoid'):t('set.locked')}</div>
         <div class="pack-desc">${unlocked?t('set6.desc_unlocked'):t('set6.desc_locked')}</div>
         <div class="pack-meta">${unlocked?t('set6.meta_unlocked'):comp.owned+' / '+comp.total+' '+t('set.cards_word')}</div>
@@ -7607,8 +7610,8 @@ function updateRevealActionRow(index) {
   const card = session.pack[index];
   if (!card) { row.style.display = 'none'; return; }
   row.style.display = 'flex';
-  row.innerHTML = '<button class="reveal-action-btn" onclick="event.stopPropagation();shareCurrentCard();" title="Share">\ud83d\udce4</button>' +
-    '<button class="reveal-action-btn" onclick="event.stopPropagation();showCardModal(\'' + card.id + '\');" title="Inspect">\ud83d\udd0d</button>';
+  row.innerHTML = '<button class="reveal-action-btn" onclick="event.stopPropagation();shareCurrentCard();" title="Share">&#8599;</button>' +
+    '<button class="reveal-action-btn" onclick="event.stopPropagation();showCardModal(\'' + card.id + '\');" title="Inspect">&#9670;</button>';
 }
 
 function shareCurrentCard() {
@@ -8034,8 +8037,8 @@ function renderRaidScreen() {
       </div>
       <div class="coll-thumb-art ${card.artClass}">
         ${selected ? '<span class="raid-check">✓</span>' : ''}
-        <img class="coll-thumb-img" src="images/cards/${card.id}.png" alt="" loading="lazy" onerror="this.style.display='none'" onload="this.nextElementSibling.style.display='none'">
-        <span class="coll-thumb-emoji">${card.symbol}</span>
+        <img class="coll-thumb-img" src="images/cards/${card.id}.png" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display=''">
+        <span class="coll-thumb-emoji" style="display:none">${card.symbol}</span>
       </div>
     </div>`;
   });
@@ -8110,12 +8113,12 @@ function renderRaidScreen() {
     <div class="raid-attempts-bar">ATTEMPTS THIS BOSS: ${attempts} / ${RAID_MAX_ATTEMPTS}</div>
     ${rewardHTML}
     <div class="raid-team-section">
-      <div class="raid-team-label">${t('raid.select_team')} — ${t('raid.cards_selected', raidTeam.length)}</div>
-      <div class="raid-team-slots">${slotsHTML}</div>
-      ${bonusHTML ? '<div style="text-align:center;margin-bottom:8px;">' + bonusHTML + '</div>' : ''}
-      <button class="raid-engage-btn ${raidTeam.length===5?'ready':''}" ${raidTeam.length<5||attempts<=0?'disabled':''} onclick="startRaid()" style="margin-bottom:12px;">${attempts <= 0 ? t('raid.no_attempts') : t('raid.engage')}</button>
-      <div class="nav-pills" style="justify-content:flex-start;margin-bottom:8px;flex-wrap:wrap;gap:4px;">${tabsHTML}</div>
-      ${hasEnough ? '<div class="raid-card-grid">' + gridHTML + '</div>' : '<div style="font-family:var(--font-mono);font-size:8px;color:#444;text-align:center;padding:20px;">' + t('raid.no_cards') + '</div>'}
+      <div class="raid-team-label" id="raid-team-label">${t('raid.select_team')} — ${t('raid.cards_selected', raidTeam.length)}</div>
+      <div class="raid-team-slots" id="raid-team-slots">${slotsHTML}</div>
+      <div id="raid-bonus-zone" style="text-align:center;margin-bottom:8px;">${bonusHTML}</div>
+      <button class="raid-engage-btn ${raidTeam.length===5?'ready':''}" id="raid-engage-btn" ${raidTeam.length<5||attempts<=0?'disabled':''} onclick="startRaid()" style="margin-bottom:12px;">${attempts <= 0 ? t('raid.no_attempts') : t('raid.engage')}</button>
+      <div class="nav-pills" style="justify-content:flex-start;margin-bottom:8px;flex-wrap:wrap;gap:4px;" id="raid-filter-tabs">${tabsHTML}</div>
+      <div id="raid-card-grid-zone">${hasEnough ? '<div class="raid-card-grid">' + gridHTML + '</div>' : '<div style="font-family:var(--font-mono);font-size:8px;color:#444;text-align:center;padding:20px;">' + t('raid.no_cards') + '</div>'}</div>
     </div>
     <div class="daily-missions" style="margin-top:16px;">
       <div class="daily-missions-title">${t('raid.history_title')}</div>
@@ -8128,12 +8131,82 @@ function toggleRaidCard(cardId) {
   const idx = raidTeam.indexOf(cardId);
   if (idx >= 0) { raidTeam.splice(idx, 1); }
   else if (raidTeam.length < 5) { raidTeam.push(cardId); }
-  renderRaidScreen();
+  updateRaidTeamUI();
 }
 
 function removeRaidCard(slotIndex) {
   raidTeam.splice(slotIndex, 1);
-  renderRaidScreen();
+  updateRaidTeamUI();
+}
+
+function updateRaidTeamUI() {
+  const boss = getCurrentBoss();
+  const attempts = getRaidAttemptsRemaining();
+
+  // Update team slots
+  let slotsHTML = '';
+  for (let i = 0; i < 5; i++) {
+    const cardId = raidTeam[i];
+    const card = cardId ? CARDS.find(c=>c.id===cardId) : null;
+    if (card) {
+      slotsHTML += '<div class="raid-team-slot filled"><img src="images/cards/' + card.id + '.png" alt="" class="slot-img" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'\'"><span style="display:none">' + card.symbol + '</span><button class="slot-remove" onclick="removeRaidCard(' + i + ')">✕</button><div class="slot-name">' + (cardT(card.id,'name')||card.name) + '</div></div>';
+    } else {
+      slotsHTML += '<div class="raid-team-slot">+</div>';
+    }
+  }
+  const slotsEl = document.getElementById('raid-team-slots');
+  if (slotsEl) slotsEl.innerHTML = slotsHTML;
+
+  // Update label
+  const labelEl = document.getElementById('raid-team-label');
+  if (labelEl) labelEl.textContent = t('raid.select_team') + ' — ' + t('raid.cards_selected', raidTeam.length);
+
+  // Update bonuses
+  let bonusHTML = '';
+  if (raidTeam.length > 0) {
+    const teamCards = raidTeam.map(id=>CARDS.find(c=>c.id===id)).filter(Boolean);
+    const seriesCounts = {};
+    teamCards.forEach(c => { const s = c.series || 'set1'; seriesCounts[s] = (seriesCounts[s]||0)+1; });
+    if (Object.values(seriesCounts).some(v => v >= 3)) bonusHTML += '<span style="color:var(--gold);font-family:var(--font-mono);font-size:7px;letter-spacing:1px;border:1px solid rgba(200,168,75,0.3);padding:2px 6px;margin:0 3px;">' + t('raid.set_bonus') + '</span>';
+    const cats = new Set(teamCards.map(c => c.category));
+    if (cats.has('Human Trade') && cats.has('Human Purpose')) bonusHTML += '<span style="color:var(--gold);font-family:var(--font-mono);font-size:7px;letter-spacing:1px;border:1px solid rgba(200,168,75,0.3);padding:2px 6px;margin:0 3px;">' + t('raid.solidarity') + '</span>';
+  }
+  const bonusEl = document.getElementById('raid-bonus-zone');
+  if (bonusEl) bonusEl.innerHTML = bonusHTML;
+
+  // Update engage button
+  const engageEl = document.getElementById('raid-engage-btn');
+  if (engageEl) {
+    engageEl.className = 'raid-engage-btn ' + (raidTeam.length===5?'ready':'');
+    engageEl.disabled = raidTeam.length<5 || attempts<=0;
+    engageEl.textContent = attempts <= 0 ? t('raid.no_attempts') : t('raid.engage');
+  }
+
+  // Update card grid — toggle selected/disabled classes in-place
+  const gridZone = document.getElementById('raid-card-grid-zone');
+  if (gridZone) {
+    const thumbs = gridZone.querySelectorAll('.raid-card-thumb');
+    thumbs.forEach(thumb => {
+      const cardId = (thumb.getAttribute('onclick')||'').match(/toggleRaidCard\('([^']+)'\)/);
+      if (!cardId) return;
+      const id = cardId[1];
+      const selected = raidTeam.includes(id);
+      const disabled = !selected && raidTeam.length >= 5;
+      const card = CARDS.find(c=>c.id===id);
+      const col = card ? (RARITY_COLORS[card.rarity] || '#667080') : '#667080';
+      thumb.classList.toggle('selected', selected);
+      thumb.classList.toggle('disabled', disabled);
+      thumb.style.borderColor = selected ? 'var(--red)' : col + '66';
+      // Update check mark
+      const existingCheck = thumb.querySelector('.raid-check');
+      if (selected && !existingCheck) {
+        const artDiv = thumb.querySelector('.coll-thumb-art');
+        if (artDiv) { const ck = document.createElement('span'); ck.className = 'raid-check'; ck.textContent = '\u2713'; artDiv.insertBefore(ck, artDiv.firstChild); }
+      } else if (!selected && existingCheck) {
+        existingCheck.remove();
+      }
+    });
+  }
 }
 
 function openRaidRewardPack() {
@@ -8219,7 +8292,7 @@ function renderBattleState() {
   b.team.forEach((t, i) => {
     const hpPct = Math.max(0, Math.round(t.hp / t.maxHP * 100));
     teamHTML += '<div class="raid-battle-card ' + (t.alive?'':'ko') + '" id="raid-card-' + i + '">' +
-      '<div class="card-emoji">' + t.card.symbol + '</div>' +
+      '<div class="card-art-mini"><img src="images/cards/' + t.card.id + '.png" alt="" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'\'"><span class="card-emoji" style="display:none">' + t.card.symbol + '</span></div>' +
       '<div class="card-hp">' + (t.alive ? Math.max(0,t.hp) + '/' + t.maxHP : 'KO') + '</div>' +
       (!t.alive ? '<div class="ko-overlay">KO</div>' : '') +
       '</div>';
