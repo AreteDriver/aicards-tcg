@@ -22,6 +22,12 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
+
+button:focus-visible, .cta-btn:focus-visible, .nav-pill:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
 :root {
   --bg: #1a1a1e;
   --bg-card: #121214;
@@ -2764,6 +2770,15 @@ body::before {
   display:flex;flex-direction:column;align-items:center;gap:20px;
   max-width:600px;
 }
+.beta-badge {
+  font-family:var(--font-mono);font-size:10px;letter-spacing:4px;
+  color:#000;background:var(--gold);
+  padding:4px 18px;border-radius:2px;
+  text-transform:uppercase;font-weight:700;
+  animation:betaPulse 2s ease-in-out infinite;
+  margin-bottom:-8px;
+}
+@keyframes betaPulse { 0%,100%{opacity:1;box-shadow:0 0 8px rgba(200,168,75,0.3)} 50%{opacity:0.85;box-shadow:0 0 20px rgba(200,168,75,0.6)} }
 .landing-eyebrow {
   font-family:var(--font-mono);font-size:9px;letter-spacing:5px;color:#aa2020;text-shadow:0 0 12px rgba(180,20,20,0.3);
 }
@@ -3765,6 +3780,7 @@ setTimeout(function(){var el=document.getElementById('loading-screen');if(el){el
     <div class="landing-bg" id="landing-bg"></div>
     <div class="landing-content">
       <div class="lang-selector landing-lang" id="landing-lang-selector"></div>
+      <div class="beta-badge">BETA ACCESS</div>
       <div class="landing-eyebrow" data-i18n="landing.eyebrow">▓▓▓ CLASSIFIED · SERIES ONE · 2030 EDITION ▓▓▓</div>
       <div class="landing-title" data-i18n="landing.title">AI CARDS</div>
       <div class="landing-sub" data-i18n="landing.sub">2030 SURVIVAL EDITION</div>
@@ -3796,6 +3812,7 @@ setTimeout(function(){var el=document.getElementById('loading-screen');if(el){el
         <div class="daily-packs-count"><span data-i18n="stats.free_packs">FREE PACKS</span>: <span id="dp-remaining">10</span> / 10</div>
         <div class="daily-packs-timer" id="dp-timer"><span data-i18n="stats.next_pack">Next pack in</span>: --:--</div>
         <div class="daily-packs-pity" id="dp-pity-wrap" style="font-size:9px;letter-spacing:2px;margin-top:4px;"></div>
+        <div style="display:flex;gap:12px;justify-content:center;margin-top:4px;font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:1px;color:#666;"><span id="dp-pity-counter"></span><span id="dp-streak"></span></div>
       </div>
       <div class="set-progress-bar" id="set-progress-bar"></div>
       <div class="stats-bar">
@@ -6102,6 +6119,12 @@ function updateDailyUI() {
     pityWrap.innerHTML = '<span style="color:' + (isClose ? 'var(--gold);text-shadow:0 0 8px rgba(200,168,75,0.4)' : '#555') + ';">&#9889; ' + t('stats.legendary_in') + ' ' + pityLeft + ' ' + t('stats.packs_word') + '</span>';
   }
 
+  // Pity counter & streak on pack screen
+  const dpPity = document.getElementById('dp-pity-counter');
+  if (dpPity) dpPity.textContent = 'PITY: ' + S.pityCounter + '/10';
+  const dpStreak = document.getElementById('dp-streak');
+  if (dpStreak) { var sk=0,dd=new Date(); for(var i=0;i<365;i++){var k='aicards_daily_'+dd.getFullYear()+'-'+String(dd.getMonth()+1).padStart(2,'0')+'-'+String(dd.getDate()).padStart(2,'0'); try{if(localStorage.getItem(k)){sk++;dd.setDate(dd.getDate()-1);}else break;}catch(e){break;}} dpStreak.textContent=sk>0?'\uD83D\uDD25 '+sk+'-DAY STREAK':''; }
+
   // Daily Missions
   const rs = getRaidState();
   const raidsToday = (rs.raidsDate === getTodayKey()) ? (rs.raidsToday || 0) : 0;
@@ -6276,7 +6299,7 @@ function buildCardHTML(card) {
         <div class="card-name ${c}">${cName}</div>
         <div class="kscore-orb ${card.kscoreClass}">${card.kscore}</div>
       </div>
-      <div class="card-art ${card.artClass} has-img"><img class="card-art-img" src="images/cards/${card.id}.png" alt="" onerror="this.style.display='none';this.parentElement.classList.remove('has-img')"></div>
+      <div class="card-art ${card.artClass} has-img"><img class="card-art-img" src="images/cards/${card.id}.png" alt="${cName} (${cRarity})" onerror="this.style.display='none';this.parentElement.classList.remove('has-img')"></div>
       <div class="card-type-line ${c}">
         <span class="type-category">${cCat}</span>
         <span class="type-rarity">${cRarity}</span>
@@ -7456,6 +7479,8 @@ const PARENTTRAP_IDS = new Set(CARDS.filter(c=>c.series==='parenttrap').map(c=>c
 const CLIMATEERR_IDS = new Set(CARDS.filter(c=>c.series==='climateerr').map(c=>c.id));
 const CREATORNULL_IDS = new Set(CARDS.filter(c=>c.series==='creatornull').map(c=>c.id));
 let collSeriesFilter = 'ALL';
+let collSearchQuery = '';
+let collMissingFilter = false;
 
 // ═══════════════════════════════════════
 // COLLECTION
@@ -7466,15 +7491,24 @@ function renderCollection() {
   const filterKeys = {ALL:'ALL',SURVIVAL:'SET 1',JOBLESS:'JOBLESS',DOOMSCROLL:'DOOM',LOVEEXE:'LOVE',WARROOM:'WAR',SKILLSVOID:'SKILLS',FOUNDEREXE:'FOUNDER',DEEPSTATEAI:'DEEP',HEALTHCARESYS:'HEALTH',PARENTTRAP:'PARENT',CLIMATEERR:'CLIMATE',CREATORNULL:'CREATOR'};
   const filterBtns = ['ALL','SURVIVAL','JOBLESS','DOOMSCROLL','LOVEEXE','WARROOM','SKILLSVOID','FOUNDEREXE','DEEPSTATEAI','HEALTHCARESYS','PARENTTRAP','CLIMATEERR','CREATORNULL'].map(f=>{
     const active = collSeriesFilter===f ? ' active' : '';
-    return `<button class="nav-pill${active}" onclick="setCollFilter('${f}')">${t(filterKeys[f])}</button>`;
+    let label = t(filterKeys[f]);
+    if(f==='ALL'){ label += ` (${size}/${CARDS.length})`; }
+    else { const sm = {SURVIVAL:null,JOBLESS:'jobless',DOOMSCROLL:'doomscroll',LOVEEXE:'loveexe',WARROOM:'warroom',SKILLSVOID:'skillsvoid',FOUNDEREXE:'founderexe',DEEPSTATEAI:'deepstateai',HEALTHCARESYS:'healthcaresys',PARENTTRAP:'parenttrap',CLIMATEERR:'climateerr',CREATORNULL:'creatornull'}; const comp = getSetCompletion(sm[f]); label += ` (${comp.owned}/${comp.total})`; }
+    return `<button class="nav-pill${active}" onclick="setCollFilter('${f}')">${label}</button>`;
   }).join('');
+  const missingActive = collMissingFilter ? ' active' : '';
+  const missingBtn = `<button class="nav-pill${missingActive}" onclick="toggleMissingFilter()" style="margin-left:8px;border-color:#ff6b6b;${collMissingFilter?'background:#ff6b6b;color:#000;':'color:#ff6b6b;'}">MISSING</button>`;
 
   let html = `<div class="coll-head">
     <div class="coll-title">${t('collection.title')}</div>
     <div class="coll-count">${t('collection.cards_count', size, CARDS.length, Math.round(size/CARDS.length*100))}</div>
   </div>
-  <div class="nav-pills" style="justify-content:flex-start;margin-bottom:20px;">${filterBtns}</div>`;
+  <div style="margin-bottom:12px;">
+    <input type="text" id="coll-search" placeholder="Search cards..." value="${collSearchQuery.replace(/"/g,'&quot;')}" oninput="setCollSearch(this.value)" style="width:100%;max-width:400px;padding:8px 12px;background:#1a1a2e;border:1px solid #333;border-radius:8px;color:#e0e0e0;font-size:14px;font-family:'Share Tech Mono',monospace;outline:none;">
+  </div>
+  <div class="nav-pills" style="justify-content:flex-start;margin-bottom:20px;">${filterBtns}${missingBtn}</div>`;
 
+  const searchQ = collSearchQuery.toLowerCase();
   RARITY_ORDER.forEach(rarity=>{
     let cards = CARDS.filter(c=>c.rarity===rarity);
     if(collSeriesFilter==='SURVIVAL') cards = cards.filter(c=>!c.series);
@@ -7489,6 +7523,8 @@ function renderCollection() {
     else if(collSeriesFilter==='PARENTTRAP') cards = cards.filter(c=>PARENTTRAP_IDS.has(c.id));
     else if(collSeriesFilter==='CLIMATEERR') cards = cards.filter(c=>CLIMATEERR_IDS.has(c.id));
     else if(collSeriesFilter==='CREATORNULL') cards = cards.filter(c=>CREATORNULL_IDS.has(c.id));
+    if(collMissingFilter) cards = cards.filter(c=>!collectionHas(c.id));
+    if(searchQ) cards = cards.filter(c=>(cardT(c.id,'name')||c.name).toLowerCase().includes(searchQ));
     if(cards.length===0) return;
     const owned = cards.filter(c=>collectionHas(c.id)).length;
     const col = RARITY_COLORS[rarity];
@@ -7508,7 +7544,7 @@ function renderCollection() {
         </div>
         <div class="coll-thumb-art ${card.artClass}">
           ${countBadge}
-          <img class="coll-thumb-img" src="images/cards/${card.id}.png" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display=''">
+          <img class="coll-thumb-img" src="images/cards/${card.id}.png" alt="${cName} (${rarityT(card.rarity)})" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display=''">
           <span class="coll-thumb-emoji" style="display:none">${card.symbol}</span>
         </div>
       </div>`;
@@ -7527,6 +7563,18 @@ function renderCollection() {
 function setCollFilter(f) {
   collSeriesFilter = f;
   renderCollection();
+}
+
+function toggleMissingFilter() {
+  collMissingFilter = !collMissingFilter;
+  renderCollection();
+}
+
+function setCollSearch(q) {
+  collSearchQuery = q;
+  renderCollection();
+  const el = document.getElementById('coll-search');
+  if(el) { el.focus(); el.setSelectionRange(q.length, q.length); }
 }
 
 function resetCollection() {
@@ -8126,7 +8174,7 @@ function renderRaidScreen() {
     const cardId = raidTeam[i];
     const card = cardId ? CARDS.find(c=>c.id===cardId) : null;
     if (card) {
-      slotsHTML += '<div class="raid-team-slot filled"><img src="images/cards/' + card.id + '.png" alt="" class="slot-img" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'\'"><span style="display:none">' + card.symbol + '</span><button class="slot-remove" onclick="removeRaidCard(' + i + ')">✕</button><div class="slot-name">' + (cardT(card.id,'name')||card.name) + '</div></div>';
+      slotsHTML += '<div class="raid-team-slot filled"><img src="images/cards/' + card.id + '.png" alt="' + (cardT(card.id,'name')||card.name) + ' (' + rarityT(card.rarity) + ')' + '" class="slot-img" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'\'"><span style="display:none">' + card.symbol + '</span><button class="slot-remove" onclick="removeRaidCard(' + i + ')">✕</button><div class="slot-name">' + (cardT(card.id,'name')||card.name) + '</div></div>';
     } else {
       slotsHTML += '<div class="raid-team-slot">+</div>';
     }
@@ -8180,7 +8228,7 @@ function renderRaidScreen() {
       </div>
       <div class="coll-thumb-art ${card.artClass}">
         ${selected ? '<span class="raid-check">✓</span>' : ''}
-        <img class="coll-thumb-img" src="images/cards/${card.id}.png" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display=''">
+        <img class="coll-thumb-img" src="images/cards/${card.id}.png" alt="${cName} (${rarityT(card.rarity)})" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display=''">
         <span class="coll-thumb-emoji" style="display:none">${card.symbol}</span>
       </div>
     </div>`;
@@ -8292,7 +8340,7 @@ function updateRaidTeamUI() {
     const cardId = raidTeam[i];
     const card = cardId ? CARDS.find(c=>c.id===cardId) : null;
     if (card) {
-      slotsHTML += '<div class="raid-team-slot filled"><img src="images/cards/' + card.id + '.png" alt="" class="slot-img" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'\'"><span style="display:none">' + card.symbol + '</span><button class="slot-remove" onclick="removeRaidCard(' + i + ')">✕</button><div class="slot-name">' + (cardT(card.id,'name')||card.name) + '</div></div>';
+      slotsHTML += '<div class="raid-team-slot filled"><img src="images/cards/' + card.id + '.png" alt="' + (cardT(card.id,'name')||card.name) + ' (' + rarityT(card.rarity) + ')' + '" class="slot-img" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'\'"><span style="display:none">' + card.symbol + '</span><button class="slot-remove" onclick="removeRaidCard(' + i + ')">✕</button><div class="slot-name">' + (cardT(card.id,'name')||card.name) + '</div></div>';
     } else {
       slotsHTML += '<div class="raid-team-slot">+</div>';
     }
@@ -8435,7 +8483,7 @@ function renderBattleState() {
   b.team.forEach((t, i) => {
     const hpPct = Math.max(0, Math.round(t.hp / t.maxHP * 100));
     teamHTML += '<div class="raid-battle-card ' + (t.alive?'':'ko') + '" id="raid-card-' + i + '">' +
-      '<div class="card-art-mini"><img src="images/cards/' + t.card.id + '.png" alt="" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'\'"><span class="card-emoji" style="display:none">' + t.card.symbol + '</span></div>' +
+      '<div class="card-art-mini"><img src="images/cards/' + t.card.id + '.png" alt="' + (cardT(t.card.id,'name')||t.card.name) + ' (' + rarityT(t.card.rarity) + ')' + '" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'\'"><span class="card-emoji" style="display:none">' + t.card.symbol + '</span></div>' +
       '<div class="card-hp">' + (t.alive ? Math.max(0,t.hp) + '/' + t.maxHP : 'KO') + '</div>' +
       (!t.alive ? '<div class="ko-overlay">KO</div>' : '') +
       '</div>';
