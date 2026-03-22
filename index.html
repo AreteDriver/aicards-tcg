@@ -8348,12 +8348,42 @@ function getRaidAttemptsRemaining() {
   return Math.max(0, RAID_MAX_ATTEMPTS - (rs.bossAttempts.count || 0));
 }
 
+function getBossWins() {
+  const rs = getRaidState();
+  const boss = getCurrentBoss();
+  const key = boss.id + '_' + new Date().getUTCHours();
+  if (!rs.bossAttempts || rs.bossAttempts._key !== key) return 0;
+  return rs.bossAttempts.wins || 0;
+}
+
+function recordBossWin() {
+  const rs = getRaidState();
+  const boss = getCurrentBoss();
+  const key = boss.id + '_' + new Date().getUTCHours();
+  if (!rs.bossAttempts || rs.bossAttempts._key !== key) {
+    rs.bossAttempts = { _key: key, count: 0, wins: 0 };
+  }
+  rs.bossAttempts.wins = (rs.bossAttempts.wins || 0) + 1;
+  saveRaidState(rs);
+}
+
+// Boss difficulty scales with wins: +30% HP, +20% ATK per win
+function getScaledBoss(boss) {
+  const wins = getBossWins();
+  if (wins === 0) return boss;
+  return {
+    ...boss,
+    hp: Math.round(boss.hp * (1 + wins * 0.3)),
+    atk: Math.round(boss.atk * (1 + wins * 0.2))
+  };
+}
+
 function consumeRaidAttempt() {
   const rs = getRaidState();
   const boss = getCurrentBoss();
   const key = boss.id + '_' + new Date().getUTCHours();
   if (!rs.bossAttempts || rs.bossAttempts._key !== key) {
-    rs.bossAttempts = { _key: key, count: 0 };
+    rs.bossAttempts = { _key: key, count: 0, wins: 0 };
   }
   rs.bossAttempts.count++;
   saveRaidState(rs);
@@ -8363,7 +8393,9 @@ function consumeRaidAttempt() {
 function renderRaidScreen() {
   const body = document.getElementById('raid-body');
   if (!body) return;
-  const boss = getCurrentBoss();
+  const rawBoss = getCurrentBoss();
+  const boss = getScaledBoss(rawBoss);
+  const wins = getBossWins();
   const remaining = getBossTimeRemaining();
   const attempts = getRaidAttemptsRemaining();
   const owned = Object.keys(S.collection);
@@ -8483,7 +8515,7 @@ function renderRaidScreen() {
 
   body.innerHTML = `
     <div class="raid-boss-card">
-      <div style="font-family:var(--font-mono);font-size:7px;letter-spacing:3px;color:${tierCol};text-align:center;margin-bottom:8px;">HOURLY BOSS · ${boss.tier} ${getCurrentCycle()}</div>
+      <div style="font-family:var(--font-mono);font-size:7px;letter-spacing:3px;color:${tierCol};text-align:center;margin-bottom:8px;">HOURLY BOSS · ${boss.tier} ${getCurrentCycle()}${wins > 0 ? ' · <span style="color:#ff6040;">LVL ' + (wins + 1) + '</span>' : ''}</div>
       <div class="raid-boss-emoji">${boss.emoji}</div>
       <div class="raid-boss-name" style="color:${tierCol};">${boss.name}</div>
       <div class="raid-boss-desc">${boss.desc}</div>
@@ -8503,7 +8535,7 @@ function renderRaidScreen() {
       <div class="daily-missions-title">UPCOMING BOSSES</div>
       ${scheduleHTML}
     </div>
-    <div class="raid-attempts-bar">ATTEMPTS THIS BOSS: ${attempts} / ${RAID_MAX_ATTEMPTS}</div>
+    <div class="raid-attempts-bar">ATTEMPTS THIS BOSS: ${attempts} / ${RAID_MAX_ATTEMPTS}${wins > 0 ? ' · <span style="color:#ff6040;">DIFFICULTY LVL ' + (wins + 1) + ' (+' + (wins * 30) + '% HP, +' + (wins * 20) + '% ATK)</span>' : ''}</div>
     ${rewardHTML}
     <div class="raid-team-section">
       <div class="raid-team-label" id="raid-team-label">${t('raid.select_team')} — ${t('raid.cards_selected', raidTeam.length)}</div>
@@ -8639,7 +8671,8 @@ function startRaid() {
   if (getRaidAttemptsRemaining() <= 0) return;
   consumeRaidAttempt();
 
-  const boss = getCurrentBoss();
+  const rawBoss = getCurrentBoss();
+  const boss = getScaledBoss(rawBoss);
   const teamCards = raidTeam.map(id => CARDS.find(c => c.id === id)).filter(Boolean);
   const teamBonus = calcTeamBonuses(teamCards);
 
@@ -8647,6 +8680,7 @@ function startRaid() {
     boss: {...boss},
     bossHP: boss.hp,
     bossMaxHP: boss.hp,
+    difficultyLevel: getBossWins(),
     team: teamCards.map(c => ({card:c, hp:getCardRaidHP(c), maxHP:getCardRaidHP(c), alive:true, totalDmg:0})),
     round: 0,
     log: [],
@@ -8806,6 +8840,9 @@ function runRaidRound() {
 function finishRaid(victory) {
   const b = raidBattle;
   b.finished = true;
+
+  // Record win for difficulty scaling
+  if (victory) recordBossWin();
 
   // Calculate rewards — random pack from any set
   let rewardPacks = 0;
