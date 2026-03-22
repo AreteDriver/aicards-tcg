@@ -3837,6 +3837,12 @@ setTimeout(function(){var el=document.getElementById('loading-screen');if(el){el
       <div id="set4-zone"></div>
       <div id="set5-zone"></div>
       <div id="set6-zone"></div>
+      <div id="set7-zone"></div>
+      <div id="set8-zone"></div>
+      <div id="set9-zone"></div>
+      <div id="set10-zone"></div>
+      <div id="set11-zone"></div>
+      <div id="set12-zone"></div>
       <div class="daily-missions" id="daily-missions">
         <div class="daily-missions-title">DAILY GOALS — 1 RANDOM PACK</div>
         <div class="mission-row"><span class="mission-label">Pull 3 cards</span><span class="mission-progress" id="dm-pulls">0/3</span></div>
@@ -4006,6 +4012,12 @@ function applyTranslations() {
   if (typeof renderSet4Zone === 'function') renderSet4Zone();
   if (typeof renderSet5Zone === 'function') renderSet5Zone();
   if (typeof renderSet6Zone === 'function') renderSet6Zone();
+  if (typeof renderSet7Zone === 'function') renderSet7Zone();
+  if (typeof renderSet8Zone === 'function') renderSet8Zone();
+  if (typeof renderSet9Zone === 'function') renderSet9Zone();
+  if (typeof renderSet10Zone === 'function') renderSet10Zone();
+  if (typeof renderSet11Zone === 'function') renderSet11Zone();
+  if (typeof renderSet12Zone === 'function') renderSet12Zone();
   if (typeof renderSetProgress === 'function') renderSetProgress();
   if (typeof renderPackHistory === 'function') renderPackHistory();
   if (typeof renderLeaderboard === 'function') renderLeaderboard();
@@ -6384,7 +6396,7 @@ function showScreen(id) {
     else if (!p.getAttribute('onclick')) p.classList.remove('active');
   });
   if(id==='collection-screen') renderCollection();
-  if(id==='pack-screen') { updateStats(); renderProfile(); updateDailyUI(); renderWeeklyGoal(); renderBuyPacks(); renderChainBanner(); renderChainStatus(); renderSet2Zone(); renderSet3Zone(); renderSet4Zone(); renderSet5Zone(); renderSet6Zone(); renderSetProgress(); renderPackHistory(); renderLeaderboard(); }
+  if(id==='pack-screen') { updateStats(); renderProfile(); updateDailyUI(); renderWeeklyGoal(); renderBuyPacks(); renderChainBanner(); renderChainStatus(); renderSet2Zone(); renderSet3Zone(); renderSet4Zone(); renderSet5Zone(); renderSet6Zone(); renderSet7Zone(); renderSet8Zone(); renderSet9Zone(); renderSet10Zone(); renderSet11Zone(); renderSet12Zone(); renderSetProgress(); renderPackHistory(); renderLeaderboard(); }
   if(id==='raid-screen') renderRaidScreen();
 }
 
@@ -6407,6 +6419,12 @@ function openPack(type) {
   if (type==='loveexe' && !isSet4Unlocked()) { showToast(t('toast.set3_unlock')); return; }
   if (type==='warroom' && !isSet5Unlocked()) { showToast(t('toast.set4_unlock')); return; }
   if (type==='skillsvoid' && !isSet6Unlocked()) { showToast(t('toast.set5_unlock')); return; }
+  if (type==='founderexe' && !isSet7Unlocked()) { showToast(t('set7.desc_locked')); return; }
+  if (type==='deepstateai' && !isSet8Unlocked()) { showToast(t('set8.desc_locked')); return; }
+  if (type==='healthcaresys' && !isSet9Unlocked()) { showToast(t('set9.desc_locked')); return; }
+  if (type==='parenttrap' && !isSet10Unlocked()) { showToast(t('set10.desc_locked')); return; }
+  if (type==='climateerr' && !isSet11Unlocked()) { showToast(t('set11.desc_locked')); return; }
+  if (type==='creatornull' && !isSet12Unlocked()) { showToast(t('set12.desc_locked')); return; }
   // Check daily limit
   if (getDailyPacksRemaining() <= 0) {
     showToast(t('toast.no_packs'));
@@ -6425,14 +6443,14 @@ function openPack(type) {
   // Consume daily pack
   consumeDailyPack();
 
-  const labelKeys = {standard:'pack.survival_pack',legendary:'pack.redundancy_pack',jobless:'pack.jobless_pack',doomscroll:'pack.doomscroll_pack',loveexe:'pack.loveexe_pack',warroom:'pack.warroom_pack',skillsvoid:'pack.skillsvoid_pack'};
+  const labelKeys = {standard:'pack.survival_pack',legendary:'pack.redundancy_pack',jobless:'pack.jobless_pack',doomscroll:'pack.doomscroll_pack',loveexe:'pack.loveexe_pack',warroom:'pack.warroom_pack',skillsvoid:'pack.skillsvoid_pack',founderexe:'pack.founderexe_pack',deepstateai:'pack.deepstateai_pack',healthcaresys:'pack.healthcaresys_pack',parenttrap:'pack.parenttrap_pack',climateerr:'pack.climateerr_pack',creatornull:'pack.creatornull_pack'};
   document.getElementById('op-pack-name').textContent = t(labelKeys[type]);
   document.getElementById('legendaryBeam').classList.remove('active');
 
   // Pack tear animation
-  const PACK_COLORS = {standard:'#2196c8',legendary:'#c8a84b',jobless:'#ff4040',doomscroll:'#60c8ff',loveexe:'#ff69b4',warroom:'#ff6040',skillsvoid:'#a0a0a0'};
+  const PACK_COLORS = {standard:'#2196c8',legendary:'#c8a84b',jobless:'#ff4040',doomscroll:'#60c8ff',loveexe:'#ff69b4',warroom:'#ff6040',skillsvoid:'#a0a0a0',founderexe:'#00cc88',deepstateai:'#cc0000',healthcaresys:'#00aacc',parenttrap:'#cc88ff',climateerr:'#44aa44',creatornull:'#ff8844'};
   const packColor = PACK_COLORS[type] || '#888';
-  const packTypeKeys = {standard:'pack.survival',legendary:'pack.redundancy',jobless:'pack.jobless',doomscroll:'pack.doomscroll',loveexe:'pack.loveexe',warroom:'pack.warroom',skillsvoid:'pack.skillsvoid'};
+  const packTypeKeys = {standard:'pack.survival',legendary:'pack.redundancy',jobless:'pack.jobless',doomscroll:'pack.doomscroll',loveexe:'pack.loveexe',warroom:'pack.warroom',skillsvoid:'pack.skillsvoid',founderexe:'pack.founderexe',deepstateai:'pack.deepstateai',healthcaresys:'pack.healthcaresys',parenttrap:'pack.parenttrap',climateerr:'pack.climateerr',creatornull:'pack.creatornull'};
   const packTypeLabel = t(packTypeKeys[type]);
   const tearEl = document.getElementById('packTear');
   const tearInner = document.getElementById('packTearInner');
@@ -7452,6 +7470,12 @@ function isSet3Unlocked() { return isSet2Unlocked() && getSetCompletion('jobless
 function isSet4Unlocked() { return isSet3Unlocked() && getSetCompletion('doomscroll').pct >= 100; }
 function isSet5Unlocked() { return isSet4Unlocked() && getSetCompletion('loveexe').pct >= 100; }
 function isSet6Unlocked() { return isSet5Unlocked() && getSetCompletion('warroom').pct >= 100; }
+function isSet7Unlocked() { return isSet6Unlocked() && getSetCompletion('skillsvoid').pct >= 100; }
+function isSet8Unlocked() { return isSet7Unlocked() && getSetCompletion('founderexe').pct >= 100; }
+function isSet9Unlocked() { return isSet8Unlocked() && getSetCompletion('deepstateai').pct >= 100; }
+function isSet10Unlocked() { return isSet9Unlocked() && getSetCompletion('healthcaresys').pct >= 100; }
+function isSet11Unlocked() { return isSet10Unlocked() && getSetCompletion('parenttrap').pct >= 100; }
+function isSet12Unlocked() { return isSet11Unlocked() && getSetCompletion('climateerr').pct >= 100; }
 
 function renderSet2Zone() {
   const zone = document.getElementById('set2-zone');
@@ -7562,6 +7586,38 @@ function renderSet6Zone() {
       </div>
     </div>`;
 }
+
+const SET_ZONE_CONFIG = [
+  {num:7, id:'set7-zone', series:'founderexe', prevSeries:'skillsvoid', unlockFn:'isSet7Unlocked', color:'#00cc88', icon:'&#9671;', setKey:'set.7', packKey:'pack.founderexe', descKey:'set7', borderRgba:'rgba(0,204,136,0.3)'},
+  {num:8, id:'set8-zone', series:'deepstateai', prevSeries:'founderexe', unlockFn:'isSet8Unlocked', color:'#cc0000', icon:'&#9673;', setKey:'set.8', packKey:'pack.deepstateai', descKey:'set8', borderRgba:'rgba(204,0,0,0.3)'},
+  {num:9, id:'set9-zone', series:'healthcaresys', prevSeries:'deepstateai', unlockFn:'isSet9Unlocked', color:'#00aacc', icon:'&#9762;', setKey:'set.9', packKey:'pack.healthcaresys', descKey:'set9', borderRgba:'rgba(0,170,204,0.3)'},
+  {num:10, id:'set10-zone', series:'parenttrap', prevSeries:'healthcaresys', unlockFn:'isSet10Unlocked', color:'#cc88ff', icon:'&#9672;', setKey:'set.10', packKey:'pack.parenttrap', descKey:'set10', borderRgba:'rgba(204,136,255,0.3)'},
+  {num:11, id:'set11-zone', series:'climateerr', prevSeries:'parenttrap', unlockFn:'isSet11Unlocked', color:'#44aa44', icon:'&#9650;', setKey:'set.11', packKey:'pack.climateerr', descKey:'set11', borderRgba:'rgba(68,170,68,0.3)'},
+  {num:12, id:'set12-zone', series:'creatornull', prevSeries:'climateerr', unlockFn:'isSet12Unlocked', color:'#ff8844', icon:'&#9674;', setKey:'set.12', packKey:'pack.creatornull', descKey:'set12', borderRgba:'rgba(255,136,68,0.3)'}
+];
+
+SET_ZONE_CONFIG.forEach(function(cfg) {
+  window['renderSet'+cfg.num+'Zone'] = function() {
+    const zone = document.getElementById(cfg.id);
+    if (!zone) return;
+    const comp = getSetCompletion(cfg.prevSeries);
+    const unlocked = window[cfg.unlockFn]();
+    zone.innerHTML = `
+      <div style="width:100%;max-width:960px;margin-bottom:8px;margin-top:20px;">
+        <div style="font-family:var(--font-mono);font-size:8px;letter-spacing:3px;color:#555;margin-bottom:10px;">${t(cfg.setKey)} ${unlocked?'':'&#9632;'}</div>
+      </div>
+      <div class="pack-grid">
+        <div class="pack-card p-standard ${unlocked?'':'locked'}" ${unlocked?'onclick="openPack(\''+cfg.series+'\')"':''} style="border-color:${cfg.borderRgba};">
+          <span class="pack-icon-wrap">${unlocked?cfg.icon:'&#9632;'}</span>
+          <div class="pack-title" style="color:${unlocked?cfg.color:'#555'};">${unlocked?t(cfg.packKey):t('set.locked')}</div>
+          <div class="pack-desc">${unlocked?t(cfg.descKey+'.desc_unlocked'):t(cfg.descKey+'.desc_locked')}</div>
+          <div class="pack-meta">${unlocked?t(cfg.descKey+'.meta_unlocked'):comp.owned+' / '+comp.total+' '+t('set.cards_word')}</div>
+          ${unlocked?'<button class="pack-btn" style="color:'+cfg.color+';box-shadow:0 0 8px '+cfg.borderRgba+';">'+t('pack.open_btn')+'</button>':''}
+          ${!unlocked?'<div class="pack-lock-bar"><div class="pack-lock-fill" style="width:'+comp.pct+'%"></div></div><div class="pack-lock-info">'+comp.pct+t('set.pct_complete')+'</div>':''}
+        </div>
+      </div>`;
+  };
+});
 
 function renderProfile() {
   if (S.pulls===0){document.getElementById('profile-zone').innerHTML='';return;}
@@ -8024,6 +8080,8 @@ function renderRaidScreen() {
   else if (raidSetFilter==='PARENTTRAP') ownedCards = ownedCards.filter(c=>c.series==='parenttrap');
   else if (raidSetFilter==='CLIMATEERR') ownedCards = ownedCards.filter(c=>c.series==='climateerr');
   else if (raidSetFilter==='CREATORNULL') ownedCards = ownedCards.filter(c=>c.series==='creatornull');
+  const RARITY_ORDER = {MYTHIC:0, LEGENDARY:1, RARE:2, UNCOMMON:3, COMMON:4, JUNK:5};
+  ownedCards.sort((a,b) => (RARITY_ORDER[a.rarity]??9) - (RARITY_ORDER[b.rarity]??9));
   ownedCards.forEach(card => {
     const selected = raidTeam.includes(card.id);
     const disabled = !selected && raidTeam.length >= 5;
@@ -8224,7 +8282,7 @@ function openRaidRewardPack() {
   session.currentIndex = 0;
   S.packs++;
   S.newCards.clear();
-  const setLabels = {standard:'SURVIVAL',legendary:'REDUNDANCY',jobless:'JOBLESS.AI',doomscroll:'DOOMSCROLL',loveexe:'LOVE.EXE',warroom:'WAR ROOM',skillsvoid:'SKILLS.VOID'};
+  const setLabels = {standard:'SURVIVAL',legendary:'REDUNDANCY',jobless:'JOBLESS.AI',doomscroll:'DOOMSCROLL',loveexe:'LOVE.EXE',warroom:'WAR ROOM',skillsvoid:'SKILLS.VOID',founderexe:'FOUNDER.EXE',deepstateai:'DEEP STATE AI',healthcaresys:'HEALTHCARE.SYS',parenttrap:'PARENT TRAP',climateerr:'CLIMATE.ERR',creatornull:'CREATOR.NULL'};
   document.getElementById('op-pack-name').textContent = 'RAID REWARD: ' + (setLabels[rewardSet] || rewardSet.toUpperCase());
   document.getElementById('legendaryBeam').classList.remove('active');
   renderCardDeck();
@@ -8487,6 +8545,12 @@ renderSet3Zone();
 renderSet4Zone();
 renderSet5Zone();
 renderSet6Zone();
+renderSet7Zone();
+renderSet8Zone();
+renderSet9Zone();
+renderSet10Zone();
+renderSet11Zone();
+renderSet12Zone();
 renderSetProgress();
 renderPackHistory();
 renderLeaderboard();
