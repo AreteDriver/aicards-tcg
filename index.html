@@ -38,8 +38,8 @@ button:focus-visible, .cta-btn:focus-visible, .nav-pill:focus-visible { outline:
   --gold-dark: #6b5520;
   --purple: #9b59d0;
   --blue: #2196c8;
-  --pink: #d44490;
-  --gray: #667080;
+  --pink: #e060a0;
+  --gray: #8090a0;
   --white: #e8e0d0;
   --font-title: 'Cinzel', serif;
   --font-display: 'Cinzel Decorative', serif;
@@ -207,8 +207,8 @@ body::before {
 .card-name.legendary { color: #f0d060; }
 .card-name.rare      { color: #d090ff; }
 .card-name.uncommon  { color: #60c8f8; }
-.card-name.common    { color: #f080c0; }
-.card-name.junk      { color: #90a8b8; }
+.card-name.common    { color: #f590cc; }
+.card-name.junk      { color: #a0b0c0; }
 
 /* Karpathy Score orb */
 .kscore-orb {
@@ -2473,8 +2473,8 @@ body::before {
 .textbox-divider.legendary { background:#c8a84b; }
 .textbox-divider.rare      { background:#9b59d0; }
 .textbox-divider.uncommon  { background:#2196c8; }
-.textbox-divider.common    { background:#d44490; }
-.textbox-divider.junk      { background:#667080; }
+.textbox-divider.common    { background:#e060a0; }
+.textbox-divider.junk      { background:#8090a0; }
 
 /* Flavor text */
 .card-flavor {
@@ -2528,8 +2528,8 @@ body::before {
 .card-ptbox.legendary { border-color:#c8a84b; background:rgba(0,0,0,0.7); color:#f0d060; }
 .card-ptbox.rare      { border-color:#9b59d0; background:rgba(0,0,0,0.7); color:#c090f0; }
 .card-ptbox.uncommon  { border-color:#2196c8; background:rgba(0,0,0,0.7); color:#60c0f0; }
-.card-ptbox.common    { border-color:#d44490; background:rgba(0,0,0,0.7); color:#f070b0; }
-.card-ptbox.junk      { border-color:#667080; background:rgba(0,0,0,0.7); color:#90a0b0; }
+.card-ptbox.common    { border-color:#e060a0; background:rgba(0,0,0,0.7); color:#f590cc; }
+.card-ptbox.junk      { border-color:#8090a0; background:rgba(0,0,0,0.7); color:#a0b0c0; }
 .card-ptbox .pt-sep   { opacity:0.4; }
 .card-ptbox .pt-lbl   { font-size:0.6em; opacity:0.45; text-transform:uppercase; letter-spacing:0.3px; margin:0 1px; font-weight:700; }
 
@@ -3792,6 +3792,18 @@ setTimeout(function(){var el=document.getElementById('loading-screen');if(el){el
       <div id="card-of-day" class="card-of-day" style="display:none;"></div>
       <button class="landing-open-btn" onclick="enterFromLanding('pack-screen')" data-i18n="landing.open_packs">▶ OPEN PACKS</button>
       <button class="landing-coll-link" onclick="enterFromLanding('collection-screen')" data-i18n="landing.view_collection">VIEW COLLECTION</button>
+    </div>
+  </div>
+
+  <!-- TUTORIAL OVERLAY -->
+  <div id="tutorial-overlay" style="display:none;position:fixed;inset:0;z-index:600;background:rgba(0,0,0,0.92);align-items:center;justify-content:center;padding:24px;">
+    <div style="max-width:480px;width:100%;text-align:center;">
+      <div id="tutorial-content"></div>
+      <div style="display:flex;gap:10px;justify-content:center;margin-top:24px;">
+        <button id="tutorial-back" class="cta-btn sec" onclick="tutorialNav(-1)" style="display:none;">BACK</button>
+        <button id="tutorial-next" class="cta-btn" onclick="tutorialNav(1)">NEXT</button>
+      </div>
+      <button onclick="closeTutorial()" style="position:absolute;top:20px;right:20px;font-family:var(--font-mono);font-size:12px;color:#555;background:none;border:1px solid #333;padding:4px 12px;cursor:pointer;">SKIP</button>
     </div>
   </div>
 
@@ -6028,7 +6040,7 @@ const RARITY_ORDER = ["MYTHIC","LEGENDARY","RARE","UNCOMMON","COMMON","JUNK"];
 const WEIGHTS = {MYTHIC:1,LEGENDARY:300,RARE:1000,UNCOMMON:2200,COMMON:4000,JUNK:2500};
 
 const RARITY_COLORS = {
-  MYTHIC:"#ffffff", LEGENDARY:"#c8a84b", RARE:"#9b59d0", UNCOMMON:"#2196c8", COMMON:"#d44490", JUNK:"#667080"
+  MYTHIC:"#ffffff", LEGENDARY:"#c8a84b", RARE:"#9b59d0", UNCOMMON:"#2196c8", COMMON:"#e060a0", JUNK:"#8090a0"
 };
 
 // ═══════════════════════════════════════
@@ -6395,6 +6407,86 @@ function buildPack(type) {
   }
 })();
 
+// ═══════════════════════════════════════
+// FIRST-VISIT TUTORIAL
+// ═══════════════════════════════════════
+let tutorialStep = 0;
+const TUTORIAL_STEPS = [
+  {
+    title: 'WELCOME TO AI CARDS',
+    body: 'In 2030, the algorithm took the jobs. These cards tell the story of who survived — and who didn\'t.',
+    icon: '🃏'
+  },
+  {
+    title: 'OPEN PACKS',
+    body: 'You get <strong>5 free packs per day</strong>. Each pack has 5 cards. Tap to reveal them one by one.',
+    icon: '📦'
+  },
+  {
+    title: 'RARITY MATTERS',
+    body: '<span style="color:#f080c0">COMMON</span> · <span style="color:#4a90d9">UNCOMMON</span> · <span style="color:#9b59d0">RARE</span> · <span style="color:#c8a84b">LEGENDARY</span> · <span style="color:#fff">MYTHIC</span><br><br>Higher rarity = harder to pull. Mythics are 1 in 10,000.',
+    icon: '✨'
+  },
+  {
+    title: 'KARPATHY SCORE',
+    body: 'Each card has a <strong>K-Score (0-10)</strong> measuring AI displacement risk. 10 = fully automated. 0 = irreplaceable.',
+    icon: '⚡'
+  },
+  {
+    title: 'PITY SYSTEM',
+    body: 'No Legendary after 10 packs? The pity system guarantees one. Your pity counter is visible on the pack screen.',
+    icon: '🎯'
+  },
+  {
+    title: 'DAILY GOALS & RAIDS',
+    body: 'Complete daily missions for bonus packs. Fight hourly raid bosses with your best cards for rewards.',
+    icon: '⚔️'
+  },
+  {
+    title: 'COLLECT THEM ALL',
+    body: '294 cards across 12 sets. Complete each set to unlock the next. Your survival starts now.',
+    icon: '🔓'
+  }
+];
+
+function showTutorial() {
+  tutorialStep = 0;
+  document.getElementById('tutorial-overlay').style.display = 'flex';
+  renderTutorialStep();
+}
+
+function renderTutorialStep() {
+  const step = TUTORIAL_STEPS[tutorialStep];
+  document.getElementById('tutorial-content').innerHTML =
+    '<div style="font-size:48px;margin-bottom:16px;">' + step.icon + '</div>' +
+    '<div style="font-family:var(--font-display);font-size:20px;color:var(--red);letter-spacing:4px;margin-bottom:12px;">' + step.title + '</div>' +
+    '<div style="font-family:var(--font-body);font-size:14px;color:#aaa;line-height:1.8;">' + step.body + '</div>' +
+    '<div style="font-family:var(--font-mono);font-size:9px;color:#333;margin-top:16px;letter-spacing:2px;">' + (tutorialStep + 1) + ' / ' + TUTORIAL_STEPS.length + '</div>';
+  document.getElementById('tutorial-back').style.display = tutorialStep > 0 ? '' : 'none';
+  document.getElementById('tutorial-next').textContent = tutorialStep < TUTORIAL_STEPS.length - 1 ? 'NEXT' : 'START COLLECTING';
+}
+
+function tutorialNav(dir) {
+  tutorialStep += dir;
+  if (tutorialStep >= TUTORIAL_STEPS.length) {
+    closeTutorial();
+    return;
+  }
+  if (tutorialStep < 0) tutorialStep = 0;
+  renderTutorialStep();
+}
+
+function closeTutorial() {
+  document.getElementById('tutorial-overlay').style.display = 'none';
+  localStorage.setItem('aicards_tutorial_done', '1');
+}
+
+function checkFirstVisit() {
+  if (!localStorage.getItem('aicards_tutorial_done')) {
+    showTutorial();
+  }
+}
+
 function enterFromLanding(target) {
   const landing = document.getElementById('landing-screen');
   landing.classList.add('fade-out');
@@ -6403,6 +6495,7 @@ function enterFromLanding(target) {
     showScreen(target);
     const fixedLang = document.getElementById('lang-selector');
     if (fixedLang) fixedLang.style.display = '';
+    checkFirstVisit();
   }, 500);
 }
 
@@ -6637,7 +6730,7 @@ function updateDeckUI() {
   let stripHTML = '';
   session.pack.forEach((c, i) => {
     if (session.revealed[i]) {
-      const col = RARITY_COLORS[c.rarity] || '#667080';
+      const col = RARITY_COLORS[c.rarity] || '#8090a0';
       const active = i === session.currentIndex ? 'transform:scale(1.2) translateY(-3px);box-shadow:0 0 8px '+col+';' : '';
       stripHTML += `<div class="pack-summary-mini" style="border-color:${col};background:${col}11;${active}" onclick="jumpToCard(${i})">${c.symbol}</div>`;
     }
@@ -7807,7 +7900,7 @@ function renderProfile() {
   if(sp>=70){name=t('profile.escape_velocity');col='#c8a84b';desc=t('profile.escape_desc');}
   else if(sp>=50){name=t('profile.seeker');col='#9b59d0';desc=t('profile.seeker_desc');}
   else if(sp>=30){name=t('profile.ubi');col='#2196c8';desc=t('profile.ubi_desc');}
-  else{name=t('profile.integrated');col='#d44490';desc=t('profile.integrated_desc');}
+  else{name=t('profile.integrated');col='#e060a0';desc=t('profile.integrated_desc');}
 
   document.getElementById('profile-zone').innerHTML=`
     <div class="profile-box">
@@ -7821,8 +7914,8 @@ function renderProfile() {
         </div>
         <div class="meter">
           <div class="meter-label">${t('profile.dependency')}</div>
-          <div class="meter-track"><div class="meter-fill" style="width:${dp}%;background:#d44490;"></div></div>
-          <div class="meter-pct" style="color:#d44490;">${dp}%</div>
+          <div class="meter-track"><div class="meter-fill" style="width:${dp}%;background:#e060a0;"></div></div>
+          <div class="meter-pct" style="color:#e060a0;">${dp}%</div>
         </div>
       </div>
       <div class="profile-desc">${desc}</div>
@@ -7847,15 +7940,51 @@ function updateRevealActionRow(index) {
   if (!card) { row.style.display = 'none'; return; }
   row.style.display = 'flex';
   row.innerHTML = '<button class="reveal-action-btn" onclick="event.stopPropagation();shareCurrentCard();" title="Share">&#8599;</button>' +
+    '<button class="reveal-action-btn" onclick="event.stopPropagation();downloadCurrentCard();" title="Download">&#8681;</button>' +
     '<button class="reveal-action-btn" onclick="event.stopPropagation();showCardModal(\'' + card.id + '\');" title="Inspect">&#9670;</button>';
 }
 
-function shareCurrentCard() {
+async function downloadCurrentCard() {
+  const card = session.pack[session.currentIndex];
+  if (!card) return;
+  const el = document.querySelectorAll('.deck-card')[session.currentIndex];
+  if (!el) return;
+  try {
+    const canvas = await html2canvas(el, { backgroundColor: '#0a0a0a', scale: 2, logging: false });
+    const link = document.createElement('a');
+    link.download = 'aicards-' + card.id + '.png';
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+    showToast('Card image saved!');
+    markDailyShare();
+    updateDailyUI();
+  } catch(e) { showToast('Screenshot failed'); }
+}
+
+async function shareCurrentCard() {
   const card = session.pack[session.currentIndex];
   if (!card) return;
   const cName = cardT(card.id, 'name') || card.name;
   const text = t('misc.i_pulled', cName, rarityT(card.rarity));
-  navigator.clipboard.writeText(text).then(function() {
+
+  // Try image share first
+  const el = document.querySelectorAll('.deck-card')[session.currentIndex];
+  if (el && navigator.share && navigator.canShare) {
+    try {
+      const canvas = await html2canvas(el, { backgroundColor: '#0a0a0a', scale: 2, logging: false });
+      const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+      const file = new File([blob], 'aicards-' + card.id + '.png', { type: 'image/png' });
+      if (navigator.canShare({ files: [file] })) {
+        await navigator.share({ text: text + '\naicards.fun', files: [file] });
+        markDailyShare();
+        updateDailyUI();
+        return;
+      }
+    } catch(e) { /* fall through to text share */ }
+  }
+
+  // Fallback: text share
+  navigator.clipboard.writeText(text + '\naicards.fun').then(function() {
     showToast(t('toast.card_copied'));
     markDailyShare();
     updateDailyUI();
@@ -7933,7 +8062,7 @@ function renderPackHistory() {
     html += '<div class="pack-history-entry">';
     html += '<span style="font-family:var(--font-mono);font-size:7px;color:#444;width:50px;">' + timeLabel + '</span>';
     entry.cards.forEach(function(c) {
-      var col = RARITY_COLORS[c.rarity] || '#667080';
+      var col = RARITY_COLORS[c.rarity] || '#8090a0';
       html += '<div class="pack-history-mini" style="border-color:' + col + ';background:' + col + '11;">' + c.symbol + '</div>';
     });
     html += '</div>';
@@ -7953,7 +8082,7 @@ function renderCardOfDay() {
   for (var i = 0; i < dateStr.length; i++) seed = ((seed << 5) - seed) + dateStr.charCodeAt(i);
   seed = Math.abs(seed);
   var card = CARDS[seed % CARDS.length];
-  var col = RARITY_COLORS[card.rarity] || '#667080';
+  var col = RARITY_COLORS[card.rarity] || '#8090a0';
   var flavorLine = card.flavor || '';
   // Take first sentence of flavor
   var firstSentence = flavorLine.split('.')[0] + '.';
@@ -8265,7 +8394,7 @@ function renderRaidScreen() {
   ownedCards.forEach(card => {
     const selected = raidTeam.includes(card.id);
     const disabled = !selected && raidTeam.length >= 5;
-    const col = RARITY_COLORS[card.rarity] || '#667080';
+    const col = RARITY_COLORS[card.rarity] || '#8090a0';
     const cName = cardT(card.id,'name') || card.name;
     const borderCol = selected ? 'var(--red)' : col + '66';
     gridHTML += `<div class="raid-card-thumb ${selected?'selected':''} ${disabled?'disabled':''}" style="border-color:${borderCol};color:${col};" onclick="toggleRaidCard('${card.id}')">
@@ -8431,7 +8560,7 @@ function updateRaidTeamUI() {
       const selected = raidTeam.includes(id);
       const disabled = !selected && raidTeam.length >= 5;
       const card = CARDS.find(c=>c.id===id);
-      const col = card ? (RARITY_COLORS[card.rarity] || '#667080') : '#667080';
+      const col = card ? (RARITY_COLORS[card.rarity] || '#8090a0') : '#8090a0';
       thumb.classList.toggle('selected', selected);
       thumb.classList.toggle('disabled', disabled);
       thumb.style.borderColor = selected ? 'var(--red)' : col + '66';
