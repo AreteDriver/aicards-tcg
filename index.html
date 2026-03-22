@@ -3865,6 +3865,7 @@ setTimeout(function(){var el=document.getElementById('loading-screen');if(el){el
         <div class="mission-row"><span class="mission-label">Defeat 1 raid boss</span><span class="mission-progress" id="dm-raid">0/1</span></div>
         <div class="mission-row"><span class="mission-label">Log in today</span><span class="mission-progress done" id="dm-login">1/1</span></div>
         <div class="mission-row"><span class="mission-label">Share 1 card</span><span class="mission-progress" id="dm-share">0/1</span></div>
+        <div id="daily-reward-row" style="display:none;text-align:center;margin-top:8px;"></div>
       </div>
       <div class="daily-missions" id="weekly-goal" style="margin-top:12px;"></div>
       <div class="daily-missions" id="pack-history-zone" style="margin-top:12px;display:none;"></div>
@@ -6974,6 +6975,19 @@ function checkMissionCompletions(ds) {
     markDayComplete();
     renderWeeklyGoal();
   }
+  // Daily reward claim button
+  const drRow = document.getElementById('daily-reward-row');
+  if (drRow) {
+    if (Object.values(checks).every(v=>v) && !isDailyRewardClaimed()) {
+      drRow.style.display = '';
+      drRow.innerHTML = '<button class="cta-btn" onclick="claimDailyReward()" style="font-size:11px;padding:8px 16px;">CLAIM 1 RANDOM PACK</button>';
+    } else if (isDailyRewardClaimed()) {
+      drRow.style.display = '';
+      drRow.innerHTML = '<div style="font-family:var(--font-mono);font-size:9px;color:#4a4;letter-spacing:2px;">DAILY REWARD CLAIMED</div>';
+    } else {
+      drRow.style.display = 'none';
+    }
+  }
 }
 
 // ═══════════════════════════════════════
@@ -7021,6 +7035,39 @@ function markDayComplete() {
   }
 }
 
+function isDailyRewardClaimed() {
+  return !!localStorage.getItem('aicards_daily_reward_' + getTodayKey());
+}
+
+function claimDailyReward() {
+  if (isDailyRewardClaimed()) return;
+  localStorage.setItem('aicards_daily_reward_' + getTodayKey(), '1');
+  const rewardSet = getRandomPackReward();
+  session.isRewardPack = true;
+  openRaidRewardPack2(rewardSet);
+  showToast('Daily reward: 1 random pack!');
+}
+
+function openRaidRewardPack2(setType) {
+  session.pack = buildPack(setType);
+  session.revealed = new Array(5).fill(false);
+  session.type = setType;
+  session.isRewardPack = true;
+  session.currentIndex = 0;
+  S.packs++;
+  S.newCards.clear();
+  const setLabels = {standard:'SURVIVAL',legendary:'REDUNDANCY',jobless:'JOBLESS.AI',doomscroll:'DOOMSCROLL',loveexe:'LOVE.EXE',warroom:'WAR ROOM',skillsvoid:'SKILLS.VOID',founderexe:'FOUNDER.EXE',deepstateai:'DEEP STATE AI',healthcaresys:'HEALTHCARE.SYS',parenttrap:'PARENT TRAP',climateerr:'CLIMATE.ERR',creatornull:'CREATOR.NULL'};
+  document.getElementById('op-pack-name').textContent = 'DAILY REWARD: ' + (setLabels[setType] || setType.toUpperCase());
+  document.getElementById('legendaryBeam').classList.remove('active');
+  renderCardDeck();
+  showScreen('opening-screen');
+  const tearEl = document.getElementById('packTear');
+  tearEl.classList.add('tearing');
+  sfxPackRip();
+  setTimeout(() => { tearEl.classList.remove('tearing'); setTimeout(() => { showCardFaceUp(0); updateDeckUI(); save(); }, 500); }, 1400);
+  updateStats();
+}
+
 function getWeekStreak() {
   return getWeekState().completedDays.length;
 }
@@ -7059,10 +7106,10 @@ function renderWeeklyGoal() {
 
   // Weekly goal metrics
   const goals = [
-    {label:'Pull 70 cards', cur:Math.min(S.pulls,70), max:70},
+    {label:'Pull 20 cards', cur:Math.min(S.pulls,20), max:20},
     {label:'Defeat 7 raid bosses', cur:Math.min(raidsWeek,7), max:7},
     {label:'Log in 5 days', cur:Math.min(streak,5), max:5},
-    {label:'Pull 3 Legendaries', cur:Math.min(S.legendaries,3), max:3},
+    {label:'Pull 1 Legendary', cur:Math.min(S.legendaries,1), max:1},
     {label:'Share 3 cards', cur:Math.min(sharesWeek,3), max:3}
   ];
   const allDone = goals.every(g=>g.cur>=g.max);
