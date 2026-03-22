@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-AI CARDS — 2030 Survival Edition. A collectible card experience about AI displacement and the humans who survive automation. Gacha-style pack opening with 292 cards across 6 rarities and 12 sets. Cards are NFTs on Sui blockchain — tradeable, sellable, collectible on-chain. Minting API live. Live at **aicards.fun**.
+AI CARDS — 2030 Survival Edition. A collectible card experience about AI displacement and the humans who survive automation. Gacha-style pack opening with 294 cards across 6 rarities and 12 sets. Cards are NFTs on Sui blockchain — tradeable, sellable, collectible on-chain. Minting API live. Live at **aicards.fun**.
 
 ## Current State
 
@@ -10,10 +10,10 @@ AI CARDS — 2030 Survival Edition. A collectible card experience about AI displ
 - **Hosting**: Vercel (auto-deploy from GitHub main branch)
 - **Domain**: aicards.fun (Vercel DNS)
 - **Cards**: 292 total across 12 sets, 6 rarities (MYTHIC, LEGENDARY, RARE, UNCOMMON, COMMON, JUNK)
-- **Card art**: 290/292 cards have DALL-E 3 generated PNG art (black & white underground comix style)
+- **Card art**: 292/294 cards have DALL-E 3 generated PNG art (black & white underground comix style)
 - **Blockchain**: Sui testnet — Package `0x99f91c55ad24367b9fba1000bf43a5e571c2ae096c906fdf2e78fd51243f38b2`
 - **On-chain objects**: AdminCap `0xcfeaad94ff0f5136b037f3482ff68fc00cacc5149b3db8dfe011e239644e4935`
-- **Minting API**: `https://aicards-mint.fly.dev` (FastAPI on Fly.io, 292 cards)
+- **Minting API**: `https://aicards-mint.fly.dev` (FastAPI on Fly.io, 294 cards)
 
 ## Architecture
 
@@ -25,7 +25,7 @@ aicards-tcg/
 │   ├── ja.json / ko.json       # Japanese, Korean
 │   ├── es.json / pt.json       # Spanish, Portuguese
 │   └── zh.json                 # Chinese (Simplified)
-├── images/cards/               # 290 DALL-E 3 card art PNGs (b&w comix style)
+├── images/cards/               # 292 DALL-E 3 card art PNGs (b&w comix style)
 ├── images/generate_cards.py    # DALL-E 3 batch art generator
 ├── contracts/aicards/          # Sui Move smart contracts
 │   ├── Move.toml               # Package manifest
@@ -35,7 +35,7 @@ aicards-tcg/
 │   └── tests/payment_tests.move # 5 tests (buy, change, withdraw, price, auth)
 ├── server/                     # Minting API (FastAPI on Fly.io)
 │   ├── main.py                 # POST /mint/pack, GET /health, GET /cards/pool
-│   ├── card_data.py            # All 292 cards with rarity weights
+│   ├── card_data.py            # All 294 cards with rarity weights
 │   ├── Dockerfile              # Python 3.12 + Sui CLI binary
 │   ├── fly.toml                # Fly.io config (aicards-mint)
 │   └── start.sh                # Sui keystore injection from secrets
@@ -49,18 +49,18 @@ aicards-tcg/
 
 | Set | Series Key | Cards | Mythics | Unlock Condition |
 |-----|-----------|-------|---------|-----------------|
-| 2030 Survival | (none) | 49 | 5 | Always open |
+| 2030 Survival | (none) | 49 | 0 | Always open |
 | Jobless.ai | `jobless` | 25 | 5 | Set 1 100% complete |
 | DOOMSCROLL | `doomscroll` | 22 | 5 | Set 2 100% complete |
-| LOVE.EXE | `loveexe` | 21 | 5 | Set 3 100% complete |
+| LOVE.EXE | `loveexe` | 22 | 5 | Set 3 100% complete |
 | WAR ROOM | `warroom` | 22 | 5 | Set 4 100% complete |
-| SKILLS.VOID | `skillsvoid` | 21 | 5 | Set 5 100% complete |
-| FOUNDER.EXE | `founderexe` | 22 | 3 | Set 6 100% complete |
-| DEEP STATE AI | `deepstateai` | 22 | 3 | Set 7 100% complete |
-| HEALTHCARE.SYS | `healthcaresys` | 22 | 3 | Set 8 100% complete |
-| PARENT TRAP | `parenttrap` | 22 | 3 | Set 9 100% complete |
-| CLIMATE.ERR | `climateerr` | 22 | 3 | Set 10 100% complete |
-| CREATOR.NULL | `creatornull` | 22 | 3 | Set 11 100% complete |
+| SKILLS.VOID | `skillsvoid` | 22 | 5 | Set 5 100% complete |
+| FOUNDER.EXE | `founderexe` | 22 | 5 | Set 6 100% complete |
+| DEEPSTATE.AI | `deepstateai` | 22 | 5 | Set 7 100% complete |
+| HEALTHCARE.SYS | `healthcaresys` | 22 | 5 | Set 8 100% complete |
+| PARENT.TRAP | `parenttrap` | 22 | 5 | Set 9 100% complete |
+| CLIMATE.ERR | `climateerr` | 22 | 5 | Set 10 100% complete |
+| CREATOR.NULL | `creatornull` | 22 | 5 | Set 11 100% complete |
 
 ## Pack Types
 
@@ -153,7 +153,7 @@ This is a social commentary piece disguised as a card game. The tone is dark hum
 - **Trading**: Cards have `store` ability — native Sui transfers + Kiosk marketplace compatible
 - **Mint flow**: Server-side minting via AdminCap (rarity determined server-side)
 - **Payment**: Treasury shared object, buy_pack() accepts SUI, change returned on overpay
-- **Minting API**: `aicards-mint.fly.dev` — POST /mint/pack, 292 cards, all 12 sets
+- **Minting API**: `aicards-mint.fly.dev` — POST /mint/pack, 294 cards, all 12 sets
 - **Move tests**: 9 passing (4 card + 5 payment)
 
 ## Dependencies
