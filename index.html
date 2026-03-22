@@ -3234,7 +3234,6 @@ body::before {
 
 /* Flip animation for deck card */
 .deck-card .card { transition:transform 0.7s cubic-bezier(.4,0,.2,1); }
-.deck-card.revealed .card { transform:rotateY(180deg); }
 
 /* Reveal pop */
 .deck-card.just-revealed { animation:revealPop 0.5s ease; }
@@ -6573,57 +6572,6 @@ function advanceCard() {
   }
 }
 
-function revealDeckCard(index) {
-  if (index !== session.currentIndex) return;
-  if (session.revealed[index]) return;
-  session.revealed[index] = true;
-
-  const card = session.pack[index];
-  const el = document.querySelectorAll('.deck-card')[index];
-
-  sfxFlip();
-  el.classList.add('revealed');
-
-  setTimeout(() => {
-    el.classList.add('just-revealed');
-    setTimeout(() => el.classList.remove('just-revealed'), 500);
-    if (card.rarity === 'MYTHIC') { sfxLegendary(); sfxLegendary(); document.body.classList.add('shake'); setTimeout(()=>document.body.classList.remove('shake'),500); }
-    else if (card.rarity === 'LEGENDARY' || card.id === 'speciation-pressure') sfxLegendary();
-    else if (card.rarity === 'RARE') sfxRare();
-  }, 350);
-
-  triggerEffect(card, el);
-
-  // Track stats
-  S.pulls++;
-  const isNew = !collectionHas(card.id);
-  collectionAdd(card.id);
-  if (isNew) {
-    S.newCards.add(card.id);
-    if (card.rarity==='LEGENDARY' || card.rarity==='MYTHIC') S.legendaries++;
-  }
-  if (card.rarity==='LEGENDARY' || card.rarity==='MYTHIC') {
-    S.pityCounter = 0;
-    markDailyLegendary();
-  }
-  // Track daily rarities
-  markDailyRarity(card.rarity);
-  if (card.rarity==='MYTHIC') S.sov += 10;
-  else if (['LEGENDARY','RARE'].includes(card.rarity) && card.category.toLowerCase().includes('human')) S.sov += card.rarity==='LEGENDARY'?3:1;
-  if (card.category==='AI Product') S.dep += 2;
-  save();
-  updateStats();
-  updateDailyUI();
-
-  if (isNew) {
-    const badge = document.createElement('div');
-    badge.className = 'new-badge';
-    badge.textContent = t('opening.new_badge');
-    el.appendChild(badge);
-  }
-
-  updateDeckUI();
-}
 
 function deckNav(dir) {
   const newIdx = session.currentIndex + dir;
@@ -6737,9 +6685,8 @@ function revealAllDeck() {
   for (let i = 0; i < 5; i++) {
     if (!session.revealed[i]) {
       setTimeout(() => {
-        session.currentIndex = i;
-        updateDeckPositions();
-        revealDeckCard(i);
+        showCardFaceUp(i);
+        updateDeckUI();
       }, delay);
       delay += 300;
     }
@@ -6862,9 +6809,10 @@ document.addEventListener('keydown', (e) => {
     if (e.key === ' ' || e.key === 'Enter') {
       e.preventDefault();
       if (!session.revealed[session.currentIndex]) {
-        revealDeckCard(session.currentIndex);
+        showCardFaceUp(session.currentIndex);
+        updateDeckUI();
       } else if (session.currentIndex < 4) {
-        deckNav(1);
+        advanceCard();
       }
     }
     if (e.key === 'ArrowLeft') { e.preventDefault(); deckNav(-1); }
