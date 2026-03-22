@@ -6642,7 +6642,7 @@ function updateDeckUI() {
         <div class="reveal-hint" style="font-family:var(--font-mono);font-size:9px;letter-spacing:2px;color:#555;">${t('opening.pack_complete')} · ${newText}</div>
         <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:12px;">
           <button class="cta-btn" onclick="openNextPack()">${t('opening.next_pack')}</button>
-          <button class="cta-btn sec" onclick="showScreen('pack-screen')">${t('opening.menu')}</button>
+          <button class="cta-btn sec" onclick="showScreen(session.isRewardPack ? 'raid-screen' : 'pack-screen')">${session.isRewardPack ? t('raid.back') : t('opening.menu')}</button>
           ${chainBtn}
         </div>
         <div id="mint-status" style="margin-top:8px;"></div>
