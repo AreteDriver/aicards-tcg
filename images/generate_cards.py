@@ -277,7 +277,7 @@ CARD_SCENES: dict[str, str] = {
     # ── SET 7 FOUNDER.EXE RARES ──
     "fe-pivot": "A weathervane on a rooftop spinning wildly, each direction labeled with a different business model. Below it, the same pitch deck is being reprinted on a copy machine, only the title page changing each time. A waste bin overflows with previous versions. The weathervane never stops.",
     "fe-pitch-deck": "An enormous presentation screen showing a graph with a hockey-stick curve shooting into the stratosphere. In the audience, one person sits alone — it is the founder's parent, squinting at the numbers. The actual revenue line is a barely visible dot at the bottom of the chart.",
-    "fe-saas-graveyard": "A vast cemetery stretching to the horizon, each headstone shaped like a laptop with a different app logo on its screen. Fresh graves are being dug in the foreground while in the background, a conveyor belt drops new headstones into pre-dug holes. Only a handful of headstones glow faintly.",
+    "fe-saas-graveyard": "An enormous junkyard stretching to the horizon, piled high with discarded laptop computers and cracked phone screens, each showing a different defunct app landing page. A conveyor belt at the edge drops new devices onto the pile. In the foreground, a single laptop still glows faintly, its battery at 1 percent.",
     "fe-term-sheet": "A towering legal document unfurling from a conference table like a scroll, so long it spills out the window and down the side of the building. A founder at the table signs the bottom page with eyes closed. Hidden in the middle pages, a tiny clause glows ominously red.",
 
     # ── SET 7 FOUNDER.EXE UNCOMMONS ──
