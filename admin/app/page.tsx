@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
+import { ConnectButton, useCurrentAccount, useSignPersonalMessage } from '@mysten/dapp-kit';
 
 interface Metrics {
   dau: number;
@@ -224,34 +225,25 @@ export default function AdminDashboard() {
 
 function LoginScreen({ onLogin }: { onLogin: (token: string) => void }) {
   const [status, setStatus] = useState('');
+  const account = useCurrentAccount();
+  const { mutateAsync: signMessage } = useSignPersonalMessage();
 
-  async function handleLogin() {
-    setStatus('Connecting wallet...');
+  async function handleSign() {
+    if (!account) {
+      setStatus('Connect your wallet first');
+      return;
+    }
+    setStatus('Signing...');
     try {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const wallets = (window as any).__suiWallets__;
-      if (!wallets || wallets.length === 0) {
-        setStatus('No Sui wallet detected. Install Slush or Sui Wallet.');
-        return;
-      }
-      const wallet = wallets[0];
-      await wallet.connect();
-      const accounts = await wallet.getAccounts();
-      if (!accounts || accounts.length === 0) {
-        setStatus('No accounts found');
-        return;
-      }
-      const address = accounts[0].address;
       const message = `AICards Admin Login - ${Date.now()}`;
-      const { signature } = await wallet.signPersonalMessage({
+      const { signature } = await signMessage({
         message: new TextEncoder().encode(message),
-        account: accounts[0],
       });
       setStatus('Verifying...');
       const res = await fetch('/api/admin/auth', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ address, signature, message }),
+        body: JSON.stringify({ address: account.address, signature, message }),
       });
       if (!res.ok) {
         setStatus('Not authorized — wallet does not match admin address');
@@ -269,12 +261,20 @@ function LoginScreen({ onLogin }: { onLogin: (token: string) => void }) {
       <div className="text-center">
         <h1 className="text-3xl font-bold tracking-[8px] text-[#cc1111] mb-2">AICARDS</h1>
         <p className="text-xs font-mono tracking-[4px] text-[#555] mb-12">ADMIN DASHBOARD</p>
-        <button
-          onClick={handleLogin}
-          className="px-8 py-3 border border-[#c8a84b] text-[#c8a84b] font-mono text-sm tracking-[3px] hover:bg-[#c8a84b] hover:text-black transition-colors"
-        >
-          CONNECT WALLET
-        </button>
+        <div className="mb-6">
+          <ConnectButton />
+        </div>
+        {account && (
+          <div>
+            <p className="text-xs font-mono text-[#555] mb-4">{account.address.slice(0, 8)}...{account.address.slice(-6)}</p>
+            <button
+              onClick={handleSign}
+              className="px-8 py-3 border border-[#c8a84b] text-[#c8a84b] font-mono text-sm tracking-[3px] hover:bg-[#c8a84b] hover:text-black transition-colors"
+            >
+              SIGN IN AS ADMIN
+            </button>
+          </div>
+        )}
         {status && <p className="mt-6 text-xs font-mono text-[#888]">{status}</p>}
       </div>
     </div>
