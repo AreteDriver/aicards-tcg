@@ -7263,34 +7263,56 @@ const TREASURY_ID = '0x586cbc4af1eca3cef00e258ad242ddc0d7e4e99ce7a53f18fd60f28a4
 const SUI_RPC = 'https://fullnode.testnet.sui.io:443';
 const PACK_PRICE_MIST = 500_000_000; // 0.5 SUI
 
-// Wallet Standard integration
+// Wallet Standard integration (supports Slush, Sui Wallet, etc.)
 let _suiWallet = null;
 let _walletAccount = null;
+const _registeredWallets = [];
 
-function getSuiWallets() {
-  // Sui wallets register via the Wallet Standard
-  const wallets = [];
-  if (window.navigator?.wallets) {
-    // Wallet Standard API
-    for (const w of window.navigator.wallets) {
-      if (w.features?.['sui:signAndExecuteTransactionBlock'] || w.features?.['sui:signAndExecuteTransaction']) {
-        wallets.push(w);
-      }
+// Listen for wallet registrations (Wallet Standard protocol)
+(function initWalletStandard() {
+  function registerWallet(wallet) {
+    if (_registeredWallets.some(w => w.name === wallet.name)) return;
+    // Only keep Sui-compatible wallets
+    if (wallet.chains?.some(c => c.startsWith('sui:')) ||
+        wallet.features?.['sui:signAndExecuteTransaction'] ||
+        wallet.features?.['sui:signAndExecuteTransactionBlock']) {
+      _registeredWallets.push(wallet);
     }
   }
-  // Legacy: some wallets inject directly
-  if (window.suiWallet && !wallets.length) wallets.push(window.suiWallet);
-  return wallets;
+  // Pick up wallets already registered
+  if (window.__suiWallets__) window.__suiWallets__.forEach(registerWallet);
+  // Wallet Standard event-based registration
+  window.addEventListener('wallet-standard:register-wallet', function(e) {
+    if (e.detail?.wallet) registerWallet(e.detail.wallet);
+  });
+  // Signal to wallets that the app is ready
+  try { window.dispatchEvent(new Event('wallet-standard:app-ready')); } catch(e) {}
+})();
+
+function getSuiWallets() {
+  // Also check for late-registered wallets
+  if (window.__suiWallets__) {
+    window.__suiWallets__.forEach(function(w) {
+      if (!_registeredWallets.some(r => r.name === w.name)) {
+        if (w.chains?.some(c => c.startsWith('sui:')) ||
+            w.features?.['sui:signAndExecuteTransaction'] ||
+            w.features?.['sui:signAndExecuteTransactionBlock']) {
+          _registeredWallets.push(w);
+        }
+      }
+    });
+  }
+  return _registeredWallets;
 }
 
 async function connectSuiWallet() {
   const wallets = getSuiWallets();
   if (!wallets.length) {
-    showToast('No Sui wallet detected. Install Sui Wallet or paste your address below.');
+    showToast('No Sui wallet detected. Install Slush or Sui Wallet.');
     return false;
   }
   try {
-    const wallet = wallets[0]; // Use first available
+    const wallet = wallets[0];
     const connectFeature = wallet.features?.['standard:connect'];
     if (connectFeature) {
       const result = await connectFeature.connect();
@@ -7298,6 +7320,7 @@ async function connectSuiWallet() {
       if (accounts.length > 0) {
         _suiWallet = wallet;
         _walletAccount = accounts[0];
+        window._suiAddress = _walletAccount.address;
         setChainAddress(_walletAccount.address);
         localStorage.setItem('aicards_wallet_mode', 'extension');
         showToast('Wallet connected: ' + _walletAccount.address.slice(0,6) + '...');
@@ -7322,9 +7345,9 @@ async function signAndExecuteBuyPack(packType) {
     return null;
   }
 
-  // Build the transaction using Sui JSON-RPC
-  // 1. Get a coin with enough balance
   const addr = _walletAccount.address;
+
+  // 1. Get coins with enough balance
   const coinsRes = await fetch(SUI_RPC, {
     method: 'POST',
     headers: {'Content-Type':'application/json'},
@@ -7338,13 +7361,12 @@ async function signAndExecuteBuyPack(packType) {
   const coins = coinsData.result?.data || [];
   if (!coins.length) throw new Error('No SUI coins found in wallet');
 
-  // Find a coin with enough balance or use the largest
   const suitableCoin = coins.find(c => parseInt(c.balance) >= PACK_PRICE_MIST) || coins[0];
   if (parseInt(suitableCoin.balance) < PACK_PRICE_MIST) {
-    throw new Error(`Insufficient SUI. Need ${PACK_PRICE_MIST / 1e9} SUI, have ${parseInt(suitableCoin.balance) / 1e9}`);
+    throw new Error('Insufficient SUI. Need ' + (PACK_PRICE_MIST / 1e9) + ' SUI, have ' + (parseInt(suitableCoin.balance) / 1e9));
   }
 
-  // Build moveCall transaction via unsafe_moveCall (constructs the TransactionBlock)
+  // 2. Build transaction via unsafe_pay_sui (splits coin for exact payment)
   const txRes = await fetch(SUI_RPC, {
     method: 'POST',
     headers: {'Content-Type':'application/json'},
@@ -7356,28 +7378,36 @@ async function signAndExecuteBuyPack(packType) {
         CHAIN_PACKAGE,
         'payment',
         'buy_pack',
-        [], // type args
-        [TREASURY_ID, suitableCoin.coinObjectId, packType], // args: Treasury, Coin<SUI>, pack_type
-        null, // gas object
-        '10000000', // gas budget
+        [],
+        [TREASURY_ID, suitableCoin.coinObjectId, packType],
+        null,
+        '10000000',
       ]
     })
   });
   const txData = await txRes.json();
   if (txData.error) throw new Error(txData.error.message || 'Failed to build transaction');
 
-  // Sign and execute via wallet
-  const signFeature = _suiWallet.features?.['sui:signAndExecuteTransactionBlock']
-    || _suiWallet.features?.['sui:signAndExecuteTransaction'];
-  if (!signFeature) throw new Error('Wallet does not support signing');
+  // 3. Sign and execute via wallet — try modern API first, then legacy
+  const signFeature = _suiWallet.features?.['sui:signAndExecuteTransaction']
+    || _suiWallet.features?.['sui:signAndExecuteTransactionBlock'];
+  if (!signFeature) throw new Error('Wallet does not support transaction signing');
 
-  const result = await signFeature.signAndExecuteTransactionBlock({
-    transactionBlock: txData.result.txBytes,
-    account: _walletAccount,
-    chain: 'sui:testnet',
-    options: { showEffects: true, showEvents: true },
-  });
+  // Modern wallets use signAndExecuteTransaction with { transaction, chain }
+  // Legacy wallets use signAndExecuteTransactionBlock with { transactionBlock, chain }
+  const isModern = !!_suiWallet.features?.['sui:signAndExecuteTransaction'];
+  const signMethod = isModern
+    ? signFeature.signAndExecuteTransaction.bind(signFeature)
+    : signFeature.signAndExecuteTransactionBlock.bind(signFeature);
 
+  const txBytes = txData.result?.txBytes;
+  if (!txBytes) throw new Error('No transaction bytes returned from RPC');
+
+  const signArgs = isModern
+    ? { transaction: txBytes, account: _walletAccount, chain: 'sui:testnet' }
+    : { transactionBlock: txBytes, account: _walletAccount, chain: 'sui:testnet', options: { showEffects: true, showEvents: true } };
+
+  const result = await signMethod(signArgs);
   return result;
 }
 
