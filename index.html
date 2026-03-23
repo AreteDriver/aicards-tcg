@@ -8541,22 +8541,22 @@ function renderBuyPacks() {
       <div class="buy-packs-header">${t('buy.header')}</div>
     </div>
     <div class="pack-grid">
-      <div class="pack-card p-standard" style="border-color:rgba(100,200,255,0.3);" onclick="buyPackWithSUI('standard')">
+      <a href="https://aicards-admin.fly.dev/buy" target="_blank" rel="noopener" class="pack-card p-standard" style="border-color:rgba(100,200,255,0.3);text-decoration:none;color:inherit;">
         <span class="pack-icon-wrap">💎</span>
         <div class="pack-title" style="color:#60c8ff;">${t('buy.pack_title')}</div>
         <div class="pack-desc">${t('buy.pack_desc')}</div>
         <div class="pack-meta">${t('buy.pack_meta')}</div>
         <div class="buy-pack-btn">${t('buy.pack_btn')}</div>
-        <div class="buy-pack-price">≈ $0.50 · cards minted to ${addr.slice(0,6)}…${addr.slice(-4)}</div>
-      </div>
-      <div class="pack-card p-trade" style="border-color:rgba(200,168,75,0.3);" onclick="buyPackWithSUI('legendary')">
+        <div class="buy-pack-price">≈ $0.50 · pay with SUI wallet</div>
+      </a>
+      <a href="https://aicards-admin.fly.dev/buy" target="_blank" rel="noopener" class="pack-card p-trade" style="border-color:rgba(200,168,75,0.3);text-decoration:none;color:inherit;">
         <span class="pack-icon-wrap">👑</span>
         <div class="pack-title" style="color:var(--gold);">${t('buy.redundancy_title')}</div>
         <div class="pack-desc">${t('buy.redundancy_desc')}</div>
         <div class="pack-meta">${t('buy.redundancy_meta')}</div>
         <div class="buy-pack-btn" style="border-color:var(--gold);color:var(--gold);box-shadow:0 0 8px rgba(200,168,75,0.1);">${t('buy.redundancy_btn')}</div>
-        <div class="buy-pack-price">≈ $1.00 · guaranteed legendary NFT</div>
-      </div>
+        <div class="buy-pack-price">≈ $1.00 · pay with SUI wallet</div>
+      </a>
     </div>`;
 }
 
