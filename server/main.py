@@ -35,7 +35,8 @@ IMAGE_BASE_URL = os.getenv("AICARDS_IMAGE_URL", "https://aicards.fun/images/card
 VALID_PACK_TYPES = {
     "standard", "legendary", "jobless", "doomscroll", "loveexe", "warroom",
     "skillsvoid", "founderexe", "deepstateai", "healthcaresys", "parenttrap",
-    "climateerr", "creatornull",
+    "climateerr", "creatornull", "analogrevival", "mergeprotocol", "ubiworld",
+    "walledgarden", "solarpunk", "greyzone", "frontiernull",
 }
 
 # ═══════════════════════════════════════

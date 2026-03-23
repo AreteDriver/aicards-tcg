@@ -2,15 +2,15 @@
 
 ## Project Overview
 
-AI CARDS — 2030 Survival Edition. A collectible card experience about AI displacement and the humans who survive automation. Gacha-style pack opening with 294 cards across 6 rarities and 12 sets. Cards are NFTs on Sui blockchain — tradeable, sellable, collectible on-chain. Minting API live. Live at **aicards.fun**.
+AI CARDS — 2030 Survival Edition. A collectible card experience about AI displacement and the humans who survive automation. Gacha-style pack opening with 448 cards across 6 rarities and 19 sets. Cards are NFTs on Sui blockchain — tradeable, sellable, collectible on-chain. Minting API live. Live at **aicards.fun**.
 
 ## Current State
 
 - **Stack**: Single HTML file (CSS + vanilla JS) + Sui Move contracts + Next.js admin
 - **Hosting**: Vercel (frontend, auto-deploy) + Fly.io (admin dashboard + minting API + Postgres)
 - **Domain**: aicards.fun (Vercel DNS)
-- **Cards**: 292 total across 12 sets, 6 rarities (MYTHIC, LEGENDARY, RARE, UNCOMMON, COMMON, JUNK)
-- **Card art**: 292/294 cards have DALL-E 3 generated PNG art (black & white underground comix style)
+- **Cards**: 448 total across 19 sets, 6 rarities (MYTHIC, LEGENDARY, RARE, UNCOMMON, COMMON, JUNK)
+- **Card art**: 448/448 cards have DALL-E 3 generated PNG art (black & white underground comix style)
 - **Blockchain**: Sui testnet — Package `0x99f91c55ad24367b9fba1000bf43a5e571c2ae096c906fdf2e78fd51243f38b2`
 - **On-chain objects**: AdminCap `0xcfeaad94ff0f5136b037f3482ff68fc00cacc5149b3db8dfe011e239644e4935`
 - **Minting API**: `https://aicards-mint.fly.dev` (FastAPI on Fly.io, 294 cards)
@@ -25,7 +25,7 @@ aicards-tcg/
 │   ├── ja.json / ko.json       # Japanese, Korean
 │   ├── es.json / pt.json       # Spanish, Portuguese
 │   └── zh.json                 # Chinese (Simplified)
-├── images/cards/               # 292 DALL-E 3 card art PNGs (b&w comix style)
+├── images/cards/               # 448 DALL-E 3 card art PNGs (b&w comix style)
 ├── images/generate_cards.py    # DALL-E 3 batch art generator
 ├── contracts/aicards/          # Sui Move smart contracts
 │   ├── Move.toml               # Package manifest
@@ -72,6 +72,13 @@ aicards-tcg/
 | PARENT.TRAP | `parenttrap` | 22 | 5 | Set 9 100% complete |
 | CLIMATE.ERR | `climateerr` | 22 | 5 | Set 10 100% complete |
 | CREATOR.NULL | `creatornull` | 22 | 5 | Set 11 100% complete |
+| ANALOG.REVIVAL | `analogrevival` | 22 | 5 | Set 12 100% complete |
+| MERGE.PROTOCOL | `mergeprotocol` | 22 | 5 | Set 13 100% complete |
+| UBI.WORLD | `ubiworld` | 22 | 5 | Set 14 100% complete |
+| WALLED.GARDEN | `walledgarden` | 22 | 5 | Set 15 100% complete |
+| SOLARPUNK.SYS | `solarpunk` | 22 | 5 | Set 16 100% complete |
+| GREY.ZONE | `greyzone` | 22 | 5 | Set 17 100% complete |
+| FRONTIER.NULL | `frontiernull` | 22 | 5 | Set 18 100% complete |
 
 ## Pack Types
 
@@ -90,6 +97,13 @@ aicards-tcg/
 | PARENT TRAP | Set 10 | Digital childhood series cards, weighted |
 | CLIMATE.ERR | Set 11 | Planetary debt series cards, weighted |
 | CREATOR.NULL | Set 12 | Creative extinction series cards, weighted |
+| ANALOG.REVIVAL | Set 13 | Analog backlash world, hand-made luxury |
+| MERGE.PROTOCOL | Set 14 | Neural integration, human-AI merge |
+| UBI.WORLD | Set 15 | Post-work, meaning crisis |
+| WALLED.GARDEN | Set 16 | Corporate consolidation, GAM owns all |
+| SOLARPUNK.SYS | Set 17 | Optimistic future, utopia cracks |
+| GREY.ZONE | Set 18 | Surveillance state, resistance |
+| FRONTIER.NULL | Set 19 | Mars colony, humans as cargo |
 
 ## Rarity Weights (per card slot)
 
