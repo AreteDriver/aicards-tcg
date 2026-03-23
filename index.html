@@ -7625,6 +7625,9 @@ function openPack(type) {
     return;
   }
 
+  // Clear raid origin when opening regular pack
+  session.fromRaid = false;
+
   // Pity: increment before build (build reads pityCounter >= 10)
   S.pityCounter++;
   session.pack = buildPack(type);
@@ -7846,7 +7849,7 @@ function updateDeckUI() {
         <div class="reveal-hint" style="font-family:var(--font-mono);font-size:9px;letter-spacing:2px;color:#555;">${t('opening.pack_complete')} · ${newText}</div>
         <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:12px;">
           <button class="cta-btn" onclick="openNextPack()">${t('opening.next_pack')}</button>
-          <button class="cta-btn sec" onclick="showScreen(session.isRewardPack ? 'raid-screen' : 'pack-screen')">${session.isRewardPack ? t('raid.back') : t('opening.menu')}</button>
+          <button class="cta-btn sec" onclick="showScreen(session.fromRaid ? 'raid-screen' : 'pack-screen')">${session.fromRaid ? t('raid.back') : t('opening.menu')}</button>
           ${chainBtn}
         </div>
         <div id="mint-status" style="margin-top:8px;"></div>
@@ -8567,50 +8570,36 @@ function renderBuyPacks() {
 }
 
 async function buyPackWithSUI(packType) {
-  const addr = getChainAddress();
+  var addr = getChainAddress();
   if (!addr) { openChainModal(); return; }
 
-  // Try to connect wallet if not already connected
-  if (!isWalletMode() && getSuiWallets().length > 0) {
-    await connectSuiWallet();
-  }
+  showToast('Minting ' + packType + ' pack to ' + addr.slice(0,6) + '...');
 
-  showToast('Preparing transaction...');
+  // Disable buy buttons during mint
+  var btns = document.querySelectorAll('.buy-pack-btn');
+  btns.forEach(function(b) { b.disabled = true; b.style.opacity = '0.5'; });
 
   try {
-    let paymentDigest = null;
-
-    // If wallet extension connected, do on-chain payment first
-    if (isWalletMode()) {
-      showToast('Approve transaction in your wallet...');
-      try {
-        const txResult = await signAndExecuteBuyPack(packType);
-        if (txResult?.digest) {
-          paymentDigest = txResult.digest;
-          showToast('Payment confirmed! Minting cards...');
-        }
-      } catch(walletErr) {
-        showToast('Wallet payment failed: ' + walletErr.message + ' — minting without payment');
-      }
-    } else {
-      showToast('Minting cards to ' + addr.slice(0,6) + '...');
-    }
-
-    // Call mint API — include payment digest if paid on-chain
-    const res = await fetch(`${MINT_API}/mint/pack`, {
+    var res = await fetch(MINT_API + '/mint/pack', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         sui_address: addr,
         pack_type: packType,
-        payment_digest: paymentDigest,
       }),
     });
-    const data = await res.json();
+
+    if (!res.ok) {
+      var errText = await res.text();
+      showToast('Mint failed: ' + res.status + ' — ' + errText.slice(0, 100));
+      return;
+    }
+
+    var data = await res.json();
     if (data.success) {
-      const minted = data.cards.filter(c=>c.transaction);
-      minted.forEach(c => {
-        const localCard = CARDS.find(lc => lc.id === c.card_id);
+      var minted = data.cards.filter(function(c) { return c.transaction; });
+      minted.forEach(function(c) {
+        var localCard = CARDS.find(function(lc) { return lc.id === c.card_id; });
         if (localCard) {
           collectionAdd(localCard.id);
           S.pulls++;
@@ -8621,12 +8610,14 @@ async function buyPackWithSUI(packType) {
       save();
       updateStats();
       updateDailyUI();
-      showToast(t('toast.minted_cards', minted.length));
+      showToast('Minted ' + minted.length + ' cards as NFTs!');
     } else {
-      showToast(t('toast.mint_failed'));
+      showToast('Mint failed: ' + (data.error || 'Unknown error'));
     }
   } catch(err) {
-    showToast(t('toast.mint_error', err.message));
+    showToast('Mint error: ' + (err.message || err));
+  } finally {
+    btns.forEach(function(b) { b.disabled = false; b.style.opacity = ''; });
   }
 }
 
@@ -9865,6 +9856,7 @@ function openRaidRewardPack() {
   session.revealed = new Array(5).fill(false);
   session.type = rewardSet;
   session.isRewardPack = true; // Flag so "Next Pack" continues opening rewards
+  session.fromRaid = true;
   session.currentIndex = 0;
   S.packs++;
   S.newCards.clear();
