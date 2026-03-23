@@ -7279,56 +7279,45 @@ const _registeredWallets = [];
     }
   }
 
-  // The Wallet Standard uses a global symbol for registration
-  // Wallets call: api.register(wallet)
-  // Apps provide the register callback via the global symbol
-  var cbKey = 'wallet-standard:app-ready';
-  var existingCbs = window[cbKey];
+  // Discover wallets safely — try every known registration path
+  function discoverWallets() {
+    try {
+      // Path 1: window.__suiWallets__ (legacy Sui injection)
+      if (window.__suiWallets__) {
+        var arr = Array.isArray(window.__suiWallets__) ? window.__suiWallets__ : [];
+        arr.forEach(addWallet);
+      }
+    } catch(e) {}
 
-  // Our register callback
-  function onRegister(api) {
-    if (api.register) {
-      // Wallets call register() to add themselves - but we get them via get()
-    }
-    if (api.get) {
-      api.get().forEach(addWallet);
-    }
-    if (api.on) {
-      api.on('register', function(wallet) { addWallet(wallet); });
-    }
+    try {
+      // Path 2: Wallet Standard global store
+      var stores = window['wallet-standard:wallets'];
+      if (stores) {
+        if (typeof stores.get === 'function') stores.get().forEach(addWallet);
+        if (typeof stores.on === 'function') stores.on('register', function(w) { addWallet(w); });
+      }
+    } catch(e) {}
+
+    try {
+      // Path 3: navigator.wallets (older standard)
+      if (window.navigator && window.navigator.wallets) {
+        for (var i = 0; i < window.navigator.wallets.length; i++) {
+          addWallet(window.navigator.wallets[i]);
+        }
+      }
+    } catch(e) {}
   }
 
-  // Set up the callback array for wallet standard
-  if (!window[cbKey]) window[cbKey] = [];
-  window[cbKey].push(function(api) { onRegister(api); });
+  // Run immediately
+  discoverWallets();
 
-  // Also check for already-registered wallets via the wallets symbol
-  try {
-    var walletsKey = 'wallet-standard:wallets';
-    if (window[walletsKey]) {
-      var existing = window[walletsKey];
-      if (existing.get) existing.get().forEach(addWallet);
-      if (existing.on) existing.on('register', function(w) { addWallet(w); });
-    }
-  } catch(e) {}
-
-  // Legacy Sui-specific globals
-  if (window.__suiWallets__) {
-    (Array.isArray(window.__suiWallets__) ? window.__suiWallets__ : []).forEach(addWallet);
-  }
-
-  // Signal readiness to wallets
-  try { window.dispatchEvent(new Event('wallet-standard:app-ready')); } catch(e) {}
-
-  // Some wallets register after DOMContentLoaded - poll briefly
+  // Poll for late-registering wallets (extensions load async)
   var pollCount = 0;
   var pollInterval = setInterval(function() {
     pollCount++;
-    if (window.__suiWallets__) {
-      (Array.isArray(window.__suiWallets__) ? window.__suiWallets__ : []).forEach(addWallet);
-    }
-    if (pollCount >= 10 || _registeredWallets.length > 0) clearInterval(pollInterval);
-  }, 500);
+    discoverWallets();
+    if (pollCount >= 20 || _registeredWallets.length > 0) clearInterval(pollInterval);
+  }, 300);
 })();
 
 function getSuiWallets() {
@@ -7844,7 +7833,7 @@ function isSet12Unlocked() { return isSet11Unlocked() && getSetCompletion('clima
 function renderSet2Zone() {
   const zone = document.getElementById('set2-zone');
   if (!zone) return;
-  const comp = getSet1Completion();
+  const comp = getSetCompletion(null);
   const unlocked = comp.pct >= 100;
 
   zone.innerHTML = `
