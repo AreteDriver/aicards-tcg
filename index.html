@@ -7280,6 +7280,8 @@ const _registeredWallets = [];
   }
 
   // Discover wallets safely — try every known registration path
+  // Exposed globally so connectSuiWallet can re-run it at click time
+  window.discoverWallets = discoverWallets;
   function discoverWallets() {
     try {
       // Path 1: window.__suiWallets__ (legacy Sui injection)
@@ -7325,17 +7327,46 @@ function getSuiWallets() {
 }
 
 async function connectSuiWallet() {
-  const wallets = getSuiWallets();
+  // Fresh discovery at click time (extension definitely loaded by now)
+  discoverWallets();
+
+  var wallets = getSuiWallets();
+
+  // If still nothing found, try to get wallets from Slush's dapp-interface
   if (!wallets.length) {
-    showToast('No Sui wallet detected. Install Slush or Sui Wallet.');
+    try {
+      // Slush injects via dapp-interface.js which uses the standard register API
+      // The registered wallets live on a global store
+      var keys = Object.getOwnPropertySymbols(window);
+      for (var i = 0; i < keys.length; i++) {
+        var val = window[keys[i]];
+        if (val && typeof val === 'object') {
+          if (typeof val.get === 'function') {
+            try {
+              var found = val.get();
+              if (Array.isArray(found)) found.forEach(function(w) {
+                if (w && w.name && w.features) _registeredWallets.push(w);
+              });
+            } catch(e) {}
+          }
+        }
+      }
+      wallets = getSuiWallets();
+    } catch(e) {}
+  }
+
+  if (!wallets.length) {
+    showToast('No Sui wallet detected. Install Slush or Sui Wallet extension.');
     return false;
   }
+
   try {
-    const wallet = wallets[0];
-    const connectFeature = wallet.features?.['standard:connect'];
+    var wallet = wallets[0];
+    showToast('Connecting to ' + (wallet.name || 'wallet') + '...');
+    var connectFeature = wallet.features?.['standard:connect'];
     if (connectFeature) {
-      const result = await connectFeature.connect();
-      const accounts = result?.accounts || wallet.accounts || [];
+      var result = await connectFeature.connect();
+      var accounts = result?.accounts || wallet.accounts || [];
       if (accounts.length > 0) {
         _suiWallet = wallet;
         _walletAccount = accounts[0];
@@ -7348,8 +7379,9 @@ async function connectSuiWallet() {
         return true;
       }
     }
+    showToast('Wallet connected but no accounts found');
   } catch(e) {
-    showToast('Wallet connection failed: ' + e.message);
+    showToast('Wallet connection failed: ' + (e.message || e));
   }
   return false;
 }
@@ -7569,10 +7601,9 @@ function openChainModal() {
     `;
     status.innerHTML = '<div class="chain-modal-connected">' + t('chain.connected') + '</div>';
   } else {
-    const hasWallets = getSuiWallets().length > 0;
     body.innerHTML = `
-      ${hasWallets ? `<button class="chain-modal-save" style="margin-bottom:10px;border-color:#60c8ff;color:#60c8ff;" onclick="connectSuiWallet()">CONNECT WALLET EXTENSION</button>
-      <div style="font-family:var(--font-mono);font-size:7px;color:#444;margin:8px 0;letter-spacing:1px;">— OR PASTE ADDRESS —</div>` : ''}
+      <button class="chain-modal-save" style="margin-bottom:10px;border-color:#60c8ff;color:#60c8ff;" onclick="connectSuiWallet()">CONNECT WALLET EXTENSION</button>
+      <div style="font-family:var(--font-mono);font-size:7px;color:#444;margin:8px 0;letter-spacing:1px;">— OR PASTE ADDRESS —</div>
       <input type="text" class="chain-modal-input" id="chain-address-input"
         placeholder="${t('chain.input_placeholder')}"
         spellcheck="false" autocomplete="off">
