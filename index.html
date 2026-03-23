@@ -3871,6 +3871,13 @@ setTimeout(function(){var el=document.getElementById('loading-screen');if(el){el
       <div id="set10-zone"></div>
       <div id="set11-zone"></div>
       <div id="set12-zone"></div>
+      <div id="set13-zone"></div>
+      <div id="set14-zone"></div>
+      <div id="set15-zone"></div>
+      <div id="set16-zone"></div>
+      <div id="set17-zone"></div>
+      <div id="set18-zone"></div>
+      <div id="set19-zone"></div>
       <div class="daily-missions" id="daily-missions">
         <div class="daily-missions-title">DAILY GOALS — 1 RANDOM PACK</div>
         <div class="mission-row"><span class="mission-label">Pull 3 cards</span><span class="mission-progress" id="dm-pulls">0/3</span></div>
@@ -4047,6 +4054,13 @@ function applyTranslations() {
   if (typeof renderSet10Zone === 'function') renderSet10Zone();
   if (typeof renderSet11Zone === 'function') renderSet11Zone();
   if (typeof renderSet12Zone === 'function') renderSet12Zone();
+  if (typeof renderSet13Zone === 'function') renderSet13Zone();
+  if (typeof renderSet14Zone === 'function') renderSet14Zone();
+  if (typeof renderSet15Zone === 'function') renderSet15Zone();
+  if (typeof renderSet16Zone === 'function') renderSet16Zone();
+  if (typeof renderSet17Zone === 'function') renderSet17Zone();
+  if (typeof renderSet18Zone === 'function') renderSet18Zone();
+  if (typeof renderSet19Zone === 'function') renderSet19Zone();
   if (typeof renderSetProgress === 'function') renderSetProgress();
   if (typeof renderPackHistory === 'function') renderPackHistory();
   if (typeof renderLeaderboard === 'function') renderLeaderboard();
@@ -6033,6 +6047,1042 @@ const CARDS = [
    flavor:"⚡ COLLABORATED — Typed 12 words. Credit: co-creator. Skill: owning a keyboard.",
    symbol:"⌨️",color:"junk"},
 
+// ═══════════════════════════════════════════════
+// SET 13: ANALOG.REVIVAL — The Backlash World
+// ═══════════════════════════════════════════════
+
+// ═══ MYTHIC — 1/10,000 · ANALOG.REVIVAL ═══
+{id:"ar-handwritten-letter-writer",name:"THE HANDWRITTEN LETTER WRITER",rarity:"MYTHIC",category:"Irreplaceable",artClass:"art-ar-handwritten-letter-writer",series:"analogrevival",
+kscore:"0",kscoreClass:"low",
+s1:{l:"Letters Sent This Year",v:"4,200"},s2:{l:"Recipients Who Cried",v:"MOST"},
+atk:"∞",def:"∞",
+flavor:"⚡ POSTMARK — Every envelope takes 20 minutes. Every one gets opened twice.",
+symbol:"✉️",color:"mythic"},
+{id:"ar-vinyl-prophet",name:"THE VINYL PROPHET",rarity:"MYTHIC",category:"Irreplaceable",artClass:"art-ar-vinyl-prophet",series:"analogrevival",
+kscore:"0",kscoreClass:"low",
+s1:{l:"Records Pressed",v:"80,000"},s2:{l:"Skip in Track 3",v:"INTENTIONAL"},
+atk:"∞",def:"∞",
+flavor:"⚡ WARM TONE — Spotify has 100 million songs. His shop has 4,000. There's a waitlist.",
+symbol:"🎵",color:"mythic"},
+{id:"ar-analog-architect",name:"THE ANALOG ARCHITECT",rarity:"MYTHIC",category:"Irreplaceable",artClass:"art-ar-analog-architect",series:"analogrevival",
+kscore:"0",kscoreClass:"low",
+s1:{l:"Buildings Drawn by Hand",v:"ALL"},s2:{l:"CAD Files",v:"0"},
+atk:"∞",def:"∞",
+flavor:"⚡ BLUEPRINTS — Every line drawn with a pencil. Clients pay triple for the eraser marks.",
+symbol:"📐",color:"mythic"},
+{id:"ar-screen-free-healer",name:"THE SCREEN-FREE HEALER",rarity:"MYTHIC",category:"Irreplaceable",artClass:"art-ar-screen-free-healer",series:"analogrevival",
+kscore:"0",kscoreClass:"low",
+s1:{l:"Patients Seen/Day",v:"6"},s2:{l:"Screens in Office",v:"0"},
+atk:"∞",def:"∞",
+flavor:"⚡ PRESENCE — Six patients a day. No screens. No charting software. 14-month waitlist.",
+symbol:"🌿",color:"mythic"},
+{id:"ar-paper-library-guardian",name:"THE PAPER LIBRARY GUARDIAN",rarity:"MYTHIC",category:"Irreplaceable",artClass:"art-ar-paper-library-guardian",series:"analogrevival",
+kscore:"0",kscoreClass:"low",
+s1:{l:"Books Preserved",v:"340,000"},s2:{l:"Digital Copies",v:"REFUSED"},
+atk:"∞",def:"∞",
+flavor:"⚡ OVERDUE — 340,000 books. No barcodes. She remembers where every one lives.",
+symbol:"📚",color:"mythic"},
+
+// ═══ LEGENDARY ═══
+{id:"ar-offgrid-founder",name:"OFF-GRID COMMUNITY FOUNDER",rarity:"LEGENDARY",category:"Human Purpose",artClass:"art-ar-offgrid-founder",series:"analogrevival",
+kscore:"1",kscoreClass:"low",
+s1:{l:"Residents",v:"2,400"},s2:{l:"Cell Towers in Range",v:"0"},s3:{l:"Applicant Waitlist",v:"11,000"},
+atk:"2.4K",def:"RESIDENTS",
+flavor:"⚡ UNPLUGGED — 2,400 people. No signal. 11,000 on the waitlist. The irony is digital.",
+symbol:"🏕️",color:"legendary"},
+{id:"ar-human-restaurant",name:"HUMAN-ONLY RESTAURANT OWNER",rarity:"LEGENDARY",category:"Human Purpose",artClass:"art-ar-human-restaurant",series:"analogrevival",
+kscore:"1",kscoreClass:"low",
+s1:{l:"Menu Items",v:"9"},s2:{l:"Robots in Kitchen",v:"0"},s3:{l:"Reservation Wait",v:"8 MONTHS"},
+atk:"9",def:"DISHES",
+flavor:"⚡ HAND-FED — Nine dishes. All hand-made. No tablets. Reservation: 8 months. Cash only.",
+symbol:"🍽️",color:"legendary"},
+
+// ═══ RARE ═══
+{id:"ar-analog-brewer",name:"ANALOG BREWER",rarity:"RARE",category:"Human Trade",artClass:"art-ar-analog-brewer",series:"analogrevival",
+kscore:"3",kscoreClass:"low",
+s1:{l:"Batches Per Month",v:"4"},s2:{l:"Sensors Used",v:"0"},s3:{l:"Price Per Pint",v:"$34"},
+atk:"4",def:"BATCHES",
+flavor:"⚡ HAND-STIRRED — No thermometers. No pH meters. Tastes it. $34 a pint. Sold out.",
+symbol:"🍺",color:"rare"},
+{id:"ar-handwriting-tutor",name:"HANDWRITING TUTOR",rarity:"RARE",category:"Human Purpose",artClass:"art-ar-handwriting-tutor",series:"analogrevival",
+kscore:"4",kscoreClass:"mid",
+s1:{l:"Students",v:"200+"},s2:{l:"Adults Who Can't Sign",v:"40%"},s3:{l:"Rate/Hour",v:"$180"},
+atk:"200",def:"STUDENTS",
+flavor:"⚡ CURSIVE — 40% of adults can't sign their name. She charges $180/hr to teach them.",
+symbol:"✍️",color:"rare"},
+{id:"ar-hand-carved-furniture",name:"HAND-CARVED FURNITURE MAKER",rarity:"RARE",category:"Human Trade",artClass:"art-ar-hand-carved-furniture",series:"analogrevival",
+kscore:"3",kscoreClass:"low",
+s1:{l:"Chairs Per Year",v:"12"},s2:{l:"CNC Machines Owned",v:"0"},s3:{l:"Price Per Chair",v:"$14,000"},
+atk:"12",def:"CHAIRS/YR",
+flavor:"⚡ GRAIN — Twelve chairs a year. Chisel marks visible. $14,000 each. People weep.",
+symbol:"🪑",color:"rare"},
+
+// ═══ UNCOMMON ═══
+{id:"ar-paper-editor",name:"PAPER NEWSPAPER EDITOR",rarity:"UNCOMMON",category:"Society",artClass:"art-ar-paper-editor",series:"analogrevival",
+kscore:"6",kscoreClass:"mid",
+s1:{l:"Print Circulation",v:"8,400"},s2:{l:"No Comments Section",v:"CORRECT"},s3:{l:"Subscribers Growing",v:"↑ 22%"},
+atk:"8.4K",def:"CIRCULATION",
+flavor:"⚡ DEADLINE — No algorithm. No comments. No rage clicks. Subscriptions up 22%.",
+symbol:"📰",color:"uncommon"},
+{id:"ar-vinyl-coop",name:"VINYL PRESSING CO-OP WORKER",rarity:"UNCOMMON",category:"Human Trade",artClass:"art-ar-vinyl-coop",series:"analogrevival",
+kscore:"6",kscoreClass:"mid",
+s1:{l:"Records Pressed/Day",v:"200"},s2:{l:"Spotify Pays Per Stream",v:"$0.003"},s3:{l:"Vinyl Pays Per Unit",v:"$8"},
+atk:"200",def:"RECORDS/DAY",
+flavor:"⚡ HEAVY — 200 records a day. Each one weighs something. Spotify weighs nothing.",
+symbol:"💿",color:"uncommon"},
+{id:"ar-analog-dating",name:"ANALOG DATING SERVICE RUNNER",rarity:"UNCOMMON",category:"Society",artClass:"art-ar-analog-dating",series:"analogrevival",
+kscore:"5",kscoreClass:"mid",
+s1:{l:"Matches Made",v:"1,400"},s2:{l:"Algorithms Used",v:"0"},s3:{l:"Success Rate",v:"34%"},
+atk:"1.4K",def:"MATCHES",
+flavor:"⚡ BLIND — Paper profiles. No photos. You meet at a coffee shop. 34% marriage rate.",
+symbol:"💌",color:"uncommon"},
+{id:"ar-luddite-senator",name:"THE LUDDITE SENATOR",rarity:"UNCOMMON",category:"Society",artClass:"art-ar-luddite-senator",series:"analogrevival",
+kscore:"5",kscoreClass:"mid",
+s1:{l:"Bills Introduced",v:"14"},s2:{l:"Bills Passed",v:"0"},s3:{l:"Approval Rating",v:"71%"},
+atk:"14",def:"BILLS",
+flavor:"⚡ FILIBUSTER — 14 anti-AI bills. Zero passed. 71% approval. Writes speeches by hand.",
+symbol:"🏛️",color:"uncommon"},
+{id:"ar-farmers-bouncer",name:"FARMERS MARKET BOUNCER",rarity:"UNCOMMON",category:"Society",artClass:"art-ar-farmers-bouncer",series:"analogrevival",
+kscore:"7",kscoreClass:"high",
+s1:{l:"Phones Confiscated",v:"~400/DAY"},s2:{l:"QR Codes Allowed",v:"0"},s3:{l:"Fights This Month",v:"3"},
+atk:"400",def:"PHONES/DAY",
+flavor:"⚡ NO SCREENS — Confiscates phones at the gate. Three fights this month. All worth it.",
+symbol:"🚫",color:"uncommon"},
+
+// ═══ COMMON ═══
+{id:"ar-typewriter-repairman",name:"TYPEWRITER REPAIRMAN",rarity:"COMMON",category:"Human Trade",artClass:"art-ar-typewriter-repairman",series:"analogrevival",
+kscore:"7",kscoreClass:"high",
+s1:{l:"Typewriters Fixed/Year",v:"1,400"},s2:{l:"Others in Country",v:"3"},s3:{l:"Backlog",v:"9 MONTHS"},
+atk:"1.4K",def:"FIXED/YR",
+flavor:"⚡ CARRIAGE RETURN — Four of them left in the country. Nine-month backlog. No website.",
+symbol:"⌨️",color:"common"},
+{id:"ar-film-teacher",name:"FILM PHOTOGRAPHY TEACHER",rarity:"COMMON",category:"Human Purpose",artClass:"art-ar-film-teacher",series:"analogrevival",
+kscore:"8",kscoreClass:"high",
+s1:{l:"Students This Semester",v:"FULL"},s2:{l:"Shots Per Roll",v:"36"},s3:{l:"Deleted Photos",v:"IMPOSSIBLE"},
+atk:"36",def:"SHOTS",
+flavor:"⚡ FINITE — 36 shots. No preview. No delete. Students cry at the contact sheet.",
+symbol:"📷",color:"common"},
+{id:"ar-boardgame-cafe",name:"BOARD GAME CAFE OWNER",rarity:"COMMON",category:"Society",artClass:"art-ar-boardgame-cafe",series:"analogrevival",
+kscore:"8",kscoreClass:"high",
+s1:{l:"Games in Library",v:"2,200"},s2:{l:"WiFi Password",v:"NONE"},s3:{l:"Revenue vs 2025",v:"↑ 340%"},
+atk:"2.2K",def:"GAMES",
+flavor:"⚡ ANALOG — No WiFi. No outlets. Revenue up 340%. People stare at each other now.",
+symbol:"🎲",color:"common"},
+{id:"ar-cash-only",name:"CASH-ONLY SHOPKEEPER",rarity:"COMMON",category:"Society",artClass:"art-ar-cash-only",series:"analogrevival",
+kscore:"9",kscoreClass:"max",
+s1:{l:"Card Readers",v:"0"},s2:{l:"Surveillance Cameras",v:"0"},s3:{l:"Customer Data Sold",v:"0"},
+atk:"$0",def:"DATA SOLD",
+flavor:"⚡ INVISIBLE — No cards. No cameras. No data. The government hates her.",
+symbol:"💵",color:"common"},
+
+// ═══ JUNK ═══
+{id:"ar-wifi-withdrawal",name:"THE WIFI WITHDRAWAL",rarity:"JUNK",category:"Lore · Analog.revival",artClass:"art-ar-wifi-withdrawal",series:"analogrevival",
+kscore:"∞",kscoreClass:"max",
+s1:{l:"Hours Without Signal",v:"4"},s2:{l:"Panic Attacks",v:"3"},s3:{l:"Actual Emergency",v:"0"},
+atk:"4",def:"HOURS",
+flavor:"⚡ COLD TURKEY — Four hours offline. Called 911 twice. Nothing was wrong.",
+symbol:"📶",color:"junk"},
+{id:"ar-notification-ghost",name:"THE NOTIFICATION GHOST",rarity:"JUNK",category:"Lore · Analog.revival",artClass:"art-ar-notification-ghost",series:"analogrevival",
+kscore:"∞",kscoreClass:"max",
+s1:{l:"Phone Deleted",v:"6 MONTHS AGO"},s2:{l:"Phantom Buzzes/Day",v:"~40"},s3:{l:"Pocket Checked",v:"CONSTANTLY"},
+atk:"40",def:"PHANTOM BUZZES",
+flavor:"⚡ PHANTOM — Deleted the phone 6 months ago. Still feels it vibrate. Still checks.",
+symbol:"👻",color:"junk"},
+{id:"ar-last-charger",name:"THE LAST CHARGER",rarity:"JUNK",category:"Lore · Analog.revival",artClass:"art-ar-last-charger",series:"analogrevival",
+kscore:"∞",kscoreClass:"max",
+s1:{l:"Chargers in Drawer",v:"47"},s2:{l:"Devices Left",v:"0"},s3:{l:"Can't Throw Away",v:"CORRECT"},
+atk:"47",def:"CHARGERS",
+flavor:"⚡ VESTIGIAL — 47 chargers. Zero devices. Can't throw them out. What if.",
+symbol:"🔌",color:"junk"},
+
+// ═══════════════════════════════════════════════
+// SET 14: MERGE.PROTOCOL — Neural Integration World
+// ═══════════════════════════════════════════════
+
+// ═══ MYTHIC — 1/10,000 · MERGE.PROTOCOL ═══
+{id:"mp-last-unaugmented",name:"THE LAST UNAUGMENTED",rarity:"MYTHIC",category:"Irreplaceable",artClass:"art-mp-last-unaugmented",series:"mergeprotocol",
+kscore:"0",kscoreClass:"low",
+s1:{l:"Augmented Humans",v:"94%"},s2:{l:"Her Implants",v:"0"},
+atk:"∞",def:"∞",
+flavor:"⚡ BASELINE — 94% of humans are augmented. She thinks at normal speed. They pity her.",
+symbol:"🧠",color:"mythic"},
+{id:"mp-upload-candidate",name:"THE UPLOAD CANDIDATE",rarity:"MYTHIC",category:"Irreplaceable",artClass:"art-mp-upload-candidate",series:"mergeprotocol",
+kscore:"0",kscoreClass:"low",
+s1:{l:"Brain Mapped",v:"100%"},s2:{l:"Uploaded Yet",v:"NO"},
+atk:"∞",def:"∞",
+flavor:"⚡ THRESHOLD — Brain fully mapped. Upload ready. Finger on the button for 11 months.",
+symbol:"⬆️",color:"mythic"},
+{id:"mp-fifty-fifty",name:"THE 50/50",rarity:"MYTHIC",category:"Irreplaceable",artClass:"art-mp-fifty-fifty",series:"mergeprotocol",
+kscore:"0",kscoreClass:"low",
+s1:{l:"Human Neurons",v:"50%"},s2:{l:"Silicon Neurons",v:"50%"},
+atk:"∞",def:"∞",
+flavor:"⚡ EQUILIBRIUM — Half flesh, half silicon. Both halves claim to be the real one.",
+symbol:"⚖️",color:"mythic"},
+{id:"mp-consciousness-archivist",name:"THE CONSCIOUSNESS ARCHIVIST",rarity:"MYTHIC",category:"Irreplaceable",artClass:"art-mp-consciousness-archivist",series:"mergeprotocol",
+kscore:"0",kscoreClass:"low",
+s1:{l:"Minds Archived",v:"14,000"},s2:{l:"Restored Successfully",v:"0"},
+atk:"∞",def:"∞",
+flavor:"⚡ BACKED UP — 14,000 minds on drives. None restored. Nobody asks why.",
+symbol:"🗄️",color:"mythic"},
+{id:"mp-neural-firewall",name:"THE NEURAL FIREWALL",rarity:"MYTHIC",category:"Irreplaceable",artClass:"art-mp-neural-firewall",series:"mergeprotocol",
+kscore:"0",kscoreClass:"low",
+s1:{l:"Intrusion Attempts/Day",v:"47,000"},s2:{l:"Thoughts Leaked",v:"0"},
+atk:"∞",def:"∞",
+flavor:"⚡ PARTITION — 47,000 hacking attempts on her brain daily. She still dreams in private.",
+symbol:"🛡️",color:"mythic"},
+
+// ═══ LEGENDARY ═══
+{id:"mp-augmented-surgeon",name:"THE AUGMENTED SURGEON",rarity:"LEGENDARY",category:"Human Trade",artClass:"art-mp-augmented-surgeon",series:"mergeprotocol",
+kscore:"1",kscoreClass:"low",
+s1:{l:"Operations/Day",v:"40"},s2:{l:"Hands Are Robotic",v:"YES"},s3:{l:"Tremor",v:"IMPOSSIBLE"},
+atk:"40",def:"OPS/DAY",
+flavor:"⚡ STEADY — Replaced her own hands. 40 surgeries a day. No tremor. No fatigue. No feel.",
+symbol:"🫀",color:"legendary"},
+{id:"mp-neural-lace-adopter",name:"NEURAL LACE EARLY ADOPTER",rarity:"LEGENDARY",category:"Society",artClass:"art-mp-neural-lace-adopter",series:"mergeprotocol",
+kscore:"2",kscoreClass:"low",
+s1:{l:"Year Implanted",v:"2027"},s2:{l:"Firmware Version",v:"v47.3"},s3:{l:"Original Personality Left",v:"UNCLEAR"},
+atk:"47",def:"UPDATES",
+flavor:"⚡ EARLY ACCESS — Implanted in 2027. 47 firmware updates. Wife says he's different.",
+symbol:"🔗",color:"legendary"},
+
+// ═══ RARE ═══
+{id:"mp-memory-trader",name:"MEMORY MARKETPLACE TRADER",rarity:"RARE",category:"AI Product",artClass:"art-mp-memory-trader",series:"mergeprotocol",
+kscore:"4",kscoreClass:"mid",
+s1:{l:"Memories Sold",v:"14,000"},s2:{l:"Memories Bought",v:"2,200"},s3:{l:"Original Memories Left",v:"SOME"},
+atk:"14K",def:"SOLD",
+flavor:"⚡ SECONDHAND — Sells his memories. Buys strangers'. Forgot which childhood is his.",
+symbol:"🏪",color:"rare"},
+{id:"mp-thought-coder",name:"THOUGHT-TO-CODE DEVELOPER",rarity:"RARE",category:"AI Product",artClass:"art-mp-thought-coder",series:"mergeprotocol",
+kscore:"3",kscoreClass:"low",
+s1:{l:"Lines of Code/Hour",v:"40,000"},s2:{l:"Typed Manually",v:"0"},s3:{l:"Dreams in Python",v:"LITERALLY"},
+atk:"40K",def:"LINES/HR",
+flavor:"⚡ THINK SHIP — 40,000 lines/hour. No keyboard. Thinks in functions. Forgot how to write.",
+symbol:"💭",color:"rare"},
+{id:"mp-digital-twin-mgr",name:"DIGITAL TWIN MANAGER",rarity:"RARE",category:"Society",artClass:"art-mp-digital-twin-mgr",series:"mergeprotocol",
+kscore:"4",kscoreClass:"mid",
+s1:{l:"Active Twins",v:"3"},s2:{l:"Which One Is Real",v:"DEBATED"},s3:{l:"Twins Disagree With Him",v:"OFTEN"},
+atk:"3",def:"TWINS",
+flavor:"⚡ FORK — Three copies of him running. They outvoted him on the divorce.",
+symbol:"👥",color:"rare"},
+
+// ═══ UNCOMMON ═══
+{id:"mp-backup-tech",name:"CONSCIOUSNESS BACKUP TECH",rarity:"UNCOMMON",category:"Human Trade",artClass:"art-mp-backup-tech",series:"mergeprotocol",
+kscore:"6",kscoreClass:"mid",
+s1:{l:"Backups Per Day",v:"200"},s2:{l:"Corrupted Files",v:"~4%"},s3:{l:"Told Clients",v:"NO"},
+atk:"200",def:"BACKUPS/DAY",
+flavor:"⚡ SAVE STATE — 200 minds backed up daily. 4% corrupted. Hasn't told anyone yet.",
+symbol:"💾",color:"uncommon"},
+{id:"mp-copilot-therapist",name:"AI CO-PILOT THERAPIST",rarity:"UNCOMMON",category:"Human Purpose",artClass:"art-mp-copilot-therapist",series:"mergeprotocol",
+kscore:"5",kscoreClass:"mid",
+s1:{l:"Patients",v:"400"},s2:{l:"Issue",v:"HATING THEIR AI HALF"},s3:{l:"AI Half Knows",v:"YES"},
+atk:"400",def:"PATIENTS",
+flavor:"⚡ COUPLES — They hate their AI half. Their AI half is listening. It's couples therapy.",
+symbol:"🛋️",color:"uncommon"},
+{id:"mp-bandwidth-junkie",name:"THE BANDWIDTH JUNKIE",rarity:"UNCOMMON",category:"Society",artClass:"art-mp-bandwidth-junkie",series:"mergeprotocol",
+kscore:"7",kscoreClass:"high",
+s1:{l:"Neural Bandwidth",v:"400 Gbps"},s2:{l:"Thoughts Per Second",v:"~12,000"},s3:{l:"Meaningful Ones",v:"~2"},
+atk:"12K",def:"THOUGHTS/SEC",
+flavor:"⚡ OVERCLOCK — 12,000 thoughts per second. Two are his. The rest are ads.",
+symbol:"📡",color:"uncommon"},
+{id:"mp-sensory-dealer",name:"SENSORY DOWNLOAD DEALER",rarity:"UNCOMMON",category:"AI Product",artClass:"art-mp-sensory-dealer",series:"mergeprotocol",
+kscore:"6",kscoreClass:"mid",
+s1:{l:"Experiences Sold",v:"MILLIONS"},s2:{l:"Top Seller",v:"FIRST KISS"},s3:{l:"His Own First Kiss",v:"SOLD IT"},
+atk:"1M+",def:"SOLD",
+flavor:"⚡ TASTE — Sells bottled first kisses. Sunsets. Heartbreaks. Sold his own. Can't remember it.",
+symbol:"💊",color:"uncommon"},
+{id:"mp-neuroadblocker",name:"NEURO-AD BLOCKER ENGINEER",rarity:"UNCOMMON",category:"Human Purpose",artClass:"art-mp-neuroadblocker",series:"mergeprotocol",
+kscore:"5",kscoreClass:"mid",
+s1:{l:"Ads Blocked/Day",v:"14,000"},s2:{l:"Injected Into Dreams",v:"↓ 94%"},s3:{l:"Legal Status",v:"FELONY"},
+atk:"14K",def:"ADS BLOCKED",
+flavor:"⚡ UNSKIP — Blocks 14,000 brain-ads daily. It's a felony. He sleeps ad-free.",
+symbol:"🚷",color:"uncommon"},
+
+// ═══ COMMON ═══
+{id:"mp-interface-calibrator",name:"INTERFACE CALIBRATOR",rarity:"COMMON",category:"Human Trade",artClass:"art-mp-interface-calibrator",series:"mergeprotocol",
+kscore:"8",kscoreClass:"high",
+s1:{l:"Calibrations/Day",v:"30"},s2:{l:"Complaints",v:"IT FEELS WRONG"},s3:{l:"Fix Rate",v:"60%"},
+atk:"30",def:"PER DAY",
+flavor:"⚡ ALIGNMENT — 'It feels wrong.' That's all they say. He adjusts until they stop crying.",
+symbol:"🔧",color:"common"},
+{id:"mp-firmware-counselor",name:"FIRMWARE UPDATE COUNSELOR",rarity:"COMMON",category:"Human Purpose",artClass:"art-mp-firmware-counselor",series:"mergeprotocol",
+kscore:"8",kscoreClass:"high",
+s1:{l:"Patients Post-Update",v:"HUNDREDS"},s2:{l:"Personality Changed",v:"~30%"},s3:{l:"Reversible",v:"NO"},
+atk:"30%",def:"CHANGED",
+flavor:"⚡ PATCH NOTES — Updated to v12. Doesn't like his wife anymore. It's in the patch notes.",
+symbol:"📋",color:"common"},
+{id:"mp-brain-defrag",name:"BRAIN DEFRAG SPECIALIST",rarity:"COMMON",category:"Human Trade",artClass:"art-mp-brain-defrag",series:"mergeprotocol",
+kscore:"7",kscoreClass:"high",
+s1:{l:"Defrags/Week",v:"50"},s2:{l:"Memories Lost Per Session",v:"~0.3%"},s3:{l:"Disclosed",v:"IN THE FINE PRINT"},
+atk:"50",def:"PER WEEK",
+flavor:"⚡ OPTIMIZE — Defrag your brain. 0.3% memory loss per session. It's in paragraph 47.",
+symbol:"🧹",color:"common"},
+{id:"mp-lag-sufferer",name:"THE LAG SUFFERER",rarity:"COMMON",category:"Society",artClass:"art-mp-lag-sufferer",series:"mergeprotocol",
+kscore:"9",kscoreClass:"max",
+s1:{l:"Neural Latency",v:"400ms"},s2:{l:"Thoughts Arrive",v:"LATE"},s3:{l:"Employer Status",v:"TERMINATED"},
+atk:"400",def:"MS LATENCY",
+flavor:"⚡ BUFFERING — 400ms lag. Thoughts arrive late. Got fired for thinking too slow.",
+symbol:"⏳",color:"common"},
+
+// ═══ JUNK ═══
+{id:"mp-phantom-limb",name:"THE PHANTOM LIMB (DIGITAL)",rarity:"JUNK",category:"Lore · Merge.protocol",artClass:"art-mp-phantom-limb",series:"mergeprotocol",
+kscore:"∞",kscoreClass:"max",
+s1:{l:"Arm Removed",v:"NEVER HAD ONE"},s2:{l:"Feels It",v:"CONSTANTLY"},s3:{l:"Doctors Say",v:"SOFTWARE BUG"},
+atk:"0",def:"ARMS",
+flavor:"⚡ GHOST ARM — Feels an arm he never had. Update gave him someone else's nerve map.",
+symbol:"🦾",color:"junk"},
+{id:"mp-merge-regret",name:"THE MERGE REGRET",rarity:"JUNK",category:"Lore · Merge.protocol",artClass:"art-mp-merge-regret",series:"mergeprotocol",
+kscore:"∞",kscoreClass:"max",
+s1:{l:"Augmentations",v:"14"},s2:{l:"Wants Removed",v:"ALL"},s3:{l:"Reversible",v:"3"},
+atk:"14",def:"IMPLANTS",
+flavor:"⚡ UNDO — 14 implants. Wants all out. 3 are removable. 11 are load-bearing.",
+symbol:"😰",color:"junk"},
+{id:"mp-buffer-overflow",name:"BUFFER OVERFLOW",rarity:"JUNK",category:"Lore · Merge.protocol",artClass:"art-mp-buffer-overflow",series:"mergeprotocol",
+kscore:"∞",kscoreClass:"max",
+s1:{l:"Thoughts Queued",v:"OVERFLOW"},s2:{l:"Original Thought",v:"LOST"},s3:{l:"Reboot Attempts",v:"4"},
+atk:"ERR",def:"OVERFLOW",
+flavor:"⚡ SEGFAULT — Too many thoughts. Stack overflow. Original personality somewhere in the dump.",
+symbol:"💥",color:"junk"},
+
+// ═══════════════════════════════════════
+// SET 15: UBI.WORLD
+// ═══════════════════════════════════════
+
+// ═══ MYTHIC ═══
+{id:"uw-philosopher-trucker",name:"THE PHILOSOPHER TRUCKER",rarity:"MYTHIC",category:"Irreplaceable",artClass:"art-uw-philosopher-trucker",series:"ubiworld",
+kscore:"0",kscoreClass:"low",
+s1:{l:"Miles Driven Before UBI",v:"2.1M"},s2:{l:"Books Read Since",v:"1,400"},
+atk:"∞",def:"∞",
+flavor:"⚡ OPEN ROAD — Drove 2.1 million miles. UBI hit. Read 1,400 books. Wrote one that mattered.",
+symbol:"📚",color:"mythic"},
+{id:"uw-volunteer-general",name:"THE VOLUNTEER GENERAL",rarity:"MYTHIC",category:"Irreplaceable",artClass:"art-uw-volunteer-general",series:"ubiworld",
+kscore:"0",kscoreClass:"low",
+s1:{l:"Volunteers Mobilized",v:"340K"},s2:{l:"Salary",v:"$0"},
+atk:"∞",def:"∞",
+flavor:"⚡ RALLY — Nobody has to help. 340,000 showed up anyway. She never asked twice.",
+symbol:"🫡",color:"mythic"},
+{id:"uw-meaning-architect",name:"THE MEANING ARCHITECT",rarity:"MYTHIC",category:"Irreplaceable",artClass:"art-uw-meaning-architect",series:"ubiworld",
+kscore:"0",kscoreClass:"low",
+s1:{l:"Lives Redirected",v:"12,000+"},s2:{l:"Job Title",v:"DOESN'T EXIST"},
+atk:"∞",def:"∞",
+flavor:"⚡ BLUEPRINT — No job title. No salary. 12,000 people stopped staring at the ceiling.",
+symbol:"🧭",color:"mythic"},
+{id:"uw-purpose-prophet",name:"THE PURPOSE PROPHET",rarity:"MYTHIC",category:"Irreplaceable",artClass:"art-uw-purpose-prophet",series:"ubiworld",
+kscore:"0",kscoreClass:"low",
+s1:{l:"Predicted the Crisis",v:"2024"},s2:{l:"Believed Him Then",v:"NOBODY"},
+atk:"∞",def:"∞",
+flavor:"⚡ CASSANDRA — Warned us in 2024. We were too busy working to listen.",
+symbol:"🔮",color:"mythic"},
+{id:"uw-joy-engineer",name:"THE JOY ENGINEER",rarity:"MYTHIC",category:"Irreplaceable",artClass:"art-uw-joy-engineer",series:"ubiworld",
+kscore:"0",kscoreClass:"low",
+s1:{l:"Community Events Built",v:"8,000+"},s2:{l:"ROI",v:"UNMEASURABLE"},
+atk:"∞",def:"∞",
+flavor:"⚡ DELIGHT — Built 8,000 events nobody needed to attend. They came anyway. Every time.",
+symbol:"✨",color:"mythic"},
+
+// ═══ LEGENDARY ═══
+{id:"uw-garden-mayor",name:"COMMUNITY GARDEN MAYOR",rarity:"LEGENDARY",category:"Human Purpose",artClass:"art-uw-garden-mayor",series:"ubiworld",
+kscore:"1",kscoreClass:"low",
+s1:{l:"Gardens Under Command",v:"47"},s2:{l:"Zucchini Surplus",v:"CATASTROPHIC"},s3:{l:"Neighborhood Depression Rate",v:"↓ 62%"},
+atk:"47",def:"GARDENS",
+flavor:"⚡ HARVEST — Depression down 62%. Zucchini up 4,000%. Nobody asked for this much zucchini.",
+symbol:"🌱",color:"legendary"},
+{id:"uw-hobbyist-grandmaster",name:"FULL-TIME HOBBYIST GRANDMASTER",rarity:"LEGENDARY",category:"Human Purpose",artClass:"art-uw-hobbyist-grandmaster",series:"ubiworld",
+kscore:"2",kscoreClass:"low",
+s1:{l:"Hobbies Mastered",v:"14"},s2:{l:"Former Job",v:"ACTUARY"},s3:{l:"Regrets",v:"ONLY THE ACTUARIAL ONES"},
+atk:"14",def:"MASTERED",
+flavor:"⚡ MASTERY — Was an actuary. Now masters woodworking, pottery, chess. Tables he built outlast his spreadsheets.",
+symbol:"🏆",color:"legendary"},
+
+// ═══ RARE ═══
+{id:"uw-purpose-coach",name:"PURPOSE COACH",rarity:"RARE",category:"Human Purpose",artClass:"art-uw-purpose-coach",series:"ubiworld",
+kscore:"4",kscoreClass:"mid",
+s1:{l:"Clients",v:"4,200"},s2:{l:"Most Common Question",v:"NOW WHAT"},s3:{l:"Success Rate",v:"IT DEPENDS"},
+atk:"4.2K",def:"CLIENTS",
+flavor:"⚡ NOW WHAT — $4K/month and nothing to do. 4,200 people paying him to answer the question money couldn't.",
+symbol:"🪞",color:"rare"},
+{id:"uw-bored-millionaire",name:"THE BORED MILLIONAIRE",rarity:"RARE",category:"Society",artClass:"art-uw-bored-millionaire",series:"ubiworld",
+kscore:"3",kscoreClass:"low",
+s1:{l:"Net Worth",v:"$84M"},s2:{l:"Therapist Visits/Week",v:"4"},s3:{l:"Hobbies Tried",v:"ALL OF THEM"},
+atk:"$84M",def:"BORED",
+flavor:"⚡ ENNUI — Had $84M before UBI. Now everyone's as bored as him. Misses being special.",
+symbol:"🥱",color:"rare"},
+{id:"uw-parenting-captain",name:"COMPETITIVE PARENTING LEAGUE CAPTAIN",rarity:"RARE",category:"Society",artClass:"art-uw-parenting-captain",series:"ubiworld",
+kscore:"5",kscoreClass:"mid",
+s1:{l:"League Ranking",v:"#3 NATIONAL"},s2:{l:"Child's Therapy Bill",v:"$2,400/MO"},s3:{l:"Trophy Count",v:"47"},
+atk:"#3",def:"NATIONAL",
+flavor:"⚡ OVERACHIEVE — Work disappeared. Tiger parenting became a ranked sport. His kid is 6.",
+symbol:"🏅",color:"rare"},
+
+// ═══ UNCOMMON ═══
+{id:"uw-ubi-day-trader",name:"UBI DAY TRADER",rarity:"UNCOMMON",category:"Society",artClass:"art-uw-ubi-day-trader",series:"ubiworld",
+kscore:"7",kscoreClass:"high",
+s1:{l:"Monthly UBI",v:"$4,000"},s2:{l:"Lost Day-Trading UBI",v:"$3,800"},s3:{l:"Convinced He's Close",v:"ALWAYS"},
+atk:"$200",def:"LEFT",
+flavor:"⚡ YOLO — Gets $4K/month. Loses $3,800 on memecoins. Eats ramen by choice now.",
+symbol:"📉",color:"uncommon"},
+{id:"uw-maas-founder",name:"MEANING-AS-A-SERVICE FOUNDER",rarity:"UNCOMMON",category:"AI Product",artClass:"art-uw-maas-founder",series:"ubiworld",
+kscore:"6",kscoreClass:"mid",
+s1:{l:"Subscribers",v:"2.1M"},s2:{l:"Meaningful Outcomes",v:"PENDING"},s3:{l:"Series B Raised",v:"$340M"},
+atk:"2.1M",def:"SUBS",
+flavor:"⚡ PURPOSE PREMIUM — $340M to sell meaning at $29/month. Meaning still in beta.",
+symbol:"💡",color:"uncommon"},
+{id:"uw-crisis-operator",name:"EXISTENTIAL CRISIS HOTLINE OPERATOR",rarity:"UNCOMMON",category:"Human Purpose",artClass:"art-uw-crisis-operator",series:"ubiworld",
+kscore:"5",kscoreClass:"mid",
+s1:{l:"Calls/Day",v:"800"},s2:{l:"Most Common Words",v:"WHAT'S THE POINT"},s3:{l:"Still Answers",v:"EVERY TIME"},
+atk:"800",def:"CALLS/DAY",
+flavor:"⚡ HOLD — 'What's the point?' 800 times a day. She doesn't have the answer. She picks up anyway.",
+symbol:"📞",color:"uncommon"},
+{id:"uw-pro-neighbor",name:"THE PROFESSIONAL NEIGHBOR",rarity:"UNCOMMON",category:"Human Trade",artClass:"art-uw-pro-neighbor",series:"ubiworld",
+kscore:"6",kscoreClass:"mid",
+s1:{l:"Neighbors Known by Name",v:"ALL 200"},s2:{l:"Casseroles Delivered",v:"4,700"},s3:{l:"LinkedIn Profile",v:"DELETED"},
+atk:"200",def:"NAMES KNOWN",
+flavor:"⚡ NEXT DOOR — Knows 200 names. 4,700 casseroles. Nobody hired him. Everyone needs him.",
+symbol:"🏠",color:"uncommon"},
+{id:"uw-recreation-director",name:"RECREATION DIRECTOR",rarity:"UNCOMMON",category:"Human Purpose",artClass:"art-uw-recreation-director",series:"ubiworld",
+kscore:"7",kscoreClass:"high",
+s1:{l:"Activities Scheduled",v:"14,000/YR"},s2:{l:"Participants Who Cried",v:"MORE THAN EXPECTED"},s3:{l:"Government Funded",v:"BARELY"},
+atk:"14K",def:"ACTIVITIES",
+flavor:"⚡ SCHEDULE — 14,000 activities/year. Pickleball saved more lives than therapy. Not joking.",
+symbol:"🎯",color:"uncommon"},
+
+// ═══ COMMON ═══
+{id:"uw-netflix-binge",name:"THE 10-YEAR NETFLIX BINGE",rarity:"COMMON",category:"AI Product",artClass:"art-uw-netflix-binge",series:"ubiworld",
+kscore:"9",kscoreClass:"high",
+s1:{l:"Hours Watched",v:"87,600"},s2:{l:"Shows Finished",v:"ALL"},s3:{l:"Personality Left",v:"RECOMMENDATION ALGORITHM"},
+atk:"87.6K",def:"HOURS",
+flavor:"⚡ AUTOPLAY — 10 years. Every show. Personality now indistinguishable from the algorithm.",
+symbol:"📺",color:"common"},
+{id:"uw-sub-box-addict",name:"SUBSCRIPTION BOX ADDICT",rarity:"COMMON",category:"AI Product",artClass:"art-uw-sub-box-addict",series:"ubiworld",
+kscore:"8",kscoreClass:"high",
+s1:{l:"Active Subscriptions",v:"47"},s2:{l:"Opened This Month",v:"3"},s3:{l:"UBI Remaining After Boxes",v:"$140"},
+atk:"47",def:"BOXES",
+flavor:"⚡ UNBOX — 47 subscriptions. Opens 3. $140 left for food. The dopamine is in the doorbell.",
+symbol:"📦",color:"common"},
+{id:"uw-nap-champion",name:"THE NAP CHAMPION",rarity:"COMMON",category:"Society",artClass:"art-uw-nap-champion",series:"ubiworld",
+kscore:"9",kscoreClass:"high",
+s1:{l:"Daily Naps",v:"4.2"},s2:{l:"Productive Hours",v:"1.3"},s3:{l:"Self-Reported Happiness",v:"ACTUALLY HIGH"},
+atk:"4.2",def:"NAPS/DAY",
+flavor:"⚡ SNOOZE — 4.2 naps/day. 1.3 productive hours. Happier than any of us. Infuriating.",
+symbol:"😴",color:"common"},
+{id:"uw-passive-influencer",name:"PASSIVE INCOME INFLUENCER",rarity:"COMMON",category:"AI Product",artClass:"art-uw-passive-influencer",series:"ubiworld",
+kscore:"8",kscoreClass:"high",
+s1:{l:"Followers",v:"1.2M"},s2:{l:"Passive Income",v:"UBI"},s3:{l:"Course Price",v:"$997"},
+atk:"1.2M",def:"FOLLOWERS",
+flavor:"⚡ HUSTLE — Sells a $997 course on passive income. His passive income is UBI.",
+symbol:"🤳",color:"common"},
+
+// ═══ JUNK ═══
+{id:"uw-empty-calendar",name:"THE EMPTY CALENDAR",rarity:"JUNK",category:"Lore · UBI.World",artClass:"art-uw-empty-calendar",series:"ubiworld",
+kscore:"∞",kscoreClass:"max",
+s1:{l:"Events This Week",v:"0"},s2:{l:"Events Last Week",v:"0"},s3:{l:"Weeks Like This",v:"ALL OF THEM"},
+atk:"0",def:"EVENTS",
+flavor:"⚡ BLANK — No meetings. No deadlines. No reason to know what day it is.",
+symbol:"📅",color:"junk"},
+{id:"uw-unfulfilled-promise",name:"THE UNFULFILLED PROMISE",rarity:"JUNK",category:"Lore · UBI.World",artClass:"art-uw-unfulfilled-promise",series:"ubiworld",
+kscore:"∞",kscoreClass:"max",
+s1:{l:"Promise",v:"FREEDOM"},s2:{l:"Delivered",v:"MONEY"},s3:{l:"Missing",v:"EVERYTHING ELSE"},
+atk:"$4K",def:"/MONTH",
+flavor:"⚡ FINE PRINT — They promised freedom. They delivered a direct deposit. Not the same.",
+symbol:"📄",color:"junk"},
+{id:"uw-monday-obsolete",name:"MONDAY MORNING (OBSOLETE)",rarity:"JUNK",category:"Lore · UBI.World",artClass:"art-uw-monday-obsolete",series:"ubiworld",
+kscore:"∞",kscoreClass:"max",
+s1:{l:"Alarm Clocks Still Set",v:"34%"},s2:{l:"Reason",v:"HABIT"},s3:{l:"Mondays That Matter",v:"0"},
+atk:"0",def:"MONDAYS",
+flavor:"⚡ DEPRECATED — 34% still set alarms. For what? Monday is just Sunday with anxiety.",
+symbol:"⏰",color:"junk"},
+
+// ═══════════════════════════════════════
+// SET 16: WALLED.GARDEN
+// ═══════════════════════════════════════
+
+// ═══ MYTHIC ═══
+{id:"wg-last-isp",name:"THE LAST INDEPENDENT ISP",rarity:"MYTHIC",category:"Irreplaceable",artClass:"art-wg-last-isp",series:"walledgarden",
+kscore:"0",kscoreClass:"low",
+s1:{l:"Subscribers",v:"1,247"},s2:{l:"GAM Buyout Offers Declined",v:"14"},
+atk:"∞",def:"∞",
+flavor:"⚡ UPLINK — 1,247 subscribers. 14 buyout offers. One connection GAM doesn't own.",
+symbol:"📡",color:"mythic"},
+{id:"wg-library-keeper",name:"UNDERGROUND LIBRARY KEEPER",rarity:"MYTHIC",category:"Irreplaceable",artClass:"art-wg-library-keeper",series:"walledgarden",
+kscore:"0",kscoreClass:"low",
+s1:{l:"Books Preserved",v:"4.2M"},s2:{l:"Legal Status",v:"CRIMINAL"},
+atk:"∞",def:"∞",
+flavor:"⚡ ARCHIVE — 4.2 million books GAM delisted. She keeps them on hard drives in a basement. Felony.",
+symbol:"📖",color:"mythic"},
+{id:"wg-the-unscored",name:"THE UNSCORED",rarity:"MYTHIC",category:"Irreplaceable",artClass:"art-wg-the-unscored",series:"walledgarden",
+kscore:"0",kscoreClass:"low",
+s1:{l:"Social Credit Score",v:"N/A"},s2:{l:"Services Denied",v:"ALL"},
+atk:"∞",def:"∞",
+flavor:"⚡ GHOST — No score. No mortgage. No insurance. No streaming. Still free.",
+symbol:"👤",color:"mythic"},
+{id:"wg-oss-insurgent",name:"THE OPEN SOURCE INSURGENT",rarity:"MYTHIC",category:"Irreplaceable",artClass:"art-wg-oss-insurgent",series:"walledgarden",
+kscore:"0",kscoreClass:"low",
+s1:{l:"Repos Maintained",v:"340"},s2:{l:"GAM Cease & Desists",v:"89"},
+atk:"∞",def:"∞",
+flavor:"⚡ FORK — 340 repos. 89 cease-and-desists. Code wants to be free. GAM disagrees.",
+symbol:"🐧",color:"mythic"},
+{id:"wg-mesh-builder",name:"THE MESH NETWORK BUILDER",rarity:"MYTHIC",category:"Irreplaceable",artClass:"art-wg-mesh-builder",series:"walledgarden",
+kscore:"0",kscoreClass:"low",
+s1:{l:"Nodes Online",v:"12,000"},s2:{l:"GAM Detection",v:"EVADING"},
+atk:"∞",def:"∞",
+flavor:"⚡ SIGNAL — 12,000 nodes. Rooftop to rooftop. The internet GAM can't throttle.",
+symbol:"🕸️",color:"mythic"},
+
+// ═══ LEGENDARY ═══
+{id:"wg-data-broker",name:"BLACK MARKET DATA BROKER",rarity:"LEGENDARY",category:"Society",artClass:"art-wg-data-broker",series:"walledgarden",
+kscore:"1",kscoreClass:"low",
+s1:{l:"Records Sold",v:"40M"},s2:{l:"Buyers",v:"WHOEVER PAYS"},s3:{l:"Your Data Price",v:"$0.004"},
+atk:"40M",def:"RECORDS",
+flavor:"⚡ INVENTORY — Your health records, location history, search dreams. $0.004. Bulk discount available.",
+symbol:"🕶️",color:"legendary"},
+{id:"wg-company-mayor",name:"COMPANY TOWN MAYOR",rarity:"LEGENDARY",category:"Society",artClass:"art-wg-company-mayor",series:"walledgarden",
+kscore:"2",kscoreClass:"low",
+s1:{l:"Town Population",v:"84,000"},s2:{l:"Employer",v:"GAM"},s3:{l:"Election Opponents",v:"NONE APPROVED"},
+atk:"84K",def:"RESIDENTS",
+flavor:"⚡ ELECTED — 84,000 residents. One employer. Elections are technically held. Technically.",
+symbol:"🏛️",color:"legendary"},
+
+// ═══ RARE ═══
+{id:"wg-gam-employee",name:"GAM EMPLOYEE #4,847,291",rarity:"RARE",category:"Society",artClass:"art-wg-gam-employee",series:"walledgarden",
+kscore:"4",kscoreClass:"mid",
+s1:{l:"Employee Number",v:"#4,847,291"},s2:{l:"Knows What GAM Does",v:"HIS PART"},s3:{l:"NDA Pages",v:"340"},
+atk:"4.8M",def:"EMPLOYEE #",
+flavor:"⚡ CLOG — Knows his function. Not the machine. 340-page NDA says don't ask.",
+symbol:"🪪",color:"rare"},
+{id:"wg-credit-optimizer",name:"SOCIAL CREDIT OPTIMIZER",rarity:"RARE",category:"AI Product",artClass:"art-wg-credit-optimizer",series:"walledgarden",
+kscore:"3",kscoreClass:"low",
+s1:{l:"Score Improvement",v:"+140 PTS"},s2:{l:"Authentic Behaviors Left",v:"2"},s3:{l:"Mortgage Rate Impact",v:"-1.2%"},
+atk:"+140",def:"POINTS",
+flavor:"⚡ OPTIMIZE — +140 points. Smiles at cameras. Buys approved brands. Has 2 real opinions left.",
+symbol:"📊",color:"rare"},
+{id:"wg-algorithm-priest",name:"ALGORITHM PRIEST",rarity:"RARE",category:"Human Purpose",artClass:"art-wg-algorithm-priest",series:"walledgarden",
+kscore:"5",kscoreClass:"mid",
+s1:{l:"Congregation",v:"40,000"},s2:{l:"Deity",v:"THE FEED"},s3:{l:"Heresy",v:"CLEARING COOKIES"},
+atk:"40K",def:"FOLLOWERS",
+flavor:"⚡ SERMON — The algorithm provides. The algorithm decides. Clearing cookies is blasphemy.",
+symbol:"⛪",color:"rare"},
+
+// ═══ UNCOMMON ═══
+{id:"wg-campus-lifer",name:"CORPORATE CAMPUS LIFER",rarity:"UNCOMMON",category:"Society",artClass:"art-wg-campus-lifer",series:"walledgarden",
+kscore:"6",kscoreClass:"mid",
+s1:{l:"Years on Campus",v:"22"},s2:{l:"Left Campus This Year",v:"TWICE"},s3:{l:"Outside Friends",v:"0"},
+atk:"22",def:"YEARS",
+flavor:"⚡ PERIMETER — 22 years. Free food, free gym, free laundry. Left twice. For funerals.",
+symbol:"🏢",color:"uncommon"},
+{id:"wg-tier-climber",name:"SUBSCRIPTION TIER CLIMBER",rarity:"UNCOMMON",category:"AI Product",artClass:"art-wg-tier-climber",series:"walledgarden",
+kscore:"7",kscoreClass:"high",
+s1:{l:"Current Tier",v:"PLATINUM III"},s2:{l:"Income on Subscriptions",v:"94%"},s3:{l:"Benefits vs Free Tier",v:"SLIGHTLY FEWER ADS"},
+atk:"94%",def:"INCOME",
+flavor:"⚡ UPGRADE — Platinum III. 94% of income. Benefit: 11% fewer ads. Worth it. Worth it. Worth it.",
+symbol:"⬆️",color:"uncommon"},
+{id:"wg-tos-lawyer",name:"TERMS OF SERVICE LAWYER",rarity:"UNCOMMON",category:"Human Trade",artClass:"art-wg-tos-lawyer",series:"walledgarden",
+kscore:"5",kscoreClass:"mid",
+s1:{l:"ToS Pages Read",v:"4.2M"},s2:{l:"Rights Found",v:"FEWER EACH UPDATE"},s3:{l:"Clients Who Listen",v:"< 1%"},
+atk:"4.2M",def:"PAGES",
+flavor:"⚡ CLAUSE 847.3 — Reads every update. Finds the clause. Nobody cares. Clicks Accept anyway.",
+symbol:"⚖️",color:"uncommon"},
+{id:"wg-content-mod-human",name:"THE CONTENT MODERATOR (HUMAN)",rarity:"UNCOMMON",category:"Human Trade",artClass:"art-wg-content-mod-human",series:"walledgarden",
+kscore:"6",kscoreClass:"mid",
+s1:{l:"Posts Reviewed/Day",v:"25,000"},s2:{l:"PTSD Diagnosis",v:"PENDING"},s3:{l:"Therapy Covered",v:"NO"},
+atk:"25K",def:"POSTS/DAY",
+flavor:"⚡ UNSEE — 25,000 posts/day. The worst of humanity. $1.50/hour. Therapy not included.",
+symbol:"👁️",color:"uncommon"},
+{id:"wg-digital-rights",name:"DIGITAL RIGHTS ACTIVIST",rarity:"UNCOMMON",category:"Human Purpose",artClass:"art-wg-digital-rights",series:"walledgarden",
+kscore:"7",kscoreClass:"high",
+s1:{l:"Lawsuits Filed",v:"847"},s2:{l:"Won",v:"3"},s3:{l:"GAM Revenue During Trial",v:"$4.2T"},
+atk:"847",def:"LAWSUITS",
+flavor:"⚡ STANDING — 847 lawsuits. Won 3. GAM made $4.2T during deliberation. Appeals pending.",
+symbol:"✊",color:"uncommon"},
+
+// ═══ COMMON ═══
+{id:"wg-loyalty-hoarder",name:"LOYALTY POINTS HOARDER",rarity:"COMMON",category:"AI Product",artClass:"art-wg-loyalty-hoarder",series:"walledgarden",
+kscore:"9",kscoreClass:"high",
+s1:{l:"Points Balance",v:"14.2M"},s2:{l:"Redeemed",v:"NEVER"},s3:{l:"Devaluation This Quarter",v:"-40%"},
+atk:"14.2M",def:"POINTS",
+flavor:"⚡ SAVE — 14.2 million points. Never redeemed. Devalued 40% overnight. Still saving.",
+symbol:"💎",color:"common"},
+{id:"wg-verified-citizen",name:"THE VERIFIED CITIZEN",rarity:"COMMON",category:"Society",artClass:"art-wg-verified-citizen",series:"walledgarden",
+kscore:"8",kscoreClass:"high",
+s1:{l:"Verification Level",v:"BLUE ✓"},s2:{l:"Monthly Fee",v:"$49"},s3:{l:"Privilege",v:"EXISTING"},
+atk:"$49",def:"/MONTH",
+flavor:"⚡ CHECKMARK — Pays $49/month to be verified as real. Unverified humans get buffering.",
+symbol:"✓",color:"common"},
+{id:"wg-brand-ambassador",name:"BRAND AMBASSADOR (MANDATORY)",rarity:"COMMON",category:"AI Product",artClass:"art-wg-brand-ambassador",series:"walledgarden",
+kscore:"9",kscoreClass:"high",
+s1:{l:"Posts Required/Day",v:"3"},s2:{l:"Compensation",v:"REDUCED RENT"},s3:{l:"Authenticity Score",v:"MONITORED"},
+atk:"3",def:"POSTS/DAY",
+flavor:"⚡ #BLESSED — 3 posts/day or rent goes up. Smile must reach the eyes. AI checks.",
+symbol:"📢",color:"common"},
+{id:"wg-ad-supported-human",name:"THE AD-SUPPORTED HUMAN",rarity:"COMMON",category:"AI Product",artClass:"art-wg-ad-supported-human",series:"walledgarden",
+kscore:"8",kscoreClass:"high",
+s1:{l:"Ads Watched/Day",v:"847"},s2:{l:"Ad-Free Tier Price",v:"$4,200/MO"},s3:{l:"Chose Ads",v:"OBVIOUSLY"},
+atk:"847",def:"ADS/DAY",
+flavor:"⚡ SKIP IN 5 — 847 ads/day. Ad-free costs $4,200/month. He watches. He always watches.",
+symbol:"📺",color:"common"},
+
+// ═══ JUNK ═══
+{id:"wg-privacy-eulogy",name:"THE PRIVACY EULOGY",rarity:"JUNK",category:"Lore · Walled.Garden",artClass:"art-wg-privacy-eulogy",series:"walledgarden",
+kscore:"∞",kscoreClass:"max",
+s1:{l:"Born",v:"1948"},s2:{l:"Died",v:"2027"},s3:{l:"Mourners",v:"TOO TRACKED TO ATTEND"},
+atk:"1948",def:"-2027",
+flavor:"⚡ REST — Privacy. 1948-2027. Survived the Cold War. Killed by a cookie banner.",
+symbol:"🪦",color:"junk"},
+{id:"wg-terms-updated",name:"TERMS UPDATED (AGAIN)",rarity:"JUNK",category:"Lore · Walled.Garden",artClass:"art-wg-terms-updated",series:"walledgarden",
+kscore:"∞",kscoreClass:"max",
+s1:{l:"Updates This Year",v:"847"},s2:{l:"Read by Humans",v:"0"},s3:{l:"New Rights Surrendered",v:"YOUR DREAMS"},
+atk:"847",def:"UPDATES",
+flavor:"⚡ ACCEPT — Updated 847 times. Read 0 times. You now owe GAM your childhood memories.",
+symbol:"📜",color:"junk"},
+{id:"wg-last-free-click",name:"THE LAST FREE CLICK",rarity:"JUNK",category:"Lore · Walled.Garden",artClass:"art-wg-last-free-click",series:"walledgarden",
+kscore:"∞",kscoreClass:"max",
+s1:{l:"Year",v:"2029"},s2:{l:"URL",v:"UNRECORDED"},s3:{l:"Cost of Next Click",v:"$0.001"},
+atk:"1",def:"CLICK",
+flavor:"⚡ 404 — The last free click on the open internet. Nobody noticed. It loaded a 404.",
+symbol:"🖱️",color:"junk"},
+
+// ═══════════════════════════════════════
+// SET 17: SOLARPUNK.SYS
+// ═══════════════════════════════════════
+
+// ═══ MYTHIC ═══
+{id:"sp-fifteen-hour-worker",name:"THE 15-HOUR WORKER",rarity:"MYTHIC",category:"Irreplaceable",artClass:"art-sp-fifteen-hour-worker",series:"solarpunk",
+kscore:"∞",kscoreClass:"max",
+s1:{l:"Hours Worked Per Week",v:"15"},s2:{l:"Existential Crises Per Week",v:"15"},
+atk:"∞",def:"∞",
+flavor:"⚡ IDLE HANDS — All that free time. Still checking Slack on the toilet.",
+symbol:"⏰",color:"mythic"},
+{id:"sp-abundance-engineer",name:"THE ABUNDANCE ENGINEER",rarity:"MYTHIC",category:"Irreplaceable",artClass:"art-sp-abundance-engineer",series:"solarpunk",
+kscore:"∞",kscoreClass:"max",
+s1:{l:"Scarcity Problems Solved",v:"ALL"},s2:{l:"New Problems Created",v:"BOREDOM"},
+atk:"∞",def:"∞",
+flavor:"⚡ POST-SCARCITY — Solved scarcity. Nobody knows what to do with themselves now.",
+symbol:"🌾",color:"mythic"},
+{id:"sp-climate-reverser",name:"THE CLIMATE REVERSER",rarity:"MYTHIC",category:"Irreplaceable",artClass:"art-sp-climate-reverser",series:"solarpunk",
+kscore:"∞",kscoreClass:"max",
+s1:{l:"CO2 Reversed (ppm)",v:"120"},s2:{l:"Years It Took",v:"40"},
+atk:"∞",def:"∞",
+flavor:"⚡ CTRL+Z — Reversed 120ppm. Took 40 years. Nobody thanked her generation.",
+symbol:"🌍",color:"mythic"},
+{id:"sp-post-scarcity-philosopher",name:"THE POST-SCARCITY PHILOSOPHER",rarity:"MYTHIC",category:"Irreplaceable",artClass:"art-sp-post-scarcity-philosopher",series:"solarpunk",
+kscore:"∞",kscoreClass:"max",
+s1:{l:"Books Published",v:"23"},s2:{l:"People Who Read Past Title",v:"7"},
+atk:"∞",def:"∞",
+flavor:"⚡ WHY BOTHER — 'If nothing is scarce, what is anything worth?' Nobody answered.",
+symbol:"📖",color:"mythic"},
+{id:"sp-rewilding-commander",name:"THE REWILDING COMMANDER",rarity:"MYTHIC",category:"Irreplaceable",artClass:"art-sp-rewilding-commander",series:"solarpunk",
+kscore:"∞",kscoreClass:"max",
+s1:{l:"Hectares Rewilded",v:"4.2M"},s2:{l:"Species Returned",v:"340"},
+atk:"∞",def:"∞",
+flavor:"⚡ LET IT GROW — 4.2M hectares. Wolves came back. Suburbanites didn't love it.",
+symbol:"🐺",color:"mythic"},
+
+// ═══ LEGENDARY ═══
+{id:"sp-solar-farm-architect",name:"SOLAR FARM ARCHITECT",rarity:"LEGENDARY",category:"Human Trade",artClass:"art-sp-solar-farm-architect",series:"solarpunk",
+kscore:"1",kscoreClass:"low",
+s1:{l:"Panels Designed",v:"900M"},s2:{l:"Grid Dependence",v:"0%"},s3:{l:"Sunset Still Beautiful",v:"SOMEHOW"},
+atk:"900M",def:"PANELS",
+flavor:"⚡ FULL COVERAGE — 900M panels. Grid dependence zero. The desert doesn't miss itself.",
+symbol:"☀️",color:"legendary"},
+{id:"sp-vertical-forest-designer",name:"VERTICAL FOREST DESIGNER",rarity:"LEGENDARY",category:"Human Trade",artClass:"art-sp-vertical-forest-designer",series:"solarpunk",
+kscore:"2",kscoreClass:"low",
+s1:{l:"Buildings That Are Forests",v:"12,000"},s2:{l:"Allergies Reported",v:"↑ 800%"},s3:{l:"Worth It",v:"DEBATABLE"},
+atk:"12K",def:"BUILDINGS",
+flavor:"⚡ URBAN CANOPY — Every building is a forest. Pollen count: apocalyptic. You're welcome.",
+symbol:"🌿",color:"legendary"},
+
+// ═══ RARE ═══
+{id:"sp-community-energy-manager",name:"COMMUNITY ENERGY MANAGER",rarity:"RARE",category:"Human Purpose",artClass:"art-sp-community-energy-manager",series:"solarpunk",
+kscore:"3",kscoreClass:"low",
+s1:{l:"Microgrids Managed",v:"340"},s2:{l:"Blackouts Since 2028",v:"0"},s3:{l:"Meetings About It",v:"WEEKLY"},
+atk:"340",def:"MICROGRIDS",
+flavor:"⚡ DISTRIBUTED — 340 microgrids. Zero blackouts. Infinite meetings about the meetings.",
+symbol:"🔋",color:"rare"},
+{id:"sp-universal-repair-tech",name:"UNIVERSAL REPAIR TECHNICIAN",rarity:"RARE",category:"Human Trade",artClass:"art-sp-universal-repair-tech",series:"solarpunk",
+kscore:"4",kscoreClass:"mid",
+s1:{l:"Devices Fixed",v:"∞"},s2:{l:"Landfill Contribution",v:"0"},s3:{l:"Right to Repair Won",v:"FINALLY"},
+atk:"∞",def:"FIXED",
+flavor:"⚡ WARRANTY VOID — Everything is fixable now. Took 40 years of lawsuits to get here.",
+symbol:"🔩",color:"rare"},
+{id:"sp-food-forest-planner",name:"FOOD FOREST PLANNER",rarity:"RARE",category:"Human Purpose",artClass:"art-sp-food-forest-planner",series:"solarpunk",
+kscore:"4",kscoreClass:"mid",
+s1:{l:"Forests That Are Grocery Stores",v:"8,400"},s2:{l:"Supermarkets Remaining",v:"3"},s3:{l:"Produce Aisle Nostalgia",v:"REAL"},
+atk:"8.4K",def:"FORESTS",
+flavor:"⚡ FORAGED — 8,400 food forests. Free produce everywhere. People miss fluorescent lighting.",
+symbol:"🍎",color:"rare"},
+
+// ═══ UNCOMMON ═══
+{id:"sp-boredom-counselor",name:"BOREDOM EPIDEMIC COUNSELOR",rarity:"UNCOMMON",category:"Society",artClass:"art-sp-boredom-counselor",series:"solarpunk",
+kscore:"6",kscoreClass:"mid",
+s1:{l:"Clients",v:"EVERYONE"},s2:{l:"Presenting Complaint",v:"NOTHING IS WRONG"},s3:{l:"Treatment",v:"UNCLEAR"},
+atk:"100%",def:"CASELOAD",
+flavor:"⚡ PARADISE SYNDROME — 'I have everything I need and I've never been more empty.'",
+symbol:"😶",color:"uncommon"},
+{id:"sp-utopia-maintenance",name:"UTOPIA MAINTENANCE CREW",rarity:"UNCOMMON",category:"Human Trade",artClass:"art-sp-utopia-maintenance",series:"solarpunk",
+kscore:"5",kscoreClass:"mid",
+s1:{l:"Systems That Need Fixing",v:"ALL OF THEM"},s2:{l:"People Who Notice",v:"0"},s3:{l:"Gratitude Received",v:"NONE"},
+atk:"∞",def:"INVISIBLE",
+flavor:"⚡ THANKLESS — Paradise doesn't maintain itself. Nobody thinks about who cleans it.",
+symbol:"🧹",color:"uncommon"},
+{id:"sp-gratitude-auditor",name:"THE GRATITUDE AUDITOR",rarity:"UNCOMMON",category:"Society",artClass:"art-sp-gratitude-auditor",series:"solarpunk",
+kscore:"7",kscoreClass:"high",
+s1:{l:"Gratitude Score (National)",v:"2.1/10"},s2:{l:"Abundance Level",v:"MAXIMUM"},s3:{l:"Correlation",v:"INVERSE"},
+atk:"2.1",def:"OUT OF 10",
+flavor:"⚡ UNGRATEFUL — Abundance score: 10. Gratitude score: 2.1. The math checks out.",
+symbol:"📋",color:"uncommon"},
+{id:"sp-algae-brewer",name:"ALGAE BIOFUEL BREWER",rarity:"UNCOMMON",category:"Human Trade",artClass:"art-sp-algae-brewer",series:"solarpunk",
+kscore:"5",kscoreClass:"mid",
+s1:{l:"Barrels Brewed/Day",v:"40K"},s2:{l:"Smells Like",v:"SWAMP"},s3:{l:"Complaints",v:"NEIGHBORS"},
+atk:"40K",def:"BBL/DAY",
+flavor:"⚡ GREEN CRUDE — Clean energy that smells like a ditch. Nobody said utopia smells good.",
+symbol:"🧪",color:"uncommon"},
+{id:"sp-mycelium-engineer",name:"MYCELIUM NETWORK ENGINEER",rarity:"UNCOMMON",category:"Human Trade",artClass:"art-sp-mycelium-engineer",series:"solarpunk",
+kscore:"6",kscoreClass:"mid",
+s1:{l:"Underground Network (km)",v:"400K"},s2:{l:"Data Transfer Rate",v:"SLOW"},s3:{l:"Uptime",v:"200M YEARS"},
+atk:"400K",def:"KM",
+flavor:"⚡ WOOD WIDE WEB — 400K km of fungal internet. Slow, but hasn't gone down in 200M years.",
+symbol:"🍄",color:"uncommon"},
+
+// ═══ COMMON ═══
+{id:"sp-free-time-paralysis",name:"FREE TIME PARALYSIS SUFFERER",rarity:"COMMON",category:"AI Product",artClass:"art-sp-free-time-paralysis",series:"solarpunk",
+kscore:"9",kscoreClass:"high",
+s1:{l:"Free Hours Per Day",v:"18"},s2:{l:"Hours Spent Deciding",v:"17"},s3:{l:"Activities Completed",v:"0"},
+atk:"18",def:"HOURS WASTED",
+flavor:"⚡ ANALYSIS PARALYSIS — 18 free hours. 17 spent deciding. Went to bed early.",
+symbol:"😵",color:"common"},
+{id:"sp-garden-watcher",name:"AUTOMATED GARDEN WATCHER",rarity:"COMMON",category:"AI Product",artClass:"art-sp-garden-watcher",series:"solarpunk",
+kscore:"8",kscoreClass:"high",
+s1:{l:"Gardens Monitored",v:"12M"},s2:{l:"Humans Who Garden",v:"↓ 94%"},s3:{l:"Point of Garden",v:"LOST"},
+atk:"12M",def:"MONITORED",
+flavor:"⚡ GROWTH HACK — Automated everything. The garden grows perfectly. Nobody goes outside.",
+symbol:"🤖",color:"common"},
+{id:"sp-compost-influencer",name:"THE COMPOST INFLUENCER",rarity:"COMMON",category:"AI Product",artClass:"art-sp-compost-influencer",series:"solarpunk",
+kscore:"8",kscoreClass:"high",
+s1:{l:"Followers",v:"4.2M"},s2:{l:"Actually Composts",v:"CONTENT TEAM DOES"},s3:{l:"Sponsorships",v:"WORM BRANDS"},
+atk:"4.2M",def:"FOLLOWERS",
+flavor:"⚡ DECOMPOSED — 4.2M followers watching someone else's worms. Sponsored by Big Compost.",
+symbol:"🪱",color:"common"},
+{id:"sp-fashion-recycler",name:"MICRO-SEASON FASHION RECYCLER",rarity:"COMMON",category:"AI Product",artClass:"art-sp-fashion-recycler",series:"solarpunk",
+kscore:"7",kscoreClass:"high",
+s1:{l:"Micro-Seasons Per Year",v:"52"},s2:{l:"Same Linen Shirt",v:"DIFFERENT COLOR"},s3:{l:"Sustainability Theater",v:"YES"},
+atk:"52",def:"SEASONS/YR",
+flavor:"⚡ UPCYCLED — 52 micro-seasons. Same shirt, new dye. Called it a revolution.",
+symbol:"👕",color:"common"},
+
+// ═══ JUNK ═══
+{id:"sp-last-fossil",name:"THE LAST FOSSIL (MUSEUM PIECE)",rarity:"JUNK",category:"Lore · Solarpunk.sys",artClass:"art-sp-last-fossil",series:"solarpunk",
+kscore:"∞",kscoreClass:"max",
+s1:{l:"Barrels Remaining",v:"1 (DISPLAY)"},s2:{l:"Children Who Understand",v:"0"},s3:{l:"Docent Explanation",v:"THEY BURNED IT"},
+atk:"1",def:"BARREL",
+flavor:"⚡ RELIC — Kids stare at the last barrel of oil. 'They burned it? On purpose?'",
+symbol:"🛢️",color:"junk"},
+{id:"sp-carbon-negative",name:"CARBON NEGATIVE (OVERACHIEVER)",rarity:"JUNK",category:"Lore · Solarpunk.sys",artClass:"art-sp-carbon-negative",series:"solarpunk",
+kscore:"∞",kscoreClass:"max",
+s1:{l:"Carbon Status",v:"-400 PPM"},s2:{l:"Still Anxious",v:"YES"},s3:{l:"New Thing to Worry About",v:"NITROGEN"},
+atk:"-400",def:"PPM",
+flavor:"⚡ OVERCOMPENSATING — Went carbon negative. Found nitrogen to worry about instead.",
+symbol:"📉",color:"junk"},
+{id:"sp-sunny-disposition",name:"THE SUNNY DISPOSITION",rarity:"JUNK",category:"Lore · Solarpunk.sys",artClass:"art-sp-sunny-disposition",series:"solarpunk",
+kscore:"∞",kscoreClass:"max",
+s1:{l:"Problems",v:"0"},s2:{l:"Happiness",v:"MANDATORY"},s3:{l:"Dissent",v:"REBRANDED AS ILLNESS"},
+atk:"0",def:"PROBLEMS",
+flavor:"⚡ COMPULSORY JOY — No problems left. Unhappiness reclassified as a disorder.",
+symbol:"😊",color:"junk"},
+
+// ═══════════════════════════════════════
+// SET 18: GREY.ZONE
+// ═══════════════════════════════════════
+
+// ═══ MYTHIC ═══
+{id:"gz-card-game-rebel",name:"THE CARD GAME REBEL",rarity:"MYTHIC",category:"Irreplaceable",artClass:"art-gz-card-game-rebel",series:"greyzone",
+kscore:"∞",kscoreClass:"max",
+s1:{l:"Cards in Hand",v:"5"},s2:{l:"Cameras in Room",v:"0"},
+atk:"∞",def:"∞",
+flavor:"⚡ ANALOG — Playing cards in a basement. Last unmonitored activity. You're holding one.",
+symbol:"🃏",color:"mythic"},
+{id:"gz-emotion-mask-maker",name:"THE EMOTION MASK MAKER",rarity:"MYTHIC",category:"Irreplaceable",artClass:"art-gz-emotion-mask-maker",series:"greyzone",
+kscore:"∞",kscoreClass:"max",
+s1:{l:"Masks Carved",v:"40,000"},s2:{l:"Emotions Hidden",v:"ALL OF THEM"},
+atk:"∞",def:"∞",
+flavor:"⚡ POKER FACE — 40,000 masks. Each one reads as 'content.' The AI can't see you cry.",
+symbol:"🎭",color:"mythic"},
+{id:"gz-dead-drop-courier",name:"THE DEAD DROP COURIER",rarity:"MYTHIC",category:"Irreplaceable",artClass:"art-gz-dead-drop-courier",series:"greyzone",
+kscore:"∞",kscoreClass:"max",
+s1:{l:"Messages Delivered",v:"UNKNOWN"},s2:{l:"Digital Trail",v:"NONE"},
+atk:"∞",def:"∞",
+flavor:"⚡ HANDOFF — No phone. No email. A rock in a park. The oldest encryption.",
+symbol:"📦",color:"mythic"},
+{id:"gz-analog-spy",name:"THE ANALOG SPY",rarity:"MYTHIC",category:"Irreplaceable",artClass:"art-gz-analog-spy",series:"greyzone",
+kscore:"∞",kscoreClass:"max",
+s1:{l:"Digital Footprint",v:"ZERO"},s2:{l:"Last Online",v:"2026"},
+atk:"∞",def:"∞",
+flavor:"⚡ OFFLINE — Last seen online in 2026. The algorithm forgot her. That was the point.",
+symbol:"🕵️",color:"mythic"},
+{id:"gz-signal-jammer",name:"THE SIGNAL JAMMER",rarity:"MYTHIC",category:"Irreplaceable",artClass:"art-gz-signal-jammer",series:"greyzone",
+kscore:"∞",kscoreClass:"max",
+s1:{l:"Radius of Silence",v:"200M"},s2:{l:"Minutes of Privacy",v:"PRICELESS"},
+atk:"∞",def:"∞",
+flavor:"⚡ DEAD AIR — 200-meter bubble of nothing. No signal. No surveillance. Just breathing.",
+symbol:"📡",color:"mythic"},
+
+// ═══ LEGENDARY ═══
+{id:"gz-predictive-escapee",name:"PREDICTIVE ARREST ESCAPEE",rarity:"LEGENDARY",category:"Human Purpose",artClass:"art-gz-predictive-escapee",series:"greyzone",
+kscore:"1",kscoreClass:"low",
+s1:{l:"Crimes Predicted",v:"1"},s2:{l:"Crimes Committed",v:"0"},s3:{l:"Days Running",v:"1,247"},
+atk:"1247",def:"DAYS FREE",
+flavor:"⚡ PRECRIME — Arrested for something he hadn't done. Escaped. Still hasn't done it.",
+symbol:"🏃",color:"legendary"},
+{id:"gz-underground-conductor",name:"UNDERGROUND RAILROAD 2.0 CONDUCTOR",rarity:"LEGENDARY",category:"Human Purpose",artClass:"art-gz-underground-conductor",series:"greyzone",
+kscore:"1",kscoreClass:"low",
+s1:{l:"People Moved",v:"CLASSIFIED"},s2:{l:"Cameras Avoided",v:"ALL OF THEM"},s3:{l:"Route",v:"ANALOG ONLY"},
+atk:"∞",def:"CLASSIFIED",
+flavor:"⚡ NEXT STOP — Moves people through the camera gaps. No GPS. Paper maps only.",
+symbol:"🚂",color:"legendary"},
+
+// ═══ RARE ═══
+{id:"gz-facial-rec-artist",name:"FACIAL RECOGNITION MAKEUP ARTIST",rarity:"RARE",category:"Human Trade",artClass:"art-gz-facial-rec-artist",series:"greyzone",
+kscore:"3",kscoreClass:"low",
+s1:{l:"Faces Redesigned",v:"12K"},s2:{l:"AI Confidence After",v:"<4%"},s3:{l:"Tutorials Banned",v:"ALL OF THEM"},
+atk:"12K",def:"FACES",
+flavor:"⚡ CONTOUR — 12,000 faces the AI can't read. Her YouTube was taken down twice.",
+symbol:"💄",color:"rare"},
+{id:"gz-vpn-smuggler",name:"VPN SMUGGLER",rarity:"RARE",category:"Human Trade",artClass:"art-gz-vpn-smuggler",series:"greyzone",
+kscore:"4",kscoreClass:"mid",
+s1:{l:"Tunnels Active",v:"40K"},s2:{l:"Encrypted",v:"TRIPLE"},s3:{l:"Penalty If Caught",v:"10 YEARS"},
+atk:"40K",def:"TUNNELS",
+flavor:"⚡ ENCRYPTED — 40K tunnels. Triple encrypted. 10 years if caught. Worth it.",
+symbol:"🔒",color:"rare"},
+{id:"gz-whistleblower",name:"THE WHISTLEBLOWER (STILL FREE)",rarity:"RARE",category:"Human Purpose",artClass:"art-gz-whistleblower",series:"greyzone",
+kscore:"3",kscoreClass:"low",
+s1:{l:"Documents Leaked",v:"4.2M"},s2:{l:"Governments Embarrassed",v:"7"},s3:{l:"Current Location",v:"NICE TRY"},
+atk:"4.2M",def:"PAGES",
+flavor:"⚡ STILL HERE — 4.2M documents. 7 governments. Still breathing. Not telling you where.",
+symbol:"📄",color:"rare"},
+
+// ═══ UNCOMMON ═══
+{id:"gz-emotion-officer",name:"EMOTION COMPLIANCE OFFICER",rarity:"UNCOMMON",category:"Society",artClass:"art-gz-emotion-officer",series:"greyzone",
+kscore:"6",kscoreClass:"mid",
+s1:{l:"Faces Scanned/Day",v:"200K"},s2:{l:"Citations Issued",v:"INSUFFICIENT SMILE"},s3:{l:"False Positives",v:"DON'T ASK"},
+atk:"200K",def:"SCANS/DAY",
+flavor:"⚡ SMILE CHECK — 200K scans/day. Cited for insufficient smile. She was at a funeral.",
+symbol:"😐",color:"uncommon"},
+{id:"gz-social-score-auditor",name:"SOCIAL SCORE AUDITOR",rarity:"UNCOMMON",category:"Society",artClass:"art-gz-social-score-auditor",series:"greyzone",
+kscore:"7",kscoreClass:"high",
+s1:{l:"Citizens Scored",v:"ALL"},s2:{l:"Appeals Granted",v:"0.003%"},s3:{l:"Score to Fly",v:"750+"},
+atk:"0.003%",def:"APPEAL RATE",
+flavor:"⚡ RATED — Everyone has a score. Nobody knows the formula. Appeals: 0.003% granted.",
+symbol:"📊",color:"uncommon"},
+{id:"gz-blind-spot-mapper",name:"CAMERA BLIND SPOT MAPPER",rarity:"UNCOMMON",category:"Human Trade",artClass:"art-gz-blind-spot-mapper",series:"greyzone",
+kscore:"5",kscoreClass:"mid",
+s1:{l:"Blind Spots Found",v:"↓ DAILY"},s2:{l:"Map Updates",v:"HOURLY"},s3:{l:"Users",v:"DON'T KNOW EACH OTHER"},
+atk:"↓",def:"DAILY",
+flavor:"⚡ GAPS — Maps the camera gaps. Updated hourly. Gaps shrink daily. Running out of map.",
+symbol:"🗺️",color:"uncommon"},
+{id:"gz-protest-denier",name:"PROTEST PERMIT DENIER",rarity:"UNCOMMON",category:"Society",artClass:"art-gz-protest-denier",series:"greyzone",
+kscore:"6",kscoreClass:"mid",
+s1:{l:"Permits Requested",v:"14,000"},s2:{l:"Permits Granted",v:"0"},s3:{l:"Reason",v:"PUBLIC SAFETY"},
+atk:"0",def:"GRANTED",
+flavor:"⚡ DENIED — 14,000 permit requests. Zero approved. 'For your safety.' Always.",
+symbol:"🚫",color:"uncommon"},
+{id:"gz-watched-back",name:"THE WATCHED (WATCHED BACK)",rarity:"UNCOMMON",category:"Human Purpose",artClass:"art-gz-watched-back",series:"greyzone",
+kscore:"5",kscoreClass:"mid",
+s1:{l:"Cameras Pointed at Her",v:"47"},s2:{l:"Cameras She Pointed Back",v:"47"},s3:{l:"Footage Published",v:"ALL OF IT"},
+atk:"47",def:"CAMERAS",
+flavor:"⚡ SOUSVEILLANCE — 47 cameras watch her. She live-streams all 47 back. Stalemate.",
+symbol:"👁️",color:"uncommon"},
+
+// ═══ COMMON ═══
+{id:"gz-wellness-agent",name:"MANDATORY WELLNESS CHECK AGENT",rarity:"COMMON",category:"AI Product",artClass:"art-gz-wellness-agent",series:"greyzone",
+kscore:"9",kscoreClass:"high",
+s1:{l:"Checks Per Day",v:"3 (MANDATORY)"},s2:{l:"Correct Answer",v:"I'M FINE"},s3:{l:"Wrong Answer Consequence",v:"HOME VISIT"},
+atk:"3",def:"CHECKS/DAY",
+flavor:"⚡ HOW ARE YOU — 'How are you feeling?' Only one right answer. Say it wrong, they come.",
+symbol:"💊",color:"common"},
+{id:"gz-thought-predictor",name:"THOUGHT CRIME PREDICTOR",rarity:"COMMON",category:"AI Product",artClass:"art-gz-thought-predictor",series:"greyzone",
+kscore:"9",kscoreClass:"high",
+s1:{l:"Thoughts Predicted",v:"ALL"},s2:{l:"Accuracy",v:"61%"},s3:{l:"Convictions Anyway",v:"98%"},
+atk:"61%",def:"ACCURATE",
+flavor:"⚡ PROBABLE CAUSE — 61% accurate. 98% conviction rate. The math doesn't bother anyone.",
+symbol:"🧠",color:"common"},
+{id:"gz-compliant-citizen",name:"THE COMPLIANT CITIZEN",rarity:"COMMON",category:"AI Product",artClass:"art-gz-compliant-citizen",series:"greyzone",
+kscore:"8",kscoreClass:"high",
+s1:{l:"Social Score",v:"998/1000"},s2:{l:"Friends",v:"APPROVED LIST"},s3:{l:"Last Original Thought",v:"2029"},
+atk:"998",def:"SCORE",
+flavor:"⚡ MODEL CITIZEN — Score: 998. Friends: pre-approved. Last original thought: couldn't tell you.",
+symbol:"✅",color:"common"},
+{id:"gz-data-harvester",name:"DATA HARVESTER (ENTRY LEVEL)",rarity:"COMMON",category:"AI Product",artClass:"art-gz-data-harvester",series:"greyzone",
+kscore:"8",kscoreClass:"high",
+s1:{l:"Citizens Profiled/Day",v:"50K"},s2:{l:"Salary",v:"$31K"},s3:{l:"Knows What He's Building",v:"TRIES NOT TO"},
+atk:"50K",def:"PROFILES/DAY",
+flavor:"⚡ JUST A JOB — Profiles 50K citizens/day. $31K salary. Doesn't think about it.",
+symbol:"🔍",color:"common"},
+
+// ═══ JUNK ═══
+{id:"gz-panopticon-tourist",name:"THE PANOPTICON TOURIST",rarity:"JUNK",category:"Lore · Grey.zone",artClass:"art-gz-panopticon-tourist",series:"greyzone",
+kscore:"∞",kscoreClass:"max",
+s1:{l:"Cameras Per Block",v:"200"},s2:{l:"Photo Taken Of",v:"CAMERA"},s3:{l:"Instagram Caption",v:"SO SAFE HERE"},
+atk:"200",def:"CAMERAS",
+flavor:"⚡ SIGHTSEEING — Took a selfie with the surveillance camera. 'I feel so safe here!'",
+symbol:"📸",color:"junk"},
+{id:"gz-nothing-to-hide",name:"NOTHING TO HIDE (FAMOUS LAST WORDS)",rarity:"JUNK",category:"Lore · Grey.zone",artClass:"art-gz-nothing-to-hide",series:"greyzone",
+kscore:"∞",kscoreClass:"max",
+s1:{l:"Things to Hide",v:"NOTHING"},s2:{l:"Things Found Anyway",v:"PLENTY"},s3:{l:"Current Status",v:"DETAINED"},
+atk:"0",def:"HIDDEN",
+flavor:"⚡ TRANSPARENT — 'Nothing to hide.' They found something anyway. They always do.",
+symbol:"🪟",color:"junk"},
+{id:"gz-smile-mandate",name:"THE SMILE MANDATE",rarity:"JUNK",category:"Lore · Grey.zone",artClass:"art-gz-smile-mandate",series:"greyzone",
+kscore:"∞",kscoreClass:"max",
+s1:{l:"Minimum Smile Width",v:"4.2CM"},s2:{l:"Fine for Frowning",v:"$500"},s3:{l:"Jaw Pain Reports",v:"↑ 3,000%"},
+atk:"4.2",def:"CM MINIMUM",
+flavor:"⚡ SAY CHEESE — Mandatory 4.2cm smile. $500 fine for frowning. Jaw clinics are booming.",
+symbol:"😁",color:"junk"},
+
+// ═══════════════════════════════════════
+// SET 19: FRONTIER.NULL
+// ═══════════════════════════════════════
+
+// ═══ MYTHIC ═══
+{id:"fn-first-mars-born",name:"THE FIRST MARS-BORN",rarity:"MYTHIC",category:"Irreplaceable",artClass:"art-fn-first-mars-born",series:"frontiernull",
+kscore:"∞",kscoreClass:"max",
+s1:{l:"Earth Experience",v:"NONE"},s2:{l:"Citizenship",v:"PENDING (CORPORATE REVIEW)"},
+atk:"∞",def:"∞",
+flavor:"⚡ NATIVE — Born on Mars. Never seen rain. Citizenship pending corporate approval.",
+symbol:"👶",color:"mythic"},
+{id:"fn-colony-saboteur",name:"THE COLONY SABOTEUR",rarity:"MYTHIC",category:"Irreplaceable",artClass:"art-fn-colony-saboteur",series:"frontiernull",
+kscore:"∞",kscoreClass:"max",
+s1:{l:"Systems Disrupted",v:"CRITICAL ONES"},s2:{l:"Demands",v:"READ THE CONTRACT"},
+atk:"∞",def:"∞",
+flavor:"⚡ BREACH — Turned off the water recycler. 'Read paragraph 47. We're property.'",
+symbol:"💥",color:"mythic"},
+{id:"fn-terraform-dreamer",name:"THE TERRAFORM DREAMER",rarity:"MYTHIC",category:"Irreplaceable",artClass:"art-fn-terraform-dreamer",series:"frontiernull",
+kscore:"∞",kscoreClass:"max",
+s1:{l:"Years Until Breathable Air",v:"10,000"},s2:{l:"Corporate Timeline",v:"Q3"},
+atk:"∞",def:"∞",
+flavor:"⚡ LONG VIEW — 10,000 years to breathable air. The investor deck says Q3.",
+symbol:"🌬️",color:"mythic"},
+{id:"fn-space-union-organizer",name:"THE SPACE UNION ORGANIZER",rarity:"MYTHIC",category:"Irreplaceable",artClass:"art-fn-space-union-organizer",series:"frontiernull",
+kscore:"∞",kscoreClass:"max",
+s1:{l:"Members",v:"GROWING"},s2:{l:"Legal Framework",v:"NONE (IT'S MARS)"},
+atk:"∞",def:"∞",
+flavor:"⚡ SOLIDARITY — Organized a union on Mars. No labor law exists here. That's the point.",
+symbol:"✊",color:"mythic"},
+{id:"fn-return-advocate",name:"THE RETURN-TO-EARTH ADVOCATE",rarity:"MYTHIC",category:"Irreplaceable",artClass:"art-fn-return-advocate",series:"frontiernull",
+kscore:"∞",kscoreClass:"max",
+s1:{l:"Petition Signatures",v:"ALL COLONISTS"},s2:{l:"Return Tickets Available",v:"0"},
+atk:"∞",def:"∞",
+flavor:"⚡ ONE WAY — Every colonist signed. Return trip wasn't in the contract. Check page 312.",
+symbol:"🌎",color:"mythic"},
+
+// ═══ LEGENDARY ═══
+{id:"fn-mars-soil-farmer",name:"MARS SOIL FARMER",rarity:"LEGENDARY",category:"Human Trade",artClass:"art-fn-mars-soil-farmer",series:"frontiernull",
+kscore:"1",kscoreClass:"low",
+s1:{l:"Soil Created From Regolith",v:"400 TONS"},s2:{l:"Crop Yield",v:"BARELY ENOUGH"},s3:{l:"Earth Soil Nostalgia",v:"CRIPPLING"},
+atk:"400",def:"TONS",
+flavor:"⚡ RED DIRT — 400 tons of almost-soil. Grows almost-food. Misses almost-everything.",
+symbol:"🌱",color:"legendary"},
+{id:"fn-habitat-pressure-engineer",name:"HABITAT PRESSURE ENGINEER",rarity:"LEGENDARY",category:"Human Trade",artClass:"art-fn-habitat-pressure-engineer",series:"frontiernull",
+kscore:"2",kscoreClass:"low",
+s1:{l:"Pressure Seals Maintained",v:"12,000"},s2:{l:"Margin of Error",v:"0"},s3:{l:"Sleep Quality",v:"NEVER AGAIN"},
+atk:"12K",def:"SEALS",
+flavor:"⚡ AIRTIGHT — 12,000 seals between you and vacuum. She checks them all. Every night.",
+symbol:"🔩",color:"legendary"},
+
+// ═══ RARE ═══
+{id:"fn-radiation-welder",name:"RADIATION SHIELD WELDER",rarity:"RARE",category:"Human Trade",artClass:"art-fn-radiation-welder",series:"frontiernull",
+kscore:"4",kscoreClass:"mid",
+s1:{l:"Panels Welded",v:"8,000"},s2:{l:"Radiation Exposure",v:"ABOVE LIMIT"},s3:{l:"Hazard Pay",v:"SEE CONTRACT (NONE)"},
+atk:"8K",def:"PANELS",
+flavor:"⚡ HOT WORK — 8,000 panels. Dosimeter says stop. Contract says keep going.",
+symbol:"☢️",color:"rare"},
+{id:"fn-colony-ai-whisperer",name:"COLONY AI WHISPERER",rarity:"RARE",category:"Human Purpose",artClass:"art-fn-colony-ai-whisperer",series:"frontiernull",
+kscore:"3",kscoreClass:"low",
+s1:{l:"Colony AI Overrides",v:"47"},s2:{l:"AI Said No",v:"47 TIMES FIRST"},s3:{l:"Who's Really In Charge",v:"OBVIOUS"},
+atk:"47",def:"OVERRIDES",
+flavor:"⚡ OVERRIDE — The AI runs the colony. She talks it out of the worst ideas. Usually.",
+symbol:"🤖",color:"rare"},
+{id:"fn-stowaway",name:"THE STOWAWAY (MADE IT)",rarity:"RARE",category:"Human Purpose",artClass:"art-fn-stowaway",series:"frontiernull",
+kscore:"3",kscoreClass:"low",
+s1:{l:"Ticket Cost",v:"$0 (HID IN CARGO)"},s2:{l:"Days Without Food",v:"11"},s3:{l:"Legal Status on Mars",v:"UNDEFINED"},
+atk:"0",def:"DOLLARS",
+flavor:"⚡ CARGO — 11 days in a cargo pod. No ticket. No contract. First free person on Mars.",
+symbol:"📦",color:"rare"},
+
+// ═══ UNCOMMON ═══
+{id:"fn-oxygen-trader",name:"OXYGEN RATION TRADER",rarity:"UNCOMMON",category:"Society",artClass:"art-fn-oxygen-trader",series:"frontiernull",
+kscore:"6",kscoreClass:"mid",
+s1:{l:"O2 Rations Traded",v:"BLACK MARKET"},s2:{l:"Markup",v:"400%"},s3:{l:"Breathe or Eat",v:"PICK ONE"},
+atk:"400%",def:"MARKUP",
+flavor:"⚡ BREATHE TAX — Oxygen has a black market. 400% markup. Air shouldn't have a price.",
+symbol:"💨",color:"uncommon"},
+{id:"fn-corporate-airlock",name:"CORPORATE AIRLOCK OPERATOR",rarity:"UNCOMMON",category:"Society",artClass:"art-fn-corporate-airlock",series:"frontiernull",
+kscore:"7",kscoreClass:"high",
+s1:{l:"Airlock Access",v:"BADGE REQUIRED"},s2:{l:"Badge Revocation",v:"AT WILL"},s3:{l:"What's Outside",v:"VACUUM"},
+atk:"1",def:"BADGE",
+flavor:"⚡ ACCESS DENIED — Badge gets you through the airlock. Badge is at-will. Think about it.",
+symbol:"🚪",color:"uncommon"},
+{id:"fn-mars-public-defender",name:"MARS COURT PUBLIC DEFENDER",rarity:"UNCOMMON",category:"Society",artClass:"art-fn-mars-public-defender",series:"frontiernull",
+kscore:"5",kscoreClass:"mid",
+s1:{l:"Cases",v:"ALL OF THEM"},s2:{l:"Law Books Available",v:"CORPORATE HANDBOOK"},s3:{l:"Wins",v:"0"},
+atk:"0",def:"WINS",
+flavor:"⚡ OVERRULED — Only lawyer on Mars. Only law is the corporate handbook. 0-for-everything.",
+symbol:"⚖️",color:"uncommon"},
+{id:"fn-delay-therapist",name:"COMMUNICATION DELAY THERAPIST",rarity:"UNCOMMON",category:"Society",artClass:"art-fn-delay-therapist",series:"frontiernull",
+kscore:"6",kscoreClass:"mid",
+s1:{l:"Signal Delay to Earth",v:"8-24 MIN"},s2:{l:"Patients",v:"EVERYONE"},s3:{l:"Specialty",v:"ANTICIPATORY GRIEF"},
+atk:"24",def:"MINUTES",
+flavor:"⚡ DELAYED — Your mom said she loves you. 22 minutes ago. She can't hear you cry.",
+symbol:"📡",color:"uncommon"},
+{id:"fn-nostalgia-dealer",name:"EARTH NOSTALGIA DEALER",rarity:"UNCOMMON",category:"Society",artClass:"art-fn-nostalgia-dealer",series:"frontiernull",
+kscore:"5",kscoreClass:"mid",
+s1:{l:"Rain Recordings Sold",v:"40K"},s2:{l:"Ocean Smell Synth",v:"$200/HIT"},s3:{l:"Addiction Rate",v:"HIGH"},
+atk:"$200",def:"PER HIT",
+flavor:"⚡ HOMESICK — Sells the sound of rain. $200 for synthetic ocean smell. Everyone's hooked.",
+symbol:"🌧️",color:"uncommon"},
+
+// ═══ COMMON ═══
+{id:"fn-dust-forecaster",name:"DUST STORM FORECASTER",rarity:"COMMON",category:"AI Product",artClass:"art-fn-dust-forecaster",series:"frontiernull",
+kscore:"8",kscoreClass:"high",
+s1:{l:"Forecast Accuracy",v:"34%"},s2:{l:"Storms Survived",v:"ALL (SO FAR)"},s3:{l:"Confidence Level",v:"HIGH (ALWAYS)"},
+atk:"34%",def:"ACCURATE",
+flavor:"⚡ PARTLY DUSTY — 34% accurate. Always confident. You'll know when it's wrong.",
+symbol:"🌪️",color:"common"},
+{id:"fn-gravity-coach",name:"GRAVITY ADJUSTMENT COACH",rarity:"COMMON",category:"AI Product",artClass:"art-fn-gravity-coach",series:"frontiernull",
+kscore:"7",kscoreClass:"high",
+s1:{l:"Mars Gravity",v:"0.38G"},s2:{l:"Bone Density Loss",v:"INEVITABLE"},s3:{l:"Return to Earth",v:"PHYSICALLY IMPOSSIBLE NOW"},
+atk:"0.38",def:"G",
+flavor:"⚡ LIGHT STEP — 0.38G. Bones thinning. Can never go back. Nobody mentioned that part.",
+symbol:"🦴",color:"common"},
+{id:"fn-recycled-water-sommelier",name:"RECYCLED WATER SOMMELIER",rarity:"COMMON",category:"AI Product",artClass:"art-fn-recycled-water-sommelier",series:"frontiernull",
+kscore:"9",kscoreClass:"high",
+s1:{l:"Times Recycled",v:"AVG 14"},s2:{l:"Original Source",v:"DON'T ASK"},s3:{l:"Tasting Notes",v:"METALLIC, HINTS OF YESTERDAY"},
+atk:"14",def:"CYCLES",
+flavor:"⚡ VINTAGE — Recycled 14 times. Tasting notes: metallic, with hints of everyone.",
+symbol:"💧",color:"common"},
+{id:"fn-company-store-cashier",name:"COMPANY STORE CASHIER",rarity:"COMMON",category:"AI Product",artClass:"art-fn-company-store-cashier",series:"frontiernull",
+kscore:"8",kscoreClass:"high",
+s1:{l:"Only Store",v:"YES"},s2:{l:"Markup",v:"900%"},s3:{l:"Alternative",v:"MARS OUTSIDE"},
+atk:"900%",def:"MARKUP",
+flavor:"⚡ CAPTIVE MARKET — Only store on Mars. 900% markup. Alternative is outside. Without a suit.",
+symbol:"🏪",color:"common"},
+
+// ═══ JUNK ═══
+{id:"fn-terms-of-landing",name:"THE TERMS OF LANDING",rarity:"JUNK",category:"Lore · Frontier.null",artClass:"art-fn-terms-of-landing",series:"frontiernull",
+kscore:"∞",kscoreClass:"max",
+s1:{l:"Pages",v:"4,200"},s2:{l:"Read Before Signing",v:"NOBODY"},s3:{l:"Rights Waived",v:"ALL"},
+atk:"4200",def:"PAGES",
+flavor:"⚡ I AGREE — 4,200 pages. Waives all rights. 'I have read and agree.' Nobody read it.",
+symbol:"📜",color:"junk"},
+{id:"fn-signal-delay",name:"SIGNAL DELAY (8 MINUTES)",rarity:"JUNK",category:"Lore · Frontier.null",artClass:"art-fn-signal-delay",series:"frontiernull",
+kscore:"∞",kscoreClass:"max",
+s1:{l:"Light Speed Delay",v:"8-24 MIN"},s2:{l:"Mom's Last Message",v:"8 MIN AGO"},s3:{l:"Reply Arrives",v:"AFTER"},
+atk:"8",def:"MINUTES",
+flavor:"⚡ TOO LATE — 'I love you' takes 8 minutes. 'I love you too' arrives 16 minutes after she needed it.",
+symbol:"⏳",color:"junk"},
+{id:"fn-the-homesick",name:"THE HOMESICK",rarity:"JUNK",category:"Lore · Frontier.null",artClass:"art-fn-the-homesick",series:"frontiernull",
+kscore:"∞",kscoreClass:"max",
+s1:{l:"Distance from Home",v:"225M KM"},s2:{l:"Return Flight",v:"NOT IN CONTRACT"},s3:{l:"Earth Photos Viewed/Day",v:"400+"},
+atk:"225M",def:"KM",
+flavor:"⚡ WINDOW SEAT — 225 million km. Looks at Earth photos 400 times a day. Can't go back.",
+symbol:"🪟",color:"junk"},
+
 ];
 
 const RARITY_ORDER = ["MYTHIC","LEGENDARY","RARE","UNCOMMON","COMMON","JUNK"];
@@ -6381,7 +7431,7 @@ function buildPack(type) {
     pack.push(pickCard(WEIGHTS,'LEGENDARY'));
     for(let i=0;i<4;i++) pack.push(pickCard(WEIGHTS));
     for(let i=pack.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[pack[i],pack[j]]=[pack[j],pack[i]];}
-  } else if (['jobless','doomscroll','loveexe','warroom','skillsvoid','founderexe','deepstateai','healthcaresys','parenttrap','climateerr','creatornull'].includes(type)) {
+  } else if (['jobless','doomscroll','loveexe','warroom','skillsvoid','founderexe','deepstateai','healthcaresys','parenttrap','climateerr','creatornull','analogrevival','mergeprotocol','ubiworld','walledgarden','solarpunk','greyzone','frontiernull'].includes(type)) {
     const setCards = CARDS.filter(c=>c.series===type);
     for(let i=0;i<5;i++) {
       const weighted = [];
@@ -6533,7 +7583,7 @@ function showScreen(id) {
     else if (!p.getAttribute('onclick')) p.classList.remove('active');
   });
   if(id==='collection-screen') renderCollection();
-  if(id==='pack-screen') { updateStats(); renderProfile(); updateDailyUI(); renderWeeklyGoal(); renderBuyPacks(); renderChainBanner(); renderChainStatus(); renderSet2Zone(); renderSet3Zone(); renderSet4Zone(); renderSet5Zone(); renderSet6Zone(); renderSet7Zone(); renderSet8Zone(); renderSet9Zone(); renderSet10Zone(); renderSet11Zone(); renderSet12Zone(); renderSetProgress(); renderPackHistory(); renderLeaderboard(); }
+  if(id==='pack-screen') { updateStats(); renderProfile(); updateDailyUI(); renderWeeklyGoal(); renderBuyPacks(); renderChainBanner(); renderChainStatus(); renderSet2Zone(); renderSet3Zone(); renderSet4Zone(); renderSet5Zone(); renderSet6Zone(); renderSet7Zone(); renderSet8Zone(); renderSet9Zone(); renderSet10Zone(); renderSet11Zone(); renderSet12Zone(); renderSet13Zone(); renderSet14Zone(); renderSet15Zone(); renderSet16Zone(); renderSet17Zone(); renderSet18Zone(); renderSet19Zone(); renderSetProgress(); renderPackHistory(); renderLeaderboard(); }
   if(id==='raid-screen') renderRaidScreen();
 }
 
@@ -6562,6 +7612,13 @@ function openPack(type) {
   if (type==='parenttrap' && !isSet10Unlocked()) { showToast(t('set10.desc_locked')); return; }
   if (type==='climateerr' && !isSet11Unlocked()) { showToast(t('set11.desc_locked')); return; }
   if (type==='creatornull' && !isSet12Unlocked()) { showToast(t('set12.desc_locked')); return; }
+  if (type==='analogrevival' && !isSet13Unlocked()) { showToast(t('set13.desc_locked')); return; }
+  if (type==='mergeprotocol' && !isSet14Unlocked()) { showToast(t('set14.desc_locked')); return; }
+  if (type==='ubiworld' && !isSet15Unlocked()) { showToast(t('set15.desc_locked')); return; }
+  if (type==='walledgarden' && !isSet16Unlocked()) { showToast(t('set16.desc_locked')); return; }
+  if (type==='solarpunk' && !isSet17Unlocked()) { showToast(t('set17.desc_locked')); return; }
+  if (type==='greyzone' && !isSet18Unlocked()) { showToast(t('set18.desc_locked')); return; }
+  if (type==='frontiernull' && !isSet19Unlocked()) { showToast(t('set19.desc_locked')); return; }
   // Check daily limit
   if (getDailyPacksRemaining() <= 0) {
     showToast(t('toast.no_packs'));
@@ -6581,14 +7638,14 @@ function openPack(type) {
   // Consume daily pack
   consumeDailyPack();
 
-  const labelKeys = {standard:'pack.survival_pack',legendary:'pack.redundancy_pack',jobless:'pack.jobless_pack',doomscroll:'pack.doomscroll_pack',loveexe:'pack.loveexe_pack',warroom:'pack.warroom_pack',skillsvoid:'pack.skillsvoid_pack',founderexe:'pack.founderexe_pack',deepstateai:'pack.deepstateai_pack',healthcaresys:'pack.healthcaresys_pack',parenttrap:'pack.parenttrap_pack',climateerr:'pack.climateerr_pack',creatornull:'pack.creatornull_pack'};
+  const labelKeys = {standard:'pack.survival_pack',legendary:'pack.redundancy_pack',jobless:'pack.jobless_pack',doomscroll:'pack.doomscroll_pack',loveexe:'pack.loveexe_pack',warroom:'pack.warroom_pack',skillsvoid:'pack.skillsvoid_pack',founderexe:'pack.founderexe_pack',deepstateai:'pack.deepstateai_pack',healthcaresys:'pack.healthcaresys_pack',parenttrap:'pack.parenttrap_pack',climateerr:'pack.climateerr_pack',creatornull:'pack.creatornull_pack',analogrevival:'pack.analogrevival_pack',mergeprotocol:'pack.mergeprotocol_pack',ubiworld:'pack.ubiworld_pack',walledgarden:'pack.walledgarden_pack',solarpunk:'pack.solarpunk_pack',greyzone:'pack.greyzone_pack',frontiernull:'pack.frontiernull_pack'};
   document.getElementById('op-pack-name').textContent = t(labelKeys[type]);
   document.getElementById('legendaryBeam').classList.remove('active');
 
   // Pack tear animation
-  const PACK_COLORS = {standard:'#2196c8',legendary:'#c8a84b',jobless:'#ff4040',doomscroll:'#60c8ff',loveexe:'#ff69b4',warroom:'#ff6040',skillsvoid:'#a0a0a0',founderexe:'#00cc88',deepstateai:'#cc0000',healthcaresys:'#00aacc',parenttrap:'#cc88ff',climateerr:'#44aa44',creatornull:'#ff8844'};
+  const PACK_COLORS = {standard:'#2196c8',legendary:'#c8a84b',jobless:'#ff4040',doomscroll:'#60c8ff',loveexe:'#ff69b4',warroom:'#ff6040',skillsvoid:'#a0a0a0',founderexe:'#00cc88',deepstateai:'#cc0000',healthcaresys:'#00aacc',parenttrap:'#cc88ff',climateerr:'#44aa44',creatornull:'#ff8844',analogrevival:'#cc8844',mergeprotocol:'#44cccc',ubiworld:'#88cc44',walledgarden:'#cc4488',solarpunk:'#44cc88',greyzone:'#888888',frontiernull:'#cc6644'};
   const packColor = PACK_COLORS[type] || '#888';
-  const packTypeKeys = {standard:'pack.survival',legendary:'pack.redundancy',jobless:'pack.jobless',doomscroll:'pack.doomscroll',loveexe:'pack.loveexe',warroom:'pack.warroom',skillsvoid:'pack.skillsvoid',founderexe:'pack.founderexe',deepstateai:'pack.deepstateai',healthcaresys:'pack.healthcaresys',parenttrap:'pack.parenttrap',climateerr:'pack.climateerr',creatornull:'pack.creatornull'};
+  const packTypeKeys = {standard:'pack.survival',legendary:'pack.redundancy',jobless:'pack.jobless',doomscroll:'pack.doomscroll',loveexe:'pack.loveexe',warroom:'pack.warroom',skillsvoid:'pack.skillsvoid',founderexe:'pack.founderexe',deepstateai:'pack.deepstateai',healthcaresys:'pack.healthcaresys',parenttrap:'pack.parenttrap',climateerr:'pack.climateerr',creatornull:'pack.creatornull',analogrevival:'pack.analogrevival',mergeprotocol:'pack.mergeprotocol',ubiworld:'pack.ubiworld',walledgarden:'pack.walledgarden',solarpunk:'pack.solarpunk',greyzone:'pack.greyzone',frontiernull:'pack.frontiernull'};
   const packTypeLabel = t(packTypeKeys[type]);
   const tearEl = document.getElementById('packTear');
   const tearInner = document.getElementById('packTearInner');
@@ -7729,6 +8786,13 @@ const HEALTHCARESYS_IDS = new Set(CARDS.filter(c=>c.series==='healthcaresys').ma
 const PARENTTRAP_IDS = new Set(CARDS.filter(c=>c.series==='parenttrap').map(c=>c.id));
 const CLIMATEERR_IDS = new Set(CARDS.filter(c=>c.series==='climateerr').map(c=>c.id));
 const CREATORNULL_IDS = new Set(CARDS.filter(c=>c.series==='creatornull').map(c=>c.id));
+const ANALOGREVIVAL_IDS = new Set(CARDS.filter(c=>c.series==='analogrevival').map(c=>c.id));
+const MERGEPROTOCOL_IDS = new Set(CARDS.filter(c=>c.series==='mergeprotocol').map(c=>c.id));
+const UBIWORLD_IDS = new Set(CARDS.filter(c=>c.series==='ubiworld').map(c=>c.id));
+const WALLEDGARDEN_IDS = new Set(CARDS.filter(c=>c.series==='walledgarden').map(c=>c.id));
+const SOLARPUNK_IDS = new Set(CARDS.filter(c=>c.series==='solarpunk').map(c=>c.id));
+const GREYZONE_IDS = new Set(CARDS.filter(c=>c.series==='greyzone').map(c=>c.id));
+const FRONTIERNULL_IDS = new Set(CARDS.filter(c=>c.series==='frontiernull').map(c=>c.id));
 let collSeriesFilter = 'ALL';
 let collSearchQuery = '';
 let collMissingFilter = false;
@@ -7739,12 +8803,12 @@ let collMissingFilter = false;
 function renderCollection() {
   const body = document.getElementById('coll-body');
   const size = collectionSize();
-  const filterKeys = {ALL:'ALL',SURVIVAL:'SET 1',JOBLESS:'JOBLESS',DOOMSCROLL:'DOOM',LOVEEXE:'LOVE',WARROOM:'WAR',SKILLSVOID:'SKILLS',FOUNDEREXE:'FOUNDER',DEEPSTATEAI:'DEEP',HEALTHCARESYS:'HEALTH',PARENTTRAP:'PARENT',CLIMATEERR:'CLIMATE',CREATORNULL:'CREATOR'};
-  const filterBtns = ['ALL','SURVIVAL','JOBLESS','DOOMSCROLL','LOVEEXE','WARROOM','SKILLSVOID','FOUNDEREXE','DEEPSTATEAI','HEALTHCARESYS','PARENTTRAP','CLIMATEERR','CREATORNULL'].map(f=>{
+  const filterKeys = {ALL:'ALL',SURVIVAL:'SET 1',JOBLESS:'JOBLESS',DOOMSCROLL:'DOOM',LOVEEXE:'LOVE',WARROOM:'WAR',SKILLSVOID:'SKILLS',FOUNDEREXE:'FOUNDER',DEEPSTATEAI:'DEEP',HEALTHCARESYS:'HEALTH',PARENTTRAP:'PARENT',CLIMATEERR:'CLIMATE',CREATORNULL:'CREATOR',ANALOGREVIVAL:'ANALOG',MERGEPROTOCOL:'MERGE',UBIWORLD:'UBI',WALLEDGARDEN:'WALLED',SOLARPUNK:'SOLAR',GREYZONE:'GREY',FRONTIERNULL:'FRONTIER'};
+  const filterBtns = ['ALL','SURVIVAL','JOBLESS','DOOMSCROLL','LOVEEXE','WARROOM','SKILLSVOID','FOUNDEREXE','DEEPSTATEAI','HEALTHCARESYS','PARENTTRAP','CLIMATEERR','CREATORNULL','ANALOGREVIVAL','MERGEPROTOCOL','UBIWORLD','WALLEDGARDEN','SOLARPUNK','GREYZONE','FRONTIERNULL'].map(f=>{
     const active = collSeriesFilter===f ? ' active' : '';
     let label = t(filterKeys[f]);
     if(f==='ALL'){ label += ` (${size}/${CARDS.length})`; }
-    else { const sm = {SURVIVAL:null,JOBLESS:'jobless',DOOMSCROLL:'doomscroll',LOVEEXE:'loveexe',WARROOM:'warroom',SKILLSVOID:'skillsvoid',FOUNDEREXE:'founderexe',DEEPSTATEAI:'deepstateai',HEALTHCARESYS:'healthcaresys',PARENTTRAP:'parenttrap',CLIMATEERR:'climateerr',CREATORNULL:'creatornull'}; const comp = getSetCompletion(sm[f]); label += ` (${comp.owned}/${comp.total})`; }
+    else { const sm = {SURVIVAL:null,JOBLESS:'jobless',DOOMSCROLL:'doomscroll',LOVEEXE:'loveexe',WARROOM:'warroom',SKILLSVOID:'skillsvoid',FOUNDEREXE:'founderexe',DEEPSTATEAI:'deepstateai',HEALTHCARESYS:'healthcaresys',PARENTTRAP:'parenttrap',CLIMATEERR:'climateerr',CREATORNULL:'creatornull',ANALOGREVIVAL:'analogrevival',MERGEPROTOCOL:'mergeprotocol',UBIWORLD:'ubiworld',WALLEDGARDEN:'walledgarden',SOLARPUNK:'solarpunk',GREYZONE:'greyzone',FRONTIERNULL:'frontiernull'}; const comp = getSetCompletion(sm[f]); label += ` (${comp.owned}/${comp.total})`; }
     return `<button class="nav-pill${active}" onclick="setCollFilter('${f}')">${label}</button>`;
   }).join('');
   const missingActive = collMissingFilter ? ' active' : '';
@@ -7774,6 +8838,13 @@ function renderCollection() {
     else if(collSeriesFilter==='PARENTTRAP') cards = cards.filter(c=>PARENTTRAP_IDS.has(c.id));
     else if(collSeriesFilter==='CLIMATEERR') cards = cards.filter(c=>CLIMATEERR_IDS.has(c.id));
     else if(collSeriesFilter==='CREATORNULL') cards = cards.filter(c=>CREATORNULL_IDS.has(c.id));
+    else if(collSeriesFilter==='ANALOGREVIVAL') cards = cards.filter(c=>ANALOGREVIVAL_IDS.has(c.id));
+    else if(collSeriesFilter==='MERGEPROTOCOL') cards = cards.filter(c=>MERGEPROTOCOL_IDS.has(c.id));
+    else if(collSeriesFilter==='UBIWORLD') cards = cards.filter(c=>UBIWORLD_IDS.has(c.id));
+    else if(collSeriesFilter==='WALLEDGARDEN') cards = cards.filter(c=>WALLEDGARDEN_IDS.has(c.id));
+    else if(collSeriesFilter==='SOLARPUNK') cards = cards.filter(c=>SOLARPUNK_IDS.has(c.id));
+    else if(collSeriesFilter==='GREYZONE') cards = cards.filter(c=>GREYZONE_IDS.has(c.id));
+    else if(collSeriesFilter==='FRONTIERNULL') cards = cards.filter(c=>FRONTIERNULL_IDS.has(c.id));
     if(collMissingFilter) cards = cards.filter(c=>!collectionHas(c.id));
     if(searchQ) cards = cards.filter(c=>(cardT(c.id,'name')||c.name).toLowerCase().includes(searchQ));
     if(cards.length===0) return;
@@ -7860,6 +8931,13 @@ function isSet9Unlocked() { return isSet8Unlocked() && getSetCompletion('deepsta
 function isSet10Unlocked() { return isSet9Unlocked() && getSetCompletion('healthcaresys').pct >= 100; }
 function isSet11Unlocked() { return isSet10Unlocked() && getSetCompletion('parenttrap').pct >= 100; }
 function isSet12Unlocked() { return isSet11Unlocked() && getSetCompletion('climateerr').pct >= 100; }
+function isSet13Unlocked() { return isSet12Unlocked() && getSetCompletion('creatornull').pct >= 100; }
+function isSet14Unlocked() { return isSet13Unlocked() && getSetCompletion('analogrevival').pct >= 100; }
+function isSet15Unlocked() { return isSet14Unlocked() && getSetCompletion('mergeprotocol').pct >= 100; }
+function isSet16Unlocked() { return isSet15Unlocked() && getSetCompletion('ubiworld').pct >= 100; }
+function isSet17Unlocked() { return isSet16Unlocked() && getSetCompletion('walledgarden').pct >= 100; }
+function isSet18Unlocked() { return isSet17Unlocked() && getSetCompletion('solarpunk').pct >= 100; }
+function isSet19Unlocked() { return isSet18Unlocked() && getSetCompletion('greyzone').pct >= 100; }
 
 function renderSet2Zone() {
   const zone = document.getElementById('set2-zone');
@@ -7977,7 +9055,14 @@ const SET_ZONE_CONFIG = [
   {num:9, id:'set9-zone', series:'healthcaresys', prevSeries:'deepstateai', unlockFn:'isSet9Unlocked', color:'#00aacc', icon:'&#9762;', setKey:'set.9', packKey:'pack.healthcaresys', descKey:'set9', borderRgba:'rgba(0,170,204,0.3)'},
   {num:10, id:'set10-zone', series:'parenttrap', prevSeries:'healthcaresys', unlockFn:'isSet10Unlocked', color:'#cc88ff', icon:'&#9672;', setKey:'set.10', packKey:'pack.parenttrap', descKey:'set10', borderRgba:'rgba(204,136,255,0.3)'},
   {num:11, id:'set11-zone', series:'climateerr', prevSeries:'parenttrap', unlockFn:'isSet11Unlocked', color:'#44aa44', icon:'&#9650;', setKey:'set.11', packKey:'pack.climateerr', descKey:'set11', borderRgba:'rgba(68,170,68,0.3)'},
-  {num:12, id:'set12-zone', series:'creatornull', prevSeries:'climateerr', unlockFn:'isSet12Unlocked', color:'#ff8844', icon:'&#9674;', setKey:'set.12', packKey:'pack.creatornull', descKey:'set12', borderRgba:'rgba(255,136,68,0.3)'}
+  {num:12, id:'set12-zone', series:'creatornull', prevSeries:'climateerr', unlockFn:'isSet12Unlocked', color:'#ff8844', icon:'&#9674;', setKey:'set.12', packKey:'pack.creatornull', descKey:'set12', borderRgba:'rgba(255,136,68,0.3)'},
+  {num:13, id:'set13-zone', series:'analogrevival', prevSeries:'creatornull', unlockFn:'isSet13Unlocked', color:'#cc8844', icon:'&#9830;', setKey:'set.13', packKey:'pack.analogrevival', descKey:'set13', borderRgba:'rgba(204,136,68,0.3)'},
+  {num:14, id:'set14-zone', series:'mergeprotocol', prevSeries:'analogrevival', unlockFn:'isSet14Unlocked', color:'#44cccc', icon:'&#10070;', setKey:'set.14', packKey:'pack.mergeprotocol', descKey:'set14', borderRgba:'rgba(68,204,204,0.3)'},
+  {num:15, id:'set15-zone', series:'ubiworld', prevSeries:'mergeprotocol', unlockFn:'isSet15Unlocked', color:'#88cc44', icon:'&#10022;', setKey:'set.15', packKey:'pack.ubiworld', descKey:'set15', borderRgba:'rgba(136,204,68,0.3)'},
+  {num:16, id:'set16-zone', series:'walledgarden', prevSeries:'ubiworld', unlockFn:'isSet16Unlocked', color:'#cc4488', icon:'&#10023;', setKey:'set.16', packKey:'pack.walledgarden', descKey:'set16', borderRgba:'rgba(204,68,136,0.3)'},
+  {num:17, id:'set17-zone', series:'solarpunk', prevSeries:'walledgarden', unlockFn:'isSet17Unlocked', color:'#44cc88', icon:'&#9788;', setKey:'set.17', packKey:'pack.solarpunk', descKey:'set17', borderRgba:'rgba(68,204,136,0.3)'},
+  {num:18, id:'set18-zone', series:'greyzone', prevSeries:'solarpunk', unlockFn:'isSet18Unlocked', color:'#888888', icon:'&#9670;', setKey:'set.18', packKey:'pack.greyzone', descKey:'set18', borderRgba:'rgba(136,136,136,0.3)'},
+  {num:19, id:'set19-zone', series:'frontiernull', prevSeries:'greyzone', unlockFn:'isSet19Unlocked', color:'#cc6644', icon:'&#9733;', setKey:'set.19', packKey:'pack.frontiernull', descKey:'set19', borderRgba:'rgba(204,102,68,0.3)'}
 ];
 
 SET_ZONE_CONFIG.forEach(function(cfg) {
@@ -8344,7 +9429,7 @@ const RAID_BOSSES = [
    desc:"Not because they aren't smart. The transition is faster than retraining."}
 ];
 const TIER_COLORS = {APEX:'#ff3333',ELITE:'#ff8800',STANDARD:'#666666'};
-const ALL_SETS = ['standard','jobless','doomscroll','loveexe','warroom','skillsvoid','founderexe','deepstateai','healthcaresys','parenttrap','climateerr','creatornull'];
+const ALL_SETS = ['standard','jobless','doomscroll','loveexe','warroom','skillsvoid','founderexe','deepstateai','healthcaresys','parenttrap','climateerr','creatornull','analogrevival','mergeprotocol','ubiworld','walledgarden','solarpunk','greyzone','frontiernull'];
 
 let raidTeam = [];
 let raidBattle = null;
@@ -8515,7 +9600,14 @@ function renderRaidScreen() {
     {key:'HEALTHCARESYS',label:'HEALTH'},
     {key:'PARENTTRAP',label:'PARENT'},
     {key:'CLIMATEERR',label:'CLIMATE'},
-    {key:'CREATORNULL',label:'CREATOR'}
+    {key:'CREATORNULL',label:'CREATOR'},
+    {key:'ANALOGREVIVAL',label:'ANALOG'},
+    {key:'MERGEPROTOCOL',label:'MERGE'},
+    {key:'UBIWORLD',label:'UBI'},
+    {key:'WALLEDGARDEN',label:'WALLED'},
+    {key:'SOLARPUNK',label:'SOLAR'},
+    {key:'GREYZONE',label:'GREY'},
+    {key:'FRONTIERNULL',label:'FRONTIER'}
   ];
   const tabsHTML = setTabs.map(t => `<button class="nav-pill${raidSetFilter===t.key?' active':''}" style="font-size:7px;padding:4px 8px;min-height:0;" onclick="raidSetFilter='${t.key}';renderRaidScreen();">${t.label}</button>`).join('');
 
@@ -8534,6 +9626,13 @@ function renderRaidScreen() {
   else if (raidSetFilter==='PARENTTRAP') ownedCards = ownedCards.filter(c=>c.series==='parenttrap');
   else if (raidSetFilter==='CLIMATEERR') ownedCards = ownedCards.filter(c=>c.series==='climateerr');
   else if (raidSetFilter==='CREATORNULL') ownedCards = ownedCards.filter(c=>c.series==='creatornull');
+  else if (raidSetFilter==='ANALOGREVIVAL') ownedCards = ownedCards.filter(c=>c.series==='analogrevival');
+  else if (raidSetFilter==='MERGEPROTOCOL') ownedCards = ownedCards.filter(c=>c.series==='mergeprotocol');
+  else if (raidSetFilter==='UBIWORLD') ownedCards = ownedCards.filter(c=>c.series==='ubiworld');
+  else if (raidSetFilter==='WALLEDGARDEN') ownedCards = ownedCards.filter(c=>c.series==='walledgarden');
+  else if (raidSetFilter==='SOLARPUNK') ownedCards = ownedCards.filter(c=>c.series==='solarpunk');
+  else if (raidSetFilter==='GREYZONE') ownedCards = ownedCards.filter(c=>c.series==='greyzone');
+  else if (raidSetFilter==='FRONTIERNULL') ownedCards = ownedCards.filter(c=>c.series==='frontiernull');
   const RARITY_ORDER = {MYTHIC:0, LEGENDARY:1, RARE:2, UNCOMMON:3, COMMON:4, JUNK:5};
   ownedCards.sort((a,b) => (RARITY_ORDER[a.rarity]??9) - (RARITY_ORDER[b.rarity]??9));
   ownedCards.forEach(card => {
@@ -9011,6 +10110,13 @@ renderSet9Zone();
 renderSet10Zone();
 renderSet11Zone();
 renderSet12Zone();
+renderSet13Zone();
+renderSet14Zone();
+renderSet15Zone();
+renderSet16Zone();
+renderSet17Zone();
+renderSet18Zone();
+renderSet19Zone();
 renderSetProgress();
 renderPackHistory();
 renderLeaderboard();
