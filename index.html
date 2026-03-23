@@ -6644,8 +6644,15 @@ function renderCardDeck() {
 }
 
 let _cardTransitioning = false;
+let _cardTransitionTimeout = null;
 function showCardFaceUp(index) {
-  if (index >= 5 || _cardTransitioning) return;
+  if (index >= 5) return;
+  if (_cardTransitioning) {
+    // Queue the advance — don't drop it
+    if (_cardTransitionTimeout) clearTimeout(_cardTransitionTimeout);
+    _cardTransitionTimeout = setTimeout(function() { _cardTransitionTimeout = null; showCardFaceUp(index); }, 300);
+    return;
+  }
   const cards = document.querySelectorAll('.deck-card');
   if (!cards || !cards[index]) return;
   _cardTransitioning = true;
