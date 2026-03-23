@@ -8570,7 +8570,12 @@ async function buyPackWithSUI(packType) {
   const addr = getChainAddress();
   if (!addr) { openChainModal(); return; }
 
-  showToast(t('toast.minting_pack'));
+  // Try to connect wallet if not already connected
+  if (!isWalletMode() && getSuiWallets().length > 0) {
+    await connectSuiWallet();
+  }
+
+  showToast('Preparing transaction...');
 
   try {
     let paymentDigest = null;
@@ -8578,10 +8583,17 @@ async function buyPackWithSUI(packType) {
     // If wallet extension connected, do on-chain payment first
     if (isWalletMode()) {
       showToast('Approve transaction in your wallet...');
-      const txResult = await signAndExecuteBuyPack(packType);
-      if (!txResult?.digest) throw new Error('Transaction not confirmed');
-      paymentDigest = txResult.digest;
-      showToast('Payment confirmed! Minting cards...');
+      try {
+        const txResult = await signAndExecuteBuyPack(packType);
+        if (txResult?.digest) {
+          paymentDigest = txResult.digest;
+          showToast('Payment confirmed! Minting cards...');
+        }
+      } catch(walletErr) {
+        showToast('Wallet payment failed: ' + walletErr.message + ' — minting without payment');
+      }
+    } else {
+      showToast('Minting cards to ' + addr.slice(0,6) + '...');
     }
 
     // Call mint API — include payment digest if paid on-chain
@@ -8803,14 +8815,35 @@ let collMissingFilter = false;
 function renderCollection() {
   const body = document.getElementById('coll-body');
   const size = collectionSize();
-  const filterKeys = {ALL:'ALL',SURVIVAL:'SET 1',JOBLESS:'JOBLESS',DOOMSCROLL:'DOOM',LOVEEXE:'LOVE',WARROOM:'WAR',SKILLSVOID:'SKILLS',FOUNDEREXE:'FOUNDER',DEEPSTATEAI:'DEEP',HEALTHCARESYS:'HEALTH',PARENTTRAP:'PARENT',CLIMATEERR:'CLIMATE',CREATORNULL:'CREATOR',ANALOGREVIVAL:'ANALOG',MERGEPROTOCOL:'MERGE',UBIWORLD:'UBI',WALLEDGARDEN:'WALLED',SOLARPUNK:'SOLAR',GREYZONE:'GREY',FRONTIERNULL:'FRONTIER'};
-  const filterBtns = ['ALL','SURVIVAL','JOBLESS','DOOMSCROLL','LOVEEXE','WARROOM','SKILLSVOID','FOUNDEREXE','DEEPSTATEAI','HEALTHCARESYS','PARENTTRAP','CLIMATEERR','CREATORNULL','ANALOGREVIVAL','MERGEPROTOCOL','UBIWORLD','WALLEDGARDEN','SOLARPUNK','GREYZONE','FRONTIERNULL'].map(f=>{
-    const active = collSeriesFilter===f ? ' active' : '';
-    let label = t(filterKeys[f]);
-    if(f==='ALL'){ label += ` (${size}/${CARDS.length})`; }
-    else { const sm = {SURVIVAL:null,JOBLESS:'jobless',DOOMSCROLL:'doomscroll',LOVEEXE:'loveexe',WARROOM:'warroom',SKILLSVOID:'skillsvoid',FOUNDEREXE:'founderexe',DEEPSTATEAI:'deepstateai',HEALTHCARESYS:'healthcaresys',PARENTTRAP:'parenttrap',CLIMATEERR:'climateerr',CREATORNULL:'creatornull',ANALOGREVIVAL:'analogrevival',MERGEPROTOCOL:'mergeprotocol',UBIWORLD:'ubiworld',WALLEDGARDEN:'walledgarden',SOLARPUNK:'solarpunk',GREYZONE:'greyzone',FRONTIERNULL:'frontiernull'}; const comp = getSetCompletion(sm[f]); label += ` (${comp.owned}/${comp.total})`; }
-    return `<button class="nav-pill${active}" onclick="setCollFilter('${f}')">${label}</button>`;
+  const filterSets = [
+    {key:'ALL',label:'ALL SETS'},
+    {key:'SURVIVAL',label:'2030 SURVIVAL',series:null},
+    {key:'JOBLESS',label:'JOBLESS.AI',series:'jobless'},
+    {key:'DOOMSCROLL',label:'DOOMSCROLL',series:'doomscroll'},
+    {key:'LOVEEXE',label:'LOVE.EXE',series:'loveexe'},
+    {key:'WARROOM',label:'WAR ROOM',series:'warroom'},
+    {key:'SKILLSVOID',label:'SKILLS.VOID',series:'skillsvoid'},
+    {key:'FOUNDEREXE',label:'FOUNDER.EXE',series:'founderexe'},
+    {key:'DEEPSTATEAI',label:'DEEPSTATE.AI',series:'deepstateai'},
+    {key:'HEALTHCARESYS',label:'HEALTHCARE.SYS',series:'healthcaresys'},
+    {key:'PARENTTRAP',label:'PARENT.TRAP',series:'parenttrap'},
+    {key:'CLIMATEERR',label:'CLIMATE.ERR',series:'climateerr'},
+    {key:'CREATORNULL',label:'CREATOR.NULL',series:'creatornull'},
+    {key:'ANALOGREVIVAL',label:'ANALOG.REVIVAL',series:'analogrevival'},
+    {key:'MERGEPROTOCOL',label:'MERGE.PROTOCOL',series:'mergeprotocol'},
+    {key:'UBIWORLD',label:'UBI.WORLD',series:'ubiworld'},
+    {key:'WALLEDGARDEN',label:'WALLED.GARDEN',series:'walledgarden'},
+    {key:'SOLARPUNK',label:'SOLARPUNK.SYS',series:'solarpunk'},
+    {key:'GREYZONE',label:'GREY.ZONE',series:'greyzone'},
+    {key:'FRONTIERNULL',label:'FRONTIER.NULL',series:'frontiernull'},
+  ];
+  const filterOptions = filterSets.map(f => {
+    let label = f.label;
+    if (f.key === 'ALL') { label += ' (' + size + '/' + CARDS.length + ')'; }
+    else { const comp = getSetCompletion(f.series !== undefined ? f.series : null); label += ' (' + comp.owned + '/' + comp.total + ')'; }
+    return '<option value="' + f.key + '"' + (collSeriesFilter === f.key ? ' selected' : '') + '>' + label + '</option>';
   }).join('');
+  const filterDropdown = '<select onchange="setCollFilter(this.value)" style="width:100%;max-width:400px;padding:8px 12px;background:#1a1a2e;border:1px solid #333;border-radius:8px;color:#e0e0e0;font-size:13px;font-family:\'Share Tech Mono\',monospace;outline:none;cursor:pointer;">' + filterOptions + '</select>';
   const missingActive = collMissingFilter ? ' active' : '';
   const missingBtn = `<button class="nav-pill${missingActive}" onclick="toggleMissingFilter()" style="margin-left:8px;border-color:#ff6b6b;${collMissingFilter?'background:#ff6b6b;color:#000;':'color:#ff6b6b;'}">MISSING</button>`;
 
@@ -8821,7 +8854,7 @@ function renderCollection() {
   <div style="margin-bottom:12px;">
     <input type="text" id="coll-search" placeholder="Search cards..." value="${collSearchQuery.replace(/"/g,'&quot;')}" oninput="setCollSearch(this.value)" style="width:100%;max-width:400px;padding:8px 12px;background:#1a1a2e;border:1px solid #333;border-radius:8px;color:#e0e0e0;font-size:14px;font-family:'Share Tech Mono',monospace;outline:none;">
   </div>
-  <div class="nav-pills" style="justify-content:flex-start;margin-bottom:20px;">${filterBtns}${missingBtn}</div>`;
+  <div style="display:flex;gap:8px;align-items:center;margin-bottom:20px;flex-wrap:wrap;">${filterDropdown}${missingBtn}</div>`;
 
   const searchQ = collSearchQuery.toLowerCase();
   RARITY_ORDER.forEach(rarity=>{
