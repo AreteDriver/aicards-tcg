@@ -6,8 +6,8 @@ AI CARDS — 2030 Survival Edition. A collectible card experience about AI displ
 
 ## Current State
 
-- **Stack**: Single HTML file (CSS + vanilla JS) + Sui Move contracts
-- **Hosting**: Vercel (auto-deploy from GitHub main branch)
+- **Stack**: Single HTML file (CSS + vanilla JS) + Sui Move contracts + Next.js admin
+- **Hosting**: Vercel (frontend, auto-deploy) + Fly.io (admin dashboard + minting API + Postgres)
 - **Domain**: aicards.fun (Vercel DNS)
 - **Cards**: 292 total across 12 sets, 6 rarities (MYTHIC, LEGENDARY, RARE, UNCOMMON, COMMON, JUNK)
 - **Card art**: 292/294 cards have DALL-E 3 generated PNG art (black & white underground comix style)
@@ -39,6 +39,17 @@ aicards-tcg/
 │   ├── Dockerfile              # Python 3.12 + Sui CLI binary
 │   ├── fly.toml                # Fly.io config (aicards-mint)
 │   └── start.sh                # Sui keystore injection from secrets
+├── admin/                      # Admin dashboard (Next.js on Fly.io)
+│   ├── app/page.tsx            # Dashboard UI (wallet login + metrics)
+│   ├── app/providers.tsx       # dapp-kit SuiClientProvider + WalletProvider
+│   ├── app/api/admin/          # Auth + metrics API routes
+│   ├── app/api/events/         # Event logging endpoints (pack/pull/raid/share)
+│   ├── lib/adminAuth.ts        # Sui zkLogin signature verification + JWT
+│   ├── lib/db.ts               # PostgreSQL connection pool
+│   ├── lib/metrics.ts          # Dashboard query helpers
+│   ├── db/schema.sql           # 7 metrics tables
+│   ├── Dockerfile              # Next.js standalone on Fly.io
+│   └── fly.toml                # Fly.io config (aicards-admin)
 ├── og-image.html               # Source file for OG social preview image
 ├── og-image.png                # Generated 1200x630 social preview
 ├── CLAUDE.md                   # This file
