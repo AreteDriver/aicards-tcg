@@ -7268,40 +7268,70 @@ let _suiWallet = null;
 let _walletAccount = null;
 const _registeredWallets = [];
 
-// Listen for wallet registrations (Wallet Standard protocol)
+// Wallet Standard uses a callback-based registration protocol
 (function initWalletStandard() {
-  function registerWallet(wallet) {
+  function addWallet(wallet) {
     if (_registeredWallets.some(w => w.name === wallet.name)) return;
-    // Only keep Sui-compatible wallets
     if (wallet.chains?.some(c => c.startsWith('sui:')) ||
         wallet.features?.['sui:signAndExecuteTransaction'] ||
         wallet.features?.['sui:signAndExecuteTransactionBlock']) {
       _registeredWallets.push(wallet);
     }
   }
-  // Pick up wallets already registered
-  if (window.__suiWallets__) window.__suiWallets__.forEach(registerWallet);
-  // Wallet Standard event-based registration
-  window.addEventListener('wallet-standard:register-wallet', function(e) {
-    if (e.detail?.wallet) registerWallet(e.detail.wallet);
-  });
-  // Signal to wallets that the app is ready
+
+  // The Wallet Standard uses a global symbol for registration
+  // Wallets call: api.register(wallet)
+  // Apps provide the register callback via the global symbol
+  var cbKey = 'wallet-standard:app-ready';
+  var existingCbs = window[cbKey];
+
+  // Our register callback
+  function onRegister(api) {
+    if (api.register) {
+      // Wallets call register() to add themselves - but we get them via get()
+    }
+    if (api.get) {
+      api.get().forEach(addWallet);
+    }
+    if (api.on) {
+      api.on('register', function(wallet) { addWallet(wallet); });
+    }
+  }
+
+  // Set up the callback array for wallet standard
+  if (!window[cbKey]) window[cbKey] = [];
+  window[cbKey].push(function(api) { onRegister(api); });
+
+  // Also check for already-registered wallets via the wallets symbol
+  try {
+    var walletsKey = 'wallet-standard:wallets';
+    if (window[walletsKey]) {
+      var existing = window[walletsKey];
+      if (existing.get) existing.get().forEach(addWallet);
+      if (existing.on) existing.on('register', function(w) { addWallet(w); });
+    }
+  } catch(e) {}
+
+  // Legacy Sui-specific globals
+  if (window.__suiWallets__) {
+    (Array.isArray(window.__suiWallets__) ? window.__suiWallets__ : []).forEach(addWallet);
+  }
+
+  // Signal readiness to wallets
   try { window.dispatchEvent(new Event('wallet-standard:app-ready')); } catch(e) {}
+
+  // Some wallets register after DOMContentLoaded - poll briefly
+  var pollCount = 0;
+  var pollInterval = setInterval(function() {
+    pollCount++;
+    if (window.__suiWallets__) {
+      (Array.isArray(window.__suiWallets__) ? window.__suiWallets__ : []).forEach(addWallet);
+    }
+    if (pollCount >= 10 || _registeredWallets.length > 0) clearInterval(pollInterval);
+  }, 500);
 })();
 
 function getSuiWallets() {
-  // Also check for late-registered wallets
-  if (window.__suiWallets__) {
-    window.__suiWallets__.forEach(function(w) {
-      if (!_registeredWallets.some(r => r.name === w.name)) {
-        if (w.chains?.some(c => c.startsWith('sui:')) ||
-            w.features?.['sui:signAndExecuteTransaction'] ||
-            w.features?.['sui:signAndExecuteTransactionBlock']) {
-          _registeredWallets.push(w);
-        }
-      }
-    });
-  }
   return _registeredWallets;
 }
 
