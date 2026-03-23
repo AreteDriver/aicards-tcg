@@ -13,7 +13,7 @@ AI CARDS — 2030 Survival Edition. A collectible card experience about AI displ
 - **Card art**: 448/448 cards have DALL-E 3 generated PNG art (black & white underground comix style)
 - **Blockchain**: Sui testnet — Package `0x99f91c55ad24367b9fba1000bf43a5e571c2ae096c906fdf2e78fd51243f38b2`
 - **On-chain objects**: AdminCap `0xcfeaad94ff0f5136b037f3482ff68fc00cacc5149b3db8dfe011e239644e4935`
-- **Minting API**: `https://aicards-mint.fly.dev` (FastAPI on Fly.io, 294 cards)
+- **Minting API**: `https://aicards-mint.fly.dev` (FastAPI on Fly.io, 448 cards)
 
 ## Architecture
 
@@ -35,7 +35,7 @@ aicards-tcg/
 │   └── tests/payment_tests.move # 5 tests (buy, change, withdraw, price, auth)
 ├── server/                     # Minting API (FastAPI on Fly.io)
 │   ├── main.py                 # POST /mint/pack, GET /health, GET /cards/pool
-│   ├── card_data.py            # All 294 cards with rarity weights
+│   ├── card_data.py            # All 448 cards with rarity weights
 │   ├── Dockerfile              # Python 3.12 + Sui CLI binary
 │   ├── fly.toml                # Fly.io config (aicards-mint)
 │   └── start.sh                # Sui keystore injection from secrets
@@ -168,7 +168,7 @@ This is a social commentary piece disguised as a card game. The tone is dark hum
 - **Engine**: `t(key, ...args)` for UI, `cardT(cardId, field)` for cards, `rarityT()`, `catT()`
 - **Files**: `lang/{locale}.json` — loaded via fetch on demand, EN is default
 - **Persistence**: `localStorage` key `aicards_lang`, browser locale detection as fallback
-- **Scope**: Full i18n — 250+ UI strings + 292 card translations (name, category, stat labels, flavor text) per language
+- **Scope**: Full i18n — 300+ UI strings + 448 card translations (name, category, stat labels, flavor text) per language
 - **Selector**: Top-left corner, 6 language buttons
 
 ## Sui Integration
@@ -178,7 +178,7 @@ This is a social commentary piece disguised as a card game. The tone is dark hum
 - **Trading**: Cards have `store` ability — native Sui transfers + Kiosk marketplace compatible
 - **Mint flow**: Server-side minting via AdminCap (rarity determined server-side)
 - **Payment**: Treasury shared object, buy_pack() accepts SUI, change returned on overpay
-- **Minting API**: `aicards-mint.fly.dev` — POST /mint/pack, 294 cards, all 12 sets
+- **Minting API**: `aicards-mint.fly.dev` — POST /mint/pack, 448 cards, all 19 sets
 - **Move tests**: 9 passing (4 card + 5 payment)
 
 ## Dependencies
