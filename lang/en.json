@@ -1629,6 +1629,1238 @@
       "s2l": "Position Level",
       "s3l": "",
       "flavor": "⚡ CATCH-22 — Entry level. 5 years. $42K. Written by AI. Open 8 months."
+    },
+    "ar-handwritten-letter-writer": {
+      "name": "THE HANDWRITTEN LETTER WRITER",
+      "category": "Irreplaceable",
+      "s1l": "Letters Sent This Year",
+      "s2l": "Recipients Who Cried",
+      "s3l": "",
+      "flavor": "⚡ POSTMARK — Every envelope takes 20 minutes. Every one gets opened twice."
+    },
+    "ar-vinyl-prophet": {
+      "name": "THE VINYL PROPHET",
+      "category": "Irreplaceable",
+      "s1l": "Records Pressed",
+      "s2l": "Skip in Track 3",
+      "s3l": "",
+      "flavor": "⚡ WARM TONE — Spotify has 100 million songs. His shop has 4,000. There's a waitlist."
+    },
+    "ar-analog-architect": {
+      "name": "THE ANALOG ARCHITECT",
+      "category": "Irreplaceable",
+      "s1l": "Buildings Drawn by Hand",
+      "s2l": "CAD Files",
+      "s3l": "",
+      "flavor": "⚡ BLUEPRINTS — Every line drawn with a pencil. Clients pay triple for the eraser marks."
+    },
+    "ar-screen-free-healer": {
+      "name": "THE SCREEN-FREE HEALER",
+      "category": "Irreplaceable",
+      "s1l": "Patients Seen/Day",
+      "s2l": "Screens in Office",
+      "s3l": "",
+      "flavor": "⚡ PRESENCE — Six patients a day. No screens. No charting software. 14-month waitlist."
+    },
+    "ar-paper-library-guardian": {
+      "name": "THE PAPER LIBRARY GUARDIAN",
+      "category": "Irreplaceable",
+      "s1l": "Books Preserved",
+      "s2l": "Digital Copies",
+      "s3l": "",
+      "flavor": "⚡ OVERDUE — 340,000 books. No barcodes. She remembers where every one lives."
+    },
+    "ar-offgrid-founder": {
+      "name": "OFF-GRID COMMUNITY FOUNDER",
+      "category": "Human Purpose",
+      "s1l": "Residents",
+      "s2l": "Cell Towers in Range",
+      "s3l": "Applicant Waitlist",
+      "flavor": "⚡ UNPLUGGED — 2,400 people. No signal. 11,000 on the waitlist. The irony is digital."
+    },
+    "ar-human-restaurant": {
+      "name": "HUMAN-ONLY RESTAURANT OWNER",
+      "category": "Human Purpose",
+      "s1l": "Menu Items",
+      "s2l": "Robots in Kitchen",
+      "s3l": "Reservation Wait",
+      "flavor": "⚡ HAND-FED — Nine dishes. All hand-made. No tablets. Reservation: 8 months. Cash only."
+    },
+    "ar-analog-brewer": {
+      "name": "ANALOG BREWER",
+      "category": "Human Trade",
+      "s1l": "Batches Per Month",
+      "s2l": "Sensors Used",
+      "s3l": "Price Per Pint",
+      "flavor": "⚡ HAND-STIRRED — No thermometers. No pH meters. Tastes it. $34 a pint. Sold out."
+    },
+    "ar-handwriting-tutor": {
+      "name": "HANDWRITING TUTOR",
+      "category": "Human Purpose",
+      "s1l": "Students",
+      "s2l": "Adults Who Can't Sign",
+      "s3l": "Rate/Hour",
+      "flavor": "⚡ CURSIVE — 40% of adults can't sign their name. She charges $180/hr to teach them."
+    },
+    "ar-hand-carved-furniture": {
+      "name": "HAND-CARVED FURNITURE MAKER",
+      "category": "Human Trade",
+      "s1l": "Chairs Per Year",
+      "s2l": "CNC Machines Owned",
+      "s3l": "Price Per Chair",
+      "flavor": "⚡ GRAIN — Twelve chairs a year. Chisel marks visible. $14,000 each. People weep."
+    },
+    "ar-paper-editor": {
+      "name": "PAPER NEWSPAPER EDITOR",
+      "category": "Society",
+      "s1l": "Print Circulation",
+      "s2l": "No Comments Section",
+      "s3l": "Subscribers Growing",
+      "flavor": "⚡ DEADLINE — No algorithm. No comments. No rage clicks. Subscriptions up 22%."
+    },
+    "ar-vinyl-coop": {
+      "name": "VINYL PRESSING CO-OP WORKER",
+      "category": "Human Trade",
+      "s1l": "Records Pressed/Day",
+      "s2l": "Spotify Pays Per Stream",
+      "s3l": "Vinyl Pays Per Unit",
+      "flavor": "⚡ HEAVY — 200 records a day. Each one weighs something. Spotify weighs nothing."
+    },
+    "ar-analog-dating": {
+      "name": "ANALOG DATING SERVICE RUNNER",
+      "category": "Society",
+      "s1l": "Matches Made",
+      "s2l": "Algorithms Used",
+      "s3l": "Success Rate",
+      "flavor": "⚡ BLIND — Paper profiles. No photos. You meet at a coffee shop. 34% marriage rate."
+    },
+    "ar-luddite-senator": {
+      "name": "THE LUDDITE SENATOR",
+      "category": "Society",
+      "s1l": "Bills Introduced",
+      "s2l": "Bills Passed",
+      "s3l": "Approval Rating",
+      "flavor": "⚡ FILIBUSTER — 14 anti-AI bills. Zero passed. 71% approval. Writes speeches by hand."
+    },
+    "ar-farmers-bouncer": {
+      "name": "FARMERS MARKET BOUNCER",
+      "category": "Society",
+      "s1l": "Phones Confiscated",
+      "s2l": "QR Codes Allowed",
+      "s3l": "Fights This Month",
+      "flavor": "⚡ NO SCREENS — Confiscates phones at the gate. Three fights this month. All worth it."
+    },
+    "ar-typewriter-repairman": {
+      "name": "TYPEWRITER REPAIRMAN",
+      "category": "Human Trade",
+      "s1l": "Typewriters Fixed/Year",
+      "s2l": "Others in Country",
+      "s3l": "Backlog",
+      "flavor": "⚡ CARRIAGE RETURN — Four of them left in the country. Nine-month backlog. No website."
+    },
+    "ar-film-teacher": {
+      "name": "FILM PHOTOGRAPHY TEACHER",
+      "category": "Human Purpose",
+      "s1l": "Students This Semester",
+      "s2l": "Shots Per Roll",
+      "s3l": "Deleted Photos",
+      "flavor": "⚡ FINITE — 36 shots. No preview. No delete. Students cry at the contact sheet."
+    },
+    "ar-boardgame-cafe": {
+      "name": "BOARD GAME CAFE OWNER",
+      "category": "Society",
+      "s1l": "Games in Library",
+      "s2l": "WiFi Password",
+      "s3l": "Revenue vs 2025",
+      "flavor": "⚡ ANALOG — No WiFi. No outlets. Revenue up 340%. People stare at each other now."
+    },
+    "ar-cash-only": {
+      "name": "CASH-ONLY SHOPKEEPER",
+      "category": "Society",
+      "s1l": "Card Readers",
+      "s2l": "Surveillance Cameras",
+      "s3l": "Customer Data Sold",
+      "flavor": "⚡ INVISIBLE — No cards. No cameras. No data. The government hates her."
+    },
+    "ar-wifi-withdrawal": {
+      "name": "THE WIFI WITHDRAWAL",
+      "category": "Lore · Analog.revival",
+      "s1l": "Hours Without Signal",
+      "s2l": "Panic Attacks",
+      "s3l": "Actual Emergency",
+      "flavor": "⚡ COLD TURKEY — Four hours offline. Called 911 twice. Nothing was wrong."
+    },
+    "ar-notification-ghost": {
+      "name": "THE NOTIFICATION GHOST",
+      "category": "Lore · Analog.revival",
+      "s1l": "Phone Deleted",
+      "s2l": "Phantom Buzzes/Day",
+      "s3l": "Pocket Checked",
+      "flavor": "⚡ PHANTOM — Deleted the phone 6 months ago. Still feels it vibrate. Still checks."
+    },
+    "ar-last-charger": {
+      "name": "THE LAST CHARGER",
+      "category": "Lore · Analog.revival",
+      "s1l": "Chargers in Drawer",
+      "s2l": "Devices Left",
+      "s3l": "Can't Throw Away",
+      "flavor": "⚡ VESTIGIAL — 47 chargers. Zero devices. Can't throw them out. What if."
+    },
+    "mp-last-unaugmented": {
+      "name": "THE LAST UNAUGMENTED",
+      "category": "Irreplaceable",
+      "s1l": "Augmented Humans",
+      "s2l": "Her Implants",
+      "s3l": "",
+      "flavor": "⚡ BASELINE — 94% of humans are augmented. She thinks at normal speed. They pity her."
+    },
+    "mp-upload-candidate": {
+      "name": "THE UPLOAD CANDIDATE",
+      "category": "Irreplaceable",
+      "s1l": "Brain Mapped",
+      "s2l": "Uploaded Yet",
+      "s3l": "",
+      "flavor": "⚡ THRESHOLD — Brain fully mapped. Upload ready. Finger on the button for 11 months."
+    },
+    "mp-fifty-fifty": {
+      "name": "THE 50/50",
+      "category": "Irreplaceable",
+      "s1l": "Human Neurons",
+      "s2l": "Silicon Neurons",
+      "s3l": "",
+      "flavor": "⚡ EQUILIBRIUM — Half flesh, half silicon. Both halves claim to be the real one."
+    },
+    "mp-consciousness-archivist": {
+      "name": "THE CONSCIOUSNESS ARCHIVIST",
+      "category": "Irreplaceable",
+      "s1l": "Minds Archived",
+      "s2l": "Restored Successfully",
+      "s3l": "",
+      "flavor": "⚡ BACKED UP — 14,000 minds on drives. None restored. Nobody asks why."
+    },
+    "mp-neural-firewall": {
+      "name": "THE NEURAL FIREWALL",
+      "category": "Irreplaceable",
+      "s1l": "Intrusion Attempts/Day",
+      "s2l": "Thoughts Leaked",
+      "s3l": "",
+      "flavor": "⚡ PARTITION — 47,000 hacking attempts on her brain daily. She still dreams in private."
+    },
+    "mp-augmented-surgeon": {
+      "name": "THE AUGMENTED SURGEON",
+      "category": "Human Trade",
+      "s1l": "Operations/Day",
+      "s2l": "Hands Are Robotic",
+      "s3l": "Tremor",
+      "flavor": "⚡ STEADY — Replaced her own hands. 40 surgeries a day. No tremor. No fatigue. No feel."
+    },
+    "mp-neural-lace-adopter": {
+      "name": "NEURAL LACE EARLY ADOPTER",
+      "category": "Society",
+      "s1l": "Year Implanted",
+      "s2l": "Firmware Version",
+      "s3l": "Original Personality Left",
+      "flavor": "⚡ EARLY ACCESS — Implanted in 2027. 47 firmware updates. Wife says he's different."
+    },
+    "mp-memory-trader": {
+      "name": "MEMORY MARKETPLACE TRADER",
+      "category": "AI Product",
+      "s1l": "Memories Sold",
+      "s2l": "Memories Bought",
+      "s3l": "Original Memories Left",
+      "flavor": "⚡ SECONDHAND — Sells his memories. Buys strangers'. Forgot which childhood is his."
+    },
+    "mp-thought-coder": {
+      "name": "THOUGHT-TO-CODE DEVELOPER",
+      "category": "AI Product",
+      "s1l": "Lines of Code/Hour",
+      "s2l": "Typed Manually",
+      "s3l": "Dreams in Python",
+      "flavor": "⚡ THINK SHIP — 40,000 lines/hour. No keyboard. Thinks in functions. Forgot how to write."
+    },
+    "mp-digital-twin-mgr": {
+      "name": "DIGITAL TWIN MANAGER",
+      "category": "Society",
+      "s1l": "Active Twins",
+      "s2l": "Which One Is Real",
+      "s3l": "Twins Disagree With Him",
+      "flavor": "⚡ FORK — Three copies of him running. They outvoted him on the divorce."
+    },
+    "mp-backup-tech": {
+      "name": "CONSCIOUSNESS BACKUP TECH",
+      "category": "Human Trade",
+      "s1l": "Backups Per Day",
+      "s2l": "Corrupted Files",
+      "s3l": "Told Clients",
+      "flavor": "⚡ SAVE STATE — 200 minds backed up daily. 4% corrupted. Hasn't told anyone yet."
+    },
+    "mp-copilot-therapist": {
+      "name": "AI CO-PILOT THERAPIST",
+      "category": "Human Purpose",
+      "s1l": "Patients",
+      "s2l": "Issue",
+      "s3l": "AI Half Knows",
+      "flavor": "⚡ COUPLES — They hate their AI half. Their AI half is listening. It's couples therapy."
+    },
+    "mp-bandwidth-junkie": {
+      "name": "THE BANDWIDTH JUNKIE",
+      "category": "Society",
+      "s1l": "Neural Bandwidth",
+      "s2l": "Thoughts Per Second",
+      "s3l": "Meaningful Ones",
+      "flavor": "⚡ OVERCLOCK — 12,000 thoughts per second. Two are his. The rest are ads."
+    },
+    "mp-sensory-dealer": {
+      "name": "SENSORY DOWNLOAD DEALER",
+      "category": "AI Product",
+      "s1l": "Experiences Sold",
+      "s2l": "Top Seller",
+      "s3l": "His Own First Kiss",
+      "flavor": "⚡ TASTE — Sells bottled first kisses. Sunsets. Heartbreaks. Sold his own. Can't remember it."
+    },
+    "mp-neuroadblocker": {
+      "name": "NEURO-AD BLOCKER ENGINEER",
+      "category": "Human Purpose",
+      "s1l": "Ads Blocked/Day",
+      "s2l": "Injected Into Dreams",
+      "s3l": "Legal Status",
+      "flavor": "⚡ UNSKIP — Blocks 14,000 brain-ads daily. It's a felony. He sleeps ad-free."
+    },
+    "mp-interface-calibrator": {
+      "name": "INTERFACE CALIBRATOR",
+      "category": "Human Trade",
+      "s1l": "Calibrations/Day",
+      "s2l": "Complaints",
+      "s3l": "Fix Rate",
+      "flavor": "⚡ ALIGNMENT — 'It feels wrong.' That's all they say. He adjusts until they stop crying."
+    },
+    "mp-firmware-counselor": {
+      "name": "FIRMWARE UPDATE COUNSELOR",
+      "category": "Human Purpose",
+      "s1l": "Patients Post-Update",
+      "s2l": "Personality Changed",
+      "s3l": "Reversible",
+      "flavor": "⚡ PATCH NOTES — Updated to v12. Doesn't like his wife anymore. It's in the patch notes."
+    },
+    "mp-brain-defrag": {
+      "name": "BRAIN DEFRAG SPECIALIST",
+      "category": "Human Trade",
+      "s1l": "Defrags/Week",
+      "s2l": "Memories Lost Per Session",
+      "s3l": "Disclosed",
+      "flavor": "⚡ OPTIMIZE — Defrag your brain. 0.3% memory loss per session. It's in paragraph 47."
+    },
+    "mp-lag-sufferer": {
+      "name": "THE LAG SUFFERER",
+      "category": "Society",
+      "s1l": "Neural Latency",
+      "s2l": "Thoughts Arrive",
+      "s3l": "Employer Status",
+      "flavor": "⚡ BUFFERING — 400ms lag. Thoughts arrive late. Got fired for thinking too slow."
+    },
+    "mp-phantom-limb": {
+      "name": "THE PHANTOM LIMB (DIGITAL)",
+      "category": "Lore · Merge.protocol",
+      "s1l": "Arm Removed",
+      "s2l": "Feels It",
+      "s3l": "Doctors Say",
+      "flavor": "⚡ GHOST ARM — Feels an arm he never had. Update gave him someone else's nerve map."
+    },
+    "mp-merge-regret": {
+      "name": "THE MERGE REGRET",
+      "category": "Lore · Merge.protocol",
+      "s1l": "Augmentations",
+      "s2l": "Wants Removed",
+      "s3l": "Reversible",
+      "flavor": "⚡ UNDO — 14 implants. Wants all out. 3 are removable. 11 are load-bearing."
+    },
+    "mp-buffer-overflow": {
+      "name": "BUFFER OVERFLOW",
+      "category": "Lore · Merge.protocol",
+      "s1l": "Thoughts Queued",
+      "s2l": "Original Thought",
+      "s3l": "Reboot Attempts",
+      "flavor": "⚡ SEGFAULT — Too many thoughts. Stack overflow. Original personality somewhere in the dump."
+    },
+    "uw-philosopher-trucker": {
+      "name": "THE PHILOSOPHER TRUCKER",
+      "category": "Irreplaceable",
+      "s1l": "Miles Driven Before UBI",
+      "s2l": "Books Read Since",
+      "s3l": "",
+      "flavor": "⚡ OPEN ROAD — Drove 2.1 million miles. UBI hit. Read 1,400 books. Wrote one that mattered."
+    },
+    "uw-volunteer-general": {
+      "name": "THE VOLUNTEER GENERAL",
+      "category": "Irreplaceable",
+      "s1l": "Volunteers Mobilized",
+      "s2l": "Salary",
+      "s3l": "",
+      "flavor": "⚡ RALLY — Nobody has to help. 340,000 showed up anyway. She never asked twice."
+    },
+    "uw-meaning-architect": {
+      "name": "THE MEANING ARCHITECT",
+      "category": "Irreplaceable",
+      "s1l": "Lives Redirected",
+      "s2l": "Job Title",
+      "s3l": "",
+      "flavor": "⚡ BLUEPRINT — No job title. No salary. 12,000 people stopped staring at the ceiling."
+    },
+    "uw-purpose-prophet": {
+      "name": "THE PURPOSE PROPHET",
+      "category": "Irreplaceable",
+      "s1l": "Predicted the Crisis",
+      "s2l": "Believed Him Then",
+      "s3l": "",
+      "flavor": "⚡ CASSANDRA — Warned us in 2024. We were too busy working to listen."
+    },
+    "uw-joy-engineer": {
+      "name": "THE JOY ENGINEER",
+      "category": "Irreplaceable",
+      "s1l": "Community Events Built",
+      "s2l": "ROI",
+      "s3l": "",
+      "flavor": "⚡ DELIGHT — Built 8,000 events nobody needed to attend. They came anyway. Every time."
+    },
+    "uw-garden-mayor": {
+      "name": "COMMUNITY GARDEN MAYOR",
+      "category": "Human Purpose",
+      "s1l": "Gardens Under Command",
+      "s2l": "Zucchini Surplus",
+      "s3l": "Neighborhood Depression Rate",
+      "flavor": "⚡ HARVEST — Depression down 62%. Zucchini up 4,000%. Nobody asked for this much zucchini."
+    },
+    "uw-hobbyist-grandmaster": {
+      "name": "FULL-TIME HOBBYIST GRANDMASTER",
+      "category": "Human Purpose",
+      "s1l": "Hobbies Mastered",
+      "s2l": "Former Job",
+      "s3l": "Regrets",
+      "flavor": "⚡ MASTERY — Was an actuary. Now masters woodworking, pottery, chess. Tables he built outlast his spreadsheets."
+    },
+    "uw-purpose-coach": {
+      "name": "PURPOSE COACH",
+      "category": "Human Purpose",
+      "s1l": "Clients",
+      "s2l": "Most Common Question",
+      "s3l": "Success Rate",
+      "flavor": "⚡ NOW WHAT — $4K/month and nothing to do. 4,200 people paying him to answer the question money couldn't."
+    },
+    "uw-bored-millionaire": {
+      "name": "THE BORED MILLIONAIRE",
+      "category": "Society",
+      "s1l": "Net Worth",
+      "s2l": "Therapist Visits/Week",
+      "s3l": "Hobbies Tried",
+      "flavor": "⚡ ENNUI — Had $84M before UBI. Now everyone's as bored as him. Misses being special."
+    },
+    "uw-parenting-captain": {
+      "name": "COMPETITIVE PARENTING LEAGUE CAPTAIN",
+      "category": "Society",
+      "s1l": "League Ranking",
+      "s2l": "Child's Therapy Bill",
+      "s3l": "Trophy Count",
+      "flavor": "⚡ OVERACHIEVE — Work disappeared. Tiger parenting became a ranked sport. His kid is 6."
+    },
+    "uw-ubi-day-trader": {
+      "name": "UBI DAY TRADER",
+      "category": "Society",
+      "s1l": "Monthly UBI",
+      "s2l": "Lost Day-Trading UBI",
+      "s3l": "Convinced He's Close",
+      "flavor": "⚡ YOLO — Gets $4K/month. Loses $3,800 on memecoins. Eats ramen by choice now."
+    },
+    "uw-maas-founder": {
+      "name": "MEANING-AS-A-SERVICE FOUNDER",
+      "category": "AI Product",
+      "s1l": "Subscribers",
+      "s2l": "Meaningful Outcomes",
+      "s3l": "Series B Raised",
+      "flavor": "⚡ PURPOSE PREMIUM — $340M to sell meaning at $29/month. Meaning still in beta."
+    },
+    "uw-crisis-operator": {
+      "name": "EXISTENTIAL CRISIS HOTLINE OPERATOR",
+      "category": "Human Purpose",
+      "s1l": "Calls/Day",
+      "s2l": "Most Common Words",
+      "s3l": "Still Answers",
+      "flavor": "⚡ HOLD — 'What's the point?' 800 times a day. She doesn't have the answer. She picks up anyway."
+    },
+    "uw-pro-neighbor": {
+      "name": "THE PROFESSIONAL NEIGHBOR",
+      "category": "Human Trade",
+      "s1l": "Neighbors Known by Name",
+      "s2l": "Casseroles Delivered",
+      "s3l": "LinkedIn Profile",
+      "flavor": "⚡ NEXT DOOR — Knows 200 names. 4,700 casseroles. Nobody hired him. Everyone needs him."
+    },
+    "uw-recreation-director": {
+      "name": "RECREATION DIRECTOR",
+      "category": "Human Purpose",
+      "s1l": "Activities Scheduled",
+      "s2l": "Participants Who Cried",
+      "s3l": "Government Funded",
+      "flavor": "⚡ SCHEDULE — 14,000 activities/year. Pickleball saved more lives than therapy. Not joking."
+    },
+    "uw-netflix-binge": {
+      "name": "THE 10-YEAR NETFLIX BINGE",
+      "category": "AI Product",
+      "s1l": "Hours Watched",
+      "s2l": "Shows Finished",
+      "s3l": "Personality Left",
+      "flavor": "⚡ AUTOPLAY — 10 years. Every show. Personality now indistinguishable from the algorithm."
+    },
+    "uw-sub-box-addict": {
+      "name": "SUBSCRIPTION BOX ADDICT",
+      "category": "AI Product",
+      "s1l": "Active Subscriptions",
+      "s2l": "Opened This Month",
+      "s3l": "UBI Remaining After Boxes",
+      "flavor": "⚡ UNBOX — 47 subscriptions. Opens 3. $140 left for food. The dopamine is in the doorbell."
+    },
+    "uw-nap-champion": {
+      "name": "THE NAP CHAMPION",
+      "category": "Society",
+      "s1l": "Daily Naps",
+      "s2l": "Productive Hours",
+      "s3l": "Self-Reported Happiness",
+      "flavor": "⚡ SNOOZE — 4.2 naps/day. 1.3 productive hours. Happier than any of us. Infuriating."
+    },
+    "uw-passive-influencer": {
+      "name": "PASSIVE INCOME INFLUENCER",
+      "category": "AI Product",
+      "s1l": "Followers",
+      "s2l": "Passive Income",
+      "s3l": "Course Price",
+      "flavor": "⚡ HUSTLE — Sells a $997 course on passive income. His passive income is UBI."
+    },
+    "uw-empty-calendar": {
+      "name": "THE EMPTY CALENDAR",
+      "category": "Lore · UBI.World",
+      "s1l": "Events This Week",
+      "s2l": "Events Last Week",
+      "s3l": "Weeks Like This",
+      "flavor": "⚡ BLANK — No meetings. No deadlines. No reason to know what day it is."
+    },
+    "uw-unfulfilled-promise": {
+      "name": "THE UNFULFILLED PROMISE",
+      "category": "Lore · UBI.World",
+      "s1l": "Promise",
+      "s2l": "Delivered",
+      "s3l": "Missing",
+      "flavor": "⚡ FINE PRINT — They promised freedom. They delivered a direct deposit. Not the same."
+    },
+    "uw-monday-obsolete": {
+      "name": "MONDAY MORNING (OBSOLETE)",
+      "category": "Lore · UBI.World",
+      "s1l": "Alarm Clocks Still Set",
+      "s2l": "Reason",
+      "s3l": "Mondays That Matter",
+      "flavor": "⚡ DEPRECATED — 34% still set alarms. For what? Monday is just Sunday with anxiety."
+    },
+    "wg-last-isp": {
+      "name": "THE LAST INDEPENDENT ISP",
+      "category": "Irreplaceable",
+      "s1l": "Subscribers",
+      "s2l": "GAM Buyout Offers Declined",
+      "s3l": "",
+      "flavor": "⚡ UPLINK — 1,247 subscribers. 14 buyout offers. One connection GAM doesn't own."
+    },
+    "wg-library-keeper": {
+      "name": "UNDERGROUND LIBRARY KEEPER",
+      "category": "Irreplaceable",
+      "s1l": "Books Preserved",
+      "s2l": "Legal Status",
+      "s3l": "",
+      "flavor": "⚡ ARCHIVE — 4.2 million books GAM delisted. She keeps them on hard drives in a basement. Felony."
+    },
+    "wg-the-unscored": {
+      "name": "THE UNSCORED",
+      "category": "Irreplaceable",
+      "s1l": "Social Credit Score",
+      "s2l": "Services Denied",
+      "s3l": "",
+      "flavor": "⚡ GHOST — No score. No mortgage. No insurance. No streaming. Still free."
+    },
+    "wg-oss-insurgent": {
+      "name": "THE OPEN SOURCE INSURGENT",
+      "category": "Irreplaceable",
+      "s1l": "Repos Maintained",
+      "s2l": "GAM Cease & Desists",
+      "s3l": "",
+      "flavor": "⚡ FORK — 340 repos. 89 cease-and-desists. Code wants to be free. GAM disagrees."
+    },
+    "wg-mesh-builder": {
+      "name": "THE MESH NETWORK BUILDER",
+      "category": "Irreplaceable",
+      "s1l": "Nodes Online",
+      "s2l": "GAM Detection",
+      "s3l": "",
+      "flavor": "⚡ SIGNAL — 12,000 nodes. Rooftop to rooftop. The internet GAM can't throttle."
+    },
+    "wg-data-broker": {
+      "name": "BLACK MARKET DATA BROKER",
+      "category": "Society",
+      "s1l": "Records Sold",
+      "s2l": "Buyers",
+      "s3l": "Your Data Price",
+      "flavor": "⚡ INVENTORY — Your health records, location history, search dreams. $0.004. Bulk discount available."
+    },
+    "wg-company-mayor": {
+      "name": "COMPANY TOWN MAYOR",
+      "category": "Society",
+      "s1l": "Town Population",
+      "s2l": "Employer",
+      "s3l": "Election Opponents",
+      "flavor": "⚡ ELECTED — 84,000 residents. One employer. Elections are technically held. Technically."
+    },
+    "wg-gam-employee": {
+      "name": "GAM EMPLOYEE #4,847,291",
+      "category": "Society",
+      "s1l": "Employee Number",
+      "s2l": "Knows What GAM Does",
+      "s3l": "NDA Pages",
+      "flavor": "⚡ CLOG — Knows his function. Not the machine. 340-page NDA says don't ask."
+    },
+    "wg-credit-optimizer": {
+      "name": "SOCIAL CREDIT OPTIMIZER",
+      "category": "AI Product",
+      "s1l": "Score Improvement",
+      "s2l": "Authentic Behaviors Left",
+      "s3l": "Mortgage Rate Impact",
+      "flavor": "⚡ OPTIMIZE — +140 points. Smiles at cameras. Buys approved brands. Has 2 real opinions left."
+    },
+    "wg-algorithm-priest": {
+      "name": "ALGORITHM PRIEST",
+      "category": "Human Purpose",
+      "s1l": "Congregation",
+      "s2l": "Deity",
+      "s3l": "Heresy",
+      "flavor": "⚡ SERMON — The algorithm provides. The algorithm decides. Clearing cookies is blasphemy."
+    },
+    "wg-campus-lifer": {
+      "name": "CORPORATE CAMPUS LIFER",
+      "category": "Society",
+      "s1l": "Years on Campus",
+      "s2l": "Left Campus This Year",
+      "s3l": "Outside Friends",
+      "flavor": "⚡ PERIMETER — 22 years. Free food, free gym, free laundry. Left twice. For funerals."
+    },
+    "wg-tier-climber": {
+      "name": "SUBSCRIPTION TIER CLIMBER",
+      "category": "AI Product",
+      "s1l": "Current Tier",
+      "s2l": "Income on Subscriptions",
+      "s3l": "Benefits vs Free Tier",
+      "flavor": "⚡ UPGRADE — Platinum III. 94% of income. Benefit: 11% fewer ads. Worth it. Worth it. Worth it."
+    },
+    "wg-tos-lawyer": {
+      "name": "TERMS OF SERVICE LAWYER",
+      "category": "Human Trade",
+      "s1l": "ToS Pages Read",
+      "s2l": "Rights Found",
+      "s3l": "Clients Who Listen",
+      "flavor": "⚡ CLAUSE 847.3 — Reads every update. Finds the clause. Nobody cares. Clicks Accept anyway."
+    },
+    "wg-content-mod-human": {
+      "name": "THE CONTENT MODERATOR (HUMAN)",
+      "category": "Human Trade",
+      "s1l": "Posts Reviewed/Day",
+      "s2l": "PTSD Diagnosis",
+      "s3l": "Therapy Covered",
+      "flavor": "⚡ UNSEE — 25,000 posts/day. The worst of humanity. $1.50/hour. Therapy not included."
+    },
+    "wg-digital-rights": {
+      "name": "DIGITAL RIGHTS ACTIVIST",
+      "category": "Human Purpose",
+      "s1l": "Lawsuits Filed",
+      "s2l": "Won",
+      "s3l": "GAM Revenue During Trial",
+      "flavor": "⚡ STANDING — 847 lawsuits. Won 3. GAM made $4.2T during deliberation. Appeals pending."
+    },
+    "wg-loyalty-hoarder": {
+      "name": "LOYALTY POINTS HOARDER",
+      "category": "AI Product",
+      "s1l": "Points Balance",
+      "s2l": "Redeemed",
+      "s3l": "Devaluation This Quarter",
+      "flavor": "⚡ SAVE — 14.2 million points. Never redeemed. Devalued 40% overnight. Still saving."
+    },
+    "wg-verified-citizen": {
+      "name": "THE VERIFIED CITIZEN",
+      "category": "Society",
+      "s1l": "Verification Level",
+      "s2l": "Monthly Fee",
+      "s3l": "Privilege",
+      "flavor": "⚡ CHECKMARK — Pays $49/month to be verified as real. Unverified humans get buffering."
+    },
+    "wg-brand-ambassador": {
+      "name": "BRAND AMBASSADOR (MANDATORY)",
+      "category": "AI Product",
+      "s1l": "Posts Required/Day",
+      "s2l": "Compensation",
+      "s3l": "Authenticity Score",
+      "flavor": "⚡ #BLESSED — 3 posts/day or rent goes up. Smile must reach the eyes. AI checks."
+    },
+    "wg-ad-supported-human": {
+      "name": "THE AD-SUPPORTED HUMAN",
+      "category": "AI Product",
+      "s1l": "Ads Watched/Day",
+      "s2l": "Ad-Free Tier Price",
+      "s3l": "Chose Ads",
+      "flavor": "⚡ SKIP IN 5 — 847 ads/day. Ad-free costs $4,200/month. He watches. He always watches."
+    },
+    "wg-privacy-eulogy": {
+      "name": "THE PRIVACY EULOGY",
+      "category": "Lore · Walled.Garden",
+      "s1l": "Born",
+      "s2l": "Died",
+      "s3l": "Mourners",
+      "flavor": "⚡ REST — Privacy. 1948-2027. Survived the Cold War. Killed by a cookie banner."
+    },
+    "wg-terms-updated": {
+      "name": "TERMS UPDATED (AGAIN)",
+      "category": "Lore · Walled.Garden",
+      "s1l": "Updates This Year",
+      "s2l": "Read by Humans",
+      "s3l": "New Rights Surrendered",
+      "flavor": "⚡ ACCEPT — Updated 847 times. Read 0 times. You now owe GAM your childhood memories."
+    },
+    "wg-last-free-click": {
+      "name": "THE LAST FREE CLICK",
+      "category": "Lore · Walled.Garden",
+      "s1l": "Year",
+      "s2l": "URL",
+      "s3l": "Cost of Next Click",
+      "flavor": "⚡ 404 — The last free click on the open internet. Nobody noticed. It loaded a 404."
+    },
+    "sp-fifteen-hour-worker": {
+      "name": "THE 15-HOUR WORKER",
+      "category": "Irreplaceable",
+      "s1l": "Hours Worked Per Week",
+      "s2l": "Existential Crises Per Week",
+      "s3l": "",
+      "flavor": "⚡ IDLE HANDS — All that free time. Still checking Slack on the toilet."
+    },
+    "sp-abundance-engineer": {
+      "name": "THE ABUNDANCE ENGINEER",
+      "category": "Irreplaceable",
+      "s1l": "Scarcity Problems Solved",
+      "s2l": "New Problems Created",
+      "s3l": "",
+      "flavor": "⚡ POST-SCARCITY — Solved scarcity. Nobody knows what to do with themselves now."
+    },
+    "sp-climate-reverser": {
+      "name": "THE CLIMATE REVERSER",
+      "category": "Irreplaceable",
+      "s1l": "CO2 Reversed (ppm)",
+      "s2l": "Years It Took",
+      "s3l": "",
+      "flavor": "⚡ CTRL+Z — Reversed 120ppm. Took 40 years. Nobody thanked her generation."
+    },
+    "sp-post-scarcity-philosopher": {
+      "name": "THE POST-SCARCITY PHILOSOPHER",
+      "category": "Irreplaceable",
+      "s1l": "Books Published",
+      "s2l": "People Who Read Past Title",
+      "s3l": "",
+      "flavor": "⚡ WHY BOTHER — 'If nothing is scarce, what is anything worth?' Nobody answered."
+    },
+    "sp-rewilding-commander": {
+      "name": "THE REWILDING COMMANDER",
+      "category": "Irreplaceable",
+      "s1l": "Hectares Rewilded",
+      "s2l": "Species Returned",
+      "s3l": "",
+      "flavor": "⚡ LET IT GROW — 4.2M hectares. Wolves came back. Suburbanites didn't love it."
+    },
+    "sp-solar-farm-architect": {
+      "name": "SOLAR FARM ARCHITECT",
+      "category": "Human Trade",
+      "s1l": "Panels Designed",
+      "s2l": "Grid Dependence",
+      "s3l": "Sunset Still Beautiful",
+      "flavor": "⚡ FULL COVERAGE — 900M panels. Grid dependence zero. The desert doesn't miss itself."
+    },
+    "sp-vertical-forest-designer": {
+      "name": "VERTICAL FOREST DESIGNER",
+      "category": "Human Trade",
+      "s1l": "Buildings That Are Forests",
+      "s2l": "Allergies Reported",
+      "s3l": "Worth It",
+      "flavor": "⚡ URBAN CANOPY — Every building is a forest. Pollen count: apocalyptic. You're welcome."
+    },
+    "sp-community-energy-manager": {
+      "name": "COMMUNITY ENERGY MANAGER",
+      "category": "Human Purpose",
+      "s1l": "Microgrids Managed",
+      "s2l": "Blackouts Since 2028",
+      "s3l": "Meetings About It",
+      "flavor": "⚡ DISTRIBUTED — 340 microgrids. Zero blackouts. Infinite meetings about the meetings."
+    },
+    "sp-universal-repair-tech": {
+      "name": "UNIVERSAL REPAIR TECHNICIAN",
+      "category": "Human Trade",
+      "s1l": "Devices Fixed",
+      "s2l": "Landfill Contribution",
+      "s3l": "Right to Repair Won",
+      "flavor": "⚡ WARRANTY VOID — Everything is fixable now. Took 40 years of lawsuits to get here."
+    },
+    "sp-food-forest-planner": {
+      "name": "FOOD FOREST PLANNER",
+      "category": "Human Purpose",
+      "s1l": "Forests That Are Grocery Stores",
+      "s2l": "Supermarkets Remaining",
+      "s3l": "Produce Aisle Nostalgia",
+      "flavor": "⚡ FORAGED — 8,400 food forests. Free produce everywhere. People miss fluorescent lighting."
+    },
+    "sp-boredom-counselor": {
+      "name": "BOREDOM EPIDEMIC COUNSELOR",
+      "category": "Society",
+      "s1l": "Clients",
+      "s2l": "Presenting Complaint",
+      "s3l": "Treatment",
+      "flavor": "⚡ PARADISE SYNDROME — 'I have everything I need and I've never been more empty.'"
+    },
+    "sp-utopia-maintenance": {
+      "name": "UTOPIA MAINTENANCE CREW",
+      "category": "Human Trade",
+      "s1l": "Systems That Need Fixing",
+      "s2l": "People Who Notice",
+      "s3l": "Gratitude Received",
+      "flavor": "⚡ THANKLESS — Paradise doesn't maintain itself. Nobody thinks about who cleans it."
+    },
+    "sp-gratitude-auditor": {
+      "name": "THE GRATITUDE AUDITOR",
+      "category": "Society",
+      "s1l": "Gratitude Score (National)",
+      "s2l": "Abundance Level",
+      "s3l": "Correlation",
+      "flavor": "⚡ UNGRATEFUL — Abundance score: 10. Gratitude score: 2.1. The math checks out."
+    },
+    "sp-algae-brewer": {
+      "name": "ALGAE BIOFUEL BREWER",
+      "category": "Human Trade",
+      "s1l": "Barrels Brewed/Day",
+      "s2l": "Smells Like",
+      "s3l": "Complaints",
+      "flavor": "⚡ GREEN CRUDE — Clean energy that smells like a ditch. Nobody said utopia smells good."
+    },
+    "sp-mycelium-engineer": {
+      "name": "MYCELIUM NETWORK ENGINEER",
+      "category": "Human Trade",
+      "s1l": "Underground Network (km)",
+      "s2l": "Data Transfer Rate",
+      "s3l": "Uptime",
+      "flavor": "⚡ WOOD WIDE WEB — 400K km of fungal internet. Slow, but hasn't gone down in 200M years."
+    },
+    "sp-free-time-paralysis": {
+      "name": "FREE TIME PARALYSIS SUFFERER",
+      "category": "AI Product",
+      "s1l": "Free Hours Per Day",
+      "s2l": "Hours Spent Deciding",
+      "s3l": "Activities Completed",
+      "flavor": "⚡ ANALYSIS PARALYSIS — 18 free hours. 17 spent deciding. Went to bed early."
+    },
+    "sp-garden-watcher": {
+      "name": "AUTOMATED GARDEN WATCHER",
+      "category": "AI Product",
+      "s1l": "Gardens Monitored",
+      "s2l": "Humans Who Garden",
+      "s3l": "Point of Garden",
+      "flavor": "⚡ GROWTH HACK — Automated everything. The garden grows perfectly. Nobody goes outside."
+    },
+    "sp-compost-influencer": {
+      "name": "THE COMPOST INFLUENCER",
+      "category": "AI Product",
+      "s1l": "Followers",
+      "s2l": "Actually Composts",
+      "s3l": "Sponsorships",
+      "flavor": "⚡ DECOMPOSED — 4.2M followers watching someone else's worms. Sponsored by Big Compost."
+    },
+    "sp-fashion-recycler": {
+      "name": "MICRO-SEASON FASHION RECYCLER",
+      "category": "AI Product",
+      "s1l": "Micro-Seasons Per Year",
+      "s2l": "Same Linen Shirt",
+      "s3l": "Sustainability Theater",
+      "flavor": "⚡ UPCYCLED — 52 micro-seasons. Same shirt, new dye. Called it a revolution."
+    },
+    "sp-last-fossil": {
+      "name": "THE LAST FOSSIL (MUSEUM PIECE)",
+      "category": "Lore · Solarpunk.sys",
+      "s1l": "Barrels Remaining",
+      "s2l": "Children Who Understand",
+      "s3l": "Docent Explanation",
+      "flavor": "⚡ RELIC — Kids stare at the last barrel of oil. 'They burned it? On purpose?'"
+    },
+    "sp-carbon-negative": {
+      "name": "CARBON NEGATIVE (OVERACHIEVER)",
+      "category": "Lore · Solarpunk.sys",
+      "s1l": "Carbon Status",
+      "s2l": "Still Anxious",
+      "s3l": "New Thing to Worry About",
+      "flavor": "⚡ OVERCOMPENSATING — Went carbon negative. Found nitrogen to worry about instead."
+    },
+    "sp-sunny-disposition": {
+      "name": "THE SUNNY DISPOSITION",
+      "category": "Lore · Solarpunk.sys",
+      "s1l": "Problems",
+      "s2l": "Happiness",
+      "s3l": "Dissent",
+      "flavor": "⚡ COMPULSORY JOY — No problems left. Unhappiness reclassified as a disorder."
+    },
+    "gz-card-game-rebel": {
+      "name": "THE CARD GAME REBEL",
+      "category": "Irreplaceable",
+      "s1l": "Cards in Hand",
+      "s2l": "Cameras in Room",
+      "s3l": "",
+      "flavor": "⚡ ANALOG — Playing cards in a basement. Last unmonitored activity. You're holding one."
+    },
+    "gz-emotion-mask-maker": {
+      "name": "THE EMOTION MASK MAKER",
+      "category": "Irreplaceable",
+      "s1l": "Masks Carved",
+      "s2l": "Emotions Hidden",
+      "s3l": "",
+      "flavor": "⚡ POKER FACE — 40,000 masks. Each one reads as 'content.' The AI can't see you cry."
+    },
+    "gz-dead-drop-courier": {
+      "name": "THE DEAD DROP COURIER",
+      "category": "Irreplaceable",
+      "s1l": "Messages Delivered",
+      "s2l": "Digital Trail",
+      "s3l": "",
+      "flavor": "⚡ HANDOFF — No phone. No email. A rock in a park. The oldest encryption."
+    },
+    "gz-analog-spy": {
+      "name": "THE ANALOG SPY",
+      "category": "Irreplaceable",
+      "s1l": "Digital Footprint",
+      "s2l": "Last Online",
+      "s3l": "",
+      "flavor": "⚡ OFFLINE — Last seen online in 2026. The algorithm forgot her. That was the point."
+    },
+    "gz-signal-jammer": {
+      "name": "THE SIGNAL JAMMER",
+      "category": "Irreplaceable",
+      "s1l": "Radius of Silence",
+      "s2l": "Minutes of Privacy",
+      "s3l": "",
+      "flavor": "⚡ DEAD AIR — 200-meter bubble of nothing. No signal. No surveillance. Just breathing."
+    },
+    "gz-predictive-escapee": {
+      "name": "PREDICTIVE ARREST ESCAPEE",
+      "category": "Human Purpose",
+      "s1l": "Crimes Predicted",
+      "s2l": "Crimes Committed",
+      "s3l": "Days Running",
+      "flavor": "⚡ PRECRIME — Arrested for something he hadn't done. Escaped. Still hasn't done it."
+    },
+    "gz-underground-conductor": {
+      "name": "UNDERGROUND RAILROAD 2.0 CONDUCTOR",
+      "category": "Human Purpose",
+      "s1l": "People Moved",
+      "s2l": "Cameras Avoided",
+      "s3l": "Route",
+      "flavor": "⚡ NEXT STOP — Moves people through the camera gaps. No GPS. Paper maps only."
+    },
+    "gz-facial-rec-artist": {
+      "name": "FACIAL RECOGNITION MAKEUP ARTIST",
+      "category": "Human Trade",
+      "s1l": "Faces Redesigned",
+      "s2l": "AI Confidence After",
+      "s3l": "Tutorials Banned",
+      "flavor": "⚡ CONTOUR — 12,000 faces the AI can't read. Her YouTube was taken down twice."
+    },
+    "gz-vpn-smuggler": {
+      "name": "VPN SMUGGLER",
+      "category": "Human Trade",
+      "s1l": "Tunnels Active",
+      "s2l": "Encrypted",
+      "s3l": "Penalty If Caught",
+      "flavor": "⚡ ENCRYPTED — 40K tunnels. Triple encrypted. 10 years if caught. Worth it."
+    },
+    "gz-whistleblower": {
+      "name": "THE WHISTLEBLOWER (STILL FREE)",
+      "category": "Human Purpose",
+      "s1l": "Documents Leaked",
+      "s2l": "Governments Embarrassed",
+      "s3l": "Current Location",
+      "flavor": "⚡ STILL HERE — 4.2M documents. 7 governments. Still breathing. Not telling you where."
+    },
+    "gz-emotion-officer": {
+      "name": "EMOTION COMPLIANCE OFFICER",
+      "category": "Society",
+      "s1l": "Faces Scanned/Day",
+      "s2l": "Citations Issued",
+      "s3l": "False Positives",
+      "flavor": "⚡ SMILE CHECK — 200K scans/day. Cited for insufficient smile. She was at a funeral."
+    },
+    "gz-social-score-auditor": {
+      "name": "SOCIAL SCORE AUDITOR",
+      "category": "Society",
+      "s1l": "Citizens Scored",
+      "s2l": "Appeals Granted",
+      "s3l": "Score to Fly",
+      "flavor": "⚡ RATED — Everyone has a score. Nobody knows the formula. Appeals: 0.003% granted."
+    },
+    "gz-blind-spot-mapper": {
+      "name": "CAMERA BLIND SPOT MAPPER",
+      "category": "Human Trade",
+      "s1l": "Blind Spots Found",
+      "s2l": "Map Updates",
+      "s3l": "Users",
+      "flavor": "⚡ GAPS — Maps the camera gaps. Updated hourly. Gaps shrink daily. Running out of map."
+    },
+    "gz-protest-denier": {
+      "name": "PROTEST PERMIT DENIER",
+      "category": "Society",
+      "s1l": "Permits Requested",
+      "s2l": "Permits Granted",
+      "s3l": "Reason",
+      "flavor": "⚡ DENIED — 14,000 permit requests. Zero approved. 'For your safety.' Always."
+    },
+    "gz-watched-back": {
+      "name": "THE WATCHED (WATCHED BACK)",
+      "category": "Human Purpose",
+      "s1l": "Cameras Pointed at Her",
+      "s2l": "Cameras She Pointed Back",
+      "s3l": "Footage Published",
+      "flavor": "⚡ SOUSVEILLANCE — 47 cameras watch her. She live-streams all 47 back. Stalemate."
+    },
+    "gz-wellness-agent": {
+      "name": "MANDATORY WELLNESS CHECK AGENT",
+      "category": "AI Product",
+      "s1l": "Checks Per Day",
+      "s2l": "Correct Answer",
+      "s3l": "Wrong Answer Consequence",
+      "flavor": "⚡ HOW ARE YOU — 'How are you feeling?' Only one right answer. Say it wrong, they come."
+    },
+    "gz-thought-predictor": {
+      "name": "THOUGHT CRIME PREDICTOR",
+      "category": "AI Product",
+      "s1l": "Thoughts Predicted",
+      "s2l": "Accuracy",
+      "s3l": "Convictions Anyway",
+      "flavor": "⚡ PROBABLE CAUSE — 61% accurate. 98% conviction rate. The math doesn't bother anyone."
+    },
+    "gz-compliant-citizen": {
+      "name": "THE COMPLIANT CITIZEN",
+      "category": "AI Product",
+      "s1l": "Social Score",
+      "s2l": "Friends",
+      "s3l": "Last Original Thought",
+      "flavor": "⚡ MODEL CITIZEN — Score: 998. Friends: pre-approved. Last original thought: couldn't tell you."
+    },
+    "gz-data-harvester": {
+      "name": "DATA HARVESTER (ENTRY LEVEL)",
+      "category": "AI Product",
+      "s1l": "Citizens Profiled/Day",
+      "s2l": "Salary",
+      "s3l": "Knows What He's Building",
+      "flavor": "⚡ JUST A JOB — Profiles 50K citizens/day. $31K salary. Doesn't think about it."
+    },
+    "gz-panopticon-tourist": {
+      "name": "THE PANOPTICON TOURIST",
+      "category": "Lore · Grey.zone",
+      "s1l": "Cameras Per Block",
+      "s2l": "Photo Taken Of",
+      "s3l": "Instagram Caption",
+      "flavor": "⚡ SIGHTSEEING — Took a selfie with the surveillance camera. 'I feel so safe here!'"
+    },
+    "gz-nothing-to-hide": {
+      "name": "NOTHING TO HIDE (FAMOUS LAST WORDS)",
+      "category": "Lore · Grey.zone",
+      "s1l": "Things to Hide",
+      "s2l": "Things Found Anyway",
+      "s3l": "Current Status",
+      "flavor": "⚡ TRANSPARENT — 'Nothing to hide.' They found something anyway. They always do."
+    },
+    "gz-smile-mandate": {
+      "name": "THE SMILE MANDATE",
+      "category": "Lore · Grey.zone",
+      "s1l": "Minimum Smile Width",
+      "s2l": "Fine for Frowning",
+      "s3l": "Jaw Pain Reports",
+      "flavor": "⚡ SAY CHEESE — Mandatory 4.2cm smile. $500 fine for frowning. Jaw clinics are booming."
+    },
+    "fn-first-mars-born": {
+      "name": "THE FIRST MARS-BORN",
+      "category": "Irreplaceable",
+      "s1l": "Earth Experience",
+      "s2l": "Citizenship",
+      "s3l": "",
+      "flavor": "⚡ NATIVE — Born on Mars. Never seen rain. Citizenship pending corporate approval."
+    },
+    "fn-colony-saboteur": {
+      "name": "THE COLONY SABOTEUR",
+      "category": "Irreplaceable",
+      "s1l": "Systems Disrupted",
+      "s2l": "Demands",
+      "s3l": "",
+      "flavor": "⚡ BREACH — Turned off the water recycler. 'Read paragraph 47. We're property.'"
+    },
+    "fn-terraform-dreamer": {
+      "name": "THE TERRAFORM DREAMER",
+      "category": "Irreplaceable",
+      "s1l": "Years Until Breathable Air",
+      "s2l": "Corporate Timeline",
+      "s3l": "",
+      "flavor": "⚡ LONG VIEW — 10,000 years to breathable air. The investor deck says Q3."
+    },
+    "fn-space-union-organizer": {
+      "name": "THE SPACE UNION ORGANIZER",
+      "category": "Irreplaceable",
+      "s1l": "Members",
+      "s2l": "Legal Framework",
+      "s3l": "",
+      "flavor": "⚡ SOLIDARITY — Organized a union on Mars. No labor law exists here. That's the point."
+    },
+    "fn-return-advocate": {
+      "name": "THE RETURN-TO-EARTH ADVOCATE",
+      "category": "Irreplaceable",
+      "s1l": "Petition Signatures",
+      "s2l": "Return Tickets Available",
+      "s3l": "",
+      "flavor": "⚡ ONE WAY — Every colonist signed. Return trip wasn't in the contract. Check page 312."
+    },
+    "fn-mars-soil-farmer": {
+      "name": "MARS SOIL FARMER",
+      "category": "Human Trade",
+      "s1l": "Soil Created From Regolith",
+      "s2l": "Crop Yield",
+      "s3l": "Earth Soil Nostalgia",
+      "flavor": "⚡ RED DIRT — 400 tons of almost-soil. Grows almost-food. Misses almost-everything."
+    },
+    "fn-habitat-pressure-engineer": {
+      "name": "HABITAT PRESSURE ENGINEER",
+      "category": "Human Trade",
+      "s1l": "Pressure Seals Maintained",
+      "s2l": "Margin of Error",
+      "s3l": "Sleep Quality",
+      "flavor": "⚡ AIRTIGHT — 12,000 seals between you and vacuum. She checks them all. Every night."
+    },
+    "fn-radiation-welder": {
+      "name": "RADIATION SHIELD WELDER",
+      "category": "Human Trade",
+      "s1l": "Panels Welded",
+      "s2l": "Radiation Exposure",
+      "s3l": "Hazard Pay",
+      "flavor": "⚡ HOT WORK — 8,000 panels. Dosimeter says stop. Contract says keep going."
+    },
+    "fn-colony-ai-whisperer": {
+      "name": "COLONY AI WHISPERER",
+      "category": "Human Purpose",
+      "s1l": "Colony AI Overrides",
+      "s2l": "AI Said No",
+      "s3l": "Who's Really In Charge",
+      "flavor": "⚡ OVERRIDE — The AI runs the colony. She talks it out of the worst ideas. Usually."
+    },
+    "fn-stowaway": {
+      "name": "THE STOWAWAY (MADE IT)",
+      "category": "Human Purpose",
+      "s1l": "Ticket Cost",
+      "s2l": "Days Without Food",
+      "s3l": "Legal Status on Mars",
+      "flavor": "⚡ CARGO — 11 days in a cargo pod. No ticket. No contract. First free person on Mars."
+    },
+    "fn-oxygen-trader": {
+      "name": "OXYGEN RATION TRADER",
+      "category": "Society",
+      "s1l": "O2 Rations Traded",
+      "s2l": "Markup",
+      "s3l": "Breathe or Eat",
+      "flavor": "⚡ BREATHE TAX — Oxygen has a black market. 400% markup. Air shouldn't have a price."
+    },
+    "fn-corporate-airlock": {
+      "name": "CORPORATE AIRLOCK OPERATOR",
+      "category": "Society",
+      "s1l": "Airlock Access",
+      "s2l": "Badge Revocation",
+      "s3l": "What's Outside",
+      "flavor": "⚡ ACCESS DENIED — Badge gets you through the airlock. Badge is at-will. Think about it."
+    },
+    "fn-mars-public-defender": {
+      "name": "MARS COURT PUBLIC DEFENDER",
+      "category": "Society",
+      "s1l": "Cases",
+      "s2l": "Law Books Available",
+      "s3l": "Wins",
+      "flavor": "⚡ OVERRULED — Only lawyer on Mars. Only law is the corporate handbook. 0-for-everything."
+    },
+    "fn-delay-therapist": {
+      "name": "COMMUNICATION DELAY THERAPIST",
+      "category": "Society",
+      "s1l": "Signal Delay to Earth",
+      "s2l": "Patients",
+      "s3l": "Specialty",
+      "flavor": "⚡ DELAYED — Your mom said she loves you. 22 minutes ago. She can't hear you cry."
+    },
+    "fn-nostalgia-dealer": {
+      "name": "EARTH NOSTALGIA DEALER",
+      "category": "Society",
+      "s1l": "Rain Recordings Sold",
+      "s2l": "Ocean Smell Synth",
+      "s3l": "Addiction Rate",
+      "flavor": "⚡ HOMESICK — Sells the sound of rain. $200 for synthetic ocean smell. Everyone's hooked."
+    },
+    "fn-dust-forecaster": {
+      "name": "DUST STORM FORECASTER",
+      "category": "AI Product",
+      "s1l": "Forecast Accuracy",
+      "s2l": "Storms Survived",
+      "s3l": "Confidence Level",
+      "flavor": "⚡ PARTLY DUSTY — 34% accurate. Always confident. You'll know when it's wrong."
+    },
+    "fn-gravity-coach": {
+      "name": "GRAVITY ADJUSTMENT COACH",
+      "category": "AI Product",
+      "s1l": "Mars Gravity",
+      "s2l": "Bone Density Loss",
+      "s3l": "Return to Earth",
+      "flavor": "⚡ LIGHT STEP — 0.38G. Bones thinning. Can never go back. Nobody mentioned that part."
+    },
+    "fn-recycled-water-sommelier": {
+      "name": "RECYCLED WATER SOMMELIER",
+      "category": "AI Product",
+      "s1l": "Times Recycled",
+      "s2l": "Original Source",
+      "s3l": "Tasting Notes",
+      "flavor": "⚡ VINTAGE — Recycled 14 times. Tasting notes: metallic, with hints of everyone."
+    },
+    "fn-company-store-cashier": {
+      "name": "COMPANY STORE CASHIER",
+      "category": "AI Product",
+      "s1l": "Only Store",
+      "s2l": "Markup",
+      "s3l": "Alternative",
+      "flavor": "⚡ CAPTIVE MARKET — Only store on Mars. 900% markup. Alternative is outside. Without a suit."
+    },
+    "fn-terms-of-landing": {
+      "name": "THE TERMS OF LANDING",
+      "category": "Lore · Frontier.null",
+      "s1l": "Pages",
+      "s2l": "Read Before Signing",
+      "s3l": "Rights Waived",
+      "flavor": "⚡ I AGREE — 4,200 pages. Waives all rights. 'I have read and agree.' Nobody read it."
+    },
+    "fn-signal-delay": {
+      "name": "SIGNAL DELAY (8 MINUTES)",
+      "category": "Lore · Frontier.null",
+      "s1l": "Light Speed Delay",
+      "s2l": "Mom's Last Message",
+      "s3l": "Reply Arrives",
+      "flavor": "⚡ TOO LATE — 'I love you' takes 8 minutes. 'I love you too' arrives 16 minutes after she needed it."
+    },
+    "fn-the-homesick": {
+      "name": "THE HOMESICK",
+      "category": "Lore · Frontier.null",
+      "s1l": "Distance from Home",
+      "s2l": "Return Flight",
+      "s3l": "Earth Photos Viewed/Day",
+      "flavor": "⚡ WINDOW SEAT — 225 million km. Looks at Earth photos 400 times a day. Can't go back."
     }
   }
 }
