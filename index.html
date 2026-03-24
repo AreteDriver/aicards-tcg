@@ -7410,11 +7410,13 @@ function buildCardHTML(card) {
 // ═══════════════════════════════════════
 // PACK LOGIC
 // ═══════════════════════════════════════
-function pickCard(weights, forceRarity) {
+function pickCard(weights, forceRarity, excludeIds) {
   // Standard/Gold packs only draw from Set 1 (non-jobless cards)
-  const pool = CARDS.filter(c=>!c.series);
+  let pool = CARDS.filter(c=>!c.series);
+  if (excludeIds && excludeIds.size > 0) pool = pool.filter(c=>!excludeIds.has(c.id));
   if (forceRarity) {
     const rPool = pool.filter(c=>c.rarity===forceRarity);
+    if (rPool.length === 0) return pool[Math.floor(Math.random()*pool.length)];
     return rPool[Math.floor(Math.random()*rPool.length)];
   }
   const weighted = [];
@@ -7422,27 +7424,42 @@ function pickCard(weights, forceRarity) {
   return weighted[Math.floor(Math.random()*weighted.length)];
 }
 
+function pickSetCard(series, excludeIds) {
+  let pool = CARDS.filter(c=>c.series===series);
+  if (excludeIds && excludeIds.size > 0) pool = pool.filter(c=>!excludeIds.has(c.id));
+  if (pool.length === 0) pool = CARDS.filter(c=>c.series===series); // fallback if all excluded
+  const weighted = [];
+  pool.forEach(c=>{const w=WEIGHTS[c.rarity]||1;for(let j=0;j<w;j++)weighted.push(c);});
+  return weighted[Math.floor(Math.random()*weighted.length)];
+}
+
 function buildPack(type) {
   const pack = [];
+  const drawn = new Set();
   const pityTriggered = S.pityCounter >= 10;
 
-  if (type==='standard') { for(let i=0;i<5;i++) pack.push(pickCard(WEIGHTS)); }
-  else if (type==='legendary') {
-    pack.push(pickCard(WEIGHTS,'LEGENDARY'));
-    for(let i=0;i<4;i++) pack.push(pickCard(WEIGHTS));
+  function addCard(card) { pack.push(card); drawn.add(card.id); }
+
+  if (type==='standard') {
+    // Mythic cross-set bleed: 1-in-10000 chance per slot to pull a mythic from any set
+    for(let i=0;i<5;i++) {
+      if (Math.random() < 0.0001) {
+        const mythics = CARDS.filter(c=>c.rarity==='MYTHIC' && !drawn.has(c.id));
+        if (mythics.length > 0) { addCard(mythics[Math.floor(Math.random()*mythics.length)]); continue; }
+      }
+      addCard(pickCard(WEIGHTS, null, drawn));
+    }
+  } else if (type==='legendary') {
+    addCard(pickCard(WEIGHTS,'LEGENDARY', drawn));
+    for(let i=0;i<4;i++) addCard(pickCard(WEIGHTS, null, drawn));
     for(let i=pack.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[pack[i],pack[j]]=[pack[j],pack[i]];}
   } else if (['jobless','doomscroll','loveexe','warroom','skillsvoid','founderexe','deepstateai','healthcaresys','parenttrap','climateerr','creatornull','analogrevival','mergeprotocol','ubiworld','walledgarden','solarpunk','greyzone','frontiernull'].includes(type)) {
-    const setCards = CARDS.filter(c=>c.series===type);
-    for(let i=0;i<5;i++) {
-      const weighted = [];
-      setCards.forEach(c=>{const w=WEIGHTS[c.rarity]||1;for(let j=0;j<w;j++)weighted.push(c);});
-      pack.push(weighted[Math.floor(Math.random()*weighted.length)]);
-    }
+    for(let i=0;i<5;i++) addCard(pickSetCard(type, drawn));
   }
 
   // Pity: force one Legendary in a random slot if no legendary already present
-  if (pityTriggered && !pack.some(c=>c.rarity==='LEGENDARY')) {
-    const legCard = pickCard(WEIGHTS,'LEGENDARY');
+  if (pityTriggered && !pack.some(c=>c.rarity==='LEGENDARY'||c.rarity==='MYTHIC')) {
+    const legCard = pickCard(WEIGHTS,'LEGENDARY', drawn);
     const slot = Math.floor(Math.random()*pack.length);
     pack[slot] = legCard;
   }
@@ -8231,7 +8248,7 @@ function openRaidRewardPack2(setType) {
   session.currentIndex = 0;
   S.packs++;
   S.newCards.clear();
-  const setLabels = {standard:'SURVIVAL',legendary:'REDUNDANCY',jobless:'JOBLESS.AI',doomscroll:'DOOMSCROLL',loveexe:'LOVE.EXE',warroom:'WAR ROOM',skillsvoid:'SKILLS.VOID',founderexe:'FOUNDER.EXE',deepstateai:'DEEP STATE AI',healthcaresys:'HEALTHCARE.SYS',parenttrap:'PARENT TRAP',climateerr:'CLIMATE.ERR',creatornull:'CREATOR.NULL'};
+  const setLabels = {standard:'SURVIVAL',legendary:'REDUNDANCY',jobless:'JOBLESS.AI',doomscroll:'DOOMSCROLL',loveexe:'LOVE.EXE',warroom:'WAR ROOM',skillsvoid:'SKILLS.VOID',founderexe:'FOUNDER.EXE',deepstateai:'DEEP STATE AI',healthcaresys:'HEALTHCARE.SYS',parenttrap:'PARENT TRAP',climateerr:'CLIMATE.ERR',creatornull:'CREATOR.NULL',analogrevival:'ANALOG.REVIVAL',mergeprotocol:'MERGE.PROTOCOL',ubiworld:'UBI.WORLD',walledgarden:'WALLED.GARDEN',solarpunk:'SOLARPUNK.SYS',greyzone:'GREY.ZONE',frontiernull:'FRONTIER.NULL'};
   document.getElementById('op-pack-name').textContent = 'DAILY REWARD: ' + (setLabels[setType] || setType.toUpperCase());
   document.getElementById('legendaryBeam').classList.remove('active');
   renderCardDeck();
@@ -9485,7 +9502,27 @@ function getNextBosses(count) {
     return {boss:RAID_BOSSES[h%12], localTime:slot.toLocaleTimeString([],{hour:'numeric',minute:'2-digit',hour12:true})};
   });
 }
-function getRandomPackReward() { return ALL_SETS[Math.floor(Math.random()*ALL_SETS.length)]; }
+function getRandomPackReward() {
+  // Reward from unlocked sets only, weighted toward lowest completion
+  const unlocked = [['standard',null]];
+  const unlockChecks = [
+    ['jobless',isSet2Unlocked],['doomscroll',isSet3Unlocked],['loveexe',isSet4Unlocked],
+    ['warroom',isSet5Unlocked],['skillsvoid',isSet6Unlocked],['founderexe',isSet7Unlocked],
+    ['deepstateai',isSet8Unlocked],['healthcaresys',isSet9Unlocked],['parenttrap',isSet10Unlocked],
+    ['climateerr',isSet11Unlocked],['creatornull',isSet12Unlocked],['analogrevival',isSet13Unlocked],
+    ['mergeprotocol',isSet14Unlocked],['ubiworld',isSet15Unlocked],['walledgarden',isSet16Unlocked],
+    ['solarpunk',isSet17Unlocked],['greyzone',isSet18Unlocked],['frontiernull',isSet19Unlocked]
+  ];
+  unlockChecks.forEach(([s,fn])=>{ if(fn()) unlocked.push([s,s]); });
+  // Weight: incomplete sets get 3x, complete sets get 1x
+  const weighted = [];
+  unlocked.forEach(([setKey, series])=>{
+    const comp = getSetCompletion(series);
+    const w = comp.pct >= 100 ? 1 : 3;
+    for(let i=0;i<w;i++) weighted.push(setKey);
+  });
+  return weighted[Math.floor(Math.random()*weighted.length)];
+}
 function getBossTimeRemaining() {
   const ms = getNextRotationMs();
   return {days:0, hours:Math.floor(ms/3600000), minutes:Math.floor((ms%3600000)/60000)};
@@ -9851,7 +9888,7 @@ function openRaidRewardPack() {
   session.currentIndex = 0;
   S.packs++;
   S.newCards.clear();
-  const setLabels = {standard:'SURVIVAL',legendary:'REDUNDANCY',jobless:'JOBLESS.AI',doomscroll:'DOOMSCROLL',loveexe:'LOVE.EXE',warroom:'WAR ROOM',skillsvoid:'SKILLS.VOID',founderexe:'FOUNDER.EXE',deepstateai:'DEEP STATE AI',healthcaresys:'HEALTHCARE.SYS',parenttrap:'PARENT TRAP',climateerr:'CLIMATE.ERR',creatornull:'CREATOR.NULL'};
+  const setLabels = {standard:'SURVIVAL',legendary:'REDUNDANCY',jobless:'JOBLESS.AI',doomscroll:'DOOMSCROLL',loveexe:'LOVE.EXE',warroom:'WAR ROOM',skillsvoid:'SKILLS.VOID',founderexe:'FOUNDER.EXE',deepstateai:'DEEP STATE AI',healthcaresys:'HEALTHCARE.SYS',parenttrap:'PARENT TRAP',climateerr:'CLIMATE.ERR',creatornull:'CREATOR.NULL',analogrevival:'ANALOG.REVIVAL',mergeprotocol:'MERGE.PROTOCOL',ubiworld:'UBI.WORLD',walledgarden:'WALLED.GARDEN',solarpunk:'SOLARPUNK.SYS',greyzone:'GREY.ZONE',frontiernull:'FRONTIER.NULL'};
   document.getElementById('op-pack-name').textContent = 'RAID REWARD: ' + (setLabels[rewardSet] || rewardSet.toUpperCase());
   document.getElementById('legendaryBeam').classList.remove('active');
   renderCardDeck();
