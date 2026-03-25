@@ -9226,6 +9226,10 @@ async function shareCurrentCard() {
 // ═══════════════════════════════════════
 function onOpeningWrapClick(event) {
   if (event.target.tagName === 'BUTTON' || event.target.closest('button')) return;
+  // Don't double-advance — deck-card onclick already handles card taps
+  if (event.target.closest('.deck-card')) return;
+  // Don't advance when tapping mini strip cards
+  if (event.target.closest('.pack-summary-mini')) return;
   advanceCard();
 }
 
