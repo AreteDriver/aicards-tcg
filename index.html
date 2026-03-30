@@ -3393,18 +3393,46 @@ body::before {
 @keyframes soundPulse { 0%,100%{border-color:#555;box-shadow:none} 50%{border-color:var(--gold);box-shadow:0 0 12px rgba(200,168,75,0.4)} }
 
 /* Reveal rarity flash animations */
-.reveal-mythic { animation: revealFlashWhite 0.8s ease-out; }
-.reveal-legendary { animation: revealFlashGold 0.6s ease-out; }
-.reveal-rare { animation: revealFlashPurple 0.5s ease-out; }
-@keyframes revealFlashWhite { 0%{box-shadow:0 0 60px rgba(255,255,255,0.8)} 100%{box-shadow:none} }
-@keyframes revealFlashGold { 0%{box-shadow:0 0 40px rgba(200,168,75,0.7)} 100%{box-shadow:none} }
+/* Card reveal rarity flash + lingering glow */
+.reveal-mythic { animation: revealFlashWhite 1.2s ease-out, mythicGlow 2s ease-in-out 0.5s infinite; }
+.reveal-legendary { animation: revealFlashGold 0.8s ease-out, legendaryGlow 2.5s ease-in-out 0.4s infinite; }
+.reveal-rare { animation: revealFlashPurple 0.6s ease-out; }
+@keyframes revealFlashWhite { 0%{box-shadow:0 0 80px rgba(255,255,255,0.9),0 0 160px rgba(255,200,100,0.4);filter:brightness(1.5)} 40%{filter:brightness(1)} 100%{box-shadow:none;filter:none} }
+@keyframes revealFlashGold { 0%{box-shadow:0 0 50px rgba(200,168,75,0.8),0 0 100px rgba(200,168,75,0.3);filter:brightness(1.3)} 40%{filter:brightness(1)} 100%{box-shadow:none;filter:none} }
 @keyframes revealFlashPurple { 0%{box-shadow:0 0 30px rgba(155,89,208,0.5)} 100%{box-shadow:none} }
+@keyframes mythicGlow { 0%,100%{box-shadow:0 0 20px rgba(255,255,255,0.3),0 0 40px rgba(255,200,100,0.15)} 50%{box-shadow:0 0 35px rgba(255,255,255,0.5),0 0 70px rgba(255,200,100,0.25)} }
+@keyframes legendaryGlow { 0%,100%{box-shadow:0 0 15px rgba(200,168,75,0.2),0 0 30px rgba(200,168,75,0.1)} 50%{box-shadow:0 0 25px rgba(200,168,75,0.4),0 0 50px rgba(200,168,75,0.2)} }
+
+/* Card flip from back */
+.deck-card { perspective:800px; }
+.deck-card .card-flipper {
+  position:relative;width:100%;transition:transform 0.6s cubic-bezier(.4,0,.2,1);transform-style:preserve-3d;
+}
+.deck-card.face-down .card-flipper { transform:rotateY(180deg); }
+.deck-card .card-back-face {
+  position:absolute;inset:0;backface-visibility:hidden;transform:rotateY(180deg);
+  background:linear-gradient(135deg,#0a0a0a 0%,#1a1a1a 50%,#0a0a0a 100%);
+  border:1px solid #333;display:flex;align-items:center;justify-content:center;
+}
+.deck-card .card-back-face::after {
+  content:'?';font-family:var(--font-display);font-size:48px;color:#222;
+  text-shadow:0 0 20px rgba(204,17,17,0.2);
+}
+.deck-card .card-front-face { backface-visibility:hidden; }
 
 /* Card slide transitions */
-.card-enter { animation: cardSlideIn 0.3s ease-out; }
+.card-enter { animation: cardFlipIn 0.6s cubic-bezier(.4,0,.2,1); }
 .card-exit { animation: cardSlideOut 0.2s ease-in forwards; }
-@keyframes cardSlideIn { from{opacity:0;transform:translateX(30px)} to{opacity:1;transform:translateX(0)} }
+@keyframes cardFlipIn { 0%{opacity:0;transform:scale(0.8) rotateY(90deg)} 50%{opacity:1;transform:scale(1.05) rotateY(0)} 100%{transform:scale(1) rotateY(0)} }
 @keyframes cardSlideOut { from{opacity:1;transform:translateX(0)} to{opacity:0;transform:translateX(-30px)} }
+
+/* Raid battle hit effects */
+.raid-hit-flash { animation: raidHitFlash 0.3s ease-out; }
+@keyframes raidHitFlash { 0%{background:rgba(255,0,0,0.15)} 100%{background:transparent} }
+.raid-boss-hurt { animation: bossHurt 0.4s ease-out; }
+@keyframes bossHurt { 0%{transform:translateX(0)} 15%{transform:translateX(-8px)} 30%{transform:translateX(8px)} 45%{transform:translateX(-4px)} 60%{transform:translateX(4px)} 100%{transform:translateX(0)} }
+.raid-card-hurt { animation: cardHurt 0.3s ease-out; }
+@keyframes cardHurt { 0%{filter:brightness(1)} 30%{filter:brightness(0.5) saturate(2)} 100%{filter:brightness(1)} }
 
 /* Pull counter in opening screen */
 .pull-counter-bar {
@@ -7835,7 +7863,7 @@ function showCardFaceUp(index) {
     if (wasDupe) {
       const dupeCount = S.collection[card.id];
       const badge = document.createElement('div');
-      badge.style.cssText = 'position:absolute;top:8px;left:8px;font-family:var(--font-mono);font-size:10px;color:#888;background:var(--bg-card);padding:2px 6px;border:1px solid #333;border-radius:3px;z-index:20;';
+      badge.style.cssText = 'position:absolute;bottom:8px;right:8px;font-family:var(--font-mono);font-size:9px;color:#666;background:rgba(0,0,0,0.8);padding:2px 6px;border:1px solid #333;border-radius:3px;z-index:20;';
       badge.textContent = '\u00d7' + dupeCount;
       cards[index].appendChild(badge);
     }
@@ -10189,10 +10217,11 @@ function runRaidRound() {
       if (!raidSkipRequested) sfxFlip();
       renderBattleState();
 
-      // Highlight attacking card
+      // Highlight attacking card + boss hurt
       const idx = b.team.indexOf(member);
       const el = document.getElementById('raid-card-' + idx);
       if (el && !raidSkipRequested) { el.classList.add('attacking'); setTimeout(()=>el.classList.remove('attacking'), 400); }
+      if (!raidSkipRequested) { const bd = document.querySelector('.raid-battle-boss'); if(bd){bd.classList.add('raid-boss-hurt');setTimeout(()=>bd.classList.remove('raid-boss-hurt'),400);} }
 
       if (b.bossHP <= 0) { finishRaid(true); return; }
       attackIndex++;
@@ -10213,6 +10242,12 @@ function runRaidRound() {
           }
         });
         b.log.push({type:'boss-atk', text:t('raid.boss_attacks', b.boss.name, b.boss.atk)});
+        // Hit effects
+        if (!raidSkipRequested) {
+          const bossEl = document.getElementById('raid-boss-display');
+          if (bossEl) { bossEl.classList.add('raid-hit-flash'); setTimeout(()=>bossEl.classList.remove('raid-hit-flash'),300); }
+          document.getElementById('app').classList.add('shake'); setTimeout(()=>document.getElementById('app').classList.remove('shake'),400);
+        }
         // Boss ability — fires once per round
         if (b.boss.ability) {
           const aliveNow = b.team.filter(t => t.alive);
