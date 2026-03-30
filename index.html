@@ -3182,6 +3182,65 @@ body::before {
   font-family:var(--font-mono);font-size:7px;color:#444;letter-spacing:1px;margin-top:4px;
 }
 
+/* Card Shop Modal */
+.card-shop-modal {
+  display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,0.92);
+  align-items:flex-start;justify-content:center;overflow-y:auto;padding:40px 16px;
+}
+.card-shop-modal.show { display:flex; }
+.card-shop-box {
+  background:#0a0a0a;border:1px solid #222;max-width:800px;width:100%;padding:32px 24px;position:relative;
+}
+.card-shop-close {
+  position:absolute;top:12px;right:16px;background:none;border:none;color:#555;font-size:18px;cursor:pointer;
+}
+.card-shop-close:hover { color:#999; }
+.card-shop-title {
+  font-family:var(--font-display);font-size:18px;letter-spacing:4px;color:#fff;text-align:center;margin-bottom:4px;
+}
+.card-shop-sub {
+  font-family:var(--font-mono);font-size:8px;letter-spacing:2px;color:#555;text-align:center;margin-bottom:24px;
+}
+.shop-grid {
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;
+}
+.shop-item {
+  border:1px solid #222;background:#0d0d0d;padding:14px;transition:border-color .2s;
+}
+.shop-item:hover { border-color:#333; }
+.shop-item-title {
+  font-family:var(--font-mono);font-size:10px;letter-spacing:2px;margin-bottom:4px;
+}
+.shop-item-meta {
+  font-family:var(--font-mono);font-size:7px;letter-spacing:1px;color:#555;margin-bottom:10px;
+}
+.shop-item-progress {
+  font-family:var(--font-mono);font-size:7px;letter-spacing:1px;color:#444;margin-bottom:8px;
+}
+.shop-buy-row {
+  display:flex;gap:6px;
+}
+.shop-buy-btn {
+  font-family:var(--font-mono);font-size:7px;letter-spacing:1px;
+  padding:6px 10px;border:1px solid;cursor:pointer;transition:all .2s;flex:1;text-align:center;
+  background:transparent;
+}
+.shop-buy-btn.sui-btn {
+  border-color:rgba(100,200,255,0.4);color:#60c8ff;
+}
+.shop-buy-btn.sui-btn:hover {
+  background:rgba(100,200,255,0.1);box-shadow:0 0 12px rgba(100,200,255,0.2);
+}
+.shop-buy-btn.stripe-btn {
+  border-color:rgba(130,100,255,0.4);color:#8264ff;
+}
+.shop-buy-btn.stripe-btn:hover {
+  background:rgba(130,100,255,0.1);box-shadow:0 0 12px rgba(130,100,255,0.2);
+}
+.shop-buy-btn:disabled {
+  opacity:0.4;cursor:default;
+}
+
 /* Footer (pack-screen specific — overridden by main .site-footer) */
 .footer-links {
   display:flex;gap:20px;justify-content:center;align-items:center;margin-bottom:8px;
@@ -3738,6 +3797,14 @@ setTimeout(function(){var el=document.getElementById('loading-screen');if(el){el
       <div id="chain-modal-status"></div>
     </div>
   </div>
+  <div id="card-shop-modal" class="card-shop-modal" onclick="if(event.target===this)closeCardShop()">
+    <div class="card-shop-box">
+      <button class="card-shop-close" onclick="closeCardShop()">&#10005;</button>
+      <div class="card-shop-title">CARD SHOP</div>
+      <div class="card-shop-sub">BUY PACKS FROM ANY SET — MINTED AS NFTs ON SUI</div>
+      <div class="shop-grid" id="shop-grid"></div>
+    </div>
+  </div>
   <div id="cardModal" class="modal-overlay" onclick="closeModal(event)">
     <div class="modal-close">[ ESC ]</div>
     <div class="modal-card-wrap">
@@ -4040,7 +4107,7 @@ function applyTranslations() {
   if (typeof updateStats === 'function') updateStats();
   if (typeof updateDailyUI === 'function') updateDailyUI();
   if (typeof renderWeeklyGoal === 'function') renderWeeklyGoal();
-  if (typeof renderBuyPacks === 'function') renderBuyPacks();
+  if (typeof renderCardShop === 'function') renderCardShop();
   if (typeof renderChainBanner === 'function') renderChainBanner();
   if (typeof renderChainStatus === 'function') renderChainStatus();
   if (typeof renderSet2Zone === 'function') renderSet2Zone();
@@ -7088,6 +7155,8 @@ symbol:"🪟",color:"junk"},
 const RARITY_ORDER = ["MYTHIC","LEGENDARY","RARE","UNCOMMON","COMMON","JUNK"];
 // MYTHIC: 0.01% per slot = ~1 in 10,000 pulls. Weight 1 out of 10,001 total.
 const WEIGHTS = {MYTHIC:1,LEGENDARY:300,RARE:1000,UNCOMMON:2200,COMMON:4000,JUNK:2500};
+// Expansion sets get boosted mythic rate (5x) so players can complete sets and progress
+const SET_WEIGHTS = {MYTHIC:5,LEGENDARY:300,RARE:1000,UNCOMMON:2200,COMMON:4000,JUNK:2500};
 
 // Admin event logging — set to admin dashboard URL when deployed
 const ADMIN_API = 'https://aicards-admin.fly.dev';
@@ -7429,7 +7498,7 @@ function pickSetCard(series, excludeIds) {
   if (excludeIds && excludeIds.size > 0) pool = pool.filter(c=>!excludeIds.has(c.id));
   if (pool.length === 0) pool = CARDS.filter(c=>c.series===series); // fallback if all excluded
   const weighted = [];
-  pool.forEach(c=>{const w=WEIGHTS[c.rarity]||1;for(let j=0;j<w;j++)weighted.push(c);});
+  pool.forEach(c=>{const w=SET_WEIGHTS[c.rarity]||1;for(let j=0;j<w;j++)weighted.push(c);});
   return weighted[Math.floor(Math.random()*weighted.length)];
 }
 
@@ -7600,7 +7669,7 @@ function showScreen(id) {
     else if (!p.getAttribute('onclick')) p.classList.remove('active');
   });
   if(id==='collection-screen') renderCollection();
-  if(id==='pack-screen') { updateStats(); renderProfile(); updateDailyUI(); renderWeeklyGoal(); renderBuyPacks(); renderChainBanner(); renderChainStatus(); renderSet2Zone(); renderSet3Zone(); renderSet4Zone(); renderSet5Zone(); renderSet6Zone(); renderSet7Zone(); renderSet8Zone(); renderSet9Zone(); renderSet10Zone(); renderSet11Zone(); renderSet12Zone(); renderSet13Zone(); renderSet14Zone(); renderSet15Zone(); renderSet16Zone(); renderSet17Zone(); renderSet18Zone(); renderSet19Zone(); renderSetProgress(); renderPackHistory(); renderLeaderboard(); }
+  if(id==='pack-screen') { updateStats(); renderProfile(); updateDailyUI(); renderWeeklyGoal(); renderCardShop(); renderChainBanner(); renderChainStatus(); renderSet2Zone(); renderSet3Zone(); renderSet4Zone(); renderSet5Zone(); renderSet6Zone(); renderSet7Zone(); renderSet8Zone(); renderSet9Zone(); renderSet10Zone(); renderSet11Zone(); renderSet12Zone(); renderSet13Zone(); renderSet14Zone(); renderSet15Zone(); renderSet16Zone(); renderSet17Zone(); renderSet18Zone(); renderSet19Zone(); renderSetProgress(); renderPackHistory(); renderLeaderboard(); }
   if(id==='raid-screen') renderRaidScreen();
 }
 
@@ -8543,38 +8612,120 @@ function chainBannerDismissed() {
   return localStorage.getItem('aicards_chain_dismissed') === 'true';
 }
 
-function renderBuyPacks() {
+// Card Shop — all expansion sets purchasable via SUI or Stripe
+const SHOP_SETS = [
+  {key:'jobless',name:'JOBLESS.AI',color:'#ff4040',icon:'&#9660;',cards:25,price:'0.5 SUI'},
+  {key:'doomscroll',name:'DOOMSCROLL',color:'#60c8ff',icon:'&#9641;',cards:22,price:'0.5 SUI'},
+  {key:'loveexe',name:'LOVE.EXE',color:'#ff69b4',icon:'&#9829;',cards:22,price:'0.5 SUI'},
+  {key:'warroom',name:'WAR ROOM',color:'#ff6040',icon:'&#10013;',cards:22,price:'0.5 SUI'},
+  {key:'skillsvoid',name:'SKILLS.VOID',color:'#a0a0a0',icon:'&#9632;',cards:22,price:'0.5 SUI'},
+  {key:'founderexe',name:'FOUNDER.EXE',color:'#00cc88',icon:'&#9670;',cards:22,price:'0.5 SUI'},
+  {key:'deepstateai',name:'DEEP STATE AI',color:'#cc0000',icon:'&#9673;',cards:22,price:'0.5 SUI'},
+  {key:'healthcaresys',name:'HEALTHCARE.SYS',color:'#00aacc',icon:'&#10010;',cards:22,price:'0.5 SUI'},
+  {key:'parenttrap',name:'PARENT TRAP',color:'#cc88ff',icon:'&#9734;',cards:22,price:'0.5 SUI'},
+  {key:'climateerr',name:'CLIMATE.ERR',color:'#44aa44',icon:'&#9788;',cards:22,price:'0.5 SUI'},
+  {key:'creatornull',name:'CREATOR.NULL',color:'#ff8844',icon:'&#9998;',cards:22,price:'0.5 SUI'},
+  {key:'analogrevival',name:'ANALOG.REVIVAL',color:'#cc8844',icon:'&#9836;',cards:22,price:'0.5 SUI'},
+  {key:'mergeprotocol',name:'MERGE.PROTOCOL',color:'#44cccc',icon:'&#8644;',cards:22,price:'0.5 SUI'},
+  {key:'ubiworld',name:'UBI.WORLD',color:'#88cc44',icon:'&#9672;',cards:22,price:'0.5 SUI'},
+  {key:'walledgarden',name:'WALLED.GARDEN',color:'#cc4488',icon:'&#9638;',cards:22,price:'0.5 SUI'},
+  {key:'solarpunk',name:'SOLARPUNK.SYS',color:'#44cc88',icon:'&#9728;',cards:22,price:'0.5 SUI'},
+  {key:'greyzone',name:'GREY.ZONE',color:'#888888',icon:'&#9783;',cards:22,price:'0.5 SUI'},
+  {key:'frontiernull',name:'FRONTIER.NULL',color:'#cc6644',icon:'&#9790;',cards:22,price:'0.5 SUI'},
+];
+
+// Stripe payment links per set (live)
+const STRIPE_PACK_LINKS = {
+  jobless:'https://buy.stripe.com/7sY3cv64X8cXdNG5kbgrS0k',
+  doomscroll:'https://buy.stripe.com/4gMcN5fFxgJteRK27ZgrS0l',
+  loveexe:'https://buy.stripe.com/eVq5kD8d50Kv9xq13VgrS0m',
+  warroom:'https://buy.stripe.com/cNi4gz3WP2SD24Yh2TgrS0n',
+  skillsvoid:'https://buy.stripe.com/28E14n1OH64PdNG3c3grS0o',
+  founderexe:'https://buy.stripe.com/bJe28r2SL78T24Y7sjgrS0p',
+  deepstateai:'https://buy.stripe.com/eVqbJ1gJBbp9aBuaEvgrS0q',
+  healthcaresys:'https://buy.stripe.com/28E6oH3WPeBl9xqaEvgrS0r',
+  parenttrap:'https://buy.stripe.com/5kQdR950Tctd24Y7sjgrS0s',
+  climateerr:'https://buy.stripe.com/5kQbJ1bphctdbFydQHgrS0t',
+  creatornull:'https://buy.stripe.com/5kQbJ11OH2SDcJC9ArgrS0u',
+  analogrevival:'https://buy.stripe.com/cNi00j64X3WH10UeULgrS0v',
+  mergeprotocol:'https://buy.stripe.com/dRm14ndxp50LbFyeULgrS0w',
+  ubiworld:'https://buy.stripe.com/00wdR99h9al524Y3c3grS0x',
+  walledgarden:'https://buy.stripe.com/cNicN5ctl50L4d67sjgrS0y',
+  solarpunk:'https://buy.stripe.com/7sYeVdbphdxh10U13VgrS0z',
+  greyzone:'https://buy.stripe.com/4gMbJ18d5eBlcJCdQHgrS0A',
+  frontiernull:'https://buy.stripe.com/4gM00j3WP0Kv10U13VgrS0B',
+};
+
+function renderCardShop() {
   const zone = document.getElementById('buy-packs-zone');
   if (!zone) return;
 
-  // Only show when wallet is connected and out of daily packs
-  if (!isChainConnected()) { zone.innerHTML = ''; return; }
-
-  const remaining = getDailyPacksRemaining();
-  const addr = getChainAddress();
-
   zone.innerHTML = `
     <div style="width:100%;max-width:960px;margin-bottom:8px;margin-top:20px;">
-      <div class="buy-packs-header">${t('buy.header')}</div>
+      <div style="font-family:var(--font-mono);font-size:8px;letter-spacing:3px;color:#8264ff;margin-bottom:10px;">CARD SHOP</div>
     </div>
     <div class="pack-grid">
-      <div class="pack-card p-standard" style="border-color:rgba(100,200,255,0.3);cursor:pointer;" onclick="buyPackWithSUI('standard')">
-        <span class="pack-icon-wrap">💎</span>
-        <div class="pack-title" style="color:#60c8ff;">${t('buy.pack_title')}</div>
-        <div class="pack-desc">${t('buy.pack_desc')}</div>
-        <div class="pack-meta">${t('buy.pack_meta')}</div>
-        <div class="buy-pack-btn">${t('buy.pack_btn')}</div>
-        <div class="buy-pack-price">≈ $0.50 · minted as NFTs</div>
-      </div>
-      <div class="pack-card p-trade" style="border-color:rgba(200,168,75,0.3);cursor:pointer;" onclick="buyPackWithSUI('legendary')">
-        <span class="pack-icon-wrap">👑</span>
-        <div class="pack-title" style="color:var(--gold);">${t('buy.redundancy_title')}</div>
-        <div class="pack-desc">${t('buy.redundancy_desc')}</div>
-        <div class="pack-meta">${t('buy.redundancy_meta')}</div>
-        <div class="buy-pack-btn" style="border-color:var(--gold);color:var(--gold);box-shadow:0 0 8px rgba(200,168,75,0.1);">${t('buy.redundancy_btn')}</div>
-        <div class="buy-pack-price">≈ $1.00 · guaranteed legendary NFT</div>
+      <div class="pack-card" style="border-color:rgba(130,100,255,0.3);cursor:pointer;" onclick="openCardShop()">
+        <span class="pack-icon-wrap" style="font-size:28px;">&#9878;</span>
+        <div class="pack-title" style="color:#8264ff;">CARD SHOP</div>
+        <div class="pack-desc">Buy packs from any expansion set. No unlock required. Cards minted as NFTs on Sui or pay with card.</div>
+        <div class="pack-meta">18 SETS · 0.5 SUI / $0.50 PER PACK</div>
+        <button class="pack-btn" style="border-color:rgba(130,100,255,0.4);color:#8264ff;box-shadow:0 0 10px rgba(130,100,255,0.25);">BROWSE SETS</button>
       </div>
     </div>`;
+}
+
+function openCardShop() {
+  const grid = document.getElementById('shop-grid');
+  if (!grid) return;
+
+  let html = '';
+  SHOP_SETS.forEach(s => {
+    const comp = getSetCompletion(s.key);
+    const hasSui = isChainConnected();
+    const hasStripe = !!STRIPE_PACK_LINKS[s.key];
+    html += `
+      <div class="shop-item" style="border-color:${s.color}22;">
+        <div class="shop-item-title" style="color:${s.color};">${s.icon} ${s.name}</div>
+        <div class="shop-item-meta">${s.cards} CARDS · 5 MYTHICS · WEIGHTED</div>
+        <div class="shop-item-progress">${comp.owned} / ${comp.total} COLLECTED</div>
+        <div class="shop-buy-row">
+          <button class="shop-buy-btn sui-btn" onclick="buyPackFromShop('${s.key}','sui')"
+            ${hasSui?'':'title="Connect wallet first"'}>
+            ${hasSui?'BUY · 0.5 SUI':'CONNECT WALLET'}
+          </button>
+          <button class="shop-buy-btn stripe-btn" onclick="buyPackFromShop('${s.key}','stripe')">
+            BUY · $0.50
+          </button>
+        </div>
+      </div>`;
+  });
+  grid.innerHTML = html;
+  document.getElementById('card-shop-modal').classList.add('show');
+}
+
+function closeCardShop() {
+  document.getElementById('card-shop-modal').classList.remove('show');
+}
+
+async function buyPackFromShop(series, method) {
+  if (method === 'stripe') {
+    const link = STRIPE_PACK_LINKS[series];
+    if (link) {
+      // Append address for fulfillment
+      const addr = getChainAddress();
+      const url = addr ? link + '?client_reference_id=' + encodeURIComponent(addr) : link;
+      window.open(url, '_blank');
+    } else {
+      showToast('Stripe payments coming soon!');
+    }
+    return;
+  }
+
+  // SUI payment path
+  if (!isChainConnected()) { openChainModal(); return; }
+  closeCardShop();
+  await buyPackWithSUI(series);
 }
 
 async function buyPackWithSUI(packType) {
@@ -8584,7 +8735,7 @@ async function buyPackWithSUI(packType) {
   showToast('Minting ' + packType + ' pack to ' + addr.slice(0,6) + '...');
 
   // Disable buy buttons during mint
-  var btns = document.querySelectorAll('.buy-pack-btn');
+  var btns = document.querySelectorAll('.buy-pack-btn, .shop-buy-btn');
   btns.forEach(function(b) { b.disabled = true; b.style.opacity = '0.5'; });
 
   try {
@@ -8625,7 +8776,8 @@ async function buyPackWithSUI(packType) {
   } catch(err) {
     showToast('Mint error: ' + (err.message || err));
   } finally {
-    btns.forEach(function(b) { b.disabled = false; b.style.opacity = ''; });
+    var btns2 = document.querySelectorAll('.buy-pack-btn, .shop-buy-btn');
+    btns2.forEach(function(b) { b.disabled = false; b.style.opacity = ''; });
   }
 }
 
@@ -10153,7 +10305,7 @@ updateStats();
 renderProfile();
 updateDailyUI();
 renderWeeklyGoal();
-renderBuyPacks();
+renderCardShop();
 renderChainBanner();
 renderChainStatus();
 renderSet2Zone();

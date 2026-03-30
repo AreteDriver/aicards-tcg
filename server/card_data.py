@@ -14,6 +14,16 @@ WEIGHTS = {
     "JUNK": 2500,
 }
 
+# Expansion sets get boosted mythic rate (5x) so players can complete sets and progress
+SET_WEIGHTS = {
+    "MYTHIC": 5,
+    "LEGENDARY": 300,
+    "RARE": 1000,
+    "UNCOMMON": 2200,
+    "COMMON": 4000,
+    "JUNK": 2500,
+}
+
 # Card pool — minimal data for minting
 # Format: (card_id, name, rarity, category, set_name, kscore, atk, def, symbol)
 # Flavor text is stored on-chain but truncated for gas efficiency
@@ -616,9 +626,11 @@ def pick_card(series: str | None) -> dict:
     if not pool:
         raise ValueError(f"No cards found for series: {series}")
 
+    # Expansion sets use boosted mythic weights
+    weights = SET_WEIGHTS if series else WEIGHTS
     weighted: list[dict] = []
     for card in pool:
-        w = WEIGHTS.get(card["rarity"], 1)
+        w = weights.get(card["rarity"], 1)
         weighted.extend([card] * w)
 
     return random.choice(weighted)
