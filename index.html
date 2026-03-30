@@ -2605,6 +2605,7 @@ body::before {
 .pack-card:hover.p-lore     { border-color:var(--gray);box-shadow:0 0 16px rgba(102,112,128,0.3); }
 
 .pack-icon-wrap { font-size:36px;margin-bottom:10px;display:block;font-family:var(--font-display);filter:grayscale(1) contrast(2);text-shadow:0 0 8px rgba(255,255,255,0.1); }
+.pack-icon-wrap img.set-logo { width:48px;height:48px;object-fit:contain;filter:grayscale(1) contrast(1.5);border-radius:4px; }
 .icon-mono { font-style:normal;font-family:var(--font-display);filter:grayscale(1) contrast(2); }
 .pack-title { font-family:var(--font-title);font-size:16px;letter-spacing:2px;margin-bottom:6px; }
 .pack-card.p-standard .pack-title { color:var(--blue); }
@@ -2864,6 +2865,8 @@ body::before {
 .raid-boss-card{border:1px solid #2a0000;background:linear-gradient(180deg,#0c0000 0%,#1a0808 100%);padding:20px;margin-bottom:16px;position:relative;overflow:hidden;}
 .raid-boss-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--red),transparent);}
 .raid-boss-emoji{font-size:48px;text-align:center;margin-bottom:8px;filter:drop-shadow(0 0 12px rgba(200,0,0,0.4));}
+.raid-boss-emoji img.boss-art{width:96px;height:96px;object-fit:cover;border-radius:4px;filter:grayscale(1) contrast(1.3);border:1px solid #330000;}
+.raid-battle-boss img.boss-art{width:64px;height:64px;object-fit:cover;border-radius:4px;filter:grayscale(1) contrast(1.3);border:1px solid #330000;}
 .raid-boss-name{font-family:var(--font-display);font-size:24px;text-align:center;color:var(--red);letter-spacing:4px;text-shadow:0 0 20px rgba(200,0,0,0.3);}
 .raid-boss-desc{font-family:var(--font-body);font-size:11px;color:#666;text-align:center;margin:8px 0 12px;font-style:italic;line-height:1.4;}
 .raid-boss-stats{display:flex;justify-content:center;gap:20px;font-family:var(--font-mono);font-size:8px;letter-spacing:2px;color:#555;margin-bottom:12px;}
@@ -3893,7 +3896,7 @@ setTimeout(function(){var el=document.getElementById('loading-screen');if(el){el
         <div class="daily-packs-pity" id="dp-pity-wrap" style="font-size:9px;letter-spacing:2px;margin-top:4px;"></div>
         <div style="display:flex;gap:12px;justify-content:center;margin-top:4px;font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:1px;color:#666;"><span id="dp-pity-counter"></span><span id="dp-streak"></span></div>
       </div>
-      <div class="set-progress-bar" id="set-progress-bar"></div>
+      <!-- set progress bar moved to collection screen -->
       <div class="stats-bar">
         <div class="stat-chip"><span data-i18n="stats.pulls">PULLS</span>: <span id="st-pulls">0</span></div>
         <div class="stat-chip"><span data-i18n="stats.owned">OWNED</span>: <span id="st-owned">0</span>/<span id="st-total">0</span></div>
@@ -3998,6 +4001,7 @@ setTimeout(function(){var el=document.getElementById('loading-screen');if(el){el
           <button class="nav-pill" onclick="showScreen('raid-screen')" data-i18n="nav.raids">RAIDS</button>
         </div>
       </div>
+      <div class="set-progress-bar" id="set-progress-bar"></div>
       <div id="coll-body"></div>
     </div>
   </div>
@@ -7668,7 +7672,7 @@ function showScreen(id) {
     if (m) p.classList.toggle('active', m[1] === id);
     else if (!p.getAttribute('onclick')) p.classList.remove('active');
   });
-  if(id==='collection-screen') renderCollection();
+  if(id==='collection-screen') { renderCollection(); renderSetProgress(); }
   if(id==='pack-screen') { updateStats(); renderProfile(); updateDailyUI(); renderWeeklyGoal(); renderCardShop(); renderChainBanner(); renderChainStatus(); renderSet2Zone(); renderSet3Zone(); renderSet4Zone(); renderSet5Zone(); renderSet6Zone(); renderSet7Zone(); renderSet8Zone(); renderSet9Zone(); renderSet10Zone(); renderSet11Zone(); renderSet12Zone(); renderSet13Zone(); renderSet14Zone(); renderSet15Zone(); renderSet16Zone(); renderSet17Zone(); renderSet18Zone(); renderSet19Zone(); renderSetProgress(); renderPackHistory(); renderLeaderboard(); }
   if(id==='raid-screen') renderRaidScreen();
 }
@@ -8612,26 +8616,36 @@ function chainBannerDismissed() {
   return localStorage.getItem('aicards_chain_dismissed') === 'true';
 }
 
+// Boss art helper — uses generated PNG if available, falls back to emoji
+function bossIcon(id, emoji) {
+  return '<img class="boss-art" src="images/bosses/'+id+'.png" alt="'+emoji+'" onerror="this.style.display=\'none\';this.parentNode.insertAdjacentText(\'beforeend\',\''+emoji+'\')">';
+}
+
+// Set logo helper — uses generated PNG if available, falls back to entity
+function setIcon(key, fallback) {
+  return '<img class="set-logo" src="images/sets/'+key+'.png" alt="'+fallback+'" onerror="this.style.display=\'none\';this.parentNode.insertAdjacentText(\'beforeend\',\''+fallback+'\')">';
+}
+
 // Card Shop — all expansion sets purchasable via SUI or Stripe
 const SHOP_SETS = [
-  {key:'jobless',name:'JOBLESS.AI',color:'#ff4040',icon:'&#9660;',cards:25,price:'0.5 SUI'},
-  {key:'doomscroll',name:'DOOMSCROLL',color:'#60c8ff',icon:'&#9641;',cards:22,price:'0.5 SUI'},
-  {key:'loveexe',name:'LOVE.EXE',color:'#ff69b4',icon:'&#9829;',cards:22,price:'0.5 SUI'},
-  {key:'warroom',name:'WAR ROOM',color:'#ff6040',icon:'&#10013;',cards:22,price:'0.5 SUI'},
-  {key:'skillsvoid',name:'SKILLS.VOID',color:'#a0a0a0',icon:'&#9632;',cards:22,price:'0.5 SUI'},
-  {key:'founderexe',name:'FOUNDER.EXE',color:'#00cc88',icon:'&#9670;',cards:22,price:'0.5 SUI'},
-  {key:'deepstateai',name:'DEEP STATE AI',color:'#cc0000',icon:'&#9673;',cards:22,price:'0.5 SUI'},
-  {key:'healthcaresys',name:'HEALTHCARE.SYS',color:'#00aacc',icon:'&#10010;',cards:22,price:'0.5 SUI'},
-  {key:'parenttrap',name:'PARENT TRAP',color:'#cc88ff',icon:'&#9734;',cards:22,price:'0.5 SUI'},
-  {key:'climateerr',name:'CLIMATE.ERR',color:'#44aa44',icon:'&#9788;',cards:22,price:'0.5 SUI'},
-  {key:'creatornull',name:'CREATOR.NULL',color:'#ff8844',icon:'&#9998;',cards:22,price:'0.5 SUI'},
-  {key:'analogrevival',name:'ANALOG.REVIVAL',color:'#cc8844',icon:'&#9836;',cards:22,price:'0.5 SUI'},
-  {key:'mergeprotocol',name:'MERGE.PROTOCOL',color:'#44cccc',icon:'&#8644;',cards:22,price:'0.5 SUI'},
-  {key:'ubiworld',name:'UBI.WORLD',color:'#88cc44',icon:'&#9672;',cards:22,price:'0.5 SUI'},
-  {key:'walledgarden',name:'WALLED.GARDEN',color:'#cc4488',icon:'&#9638;',cards:22,price:'0.5 SUI'},
-  {key:'solarpunk',name:'SOLARPUNK.SYS',color:'#44cc88',icon:'&#9728;',cards:22,price:'0.5 SUI'},
-  {key:'greyzone',name:'GREY.ZONE',color:'#888888',icon:'&#9783;',cards:22,price:'0.5 SUI'},
-  {key:'frontiernull',name:'FRONTIER.NULL',color:'#cc6644',icon:'&#9790;',cards:22,price:'0.5 SUI'},
+  {key:'jobless',name:'JOBLESS.AI',color:'#ff4040',fallback:'\u25BC',cards:25,price:'0.5 SUI'},
+  {key:'doomscroll',name:'DOOMSCROLL',color:'#60c8ff',fallback:'\u25A9',cards:22,price:'0.5 SUI'},
+  {key:'loveexe',name:'LOVE.EXE',color:'#ff69b4',fallback:'\u2665',cards:22,price:'0.5 SUI'},
+  {key:'warroom',name:'WAR ROOM',color:'#ff6040',fallback:'\u271D',cards:22,price:'0.5 SUI'},
+  {key:'skillsvoid',name:'SKILLS.VOID',color:'#a0a0a0',fallback:'\u25A0',cards:22,price:'0.5 SUI'},
+  {key:'founderexe',name:'FOUNDER.EXE',color:'#00cc88',fallback:'\u25C6',cards:22,price:'0.5 SUI'},
+  {key:'deepstateai',name:'DEEP STATE AI',color:'#cc0000',fallback:'\u25C9',cards:22,price:'0.5 SUI'},
+  {key:'healthcaresys',name:'HEALTHCARE.SYS',color:'#00aacc',fallback:'\u271A',cards:22,price:'0.5 SUI'},
+  {key:'parenttrap',name:'PARENT TRAP',color:'#cc88ff',fallback:'\u2606',cards:22,price:'0.5 SUI'},
+  {key:'climateerr',name:'CLIMATE.ERR',color:'#44aa44',fallback:'\u263C',cards:22,price:'0.5 SUI'},
+  {key:'creatornull',name:'CREATOR.NULL',color:'#ff8844',fallback:'\u270E',cards:22,price:'0.5 SUI'},
+  {key:'analogrevival',name:'ANALOG.REVIVAL',color:'#cc8844',fallback:'\u266C',cards:22,price:'0.5 SUI'},
+  {key:'mergeprotocol',name:'MERGE.PROTOCOL',color:'#44cccc',fallback:'\u21C4',cards:22,price:'0.5 SUI'},
+  {key:'ubiworld',name:'UBI.WORLD',color:'#88cc44',fallback:'\u25C8',cards:22,price:'0.5 SUI'},
+  {key:'walledgarden',name:'WALLED.GARDEN',color:'#cc4488',fallback:'\u25A6',cards:22,price:'0.5 SUI'},
+  {key:'solarpunk',name:'SOLARPUNK.SYS',color:'#44cc88',fallback:'\u2600',cards:22,price:'0.5 SUI'},
+  {key:'greyzone',name:'GREY.ZONE',color:'#888888',fallback:'\u2637',cards:22,price:'0.5 SUI'},
+  {key:'frontiernull',name:'FRONTIER.NULL',color:'#cc6644',fallback:'\u263E',cards:22,price:'0.5 SUI'},
 ];
 
 // Stripe payment links per set (live)
@@ -8686,7 +8700,7 @@ function openCardShop() {
     const hasStripe = !!STRIPE_PACK_LINKS[s.key];
     html += `
       <div class="shop-item" style="border-color:${s.color}22;">
-        <div class="shop-item-title" style="color:${s.color};">${s.icon} ${s.name}</div>
+        <div class="shop-item-title" style="color:${s.color};">${setIcon(s.key, s.fallback)} ${s.name}</div>
         <div class="shop-item-meta">${s.cards} CARDS · 5 MYTHICS · WEIGHTED</div>
         <div class="shop-item-progress">${comp.owned} / ${comp.total} COLLECTED</div>
         <div class="shop-buy-row">
@@ -9135,7 +9149,7 @@ function renderSet2Zone() {
     </div>
     <div class="pack-grid">
       <div class="pack-card p-standard ${unlocked?'':'locked'}" ${unlocked?'onclick="openPack(\'jobless\')"':''} style="border-color:rgba(255,64,64,0.3);">
-        <span class="pack-icon-wrap">${unlocked?'&#9660;':'&#9632;'}</span>
+        <span class="pack-icon-wrap">${unlocked?setIcon('jobless','\\u25BC'):'&#9632;'}</span>
         <div class="pack-title" style="color:${unlocked?'#ff4040':'#555'};">${unlocked?t('pack.jobless'):t('set.locked')}</div>
         <div class="pack-desc">${unlocked?t('set2.desc_unlocked'):t('set2.desc_locked')}</div>
         <div class="pack-meta">${unlocked?t('set2.meta_unlocked'):comp.owned+' / '+comp.total+' '+t('set.cards_word')}</div>
@@ -9157,7 +9171,7 @@ function renderSet3Zone() {
     </div>
     <div class="pack-grid">
       <div class="pack-card p-standard ${unlocked?'':'locked'}" ${unlocked?'onclick="openPack(\'doomscroll\')"':''} style="border-color:rgba(100,200,255,0.3);">
-        <span class="pack-icon-wrap">${unlocked?'&#9641;':'&#9632;'}</span>
+        <span class="pack-icon-wrap">${unlocked?setIcon('doomscroll','\\u25A9'):'&#9632;'}</span>
         <div class="pack-title" style="color:${unlocked?'#60c8ff':'#555'};">${unlocked?t('pack.doomscroll'):t('set.locked')}</div>
         <div class="pack-desc">${unlocked?t('set3.desc_unlocked'):t('set3.desc_locked')}</div>
         <div class="pack-meta">${unlocked?t('set3.meta_unlocked'):comp.owned+' / '+comp.total+' '+t('set.cards_word')}</div>
@@ -9179,7 +9193,7 @@ function renderSet4Zone() {
     </div>
     <div class="pack-grid">
       <div class="pack-card p-standard ${unlocked?'':'locked'}" ${unlocked?'onclick="openPack(\'loveexe\')"':''} style="border-color:rgba(255,105,180,0.3);">
-        <span class="pack-icon-wrap">${unlocked?'&#9829;':'&#9632;'}</span>
+        <span class="pack-icon-wrap">${unlocked?setIcon('loveexe','\\u2665'):'&#9632;'}</span>
         <div class="pack-title" style="color:${unlocked?'#ff69b4':'#555'};">${unlocked?t('pack.loveexe'):t('set.locked')}</div>
         <div class="pack-desc">${unlocked?t('set4.desc_unlocked'):t('set4.desc_locked')}</div>
         <div class="pack-meta">${unlocked?t('set4.meta_unlocked'):comp.owned+' / '+comp.total+' '+t('set.cards_word')}</div>
@@ -9201,7 +9215,7 @@ function renderSet5Zone() {
     </div>
     <div class="pack-grid">
       <div class="pack-card p-standard ${unlocked?'':'locked'}" ${unlocked?'onclick="openPack(\'warroom\')"':''} style="border-color:rgba(255,96,64,0.3);">
-        <span class="pack-icon-wrap">${unlocked?'&#10013;':'&#9632;'}</span>
+        <span class="pack-icon-wrap">${unlocked?setIcon('warroom','\\u271D'):'&#9632;'}</span>
         <div class="pack-title" style="color:${unlocked?'#ff6040':'#555'};">${unlocked?t('pack.warroom'):t('set.locked')}</div>
         <div class="pack-desc">${unlocked?t('set5.desc_unlocked'):t('set5.desc_locked')}</div>
         <div class="pack-meta">${unlocked?t('set5.meta_unlocked'):comp.owned+' / '+comp.total+' '+t('set.cards_word')}</div>
@@ -9223,7 +9237,7 @@ function renderSet6Zone() {
     </div>
     <div class="pack-grid">
       <div class="pack-card p-standard ${unlocked?'':'locked'}" ${unlocked?'onclick="openPack(\'skillsvoid\')"':''} style="border-color:rgba(160,160,160,0.3);">
-        <span class="pack-icon-wrap">${unlocked?'&#9651;':'&#9632;'}</span>
+        <span class="pack-icon-wrap">${unlocked?setIcon('skillsvoid','\\u25B3'):'&#9632;'}</span>
         <div class="pack-title" style="color:${unlocked?'#a0a0a0':'#555'};">${unlocked?t('pack.skillsvoid'):t('set.locked')}</div>
         <div class="pack-desc">${unlocked?t('set6.desc_unlocked'):t('set6.desc_locked')}</div>
         <div class="pack-meta">${unlocked?t('set6.meta_unlocked'):comp.owned+' / '+comp.total+' '+t('set.cards_word')}</div>
@@ -9261,7 +9275,7 @@ SET_ZONE_CONFIG.forEach(function(cfg) {
       </div>
       <div class="pack-grid">
         <div class="pack-card p-standard ${unlocked?'':'locked'}" ${unlocked?'onclick="openPack(\''+cfg.series+'\')"':''} style="border-color:${cfg.borderRgba};">
-          <span class="pack-icon-wrap">${unlocked?cfg.icon:'&#9632;'}</span>
+          <span class="pack-icon-wrap">${unlocked?setIcon(cfg.series,cfg.icon):'&#9632;'}</span>
           <div class="pack-title" style="color:${unlocked?cfg.color:'#555'};">${unlocked?t(cfg.packKey):t('set.locked')}</div>
           <div class="pack-desc">${unlocked?t(cfg.descKey+'.desc_unlocked'):t(cfg.descKey+'.desc_locked')}</div>
           <div class="pack-meta">${unlocked?t(cfg.descKey+'.meta_unlocked'):comp.owned+' / '+comp.total+' '+t('set.cards_word')}</div>
@@ -9910,7 +9924,7 @@ function renderRaidScreen() {
   body.innerHTML = `
     <div class="raid-boss-card">
       <div style="font-family:var(--font-mono);font-size:7px;letter-spacing:3px;color:${tierCol};text-align:center;margin-bottom:8px;">HOURLY BOSS · ${boss.tier} ${getCurrentCycle()}${wins > 0 ? ' · <span style="color:#ff6040;">LVL ' + (wins + 1) + '</span>' : ''}</div>
-      <div class="raid-boss-emoji">${boss.emoji}</div>
+      <div class="raid-boss-emoji">${bossIcon(boss.id, boss.emoji)}</div>
       <div class="raid-boss-name" style="color:${tierCol};">${boss.name}</div>
       <div class="raid-boss-desc">${boss.desc}</div>
       <div class="raid-boss-stats">
@@ -10101,7 +10115,7 @@ function renderBattleState() {
   // Boss display
   document.getElementById('raid-boss-display').innerHTML = `
     <div class="raid-battle-boss">
-      <div class="boss-emoji">${b.boss.emoji}</div>
+      <div class="boss-emoji">${bossIcon(b.boss.id, b.boss.emoji)}</div>
       <div class="boss-name">${b.boss.name}</div>
       <div class="raid-hp-bar">
         <div class="raid-hp-fill" style="width:${hpPct}%;"></div>
