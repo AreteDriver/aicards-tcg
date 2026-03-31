@@ -7911,7 +7911,13 @@ function showCardFaceUp(index) {
     if (card.rarity==='MYTHIC') S.sov += 10;
     else if (['LEGENDARY','RARE'].includes(card.rarity) && card.category.toLowerCase().includes('human')) S.sov += card.rarity==='LEGENDARY'?3:1;
     if (card.category==='AI Product') S.dep += 2;
-    // Duplicate badge
+    // NEW or Duplicate badge
+    if (!wasDupe) {
+      const newBadge = document.createElement('div');
+      newBadge.style.cssText = 'position:absolute;top:8px;left:8px;font-family:var(--font-mono);font-size:10px;font-weight:700;color:var(--gold);background:rgba(0,0,0,0.85);padding:3px 8px;border:1px solid rgba(200,168,75,0.4);border-radius:3px;z-index:20;letter-spacing:2px;text-shadow:0 0 8px rgba(200,168,75,0.3);';
+      newBadge.textContent = 'NEW';
+      cards[index].appendChild(newBadge);
+    }
     if (wasDupe) {
       const dupeCount = S.collection[card.id];
       const badge = document.createElement('div');
@@ -7923,6 +7929,8 @@ function showCardFaceUp(index) {
     updateStats();
     updateDailyUI();
     savePackHistory();
+    // Check set completion reward
+    if (isNew) checkSetCompletionReward(card);
   }
   // Update pull counter bar
   updatePullCounterBar();
@@ -8784,7 +8792,8 @@ function openCardShop() {
       <div class="shop-item" style="border-color:${s.color}22;">
         <div class="shop-item-title" style="color:${s.color};">${setIcon(s.key, s.fallback)} ${s.name}</div>
         <div class="shop-item-meta">${s.cards} CARDS · 5 MYTHICS · WEIGHTED</div>
-        <div class="shop-item-progress">${comp.owned} / ${comp.total} COLLECTED</div>
+        <div class="shop-item-progress">${comp.owned} / ${comp.total} · ${comp.pct}%${comp.pct>=100?' ✓':''}</div>
+        <div style="width:100%;height:3px;background:#1a1a1a;border-radius:2px;margin-bottom:8px;overflow:hidden;"><div style="height:100%;width:${comp.pct}%;background:${comp.pct>=100?'var(--gold)':s.color};border-radius:2px;transition:width 0.3s;"></div></div>
         <div class="shop-buy-row">
           <button class="shop-buy-btn sui-btn" onclick="buyPackFromShop('${s.key}','sui')"
             ${hasSui?'':'title="Connect wallet first"'}>
@@ -9230,6 +9239,27 @@ function isSet17Unlocked() { return isSet16Unlocked() && getSetCompletion('walle
 function isSet18Unlocked() { return isSet17Unlocked() && getSetCompletion('solarpunk').pct >= 100; }
 function isSet19Unlocked() { return isSet18Unlocked() && getSetCompletion('greyzone').pct >= 100; }
 
+function checkSetCompletionReward(card) {
+  const series = card.series || null;
+  const comp = getSetCompletion(series);
+  if (comp.pct < 100) return;
+  const rewardKey = 'aicards_set_reward_' + (series || 'standard');
+  if (localStorage.getItem(rewardKey)) return;
+  localStorage.setItem(rewardKey, '1');
+  // Award a bonus pack from the next set (or random if last set)
+  const rs = getRaidState();
+  const reward = getRandomPackReward();
+  rs.pendingRewards = (rs.pendingRewards || []).concat(reward);
+  rs.rewardPacks = (rs.rewardPacks || 0) + 1;
+  saveRaidState(rs);
+  const setName = series ? series.toUpperCase() : '2030 SURVIVAL';
+  showToast('SET COMPLETE: ' + setName + '! Bonus pack earned!');
+  sfxLegendary();
+  // Flash effect
+  const flash = document.getElementById('rarityFlash');
+  if (flash) { flash.style.background = 'radial-gradient(ellipse at center,rgba(200,168,75,0.4) 0%,transparent 70%)'; flash.classList.remove('flash'); void flash.offsetWidth; flash.classList.add('flash'); }
+}
+
 function renderSet2Zone() {
   const zone = document.getElementById('set2-zone');
   if (!zone) return;
@@ -9594,6 +9624,8 @@ function renderCardOfDay() {
   if (firstSentence.length > 80) firstSentence = firstSentence.substring(0, 77) + '...';
   el.style.display = '';
   el.style.borderColor = col + '44';
+  el.style.cursor = 'pointer';
+  el.onclick = function() { showScreen('collection-screen'); };
   var cName = cardT(card.id, 'name') || card.name;
   var cFlavor = cardT(card.id, 'flavor') || card.flavor || '';
   var cFirstSentence = cFlavor.split('.')[0] + '.';
@@ -9601,7 +9633,7 @@ function renderCardOfDay() {
   el.innerHTML = '<div class="card-of-day-label">' + t('landing.card_of_day') + '</div>' +
     '<img class="card-of-day-art" src="images/cards/' + card.id + '.png" alt="" onerror="this.style.display=\'none\'">' +
     '<div class="card-of-day-name" style="color:' + col + ';">' + cName + '</div>' +
-    '<div style="font-family:var(--font-mono);font-size:7px;letter-spacing:2px;color:' + col + ';margin-bottom:6px;">' + rarityT(card.rarity) + '</div>' +
+    '<div style="font-family:var(--font-mono);font-size:9px;letter-spacing:2px;color:' + col + ';margin-bottom:6px;">' + rarityT(card.rarity) + '</div>' +
     '<div class="card-of-day-flavor">"' + cFirstSentence + '"</div>';
 }
 
