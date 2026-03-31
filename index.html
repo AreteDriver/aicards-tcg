@@ -2585,10 +2585,13 @@ body::before {
 /* Pack grid */
 .pack-grid { display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;width:100%;max-width:960px;margin-bottom:32px; }
 
-.pack-card { border:1px solid #333;background:var(--bg-card);padding:20px 16px;cursor:pointer;transition:all .3s;position:relative;overflow:hidden;text-align:center; }
-.pack-card::before { content:'';position:absolute;inset:0;opacity:0.3;transition:opacity .3s; }
+.pack-card { border:1px solid #333;border-radius:10px;background:var(--bg-card);padding:0;cursor:pointer;transition:all .3s;position:relative;overflow:hidden;text-align:center;display:flex;flex-direction:column; }
+.pack-card::before { content:'';position:absolute;inset:0;opacity:0.3;transition:opacity .3s;pointer-events:none; }
 .pack-card:hover { transform:translateY(-3px); }
 .pack-card:hover::before { opacity:1; }
+.pack-card .pack-art { width:100%;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;border-bottom:1px solid #222;overflow:hidden; }
+.pack-card .pack-art img.set-logo { width:80px;height:80px; }
+.pack-card .pack-body { padding:14px 16px; }
 
 .pack-card.p-standard { border-color:rgba(33,150,200,0.3); }
 .pack-card.p-rare     { border-color:rgba(155,89,208,0.3); }
@@ -2865,15 +2868,29 @@ img.set-logo { width:48px;height:48px;object-fit:contain;filter:grayscale(1) con
 
 /* ── RAID BOSS ── */
 .raid-wrap{width:100%;max-width:960px;margin:0 auto;padding:0 16px;}
-.raid-boss-card{border:1px solid #2a0000;background:linear-gradient(180deg,#0c0000 0%,#1a0808 100%);padding:20px;margin-bottom:16px;position:relative;overflow:hidden;}
-.raid-boss-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--red),transparent);}
-.raid-boss-emoji{font-size:48px;text-align:center;margin-bottom:8px;filter:drop-shadow(0 0 12px rgba(200,0,0,0.4));}
-.raid-boss-emoji img.boss-art{width:96px;height:96px;object-fit:cover;border-radius:4px;filter:grayscale(1) contrast(1.3);border:1px solid #330000;}
-.raid-battle-boss img.boss-art{width:64px;height:64px;object-fit:cover;border-radius:4px;filter:grayscale(1) contrast(1.3);border:1px solid #330000;}
-.raid-boss-name{font-family:var(--font-display);font-size:24px;text-align:center;color:var(--red);letter-spacing:4px;text-shadow:0 0 20px rgba(200,0,0,0.3);}
-.raid-boss-desc{font-family:var(--font-body);font-size:11px;color:#666;text-align:center;margin:8px 0 12px;font-style:italic;line-height:1.4;}
-.raid-boss-stats{display:flex;justify-content:center;gap:20px;font-family:var(--font-mono);font-size:11px;letter-spacing:2px;color:#555;margin-bottom:12px;}
-.raid-boss-weakness{color:var(--gold);border:1px solid rgba(200,168,75,0.3);padding:2px 8px;background:rgba(200,168,75,0.05);}
+.raid-boss-card{
+  max-width:340px;margin:0 auto 16px;padding:0;position:relative;overflow:hidden;
+  border:2px solid #881111;border-radius:12px;
+  background:linear-gradient(145deg,#2a0808,#1a0000,#2a0808);
+  box-shadow:0 0 30px rgba(200,0,0,0.15),inset 0 0 60px rgba(0,0,0,0.5);
+}
+.raid-boss-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,#ff3333,#ff8833,#ff3333,transparent);z-index:2;}
+.raid-boss-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,#ff3333,transparent);z-index:2;}
+.raid-boss-tier{font-family:var(--font-mono);font-size:9px;letter-spacing:3px;text-align:center;padding:12px 16px 6px;position:relative;z-index:1;}
+.raid-boss-art-wrap{position:relative;width:100%;aspect-ratio:4/3;overflow:hidden;border-top:1px solid #330000;border-bottom:1px solid #330000;}
+.raid-boss-art-wrap img.boss-art{width:100%;height:100%;object-fit:cover;filter:contrast(1.2) brightness(0.9);transition:filter 0.3s;}
+.raid-boss-card:hover .raid-boss-art-wrap img.boss-art{filter:contrast(1.3) brightness(1);}
+.raid-boss-art-wrap .boss-art-fallback{font-size:64px;display:flex;align-items:center;justify-content:center;width:100%;height:100%;background:#0a0000;filter:drop-shadow(0 0 16px rgba(200,0,0,0.4));}
+.raid-boss-body{padding:12px 16px 16px;}
+.raid-boss-name{font-family:var(--font-display);font-size:16px;text-align:center;color:#ff3333;letter-spacing:2px;text-shadow:0 0 20px rgba(200,0,0,0.3);line-height:1.3;margin-bottom:6px;}
+.raid-boss-desc{font-family:var(--font-body);font-size:11px;color:#666;text-align:center;margin:0 0 10px;font-style:italic;line-height:1.4;}
+.raid-boss-stats{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;font-family:var(--font-mono);font-size:10px;letter-spacing:1px;color:#555;margin-bottom:10px;}
+.raid-boss-stats span{padding:2px 6px;border:1px solid #222;background:rgba(0,0,0,0.3);}
+.raid-boss-weakness{color:var(--gold);border:1px solid rgba(200,168,75,0.3)!important;background:rgba(200,168,75,0.05)!important;}
+/* Battle screen boss (compact) */
+.raid-battle-boss{text-align:center;padding:12px;border:2px solid #660000;border-radius:8px;background:linear-gradient(180deg,#1a0000,#0c0000);box-shadow:0 0 20px rgba(200,0,0,0.1);}
+.raid-battle-boss img.boss-art{width:80px;height:80px;object-fit:cover;border-radius:6px;filter:contrast(1.2);border:1px solid #440000;}
+.raid-battle-boss .boss-emoji{font-size:36px;}
 .raid-hp-bar{width:100%;height:16px;background:#1a0808;border:1px solid #330000;position:relative;overflow:hidden;}
 .raid-hp-fill{height:100%;background:linear-gradient(90deg,#881111,#cc2222);transition:width 0.5s ease;box-shadow:inset 0 0 8px rgba(255,50,50,0.3);}
 .raid-hp-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--font-mono);font-size:7px;color:#fff;letter-spacing:2px;text-shadow:0 0 4px #000;}
@@ -2882,6 +2899,9 @@ img.set-logo { width:48px;height:48px;object-fit:contain;filter:grayscale(1) con
 .raid-team-label{font-family:var(--font-mono);font-size:11px;letter-spacing:3px;color:#555;margin-bottom:10px;}
 .raid-team-slots{display:flex;gap:6px;justify-content:center;margin-bottom:12px;flex-wrap:wrap;}
 .raid-team-slot{width:60px;height:80px;border:1px dashed #333;display:flex;align-items:center;justify-content:center;font-size:24px;background:var(--bg-card);transition:all .2s;position:relative;}
+.raid-team-slot.drag-over{border-color:var(--red);background:rgba(136,17,17,0.1);box-shadow:0 0 12px rgba(200,0,0,0.2);}
+.raid-card-thumb[draggable="true"]{cursor:grab;}
+.raid-card-thumb[draggable="true"]:active{cursor:grabbing;opacity:0.7;}
 .raid-team-slot.filled{border-style:solid;border-color:#444;overflow:hidden;}
 .slot-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:contrast(1.1);}
 .raid-team-slot .slot-remove{position:absolute;top:-6px;right:-6px;width:16px;height:16px;background:var(--red);color:#fff;border:none;border-radius:50%;font-size:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .2s;}
@@ -3942,18 +3962,22 @@ setTimeout(function(){var el=document.getElementById('loading-screen');if(el){el
       </div>
       <div class="pack-grid">
         <div class="pack-card p-standard" onclick="openPack('standard')">
-          <span class="pack-icon-wrap"><img class="set-logo" src="images/sets/standard.png" alt="&#9670;" onerror="this.style.display='none';this.parentNode.insertAdjacentText('beforeend','◆')"></span>
-          <div class="pack-title" data-i18n="pack.survival">2030 SURVIVAL</div>
-          <div class="pack-desc" data-i18n="pack.survival_desc">Five cards from the full pool. Trades, purpose, displacement, AI products, lore. See what the algorithm gives you.</div>
-          <div class="pack-meta" data-i18n="pack.survival_meta">5 CARDS · FULL POOL · WEIGHTED</div>
-          <button class="pack-btn" data-i18n="pack.open_btn">▶ OPEN PACK</button>
+          <div class="pack-art"><img class="set-logo" src="images/sets/standard.png" alt="◆" onerror="this.style.display='none';this.parentNode.innerHTML='<span style=font-size:48px>◆</span>'"></div>
+          <div class="pack-body">
+            <div class="pack-title" data-i18n="pack.survival">2030 SURVIVAL</div>
+            <div class="pack-desc" data-i18n="pack.survival_desc">Five cards from the full pool. Trades, purpose, displacement, AI products, lore. See what the algorithm gives you.</div>
+            <div class="pack-meta" data-i18n="pack.survival_meta">5 CARDS · FULL POOL · WEIGHTED</div>
+            <button class="pack-btn" data-i18n="pack.open_btn">▶ OPEN PACK</button>
+          </div>
         </div>
         <div class="pack-card p-trade" onclick="openPack('legendary')">
-          <span class="pack-icon-wrap"><img class="set-logo" src="images/sets/standard.png" alt="&#9733;" onerror="this.style.display='none';this.parentNode.insertAdjacentText('beforeend','★')"></span>
-          <div class="pack-title" data-i18n="pack.redundancy">REDUNDANCY</div>
-          <div class="pack-desc" data-i18n="pack.redundancy_desc">Guaranteed one Legendary. The trades that will outlast all of it. The rest is fate.</div>
-          <div class="pack-meta" data-i18n="pack.redundancy_meta">5 CARDS · 1 LEGENDARY GUARANTEED</div>
-          <button class="pack-btn" data-i18n="pack.open_btn">▶ OPEN PACK</button>
+          <div class="pack-art"><img class="set-logo" src="images/sets/standard.png" alt="★" onerror="this.style.display='none';this.parentNode.innerHTML='<span style=font-size:48px>★</span>'"></div>
+          <div class="pack-body">
+            <div class="pack-title" data-i18n="pack.redundancy">REDUNDANCY</div>
+            <div class="pack-desc" data-i18n="pack.redundancy_desc">Guaranteed one Legendary. The trades that will outlast all of it. The rest is fate.</div>
+            <div class="pack-meta" data-i18n="pack.redundancy_meta">5 CARDS · 1 LEGENDARY GUARANTEED</div>
+            <button class="pack-btn" data-i18n="pack.open_btn">▶ OPEN PACK</button>
+          </div>
         </div>
       </div>
 
@@ -8712,11 +8736,13 @@ function renderCardShop() {
     </div>
     <div class="pack-grid">
       <div class="pack-card" style="border-color:rgba(130,100,255,0.3);cursor:pointer;" onclick="openCardShop()">
-        <span class="pack-icon-wrap"><img class="set-logo" src="images/sets/shop.png" alt="&#9878;" onerror="this.style.display='none';this.parentNode.insertAdjacentText('beforeend','⚖')"></span>
-        <div class="pack-title" style="color:#8264ff;">CARD SHOP</div>
-        <div class="pack-desc">Buy packs from any expansion set. No unlock required. Cards minted as NFTs on Sui or pay with card.</div>
-        <div class="pack-meta">18 SETS · 0.5 SUI / $0.50 PER PACK</div>
-        <button class="pack-btn" style="border-color:rgba(130,100,255,0.4);color:#8264ff;box-shadow:0 0 10px rgba(130,100,255,0.25);">BROWSE SETS</button>
+        <div class="pack-art"><img class="set-logo" src="images/sets/shop.png" alt="⚖" onerror="this.style.display='none';this.parentNode.innerHTML='<span style=font-size:48px>⚖</span>'"></div>
+        <div class="pack-body">
+          <div class="pack-title" style="color:#8264ff;">CARD SHOP</div>
+          <div class="pack-desc">Buy packs from any expansion set. No unlock required. Cards minted as NFTs on Sui or pay with card.</div>
+          <div class="pack-meta">18 SETS · 0.5 SUI / $0.50 PER PACK</div>
+          <button class="pack-btn" style="border-color:rgba(130,100,255,0.4);color:#8264ff;box-shadow:0 0 10px rgba(130,100,255,0.25);">BROWSE SETS</button>
+        </div>
       </div>
     </div>`;
 }
@@ -9181,12 +9207,14 @@ function renderSet2Zone() {
     </div>
     <div class="pack-grid">
       <div class="pack-card p-standard ${unlocked?'':'locked'}" ${unlocked?'onclick="openPack(\'jobless\')"':''} style="border-color:rgba(255,64,64,0.3);">
-        <span class="pack-icon-wrap">${unlocked?setIcon('jobless','\\u25BC'):'&#9632;'}</span>
-        <div class="pack-title" style="color:${unlocked?'#ff4040':'#555'};">${unlocked?t('pack.jobless'):t('set.locked')}</div>
-        <div class="pack-desc">${unlocked?t('set2.desc_unlocked'):t('set2.desc_locked')}</div>
-        <div class="pack-meta">${unlocked?t('set2.meta_unlocked'):comp.owned+' / '+comp.total+' '+t('set.cards_word')}</div>
-        ${unlocked?'<button class="pack-btn" style="color:#ff4040;box-shadow:0 0 8px rgba(255,64,64,0.2);">'+t('pack.open_btn')+'</button>':''}
-        ${!unlocked?'<div class="pack-lock-bar"><div class="pack-lock-fill" style="width:'+comp.pct+'%"></div></div><div class="pack-lock-info">'+comp.pct+t('set.pct_complete')+'</div>':''}
+        <div class="pack-art">${unlocked?setIcon('jobless','\\u25BC'):'&#9632;'}</div>
+        <div class="pack-body">
+          <div class="pack-title" style="color:${unlocked?'#ff4040':'#555'};">${unlocked?t('pack.jobless'):t('set.locked')}</div>
+          <div class="pack-desc">${unlocked?t('set2.desc_unlocked'):t('set2.desc_locked')}</div>
+          <div class="pack-meta">${unlocked?t('set2.meta_unlocked'):comp.owned+' / '+comp.total+' '+t('set.cards_word')}</div>
+          ${unlocked?'<button class="pack-btn" style="color:#ff4040;box-shadow:0 0 8px rgba(255,64,64,0.2);">'+t('pack.open_btn')+'</button>':''}
+          ${!unlocked?'<div class="pack-lock-bar"><div class="pack-lock-fill" style="width:'+comp.pct+'%"></div></div><div class="pack-lock-info">'+comp.pct+t('set.pct_complete')+'</div>':''}
+        </div>
       </div>
     </div>`;
 }
@@ -9203,12 +9231,14 @@ function renderSet3Zone() {
     </div>
     <div class="pack-grid">
       <div class="pack-card p-standard ${unlocked?'':'locked'}" ${unlocked?'onclick="openPack(\'doomscroll\')"':''} style="border-color:rgba(100,200,255,0.3);">
-        <span class="pack-icon-wrap">${unlocked?setIcon('doomscroll','\\u25A9'):'&#9632;'}</span>
-        <div class="pack-title" style="color:${unlocked?'#60c8ff':'#555'};">${unlocked?t('pack.doomscroll'):t('set.locked')}</div>
-        <div class="pack-desc">${unlocked?t('set3.desc_unlocked'):t('set3.desc_locked')}</div>
-        <div class="pack-meta">${unlocked?t('set3.meta_unlocked'):comp.owned+' / '+comp.total+' '+t('set.cards_word')}</div>
-        ${unlocked?'<button class="pack-btn" style="color:#60c8ff;box-shadow:0 0 8px rgba(100,200,255,0.2);">'+t('pack.open_btn')+'</button>':''}
-        ${!unlocked?'<div class="pack-lock-bar"><div class="pack-lock-fill" style="width:'+comp.pct+'%"></div></div><div class="pack-lock-info">'+comp.pct+t('set.pct_complete')+'</div>':''}
+        <div class="pack-art">${unlocked?setIcon('doomscroll','\\u25A9'):'&#9632;'}</div>
+        <div class="pack-body">
+          <div class="pack-title" style="color:${unlocked?'#60c8ff':'#555'};">${unlocked?t('pack.doomscroll'):t('set.locked')}</div>
+          <div class="pack-desc">${unlocked?t('set3.desc_unlocked'):t('set3.desc_locked')}</div>
+          <div class="pack-meta">${unlocked?t('set3.meta_unlocked'):comp.owned+' / '+comp.total+' '+t('set.cards_word')}</div>
+          ${unlocked?'<button class="pack-btn" style="color:#60c8ff;box-shadow:0 0 8px rgba(100,200,255,0.2);">'+t('pack.open_btn')+'</button>':''}
+          ${!unlocked?'<div class="pack-lock-bar"><div class="pack-lock-fill" style="width:'+comp.pct+'%"></div></div><div class="pack-lock-info">'+comp.pct+t('set.pct_complete')+'</div>':''}
+        </div>
       </div>
     </div>`;
 }
@@ -9225,12 +9255,14 @@ function renderSet4Zone() {
     </div>
     <div class="pack-grid">
       <div class="pack-card p-standard ${unlocked?'':'locked'}" ${unlocked?'onclick="openPack(\'loveexe\')"':''} style="border-color:rgba(255,105,180,0.3);">
-        <span class="pack-icon-wrap">${unlocked?setIcon('loveexe','\\u2665'):'&#9632;'}</span>
-        <div class="pack-title" style="color:${unlocked?'#ff69b4':'#555'};">${unlocked?t('pack.loveexe'):t('set.locked')}</div>
-        <div class="pack-desc">${unlocked?t('set4.desc_unlocked'):t('set4.desc_locked')}</div>
-        <div class="pack-meta">${unlocked?t('set4.meta_unlocked'):comp.owned+' / '+comp.total+' '+t('set.cards_word')}</div>
-        ${unlocked?'<button class="pack-btn" style="color:#ff69b4;box-shadow:0 0 8px rgba(255,105,180,0.2);">'+t('pack.open_btn')+'</button>':''}
-        ${!unlocked?'<div class="pack-lock-bar"><div class="pack-lock-fill" style="width:'+comp.pct+'%"></div></div><div class="pack-lock-info">'+comp.pct+t('set.pct_complete')+'</div>':''}
+        <div class="pack-art">${unlocked?setIcon('loveexe','\\u2665'):'&#9632;'}</div>
+        <div class="pack-body">
+          <div class="pack-title" style="color:${unlocked?'#ff69b4':'#555'};">${unlocked?t('pack.loveexe'):t('set.locked')}</div>
+          <div class="pack-desc">${unlocked?t('set4.desc_unlocked'):t('set4.desc_locked')}</div>
+          <div class="pack-meta">${unlocked?t('set4.meta_unlocked'):comp.owned+' / '+comp.total+' '+t('set.cards_word')}</div>
+          ${unlocked?'<button class="pack-btn" style="color:#ff69b4;box-shadow:0 0 8px rgba(255,105,180,0.2);">'+t('pack.open_btn')+'</button>':''}
+          ${!unlocked?'<div class="pack-lock-bar"><div class="pack-lock-fill" style="width:'+comp.pct+'%"></div></div><div class="pack-lock-info">'+comp.pct+t('set.pct_complete')+'</div>':''}
+        </div>
       </div>
     </div>`;
 }
@@ -9247,12 +9279,14 @@ function renderSet5Zone() {
     </div>
     <div class="pack-grid">
       <div class="pack-card p-standard ${unlocked?'':'locked'}" ${unlocked?'onclick="openPack(\'warroom\')"':''} style="border-color:rgba(255,96,64,0.3);">
-        <span class="pack-icon-wrap">${unlocked?setIcon('warroom','\\u271D'):'&#9632;'}</span>
-        <div class="pack-title" style="color:${unlocked?'#ff6040':'#555'};">${unlocked?t('pack.warroom'):t('set.locked')}</div>
-        <div class="pack-desc">${unlocked?t('set5.desc_unlocked'):t('set5.desc_locked')}</div>
-        <div class="pack-meta">${unlocked?t('set5.meta_unlocked'):comp.owned+' / '+comp.total+' '+t('set.cards_word')}</div>
-        ${unlocked?'<button class="pack-btn" style="color:#ff6040;box-shadow:0 0 8px rgba(255,96,64,0.2);">'+t('pack.open_btn')+'</button>':''}
-        ${!unlocked?'<div class="pack-lock-bar"><div class="pack-lock-fill" style="width:'+comp.pct+'%"></div></div><div class="pack-lock-info">'+comp.pct+t('set.pct_complete')+'</div>':''}
+        <div class="pack-art">${unlocked?setIcon('warroom','\\u271D'):'&#9632;'}</div>
+        <div class="pack-body">
+          <div class="pack-title" style="color:${unlocked?'#ff6040':'#555'};">${unlocked?t('pack.warroom'):t('set.locked')}</div>
+          <div class="pack-desc">${unlocked?t('set5.desc_unlocked'):t('set5.desc_locked')}</div>
+          <div class="pack-meta">${unlocked?t('set5.meta_unlocked'):comp.owned+' / '+comp.total+' '+t('set.cards_word')}</div>
+          ${unlocked?'<button class="pack-btn" style="color:#ff6040;box-shadow:0 0 8px rgba(255,96,64,0.2);">'+t('pack.open_btn')+'</button>':''}
+          ${!unlocked?'<div class="pack-lock-bar"><div class="pack-lock-fill" style="width:'+comp.pct+'%"></div></div><div class="pack-lock-info">'+comp.pct+t('set.pct_complete')+'</div>':''}
+        </div>
       </div>
     </div>`;
 }
@@ -9269,12 +9303,14 @@ function renderSet6Zone() {
     </div>
     <div class="pack-grid">
       <div class="pack-card p-standard ${unlocked?'':'locked'}" ${unlocked?'onclick="openPack(\'skillsvoid\')"':''} style="border-color:rgba(160,160,160,0.3);">
-        <span class="pack-icon-wrap">${unlocked?setIcon('skillsvoid','\\u25B3'):'&#9632;'}</span>
-        <div class="pack-title" style="color:${unlocked?'#a0a0a0':'#555'};">${unlocked?t('pack.skillsvoid'):t('set.locked')}</div>
-        <div class="pack-desc">${unlocked?t('set6.desc_unlocked'):t('set6.desc_locked')}</div>
-        <div class="pack-meta">${unlocked?t('set6.meta_unlocked'):comp.owned+' / '+comp.total+' '+t('set.cards_word')}</div>
-        ${unlocked?'<button class="pack-btn" style="color:#a0a0a0;box-shadow:0 0 8px rgba(160,160,160,0.2);">'+t('pack.open_btn')+'</button>':''}
-        ${!unlocked?'<div class="pack-lock-bar"><div class="pack-lock-fill" style="width:'+comp.pct+'%"></div></div><div class="pack-lock-info">'+comp.pct+t('set.pct_complete')+'</div>':''}
+        <div class="pack-art">${unlocked?setIcon('skillsvoid','\\u25B3'):'&#9632;'}</div>
+        <div class="pack-body">
+          <div class="pack-title" style="color:${unlocked?'#a0a0a0':'#555'};">${unlocked?t('pack.skillsvoid'):t('set.locked')}</div>
+          <div class="pack-desc">${unlocked?t('set6.desc_unlocked'):t('set6.desc_locked')}</div>
+          <div class="pack-meta">${unlocked?t('set6.meta_unlocked'):comp.owned+' / '+comp.total+' '+t('set.cards_word')}</div>
+          ${unlocked?'<button class="pack-btn" style="color:#a0a0a0;box-shadow:0 0 8px rgba(160,160,160,0.2);">'+t('pack.open_btn')+'</button>':''}
+          ${!unlocked?'<div class="pack-lock-bar"><div class="pack-lock-fill" style="width:'+comp.pct+'%"></div></div><div class="pack-lock-info">'+comp.pct+t('set.pct_complete')+'</div>':''}
+        </div>
       </div>
     </div>`;
 }
@@ -9307,12 +9343,14 @@ SET_ZONE_CONFIG.forEach(function(cfg) {
       </div>
       <div class="pack-grid">
         <div class="pack-card p-standard ${unlocked?'':'locked'}" ${unlocked?'onclick="openPack(\''+cfg.series+'\')"':''} style="border-color:${cfg.borderRgba};">
-          <span class="pack-icon-wrap">${unlocked?setIcon(cfg.series,cfg.icon):'&#9632;'}</span>
-          <div class="pack-title" style="color:${unlocked?cfg.color:'#555'};">${unlocked?t(cfg.packKey):t('set.locked')}</div>
-          <div class="pack-desc">${unlocked?t(cfg.descKey+'.desc_unlocked'):t(cfg.descKey+'.desc_locked')}</div>
-          <div class="pack-meta">${unlocked?t(cfg.descKey+'.meta_unlocked'):comp.owned+' / '+comp.total+' '+t('set.cards_word')}</div>
-          ${unlocked?'<button class="pack-btn" style="color:'+cfg.color+';box-shadow:0 0 8px '+cfg.borderRgba+';">'+t('pack.open_btn')+'</button>':''}
-          ${!unlocked?'<div class="pack-lock-bar"><div class="pack-lock-fill" style="width:'+comp.pct+'%"></div></div><div class="pack-lock-info">'+comp.pct+t('set.pct_complete')+'</div>':''}
+          <div class="pack-art">${unlocked?setIcon(cfg.series,cfg.icon):'&#9632;'}</div>
+          <div class="pack-body">
+            <div class="pack-title" style="color:${unlocked?cfg.color:'#555'};">${unlocked?t(cfg.packKey):t('set.locked')}</div>
+            <div class="pack-desc">${unlocked?t(cfg.descKey+'.desc_unlocked'):t(cfg.descKey+'.desc_locked')}</div>
+            <div class="pack-meta">${unlocked?t(cfg.descKey+'.meta_unlocked'):comp.owned+' / '+comp.total+' '+t('set.cards_word')}</div>
+            ${unlocked?'<button class="pack-btn" style="color:'+cfg.color+';box-shadow:0 0 8px '+cfg.borderRgba+';">'+t('pack.open_btn')+'</button>':''}
+            ${!unlocked?'<div class="pack-lock-bar"><div class="pack-lock-fill" style="width:'+comp.pct+'%"></div></div><div class="pack-lock-info">'+comp.pct+t('set.pct_complete')+'</div>':''}
+          </div>
         </div>
       </div>`;
   };
@@ -9836,7 +9874,7 @@ function renderRaidScreen() {
     if (card) {
       slotsHTML += '<div class="raid-team-slot filled"><img src="images/cards/' + card.id + '.png" alt="' + (cardT(card.id,'name')||card.name) + ' (' + rarityT(card.rarity) + ')' + '" class="slot-img" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'\'"><span style="display:none">' + card.symbol + '</span><button class="slot-remove" onclick="removeRaidCard(' + i + ')">✕</button><div class="slot-name">' + (cardT(card.id,'name')||card.name) + '</div></div>';
     } else {
-      slotsHTML += '<div class="raid-team-slot">+</div>';
+      slotsHTML += '<div class="raid-team-slot" ondragover="event.preventDefault();this.classList.add(\'drag-over\')" ondragleave="this.classList.remove(\'drag-over\')" ondrop="event.preventDefault();this.classList.remove(\'drag-over\');dropRaidCard(event)">+</div>';
     }
   }
 
@@ -9895,7 +9933,7 @@ function renderRaidScreen() {
     const col = RARITY_COLORS[card.rarity] || '#8090a0';
     const cName = cardT(card.id,'name') || card.name;
     const borderCol = selected ? 'var(--red)' : col + '66';
-    gridHTML += `<div class="raid-card-thumb ${selected?'selected':''} ${disabled?'disabled':''}" style="border-color:${borderCol};color:${col};" onclick="toggleRaidCard('${card.id}')">
+    gridHTML += `<div class="raid-card-thumb ${selected?'selected':''} ${disabled?'disabled':''}" style="border-color:${borderCol};color:${col};" onclick="toggleRaidCard('${card.id}')" draggable="true" ondragstart="event.dataTransfer.setData('text/plain','${card.id}')">
       <div class="coll-thumb-stats">
         <span class="coll-thumb-name">${cName}</span>
         <span class="coll-thumb-atk">${card.atk}/${card.kscore}</span>
@@ -9955,21 +9993,26 @@ function renderRaidScreen() {
 
   body.innerHTML = `
     <div class="raid-boss-card">
-      <div style="font-family:var(--font-mono);font-size:7px;letter-spacing:3px;color:${tierCol};text-align:center;margin-bottom:8px;">HOURLY BOSS · ${boss.tier} ${getCurrentCycle()}${wins > 0 ? ' · <span style="color:#ff6040;">LVL ' + (wins + 1) + '</span>' : ''}</div>
-      <div class="raid-boss-emoji">${bossIcon(boss.id, boss.emoji)}</div>
-      <div class="raid-boss-name" style="color:${tierCol};">${boss.name}</div>
-      <div class="raid-boss-desc">${boss.desc}</div>
-      <div class="raid-boss-stats">
-        <span>ATK: ${boss.atk}</span>
-        <span>HP: ${boss.hp.toLocaleString()}</span>
-        <span class="raid-boss-weakness">WEAK: ${boss.weakness}</span>
-        ${boss.ability ? '<span style="color:var(--red);">⚡ ' + boss.ability + '</span>' : ''}
+      <div class="raid-boss-tier" style="color:${tierCol};">HOURLY BOSS · ${boss.tier} ${getCurrentCycle()}${wins > 0 ? ' · <span style="color:#ff6040;">LVL ' + (wins + 1) + '</span>' : ''}</div>
+      <div class="raid-boss-art-wrap">
+        <img class="boss-art" src="images/bosses/${boss.id}.png" alt="${boss.emoji}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="boss-art-fallback" style="display:none">${boss.emoji}</div>
       </div>
-      <div class="raid-hp-bar">
-        <div class="raid-hp-fill" style="width:100%;"></div>
-        <div class="raid-hp-text">${boss.hp.toLocaleString()} / ${boss.hp.toLocaleString()}</div>
+      <div class="raid-boss-body">
+        <div class="raid-boss-name" style="color:${tierCol};">${boss.name}</div>
+        <div class="raid-boss-desc">${boss.desc}</div>
+        <div class="raid-boss-stats">
+          <span>ATK: ${boss.atk}</span>
+          <span>HP: ${boss.hp.toLocaleString()}</span>
+          <span class="raid-boss-weakness">WEAK: ${boss.weakness}</span>
+          ${boss.ability ? '<span style="color:var(--red);">⚡ ' + boss.ability + '</span>' : ''}
+        </div>
+        <div class="raid-hp-bar">
+          <div class="raid-hp-fill" style="width:100%;"></div>
+          <div class="raid-hp-text">${boss.hp.toLocaleString()} / ${boss.hp.toLocaleString()}</div>
+        </div>
+        <div style="text-align:center;margin-top:8px;font-family:var(--font-mono);font-size:10px;color:${tierCol};letter-spacing:1px;">NEXT BOSS IN ${rotHH}:${rotMM}:${rotSS}</div>
       </div>
-      <div style="text-align:center;margin-top:6px;font-family:var(--font-mono);font-size:8px;color:${tierCol};letter-spacing:1px;">NEXT BOSS IN ${rotHH}:${rotMM}:${rotSS}</div>
     </div>
     <div class="daily-missions" style="margin-top:8px;margin-bottom:12px;">
       <div class="daily-missions-title">UPCOMING BOSSES</div>
@@ -9999,6 +10042,13 @@ function toggleRaidCard(cardId) {
   updateRaidTeamUI();
 }
 
+function dropRaidCard(event) {
+  const cardId = event.dataTransfer.getData('text/plain');
+  if (!cardId || raidTeam.includes(cardId) || raidTeam.length >= 5) return;
+  raidTeam.push(cardId);
+  updateRaidTeamUI();
+}
+
 function removeRaidCard(slotIndex) {
   raidTeam.splice(slotIndex, 1);
   updateRaidTeamUI();
@@ -10016,7 +10066,7 @@ function updateRaidTeamUI() {
     if (card) {
       slotsHTML += '<div class="raid-team-slot filled"><img src="images/cards/' + card.id + '.png" alt="' + (cardT(card.id,'name')||card.name) + ' (' + rarityT(card.rarity) + ')' + '" class="slot-img" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'\'"><span style="display:none">' + card.symbol + '</span><button class="slot-remove" onclick="removeRaidCard(' + i + ')">✕</button><div class="slot-name">' + (cardT(card.id,'name')||card.name) + '</div></div>';
     } else {
-      slotsHTML += '<div class="raid-team-slot">+</div>';
+      slotsHTML += '<div class="raid-team-slot" ondragover="event.preventDefault();this.classList.add(\'drag-over\')" ondragleave="this.classList.remove(\'drag-over\')" ondrop="event.preventDefault();this.classList.remove(\'drag-over\');dropRaidCard(event)">+</div>';
     }
   }
   const slotsEl = document.getElementById('raid-team-slots');
