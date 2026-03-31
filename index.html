@@ -2583,15 +2583,15 @@ body::before {
 .stat-chip span { color:var(--red); }
 
 /* Pack grid */
-.pack-grid { display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;width:100%;max-width:960px;margin-bottom:32px; }
+.pack-grid { display:flex;gap:16px;width:100%;max-width:960px;margin-bottom:32px;justify-content:center;flex-wrap:wrap; }
 
-.pack-card { border:1px solid #333;border-radius:10px;background:var(--bg-card);padding:0;cursor:pointer;transition:all .3s;position:relative;overflow:hidden;text-align:center;display:flex;flex-direction:column; }
+.pack-card { width:200px;border:1px solid #333;border-radius:10px;background:var(--bg-card);padding:0;cursor:pointer;transition:all .3s;position:relative;overflow:hidden;text-align:center;display:flex;flex-direction:column; }
 .pack-card::before { content:'';position:absolute;inset:0;opacity:0.3;transition:opacity .3s;pointer-events:none; }
 .pack-card:hover { transform:translateY(-3px); }
 .pack-card:hover::before { opacity:1; }
-.pack-card .pack-art { width:100%;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;border-bottom:1px solid #222;overflow:hidden;background:#080808; }
-.pack-card .pack-art img.set-logo { width:100%;height:100%;object-fit:cover;filter:grayscale(0.5) contrast(1.3) brightness(0.9); }
-.pack-card .pack-body { padding:14px 16px; }
+.pack-card .pack-art { width:100%;aspect-ratio:1;display:flex;align-items:center;justify-content:center;border-bottom:1px solid #222;overflow:hidden;background:#080808; }
+.pack-card .pack-art img { width:100%;height:100%;object-fit:cover;filter:grayscale(0.5) contrast(1.3) brightness(0.85); }
+.pack-card .pack-body { padding:10px 12px;flex:1;display:flex;flex-direction:column;justify-content:space-between; }
 
 .pack-card.p-standard { border-color:rgba(33,150,200,0.3); }
 .pack-card.p-rare     { border-color:rgba(155,89,208,0.3); }
@@ -2612,15 +2612,15 @@ body::before {
 img.set-logo { width:48px;height:48px;object-fit:contain;filter:grayscale(1) contrast(1.5);border-radius:4px;vertical-align:middle; }
 .shop-item-title img.set-logo { width:24px;height:24px; }
 .icon-mono { font-style:normal;font-family:var(--font-display);filter:grayscale(1) contrast(2); }
-.pack-title { font-family:var(--font-title);font-size:16px;letter-spacing:2px;margin-bottom:6px; }
+.pack-title { font-family:var(--font-title);font-size:13px;letter-spacing:1px;margin-bottom:4px; }
 .pack-card.p-standard .pack-title { color:var(--blue); }
 .pack-card.p-rare     .pack-title { color:var(--purple); }
 .pack-card.p-trade    .pack-title { color:var(--gold); }
 .pack-card.p-lore     .pack-title { color:var(--gray); }
 
-.pack-desc { font-size:11px;color:#777;line-height:1.6;margin-bottom:10px; }
-.pack-meta { font-family:var(--font-mono);font-size:10px;color:#555;letter-spacing:1px;margin-bottom:14px; }
-.pack-btn { font-family:var(--font-mono);font-size:11px;letter-spacing:2px;padding:8px 20px;border:1px solid var(--red);background:rgba(204,17,17,0.08);color:#ff3333;cursor:pointer;transition:all .25s;display:inline-block;box-shadow:0 0 10px rgba(204,17,17,0.25);animation:btnPulse 3s ease-in-out infinite; }
+.pack-desc { font-size:9px;color:#777;line-height:1.5;margin-bottom:6px; }
+.pack-meta { font-family:var(--font-mono);font-size:8px;color:#555;letter-spacing:1px;margin-bottom:8px; }
+.pack-btn { font-family:var(--font-mono);font-size:9px;letter-spacing:2px;padding:6px 14px;border:1px solid var(--red);background:rgba(204,17,17,0.08);color:#ff3333;cursor:pointer;transition:all .25s;display:inline-block;box-shadow:0 0 10px rgba(204,17,17,0.25);animation:btnPulse 3s ease-in-out infinite; }
 .pack-btn:hover { background:var(--red);color:#000;box-shadow:0 0 24px rgba(204,17,17,0.5); }
 @keyframes btnPulse { 0%,100%{opacity:1}50%{opacity:0.8} }
 
@@ -8760,7 +8760,7 @@ function renderCardShop() {
     </div>
     <div class="pack-grid">
       <div class="pack-card" style="border-color:rgba(130,100,255,0.3);cursor:pointer;" onclick="openCardShop()">
-        <div class="pack-art"><img class="set-logo" src="images/sets/shop.png" alt="⚖" onerror="this.style.display='none';this.parentNode.innerHTML='<span style=font-size:48px>⚖</span>'"></div>
+        <div class="pack-art"><img src="images/sets/shop.png" alt="⚖" onerror="this.style.display='none';this.parentNode.innerHTML='<span style=font-size:48px>⚖</span>'"></div>
         <div class="pack-body">
           <div class="pack-title" style="color:#8264ff;">CARD SHOP</div>
           <div class="pack-desc">Buy packs from any expansion set. No unlock required. Cards minted as NFTs on Sui or pay with card.</div>
@@ -9200,8 +9200,10 @@ function getSetCoverCard(series) {
   return (cards.find(c=>c.rarity==='MYTHIC') || cards.find(c=>c.rarity==='LEGENDARY') || cards[0]);
 }
 function packArtHTML(series, fallback) {
-  const card = getSetCoverCard(series);
-  if (card) return '<img class="set-logo" src="images/cards/'+card.id+'.png" alt="'+fallback+'" onerror="this.style.display=\'none\'">';
+  // Use set logo for expansion sets, card art for Set 1
+  if (series) return '<img src="images/sets/'+series+'.png" alt="'+fallback+'" onerror="this.style.display=\'none\'">';
+  const card = getSetCoverCard(null);
+  if (card) return '<img src="images/cards/'+card.id+'.png" alt="'+fallback+'" onerror="this.style.display=\'none\'">';
   return '<span style="font-size:48px">'+fallback+'</span>';
 }
 function getSetCompletion(series) {
@@ -10446,7 +10448,7 @@ renderCardShop();
 // Populate Set 1 pack art
 (function(){
   var el1=document.getElementById('pack-art-standard'); if(el1) el1.innerHTML=packArtHTML(null,'◆');
-  var el2=document.getElementById('pack-art-legendary'); if(el2){var leg=CARDS.filter(function(c){return !c.series&&c.rarity==='LEGENDARY';}); var card=leg[0]; if(card) el2.innerHTML='<img class="set-logo" src="images/cards/'+card.id+'.png" alt="★" onerror="this.style.display=\'none\'">'; else el2.innerHTML='<span style="font-size:48px">★</span>';}
+  var el2=document.getElementById('pack-art-legendary'); if(el2){var leg=CARDS.filter(function(c){return !c.series&&c.rarity==='LEGENDARY';}); var card=leg[0]; if(card) el2.innerHTML='<img src="images/cards/'+card.id+'.png" alt="★" onerror="this.style.display=\'none\'">'; else el2.innerHTML='<span style="font-size:48px">★</span>';}
 })();
 renderChainBanner();
 renderChainStatus();
