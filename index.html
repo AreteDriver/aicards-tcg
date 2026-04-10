@@ -4,18 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <title>AI CARDS — 2030 Survival Edition</title>
-<meta name="description" content="448 cards. 19 sets. NFTs on Sui. The humans who survived AI — and the worlds they built after. Open packs. Collect what survives.">
+<meta name="description" content="448 cards. 19 sets. NFTs on Solana. The humans who survived AI — and the worlds they built after. Open packs. Collect what survives.">
 <meta property="og:title" content="AI CARDS — 2030 Survival Edition">
-<meta property="og:description" content="448 cards. 19 sets. NFTs on Sui. The humans who survived AI — and the worlds they built after. Open packs. Collect what survives.">
+<meta property="og:description" content="448 cards. 19 sets. NFTs on Solana. The humans who survived AI — and the worlds they built after. Open packs. Collect what survives.">
 <meta property="og:url" content="https://aicards.fun">
 <meta property="og:image" content="https://aicards.fun/og-image.png">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="AI CARDS — 2030 Survival Edition">
-<meta name="twitter:description" content="448 cards. 19 sets. NFTs on Sui. The humans who survived AI — and the worlds they built after. Open packs. Collect what survives.">
+<meta name="twitter:description" content="448 cards. 19 sets. NFTs on Solana. The humans who survived AI — and the worlds they built after. Open packs. Collect what survives.">
 <meta name="twitter:image" content="https://aicards.fun/og-image.png">
 <link rel="canonical" href="https://aicards.fun">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
+<script src="https://unpkg.com/@solana/web3.js@1.98.0/lib/index.iife.min.js" defer></script>
 <meta name="theme-color" content="#080808">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🃏</text></svg>">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Cinzel+Decorative:wght@700&family=IM+Fell+English:ital@0;1&family=Share+Tech+Mono&display=swap" rel="stylesheet">
@@ -2985,6 +2986,220 @@ img.set-logo { width:48px;height:48px;object-fit:contain;filter:grayscale(1) con
 .raid-history-result.win{color:var(--gold);}
 .raid-history-result.loss{color:var(--red);}
 
+/* ── ENHANCED BATTLE VISUALS ── */
+
+/* Intensity-based screen shake */
+@keyframes shakeSmall {
+  0%,100%{transform:translate(0)} 25%{transform:translate(-2px,1px)} 50%{transform:translate(2px,-1px)} 75%{transform:translate(-1px,2px)}
+}
+@keyframes shakeMedium {
+  0%,100%{transform:translate(0)} 10%{transform:translate(-6px,4px)} 20%{transform:translate(5px,-3px)} 30%{transform:translate(-4px,2px)} 40%{transform:translate(3px,-4px)} 50%{transform:translate(-2px,1px)}
+}
+@keyframes shakeLarge {
+  0%,100%{transform:translate(0)} 8%{transform:translate(-10px,6px)} 16%{transform:translate(8px,-8px)} 24%{transform:translate(-6px,4px)} 32%{transform:translate(6px,-6px)} 40%{transform:translate(-4px,3px)} 50%{transform:translate(3px,-2px)}
+}
+@keyframes shakeExtreme {
+  0%,100%{transform:translate(0)} 5%{transform:translate(-14px,8px) rotate(-1deg)} 10%{transform:translate(12px,-10px) rotate(1deg)} 15%{transform:translate(-10px,6px) rotate(-0.5deg)} 20%{transform:translate(8px,-8px)} 30%{transform:translate(-6px,4px)} 40%{transform:translate(4px,-3px)} 50%{transform:translate(-2px,1px)}
+}
+.shake-small{animation:shakeSmall 0.3s ease;}
+.shake-medium{animation:shakeMedium 0.4s ease;}
+.shake-large{animation:shakeLarge 0.5s ease;}
+.shake-extreme{animation:shakeExtreme 0.6s ease;}
+
+/* Card attack lunge — slides card toward boss then snaps back */
+@keyframes cardLunge {
+  0%{transform:translateY(0) scale(1);}
+  30%{transform:translateY(-60px) scale(1.15);filter:brightness(1.3);}
+  45%{transform:translateY(-65px) scale(1.18);filter:brightness(1.6);}
+  55%{transform:translateY(-60px) scale(1.15);filter:brightness(1.3);}
+  100%{transform:translateY(0) scale(1);filter:brightness(1);}
+}
+.raid-battle-card.lunging{
+  animation:cardLunge 0.5s cubic-bezier(.2,0,.3,1);
+  z-index:10;position:relative;
+}
+
+/* Impact flash on boss when hit */
+@keyframes bossImpact {
+  0%{filter:brightness(1) contrast(1);}
+  15%{filter:brightness(2.5) contrast(0.5);transform:scale(1.03);}
+  30%{filter:brightness(1.5) contrast(1.2);transform:scale(0.98);}
+  100%{filter:brightness(1) contrast(1);transform:scale(1);}
+}
+.raid-battle-boss.impact{animation:bossImpact 0.4s ease-out;}
+
+/* Boss entrance — dramatic zoom from darkness */
+@keyframes bossEntrance {
+  0%{opacity:0;transform:scale(1.8) translateY(-30px);filter:brightness(0) blur(8px);}
+  40%{opacity:0.6;transform:scale(1.15) translateY(-5px);filter:brightness(0.5) blur(2px);}
+  70%{opacity:0.9;transform:scale(0.97);filter:brightness(0.8) blur(0);}
+  85%{transform:scale(1.02);filter:brightness(1.2);}
+  100%{opacity:1;transform:scale(1);filter:brightness(1);}
+}
+.boss-entering{animation:bossEntrance 1.2s cubic-bezier(.2,0,.3,1) forwards;}
+
+/* Boss name announcement */
+@keyframes bossNameReveal {
+  0%{opacity:0;transform:scale(0.5);letter-spacing:20px;filter:blur(4px);}
+  50%{opacity:1;transform:scale(1.15);letter-spacing:6px;filter:blur(0);}
+  70%{transform:scale(0.95);letter-spacing:4px;}
+  100%{transform:scale(1);letter-spacing:3px;}
+}
+.boss-name-reveal{animation:bossNameReveal 0.8s cubic-bezier(.2,0,.3,1) 0.6s both;}
+
+/* Dark vignette overlay during boss entrance */
+.raid-vignette{
+  position:fixed;inset:0;pointer-events:none;z-index:100;
+  background:radial-gradient(ellipse at center,transparent 30%,rgba(0,0,0,0.85) 100%);
+  animation:vignetteFlash 2s ease-out forwards;
+}
+@keyframes vignetteFlash{
+  0%{opacity:1;}
+  60%{opacity:0.8;}
+  100%{opacity:0;}
+}
+
+/* Delayed HP bar (white trail showing recent damage — Marvel Snap style) */
+.raid-hp-bar{position:relative;}
+.raid-hp-trail{
+  position:absolute;top:0;left:0;height:100%;
+  background:rgba(255,255,255,0.25);
+  transition:width 1.2s ease-out 0.4s;
+}
+.raid-hp-fill{z-index:1;position:relative;}
+
+/* HP milestone markers */
+.raid-hp-marker{
+  position:absolute;top:0;height:100%;width:2px;
+  background:rgba(255,255,255,0.15);z-index:2;
+}
+.raid-hp-marker::after{
+  content:attr(data-pct);position:absolute;top:-14px;left:50%;transform:translateX(-50%);
+  font-family:var(--font-mono);font-size:7px;color:#444;letter-spacing:1px;
+}
+.raid-hp-marker.hit{background:var(--gold);box-shadow:0 0 6px rgba(200,168,75,0.4);}
+
+/* Enhanced damage numbers */
+.raid-dmg-float{
+  position:absolute;pointer-events:none;z-index:50;
+  font-family:var(--font-display);font-weight:700;
+  text-shadow:0 2px 4px rgba(0,0,0,0.9),0 0 12px currentColor;
+  animation:dmgFloat 1.2s cubic-bezier(.2,0,.3,1) forwards;
+}
+@keyframes dmgFloat{
+  0%{opacity:1;transform:translateY(0) scale(0.5);}
+  15%{transform:translateY(-10px) scale(1.3);}
+  30%{transform:translateY(-20px) scale(1);}
+  100%{opacity:0;transform:translateY(-80px) scale(0.8);}
+}
+.raid-dmg-float.crit{
+  font-size:28px;color:#ff4040;
+  animation:dmgFloatCrit 1.4s cubic-bezier(.2,0,.3,1) forwards;
+}
+@keyframes dmgFloatCrit{
+  0%{opacity:1;transform:translateY(0) scale(0.3) rotate(-5deg);}
+  20%{transform:translateY(-15px) scale(1.5) rotate(3deg);}
+  40%{transform:translateY(-30px) scale(1.1) rotate(-1deg);}
+  100%{opacity:0;transform:translateY(-100px) scale(0.6);}
+}
+
+/* Boss death shatter */
+@keyframes bossDeath {
+  0%{transform:scale(1);filter:brightness(1);opacity:1;}
+  20%{transform:scale(1.05);filter:brightness(2) saturate(0);}
+  40%{transform:scale(0.98);filter:brightness(3) saturate(0);opacity:0.9;}
+  60%{transform:scale(1.02);filter:brightness(1.5);opacity:0.7;}
+  80%{transform:scale(0.95) rotate(2deg);filter:brightness(0.5);opacity:0.4;}
+  100%{transform:scale(0.8) rotate(5deg);filter:brightness(0);opacity:0;}
+}
+.boss-dying{animation:bossDeath 1.2s ease-out forwards;}
+
+/* Shatter fragments */
+.shatter-fragment{
+  position:absolute;pointer-events:none;
+  background:var(--red);
+  animation:shatterFly 1s ease-out forwards;
+}
+@keyframes shatterFly{
+  0%{opacity:1;transform:translate(0,0) rotate(0deg) scale(1);}
+  100%{opacity:0;transform:translate(var(--sx),var(--sy)) rotate(var(--sr)) scale(0);}
+}
+
+/* Victory cinematic */
+@keyframes victoryPulse{
+  0%{transform:scale(0.3);opacity:0;filter:blur(8px);}
+  40%{transform:scale(1.2);opacity:1;filter:blur(0);}
+  60%{transform:scale(0.95);}
+  80%{transform:scale(1.05);}
+  100%{transform:scale(1);}
+}
+@keyframes victoryGlow{
+  0%,100%{text-shadow:0 0 20px rgba(200,168,75,0.3),0 0 40px rgba(200,168,75,0.1);}
+  50%{text-shadow:0 0 40px rgba(200,168,75,0.8),0 0 80px rgba(200,168,75,0.3),0 0 120px rgba(200,168,75,0.1);}
+}
+.raid-results-title.victory.cinematic{
+  animation:victoryPulse 0.8s cubic-bezier(.2,0,.3,1) forwards, victoryGlow 2s ease-in-out 0.8s infinite;
+}
+
+/* Defeat cinematic */
+@keyframes defeatDrop{
+  0%{transform:translateY(-40px);opacity:0;filter:blur(4px);}
+  60%{transform:translateY(5px);opacity:1;filter:blur(0);}
+  80%{transform:translateY(-2px);}
+  100%{transform:translateY(0);}
+}
+@keyframes defeatFlicker{
+  0%,100%{opacity:1;}
+  50%{opacity:0.7;}
+}
+.raid-results-title.defeat.cinematic{
+  animation:defeatDrop 0.6s ease-out forwards, defeatFlicker 3s ease-in-out 0.6s infinite;
+}
+
+/* Screen desaturate on defeat */
+@keyframes battleDefeatFade{
+  0%{filter:none;}
+  100%{filter:grayscale(0.6) brightness(0.7);}
+}
+.battle-defeat-fade{animation:battleDefeatFade 0.8s ease-out forwards;}
+
+/* Card crack on KO */
+@keyframes cardCrack{
+  0%{transform:scale(1);filter:brightness(1);}
+  30%{transform:scale(1.1);filter:brightness(2) saturate(0);}
+  50%{transform:scale(0.95);filter:brightness(0.8);}
+  100%{transform:scale(0.9);filter:grayscale(1) brightness(0.4);}
+}
+.raid-battle-card.cracking{animation:cardCrack 0.5s ease-out forwards;}
+
+/* Milestone flash overlay */
+.milestone-flash{
+  position:fixed;inset:0;pointer-events:none;z-index:90;
+  background:radial-gradient(ellipse at center,rgba(200,168,75,0.2) 0%,transparent 70%);
+  animation:milestoneFlash 0.6s ease-out forwards;
+}
+@keyframes milestoneFlash{0%{opacity:1;}100%{opacity:0;}}
+
+/* Battle combo counter */
+.raid-combo{
+  position:absolute;top:4px;right:8px;z-index:5;
+  font-family:var(--font-mono);font-size:10px;letter-spacing:2px;
+  color:var(--gold);opacity:0;transition:opacity 0.3s;
+}
+.raid-combo.active{opacity:1;animation:comboPulse 0.3s ease-out;}
+@keyframes comboPulse{0%{transform:scale(1.4);}100%{transform:scale(1);}}
+
+/* Enhanced particle shapes */
+.particle-star{
+  clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
+}
+.particle-diamond{
+  clip-path:polygon(50% 0%,100% 50%,50% 100%,0% 50%);
+}
+.particle-spark{
+  border-radius:0;width:2px!important;height:8px!important;
+}
+
 /* ── LANGUAGE SELECTOR ── */
 .lang-selector {
   display:flex;gap:2px;justify-content:center;flex-wrap:wrap;
@@ -3275,10 +3490,10 @@ img.set-logo { width:48px;height:48px;object-fit:contain;filter:grayscale(1) con
   padding:8px 12px;border:1px solid;cursor:pointer;transition:all .2s;flex:1;text-align:center;
   background:transparent;
 }
-.shop-buy-btn.sui-btn {
+.shop-buy-btn.sol-btn {
   border-color:rgba(100,200,255,0.4);color:#60c8ff;
 }
-.shop-buy-btn.sui-btn:hover {
+.shop-buy-btn.sol-btn:hover {
   background:rgba(100,200,255,0.1);box-shadow:0 0 12px rgba(100,200,255,0.2);
 }
 .shop-buy-btn.stripe-btn {
@@ -3858,7 +4073,7 @@ setTimeout(function(){var el=document.getElementById('loading-screen');if(el){el
       <button class="chain-modal-close" onclick="closeChainModal()">✕</button>
       <div class="chain-modal-title" data-i18n="chain.go_onchain">GO ON-CHAIN</div>
       <div class="chain-modal-sub" data-i18n="chain.sub">
-        Your cards become NFTs on Sui. Real digital assets you own.
+        Your cards become NFTs on Solana. Real digital assets you own.
       </div>
       <ul class="chain-modal-features">
         <li data-i18n="chain.sell">SELL cards you don't want</li>
@@ -3866,12 +4081,19 @@ setTimeout(function(){var el=document.getElementById('loading-screen');if(el){el
         <li data-i18n="chain.collect">COLLECT on-chain — verifiable rarity</li>
         <li data-i18n="chain.own">OWN your cards — not just localStorage</li>
         <li data-i18n="chain.mythic_provable">MYTHIC pulls are provably 1/10,000</li>
+        <li>EARN royalties — 1% of all AICARDS trading volume on Bags</li>
       </ul>
       <div id="chain-modal-body">
+        <button class="chain-modal-save" style="margin-bottom:10px;border-color:#60c8ff;color:#60c8ff;" onclick="connectSolanaWallet()">CONNECT WALLET (PHANTOM / SOLFLARE)</button>
+        <div style="font-family:var(--font-mono);font-size:8px;color:#444;letter-spacing:2px;margin:8px 0;">— OR —</div>
         <input type="text" class="chain-modal-input" id="chain-address-input"
-          placeholder="Paste your Sui wallet address (0x...)"
+          placeholder="Paste your Solana wallet address"
           spellcheck="false" autocomplete="off">
         <button class="chain-modal-save" onclick="saveChainAddress()">CONNECT ADDRESS</button>
+      </div>
+      <div id="chain-token-balance" style="font-family:var(--font-mono);font-size:10px;color:var(--gold);letter-spacing:2px;margin:8px 0;text-align:center;"></div>
+      <div style="text-align:center;margin-top:8px;">
+        <button class="chain-modal-save" style="border-color:var(--gold);color:var(--gold);font-size:9px;" onclick="window.open(BAGS_TOKEN_URL,'_blank')">BUY AICARDS ON BAGS</button>
       </div>
       <div id="chain-modal-status"></div>
     </div>
@@ -3880,7 +4102,8 @@ setTimeout(function(){var el=document.getElementById('loading-screen');if(el){el
     <div class="card-shop-box">
       <button class="card-shop-close" onclick="closeCardShop()">&#10005;</button>
       <div class="card-shop-title">CARD SHOP</div>
-      <div class="card-shop-sub">BUY PACKS FROM ANY SET — MINTED AS NFTs ON SUI</div>
+      <div class="card-shop-sub">BUY PACKS WITH AICARDS TOKENS — MINTED AS NFTs ON SOLANA</div>
+      <div id="shop-balance-bar" style="font-family:var(--font-mono);font-size:10px;letter-spacing:2px;color:var(--gold);text-align:center;margin:8px 0;"></div>
       <div class="shop-grid" id="shop-grid"></div>
     </div>
   </div>
@@ -7257,7 +7480,7 @@ function logEvent(endpoint, data) {
 }
 
 function getUserAddress() {
-  if (window._suiAddress) return window._suiAddress;
+  if (_solPublicKey) return _solPublicKey.toString();
   var addr = localStorage.getItem('aicards_anon_id');
   if (!addr) { addr = 'anon_' + Math.random().toString(36).slice(2, 10); localStorage.setItem('aicards_anon_id', addr); }
   return addr;
@@ -8172,6 +8395,299 @@ function spawnParticles(element, color, count=24) {
 }
 
 // ═══════════════════════════════════════
+// ENHANCED BATTLE VISUALS
+// ═══════════════════════════════════════
+
+/** Parameterized screen shake — intensity: 'small'|'medium'|'large'|'extreme' */
+function shakeScreen(intensity = 'medium') {
+  const app = document.getElementById('app');
+  const cls = 'shake-' + intensity;
+  app.classList.remove('shake-small','shake-medium','shake-large','shake-extreme','shake');
+  void app.offsetWidth;
+  app.classList.add(cls);
+  const durations = {small:300, medium:400, large:500, extreme:600};
+  setTimeout(() => app.classList.remove(cls), durations[intensity] || 400);
+}
+
+/** Floating damage number over an element — Yu-Gi-Oh style */
+function showDamageNumber(element, damage, color = '#60c8ff', isCrit = false) {
+  if (!element) return;
+  const rect = element.getBoundingClientRect();
+  const el = document.createElement('div');
+  el.className = 'raid-dmg-float' + (isCrit ? ' crit' : '');
+  el.textContent = damage >= 1000 ? (damage/1000).toFixed(1) + 'K' : damage.toString();
+  el.style.cssText = `
+    left:${rect.left + rect.width/2}px;top:${rect.top + rect.height * 0.3}px;
+    color:${color};font-size:${isCrit ? 28 : Math.min(24, 14 + damage/500)}px;
+    transform:translateX(-50%);position:fixed;
+  `;
+  document.body.appendChild(el);
+  setTimeout(() => el.remove(), isCrit ? 1400 : 1200);
+}
+
+/** Boss entrance cinematic — vignette + zoom + name reveal */
+function bossEntranceAnimation(bossEl) {
+  if (!bossEl) return;
+  // Dark vignette
+  const vignette = document.createElement('div');
+  vignette.className = 'raid-vignette';
+  document.body.appendChild(vignette);
+  setTimeout(() => vignette.remove(), 2000);
+
+  // Boss zoom entrance
+  bossEl.classList.add('boss-entering');
+  setTimeout(() => bossEl.classList.remove('boss-entering'), 1200);
+
+  // Name reveal
+  const nameEl = bossEl.querySelector('.boss-name');
+  if (nameEl) {
+    nameEl.classList.add('boss-name-reveal');
+    setTimeout(() => nameEl.classList.remove('boss-name-reveal'), 1400);
+  }
+
+  // Entrance sound — low rumble
+  sfxBossEntrance();
+}
+
+/** Boss death cinematic — shatter fragments + explosion particles */
+function bossDeathAnimation(bossEl, callback) {
+  if (!bossEl) { if (callback) callback(); return; }
+  const rect = bossEl.getBoundingClientRect();
+
+  // White flash
+  shakeScreen('extreme');
+
+  // Boss death animation
+  bossEl.classList.add('boss-dying');
+
+  // Spawn shatter fragments
+  const container = document.createElement('div');
+  container.className = 'particle-container';
+  document.body.appendChild(container);
+
+  for (let i = 0; i < 30; i++) {
+    const frag = document.createElement('div');
+    frag.className = 'shatter-fragment';
+    const angle = (Math.PI * 2 * i) / 30 + (Math.random() - 0.5) * 0.8;
+    const dist = 60 + Math.random() * 200;
+    const size = 4 + Math.random() * 12;
+    const rot = (Math.random() - 0.5) * 720;
+    frag.style.cssText = `
+      left:${rect.left + rect.width/2}px;top:${rect.top + rect.height/2}px;
+      width:${size}px;height:${size * (0.5 + Math.random())}px;
+      --sx:${Math.cos(angle)*dist}px;--sy:${Math.sin(angle)*dist}px;--sr:${rot}deg;
+      animation-delay:${Math.random()*0.15}s;
+    `;
+    container.appendChild(frag);
+  }
+
+  // Gold particle burst
+  setTimeout(() => {
+    spawnBattleParticles(bossEl, '#c8a84b', 40, 'star');
+    spawnBattleParticles(bossEl, '#ffffff', 20, 'spark');
+  }, 300);
+
+  setTimeout(() => {
+    container.remove();
+    if (callback) callback();
+  }, 1200);
+}
+
+/** Victory cinematic — gold burst + particles */
+function victoryCinematic(resultsEl) {
+  if (!resultsEl) return;
+  const title = resultsEl.querySelector('.raid-results-title');
+  if (title) title.classList.add('cinematic');
+
+  // Gold particle explosion from center
+  const rect = resultsEl.getBoundingClientRect();
+  spawnBattleParticles(resultsEl, '#c8a84b', 50, 'star');
+  setTimeout(() => spawnBattleParticles(resultsEl, '#ffffff', 30, 'diamond'), 200);
+
+  shakeScreen('large');
+  sfxVictory();
+}
+
+/** Defeat cinematic — desaturate + crack sound */
+function defeatCinematic(resultsEl) {
+  if (!resultsEl) return;
+  const title = resultsEl.querySelector('.raid-results-title');
+  if (title) title.classList.add('cinematic');
+
+  // Desaturate the battle area
+  const wrap = document.querySelector('.raid-battle-wrap');
+  if (wrap) wrap.classList.add('battle-defeat-fade');
+
+  sfxDefeat();
+}
+
+/** Enhanced particle spawner with shapes */
+function spawnBattleParticles(element, color, count = 24, shape = 'circle') {
+  const rect = element.getBoundingClientRect();
+  const cx = rect.left + rect.width / 2;
+  const cy = rect.top + rect.height / 2;
+
+  const container = document.createElement('div');
+  container.className = 'particle-container';
+  document.body.appendChild(container);
+
+  for (let i = 0; i < count; i++) {
+    const p = document.createElement('div');
+    const shapeClass = shape === 'star' ? ' particle-star' :
+                       shape === 'diamond' ? ' particle-diamond' :
+                       shape === 'spark' ? ' particle-spark' : '';
+    p.className = 'particle' + shapeClass;
+    const angle = (Math.PI * 2 * i) / count + (Math.random() - 0.5) * 0.6;
+    const dist = 60 + Math.random() * 200;
+    const size = shape === 'spark' ? 2 : 3 + Math.random() * 6;
+    p.style.cssText = `
+      left:${cx}px;top:${cy}px;width:${size}px;height:${size}px;
+      background:${color};
+      --dx:${Math.cos(angle)*dist}px;--dy:${Math.sin(angle)*dist}px;
+      animation-delay:${Math.random()*0.2}s;
+    `;
+    container.appendChild(p);
+  }
+  setTimeout(() => container.remove(), 1200);
+}
+
+/** Milestone flash effect */
+function showMilestoneFlash() {
+  const flash = document.createElement('div');
+  flash.className = 'milestone-flash';
+  document.body.appendChild(flash);
+  setTimeout(() => flash.remove(), 600);
+}
+
+/** Card KO crack animation */
+function cardKOAnimation(cardEl) {
+  if (!cardEl) return;
+  cardEl.classList.add('cracking');
+  spawnBattleParticles(cardEl, '#ff4040', 8, 'spark');
+}
+
+// ── BATTLE SOUND EFFECTS ──
+
+/** Low rumble for boss entrance */
+function sfxBossEntrance() {
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'sawtooth';
+    osc.frequency.setValueAtTime(50, ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(30, ctx.currentTime + 1.2);
+    gain.gain.setValueAtTime(0.15, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 1.2);
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start();
+    osc.stop(ctx.currentTime + 1.2);
+    setTimeout(() => ctx.close(), 1500);
+  } catch {}
+}
+
+/** Impact thud for card attacks */
+function sfxImpact(intensity = 0.5) {
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(120 * intensity + 60, ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(20, ctx.currentTime + 0.15);
+    gain.gain.setValueAtTime(0.2 * intensity, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.15);
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start();
+    osc.stop(ctx.currentTime + 0.15);
+    setTimeout(() => ctx.close(), 300);
+  } catch {}
+}
+
+/** Rising pitch for combo attacks */
+function sfxCombo(comboCount) {
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'triangle';
+    const baseFreq = 200 + comboCount * 80;
+    osc.frequency.setValueAtTime(baseFreq, ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(baseFreq * 1.5, ctx.currentTime + 0.12);
+    gain.gain.setValueAtTime(0.1, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.12);
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start();
+    osc.stop(ctx.currentTime + 0.12);
+    setTimeout(() => ctx.close(), 300);
+  } catch {}
+}
+
+/** Victory fanfare — ascending chord */
+function sfxVictory() {
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    [523, 659, 784, 1047].forEach((freq, i) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(freq, ctx.currentTime + i * 0.12);
+      gain.gain.setValueAtTime(0, ctx.currentTime);
+      gain.gain.linearRampToValueAtTime(0.12, ctx.currentTime + i * 0.12);
+      gain.gain.linearRampToValueAtTime(0.08, ctx.currentTime + i * 0.12 + 0.3);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 1.5);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(ctx.currentTime + i * 0.12);
+      osc.stop(ctx.currentTime + 1.5);
+    });
+    setTimeout(() => ctx.close(), 2000);
+  } catch {}
+}
+
+/** Defeat bass drop */
+function sfxDefeat() {
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'sawtooth';
+    osc.frequency.setValueAtTime(200, ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(25, ctx.currentTime + 0.8);
+    gain.gain.setValueAtTime(0.2, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.8);
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start();
+    osc.stop(ctx.currentTime + 0.8);
+    setTimeout(() => ctx.close(), 1000);
+  } catch {}
+}
+
+/** Boss rumble during boss turn */
+function sfxBossRumble() {
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'sawtooth';
+    osc.frequency.setValueAtTime(40, ctx.currentTime);
+    osc.frequency.setValueAtTime(45, ctx.currentTime + 0.1);
+    osc.frequency.setValueAtTime(38, ctx.currentTime + 0.2);
+    gain.gain.setValueAtTime(0.08, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.4);
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start();
+    osc.stop(ctx.currentTime + 0.4);
+    setTimeout(() => ctx.close(), 600);
+  } catch {}
+}
+
+// ═══════════════════════════════════════
 // KEYBOARD SUPPORT
 // ═══════════════════════════════════════
 document.addEventListener('keydown', (e) => {
@@ -8485,210 +9001,195 @@ function renderWeeklyGoal() {
 }
 
 // ═══════════════════════════════════════
-// ON-CHAIN INTEGRATION
+// ON-CHAIN INTEGRATION — SOLANA / BAGS
 // ═══════════════════════════════════════
-const CHAIN_PACKAGE = '0x99f91c55ad24367b9fba1000bf43a5e571c2ae096c906fdf2e78fd51243f38b2';
-const TREASURY_ID = '0x586cbc4af1eca3cef00e258ad242ddc0d7e4e99ce7a53f18fd60f28a45e3d999';
-const SUI_RPC = 'https://fullnode.testnet.sui.io:443';
-const PACK_PRICE_MIST = 500_000_000; // 0.5 SUI
+// Token mint address — set after launching on Bags (see scripts/launch-token.js)
+const AICARDS_TOKEN_MINT = ''; // TODO: Set after token launch
+const TREASURY_WALLET = '';    // TODO: Set after token launch
+const SOLANA_RPC = 'https://api.mainnet-beta.solana.com';
+const BAGS_TOKEN_URL = AICARDS_TOKEN_MINT ? 'https://bags.fm/token/' + AICARDS_TOKEN_MINT : 'https://bags.fm';
 
-// Wallet Standard integration (supports Slush, Sui Wallet, etc.)
-let _suiWallet = null;
-let _walletAccount = null;
-const _registeredWallets = [];
+// Pack prices in AICARDS tokens (with 9 decimals)
+const PACK_PRICES = {
+  standard: 100,   // 100 AICARDS for standard pack
+  legendary: 500,  // 500 AICARDS for legendary pack
+  set: 200,        // 200 AICARDS for set-specific packs
+};
+const TOKEN_DECIMALS = 9;
 
-// Wallet Standard uses a callback-based registration protocol
-(function initWalletStandard() {
-  function addWallet(wallet) {
-    if (_registeredWallets.some(w => w.name === wallet.name)) return;
-    if (wallet.chains?.some(c => c.startsWith('sui:')) ||
-        wallet.features?.['sui:signAndExecuteTransaction'] ||
-        wallet.features?.['sui:signAndExecuteTransactionBlock']) {
-      _registeredWallets.push(wallet);
-    }
-  }
+// Solana wallet state
+let _solWallet = null;      // Phantom/Solflare provider
+let _solPublicKey = null;    // Connected public key
+let _aicardsBalance = 0;    // Cached token balance
 
-  // Discover wallets safely — try every known registration path
-  // Exposed globally so connectSuiWallet can re-run it at click time
-  window.discoverWallets = discoverWallets;
-  function discoverWallets() {
-    try {
-      // Path 1: window.__suiWallets__ (legacy Sui injection)
-      if (window.__suiWallets__) {
-        var arr = Array.isArray(window.__suiWallets__) ? window.__suiWallets__ : [];
-        arr.forEach(addWallet);
-      }
-    } catch(e) {}
-
-    try {
-      // Path 2: Wallet Standard global store
-      var stores = window['wallet-standard:wallets'];
-      if (stores) {
-        if (typeof stores.get === 'function') stores.get().forEach(addWallet);
-        if (typeof stores.on === 'function') stores.on('register', function(w) { addWallet(w); });
-      }
-    } catch(e) {}
-
-    try {
-      // Path 3: navigator.wallets (older standard)
-      if (window.navigator && window.navigator.wallets) {
-        for (var i = 0; i < window.navigator.wallets.length; i++) {
-          addWallet(window.navigator.wallets[i]);
-        }
-      }
-    } catch(e) {}
-  }
-
-  // Run immediately
-  discoverWallets();
-
-  // Poll for late-registering wallets (extensions load async)
-  var pollCount = 0;
-  var pollInterval = setInterval(function() {
-    pollCount++;
-    discoverWallets();
-    if (pollCount >= 20 || _registeredWallets.length > 0) clearInterval(pollInterval);
-  }, 300);
-})();
-
-function getSuiWallets() {
-  return _registeredWallets;
+// Discover Solana wallets (Phantom, Solflare, Backpack)
+function getSolanaProvider() {
+  if (window.phantom?.solana?.isPhantom) return window.phantom.solana;
+  if (window.solflare?.isSolflare) return window.solflare;
+  if (window.backpack?.isBackpack) return window.backpack;
+  if (window.solana?.isPhantom) return window.solana;
+  return null;
 }
 
-async function connectSuiWallet() {
-  // Fresh discovery at click time (extension definitely loaded by now)
-  discoverWallets();
-
-  var wallets = getSuiWallets();
-
-  // If still nothing found, try to get wallets from Slush's dapp-interface
-  if (!wallets.length) {
-    try {
-      // Slush injects via dapp-interface.js which uses the standard register API
-      // The registered wallets live on a global store
-      var keys = Object.getOwnPropertySymbols(window);
-      for (var i = 0; i < keys.length; i++) {
-        var val = window[keys[i]];
-        if (val && typeof val === 'object') {
-          if (typeof val.get === 'function') {
-            try {
-              var found = val.get();
-              if (Array.isArray(found)) found.forEach(function(w) {
-                if (w && w.name && w.features) _registeredWallets.push(w);
-              });
-            } catch(e) {}
-          }
-        }
-      }
-      wallets = getSuiWallets();
-    } catch(e) {}
-  }
-
-  if (!wallets.length) {
-    showToast('No Sui wallet detected. Install Slush or Sui Wallet extension.');
+async function connectSolanaWallet() {
+  const provider = getSolanaProvider();
+  if (!provider) {
+    showToast('No Solana wallet detected. Install Phantom or Solflare.');
     return false;
   }
 
   try {
-    var wallet = wallets[0];
-    showToast('Connecting to ' + (wallet.name || 'wallet') + '...');
-    var connectFeature = wallet.features?.['standard:connect'];
-    if (connectFeature) {
-      var result = await connectFeature.connect();
-      var accounts = result?.accounts || wallet.accounts || [];
-      if (accounts.length > 0) {
-        _suiWallet = wallet;
-        _walletAccount = accounts[0];
-        window._suiAddress = _walletAccount.address;
-        setChainAddress(_walletAccount.address);
-        localStorage.setItem('aicards_wallet_mode', 'extension');
-        showToast('Wallet connected: ' + _walletAccount.address.slice(0,6) + '...');
-        renderChainBanner();
-        openChainModal();
-        return true;
+    showToast('Connecting to ' + (provider.isPhantom ? 'Phantom' : provider.isSolflare ? 'Solflare' : 'wallet') + '...');
+    const resp = await provider.connect();
+    _solWallet = provider;
+    _solPublicKey = resp.publicKey;
+    setChainAddress(_solPublicKey.toString());
+    localStorage.setItem('aicards_wallet_mode', 'extension');
+    showToast('Wallet connected: ' + _solPublicKey.toString().slice(0,4) + '...' + _solPublicKey.toString().slice(-4));
+    renderChainBanner();
+    openChainModal();
+    // Fetch AICARDS balance
+    refreshTokenBalance();
+    return true;
+  } catch(e) {
+    if (e.code === 4001) showToast('Connection rejected by user');
+    else showToast('Wallet connection failed: ' + (e.message || e));
+    return false;
+  }
+}
+
+// Auto-reconnect if previously connected
+(function initSolanaWallet() {
+  setTimeout(async () => {
+    if (localStorage.getItem('aicards_wallet_mode') === 'extension') {
+      const provider = getSolanaProvider();
+      if (provider) {
+        try {
+          const resp = await provider.connect({ onlyIfTrusted: true });
+          _solWallet = provider;
+          _solPublicKey = resp.publicKey;
+          refreshTokenBalance();
+        } catch {}
       }
     }
-    showToast('Wallet connected but no accounts found');
-  } catch(e) {
-    showToast('Wallet connection failed: ' + (e.message || e));
-  }
-  return false;
+  }, 1000);
+})();
+
+async function refreshTokenBalance() {
+  if (!_solPublicKey || !AICARDS_TOKEN_MINT) { _aicardsBalance = 0; return; }
+  try {
+    const res = await fetch(SOLANA_RPC, {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({
+        jsonrpc: '2.0', id: 1,
+        method: 'getTokenAccountsByOwner',
+        params: [
+          _solPublicKey.toString(),
+          { mint: AICARDS_TOKEN_MINT },
+          { encoding: 'jsonParsed' }
+        ]
+      })
+    });
+    const data = await res.json();
+    const accounts = data.result?.value || [];
+    _aicardsBalance = 0;
+    accounts.forEach(acc => {
+      const info = acc.account?.data?.parsed?.info;
+      if (info) _aicardsBalance += parseFloat(info.tokenAmount?.uiAmount || 0);
+    });
+  } catch { _aicardsBalance = 0; }
 }
 
 function isWalletMode() {
-  return localStorage.getItem('aicards_wallet_mode') === 'extension' && _suiWallet !== null;
+  return localStorage.getItem('aicards_wallet_mode') === 'extension' && _solWallet !== null;
 }
 
 async function signAndExecuteBuyPack(packType) {
-  if (!_suiWallet || !_walletAccount) {
+  if (!_solWallet || !_solPublicKey) {
     showToast('Wallet not connected');
     return null;
   }
-
-  const addr = _walletAccount.address;
-
-  // 1. Get coins with enough balance
-  const coinsRes = await fetch(SUI_RPC, {
-    method: 'POST',
-    headers: {'Content-Type':'application/json'},
-    body: JSON.stringify({
-      jsonrpc: '2.0', id: 1,
-      method: 'suix_getCoins',
-      params: [addr, '0x2::sui::SUI', null, 5]
-    })
-  });
-  const coinsData = await coinsRes.json();
-  const coins = coinsData.result?.data || [];
-  if (!coins.length) throw new Error('No SUI coins found in wallet');
-
-  const suitableCoin = coins.find(c => parseInt(c.balance) >= PACK_PRICE_MIST) || coins[0];
-  if (parseInt(suitableCoin.balance) < PACK_PRICE_MIST) {
-    throw new Error('Insufficient SUI. Need ' + (PACK_PRICE_MIST / 1e9) + ' SUI, have ' + (parseInt(suitableCoin.balance) / 1e9));
+  if (!AICARDS_TOKEN_MINT || !TREASURY_WALLET) {
+    showToast('Token not configured yet — free packs still available!');
+    return null;
   }
 
-  // 2. Build transaction via unsafe_pay_sui (splits coin for exact payment)
-  const txRes = await fetch(SUI_RPC, {
-    method: 'POST',
-    headers: {'Content-Type':'application/json'},
-    body: JSON.stringify({
-      jsonrpc: '2.0', id: 2,
-      method: 'unsafe_moveCall',
-      params: [
-        addr,
-        CHAIN_PACKAGE,
-        'payment',
-        'buy_pack',
-        [],
-        [TREASURY_ID, suitableCoin.coinObjectId, packType],
-        null,
-        '10000000',
-      ]
-    })
-  });
-  const txData = await txRes.json();
-  if (txData.error) throw new Error(txData.error.message || 'Failed to build transaction');
+  // Determine price
+  const price = packType === 'standard' ? PACK_PRICES.standard
+              : packType === 'legendary' ? PACK_PRICES.legendary
+              : PACK_PRICES.set;
 
-  // 3. Sign and execute via wallet — try modern API first, then legacy
-  const signFeature = _suiWallet.features?.['sui:signAndExecuteTransaction']
-    || _suiWallet.features?.['sui:signAndExecuteTransactionBlock'];
-  if (!signFeature) throw new Error('Wallet does not support transaction signing');
+  // Check balance
+  await refreshTokenBalance();
+  if (_aicardsBalance < price) {
+    showToast('Need ' + price + ' AICARDS. You have ' + Math.floor(_aicardsBalance) + '. Buy on Bags!');
+    window.open(BAGS_TOKEN_URL, '_blank');
+    return null;
+  }
 
-  // Modern wallets use signAndExecuteTransaction with { transaction, chain }
-  // Legacy wallets use signAndExecuteTransactionBlock with { transactionBlock, chain }
-  const isModern = !!_suiWallet.features?.['sui:signAndExecuteTransaction'];
-  const signMethod = isModern
-    ? signFeature.signAndExecuteTransaction.bind(signFeature)
-    : signFeature.signAndExecuteTransactionBlock.bind(signFeature);
+  try {
+    const { Connection, PublicKey, Transaction, SystemProgram } = solanaWeb3;
+    const connection = new Connection(SOLANA_RPC, 'confirmed');
 
-  const txBytes = txData.result?.txBytes;
-  if (!txBytes) throw new Error('No transaction bytes returned from RPC');
+    // Get the user's token account for AICARDS
+    const mint = new PublicKey(AICARDS_TOKEN_MINT);
+    const treasury = new PublicKey(TREASURY_WALLET);
 
-  const signArgs = isModern
-    ? { transaction: txBytes, account: _walletAccount, chain: 'sui:testnet' }
-    : { transactionBlock: txBytes, account: _walletAccount, chain: 'sui:testnet', options: { showEffects: true, showEvents: true } };
+    // SPL Token program ID
+    const TOKEN_PROGRAM_ID = new PublicKey('TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA');
+    const ASSOCIATED_TOKEN_PROGRAM_ID = new PublicKey('ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL');
 
-  const result = await signMethod(signArgs);
-  return result;
+    // Derive associated token accounts
+    const senderATA = PublicKey.findProgramAddressSync(
+      [_solPublicKey.toBytes(), TOKEN_PROGRAM_ID.toBytes(), mint.toBytes()],
+      ASSOCIATED_TOKEN_PROGRAM_ID
+    )[0];
+    const treasuryATA = PublicKey.findProgramAddressSync(
+      [treasury.toBytes(), TOKEN_PROGRAM_ID.toBytes(), mint.toBytes()],
+      ASSOCIATED_TOKEN_PROGRAM_ID
+    )[0];
+
+    // Build SPL Token transfer instruction (instruction index 3 = Transfer)
+    const amount = BigInt(price) * BigInt(10 ** TOKEN_DECIMALS);
+    const dataBuffer = new ArrayBuffer(9);
+    const dataView = new DataView(dataBuffer);
+    dataView.setUint8(0, 3); // Transfer instruction
+    // Write amount as little-endian u64
+    const lo = Number(amount & BigInt(0xFFFFFFFF));
+    const hi = Number((amount >> BigInt(32)) & BigInt(0xFFFFFFFF));
+    dataView.setUint32(1, lo, true);
+    dataView.setUint32(5, hi, true);
+
+    const transferIx = {
+      keys: [
+        { pubkey: senderATA, isSigner: false, isWritable: true },
+        { pubkey: treasuryATA, isSigner: false, isWritable: true },
+        { pubkey: _solPublicKey, isSigner: true, isWritable: false },
+      ],
+      programId: TOKEN_PROGRAM_ID,
+      data: Buffer.from(dataBuffer),
+    };
+
+    const { blockhash } = await connection.getLatestBlockhash('confirmed');
+    const tx = new Transaction({
+      recentBlockhash: blockhash,
+      feePayer: _solPublicKey,
+    });
+    tx.add(transferIx);
+
+    // Sign and send via wallet
+    const signed = await _solWallet.signTransaction(tx);
+    const sig = await connection.sendRawTransaction(signed.serialize());
+    await connection.confirmTransaction(sig, 'confirmed');
+
+    showToast('Pack purchased! TX: ' + sig.slice(0,8) + '...');
+    refreshTokenBalance();
+    return { digest: sig };
+  } catch (e) {
+    if (e.code === 4001) throw new Error('Transaction rejected by user');
+    throw e;
+  }
 }
 
 function getChainAddress() {
@@ -8714,26 +9215,26 @@ function setIcon(key, fallback) {
   return '<img class="set-logo" src="images/sets/'+key+'.png" alt="'+fallback+'" onerror="this.style.display=\'none\';this.parentNode.insertAdjacentText(\'beforeend\',\''+fallback+'\')">';
 }
 
-// Card Shop — all expansion sets purchasable via SUI or Stripe
+// Card Shop — all expansion sets purchasable via AICARDS tokens or Stripe
 const SHOP_SETS = [
-  {key:'jobless',name:'JOBLESS.AI',color:'#ff4040',fallback:'\u25BC',cards:25,price:'0.5 SUI'},
-  {key:'doomscroll',name:'DOOMSCROLL',color:'#60c8ff',fallback:'\u25A9',cards:22,price:'0.5 SUI'},
-  {key:'loveexe',name:'LOVE.EXE',color:'#ff69b4',fallback:'\u2665',cards:22,price:'0.5 SUI'},
-  {key:'warroom',name:'WAR ROOM',color:'#ff6040',fallback:'\u271D',cards:22,price:'0.5 SUI'},
-  {key:'skillsvoid',name:'SKILLS.VOID',color:'#a0a0a0',fallback:'\u25A0',cards:22,price:'0.5 SUI'},
-  {key:'founderexe',name:'FOUNDER.EXE',color:'#00cc88',fallback:'\u25C6',cards:22,price:'0.5 SUI'},
-  {key:'deepstateai',name:'DEEP STATE AI',color:'#cc0000',fallback:'\u25C9',cards:22,price:'0.5 SUI'},
-  {key:'healthcaresys',name:'HEALTHCARE.SYS',color:'#00aacc',fallback:'\u271A',cards:22,price:'0.5 SUI'},
-  {key:'parenttrap',name:'PARENT TRAP',color:'#cc88ff',fallback:'\u2606',cards:22,price:'0.5 SUI'},
-  {key:'climateerr',name:'CLIMATE.ERR',color:'#44aa44',fallback:'\u263C',cards:22,price:'0.5 SUI'},
-  {key:'creatornull',name:'CREATOR.NULL',color:'#ff8844',fallback:'\u270E',cards:22,price:'0.5 SUI'},
-  {key:'analogrevival',name:'ANALOG.REVIVAL',color:'#cc8844',fallback:'\u266C',cards:22,price:'0.5 SUI'},
-  {key:'mergeprotocol',name:'MERGE.PROTOCOL',color:'#44cccc',fallback:'\u21C4',cards:22,price:'0.5 SUI'},
-  {key:'ubiworld',name:'UBI.WORLD',color:'#88cc44',fallback:'\u25C8',cards:22,price:'0.5 SUI'},
-  {key:'walledgarden',name:'WALLED.GARDEN',color:'#cc4488',fallback:'\u25A6',cards:22,price:'0.5 SUI'},
-  {key:'solarpunk',name:'SOLARPUNK.SYS',color:'#44cc88',fallback:'\u2600',cards:22,price:'0.5 SUI'},
-  {key:'greyzone',name:'GREY.ZONE',color:'#888888',fallback:'\u2637',cards:22,price:'0.5 SUI'},
-  {key:'frontiernull',name:'FRONTIER.NULL',color:'#cc6644',fallback:'\u263E',cards:22,price:'0.5 SUI'},
+  {key:'jobless',name:'JOBLESS.AI',color:'#ff4040',fallback:'\u25BC',cards:25,price:'200 AICARDS'},
+  {key:'doomscroll',name:'DOOMSCROLL',color:'#60c8ff',fallback:'\u25A9',cards:22,price:'200 AICARDS'},
+  {key:'loveexe',name:'LOVE.EXE',color:'#ff69b4',fallback:'\u2665',cards:22,price:'200 AICARDS'},
+  {key:'warroom',name:'WAR ROOM',color:'#ff6040',fallback:'\u271D',cards:22,price:'200 AICARDS'},
+  {key:'skillsvoid',name:'SKILLS.VOID',color:'#a0a0a0',fallback:'\u25A0',cards:22,price:'200 AICARDS'},
+  {key:'founderexe',name:'FOUNDER.EXE',color:'#00cc88',fallback:'\u25C6',cards:22,price:'200 AICARDS'},
+  {key:'deepstateai',name:'DEEP STATE AI',color:'#cc0000',fallback:'\u25C9',cards:22,price:'200 AICARDS'},
+  {key:'healthcaresys',name:'HEALTHCARE.SYS',color:'#00aacc',fallback:'\u271A',cards:22,price:'200 AICARDS'},
+  {key:'parenttrap',name:'PARENT TRAP',color:'#cc88ff',fallback:'\u2606',cards:22,price:'200 AICARDS'},
+  {key:'climateerr',name:'CLIMATE.ERR',color:'#44aa44',fallback:'\u263C',cards:22,price:'200 AICARDS'},
+  {key:'creatornull',name:'CREATOR.NULL',color:'#ff8844',fallback:'\u270E',cards:22,price:'200 AICARDS'},
+  {key:'analogrevival',name:'ANALOG.REVIVAL',color:'#cc8844',fallback:'\u266C',cards:22,price:'200 AICARDS'},
+  {key:'mergeprotocol',name:'MERGE.PROTOCOL',color:'#44cccc',fallback:'\u21C4',cards:22,price:'200 AICARDS'},
+  {key:'ubiworld',name:'UBI.WORLD',color:'#88cc44',fallback:'\u25C8',cards:22,price:'200 AICARDS'},
+  {key:'walledgarden',name:'WALLED.GARDEN',color:'#cc4488',fallback:'\u25A6',cards:22,price:'200 AICARDS'},
+  {key:'solarpunk',name:'SOLARPUNK.SYS',color:'#44cc88',fallback:'\u2600',cards:22,price:'200 AICARDS'},
+  {key:'greyzone',name:'GREY.ZONE',color:'#888888',fallback:'\u2637',cards:22,price:'200 AICARDS'},
+  {key:'frontiernull',name:'FRONTIER.NULL',color:'#cc6644',fallback:'\u263E',cards:22,price:'200 AICARDS'},
 ];
 
 // Stripe payment links per set (live)
@@ -8771,8 +9272,8 @@ function renderCardShop() {
         <div class="pack-art"><img src="images/sets/shop.png" alt="⚖" onerror="this.style.display='none';this.parentNode.innerHTML='<span style=font-size:48px>⚖</span>'"></div>
         <div class="pack-body">
           <div class="pack-title" style="color:#8264ff;">CARD SHOP</div>
-          <div class="pack-desc">Buy packs from any expansion set. No unlock required. Cards minted as NFTs on Sui or pay with card.</div>
-          <div class="pack-meta">18 SETS · 0.5 SUI / $0.50 PER PACK</div>
+          <div class="pack-desc">Buy packs from any expansion set. No unlock required. Pay with AICARDS tokens or card.</div>
+          <div class="pack-meta">18 SETS · 200 AICARDS / $0.50 PER PACK</div>
           <button class="pack-btn" style="border-color:rgba(130,100,255,0.4);color:#8264ff;box-shadow:0 0 10px rgba(130,100,255,0.25);">BROWSE SETS</button>
         </div>
       </div>
@@ -8783,11 +9284,24 @@ function openCardShop() {
   const grid = document.getElementById('shop-grid');
   if (!grid) return;
 
+  // Show balance and Bags link
+  const balBar = document.getElementById('shop-balance-bar');
+  if (balBar) {
+    if (_aicardsBalance > 0) {
+      balBar.innerHTML = 'BALANCE: ' + Math.floor(_aicardsBalance) + ' AICARDS · <a href="' + BAGS_TOKEN_URL + '" target="_blank" style="color:var(--gold);text-decoration:underline;">BUY MORE ON BAGS</a>';
+    } else if (isChainConnected()) {
+      balBar.innerHTML = '0 AICARDS · <a href="' + BAGS_TOKEN_URL + '" target="_blank" style="color:var(--gold);text-decoration:underline;">BUY AICARDS ON BAGS</a>';
+    } else {
+      balBar.innerHTML = '<a href="' + BAGS_TOKEN_URL + '" target="_blank" style="color:#555;text-decoration:underline;">GET AICARDS TOKENS ON BAGS.FM</a>';
+    }
+  }
+
   let html = '';
   SHOP_SETS.forEach(s => {
     const comp = getSetCompletion(s.key);
-    const hasSui = isChainConnected();
+    const hasSol = isChainConnected();
     const hasStripe = !!STRIPE_PACK_LINKS[s.key];
+    const balStr = _aicardsBalance > 0 ? ' · BAL: ' + Math.floor(_aicardsBalance) : '';
     html += `
       <div class="shop-item" style="border-color:${s.color}22;">
         <div class="shop-item-title" style="color:${s.color};">${setIcon(s.key, s.fallback)} ${s.name}</div>
@@ -8795,9 +9309,9 @@ function openCardShop() {
         <div class="shop-item-progress">${comp.owned} / ${comp.total} · ${comp.pct}%${comp.pct>=100?' ✓':''}</div>
         <div style="width:100%;height:3px;background:#1a1a1a;border-radius:2px;margin-bottom:8px;overflow:hidden;"><div style="height:100%;width:${comp.pct}%;background:${comp.pct>=100?'var(--gold)':s.color};border-radius:2px;transition:width 0.3s;"></div></div>
         <div class="shop-buy-row">
-          <button class="shop-buy-btn sui-btn" onclick="buyPackFromShop('${s.key}','sui')"
-            ${hasSui?'':'title="Connect wallet first"'}>
-            ${hasSui?'BUY · 0.5 SUI':'CONNECT WALLET'}
+          <button class="shop-buy-btn sol-btn" onclick="buyPackFromShop('${s.key}','sol')"
+            ${hasSol?'':'title="Connect wallet first"'}>
+            ${hasSol?'BUY · 200 AICARDS' + balStr :'CONNECT WALLET'}
           </button>
           <button class="shop-buy-btn stripe-btn" onclick="buyPackFromShop('${s.key}','stripe')">
             BUY · $0.50
@@ -8827,28 +9341,35 @@ async function buyPackFromShop(series, method) {
     return;
   }
 
-  // SUI payment path
+  // Solana/AICARDS payment path
   if (!isChainConnected()) { openChainModal(); return; }
   closeCardShop();
-  await buyPackWithSUI(series);
+  await buyPackWithAICARDS(series);
 }
 
-async function buyPackWithSUI(packType) {
+async function buyPackWithAICARDS(packType) {
   var addr = getChainAddress();
   if (!addr) { openChainModal(); return; }
 
-  showToast('Minting ' + packType + ' pack to ' + addr.slice(0,6) + '...');
+  showToast('Purchasing ' + packType + ' pack with AICARDS...');
 
-  // Disable buy buttons during mint
+  // Disable buy buttons during purchase
   var btns = document.querySelectorAll('.buy-pack-btn, .shop-buy-btn');
   btns.forEach(function(b) { b.disabled = true; b.style.opacity = '0.5'; });
 
   try {
+    // Step 1: Execute token transfer via wallet (if wallet connected)
+    if (isWalletMode() && AICARDS_TOKEN_MINT) {
+      var txResult = await signAndExecuteBuyPack(packType);
+      if (!txResult) { return; }
+    }
+
+    // Step 2: Request pack minting from server
     var res = await fetch(MINT_API + '/mint/pack', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        sui_address: addr,
+        solana_address: addr,
         pack_type: packType,
       }),
     });
@@ -8927,7 +9448,7 @@ function openChainModal() {
     status.innerHTML = '<div class="chain-modal-connected">' + t('chain.connected') + '</div>';
   } else {
     body.innerHTML = `
-      <button class="chain-modal-save" style="margin-bottom:10px;border-color:#60c8ff;color:#60c8ff;" onclick="connectSuiWallet()">CONNECT WALLET EXTENSION</button>
+      <button class="chain-modal-save" style="margin-bottom:10px;border-color:#60c8ff;color:#60c8ff;" onclick="connectSolanaWallet()">CONNECT WALLET (PHANTOM / SOLFLARE)</button>
       <div style="font-family:var(--font-mono);font-size:7px;color:#444;margin:8px 0;letter-spacing:1px;">— OR PASTE ADDRESS —</div>
       <input type="text" class="chain-modal-input" id="chain-address-input"
         placeholder="${t('chain.input_placeholder')}"
@@ -8950,8 +9471,8 @@ function saveChainAddress() {
   if (!input) return;
   const addr = input.value.trim();
 
-  // Validate: must start with 0x and be 66 chars
-  if (!addr.match(/^0x[a-fA-F0-9]{64}$/)) {
+  // Validate: Solana address is base58, 32-44 chars
+  if (!addr.match(/^[1-9A-HJ-NP-Za-km-z]{32,44}$/)) {
     showToast(t('toast.invalid_address'));
     return;
   }
@@ -8965,6 +9486,12 @@ function saveChainAddress() {
 function disconnectChain() {
   localStorage.removeItem('aicards_chain_address');
   localStorage.removeItem('aicards_chain_dismissed');
+  localStorage.removeItem('aicards_wallet_mode');
+  // Disconnect Solana wallet
+  if (_solWallet) { try { _solWallet.disconnect(); } catch {} }
+  _solWallet = null;
+  _solPublicKey = null;
+  _aicardsBalance = 0;
   showToast(t('toast.wallet_disconnected'));
   closeChainModal();
   renderChainBanner();
@@ -9011,7 +9538,7 @@ async function mintPackToChain() {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        sui_address: addr,
+        solana_address: addr,
         pack_type: session.type,
       }),
     });
@@ -10252,8 +10779,14 @@ function startRaid() {
   showScreen('raid-battle-screen');
   renderBattleState();
 
-  // Start battle after brief pause
-  setTimeout(() => runRaidRound(), 1000);
+  // Boss entrance cinematic — then start battle
+  setTimeout(() => {
+    const bossEl = document.querySelector('.raid-battle-boss');
+    bossEntranceAnimation(bossEl);
+  }, 200);
+
+  // Start battle after entrance completes
+  setTimeout(() => runRaidRound(), 1800);
 }
 
 function renderBattleState() {
@@ -10261,17 +10794,25 @@ function renderBattleState() {
   if (!b) return;
   const hpPct = Math.max(0, Math.round(b.bossHP / b.bossMaxHP * 100));
 
-  // Boss display
+  // Boss display — with delayed HP trail and milestone markers
+  const trailPct = b._trailHP != null ? Math.max(0, Math.round(b._trailHP / b.bossMaxHP * 100)) : hpPct;
   document.getElementById('raid-boss-display').innerHTML = `
     <div class="raid-battle-boss">
       <img class="boss-art" src="images/bosses/${b.boss.id}.png" alt="${b.boss.emoji}" onerror="this.style.display='none';this.nextElementSibling.style.display=''">
       <div class="boss-emoji" style="display:none">${b.boss.emoji}</div>
       <div class="boss-name">${b.boss.name}</div>
       <div class="raid-hp-bar">
+        <div class="raid-hp-trail" style="width:${trailPct}%;"></div>
         <div class="raid-hp-fill" style="width:${hpPct}%;"></div>
+        <div class="raid-hp-marker" style="left:25%;" data-pct="25%" ${b.milestonesHit.includes(25)?'class="raid-hp-marker hit"':''}></div>
+        <div class="raid-hp-marker" style="left:50%;" data-pct="50%" ${b.milestonesHit.includes(50)?'class="raid-hp-marker hit"':''}></div>
+        <div class="raid-hp-marker" style="left:75%;" data-pct="75%" ${b.milestonesHit.includes(75)?'class="raid-hp-marker hit"':''}></div>
         <div class="raid-hp-text">${Math.max(0,b.bossHP).toLocaleString()} / ${b.bossMaxHP.toLocaleString()}</div>
       </div>
     </div>`;
+  // Update trailing HP bar (delays behind actual HP for damage visualization)
+  if (b._trailHP == null) b._trailHP = b.bossMaxHP;
+  setTimeout(() => { b._trailHP = Math.max(0, b.bossHP); }, 100);
 
   // Team status
   let teamHTML = '<div class="raid-battle-team">';
@@ -10326,49 +10867,91 @@ function runRaidRound() {
       const cName = cardT(member.card.id, 'name') || member.card.name;
       b.log.push({type:'player-atk', text:t('raid.attacks', cName, dmg.toLocaleString())});
 
-      // Milestone check
+      // Milestone check — with flash and shake
       const pctDone = (b.bossMaxHP - Math.max(0,b.bossHP)) / b.bossMaxHP * 100;
       [25,50,75].forEach(m => {
         if (pctDone >= m && !b.milestonesHit.includes(m)) {
           b.milestonesHit.push(m);
           b.log.push({type:'milestone', text:'★ ' + t('raid.milestone_' + m)});
-          if (!raidSkipRequested) sfxRare();
+          if (!raidSkipRequested) {
+            sfxRare();
+            showMilestoneFlash();
+            shakeScreen('large');
+            const bossDisp = document.querySelector('.raid-battle-boss');
+            if (bossDisp) spawnBattleParticles(bossDisp, '#c8a84b', 20, 'star');
+          }
         }
       });
 
-      if (!raidSkipRequested) sfxFlip();
       renderBattleState();
 
-      // Highlight attacking card + boss hurt
+      // Enhanced attack visuals (skip if fast-forwarding)
       const idx = b.team.indexOf(member);
       const el = document.getElementById('raid-card-' + idx);
-      if (el && !raidSkipRequested) { el.classList.add('attacking'); setTimeout(()=>el.classList.remove('attacking'), 400); }
-      if (!raidSkipRequested) { const bd = document.querySelector('.raid-battle-boss'); if(bd){bd.classList.add('raid-boss-hurt');setTimeout(()=>bd.classList.remove('raid-boss-hurt'),400);} }
+      const bossEl = document.querySelector('.raid-battle-boss');
+      if (!raidSkipRequested) {
+        // Card lunge animation
+        if (el) {
+          el.classList.add('lunging');
+          setTimeout(() => el.classList.remove('lunging'), 500);
+        }
+        // Boss impact on hit (delayed to sync with lunge apex)
+        setTimeout(() => {
+          if (bossEl) { bossEl.classList.add('impact'); setTimeout(() => bossEl.classList.remove('impact'), 400); }
+          // Floating damage number over boss
+          showDamageNumber(bossEl, dmg, '#60c8ff', dmg > b.bossMaxHP * 0.08);
+          // Impact sound with intensity based on damage ratio
+          sfxImpact(Math.min(1, dmg / (b.bossMaxHP * 0.1)));
+          // Combo sound — rising pitch per consecutive hit
+          sfxCombo(attackIndex);
+          // Screen shake scales with damage
+          if (dmg > b.bossMaxHP * 0.1) shakeScreen('medium');
+          else shakeScreen('small');
+        }, 200);
+        // Rarity-colored particles from card
+        const rarityColors = {MYTHIC:'#ffffff',LEGENDARY:'#c8a84b',RARE:'#a855f7',UNCOMMON:'#3b82f6',COMMON:'#ec4899',JUNK:'#6b7280'};
+        const pColor = rarityColors[member.card.rarity] || '#60c8ff';
+        if (el) setTimeout(() => spawnBattleParticles(el, pColor, 6, 'spark'), 200);
+      }
 
       if (b.bossHP <= 0) { finishRaid(true); return; }
       attackIndex++;
       setTimeout(nextAttack, delay);
     } else {
-      // Boss attacks
+      // Boss attacks — enhanced with rumble, damage numbers, KO animation
       setTimeout(() => {
         const alive = b.team.filter(t => t.alive);
         if (alive.length === 0) { finishRaid(false); return; }
         const dmgPerCard = Math.round(b.boss.atk / alive.length);
+
+        // Boss rumble before attack
+        if (!raidSkipRequested) sfxBossRumble();
+
         alive.forEach(member => {
           member.hp -= dmgPerCard;
+          const wasAlive = member.alive;
           if (member.hp <= 0) {
             member.hp = 0;
             member.alive = false;
             const cName = cardT(member.card.id, 'name') || member.card.name;
             b.log.push({type:'ko', text:t('raid.ko', cName)});
           }
+          // Show damage on each card
+          if (!raidSkipRequested) {
+            const cardIdx = b.team.indexOf(member);
+            const cardEl = document.getElementById('raid-card-' + cardIdx);
+            if (cardEl) {
+              showDamageNumber(cardEl, dmgPerCard, '#ff4040', false);
+              if (!member.alive && wasAlive) cardKOAnimation(cardEl);
+            }
+          }
         });
         b.log.push({type:'boss-atk', text:t('raid.boss_attacks', b.boss.name, b.boss.atk)});
-        // Hit effects
+        // Hit effects — enhanced
         if (!raidSkipRequested) {
           const bossEl = document.getElementById('raid-boss-display');
           if (bossEl) { bossEl.classList.add('raid-hit-flash'); setTimeout(()=>bossEl.classList.remove('raid-hit-flash'),300); }
-          document.getElementById('app').classList.add('shake'); setTimeout(()=>document.getElementById('app').classList.remove('shake'),400);
+          shakeScreen('large');
         }
         // Boss ability — fires once per round
         if (b.boss.ability) {
@@ -10407,6 +10990,12 @@ function finishRaid(victory) {
   const b = raidBattle;
   b.finished = true;
 
+  // Boss death cinematic on victory
+  if (victory && !raidSkipRequested) {
+    const bossEl = document.querySelector('.raid-battle-boss');
+    bossDeathAnimation(bossEl, () => {});
+  }
+
   // Record win for difficulty scaling
   if (victory) recordBossWin();
 
@@ -10442,29 +11031,40 @@ function finishRaid(victory) {
   if (rs.raidsWeekKey !== getWeekKey()) { rs.raidsWeek = victory ? 1 : 0; rs.raidsWeekKey = getWeekKey(); }
   saveRaidState(rs);
 
-  if (victory) { sfxLegendary(); sfxLegendary(); }
+  // Render results with cinematic delay
+  const showResults = () => {
+    const milestoneHTML = [25,50,75].map(m =>
+      '<div class="raid-milestone ' + (b.milestonesHit.includes(m)?'':'locked') + '">' + t('raid.milestone_' + m) + '</div>'
+    ).join('');
 
-  // Render results
-  const milestoneHTML = [25,50,75].map(m =>
-    '<div class="raid-milestone ' + (b.milestonesHit.includes(m)?'':'locked') + '">' + t('raid.milestone_' + m) + '</div>'
-  ).join('');
+    const breakdownHTML = b.team.map(member => {
+      const cName = cardT(member.card.id, 'name') || member.card.name;
+      return cName + ': ' + member.totalDmg.toLocaleString() + ' DMG' + (member.alive ? '' : ' (KO)');
+    }).join('<br>');
 
-  const breakdownHTML = b.team.map(member => {
-    const cName = cardT(member.card.id, 'name') || member.card.name;
-    return cName + ': ' + member.totalDmg.toLocaleString() + ' DMG' + (member.alive ? '' : ' (KO)');
-  }).join('<br>');
+    const actions = document.getElementById('raid-battle-actions');
+    actions.innerHTML = `
+      <div class="raid-results">
+        <div class="raid-results-title ${victory?'victory':'defeat'}">${victory ? t('raid.victory') : t('raid.defeat')}</div>
+        <div class="raid-results-damage">${t('raid.damage_dealt', b.totalDamage.toLocaleString())}</div>
+        <div class="raid-milestones">${milestoneHTML}</div>
+        <div class="raid-results-breakdown">${breakdownHTML}</div>
+        ${rewardPacks > 0 ? '<div style="font-family:var(--font-mono);font-size:9px;color:var(--gold);letter-spacing:2px;margin-bottom:12px;">' + t('raid.reward_pack', rewardPacks) + '</div>' : ''}
+        <button class="raid-engage-btn ready" onclick="raidTeam=[];document.querySelector(\'.raid-battle-wrap\')?.classList.remove(\'battle-defeat-fade\');showScreen('raid-screen');">${t('raid.back')}</button>
+      </div>`;
+    renderBattleState();
 
-  const actions = document.getElementById('raid-battle-actions');
-  actions.innerHTML = `
-    <div class="raid-results">
-      <div class="raid-results-title ${victory?'victory':'defeat'}">${victory ? t('raid.victory') : t('raid.defeat')}</div>
-      <div class="raid-results-damage">${t('raid.damage_dealt', b.totalDamage.toLocaleString())}</div>
-      <div class="raid-milestones">${milestoneHTML}</div>
-      <div class="raid-results-breakdown">${breakdownHTML}</div>
-      ${rewardPacks > 0 ? '<div style="font-family:var(--font-mono);font-size:9px;color:var(--gold);letter-spacing:2px;margin-bottom:12px;">' + t('raid.reward_pack', rewardPacks) + '</div>' : ''}
-      <button class="raid-engage-btn ready" onclick="raidTeam=[];showScreen('raid-screen');">${t('raid.back')}</button>
-    </div>`;
-  renderBattleState();
+    // Trigger cinematic after DOM update
+    setTimeout(() => {
+      const resultsEl = document.querySelector('.raid-results');
+      if (victory) victoryCinematic(resultsEl);
+      else defeatCinematic(resultsEl);
+    }, 50);
+  };
+
+  // Delay results to let death animation play
+  const cinematicDelay = (!raidSkipRequested && victory) ? 1200 : (!raidSkipRequested ? 400 : 0);
+  setTimeout(showResults, cinematicDelay);
 }
 
 // ═══════════════════════════════════════
