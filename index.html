@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
 <title>AI CARDS — 2030 Survival Edition</title>
 <meta name="description" content="448 cards. 19 sets. NFTs on Solana. The humans who survived AI — and the worlds they built after. Open packs. Collect what survives.">
 <meta property="og:title" content="AI CARDS — 2030 Survival Edition">
@@ -3839,40 +3839,56 @@ img.set-logo { width:48px;height:48px;object-fit:contain;filter:grayscale(1) con
   /* Prevent horizontal scroll globally */
   html,body{overflow-x:hidden;max-width:100vw}
 
-  /* Screen padding */
-  .screen{padding:0 10px 48px}
+  /* Reduce scanline overlay on mobile for GPU perf */
+  body::before{background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,0.03) 3px,rgba(0,0,0,0.03) 6px)}
+
+  /* Safe area insets for notched phones */
+  .screen{padding:0 max(10px,env(safe-area-inset-left)) calc(80px + env(safe-area-inset-bottom)) max(10px,env(safe-area-inset-right))}
+  .sound-toggle{top:max(10px,env(safe-area-inset-top));right:max(10px,env(safe-area-inset-right))}
+  #lang-selector{top:max(8px,env(safe-area-inset-top))!important;left:max(8px,env(safe-area-inset-left))!important}
 
   /* ── Header ── */
   .site-header{padding:16px 0 12px;margin-bottom:18px}
-  .header-eyebrow{font-size:7px;letter-spacing:3px}
+  .header-eyebrow{font-size:8px;letter-spacing:3px}
   .header-title{font-size:clamp(28px,8vw,46px);letter-spacing:4px}
-  .header-sub{font-size:7px;letter-spacing:3px}
-  .nav-pills{gap:6px;margin-top:10px}
-  .nav-pill{font-size:8px;letter-spacing:1px;padding:7px 14px;min-height:36px}
+  .header-sub{font-size:8px;letter-spacing:3px}
+
+  /* ── Nav pills: horizontal scroll on mobile ── */
+  .nav-pills{gap:6px;margin-top:10px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;justify-content:flex-start;padding:0 4px;width:100%}
+  .nav-pills::-webkit-scrollbar{display:none}
+  .nav-pill{font-size:9px;letter-spacing:1px;padding:7px 14px;min-height:36px;white-space:nowrap;flex-shrink:0}
 
   /* ── Stats bar ── */
   .stats-bar{gap:10px 16px;padding:8px 0;margin-bottom:18px}
-  .stat-chip{font-size:8px;letter-spacing:1px}
+  .stat-chip{font-size:9px;letter-spacing:1px}
 
   /* ── Pack grid: 2 columns ── */
   .pack-grid{grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px}
   .pack-card{padding:14px 10px}
   .pack-icon-wrap{font-size:32px;margin-bottom:7px}
   .pack-title{font-size:13px;letter-spacing:1px;margin-bottom:4px}
-  .pack-desc{font-size:8px;margin-bottom:7px}
-  .pack-meta{font-size:7px;margin-bottom:10px}
-  .pack-btn{font-size:8px;padding:8px 12px;min-height:36px;display:block;width:100%}
+  .pack-desc{font-size:9px;margin-bottom:7px}
+  .pack-meta{font-size:8px;margin-bottom:10px}
+  .pack-btn{font-size:9px;padding:8px 12px;min-height:44px;display:block;width:100%}
 
   /* ── Daily packs bar ── */
   .daily-packs-bar{padding:12px 0 6px}
   .daily-packs-count{font-size:15px;letter-spacing:1px}
   .daily-packs-timer{font-size:9px}
-  .daily-packs-pity{font-size:8px}
+  .daily-packs-pity{font-size:9px}
 
   /* ── Daily missions ── */
   .daily-missions{padding:12px 14px;margin-top:18px}
   .daily-missions-title{font-size:10px;letter-spacing:2px;margin-bottom:8px}
-  .mission-row{padding:6px 0;font-size:8px}
+  .mission-row{padding:6px 0;font-size:9px}
+
+  /* ── Language selector: bigger touch targets ── */
+  .lang-btn{font-size:9px;padding:6px 10px;min-height:36px;min-width:36px;display:inline-flex;align-items:center;justify-content:center}
+  .landing-lang .lang-btn{font-size:10px;padding:8px 12px}
+
+  /* ── Raid team: show remove buttons always (no hover on touch) ── */
+  .raid-team-slot .slot-remove{opacity:0.7}
+  .raid-team-slot .slot-remove:active{opacity:1}
 
   /* ── Card anatomy — responsive width ── */
   .card{width:clamp(220px,65vw,280px);height:auto;aspect-ratio:2/3}
@@ -3903,15 +3919,15 @@ img.set-logo { width:48px;height:48px;object-fit:contain;filter:grayscale(1) con
   /* ── Modal — full-width card on mobile ── */
   .modal-card-wrap{transform:scale(1)}
   .modal-card-wrap .card{width:clamp(280px,85vw,340px);height:auto;aspect-ratio:2/3}
-  .modal-close{top:12px;right:14px;font-size:11px;padding:10px}
-  .modal-share-row{flex-wrap:wrap;gap:8px;justify-content:center;bottom:16px!important;left:50%!important;transform:translateX(-50%)!important;width:90vw}
+  .modal-close{top:max(12px,env(safe-area-inset-top));right:max(14px,env(safe-area-inset-right));font-size:14px;padding:12px;min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:center}
+  .modal-share-row{flex-wrap:wrap;gap:8px;justify-content:center;bottom:max(16px,env(safe-area-inset-bottom))!important;left:50%!important;transform:translateX(-50%)!important;width:90vw}
   .share-btn{padding:10px 14px;font-size:20px;min-height:44px;flex:0;min-width:44px;text-align:center}
 
   /* ── Collection ── */
-  .coll-cards{grid-template-columns:repeat(auto-fill,minmax(75px,1fr));gap:6px}
+  .coll-cards{grid-template-columns:repeat(auto-fill,minmax(80px,1fr));gap:8px}
   .coll-title{font-size:18px;letter-spacing:2px}
-  .coll-thumb-name{font-size:8px}
-  .coll-thumb-atk{font-size:7px}
+  .coll-thumb-name{font-size:9px}
+  .coll-thumb-atk{font-size:8px}
   .coll-thumb-emoji{font-size:22px}
 
   /* ── Profile ── */
@@ -3943,23 +3959,42 @@ img.set-logo { width:48px;height:48px;object-fit:contain;filter:grayscale(1) con
 
   /* ── Toast ── */
   .toast{font-size:9px;padding:9px 18px;max-width:90vw;text-align:center}
+
+  /* ── Mobile bottom nav bar ── */
+  .mobile-bottom-nav{display:flex!important}
+
+  /* ── Swipe hint on deck ── */
+  .deck-swipe-hint{display:block!important}
+
+  /* ── Chain modal: full-width on mobile ── */
+  .chain-modal-box{max-width:100%;margin:0 8px;border-radius:10px}
+  .chain-modal-input{font-size:14px}
+
+  /* ── Card shop modal ── */
+  .card-shop-box{max-width:100%;margin:0 8px}
+
+  /* ── Raid battle log: taller on mobile so scrollable ── */
+  .raid-battle-log-wrap{max-height:200px;min-height:100px}
+
+  /* ── Raid card grid: bigger thumbs for tap targets ── */
+  .raid-card-grid{grid-template-columns:repeat(auto-fill,minmax(72px,1fr));gap:6px}
 }
 
 /* ════════════════════════════════════════
    MOBILE — 400px (small phones)
    ════════════════════════════════════════ */
 @media(max-width:400px){
-  /* Screen padding */
-  .screen{padding:0 8px 48px}
+  /* Screen padding — safe area + bottom nav clearance */
+  .screen{padding:0 max(8px,env(safe-area-inset-left)) calc(80px + env(safe-area-inset-bottom)) max(8px,env(safe-area-inset-right))}
 
   /* ── Header ── */
   .header-title{font-size:clamp(24px,9vw,38px);letter-spacing:3px}
-  .header-eyebrow{font-size:6px;letter-spacing:2px}
-  .nav-pill{padding:7px 10px;font-size:7px}
+  .header-eyebrow{font-size:8px;letter-spacing:2px}
+  .nav-pill{padding:7px 10px;font-size:8px}
 
-  /* ── Stats bar ── */
+  /* ─�� Stats bar ── */
   .stats-bar{gap:8px 12px}
-  .stat-chip{font-size:7px}
+  .stat-chip{font-size:8px}
 
   /* ── Pack grid: 1 column ── */
   .pack-grid{grid-template-columns:1fr;gap:8px}
@@ -3967,11 +4002,11 @@ img.set-logo { width:48px;height:48px;object-fit:contain;filter:grayscale(1) con
   /* ── Card anatomy — fill small screens ── */
   .card{width:clamp(200px,70vw,260px);height:auto;aspect-ratio:2/3}
   .card-name{font-size:clamp(9px,2.6vw,11px)}
-  .card-type-line{font-size:clamp(6.5px,1.6vw,7.5px);padding:1px 5px}
-  .card-textbox{font-size:clamp(8px,2.8vw,11px);padding:4px 6px}
-  .card-flavor{font-size:clamp(8px,2.8vw,11px)}
+  .card-type-line{font-size:clamp(7px,1.6vw,8px);padding:1px 5px}
+  .card-textbox{font-size:clamp(9px,2.8vw,11px);padding:4px 6px}
+  .card-flavor{font-size:clamp(9px,2.8vw,11px)}
   .card-ptbox{font-size:clamp(7px,1.8vw,8px);padding:1px 4px}
-  .card-set-info{font-size:clamp(4px,1.2vw,5px)}
+  .card-set-info{font-size:clamp(5px,1.2vw,6px)}
 
   /* ── Card deck ── */
   .card-deck{width:clamp(200px,70vw,260px);height:auto;aspect-ratio:2/3}
@@ -4000,21 +4035,54 @@ img.set-logo { width:48px;height:48px;object-fit:contain;filter:grayscale(1) con
 
   /* ── Daily missions ── */
   .daily-missions{padding:10px 12px}
-  .mission-row{font-size:7.5px;flex-wrap:wrap;gap:2px}
+  .mission-row{font-size:8px;flex-wrap:wrap;gap:2px}
 
   /* ── Skip / CTA ── */
-  .skip-btn{padding:10px 22px;font-size:8px;min-height:36px}
+  .skip-btn{padding:10px 22px;font-size:9px;min-height:36px}
   .cta-btn{padding:11px 22px;font-size:9px;min-height:44px}
 
   /* ── Collection ── */
-  .coll-cards{grid-template-columns:repeat(auto-fill,minmax(70px,1fr));gap:5px}
+  .coll-cards{grid-template-columns:repeat(auto-fill,minmax(72px,1fr));gap:6px}
   .coll-title{font-size:16px}
   .coll-thumb-emoji{font-size:18px}
 
   /* ── Sound toggle ── */
-  .sound-toggle{width:48px;height:48px;font-size:18px;top:8px;right:8px}
+  .sound-toggle{width:48px;height:48px;font-size:18px;top:max(8px,env(safe-area-inset-top));right:max(8px,env(safe-area-inset-right))}
+
+  /* ── Modal share row: safe area ── */
+  .modal-share-row{bottom:max(10px,env(safe-area-inset-bottom))!important}
 }
-/* ═══ LOADING SCREEN ═══ */
+/* ═══ MOBILE BOTTOM NAV BAR ═══ */
+.mobile-bottom-nav {
+  display:none;
+  position:fixed;bottom:0;left:0;right:0;z-index:500;
+  background:linear-gradient(180deg,rgba(18,18,20,0.95),rgba(12,12,14,0.98));
+  border-top:1px solid #2a2a2a;
+  padding:6px 0 max(6px,env(safe-area-inset-bottom));
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  justify-content:space-around;align-items:center;
+}
+.mobile-bottom-nav .bnav-btn {
+  font-family:var(--font-mono);font-size:8px;letter-spacing:1px;
+  color:#555;background:none;border:none;cursor:pointer;
+  display:flex;flex-direction:column;align-items:center;gap:2px;
+  padding:6px 12px;min-width:60px;min-height:44px;justify-content:center;
+  transition:color .2s;
+}
+.mobile-bottom-nav .bnav-btn .bnav-icon{font-size:18px;line-height:1;}
+.mobile-bottom-nav .bnav-btn.active{color:var(--red);}
+.mobile-bottom-nav .bnav-btn:active{color:var(--red);}
+
+/* ═══ DECK SWIPE HINT ═══ */
+.deck-swipe-hint {
+  display:none;
+  font-family:var(--font-mono);font-size:9px;letter-spacing:2px;
+  color:#333;text-align:center;margin-top:8px;
+  animation:fadeInOut 3s ease-in-out;
+}
+@keyframes fadeInOut{0%{opacity:0}20%{opacity:1}80%{opacity:1}100%{opacity:0}}
+
+/* ══��� LOADING SCREEN ══�� */
 #loading-screen {
   position:fixed;inset:0;z-index:10000;
   background:var(--bg);
@@ -4108,7 +4176,7 @@ setTimeout(function(){var el=document.getElementById('loading-screen');if(el){el
     </div>
   </div>
   <div id="cardModal" class="modal-overlay" onclick="closeModal(event)">
-    <div class="modal-close">[ ESC ]</div>
+    <div class="modal-close" id="modal-close-btn">&#10005;</div>
     <div class="modal-card-wrap">
       <div class="card" id="modal-card">
         <div class="card-front" id="modal-card-front"></div>
@@ -4356,6 +4424,22 @@ setTimeout(function(){var el=document.getElementById('loading-screen');if(el){el
     </div>
     <div class="footer-copy">AI CARDS 2030</div>
   </div>
+
+  <!-- MOBILE BOTTOM NAV -->
+  <nav class="mobile-bottom-nav" id="mobile-bottom-nav">
+    <button class="bnav-btn active" data-screen="pack-screen" onclick="mobileNav('pack-screen')">
+      <span class="bnav-icon">&#9827;</span>
+      <span>PACKS</span>
+    </button>
+    <button class="bnav-btn" data-screen="collection-screen" onclick="mobileNav('collection-screen')">
+      <span class="bnav-icon">&#9830;</span>
+      <span>COLLECT</span>
+    </button>
+    <button class="bnav-btn" data-screen="raid-screen" onclick="mobileNav('raid-screen')">
+      <span class="bnav-icon">&#9876;</span>
+      <span>RAIDS</span>
+    </button>
+  </nav>
 </div>
 
 <script>
@@ -7978,6 +8062,18 @@ function showScreen(id) {
   if(id==='collection-screen') { renderCollection(); renderSetProgress(); }
   if(id==='pack-screen') { updateStats(); renderProfile(); updateDailyUI(); renderWeeklyGoal(); renderCardShop(); renderChainBanner(); renderChainStatus(); renderSet2Zone(); renderSet3Zone(); renderSet4Zone(); renderSet5Zone(); renderSet6Zone(); renderSet7Zone(); renderSet8Zone(); renderSet9Zone(); renderSet10Zone(); renderSet11Zone(); renderSet12Zone(); renderSet13Zone(); renderSet14Zone(); renderSet15Zone(); renderSet16Zone(); renderSet17Zone(); renderSet18Zone(); renderSet19Zone(); renderSetProgress(); renderPackHistory(); renderLeaderboard(); }
   if(id==='raid-screen') renderRaidScreen();
+  // Sync mobile bottom nav
+  document.querySelectorAll('.bnav-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.screen === id);
+  });
+  // Hide bottom nav on landing/opening screens
+  const bnav = document.getElementById('mobile-bottom-nav');
+  if(bnav) bnav.style.display = (id==='landing-screen'||id==='opening-screen'||id==='raid-battle-screen') ? 'none' : '';
+}
+
+function mobileNav(id) {
+  showScreen(id);
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 
 function updateStats() {
@@ -8182,6 +8278,32 @@ function deckNav(dir) {
   updateDeckPositions();
   updateDeckUI();
 }
+
+// ── Touch swipe for card deck navigation ──
+(function() {
+  let touchStartX = 0, touchStartY = 0, swiping = false;
+  const SWIPE_THRESHOLD = 50;
+  document.addEventListener('touchstart', function(e) {
+    const deck = e.target.closest('.card-deck, .deck-card, .opening-wrap');
+    if (!deck) return;
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+    swiping = true;
+  }, {passive: true});
+  document.addEventListener('touchend', function(e) {
+    if (!swiping) return;
+    swiping = false;
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    const dy = e.changedTouches[0].clientY - touchStartY;
+    // Only trigger if horizontal swipe > vertical scroll
+    if (Math.abs(dx) < SWIPE_THRESHOLD || Math.abs(dx) < Math.abs(dy)) return;
+    // Check we're on the opening screen
+    const openingScreen = document.getElementById('opening-screen');
+    if (!openingScreen || !openingScreen.classList.contains('active')) return;
+    if (dx < 0) deckNav(1);  // swipe left = next
+    else deckNav(-1);         // swipe right = prev
+  }, {passive: true});
+})();
 
 function updateDeckPositions() {
   const cards = document.querySelectorAll('.deck-card');
@@ -11106,6 +11228,9 @@ renderSetProgress();
 renderPackHistory();
 renderLeaderboard();
 renderCardOfDay();
+
+// Hide mobile bottom nav on landing (shown when user enters main screens via showScreen)
+(function(){var bn=document.getElementById('mobile-bottom-nav');if(bn)bn.style.display='none';})();
 
 // Dismiss loading screen — fonts + hard timeout fallback
 (function dismissLoader() {
