@@ -139,87 +139,99 @@ module aicards::card {
     }
 
     // ═══════════════════════════════════════
-    // MINT PACK — admin mints 5 cards at once
+    // MINT PACK — admin mints a variable-size pack at once
     // ═══════════════════════════════════════
-    /// Batch mint 5 cards to a recipient (server determines rarity off-chain,
-    /// sends the resolved card data). This keeps gas costs predictable.
+    const EPackFieldLenMismatch: u64 = 1;
+
+    /// Batch mint a pack of cards to a recipient. Server resolves rarities
+    /// off-chain and sends parallel vectors (one entry per card). Vector-based
+    /// so pack size can change without a contract redeploy — current game
+    /// default is 10 cards per pack.
     public fun mint_pack(
         _admin: &AdminCap,
         pack_type: String,
-        // Card 1
-        c1_card_id: String, c1_name: String, c1_rarity: String, c1_category: String,
-        c1_set: String, c1_kscore: String, c1_atk: String, c1_def: String,
-        c1_flavor: String, c1_symbol: String, c1_number: u64, c1_image_url: String,
-        // Card 2
-        c2_card_id: String, c2_name: String, c2_rarity: String, c2_category: String,
-        c2_set: String, c2_kscore: String, c2_atk: String, c2_def: String,
-        c2_flavor: String, c2_symbol: String, c2_number: u64, c2_image_url: String,
-        // Card 3
-        c3_card_id: String, c3_name: String, c3_rarity: String, c3_category: String,
-        c3_set: String, c3_kscore: String, c3_atk: String, c3_def: String,
-        c3_flavor: String, c3_symbol: String, c3_number: u64, c3_image_url: String,
-        // Card 4
-        c4_card_id: String, c4_name: String, c4_rarity: String, c4_category: String,
-        c4_set: String, c4_kscore: String, c4_atk: String, c4_def: String,
-        c4_flavor: String, c4_symbol: String, c4_number: u64, c4_image_url: String,
-        // Card 5
-        c5_card_id: String, c5_name: String, c5_rarity: String, c5_category: String,
-        c5_set: String, c5_kscore: String, c5_atk: String, c5_def: String,
-        c5_flavor: String, c5_symbol: String, c5_number: u64, c5_image_url: String,
+        card_ids_in: vector<String>,
+        names: vector<String>,
+        rarities: vector<String>,
+        categories: vector<String>,
+        sets: vector<String>,
+        kscores: vector<String>,
+        atks: vector<String>,
+        defs: vector<String>,
+        flavors: vector<String>,
+        symbols: vector<String>,
+        numbers: vector<u64>,
+        image_urls: vector<String>,
         recipient: address,
         ctx: &mut TxContext,
     ) {
-        let mut card_ids = vector::empty<ID>();
+        let n = vector::length(&card_ids_in);
+        assert!(vector::length(&names) == n, EPackFieldLenMismatch);
+        assert!(vector::length(&rarities) == n, EPackFieldLenMismatch);
+        assert!(vector::length(&categories) == n, EPackFieldLenMismatch);
+        assert!(vector::length(&sets) == n, EPackFieldLenMismatch);
+        assert!(vector::length(&kscores) == n, EPackFieldLenMismatch);
+        assert!(vector::length(&atks) == n, EPackFieldLenMismatch);
+        assert!(vector::length(&defs) == n, EPackFieldLenMismatch);
+        assert!(vector::length(&flavors) == n, EPackFieldLenMismatch);
+        assert!(vector::length(&symbols) == n, EPackFieldLenMismatch);
+        assert!(vector::length(&numbers) == n, EPackFieldLenMismatch);
+        assert!(vector::length(&image_urls) == n, EPackFieldLenMismatch);
 
-        // Mint card 1
-        let card1 = Card {
-            id: object::new(ctx), card_id: c1_card_id, name: c1_name, rarity: c1_rarity,
-            category: c1_category, set: c1_set, kscore: c1_kscore, atk: c1_atk, def: c1_def,
-            flavor: c1_flavor, symbol: c1_symbol, number: c1_number, image_url: c1_image_url,
-        };
-        vector::push_back(&mut card_ids, object::id(&card1));
-        transfer::public_transfer(card1, recipient);
+        let mut card_ids_out = vector::empty<ID>();
 
-        // Mint card 2
-        let card2 = Card {
-            id: object::new(ctx), card_id: c2_card_id, name: c2_name, rarity: c2_rarity,
-            category: c2_category, set: c2_set, kscore: c2_kscore, atk: c2_atk, def: c2_def,
-            flavor: c2_flavor, symbol: c2_symbol, number: c2_number, image_url: c2_image_url,
-        };
-        vector::push_back(&mut card_ids, object::id(&card2));
-        transfer::public_transfer(card2, recipient);
+        let mut card_ids_in = card_ids_in;
+        let mut names = names;
+        let mut rarities = rarities;
+        let mut categories = categories;
+        let mut sets = sets;
+        let mut kscores = kscores;
+        let mut atks = atks;
+        let mut defs = defs;
+        let mut flavors = flavors;
+        let mut symbols = symbols;
+        let mut numbers = numbers;
+        let mut image_urls = image_urls;
 
-        // Mint card 3
-        let card3 = Card {
-            id: object::new(ctx), card_id: c3_card_id, name: c3_name, rarity: c3_rarity,
-            category: c3_category, set: c3_set, kscore: c3_kscore, atk: c3_atk, def: c3_def,
-            flavor: c3_flavor, symbol: c3_symbol, number: c3_number, image_url: c3_image_url,
+        let mut i = 0;
+        while (i < n) {
+            let card = Card {
+                id: object::new(ctx),
+                card_id: vector::pop_back(&mut card_ids_in),
+                name: vector::pop_back(&mut names),
+                rarity: vector::pop_back(&mut rarities),
+                category: vector::pop_back(&mut categories),
+                set: vector::pop_back(&mut sets),
+                kscore: vector::pop_back(&mut kscores),
+                atk: vector::pop_back(&mut atks),
+                def: vector::pop_back(&mut defs),
+                flavor: vector::pop_back(&mut flavors),
+                symbol: vector::pop_back(&mut symbols),
+                number: vector::pop_back(&mut numbers),
+                image_url: vector::pop_back(&mut image_urls),
+            };
+            vector::push_back(&mut card_ids_out, object::id(&card));
+            transfer::public_transfer(card, recipient);
+            i = i + 1;
         };
-        vector::push_back(&mut card_ids, object::id(&card3));
-        transfer::public_transfer(card3, recipient);
 
-        // Mint card 4
-        let card4 = Card {
-            id: object::new(ctx), card_id: c4_card_id, name: c4_name, rarity: c4_rarity,
-            category: c4_category, set: c4_set, kscore: c4_kscore, atk: c4_atk, def: c4_def,
-            flavor: c4_flavor, symbol: c4_symbol, number: c4_number, image_url: c4_image_url,
-        };
-        vector::push_back(&mut card_ids, object::id(&card4));
-        transfer::public_transfer(card4, recipient);
-
-        // Mint card 5
-        let card5 = Card {
-            id: object::new(ctx), card_id: c5_card_id, name: c5_name, rarity: c5_rarity,
-            category: c5_category, set: c5_set, kscore: c5_kscore, atk: c5_atk, def: c5_def,
-            flavor: c5_flavor, symbol: c5_symbol, number: c5_number, image_url: c5_image_url,
-        };
-        vector::push_back(&mut card_ids, object::id(&card5));
-        transfer::public_transfer(card5, recipient);
+        vector::destroy_empty(card_ids_in);
+        vector::destroy_empty(names);
+        vector::destroy_empty(rarities);
+        vector::destroy_empty(categories);
+        vector::destroy_empty(sets);
+        vector::destroy_empty(kscores);
+        vector::destroy_empty(atks);
+        vector::destroy_empty(defs);
+        vector::destroy_empty(flavors);
+        vector::destroy_empty(symbols);
+        vector::destroy_empty(numbers);
+        vector::destroy_empty(image_urls);
 
         event::emit(PackOpened {
             pack_type,
             opener: recipient,
-            card_ids,
+            card_ids: card_ids_out,
         });
     }
 

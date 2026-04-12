@@ -636,21 +636,18 @@ def pick_card(series: str | None) -> dict:
     return random.choice(weighted)
 
 
+PACK_SIZE = 10
+
+
 def build_pack(pack_type: str) -> list[dict]:
-    """Build a pack of 5 cards for the given pack type."""
+    """Build a pack of 10 cards for the given pack type."""
     if pack_type == "standard":
-        return [pick_card(None) for _ in range(5)]
-    elif pack_type == "legendary":
-        # Guaranteed legendary + 4 weighted
-        legendaries = [c for c in get_set_cards(None) if c["rarity"] == "LEGENDARY"]
-        pack = [random.choice(legendaries)] + [pick_card(None) for _ in range(4)]
-        random.shuffle(pack)
-        return pack
+        return [pick_card(None) for _ in range(PACK_SIZE)]
     elif pack_type in ("jobless", "doomscroll", "loveexe", "warroom", "skillsvoid",
                        "founderexe", "deepstateai", "healthcaresys", "parenttrap",
                        "climateerr", "creatornull", "analogrevival", "mergeprotocol",
                        "ubiworld", "walledgarden", "solarpunk", "greyzone",
                        "frontiernull"):
-        return [pick_card(pack_type) for _ in range(5)]
+        return [pick_card(pack_type) for _ in range(PACK_SIZE)]
     else:
         raise ValueError(f"Unknown pack type: {pack_type}")

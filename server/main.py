@@ -36,7 +36,7 @@ TOKEN_PROGRAM_ID = "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
 BUBBLEGUM_PROGRAM_ID = "BGUMAp9Gq7iTEuizy4pqaxsTyUCBK68MDfK752kRSfkm"
 
 VALID_PACK_TYPES = {
-    "standard", "legendary", "jobless", "doomscroll", "loveexe", "warroom",
+    "standard", "jobless", "doomscroll", "loveexe", "warroom",
     "skillsvoid", "founderexe", "deepstateai", "healthcaresys", "parenttrap",
     "climateerr", "creatornull", "analogrevival", "mergeprotocol", "ubiworld",
     "walledgarden", "solarpunk", "greyzone", "frontiernull",
@@ -140,7 +140,7 @@ async def verify_payment(signature: str, buyer: str, pack_type: str) -> bool:
                 # Verify amount matches pack price
                 amount = int(info.get("amount", 0))
                 expected_prices = {
-                    "standard": 100, "legendary": 500,
+                    "standard": 100,
                 }
                 expected = expected_prices.get(pack_type, 200) * (10 ** 9)
                 if amount >= expected:
@@ -223,7 +223,7 @@ async def health():
 
 @app.post("/mint/pack", response_model=MintResponse)
 async def mint_pack(req: MintRequest):
-    """Open a pack and mint 5 compressed NFT cards to the user's Solana address."""
+    """Open a pack and mint 10 compressed NFT cards to the user's Solana address."""
     paid = req.payment_signature is not None
     log.info("Pack request: %s → %s (paid: %s)", req.pack_type, req.solana_address[:8], paid)
 
@@ -290,7 +290,6 @@ async def token_info():
         "bags_url": f"https://bags.fm/token/{AICARDS_TOKEN_MINT}" if AICARDS_TOKEN_MINT else None,
         "pack_prices": {
             "standard": 100,
-            "legendary": 500,
             "set": 200,
         },
         "decimals": 9,

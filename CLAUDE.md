@@ -82,10 +82,11 @@ aicards-tcg/
 
 ## Pack Types
 
+All packs contain **10 cards**. The former REDUNDANCY (5-card, 1 Legendary guaranteed) lane was removed when packs grew to 10 — a 10-card weighted pull already makes a Legendary likely, so the guaranteed lane was redundant.
+
 | Pack | Set | Description |
 |------|-----|-------------|
 | 2030 SURVIVAL | Set 1 | Full pool, weighted by rarity |
-| REDUNDANCY | Set 1 | 1 Legendary guaranteed + 4 weighted |
 | JOBLESS.AI | Set 2 | All jobless series cards, weighted |
 | DOOMSCROLL | Set 3 | All doomscroll series cards, weighted |
 | LOVE.EXE | Set 4 | All loveexe series cards, weighted |
@@ -149,18 +150,19 @@ This is a social commentary piece disguised as a card game. The tone is dark hum
 
 ## Gameplay Systems
 
-- **Daily packs**: 5 free per day, resets at midnight
-- **Daily missions**: Open 5 packs, Pull Legendary, Pull 3 rarities, Share card
+- **Free packs**: 3 free per hour, refreshes with each raid boss rotation (top of the UTC hour). Pack size is **10 cards** (see `PACK_SIZE` constant in both `index.html` and `server/card_data.py`).
+- **Pack types**: Survival (weighted full-pool) + one per expansion set. The former "REDUNDANCY" legendary-guaranteed lane was removed — 10-card packs make it redundant.
+- **Daily missions**: Open packs, Pull Legendary, Pull 3 rarities, Share card
 - **Weekly goal**: Complete all daily missions 7 days → 1 free Jobless.ai pack
-- **Pity system**: Guaranteed Legendary after 10 packs without one
+- **Pity system**: Guaranteed Legendary after 5 packs without one (lowered from 10 when packs grew to 10 cards)
 - **Progressive unlock**: Each set gates behind previous set's 100% completion
 - **Survival profile**: Sovereignty vs Dependency based on card pulls
 - **Raid Boss battles**: Hourly rotating bosses (12 total, 3 tiers), 5-card team selection, turn-based auto-combat
   - Damage formula: BaseATK × RarityMult × CategoryBonus × AntiKarpathy
   - Set bonus (3+ same set = ×1.5), Solidarity combo (Human Trade + Human Purpose = ×1.25)
   - Milestones at 25%/50%/75% boss HP for bonus reward packs
-  - 5 attempts per boss, reward packs bypass daily limit
-  - Boss rotation: hourly, UTC hour % 12, APEX at US peak hours
+  - 5 attempts per boss, reward packs bypass the hourly free-pack limit
+  - Boss rotation: hourly, UTC hour % 12, APEX at US peak hours. Free-pack budget and countdown timer are keyed to the same rotation so they refresh in lockstep.
 
 ## Internationalization (i18n)
 

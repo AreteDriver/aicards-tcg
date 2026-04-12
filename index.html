@@ -4258,7 +4258,7 @@ setTimeout(function(){var el=document.getElementById('loading-screen');if(el){el
         </div>
       </div>
       <div class="daily-packs-bar">
-        <div class="daily-packs-count"><span data-i18n="stats.free_packs">FREE PACKS</span>: <span id="dp-remaining">10</span> / 10</div>
+        <div class="daily-packs-count"><span data-i18n="stats.free_packs">FREE PACKS</span>: <span id="dp-remaining">3</span> / 3</div>
         <div class="daily-packs-timer" id="dp-timer"><span data-i18n="stats.next_pack">Next pack in</span>: --:--</div>
         <div class="daily-packs-pity" id="dp-pity-wrap" style="font-size:9px;letter-spacing:2px;margin-top:4px;"></div>
         <div style="display:flex;gap:12px;justify-content:center;margin-top:4px;font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:1px;color:#666;"><span id="dp-pity-counter"></span><span id="dp-streak"></span></div>
@@ -4269,7 +4269,7 @@ setTimeout(function(){var el=document.getElementById('loading-screen');if(el){el
         <div class="stat-chip"><span data-i18n="stats.owned">OWNED</span>: <span id="st-owned">0</span>/<span id="st-total">0</span></div>
         <div class="stat-chip"><span data-i18n="stats.legendaries">LEGENDARIES</span>: <span id="st-leg">0</span></div>
         <div class="stat-chip"><span data-i18n="stats.packs_opened">PACKS OPENED</span>: <span id="st-packs">0</span></div>
-        <div class="stat-chip"><span data-i18n="stats.pity">PITY</span>: <span id="st-pity">0</span>/10</div>
+        <div class="stat-chip"><span data-i18n="stats.pity">PITY</span>: <span id="st-pity">0</span>/5</div>
       </div>
       <!-- SET 1: 2030 SURVIVAL -->
       <div style="width:100%;max-width:960px;margin-bottom:8px;">
@@ -4280,17 +4280,8 @@ setTimeout(function(){var el=document.getElementById('loading-screen');if(el){el
           <div class="pack-art" id="pack-art-standard"></div>
           <div class="pack-body">
             <div class="pack-title" data-i18n="pack.survival">2030 SURVIVAL</div>
-            <div class="pack-desc" data-i18n="pack.survival_desc">Five cards from the full pool. Trades, purpose, displacement, AI products, lore. See what the algorithm gives you.</div>
-            <div class="pack-meta" data-i18n="pack.survival_meta">5 CARDS · FULL POOL · WEIGHTED</div>
-            <button class="pack-btn" data-i18n="pack.open_btn">▶ OPEN PACK</button>
-          </div>
-        </div>
-        <div class="pack-card p-trade" onclick="openPack('legendary')">
-          <div class="pack-art" id="pack-art-legendary"></div>
-          <div class="pack-body">
-            <div class="pack-title" data-i18n="pack.redundancy">REDUNDANCY</div>
-            <div class="pack-desc" data-i18n="pack.redundancy_desc">Guaranteed one Legendary. The trades that will outlast all of it. The rest is fate.</div>
-            <div class="pack-meta" data-i18n="pack.redundancy_meta">5 CARDS · 1 LEGENDARY GUARANTEED</div>
+            <div class="pack-desc" data-i18n="pack.survival_desc">Ten cards from the full pool. Trades, purpose, displacement, AI products, lore. See what the algorithm gives you.</div>
+            <div class="pack-meta" data-i18n="pack.survival_meta">10 CARDS · FULL POOL · WEIGHTED</div>
             <button class="pack-btn" data-i18n="pack.open_btn">▶ OPEN PACK</button>
           </div>
         </div>
@@ -7594,23 +7585,48 @@ function collectionAdd(id){S.collection[id]=(S.collection[id]||0)+1;}
 let session = {pack:[],revealed:[],type:'standard',currentIndex:0};
 
 // ═══════════════════════════════════════
-// DAILY PACK SYSTEM
+// PACK ECONOMY
+//   - Hourly free-pack budget refreshes with the raid boss rotation
+//   - Daily mission progress is calendar-day scoped (independent of pack budget)
 // ═══════════════════════════════════════
-const DAILY_MAX = 10;
+const DAILY_MAX = 3; // free packs per hourly boss rotation
 const GOLD_PACK_PITY = 50; // pulls until gold pack
+const PACK_SIZE = 10;
 
+// Hourly pack-budget key — UTC hour, aligned with getCurrentBoss()
+function getHourlyKey() {
+  const d = new Date();
+  return `aicards_hourly_${d.getUTCFullYear()}-${String(d.getUTCMonth()+1).padStart(2,'0')}-${String(d.getUTCDate()).padStart(2,'0')}_${String(d.getUTCHours()).padStart(2,'0')}`;
+}
+
+// Calendar-day mission/streak key — local time
 function getDailyKey() {
   const d = new Date();
   return `aicards_daily_${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
 }
 
+// Hourly pack budget — only tracks packsOpened
+function getHourlyState() {
+  try {
+    const raw = localStorage.getItem(getHourlyKey());
+    if (raw) return JSON.parse(raw);
+  } catch(e) {}
+  return { packsOpened: 0 };
+}
+
+function saveHourlyState(hs) {
+  localStorage.setItem(getHourlyKey(), JSON.stringify(hs));
+}
+
+// Calendar-day mission state — tracks missions, share, streak presence
 function getDailyState() {
   const key = getDailyKey();
   try {
     const raw = localStorage.getItem(key);
-    if (raw) return JSON.parse(raw);
+    // Legacy entries used '1' as a streak marker — treat as empty mission state
+    if (raw && raw !== '1') return JSON.parse(raw);
   } catch(e) {}
-  return { packsOpened: 0, legendaryPulled: false, shared: false, raritiesSeen: [] };
+  return { legendaryPulled: false, shared: false, raritiesSeen: [], packsOpenedToday: 0 };
 }
 
 function saveDailyState(ds) {
@@ -7618,12 +7634,16 @@ function saveDailyState(ds) {
 }
 
 function getDailyPacksRemaining() {
-  return Math.max(0, DAILY_MAX - getDailyState().packsOpened);
+  return Math.max(0, DAILY_MAX - getHourlyState().packsOpened);
 }
 
 function consumeDailyPack() {
+  const hs = getHourlyState();
+  hs.packsOpened++;
+  saveHourlyState(hs);
+  // Mirror into the calendar-day record so the "open N packs" mission can track daily progress
   const ds = getDailyState();
-  ds.packsOpened++;
+  ds.packsOpenedToday = (ds.packsOpenedToday || 0) + 1;
   saveDailyState(ds);
 }
 
@@ -7665,7 +7685,7 @@ function updateDailyUI() {
 
   // Pity counter & streak on pack screen
   const dpPity = document.getElementById('dp-pity-counter');
-  if (dpPity) dpPity.textContent = 'PITY: ' + S.pityCounter + '/10';
+  if (dpPity) dpPity.textContent = 'PITY: ' + S.pityCounter + '/5';
   const dpStreak = document.getElementById('dp-streak');
   if (dpStreak) { var sk=0,dd=new Date(); for(var i=0;i<365;i++){var k='aicards_daily_'+dd.getFullYear()+'-'+String(dd.getMonth()+1).padStart(2,'0')+'-'+String(dd.getDate()).padStart(2,'0'); try{if(localStorage.getItem(k)){sk++;dd.setDate(dd.getDate()-1);}else break;}catch(e){break;}} dpStreak.textContent=sk>0?'\uD83D\uDD25 '+sk+'-DAY STREAK':''; }
 
@@ -7678,9 +7698,10 @@ function updateDailyUI() {
   const dmColl = document.getElementById('dm-collection');
   const dmCollTotal = document.getElementById('dm-coll-total');
   if (dmPulls) {
-    const ct = Math.min(3, S.pulls);
+    const opened = ds.packsOpenedToday || 0;
+    const ct = Math.min(3, opened);
     dmPulls.textContent = `${ct}/3`;
-    dmPulls.classList.toggle('done', S.pulls >= 3);
+    dmPulls.classList.toggle('done', opened >= 3);
   }
   if (dmRaid) {
     dmRaid.textContent = `${Math.min(1,raidsToday)}/1`;
@@ -7702,20 +7723,26 @@ function updateDailyUI() {
   checkMissionCompletions(ds);
 }
 
-// Midnight countdown timer
+// Hourly countdown timer — ticks toward the next raid boss rotation
 let dailyTimerInterval = null;
+let lastDailyTimerKey = null;
 function startDailyTimer() {
   if (dailyTimerInterval) clearInterval(dailyTimerInterval);
   function tick() {
     const now = new Date();
-    const midnight = new Date(now);
-    midnight.setHours(24,0,0,0);
-    const diff = midnight - now;
-    const h = Math.floor(diff / 3600000);
-    const m = Math.floor((diff % 3600000) / 60000);
+    const nextHour = new Date(now);
+    nextHour.setUTCHours(now.getUTCHours() + 1, 0, 0, 0);
+    const diff = nextHour - now;
+    const m = Math.floor(diff / 60000);
     const s = Math.floor((diff % 60000) / 1000);
     const el = document.getElementById('dp-timer');
-    if (el) el.textContent = t('stats.resets_in') + `: ${h}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+    if (el) el.textContent = t('stats.resets_in') + `: ${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+    // Refresh pack count UI when the hour flips so free packs appear automatically
+    const key = getDailyKey();
+    if (lastDailyTimerKey && lastDailyTimerKey !== key) {
+      updateDailyUI();
+    }
+    lastDailyTimerKey = key;
   }
   tick();
   dailyTimerInterval = setInterval(tick, 1000);
@@ -7896,25 +7923,21 @@ function pickSetCard(series, excludeIds) {
 function buildPack(type) {
   const pack = [];
   const drawn = new Set();
-  const pityTriggered = S.pityCounter >= 10;
+  const pityTriggered = S.pityCounter >= 5;
 
   function addCard(card) { pack.push(card); drawn.add(card.id); }
 
   if (type==='standard') {
     // Mythic cross-set bleed: 1-in-10000 chance per slot to pull a mythic from any set
-    for(let i=0;i<5;i++) {
+    for(let i=0;i<PACK_SIZE;i++) {
       if (Math.random() < 0.0001) {
         const mythics = CARDS.filter(c=>c.rarity==='MYTHIC' && !drawn.has(c.id));
         if (mythics.length > 0) { addCard(mythics[Math.floor(Math.random()*mythics.length)]); continue; }
       }
       addCard(pickCard(WEIGHTS, null, drawn));
     }
-  } else if (type==='legendary') {
-    addCard(pickCard(WEIGHTS,'LEGENDARY', drawn));
-    for(let i=0;i<4;i++) addCard(pickCard(WEIGHTS, null, drawn));
-    for(let i=pack.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[pack[i],pack[j]]=[pack[j],pack[i]];}
   } else if (['jobless','doomscroll','loveexe','warroom','skillsvoid','founderexe','deepstateai','healthcaresys','parenttrap','climateerr','creatornull','analogrevival','mergeprotocol','ubiworld','walledgarden','solarpunk','greyzone','frontiernull'].includes(type)) {
-    for(let i=0;i<5;i++) addCard(pickSetCard(type, drawn));
+    for(let i=0;i<PACK_SIZE;i++) addCard(pickSetCard(type, drawn));
   }
 
   // Pity: force one Legendary in a random slot if no legendary already present
@@ -7967,7 +7990,7 @@ const TUTORIAL_STEPS = [
   },
   {
     title: 'OPEN PACKS',
-    body: 'You get <strong>5 free packs per day</strong>. Each pack has 5 cards. Tap to reveal them one by one.',
+    body: 'You get <strong>3 free packs per hour</strong>, refreshing with each raid boss rotation. Each pack has 10 cards. Tap to reveal them one by one.',
     icon: '📦'
   },
   {
@@ -7982,7 +8005,7 @@ const TUTORIAL_STEPS = [
   },
   {
     title: 'PITY SYSTEM',
-    body: 'No Legendary after 10 packs? The pity system guarantees one. Your pity counter is visible on the pack screen.',
+    body: 'No Legendary after 5 packs? The pity system guarantees one. Your pity counter is visible on the pack screen.',
     icon: '🎯'
   },
   {
@@ -8117,11 +8140,11 @@ function openPack(type) {
   // Clear raid origin when opening regular pack
   session.fromRaid = false;
 
-  // Pity: increment before build (build reads pityCounter >= 10)
+  // Pity: increment before build (build reads pityCounter >= 5)
   S.pityCounter++;
   session.pack = buildPack(type);
   logEvent('pack', { user_address: getUserAddress(), set_name: type });
-  session.revealed = new Array(5).fill(false);
+  session.revealed = new Array(PACK_SIZE).fill(false);
   session.type = type;
   session.currentIndex = 0;
   S.packs++;
@@ -8130,14 +8153,14 @@ function openPack(type) {
   // Consume daily pack
   consumeDailyPack();
 
-  const labelKeys = {standard:'pack.survival_pack',legendary:'pack.redundancy_pack',jobless:'pack.jobless_pack',doomscroll:'pack.doomscroll_pack',loveexe:'pack.loveexe_pack',warroom:'pack.warroom_pack',skillsvoid:'pack.skillsvoid_pack',founderexe:'pack.founderexe_pack',deepstateai:'pack.deepstateai_pack',healthcaresys:'pack.healthcaresys_pack',parenttrap:'pack.parenttrap_pack',climateerr:'pack.climateerr_pack',creatornull:'pack.creatornull_pack',analogrevival:'pack.analogrevival_pack',mergeprotocol:'pack.mergeprotocol_pack',ubiworld:'pack.ubiworld_pack',walledgarden:'pack.walledgarden_pack',solarpunk:'pack.solarpunk_pack',greyzone:'pack.greyzone_pack',frontiernull:'pack.frontiernull_pack'};
+  const labelKeys = {standard:'pack.survival_pack',jobless:'pack.jobless_pack',doomscroll:'pack.doomscroll_pack',loveexe:'pack.loveexe_pack',warroom:'pack.warroom_pack',skillsvoid:'pack.skillsvoid_pack',founderexe:'pack.founderexe_pack',deepstateai:'pack.deepstateai_pack',healthcaresys:'pack.healthcaresys_pack',parenttrap:'pack.parenttrap_pack',climateerr:'pack.climateerr_pack',creatornull:'pack.creatornull_pack',analogrevival:'pack.analogrevival_pack',mergeprotocol:'pack.mergeprotocol_pack',ubiworld:'pack.ubiworld_pack',walledgarden:'pack.walledgarden_pack',solarpunk:'pack.solarpunk_pack',greyzone:'pack.greyzone_pack',frontiernull:'pack.frontiernull_pack'};
   document.getElementById('op-pack-name').textContent = t(labelKeys[type]);
   document.getElementById('legendaryBeam').classList.remove('active');
 
   // Pack tear animation
-  const PACK_COLORS = {standard:'#2196c8',legendary:'#c8a84b',jobless:'#ff4040',doomscroll:'#60c8ff',loveexe:'#ff69b4',warroom:'#ff6040',skillsvoid:'#a0a0a0',founderexe:'#00cc88',deepstateai:'#cc0000',healthcaresys:'#00aacc',parenttrap:'#cc88ff',climateerr:'#44aa44',creatornull:'#ff8844',analogrevival:'#cc8844',mergeprotocol:'#44cccc',ubiworld:'#88cc44',walledgarden:'#cc4488',solarpunk:'#44cc88',greyzone:'#888888',frontiernull:'#cc6644'};
+  const PACK_COLORS = {standard:'#2196c8',jobless:'#ff4040',doomscroll:'#60c8ff',loveexe:'#ff69b4',warroom:'#ff6040',skillsvoid:'#a0a0a0',founderexe:'#00cc88',deepstateai:'#cc0000',healthcaresys:'#00aacc',parenttrap:'#cc88ff',climateerr:'#44aa44',creatornull:'#ff8844',analogrevival:'#cc8844',mergeprotocol:'#44cccc',ubiworld:'#88cc44',walledgarden:'#cc4488',solarpunk:'#44cc88',greyzone:'#888888',frontiernull:'#cc6644'};
   const packColor = PACK_COLORS[type] || '#888';
-  const packTypeKeys = {standard:'pack.survival',legendary:'pack.redundancy',jobless:'pack.jobless',doomscroll:'pack.doomscroll',loveexe:'pack.loveexe',warroom:'pack.warroom',skillsvoid:'pack.skillsvoid',founderexe:'pack.founderexe',deepstateai:'pack.deepstateai',healthcaresys:'pack.healthcaresys',parenttrap:'pack.parenttrap',climateerr:'pack.climateerr',creatornull:'pack.creatornull',analogrevival:'pack.analogrevival',mergeprotocol:'pack.mergeprotocol',ubiworld:'pack.ubiworld',walledgarden:'pack.walledgarden',solarpunk:'pack.solarpunk',greyzone:'pack.greyzone',frontiernull:'pack.frontiernull'};
+  const packTypeKeys = {standard:'pack.survival',jobless:'pack.jobless',doomscroll:'pack.doomscroll',loveexe:'pack.loveexe',warroom:'pack.warroom',skillsvoid:'pack.skillsvoid',founderexe:'pack.founderexe',deepstateai:'pack.deepstateai',healthcaresys:'pack.healthcaresys',parenttrap:'pack.parenttrap',climateerr:'pack.climateerr',creatornull:'pack.creatornull',analogrevival:'pack.analogrevival',mergeprotocol:'pack.mergeprotocol',ubiworld:'pack.ubiworld',walledgarden:'pack.walledgarden',solarpunk:'pack.solarpunk',greyzone:'pack.greyzone',frontiernull:'pack.frontiernull'};
   const packTypeLabel = t(packTypeKeys[type]);
   const tearEl = document.getElementById('packTear');
   const tearInner = document.getElementById('packTearInner');
@@ -8193,7 +8216,7 @@ function renderCardDeck() {
 }
 
 function showCardFaceUp(index) {
-  if (index >= 5) return;
+  if (index >= PACK_SIZE) return;
   const cards = document.querySelectorAll('.deck-card');
   if (!cards || !cards[index]) return;
   // Hide all other cards immediately
@@ -8258,11 +8281,11 @@ function showCardFaceUp(index) {
 }
 
 function advanceCard() {
-  if (session.currentIndex < 4) {
+  if (session.currentIndex < PACK_SIZE - 1) {
     showCardFaceUp(session.currentIndex + 1);
     updateDeckUI();
   } else {
-    // All 5 shown — updateDeckUI will show summary
+    // All shown — updateDeckUI will show summary
     updateDeckUI();
   }
 }
@@ -8270,7 +8293,7 @@ function advanceCard() {
 
 function deckNav(dir) {
   const newIdx = session.currentIndex + dir;
-  if (newIdx < 0 || newIdx >= 5) return;
+  if (newIdx < 0 || newIdx >= PACK_SIZE) return;
   // Can only go forward if current card is revealed
   if (dir > 0 && !session.revealed[session.currentIndex]) return;
 
@@ -8328,7 +8351,7 @@ function updateDeckUI() {
   const strip = document.getElementById('revealed-strip');
 
   // Counter
-  counter.textContent = `${revealed} / 5`;
+  counter.textContent = `${revealed} / ${PACK_SIZE}`;
 
   // Build mini card strip — shows revealed cards, tap to revisit
   let stripHTML = '';
@@ -8342,13 +8365,13 @@ function updateDeckUI() {
   if (strip) strip.innerHTML = stripHTML;
 
   // Tap hint
-  if (revealed < 5 && revealed > 0) {
+  if (revealed < PACK_SIZE && revealed > 0) {
     stripHTML += `<div style="font-family:var(--font-mono);font-size:8px;color:#333;letter-spacing:2px;width:100%;text-align:center;margin-top:4px;">${t('opening.tap_next')}</div>`;
     if (strip) strip.innerHTML = stripHTML;
   }
 
   // CTA area
-  if (revealed < 5) {
+  if (revealed < PACK_SIZE) {
     cta.innerHTML = revealed > 0 ? `<button class="skip-btn" onclick="revealAllDeck()">${t('opening.skip_reveal')}</button>` : '';
   } else {
     // All revealed — show summary
@@ -8403,7 +8426,7 @@ function openNextPack() {
 
 function revealAllDeck() {
   let delay = 0;
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < PACK_SIZE; i++) {
     if (!session.revealed[i]) {
       setTimeout(() => {
         showCardFaceUp(i);
@@ -9041,13 +9064,13 @@ function claimDailyReward() {
 
 function openRaidRewardPack2(setType) {
   session.pack = buildPack(setType);
-  session.revealed = new Array(5).fill(false);
+  session.revealed = new Array(PACK_SIZE).fill(false);
   session.type = setType;
   session.isRewardPack = true;
   session.currentIndex = 0;
   S.packs++;
   S.newCards.clear();
-  const setLabels = {standard:'SURVIVAL',legendary:'REDUNDANCY',jobless:'JOBLESS.AI',doomscroll:'DOOMSCROLL',loveexe:'LOVE.EXE',warroom:'WAR ROOM',skillsvoid:'SKILLS.VOID',founderexe:'FOUNDER.EXE',deepstateai:'DEEP STATE AI',healthcaresys:'HEALTHCARE.SYS',parenttrap:'PARENT TRAP',climateerr:'CLIMATE.ERR',creatornull:'CREATOR.NULL',analogrevival:'ANALOG.REVIVAL',mergeprotocol:'MERGE.PROTOCOL',ubiworld:'UBI.WORLD',walledgarden:'WALLED.GARDEN',solarpunk:'SOLARPUNK.SYS',greyzone:'GREY.ZONE',frontiernull:'FRONTIER.NULL'};
+  const setLabels = {standard:'SURVIVAL',jobless:'JOBLESS.AI',doomscroll:'DOOMSCROLL',loveexe:'LOVE.EXE',warroom:'WAR ROOM',skillsvoid:'SKILLS.VOID',founderexe:'FOUNDER.EXE',deepstateai:'DEEP STATE AI',healthcaresys:'HEALTHCARE.SYS',parenttrap:'PARENT TRAP',climateerr:'CLIMATE.ERR',creatornull:'CREATOR.NULL',analogrevival:'ANALOG.REVIVAL',mergeprotocol:'MERGE.PROTOCOL',ubiworld:'UBI.WORLD',walledgarden:'WALLED.GARDEN',solarpunk:'SOLARPUNK.SYS',greyzone:'GREY.ZONE',frontiernull:'FRONTIER.NULL'};
   document.getElementById('op-pack-name').textContent = 'DAILY REWARD: ' + (setLabels[setType] || setType.toUpperCase());
   document.getElementById('legendaryBeam').classList.remove('active');
   renderCardDeck();
@@ -9134,7 +9157,6 @@ const BAGS_TOKEN_URL = AICARDS_TOKEN_MINT ? 'https://bags.fm/token/' + AICARDS_T
 // Pack prices in AICARDS tokens (with 9 decimals)
 const PACK_PRICES = {
   standard: 100,   // 100 AICARDS for standard pack
-  legendary: 500,  // 500 AICARDS for legendary pack
   set: 200,        // 200 AICARDS for set-specific packs
 };
 const TOKEN_DECIMALS = 9;
@@ -9239,7 +9261,6 @@ async function signAndExecuteBuyPack(packType) {
 
   // Determine price
   const price = packType === 'standard' ? PACK_PRICES.standard
-              : packType === 'legendary' ? PACK_PRICES.legendary
               : PACK_PRICES.set;
 
   // Check balance
@@ -10365,7 +10386,7 @@ function renderLeaderboard() {
     '<div class="leaderboard-row"><span class="leaderboard-label">DUPLICATES</span><span class="leaderboard-value">' + totalDupes + '</span></div>' +
     '<div class="leaderboard-row"><span class="leaderboard-label">LOGIN STREAK</span><span class="leaderboard-value">' + streak + ' day' + (streak!==1?'s':'') + '</span></div>' +
     '<div class="leaderboard-row"><span class="leaderboard-label">RAIDS WON</span><span class="leaderboard-value">' + raidWins + ' / ' + totalRaids + '</span></div>' +
-    '<div class="leaderboard-row"><span class="leaderboard-label">PITY COUNTER</span><span class="leaderboard-value">' + S.pityCounter + ' / 10</span></div>' +
+    '<div class="leaderboard-row"><span class="leaderboard-label">PITY COUNTER</span><span class="leaderboard-value">' + S.pityCounter + ' / 5</span></div>' +
     '<div class="leaderboard-row"><span class="leaderboard-label">RAREST PULL</span><span class="leaderboard-value" style="color:' + (rarestCard ? RARITY_COLORS[rarestCard.rarity] : '#555') + ';">' + (rarestCard ? (cardT(rarestCard.id,'name') || rarestCard.name) : '—') + '</span></div>';
 }
 
@@ -10849,14 +10870,14 @@ function openRaidRewardPack() {
   saveRaidState(rs);
   // Bypass daily limit — directly build and open a pack
   session.pack = buildPack(rewardSet);
-  session.revealed = new Array(5).fill(false);
+  session.revealed = new Array(PACK_SIZE).fill(false);
   session.type = rewardSet;
   session.isRewardPack = true; // Flag so "Next Pack" continues opening rewards
   session.fromRaid = true;
   session.currentIndex = 0;
   S.packs++;
   S.newCards.clear();
-  const setLabels = {standard:'SURVIVAL',legendary:'REDUNDANCY',jobless:'JOBLESS.AI',doomscroll:'DOOMSCROLL',loveexe:'LOVE.EXE',warroom:'WAR ROOM',skillsvoid:'SKILLS.VOID',founderexe:'FOUNDER.EXE',deepstateai:'DEEP STATE AI',healthcaresys:'HEALTHCARE.SYS',parenttrap:'PARENT TRAP',climateerr:'CLIMATE.ERR',creatornull:'CREATOR.NULL',analogrevival:'ANALOG.REVIVAL',mergeprotocol:'MERGE.PROTOCOL',ubiworld:'UBI.WORLD',walledgarden:'WALLED.GARDEN',solarpunk:'SOLARPUNK.SYS',greyzone:'GREY.ZONE',frontiernull:'FRONTIER.NULL'};
+  const setLabels = {standard:'SURVIVAL',jobless:'JOBLESS.AI',doomscroll:'DOOMSCROLL',loveexe:'LOVE.EXE',warroom:'WAR ROOM',skillsvoid:'SKILLS.VOID',founderexe:'FOUNDER.EXE',deepstateai:'DEEP STATE AI',healthcaresys:'HEALTHCARE.SYS',parenttrap:'PARENT TRAP',climateerr:'CLIMATE.ERR',creatornull:'CREATOR.NULL',analogrevival:'ANALOG.REVIVAL',mergeprotocol:'MERGE.PROTOCOL',ubiworld:'UBI.WORLD',walledgarden:'WALLED.GARDEN',solarpunk:'SOLARPUNK.SYS',greyzone:'GREY.ZONE',frontiernull:'FRONTIER.NULL'};
   document.getElementById('op-pack-name').textContent = 'RAID REWARD: ' + (setLabels[rewardSet] || rewardSet.toUpperCase());
   document.getElementById('legendaryBeam').classList.remove('active');
   renderCardDeck();
@@ -11202,7 +11223,6 @@ renderCardShop();
 // Populate Set 1 pack art
 (function(){
   var el1=document.getElementById('pack-art-standard'); if(el1) el1.innerHTML=packArtHTML(null,'◆');
-  var el2=document.getElementById('pack-art-legendary'); if(el2){var leg=CARDS.filter(function(c){return !c.series&&c.rarity==='LEGENDARY';}); var card=leg[0]; if(card) el2.innerHTML='<img src="images/cards/'+card.id+'.png" alt="★" onerror="this.style.display=\'none\'">'; else el2.innerHTML='<span style="font-size:48px">★</span>';}
 })();
 renderChainBanner();
 renderChainStatus();
