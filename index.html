@@ -2567,6 +2567,63 @@ body::before {
 
 .screen { display:none;flex-direction:column;align-items:center;padding:0 16px 48px; }
 .screen.active { display:flex; }
+.screen-shell { width:100%;max-width:1040px; }
+
+/* Global sticky nav */
+.global-top-nav {
+  display:none;
+  position:sticky;
+  top:0;
+  z-index:420;
+  border-bottom:1px solid #222;
+  background:linear-gradient(180deg,rgba(20,20,24,0.94),rgba(10,10,12,0.9));
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+}
+.global-nav-inner {
+  width:100%;
+  max-width:1040px;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:10px 16px;
+}
+.global-nav-brand {
+  font-family:var(--font-display);
+  font-size:18px;
+  letter-spacing:3px;
+  color:var(--red);
+  text-shadow:0 0 14px rgba(180,20,20,0.35);
+  flex-shrink:0;
+}
+.global-nav-center {
+  min-width:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex:1;
+}
+.global-nav-pills { margin-top:0; }
+.global-nav-stats {
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  justify-content:flex-end;
+}
+.gn-chip {
+  font-family:var(--font-mono);
+  font-size:9px;
+  letter-spacing:1px;
+  color:#666;
+  border:1px solid #2a2a2a;
+  border-radius:999px;
+  padding:4px 8px;
+  background:rgba(0,0,0,0.25);
+  white-space:nowrap;
+}
+.gn-chip strong { color:#bbb;font-weight:700; }
 
 /* Header */
 .site-header { width:100%;max-width:960px;padding:24px 0 16px;text-align:center;border-bottom:1px solid #2a2a2a;margin-bottom:28px; }
@@ -2582,6 +2639,78 @@ body::before {
 .stats-bar { width:100%;max-width:960px;display:flex;gap:24px;justify-content:center;flex-wrap:wrap;padding:10px 0;border-bottom:1px solid #2a2a2a;margin-bottom:28px; }
 .stat-chip { font-family:var(--font-mono);font-size:11px;letter-spacing:2px;color:#888; }
 .stat-chip span { color:var(--red); }
+
+/* Pack screen hierarchy */
+.pack-hierarchy {
+  width:100%;
+  max-width:960px;
+  display:grid;
+  grid-template-columns:minmax(0,1.8fr) minmax(280px,1fr);
+  gap:14px;
+  align-items:start;
+}
+.pack-primary-flow,.pack-secondary-flow {
+  border:1px solid #242428;
+  border-radius:10px;
+  background:linear-gradient(180deg,rgba(18,18,24,0.88),rgba(10,10,14,0.82));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.02);
+  padding:12px;
+}
+.pack-secondary-flow { position:sticky;top:70px; }
+.pack-section-kicker {
+  font-family:var(--font-mono);
+  font-size:10px;
+  letter-spacing:2px;
+  color:#6a6a72;
+  margin-bottom:10px;
+}
+.pack-set-label {
+  width:100%;
+  max-width:960px;
+  margin-bottom:8px;
+  font-family:var(--font-mono);
+  font-size:11px;
+  letter-spacing:3px;
+  color:#555;
+}
+.pack-sets-stack > div { margin-top:10px; }
+.pack-secondary-grid {
+  display:grid;
+  gap:10px;
+}
+.pack-secondary-grid .daily-missions { margin-top:0 !important; }
+.pack-invite-row {
+  text-align:center;
+  margin-top:12px;
+  padding-top:8px;
+  border-top:1px solid #1e1e22;
+}
+.raid-filter-tabs {
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  justify-content:flex-start;
+  margin-bottom:10px;
+}
+.raid-filter-pill {
+  font-family:var(--font-mono);
+  font-size:9px;
+  letter-spacing:1px;
+  padding:6px 10px;
+  min-height:32px;
+  border-radius:999px;
+  border:1px solid #3a3a42;
+  background:rgba(255,255,255,0.03);
+  color:#8a8a96;
+  cursor:pointer;
+  transition:all .2s;
+}
+.raid-filter-pill:hover,.raid-filter-pill.active {
+  border-color:var(--red);
+  color:#ff4a4a;
+  background:rgba(204,17,17,0.12);
+  box-shadow:0 0 12px rgba(204,17,17,0.22);
+}
 
 /* Pack grid */
 .pack-grid { display:flex;gap:16px;width:100%;max-width:960px;margin-bottom:32px;justify-content:center;flex-wrap:wrap; }
@@ -3847,6 +3976,14 @@ img.set-logo { width:48px;height:48px;object-fit:contain;filter:grayscale(1) con
   .sound-toggle{top:max(10px,env(safe-area-inset-top));right:max(10px,env(safe-area-inset-right))}
   #lang-selector{top:max(8px,env(safe-area-inset-top))!important;left:max(8px,env(safe-area-inset-left))!important}
 
+  .global-nav-inner{padding:8px 10px;gap:8px;flex-wrap:wrap}
+  .global-nav-brand{display:none}
+  .global-nav-center{order:1;width:100%}
+  .global-nav-pills{width:100%;justify-content:flex-start;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .global-nav-pills::-webkit-scrollbar{display:none}
+  .global-nav-stats{order:2;width:100%;justify-content:center}
+  .gn-chip{font-size:8px;padding:4px 7px}
+
   /* ── Header ── */
   .site-header{padding:16px 0 12px;margin-bottom:18px}
   .header-eyebrow{font-size:8px;letter-spacing:3px}
@@ -3857,6 +3994,7 @@ img.set-logo { width:48px;height:48px;object-fit:contain;filter:grayscale(1) con
   .nav-pills{gap:6px;margin-top:10px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;justify-content:flex-start;padding:0 4px;width:100%}
   .nav-pills::-webkit-scrollbar{display:none}
   .nav-pill{font-size:9px;letter-spacing:1px;padding:7px 14px;min-height:36px;white-space:nowrap;flex-shrink:0}
+  .global-nav-pills{margin-top:0;padding:0 0 2px;width:100%;justify-content:flex-start}
 
   /* ── Stats bar ── */
   .stats-bar{gap:10px 16px;padding:8px 0;margin-bottom:18px}
@@ -3881,6 +4019,11 @@ img.set-logo { width:48px;height:48px;object-fit:contain;filter:grayscale(1) con
   .daily-missions{padding:12px 14px;margin-top:18px}
   .daily-missions-title{font-size:10px;letter-spacing:2px;margin-bottom:8px}
   .mission-row{padding:6px 0;font-size:9px}
+
+  .pack-hierarchy{grid-template-columns:1fr;gap:12px}
+  .pack-primary-flow,.pack-secondary-flow{padding:10px}
+  .pack-secondary-flow{position:static}
+  .pack-section-kicker{font-size:9px}
 
   /* ── Language selector: bigger touch targets ── */
   .lang-btn{font-size:9px;padding:6px 10px;min-height:36px;min-width:36px;display:inline-flex;align-items:center;justify-content:center}
@@ -3978,6 +4121,9 @@ img.set-logo { width:48px;height:48px;object-fit:contain;filter:grayscale(1) con
 
   /* ── Raid card grid: bigger thumbs for tap targets ── */
   .raid-card-grid{grid-template-columns:repeat(auto-fill,minmax(72px,1fr));gap:6px}
+  .raid-filter-tabs{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:4px}
+  .raid-filter-tabs::-webkit-scrollbar{display:none}
+  .raid-filter-pill{white-space:nowrap;flex-shrink:0;min-height:34px;padding:7px 10px}
 }
 
 /* ════════════════════════════════════════
@@ -3991,6 +4137,8 @@ img.set-logo { width:48px;height:48px;object-fit:contain;filter:grayscale(1) con
   .header-title{font-size:clamp(24px,9vw,38px);letter-spacing:3px}
   .header-eyebrow{font-size:8px;letter-spacing:2px}
   .nav-pill{padding:7px 10px;font-size:8px}
+  .global-nav-pills{padding:0}
+  .gn-chip{font-size:7px;padding:3px 6px}
 
   /* ─�� Stats bar ── */
   .stats-bar{gap:8px 12px}
@@ -4036,6 +4184,8 @@ img.set-logo { width:48px;height:48px;object-fit:contain;filter:grayscale(1) con
   /* ── Daily missions ── */
   .daily-missions{padding:10px 12px}
   .mission-row{font-size:8px;flex-wrap:wrap;gap:2px}
+  .pack-primary-flow,.pack-secondary-flow{padding:9px}
+  .pack-set-label{font-size:10px;letter-spacing:2px}
 
   /* ── Skip / CTA ── */
   .skip-btn{padding:10px 22px;font-size:9px;min-height:36px}
@@ -4244,18 +4394,31 @@ setTimeout(function(){var el=document.getElementById('loading-screen');if(el){el
     </div>
   </div>
 
+  <nav id="global-top-nav" class="global-top-nav" aria-label="Primary">
+    <div class="global-nav-inner">
+      <div class="global-nav-brand">AI CARDS</div>
+      <div class="global-nav-center">
+        <div class="nav-pills global-nav-pills">
+          <button class="nav-pill global-nav-btn active" data-screen="pack-screen" onclick="showScreen('pack-screen')" data-i18n="nav.packs">PACKS</button>
+          <button class="nav-pill global-nav-btn" data-screen="collection-screen" onclick="showScreen('collection-screen')" data-i18n="nav.collection">COLLECTION</button>
+          <button class="nav-pill global-nav-btn" data-screen="raid-screen" onclick="showScreen('raid-screen')" data-i18n="nav.raids">RAIDS</button>
+        </div>
+      </div>
+      <div class="global-nav-stats">
+        <div class="gn-chip">FREE <strong id="gn-free">3/3</strong></div>
+        <div class="gn-chip">RAID <strong id="gn-raid">3/3</strong></div>
+        <div class="gn-chip">OWNED <strong id="gn-owned">0%</strong></div>
+      </div>
+    </div>
+  </nav>
+
   <!-- PACK SELECT -->
   <div class="screen" id="pack-screen">
-    <div style="width:100%;max-width:960px;">
+    <div class="screen-shell pack-shell">
       <div class="site-header">
         <div class="header-eyebrow" data-i18n="header.eyebrow">▓▓▓ CLASSIFIED · SERIES ONE · 2030 EDITION ▓▓▓</div>
         <div class="header-title" data-i18n="header.title">AI CARDS</div>
         <div class="header-sub" data-i18n="header.sub">2030 SURVIVAL EDITION</div>
-        <div class="nav-pills">
-          <button class="nav-pill active" onclick="showScreen('pack-screen')" data-i18n="nav.packs">PACKS</button>
-          <button class="nav-pill" onclick="showScreen('collection-screen')" data-i18n="nav.collection">COLLECTION</button>
-          <button class="nav-pill" onclick="showScreen('raid-screen')" data-i18n="nav.raids">RAIDS</button>
-        </div>
       </div>
       <div class="daily-packs-bar">
         <div class="daily-packs-count"><span data-i18n="stats.free_packs">FREE PACKS</span>: <span id="dp-remaining">3</span> / 3</div>
@@ -4271,63 +4434,70 @@ setTimeout(function(){var el=document.getElementById('loading-screen');if(el){el
         <div class="stat-chip"><span data-i18n="stats.packs_opened">PACKS OPENED</span>: <span id="st-packs">0</span></div>
         <div class="stat-chip"><span data-i18n="stats.pity">PITY</span>: <span id="st-pity">0</span>/5</div>
       </div>
-      <!-- SET 1: 2030 SURVIVAL -->
-      <div style="width:100%;max-width:960px;margin-bottom:8px;">
-        <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:3px;color:#555;margin-bottom:10px;" data-i18n="set.1">SET 1 — 2030 SURVIVAL</div>
-      </div>
-      <div class="pack-grid">
-        <div class="pack-card p-standard" onclick="openPack('standard')">
-          <div class="pack-art" id="pack-art-standard"></div>
-          <div class="pack-body">
-            <div class="pack-title" data-i18n="pack.survival">2030 SURVIVAL</div>
-            <div class="pack-desc" data-i18n="pack.survival_desc">Ten cards from the full pool. Trades, purpose, displacement, AI products, lore. See what the algorithm gives you.</div>
-            <div class="pack-meta" data-i18n="pack.survival_meta">10 CARDS · FULL POOL · WEIGHTED</div>
-            <button class="pack-btn" data-i18n="pack.open_btn">▶ OPEN PACK</button>
+      <div class="pack-hierarchy">
+        <section class="pack-primary-flow">
+          <div class="pack-section-kicker">OPEN PACKS · CORE LOOP</div>
+          <div class="pack-set-label" data-i18n="set.1">SET 1 — 2030 SURVIVAL</div>
+          <div class="pack-grid">
+            <div class="pack-card p-standard" onclick="openPack('standard')">
+              <div class="pack-art" id="pack-art-standard"></div>
+              <div class="pack-body">
+                <div class="pack-title" data-i18n="pack.survival">2030 SURVIVAL</div>
+                <div class="pack-desc" data-i18n="pack.survival_desc">Ten cards from the full pool. Trades, purpose, displacement, AI products, lore. See what the algorithm gives you.</div>
+                <div class="pack-meta" data-i18n="pack.survival_meta">10 CARDS · FULL POOL · WEIGHTED</div>
+                <button class="pack-btn" data-i18n="pack.open_btn">▶ OPEN PACK</button>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-
-      <!-- BUY EXTRA PACKS — rendered by JS when wallet connected -->
-      <div id="buy-packs-zone"></div>
-
-      <!-- SET 2 & 3: rendered by JS for lock state -->
-      <div id="chain-banner-zone"></div>
-      <div id="set2-zone"></div>
-      <div id="set3-zone"></div>
-      <div id="set4-zone"></div>
-      <div id="set5-zone"></div>
-      <div id="set6-zone"></div>
-      <div id="set7-zone"></div>
-      <div id="set8-zone"></div>
-      <div id="set9-zone"></div>
-      <div id="set10-zone"></div>
-      <div id="set11-zone"></div>
-      <div id="set12-zone"></div>
-      <div id="set13-zone"></div>
-      <div id="set14-zone"></div>
-      <div id="set15-zone"></div>
-      <div id="set16-zone"></div>
-      <div id="set17-zone"></div>
-      <div id="set18-zone"></div>
-      <div id="set19-zone"></div>
-      <div class="daily-missions" id="daily-missions">
-        <div class="daily-missions-title">DAILY GOALS — 1 RANDOM PACK</div>
-        <div class="mission-row"><span class="mission-label">Pull 3 cards</span><span class="mission-progress" id="dm-pulls">0/3</span></div>
-        <div class="mission-row"><span class="mission-label">Defeat 1 raid boss</span><span class="mission-progress" id="dm-raid">0/1</span></div>
-        <div class="mission-row"><span class="mission-label">Log in today</span><span class="mission-progress done" id="dm-login">1/1</span></div>
-        <div class="mission-row"><span class="mission-label">Share 1 card</span><span class="mission-progress" id="dm-share">0/1</span></div>
-        <div id="daily-reward-row" style="display:none;text-align:center;margin-top:8px;"></div>
-      </div>
-      <div class="daily-missions" id="weekly-goal" style="margin-top:12px;"></div>
-      <div class="daily-missions" id="pack-history-zone" style="margin-top:12px;display:none;"></div>
-      <div class="daily-missions" style="margin-top:12px;">
-        <div class="daily-missions-title" data-i18n="missions.achievements">ACHIEVEMENTS</div>
-        <div class="mission-row"><span class="mission-label" data-i18n="missions.complete_collection">Complete your collection</span><span class="mission-progress" id="dm-collection">0/<span id="dm-coll-total">69</span></span></div>
-      </div>
-      <div class="daily-missions" id="leaderboard-zone" style="margin-top:12px;"></div>
-      <div id="profile-zone"></div>
-      <div style="text-align:center;margin-top:24px;padding:16px 0;">
-        <button class="reveal-action-btn" style="font-size:7px;letter-spacing:2px;" onclick="copyReferralLink()" data-i18n="misc.invite_friends">INVITE FRIENDS</button>
+          <!-- BUY EXTRA PACKS — rendered by JS when wallet connected -->
+          <div id="buy-packs-zone"></div>
+          <!-- SET 2-19: rendered by JS for lock state -->
+          <div class="pack-sets-stack">
+            <div id="chain-banner-zone"></div>
+            <div id="set2-zone"></div>
+            <div id="set3-zone"></div>
+            <div id="set4-zone"></div>
+            <div id="set5-zone"></div>
+            <div id="set6-zone"></div>
+            <div id="set7-zone"></div>
+            <div id="set8-zone"></div>
+            <div id="set9-zone"></div>
+            <div id="set10-zone"></div>
+            <div id="set11-zone"></div>
+            <div id="set12-zone"></div>
+            <div id="set13-zone"></div>
+            <div id="set14-zone"></div>
+            <div id="set15-zone"></div>
+            <div id="set16-zone"></div>
+            <div id="set17-zone"></div>
+            <div id="set18-zone"></div>
+            <div id="set19-zone"></div>
+          </div>
+        </section>
+        <aside class="pack-secondary-flow">
+          <div class="pack-section-kicker">MISSION CONTROL</div>
+          <div class="pack-secondary-grid">
+            <div class="daily-missions" id="daily-missions">
+              <div class="daily-missions-title">DAILY GOALS — 1 RANDOM PACK</div>
+              <div class="mission-row"><span class="mission-label">Pull 3 cards</span><span class="mission-progress" id="dm-pulls">0/3</span></div>
+              <div class="mission-row"><span class="mission-label">Defeat 1 raid boss</span><span class="mission-progress" id="dm-raid">0/1</span></div>
+              <div class="mission-row"><span class="mission-label">Log in today</span><span class="mission-progress done" id="dm-login">1/1</span></div>
+              <div class="mission-row"><span class="mission-label">Share 1 card</span><span class="mission-progress" id="dm-share">0/1</span></div>
+              <div id="daily-reward-row" style="display:none;text-align:center;margin-top:8px;"></div>
+            </div>
+            <div class="daily-missions" id="weekly-goal"></div>
+            <div class="daily-missions">
+              <div class="daily-missions-title" data-i18n="missions.achievements">ACHIEVEMENTS</div>
+              <div class="mission-row"><span class="mission-label" data-i18n="missions.complete_collection">Complete your collection</span><span class="mission-progress" id="dm-collection">0/<span id="dm-coll-total">69</span></span></div>
+            </div>
+            <div class="daily-missions" id="leaderboard-zone"></div>
+            <div class="daily-missions" id="pack-history-zone" style="display:none;"></div>
+            <div id="profile-zone"></div>
+          </div>
+          <div class="pack-invite-row">
+            <button class="reveal-action-btn" style="font-size:7px;letter-spacing:2px;" onclick="copyReferralLink()" data-i18n="misc.invite_friends">INVITE FRIENDS</button>
+          </div>
+        </aside>
       </div>
     </div>
   </div>
@@ -4357,11 +4527,6 @@ setTimeout(function(){var el=document.getElementById('loading-screen');if(el){el
         <div class="header-eyebrow" data-i18n="header.eyebrow_collection">▓▓▓ CLASSIFIED · FULL COLLECTION ▓▓▓</div>
         <div class="header-title" data-i18n="header.title">AI CARDS</div>
         <div class="header-sub" data-i18n="header.sub">2030 SURVIVAL EDITION</div>
-        <div class="nav-pills">
-          <button class="nav-pill" onclick="showScreen('pack-screen')" data-i18n="nav.packs">PACKS</button>
-          <button class="nav-pill active" onclick="showScreen('collection-screen')" data-i18n="nav.collection">COLLECTION</button>
-          <button class="nav-pill" onclick="showScreen('raid-screen')" data-i18n="nav.raids">RAIDS</button>
-        </div>
       </div>
       <div class="set-progress-bar" id="set-progress-bar"></div>
       <div id="coll-body"></div>
@@ -4375,11 +4540,6 @@ setTimeout(function(){var el=document.getElementById('loading-screen');if(el){el
         <div class="header-eyebrow" data-i18n="header.eyebrow_raid">▓▓▓ CLASSIFIED · RAID OPERATIONS ▓▓▓</div>
         <div class="header-title" data-i18n="header.title">AI CARDS</div>
         <div class="header-sub" data-i18n="header.sub">2030 SURVIVAL EDITION</div>
-        <div class="nav-pills">
-          <button class="nav-pill" onclick="showScreen('pack-screen')" data-i18n="nav.packs">PACKS</button>
-          <button class="nav-pill" onclick="showScreen('collection-screen')" data-i18n="nav.collection">COLLECTION</button>
-          <button class="nav-pill active" onclick="showScreen('raid-screen')" data-i18n="nav.raids">RAIDS</button>
-        </div>
       </div>
       <div id="raid-body"></div>
     </div>
@@ -7721,6 +7881,7 @@ function updateDailyUI() {
 
   // Check for newly completed missions
   checkMissionCompletions(ds);
+  updateGlobalNavStats();
 }
 
 // Hourly countdown timer — ticks toward the next raid boss rotation
@@ -8076,20 +8237,21 @@ function enterFromLanding(target) {
 function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
-  // Sync nav pill active states
-  document.querySelectorAll('.nav-pill').forEach(p => {
-    const m = (p.getAttribute('onclick')||'').match(/showScreen\('([^']+)'\)/);
-    if (m) p.classList.toggle('active', m[1] === id);
-    else if (!p.getAttribute('onclick')) p.classList.remove('active');
+  // Sync sticky global nav active states
+  document.querySelectorAll('.global-nav-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.screen === id);
   });
   if(id==='collection-screen') { renderCollection(); renderSetProgress(); }
   if(id==='pack-screen') { updateStats(); renderProfile(); updateDailyUI(); renderWeeklyGoal(); renderCardShop(); renderChainBanner(); renderChainStatus(); renderSet2Zone(); renderSet3Zone(); renderSet4Zone(); renderSet5Zone(); renderSet6Zone(); renderSet7Zone(); renderSet8Zone(); renderSet9Zone(); renderSet10Zone(); renderSet11Zone(); renderSet12Zone(); renderSet13Zone(); renderSet14Zone(); renderSet15Zone(); renderSet16Zone(); renderSet17Zone(); renderSet18Zone(); renderSet19Zone(); renderSetProgress(); renderPackHistory(); renderLeaderboard(); }
   if(id==='raid-screen') renderRaidScreen();
+  updateGlobalNavStats();
   // Sync mobile bottom nav
   document.querySelectorAll('.bnav-btn').forEach(b => {
     b.classList.toggle('active', b.dataset.screen === id);
   });
-  // Hide bottom nav on landing/opening screens
+  // Hide nav chrome on landing/opening/battle screens
+  const topNav = document.getElementById('global-top-nav');
+  if (topNav) topNav.style.display = (id==='landing-screen'||id==='opening-screen'||id==='raid-battle-screen') ? 'none' : 'block';
   const bnav = document.getElementById('mobile-bottom-nav');
   if(bnav) bnav.style.display = (id==='landing-screen'||id==='opening-screen'||id==='raid-battle-screen') ? 'none' : '';
 }
@@ -8099,6 +8261,21 @@ function mobileNav(id) {
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
+function updateGlobalNavStats() {
+  const freeEl = document.getElementById('gn-free');
+  const raidEl = document.getElementById('gn-raid');
+  const ownedEl = document.getElementById('gn-owned');
+  if (!freeEl && !raidEl && !ownedEl) return;
+  const free = getDailyPacksRemaining();
+  const attempts = getRaidAttemptsRemaining();
+  const owned = collectionSize();
+  const total = CARDS.length || 1;
+  const pct = Math.round((owned / total) * 100);
+  if (freeEl) freeEl.textContent = `${free}/3`;
+  if (raidEl) raidEl.textContent = `${attempts}/${RAID_MAX_ATTEMPTS}`;
+  if (ownedEl) ownedEl.textContent = `${pct}%`;
+}
+
 function updateStats() {
   document.getElementById('st-pulls').textContent = S.pulls;
   document.getElementById('st-owned').textContent = collectionSize();
@@ -8106,6 +8283,7 @@ function updateStats() {
   document.getElementById('st-leg').textContent = S.legendaries;
   document.getElementById('st-packs').textContent = S.packs;
   document.getElementById('st-pity').textContent = S.pityCounter;
+  updateGlobalNavStats();
 }
 
 // ═══════════════════════════════════════
@@ -10638,7 +10816,7 @@ function renderRaidScreen() {
     {key:'GREYZONE',label:'GREY'},
     {key:'FRONTIERNULL',label:'FRONTIER'}
   ];
-  const tabsHTML = setTabs.map(t => `<button class="nav-pill${raidSetFilter===t.key?' active':''}" style="font-size:7px;padding:4px 8px;min-height:0;" onclick="raidSetFilter='${t.key}';renderRaidScreen();">${t.label}</button>`).join('');
+  const tabsHTML = setTabs.map(t => `<button class="raid-filter-pill${raidSetFilter===t.key?' active':''}" onclick="raidSetFilter='${t.key}';renderRaidScreen();">${t.label}</button>`).join('');
 
   // Card selection grid — art blocks matching collection style
   let gridHTML = '';
@@ -10762,7 +10940,7 @@ function renderRaidScreen() {
       <div class="raid-team-slots" id="raid-team-slots">${slotsHTML}</div>
       <div id="raid-bonus-zone" style="text-align:center;margin-bottom:8px;">${bonusHTML}</div>
       <button class="raid-engage-btn ${raidTeam.length===5?'ready':''}" id="raid-engage-btn" ${raidTeam.length<5||attempts<=0?'disabled':''} onclick="startRaid()" style="margin-bottom:12px;">${attempts <= 0 ? t('raid.no_attempts') : t('raid.engage')}</button>
-      <div class="nav-pills" style="justify-content:flex-start;margin-bottom:8px;flex-wrap:wrap;gap:4px;" id="raid-filter-tabs">${tabsHTML}</div>
+      <div class="raid-filter-tabs" id="raid-filter-tabs">${tabsHTML}</div>
       <div id="raid-card-grid-zone">${hasEnough ? '<div class="raid-card-grid">' + gridHTML + '</div>' : '<div style="font-family:var(--font-mono);font-size:8px;color:#444;text-align:center;padding:20px;">' + t('raid.no_cards') + '</div>'}</div>
     </div>
     <div class="daily-missions" style="margin-top:16px;">
@@ -11249,8 +11427,13 @@ renderPackHistory();
 renderLeaderboard();
 renderCardOfDay();
 
-// Hide mobile bottom nav on landing (shown when user enters main screens via showScreen)
-(function(){var bn=document.getElementById('mobile-bottom-nav');if(bn)bn.style.display='none';})();
+// Hide nav chrome on landing (shown when user enters main screens via showScreen)
+(function(){
+  var bn=document.getElementById('mobile-bottom-nav');
+  if(bn)bn.style.display='none';
+  var tn=document.getElementById('global-top-nav');
+  if(tn)tn.style.display='none';
+})();
 
 // Dismiss loading screen — fonts + hard timeout fallback
 (function dismissLoader() {
