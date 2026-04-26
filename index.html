@@ -2869,15 +2869,17 @@ img.set-logo { width:48px;height:48px;object-fit:contain;filter:grayscale(1) con
    ════════════════════════════════════════ */
 #landing-screen {
   position:fixed;inset:0;z-index:500;
-  display:none;align-items:center;justify-content:center;
+  display:none;
   background:var(--bg);
-  flex-direction:column;
   text-align:center;
-  padding:24px;
+  padding:max(16px,env(safe-area-inset-top)) 24px max(24px,env(safe-area-inset-bottom));
+  overflow-y:auto;
+  overflow-x:hidden;
+  -webkit-overflow-scrolling:touch;
   opacity:1;
   transition:opacity .5s ease;
 }
-#landing-screen.active { display:flex; }
+#landing-screen.active { display:block; }
 #landing-screen.fade-out { opacity:0;pointer-events:none; }
 
 /* Drifting card silhouettes */
@@ -2905,6 +2907,11 @@ img.set-logo { width:48px;height:48px;object-fit:contain;filter:grayscale(1) con
   position:relative;z-index:1;
   display:flex;flex-direction:column;align-items:center;gap:20px;
   max-width:600px;
+  width:min(600px,100%);
+  margin:0 auto;
+  min-height:calc(100vh - 48px);
+  min-height:calc(100dvh - 48px);
+  justify-content:center;
 }
 .beta-badge {
   font-family:var(--font-mono);font-size:10px;letter-spacing:4px;
@@ -4222,6 +4229,7 @@ img.set-logo { width:48px;height:48px;object-fit:contain;filter:grayscale(1) con
 .mobile-bottom-nav .bnav-btn .bnav-icon{font-size:18px;line-height:1;}
 .mobile-bottom-nav .bnav-btn.active{color:var(--red);}
 .mobile-bottom-nav .bnav-btn:active{color:var(--red);}
+.mobile-bottom-nav.is-hidden{display:none!important;}
 
 /* ═══ DECK SWIPE HINT ═══ */
 .deck-swipe-hint {
@@ -8250,10 +8258,14 @@ function showScreen(id) {
     b.classList.toggle('active', b.dataset.screen === id);
   });
   // Hide nav chrome on landing/opening/battle screens
+  const hideChrome = (id==='landing-screen'||id==='opening-screen'||id==='raid-battle-screen');
   const topNav = document.getElementById('global-top-nav');
-  if (topNav) topNav.style.display = (id==='landing-screen'||id==='opening-screen'||id==='raid-battle-screen') ? 'none' : 'block';
+  if (topNav) topNav.style.display = hideChrome ? 'none' : 'block';
   const bnav = document.getElementById('mobile-bottom-nav');
-  if(bnav) bnav.style.display = (id==='landing-screen'||id==='opening-screen'||id==='raid-battle-screen') ? 'none' : '';
+  if (bnav) {
+    bnav.style.display = '';
+    bnav.classList.toggle('is-hidden', hideChrome);
+  }
 }
 
 function mobileNav(id) {
@@ -11430,7 +11442,10 @@ renderCardOfDay();
 // Hide nav chrome on landing (shown when user enters main screens via showScreen)
 (function(){
   var bn=document.getElementById('mobile-bottom-nav');
-  if(bn)bn.style.display='none';
+  if (bn) {
+    bn.style.display = '';
+    bn.classList.add('is-hidden');
+  }
   var tn=document.getElementById('global-top-nav');
   if(tn)tn.style.display='none';
 })();
